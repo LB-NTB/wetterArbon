@@ -97,7 +97,7 @@
         }, 
         {
             "location": "/KW44/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nArbeitstools definieren (git, Toogl, mkdocs, laTeX, Trello?)\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\n\n\nResultat / Erkenntnisse\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n\n\nProbleme\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nArbeitstools definieren\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nBetreuer freischalten auf den entsprechenden Tools\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n git als Versionierungstool\n\n git Pages mit mkdoks (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer\n\n trello als Itemtracker nach KANBAN-System\n\n toggl als Time Tracker\n\n slack als Projekt-Kommunikationstool\n\n LaTeX f\u00fcr die Dokumentation\n\n\nProbleme\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass noch keine Analyse der IST-Situation durchgef\u00fchrt werden konnte.\n\n\nJournal / Zeitaufwand\n\n\n5h Evaluation / Initialisierung der Tools", 
             "title": "KW44"
         }, 
         {
@@ -107,18 +107,33 @@
         }, 
         {
             "location": "/KW44/#ziel", 
-            "text": "Arbeitstools definieren (git, Toogl, mkdocs, laTeX, Trello?)  Aufteilung der Themen  Priorisierung der Themen", 
+            "text": "Arbeitstools definieren  Aufteilung der Themen  Priorisierung der Themen  Betreuer freischalten auf den entsprechenden Tools", 
             "title": "Ziel"
         }, 
         {
             "location": "/KW44/#resultat-erkenntnisse", 
-            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
         }, 
         {
+            "location": "/KW44/#aufteilung", 
+            "text": "", 
+            "title": "Aufteilung"
+        }, 
+        {
+            "location": "/KW44/#tools", 
+            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:  git als Versionierungstool  git Pages mit mkdoks (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer  trello als Itemtracker nach KANBAN-System  toggl als Time Tracker  slack als Projekt-Kommunikationstool  LaTeX f\u00fcr die Dokumentation", 
+            "title": "Tools"
+        }, 
+        {
             "location": "/KW44/#probleme", 
-            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
+            "text": "Bisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass noch keine Analyse der IST-Situation durchgef\u00fchrt werden konnte.", 
             "title": "Probleme"
+        }, 
+        {
+            "location": "/KW44/#journal-zeitaufwand", 
+            "text": "5h Evaluation / Initialisierung der Tools", 
+            "title": "Journal / Zeitaufwand"
         }, 
         {
             "location": "/KW45/", 
@@ -297,7 +312,7 @@
         }, 
         {
             "location": "/about/", 
-            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit 'git add' deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: Toggl 'https://toggl.com'\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello", 
+            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: Toggl 'https://toggl.com'\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello", 
             "title": "About"
         }, 
         {
@@ -322,7 +337,7 @@
         }, 
         {
             "location": "/about/#deployen-auf-github", 
-            "text": "mkdocs gh-deploy  Achtung: nicht manuell d.h. mit 'git add' deployen!", 
+            "text": "mkdocs gh-deploy  Achtung: nicht manuell d.h. mit  git add  deployen!", 
             "title": "Deployen auf github"
         }, 
         {
