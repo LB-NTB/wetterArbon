@@ -97,7 +97,7 @@
         }, 
         {
             "location": "/KW44/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n\n\nResultat / Erkenntnisse\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n\n\nProbleme\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nArbeitstools definieren (git, Toogl, mkdocs, laTeX, Trello?)\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\n\n\nResultat / Erkenntnisse\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n\n\nProbleme\n\n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
             "title": "KW44"
         }, 
         {
@@ -107,7 +107,7 @@
         }, 
         {
             "location": "/KW44/#ziel", 
-            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
+            "text": "Arbeitstools definieren (git, Toogl, mkdocs, laTeX, Trello?)  Aufteilung der Themen  Priorisierung der Themen", 
             "title": "Ziel"
         }, 
         {
@@ -297,7 +297,7 @@
         }, 
         {
             "location": "/about/", 
-            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nTime Tracking\n\n\nDer Zeitaufwand wird mit folgendem Tool erfasst: 'https://toggl.com'", 
+            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nMkdocs starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nTools\n\n\n\n\nTime Tracking: Toggl 'https://toggl.com'\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello", 
             "title": "About"
         }, 
         {
@@ -316,9 +316,14 @@
             "title": "Neue Seite erstellen"
         }, 
         {
-            "location": "/about/#time-tracking", 
-            "text": "Der Zeitaufwand wird mit folgendem Tool erfasst: 'https://toggl.com'", 
-            "title": "Time Tracking"
+            "location": "/about/#mkdocs-starten", 
+            "text": "Im Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:  mkdocs serve", 
+            "title": "Mkdocs starten"
+        }, 
+        {
+            "location": "/about/#tools", 
+            "text": "Time Tracking: Toggl 'https://toggl.com'  Reports: Mkdocs (Markdown) / Git Pages  Schlussbericht: LaTeX  Versionisierung: Git  Item Tracking: Trello", 
+            "title": "Tools"
         }
     ]
 }
