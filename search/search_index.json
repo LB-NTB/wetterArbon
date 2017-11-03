@@ -97,7 +97,7 @@
         }, 
         {
             "location": "/KW44/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nArbeitstools definieren\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nBetreuer freischalten auf den entsprechenden Tools\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n git als Versionierungstool\n\n git Pages mit mkdoks (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer\n\n trello als Itemtracker nach KANBAN-System\n\n toggl als Time Tracker\n\n slack als Projekt-Kommunikationstool\n\n LaTeX f\u00fcr die Dokumentation\n\n\nProbleme\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass noch keine Analyse der IST-Situation durchgef\u00fchrt werden konnte.\n\n\nJournal / Zeitaufwand\n\n\n5h Evaluation / Initialisierung der Tools", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nArbeitstools definieren\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nBetreuer freischalten auf den entsprechenden Tools\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n git als Versionierungstool\n\n git Pages mit mkdoks (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer\n\n trello als Itemtracker nach KANBAN-System\n\n toggl als Time Tracker\n\n slack als Projekt-Kommunikastionstool\n\n LaTeX f\u00fcr die Dokumentation\n\n\nProbleme\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass noch keine Analyse der IST-Situation durchgef\u00fchrt werden konnte.\n\n\nJournal / Zeitaufwand\n\n\n5h Evaluation / Initialisierung der Tools", 
             "title": "KW44"
         }, 
         {
@@ -122,7 +122,7 @@
         }, 
         {
             "location": "/KW44/#tools", 
-            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:  git als Versionierungstool  git Pages mit mkdoks (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer  trello als Itemtracker nach KANBAN-System  toggl als Time Tracker  slack als Projekt-Kommunikationstool  LaTeX f\u00fcr die Dokumentation", 
+            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:  git als Versionierungstool  git Pages mit mkdoks (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer  trello als Itemtracker nach KANBAN-System  toggl als Time Tracker  slack als Projekt-Kommunikastionstool  LaTeX f\u00fcr die Dokumentation", 
             "title": "Tools"
         }, 
         {
