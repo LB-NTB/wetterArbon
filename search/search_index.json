@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Fachmodul \u00dcbersicht\n\n\nDie Lernziele und Kompetenzen sind individuell je nach Thema der Bachelor-Arbeit.\n\n\nTermine\n\n\n\n\n20.11.2017  - Doku-Ger\u00fcst abgeben (ohne Inhalt)\n\n\n11.12.2017  - Vorversion des Berichts abgeben (LaTeX)\n\n\n22.12.2017  - Abgabe definitiver FM-Bericht (LaTeX)\n\n\n\n\nZiel Fachmodul\n\n\nCupcake indexer is a snazzy new project for indexing small cakes.\n\n\n\nAbove: Cupcake indexer in progress\n\n\nStundenaufwand\n\n\n60h (2 ECTS) pro Person", 
+            "text": "Fachmodul \u00dcbersicht\n\n\nDie Lernziele und Kompetenzen sind individuell je nach Thema der Bachelor-Arbeit.\n\n\nTermine\n\n\n\n\n20.11.2017  - Doku-Ger\u00fcst abgeben (ohne Inhalt)\n\n\n11.12.2017  - Vorversion des Berichts abgeben (LaTeX)\n\n\n22.12.2017  - Abgabe definitiver FM-Bericht (LaTeX)\n\n\n\n\nZiel Fachmodul\n\n\ntbd\n\n\nStundenaufwand\n\n\n60h (2 ECTS) pro Person", 
             "title": "Home"
         }, 
         {
@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/#ziel-fachmodul", 
-            "text": "Cupcake indexer is a snazzy new project for indexing small cakes.  Above: Cupcake indexer in progress", 
+            "text": "tbd", 
             "title": "Ziel Fachmodul"
         }, 
         {
@@ -97,7 +97,7 @@
         }, 
         {
             "location": "/KW44/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nArbeitstools definieren\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nBetreuer freischalten auf den entsprechenden Tools\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n\n\n\ngit\n als Versionierungstool\n\n\ngit Pages\n mit \nmkdoks\n (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer\n\n\ntrello\n als Itemtracker nach KANBAN-System\n\n\ntoggl\n als Time Tracker\n\n\nslack\n als Projekt-Kommunikastionstool\n\n\nLaTeX\n f\u00fcr die Dokumentation\n\n\n\n\nProbleme\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass noch keine Analyse der IST-Situation durchgef\u00fchrt werden konnte.\n\n\nJournal / Zeitaufwand\n\n\n5h Evaluation / Initialisierung der Tools", 
+            "text": "Wochenreport KW 44\n\n\nZiel dieser Woche\n\n\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nArbeitstools definieren und initialisieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nWir haben die Ideen aus dem mindmap folgendermassen unter uns aufgeteilt:\n\n\nLadina: \n\n\n\n\nWebseite (Semantisches Web / Usability / Barrierefreies Web)\n\n\nVorhersage (Windvorhersage-Dienste / API)\n\n\nPegelmessung (Sensor)\n\n\nStrahlungsmessung (Sensor)\n\n\nSerielle Schnittstelle (Ersatz f\u00fcr Weather Display)\n\n\n\n\nThomas:\n\n\n\n\nWebseite (Grafiken D3, Responsive Design / Mobile First)\n\n\nDatenbank (Maria DB / Aufbau / Historische Daten)\n\n\nAlarmmeldung (SMS-Versand, Benutzeroberfl\u00e4che)\n\n\nWebcam (Warteschlange, sektorweise Zoombeschr\u00e4nkung)\n\n\n\n\nEinige Ideen haben wir bewusst weggelassen wie z.B. eigener Server oder Korrelation Sturmwarnung, weil diese Ideen eine sehr tiefe Priorit\u00e4t aufweisen und sozusagen nur als Zeitf\u00fcller gedacht sind, falls wir widererwarten nichts mehr zu tun haben sollten w\u00e4hrend der Bachelor-Arbeit.\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n\n\n\ngit\n als Versionierungstool\n\n\ngit Pages\n mit \nmkdoks\n (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports\n\n\ntrello\n als Itemtracker nach KANBAN-System\n\n\ntoggl\n als Time Tracker\n\n\nslack\n als Projekt-Kommunikastionstool\n\n\nskype\n f\u00fcr Screen-Sharing und Telefonie\n\n\nLaTeX\n f\u00fcr die Dokumentation\n\n\n\n\nS\u00e4mtliche Tools sind kostenfrei und webbasiert bzw. plattform\u00fcbergreifend verf\u00fcgbar. Viele der Tools k\u00f6nnen untereinander verkn\u00fcpft werden. Wir erhoffen uns daraus, Synergien nutzen zu k\u00f6nnen (z.B. Toggl-Integration in Trello).\n\n\nProbleme / Herausforderungen\n\n\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass die Analyse der IST-Situation noch nicht begonnen werden konnte.\n\n\nDas Zeit-Tracking funktioniert noch nicht wie gew\u00fcnscht\n\n\nund wir m\u00fcssen uns erst mal mit all den Tools vertraut machen\n\n\nBild-Integration in git-pages funktioniert noch nicht\n\n\n\n\nJournal / Zeitaufwand\n\n\n6h Evaluation / Initialisierung der Tools\n\n3h Einarbeitung in LaTeX\n1h Administration", 
             "title": "KW44"
         }, 
         {
@@ -106,9 +106,9 @@
             "title": "Wochenreport KW 44"
         }, 
         {
-            "location": "/KW44/#ziel", 
-            "text": "Arbeitstools definieren  Aufteilung der Themen  Priorisierung der Themen  Betreuer freischalten auf den entsprechenden Tools", 
-            "title": "Ziel"
+            "location": "/KW44/#ziel-dieser-woche", 
+            "text": "Aufteilung der Themen  Priorisierung der Themen  Arbeitstools definieren und initialisieren", 
+            "title": "Ziel dieser Woche"
         }, 
         {
             "location": "/KW44/#resultat-erkenntnisse", 
@@ -117,22 +117,22 @@
         }, 
         {
             "location": "/KW44/#aufteilung", 
-            "text": "", 
+            "text": "Wir haben die Ideen aus dem mindmap folgendermassen unter uns aufgeteilt:  Ladina:    Webseite (Semantisches Web / Usability / Barrierefreies Web)  Vorhersage (Windvorhersage-Dienste / API)  Pegelmessung (Sensor)  Strahlungsmessung (Sensor)  Serielle Schnittstelle (Ersatz f\u00fcr Weather Display)   Thomas:   Webseite (Grafiken D3, Responsive Design / Mobile First)  Datenbank (Maria DB / Aufbau / Historische Daten)  Alarmmeldung (SMS-Versand, Benutzeroberfl\u00e4che)  Webcam (Warteschlange, sektorweise Zoombeschr\u00e4nkung)   Einige Ideen haben wir bewusst weggelassen wie z.B. eigener Server oder Korrelation Sturmwarnung, weil diese Ideen eine sehr tiefe Priorit\u00e4t aufweisen und sozusagen nur als Zeitf\u00fcller gedacht sind, falls wir widererwarten nichts mehr zu tun haben sollten w\u00e4hrend der Bachelor-Arbeit.", 
             "title": "Aufteilung"
         }, 
         {
             "location": "/KW44/#tools", 
-            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:   git  als Versionierungstool  git Pages  mit  mkdoks  (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports mit dem Betreuer  trello  als Itemtracker nach KANBAN-System  toggl  als Time Tracker  slack  als Projekt-Kommunikastionstool  LaTeX  f\u00fcr die Dokumentation", 
+            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:   git  als Versionierungstool  git Pages  mit  mkdoks  (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports  trello  als Itemtracker nach KANBAN-System  toggl  als Time Tracker  slack  als Projekt-Kommunikastionstool  skype  f\u00fcr Screen-Sharing und Telefonie  LaTeX  f\u00fcr die Dokumentation   S\u00e4mtliche Tools sind kostenfrei und webbasiert bzw. plattform\u00fcbergreifend verf\u00fcgbar. Viele der Tools k\u00f6nnen untereinander verkn\u00fcpft werden. Wir erhoffen uns daraus, Synergien nutzen zu k\u00f6nnen (z.B. Toggl-Integration in Trello).", 
             "title": "Tools"
         }, 
         {
-            "location": "/KW44/#probleme", 
-            "text": "Bisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass noch keine Analyse der IST-Situation durchgef\u00fchrt werden konnte.", 
-            "title": "Probleme"
+            "location": "/KW44/#probleme-herausforderungen", 
+            "text": "Bisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass die Analyse der IST-Situation noch nicht begonnen werden konnte.  Das Zeit-Tracking funktioniert noch nicht wie gew\u00fcnscht  und wir m\u00fcssen uns erst mal mit all den Tools vertraut machen  Bild-Integration in git-pages funktioniert noch nicht", 
+            "title": "Probleme / Herausforderungen"
         }, 
         {
             "location": "/KW44/#journal-zeitaufwand", 
-            "text": "5h Evaluation / Initialisierung der Tools", 
+            "text": "6h Evaluation / Initialisierung der Tools \n3h Einarbeitung in LaTeX\n1h Administration", 
             "title": "Journal / Zeitaufwand"
         }, 
         {
@@ -312,7 +312,7 @@
         }, 
         {
             "location": "/about/", 
-            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: Toggl 'https://toggl.com'\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello", 
+            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: \nToggl\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello\n\n\nKommunikation: slack\n\n\nScreen-Sharing und Telefonie: skype", 
             "title": "About"
         }, 
         {
@@ -342,7 +342,7 @@
         }, 
         {
             "location": "/about/#tools-die-wir-verwenden", 
-            "text": "Time Tracking: Toggl 'https://toggl.com'  Reports: Mkdocs (Markdown) / Git Pages  Schlussbericht: LaTeX  Versionisierung: Git  Item Tracking: Trello", 
+            "text": "Time Tracking:  Toggl  Reports: Mkdocs (Markdown) / Git Pages  Schlussbericht: LaTeX  Versionisierung: Git  Item Tracking: Trello  Kommunikation: slack  Screen-Sharing und Telefonie: skype", 
             "title": "Tools, die wir verwenden"
         }
     ]
