@@ -162,7 +162,7 @@
         }, 
         {
             "location": "/KW46/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nTest test test\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW46"
         }, 
         {
@@ -172,7 +172,7 @@
         }, 
         {
             "location": "/KW46/#ziel", 
-            "text": "", 
+            "text": "Test test test", 
             "title": "Ziel"
         }, 
         {
