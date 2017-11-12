@@ -1,13 +1,12 @@
 #Meetings
-Es wird versucht wöchentlich ein Meeting abzuhalten, die Besprochenen Punkte werden hier aufgeführt sein.
+Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgeführt.
 
 ##Meeting vom 09.11.2017
 ###Besprochenes
-* In der Sitzung vom 09.11.2017 mit Ulrich Hauser und Lukas Toggenburger, wurde uns empfohlen ein Masterbranch zu gebrauchen, anstatt zwei wie wir als Team es aufgesetzt hatten.
-* Da Ladina Bilgery schon einmal eine Bachelorarbeit geschrieben hat und es in erster Linie nicht um das Resultat geht, sondern um eine Projekt lernen zu Organisieren und zu Managen hat Ulrich Hauser empfohlen, das Thomas Wieling die "Leitung" übernimmt. Dies wird bei der nächsten Sitzung (16.11.2017) noch näher besprochen.
+* In der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.
+* Bei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und geführt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' übernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der nächsten Sitzung (16.11.2017) noch näher besprochen.
 
 ###Nächsten Schritte
-
 * Ein Branch auf Github erstellen.
 * Zeitplan für das Fachmodul aufsetzten.
 
@@ -15,5 +14,8 @@ Es wird versucht wöchentlich ein Meeting abzuhalten, die Besprochenen Punkte we
 
 ###Traktanden
 * Aufteilung Projekt, wer ist "Teamleiter"
+* branch 'gh-pages' mit html-files ok?
+* Vorlage Risikoanalyse
+* FM-Termiplan besprechen
 * Fragen ....
 * Fragerunde

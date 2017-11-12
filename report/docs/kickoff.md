@@ -42,6 +42,9 @@
 * Ferien: im Juni beziehen; Ulrich ist Ende BA in den Ferien
 * Aufwand: 360h/Person
 * Dauer: 30.10. - 22.12.2017
+* 20.11.2017 Doku-Gerüt abgeben (ohne Inhalt)
+* 11.12.2017 'Reife' Version des Berichts abgeben
+* 22.12.2017 Abgabe Bericht (offizieller Termin, evtl. auch später)
 * Wöchentlicher informeller Bericht (jeweils Sonntagabend)
 
 
