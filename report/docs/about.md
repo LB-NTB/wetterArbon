@@ -1,6 +1,14 @@
 # Anleitung
 
 ## Mkdocs
+
+### Bild einfügen
+Das Bild muss im Ordner 'img' abgelegt werden.
+Die Verlinkung erfolgt dann mit:
+
+    ![Screenshot](/img/module.png)
+    *Abb.: Übersicht Module*
+
 ### Neue Seite erstellen
 
 Um eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:

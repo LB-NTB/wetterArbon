@@ -19,5 +19,5 @@ Die Wetterstation Arbon besteht aus einem Multisensor Wetter Transmitter (Vaisal
 * Die Webcam soll mit einer Warteschlangenfunktion ausgerüstet werden. Zudem soll die Zoombeschränkung abhängig vom Blickwinkel sein.
 
 
-![Screenshot](../img/module.png)
+![Screenshot](/img/module.png)
 *Abb.: Übersicht Module*
