@@ -2,28 +2,38 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Fachmodul \u00dcbersicht\n\n\nDie Lernziele und Kompetenzen sind individuell je nach Thema der Bachelor-Arbeit.\n\n\nTermine\n\n\n\n\n20.11.2017  - Doku-Ger\u00fcst abgeben (ohne Inhalt)\n\n\n11.12.2017  - Vorversion des Berichts abgeben (LaTeX)\n\n\n22.12.2017  - Abgabe definitiver FM-Bericht (LaTeX)\n\n\n\n\nZiel Fachmodul\n\n\ntbd\n\n\nStundenaufwand\n\n\n60h (2 ECTS) pro Person", 
+            "text": "Fachmodul Auftrag\n\n\nTitel\n\n\nUser Interface und Datenmanagement f\u00fcr die Wetterstation Arbon \n\n\nZiel\n\n\nDie Einarbeitung in die Bachelorarbeit erfolgt im Fachmodul. Die Studierenden erarbeiten mit den Referenten und dem Industriepartner die detaillierte Aufgabenstellung und arbeiten sich im begleiteten Selbststudium in die Aufgabenstellung ein.\n\n\nProjektablauf\n\n\nBeginn Fachmodul: 30. Oktober 2017\n\nDauer Fachmodul: 30. Oktober 2017 bis 22. Dezember 2017\n\nAbgabetermin Bericht: 5. Januar 2018  \n\n\nDie vorgesehene Studienleistung (Workload) betr\u00e4gt pro Person 60 Stunden.\n\nDer geplante Ablauf des Fachmoduls ist in einem Terminplan festzuhalten. \n\n\nAuftr\u00e4ge\n\n\nFokus der Arbeit ist der Ausbau der Wetterstation Arbon auf einen aktuellen und funktionierenden Stand. Sowohl HW-Aspekte im Bereich Sensorik etc., als auch die gesamte SW sind Teil der Untersuchungen. Genaueres ist im Dokument \u201eTHEMENVORSCHLAG BACHELORARBEIT\u201c festgelegt.\nDas Ziel des Fachmoduls ist ein ausformuliertes Konzept f\u00fcr den Prozess und die Produkte der Bachelorarbeit. Dies umfasst:\n\n\n\n\nSpezifikation\n\n\nRisikoanalyse (Zeit, Umsetzung,..) \n\n\nEntwicklungsprozess (z.B. V-Modell -\n skizzieren)\n\n\nKonzeptbeschreibung f\u00fcr die zu entwickelnden Artefakte\n\n\nKonzept der Dokumenten- und Versionsverwaltung\n\n\nEin Dokument, welches die rechtlichen Anspr\u00fcche regelt\n\n\nEin Projektplan (Meilensteine)\n\n\n\n\nBewertung des Fachmoduls\n\n\nDie Bewertung des Fachmoduls erfolgt anhand der Dokumente \u201eBewertung Ab-schlussarbeit NTB (2017-18)\u201c und \u201eKurzbeschreibung Bewertung von Bachelorarbeiten\u201c.", 
             "title": "Home"
         }, 
         {
-            "location": "/#fachmodul-ubersicht", 
-            "text": "Die Lernziele und Kompetenzen sind individuell je nach Thema der Bachelor-Arbeit.", 
-            "title": "Fachmodul \u00dcbersicht"
+            "location": "/#fachmodul-auftrag", 
+            "text": "", 
+            "title": "Fachmodul Auftrag"
         }, 
         {
-            "location": "/#termine", 
-            "text": "20.11.2017  - Doku-Ger\u00fcst abgeben (ohne Inhalt)  11.12.2017  - Vorversion des Berichts abgeben (LaTeX)  22.12.2017  - Abgabe definitiver FM-Bericht (LaTeX)", 
-            "title": "Termine"
+            "location": "/#titel", 
+            "text": "User Interface und Datenmanagement f\u00fcr die Wetterstation Arbon", 
+            "title": "Titel"
         }, 
         {
-            "location": "/#ziel-fachmodul", 
-            "text": "tbd", 
-            "title": "Ziel Fachmodul"
+            "location": "/#ziel", 
+            "text": "Die Einarbeitung in die Bachelorarbeit erfolgt im Fachmodul. Die Studierenden erarbeiten mit den Referenten und dem Industriepartner die detaillierte Aufgabenstellung und arbeiten sich im begleiteten Selbststudium in die Aufgabenstellung ein.", 
+            "title": "Ziel"
         }, 
         {
-            "location": "/#stundenaufwand", 
-            "text": "60h (2 ECTS) pro Person", 
-            "title": "Stundenaufwand"
+            "location": "/#projektablauf", 
+            "text": "Beginn Fachmodul: 30. Oktober 2017 \nDauer Fachmodul: 30. Oktober 2017 bis 22. Dezember 2017 \nAbgabetermin Bericht: 5. Januar 2018    Die vorgesehene Studienleistung (Workload) betr\u00e4gt pro Person 60 Stunden. \nDer geplante Ablauf des Fachmoduls ist in einem Terminplan festzuhalten.", 
+            "title": "Projektablauf"
+        }, 
+        {
+            "location": "/#auftrage", 
+            "text": "Fokus der Arbeit ist der Ausbau der Wetterstation Arbon auf einen aktuellen und funktionierenden Stand. Sowohl HW-Aspekte im Bereich Sensorik etc., als auch die gesamte SW sind Teil der Untersuchungen. Genaueres ist im Dokument \u201eTHEMENVORSCHLAG BACHELORARBEIT\u201c festgelegt.\nDas Ziel des Fachmoduls ist ein ausformuliertes Konzept f\u00fcr den Prozess und die Produkte der Bachelorarbeit. Dies umfasst:   Spezifikation  Risikoanalyse (Zeit, Umsetzung,..)   Entwicklungsprozess (z.B. V-Modell -  skizzieren)  Konzeptbeschreibung f\u00fcr die zu entwickelnden Artefakte  Konzept der Dokumenten- und Versionsverwaltung  Ein Dokument, welches die rechtlichen Anspr\u00fcche regelt  Ein Projektplan (Meilensteine)", 
+            "title": "Auftr\u00e4ge"
+        }, 
+        {
+            "location": "/#bewertung-des-fachmoduls", 
+            "text": "Die Bewertung des Fachmoduls erfolgt anhand der Dokumente \u201eBewertung Ab-schlussarbeit NTB (2017-18)\u201c und \u201eKurzbeschreibung Bewertung von Bachelorarbeiten\u201c.", 
+            "title": "Bewertung des Fachmoduls"
         }, 
         {
             "location": "/idee/", 
@@ -167,7 +177,7 @@
         }, 
         {
             "location": "/KW45/", 
-            "text": "Wochenreport KW 45\n\n\nZiel dieser Woche\n\n\n\n\nArbeitskarten in Trello erstellen\n\n\nVollst\u00e4ndiges Installieren aller Tools\n\n\nlaTeX installieren, erste versuche\n\n\nFM-Terminplan erstellen\n\n\nEinlesen ins Thema story telling\n\n\n\n\nResultat / Erkenntnisse\n\n\nArbeitskarten mit Trello erstellen\n\n\nBeim erstellen der Arbeitskarten in Trello, ist Aufgefallen das auch ein Zeitmanagement m\u00f6glich ist. So ist auch direkt klar wieviel Zeit in welche Aktivit\u00e4t gesteckt wurde, somit w\u00e4re Toggl als Tool \u00fcberfl\u00fcssig.\n\n\nZeitplan erstellen\n\n\nDer Zeitplan wurde anhand der erstellten Karten in Trello aufgesetzt. Dies soll uns als Team und den Betreuern eine ungef\u00e4hre Sch\u00e4tzung geben wo wir stehen und was noch zu tun ist.\n\n\nGitHub und GitHub Pages\n\n\nUnser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf.\n\nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert.\n\n\nProbleme / Herausforderungen\n\n\nVollst\u00e4ndiges installieren aller Tools\n\n\nHierbei gab es einige Probleme mit Github, dadurch das mir (Thomas) die Befehle noch nicht bekannt waren/sind. Mein Ziel ist es um diese Kommandos w\u00e4hrend dem Fachmodul zu erlernen und mit Github bzw. mit git zu arbeiten.\n\n\nJournal / Zeitaufwand\n\n\n6h Einlesen Story telling\n2h git/gitpages\n1h Meeting\n2h Administration", 
+            "text": "Wochenreport KW 45\n\n\nZiel dieser Woche\n\n\n\n\nArbeitskarten in Trello erstellen\n\n\nVollst\u00e4ndiges Installieren aller Tools\n\n\nlaTeX installieren, erste versuche\n\n\nFM-Terminplan erstellen\n\n\nEinlesen ins Thema Storytelling\n\n\n\n\nResultat / Erkenntnisse\n\n\nArbeitskarten mit Trello erstellen\n\n\nBeim erstellen der Arbeitskarten in Trello, ist Aufgefallen das auch ein Zeitmanagement m\u00f6glich ist. So ist auch direkt klar wieviel Zeit in welche Aktivit\u00e4t gesteckt wurde, somit w\u00e4re Toggl als Tool \u00fcberfl\u00fcssig.\n\n\nZeitplan erstellen\n\n\nDer Zeitplan wurde anhand der erstellten Karten in Trello aufgesetzt. Dies soll uns als Team und den Betreuern eine ungef\u00e4hre Sch\u00e4tzung geben wo wir stehen und was noch zu tun ist.\n\n\nGitHub und GitHub Pages\n\n\nUnser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf.\n\nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert.\n\nAch ja und die Anzeige von Bildern funktioniert unterdessen auch.\n\n\nStorytelling\n\n\nDie Grundstruktur des Storytelling (narrative Kommunikation) besteht aus f\u00fcnf Bausteinen. Als erstes braucht es einen \nGrund\n f\u00fcr die Geschichte. Dann braucht es einen \nHelden\n bzw. einen Hauptdarsteller, mit dem sich die Zuh\u00f6rer identifizieren k\u00f6nnen. Der Held begibt sich auf eine Reise und ger\u00e4t in einen \nKonflikt\n. Eine gute Geschicht ber\u00fchrt \nemotional\n und ist \nviral\n d.h. wird gerne weitererz\u00e4hlt.\n\n\nBeispiele narrativer Kommunikation:\n\n\nBritish Airways - Visit Mum\n\n\neBay - Ed Church\n\n\nDer Grund warum ein Produkt entwickelt wurde, soll mit Hilfe des \ngolden circle\n Modells (Why-How-What) von Simon Sinek aufgezeigt werden. Dieses stellt die Vision (Why) der Entwickler in den Vordergrund. Das Produkt (What) selbst ist dann das Resultat daraus.\n\n\nProbleme / Herausforderungen\n\n\nVollst\u00e4ndiges installieren aller Tools\n\n\nHierbei gab es einige Probleme mit Github, dadurch das mir (Thomas) die Befehle noch nicht bekannt waren/sind. Mein Ziel ist es um diese Kommandos w\u00e4hrend dem Fachmodul zu erlernen und mit Github bzw. mit git zu arbeiten.\n\n\nJournal / Zeitaufwand\n\n\n6h Einlesen Storytelling\n\n2h GitHub / GitHub Pages\n\n1h Meeting\n\n3h Administration", 
             "title": "KW45"
         }, 
         {
@@ -177,7 +187,7 @@
         }, 
         {
             "location": "/KW45/#ziel-dieser-woche", 
-            "text": "Arbeitskarten in Trello erstellen  Vollst\u00e4ndiges Installieren aller Tools  laTeX installieren, erste versuche  FM-Terminplan erstellen  Einlesen ins Thema story telling", 
+            "text": "Arbeitskarten in Trello erstellen  Vollst\u00e4ndiges Installieren aller Tools  laTeX installieren, erste versuche  FM-Terminplan erstellen  Einlesen ins Thema Storytelling", 
             "title": "Ziel dieser Woche"
         }, 
         {
@@ -197,8 +207,13 @@
         }, 
         {
             "location": "/KW45/#github-und-github-pages", 
-            "text": "Unser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf. \nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert.", 
+            "text": "Unser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf. \nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert. \nAch ja und die Anzeige von Bildern funktioniert unterdessen auch.", 
             "title": "GitHub und GitHub Pages"
+        }, 
+        {
+            "location": "/KW45/#storytelling", 
+            "text": "Die Grundstruktur des Storytelling (narrative Kommunikation) besteht aus f\u00fcnf Bausteinen. Als erstes braucht es einen  Grund  f\u00fcr die Geschichte. Dann braucht es einen  Helden  bzw. einen Hauptdarsteller, mit dem sich die Zuh\u00f6rer identifizieren k\u00f6nnen. Der Held begibt sich auf eine Reise und ger\u00e4t in einen  Konflikt . Eine gute Geschicht ber\u00fchrt  emotional  und ist  viral  d.h. wird gerne weitererz\u00e4hlt.  Beispiele narrativer Kommunikation:  British Airways - Visit Mum  eBay - Ed Church  Der Grund warum ein Produkt entwickelt wurde, soll mit Hilfe des  golden circle  Modells (Why-How-What) von Simon Sinek aufgezeigt werden. Dieses stellt die Vision (Why) der Entwickler in den Vordergrund. Das Produkt (What) selbst ist dann das Resultat daraus.", 
+            "title": "Storytelling"
         }, 
         {
             "location": "/KW45/#probleme-herausforderungen", 
@@ -212,7 +227,7 @@
         }, 
         {
             "location": "/KW45/#journal-zeitaufwand", 
-            "text": "6h Einlesen Story telling\n2h git/gitpages\n1h Meeting\n2h Administration", 
+            "text": "6h Einlesen Storytelling \n2h GitHub / GitHub Pages \n1h Meeting \n3h Administration", 
             "title": "Journal / Zeitaufwand"
         }, 
         {
@@ -367,7 +382,7 @@
         }, 
         {
             "location": "/about/", 
-            "text": "Anleitung\n\n\nMkdocs\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: \nToggl\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello\n\n\nKommunikation: slack\n\n\nScreen-Sharing und Telefonie: skype", 
+            "text": "Anleitung\n\n\nMkdocs\n\n\nBild einf\u00fcgen\n\n\nDas Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:\n\n\n![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*\n\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: \nToggl\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello\n\n\nKommunikation: slack\n\n\nScreen-Sharing und Telefonie: skype", 
             "title": "About"
         }, 
         {
@@ -379,6 +394,11 @@
             "location": "/about/#mkdocs", 
             "text": "", 
             "title": "Mkdocs"
+        }, 
+        {
+            "location": "/about/#bild-einfugen", 
+            "text": "Das Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:  ![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*", 
+            "title": "Bild einf\u00fcgen"
         }, 
         {
             "location": "/about/#neue-seite-erstellen", 
