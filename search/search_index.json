@@ -1,423 +1,423 @@
 {
     "docs": [
         {
-            "location": "/",
-            "text": "Fachmodul Auftrag\n\n\nTitel\n\n\nUser Interface und Datenmanagement f\u00fcr die Wetterstation Arbon \n\n\nZiel\n\n\nDie Einarbeitung in die Bachelorarbeit erfolgt im Fachmodul. Die Studierenden erarbeiten mit den Referenten und dem Industriepartner die detaillierte Aufgabenstellung und arbeiten sich im begleiteten Selbststudium in die Aufgabenstellung ein.\n\n\nProjektablauf\n\n\nBeginn Fachmodul: 30. Oktober 2017\n\nDauer Fachmodul: 30. Oktober 2017 bis 22. Dezember 2017\n\nAbgabetermin Bericht: 5. Januar 2018  \n\n\nDie vorgesehene Studienleistung (Workload) betr\u00e4gt pro Person 60 Stunden.\n\nDer geplante Ablauf des Fachmoduls ist in einem Terminplan festzuhalten. \n\n\nAuftr\u00e4ge\n\n\nFokus der Arbeit ist der Ausbau der Wetterstation Arbon auf einen aktuellen und funktionierenden Stand. Sowohl HW-Aspekte im Bereich Sensorik etc., als auch die gesamte SW sind Teil der Untersuchungen. Genaueres ist im Dokument \u201eTHEMENVORSCHLAG BACHELORARBEIT\u201c festgelegt.\nDas Ziel des Fachmoduls ist ein ausformuliertes Konzept f\u00fcr den Prozess und die Produkte der Bachelorarbeit. Dies umfasst:\n\n\n\n\nSpezifikation\n\n\nRisikoanalyse (Zeit, Umsetzung,..) \n\n\nEntwicklungsprozess (z.B. V-Modell -> skizzieren)\n\n\nKonzeptbeschreibung f\u00fcr die zu entwickelnden Artefakte\n\n\nKonzept der Dokumenten- und Versionsverwaltung\n\n\nEin Dokument, welches die rechtlichen Anspr\u00fcche regelt\n\n\nEin Projektplan (Meilensteine)\n\n\n\n\nBewertung des Fachmoduls\n\n\nDie Bewertung des Fachmoduls erfolgt anhand der Dokumente \u201eBewertung Ab-schlussarbeit NTB (2017-18)\u201c und \u201eKurzbeschreibung Bewertung von Bachelorarbeiten\u201c.",
+            "location": "/", 
+            "text": "Fachmodul Auftrag\n\n\nTitel\n\n\nUser Interface und Datenmanagement f\u00fcr die Wetterstation Arbon \n\n\nZiel\n\n\nDie Einarbeitung in die Bachelorarbeit erfolgt im Fachmodul. Die Studierenden erarbeiten mit den Referenten und dem Industriepartner die detaillierte Aufgabenstellung und arbeiten sich im begleiteten Selbststudium in die Aufgabenstellung ein.\n\n\nProjektablauf\n\n\nBeginn Fachmodul: 30. Oktober 2017\n\nDauer Fachmodul: 30. Oktober 2017 bis 22. Dezember 2017\n\nAbgabetermin Bericht: 5. Januar 2018  \n\n\nDie vorgesehene Studienleistung (Workload) betr\u00e4gt pro Person 60 Stunden.\n\nDer geplante Ablauf des Fachmoduls ist in einem Terminplan festzuhalten. \n\n\nAuftr\u00e4ge\n\n\nFokus der Arbeit ist der Ausbau der Wetterstation Arbon auf einen aktuellen und funktionierenden Stand. Sowohl HW-Aspekte im Bereich Sensorik etc., als auch die gesamte SW sind Teil der Untersuchungen. Genaueres ist im Dokument \u201eTHEMENVORSCHLAG BACHELORARBEIT\u201c festgelegt.\nDas Ziel des Fachmoduls ist ein ausformuliertes Konzept f\u00fcr den Prozess und die Produkte der Bachelorarbeit. Dies umfasst:\n\n\n\n\nSpezifikation\n\n\nRisikoanalyse (Zeit, Umsetzung,..) \n\n\nEntwicklungsprozess (z.B. V-Modell -\n skizzieren)\n\n\nKonzeptbeschreibung f\u00fcr die zu entwickelnden Artefakte\n\n\nKonzept der Dokumenten- und Versionsverwaltung\n\n\nEin Dokument, welches die rechtlichen Anspr\u00fcche regelt\n\n\nEin Projektplan (Meilensteine)\n\n\n\n\nBewertung des Fachmoduls\n\n\nDie Bewertung des Fachmoduls erfolgt anhand der Dokumente \u201eBewertung Ab-schlussarbeit NTB (2017-18)\u201c und \u201eKurzbeschreibung Bewertung von Bachelorarbeiten\u201c.", 
             "title": "Home"
-        },
+        }, 
         {
-            "location": "/#fachmodul-auftrag",
-            "text": "",
+            "location": "/#fachmodul-auftrag", 
+            "text": "", 
             "title": "Fachmodul Auftrag"
-        },
+        }, 
         {
-            "location": "/#titel",
-            "text": "User Interface und Datenmanagement f\u00fcr die Wetterstation Arbon",
+            "location": "/#titel", 
+            "text": "User Interface und Datenmanagement f\u00fcr die Wetterstation Arbon", 
             "title": "Titel"
-        },
+        }, 
         {
-            "location": "/#ziel",
-            "text": "Die Einarbeitung in die Bachelorarbeit erfolgt im Fachmodul. Die Studierenden erarbeiten mit den Referenten und dem Industriepartner die detaillierte Aufgabenstellung und arbeiten sich im begleiteten Selbststudium in die Aufgabenstellung ein.",
+            "location": "/#ziel", 
+            "text": "Die Einarbeitung in die Bachelorarbeit erfolgt im Fachmodul. Die Studierenden erarbeiten mit den Referenten und dem Industriepartner die detaillierte Aufgabenstellung und arbeiten sich im begleiteten Selbststudium in die Aufgabenstellung ein.", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/#projektablauf",
-            "text": "Beginn Fachmodul: 30. Oktober 2017 \nDauer Fachmodul: 30. Oktober 2017 bis 22. Dezember 2017 \nAbgabetermin Bericht: 5. Januar 2018    Die vorgesehene Studienleistung (Workload) betr\u00e4gt pro Person 60 Stunden. \nDer geplante Ablauf des Fachmoduls ist in einem Terminplan festzuhalten.",
+            "location": "/#projektablauf", 
+            "text": "Beginn Fachmodul: 30. Oktober 2017 \nDauer Fachmodul: 30. Oktober 2017 bis 22. Dezember 2017 \nAbgabetermin Bericht: 5. Januar 2018    Die vorgesehene Studienleistung (Workload) betr\u00e4gt pro Person 60 Stunden. \nDer geplante Ablauf des Fachmoduls ist in einem Terminplan festzuhalten.", 
             "title": "Projektablauf"
-        },
+        }, 
         {
-            "location": "/#auftrage",
-            "text": "Fokus der Arbeit ist der Ausbau der Wetterstation Arbon auf einen aktuellen und funktionierenden Stand. Sowohl HW-Aspekte im Bereich Sensorik etc., als auch die gesamte SW sind Teil der Untersuchungen. Genaueres ist im Dokument \u201eTHEMENVORSCHLAG BACHELORARBEIT\u201c festgelegt.\nDas Ziel des Fachmoduls ist ein ausformuliertes Konzept f\u00fcr den Prozess und die Produkte der Bachelorarbeit. Dies umfasst:   Spezifikation  Risikoanalyse (Zeit, Umsetzung,..)   Entwicklungsprozess (z.B. V-Modell -> skizzieren)  Konzeptbeschreibung f\u00fcr die zu entwickelnden Artefakte  Konzept der Dokumenten- und Versionsverwaltung  Ein Dokument, welches die rechtlichen Anspr\u00fcche regelt  Ein Projektplan (Meilensteine)",
+            "location": "/#auftrage", 
+            "text": "Fokus der Arbeit ist der Ausbau der Wetterstation Arbon auf einen aktuellen und funktionierenden Stand. Sowohl HW-Aspekte im Bereich Sensorik etc., als auch die gesamte SW sind Teil der Untersuchungen. Genaueres ist im Dokument \u201eTHEMENVORSCHLAG BACHELORARBEIT\u201c festgelegt.\nDas Ziel des Fachmoduls ist ein ausformuliertes Konzept f\u00fcr den Prozess und die Produkte der Bachelorarbeit. Dies umfasst:   Spezifikation  Risikoanalyse (Zeit, Umsetzung,..)   Entwicklungsprozess (z.B. V-Modell -  skizzieren)  Konzeptbeschreibung f\u00fcr die zu entwickelnden Artefakte  Konzept der Dokumenten- und Versionsverwaltung  Ein Dokument, welches die rechtlichen Anspr\u00fcche regelt  Ein Projektplan (Meilensteine)", 
             "title": "Auftr\u00e4ge"
-        },
+        }, 
         {
-            "location": "/#bewertung-des-fachmoduls",
-            "text": "Die Bewertung des Fachmoduls erfolgt anhand der Dokumente \u201eBewertung Ab-schlussarbeit NTB (2017-18)\u201c und \u201eKurzbeschreibung Bewertung von Bachelorarbeiten\u201c.",
+            "location": "/#bewertung-des-fachmoduls", 
+            "text": "Die Bewertung des Fachmoduls erfolgt anhand der Dokumente \u201eBewertung Ab-schlussarbeit NTB (2017-18)\u201c und \u201eKurzbeschreibung Bewertung von Bachelorarbeiten\u201c.", 
             "title": "Bewertung des Fachmoduls"
-        },
+        }, 
         {
-            "location": "/idee/",
-            "text": "Themenvorschlag BA\n\n\n25.07.2017\n\n\nUser Interface und Datenmanagement f\u00fcr die Wetterstation Arbon\n\n\nHintergrund\n\n\nDie Wetterstation Arbon besteht aus einem Multisensor Wetter Transmitter (Vaisala VXT520), einer schwenkbaren Webcam und einem Messrohr mit Pegelmesser. Das Rohr ist zus\u00e4tzlich mit PT100-Elementen ausgestattet um die Wassertemperatur messen zu k\u00f6nnen. Die Wetterstation und deren Webseite funktioniert zwar gr\u00f6\u00dftenteils, hat aber einige Schwachstellen:\n\n Die Sensordaten werden durch eine Flash-Applikation (Weather Display Live) dargestellt. Flash-Applikationen sind auf diversen Mobilger\u00e4ten und unterdessen auch Web-Browsern gesperrt.\n\n Weather Display Live bietet wenig Konfigurationsm\u00f6glichkeiten und die \u00dcbersetzung ins Deutsche ist fehlerhaft.\n\n Die Speicherung der Messwerte erfolgt in einer Datenbank beim Provider (Maria DB). Bisher gibt es keine M\u00f6glichkeit von der Webseite aus auf diese Daten zuzugreifen.\n\n Der Pegelmesser funktioniert nicht. Wahrscheinlich ist der Sensor defekt.\n\n\nAufgabe\n\n\n\n\nDas User Interface soll nach den neusten Erkenntnissen in Informationsvisualisierung und Webtechnik neu aufgebaut werden. Dabei soll sowohl die Usability als auch die Barrierefreiheit eine zentrale Rolle spielen.\n\n\nDie Datenspeicherung und Datenverwaltung soll neu konzipiert werden. Der User soll \u00fcber ein Webinterface selbst\u00e4ndig Abfragen t\u00e4tigen k\u00f6nnen. Die Werte sollen graphisch dargestellt werden und nach Bedarf auch heruntergeladen werden k\u00f6nnen.\n\n\nF\u00fcr die Pegelmessung soll ein neuer Sensor eruiert und installiert werden. Damit k\u00f6nnen dann Pegel und Wellenh\u00f6he bestimmt werden.\n\n\nDer Multisensor sendet seine Daten per RS 485. Die Daten sollen empfangen und direkt in die Datenbank gespeichert werden k\u00f6nnen.\n\n\nIm Internet gibt es diverse Quellen f\u00fcr Windprognosen. Diese sollen auf der Webseite integriert, und den effektiven Messwerten gegen\u00fcbergestellt werden. Es soll ersichtlich sein, wie gut die Vorhersagen f\u00fcr den Ort der Wetterstation sind.\n\n\nDie Webcam soll mit einer Warteschlangenfunktion ausger\u00fcstet werden. Zudem soll die Zoombeschr\u00e4nkung abh\u00e4ngig vom Blickwinkel sein.\n\n\n\n\n\n\nAbb.: \u00dcbersicht Module",
+            "location": "/idee/", 
+            "text": "Themenvorschlag BA\n\n\n25.07.2017\n\n\nUser Interface und Datenmanagement f\u00fcr die Wetterstation Arbon\n\n\nHintergrund\n\n\nDie Wetterstation Arbon besteht aus einem Multisensor Wetter Transmitter (Vaisala VXT520), einer schwenkbaren Webcam und einem Messrohr mit Pegelmesser. Das Rohr ist zus\u00e4tzlich mit PT100-Elementen ausgestattet um die Wassertemperatur messen zu k\u00f6nnen. Die Wetterstation und deren Webseite funktioniert zwar gr\u00f6\u00dftenteils, hat aber einige Schwachstellen:\n\n Die Sensordaten werden durch eine Flash-Applikation (Weather Display Live) dargestellt. Flash-Applikationen sind auf diversen Mobilger\u00e4ten und unterdessen auch Web-Browsern gesperrt.\n\n Weather Display Live bietet wenig Konfigurationsm\u00f6glichkeiten und die \u00dcbersetzung ins Deutsche ist fehlerhaft.\n\n Die Speicherung der Messwerte erfolgt in einer Datenbank beim Provider (Maria DB). Bisher gibt es keine M\u00f6glichkeit von der Webseite aus auf diese Daten zuzugreifen.\n\n Der Pegelmesser funktioniert nicht. Wahrscheinlich ist der Sensor defekt.\n\n\nAufgabe\n\n\n\n\nDas User Interface soll nach den neusten Erkenntnissen in Informationsvisualisierung und Webtechnik neu aufgebaut werden. Dabei soll sowohl die Usability als auch die Barrierefreiheit eine zentrale Rolle spielen.\n\n\nDie Datenspeicherung und Datenverwaltung soll neu konzipiert werden. Der User soll \u00fcber ein Webinterface selbst\u00e4ndig Abfragen t\u00e4tigen k\u00f6nnen. Die Werte sollen graphisch dargestellt werden und nach Bedarf auch heruntergeladen werden k\u00f6nnen.\n\n\nF\u00fcr die Pegelmessung soll ein neuer Sensor eruiert und installiert werden. Damit k\u00f6nnen dann Pegel und Wellenh\u00f6he bestimmt werden.\n\n\nDer Multisensor sendet seine Daten per RS 485. Die Daten sollen empfangen und direkt in die Datenbank gespeichert werden k\u00f6nnen.\n\n\nIm Internet gibt es diverse Quellen f\u00fcr Windprognosen. Diese sollen auf der Webseite integriert, und den effektiven Messwerten gegen\u00fcbergestellt werden. Es soll ersichtlich sein, wie gut die Vorhersagen f\u00fcr den Ort der Wetterstation sind.\n\n\nDie Webcam soll mit einer Warteschlangenfunktion ausger\u00fcstet werden. Zudem soll die Zoombeschr\u00e4nkung abh\u00e4ngig vom Blickwinkel sein.\n\n\n\n\n\n\nAbb.: \u00dcbersicht Module", 
             "title": "Themenvorschlag BA"
-        },
+        }, 
         {
-            "location": "/idee/#themenvorschlag-ba",
-            "text": "25.07.2017  User Interface und Datenmanagement f\u00fcr die Wetterstation Arbon",
+            "location": "/idee/#themenvorschlag-ba", 
+            "text": "25.07.2017  User Interface und Datenmanagement f\u00fcr die Wetterstation Arbon", 
             "title": "Themenvorschlag BA"
-        },
+        }, 
         {
-            "location": "/idee/#hintergrund",
-            "text": "Die Wetterstation Arbon besteht aus einem Multisensor Wetter Transmitter (Vaisala VXT520), einer schwenkbaren Webcam und einem Messrohr mit Pegelmesser. Das Rohr ist zus\u00e4tzlich mit PT100-Elementen ausgestattet um die Wassertemperatur messen zu k\u00f6nnen. Die Wetterstation und deren Webseite funktioniert zwar gr\u00f6\u00dftenteils, hat aber einige Schwachstellen:  Die Sensordaten werden durch eine Flash-Applikation (Weather Display Live) dargestellt. Flash-Applikationen sind auf diversen Mobilger\u00e4ten und unterdessen auch Web-Browsern gesperrt.  Weather Display Live bietet wenig Konfigurationsm\u00f6glichkeiten und die \u00dcbersetzung ins Deutsche ist fehlerhaft.  Die Speicherung der Messwerte erfolgt in einer Datenbank beim Provider (Maria DB). Bisher gibt es keine M\u00f6glichkeit von der Webseite aus auf diese Daten zuzugreifen.  Der Pegelmesser funktioniert nicht. Wahrscheinlich ist der Sensor defekt.",
+            "location": "/idee/#hintergrund", 
+            "text": "Die Wetterstation Arbon besteht aus einem Multisensor Wetter Transmitter (Vaisala VXT520), einer schwenkbaren Webcam und einem Messrohr mit Pegelmesser. Das Rohr ist zus\u00e4tzlich mit PT100-Elementen ausgestattet um die Wassertemperatur messen zu k\u00f6nnen. Die Wetterstation und deren Webseite funktioniert zwar gr\u00f6\u00dftenteils, hat aber einige Schwachstellen:  Die Sensordaten werden durch eine Flash-Applikation (Weather Display Live) dargestellt. Flash-Applikationen sind auf diversen Mobilger\u00e4ten und unterdessen auch Web-Browsern gesperrt.  Weather Display Live bietet wenig Konfigurationsm\u00f6glichkeiten und die \u00dcbersetzung ins Deutsche ist fehlerhaft.  Die Speicherung der Messwerte erfolgt in einer Datenbank beim Provider (Maria DB). Bisher gibt es keine M\u00f6glichkeit von der Webseite aus auf diese Daten zuzugreifen.  Der Pegelmesser funktioniert nicht. Wahrscheinlich ist der Sensor defekt.", 
             "title": "Hintergrund"
-        },
+        }, 
         {
-            "location": "/idee/#aufgabe",
-            "text": "Das User Interface soll nach den neusten Erkenntnissen in Informationsvisualisierung und Webtechnik neu aufgebaut werden. Dabei soll sowohl die Usability als auch die Barrierefreiheit eine zentrale Rolle spielen.  Die Datenspeicherung und Datenverwaltung soll neu konzipiert werden. Der User soll \u00fcber ein Webinterface selbst\u00e4ndig Abfragen t\u00e4tigen k\u00f6nnen. Die Werte sollen graphisch dargestellt werden und nach Bedarf auch heruntergeladen werden k\u00f6nnen.  F\u00fcr die Pegelmessung soll ein neuer Sensor eruiert und installiert werden. Damit k\u00f6nnen dann Pegel und Wellenh\u00f6he bestimmt werden.  Der Multisensor sendet seine Daten per RS 485. Die Daten sollen empfangen und direkt in die Datenbank gespeichert werden k\u00f6nnen.  Im Internet gibt es diverse Quellen f\u00fcr Windprognosen. Diese sollen auf der Webseite integriert, und den effektiven Messwerten gegen\u00fcbergestellt werden. Es soll ersichtlich sein, wie gut die Vorhersagen f\u00fcr den Ort der Wetterstation sind.  Die Webcam soll mit einer Warteschlangenfunktion ausger\u00fcstet werden. Zudem soll die Zoombeschr\u00e4nkung abh\u00e4ngig vom Blickwinkel sein.    Abb.: \u00dcbersicht Module",
+            "location": "/idee/#aufgabe", 
+            "text": "Das User Interface soll nach den neusten Erkenntnissen in Informationsvisualisierung und Webtechnik neu aufgebaut werden. Dabei soll sowohl die Usability als auch die Barrierefreiheit eine zentrale Rolle spielen.  Die Datenspeicherung und Datenverwaltung soll neu konzipiert werden. Der User soll \u00fcber ein Webinterface selbst\u00e4ndig Abfragen t\u00e4tigen k\u00f6nnen. Die Werte sollen graphisch dargestellt werden und nach Bedarf auch heruntergeladen werden k\u00f6nnen.  F\u00fcr die Pegelmessung soll ein neuer Sensor eruiert und installiert werden. Damit k\u00f6nnen dann Pegel und Wellenh\u00f6he bestimmt werden.  Der Multisensor sendet seine Daten per RS 485. Die Daten sollen empfangen und direkt in die Datenbank gespeichert werden k\u00f6nnen.  Im Internet gibt es diverse Quellen f\u00fcr Windprognosen. Diese sollen auf der Webseite integriert, und den effektiven Messwerten gegen\u00fcbergestellt werden. Es soll ersichtlich sein, wie gut die Vorhersagen f\u00fcr den Ort der Wetterstation sind.  Die Webcam soll mit einer Warteschlangenfunktion ausger\u00fcstet werden. Zudem soll die Zoombeschr\u00e4nkung abh\u00e4ngig vom Blickwinkel sein.    Abb.: \u00dcbersicht Module", 
             "title": "Aufgabe"
-        },
+        }, 
         {
-            "location": "/kickoff/",
-            "text": "Kick off Meeting\n\n\n26.10.2017 - HTW Chur B3\n\n\nAllgemeine Zusammenarbeit\n\n\n\n\nDozent hat keine Hohlschuld\n\n\nFeedback muss konkret eingefordert werden\n\n\n\n\nZiel des Fachmoduls\n\n\n\n\nGenaue BA-Auftragsformulierung (was aus dem MindMap soll umgesetzt werden)\n\n\nInformationen sammeln\n\n\nHW / SW evaluieren (Marktanalyse)\n\n\nAnforderungsliste f\u00fcr Weboberfl\u00e4che\n\n\nAgiltes Vorgehen (modular)\n\n\nZustandsaufnahme Temperatursensoren\n\n\n\n\nDoku:\n\n\n\n\nKein chronologischer Ablauf\n\n\nStory erz\u00e4hlen\n\n\nwie vorgegangen\n\n\nStrategie, die angewendet wurde\n\n\nHintergrund-Infos (Ergebnisse und Schl\u00fcsse daraus)\n\n\nAufgabenstellung\n\n\nAm Schluss muss klar sein, was mit der BA erreicht werden soll\n\n\nAnhang: Standesaufnahme\n\n\nwo wollen wir hin\n\n\nRecherche: Was ist die Differenz von jetzt zu soll\n\n\nBilder / Tabellen einsetzten\n\n\n\n\nTools\n\n\n\n\nStundenjournal f\u00fchren (ehrlich ausf\u00fcllen, als Feedback interessant, im w\u00f6chentlichen Report jeweils eine Zusammenfassung davon abgeben)\n\n\nLaTeX-Vorlage (Makros von Ulrich)\n\n\nChat-Tool / Kommunikations-Tool\n\n\nVersionsverwaltung einsetzen (Z.B. git)\n\n\nallenfalls gesch\u00fctztes Repository (bezahlt durch BA-Budget)\n\n\nKANBAN anwenden (Scrum Tool ist nicht notwendig)\n\n\nz.B. Trello\n\n\nZugriff f\u00fcr Ulrich Hauser\n\n\n\n\nTermine / Ferien:\n\n\n\n\nFerien: im Juni beziehen; Ulrich ist Ende BA in den Ferien\n\n\nAufwand: 360h/Person\n\n\nDauer: 30.10. - 22.12.2017\n\n\n20.11.2017 Doku-Ger\u00fct abgeben (ohne Inhalt)\n\n\n11.12.2017 'Reife' Version des Berichts abgeben\n\n\n22.12.2017 Abgabe Bericht (offizieller Termin, evtl. auch sp\u00e4ter)\n\n\nW\u00f6chentlicher informeller Bericht (jeweils Sonntagabend)\n\n\n\n\nWochenbericht\n\n\n\n\nwas bisher geschah\n\n\nwo liegen Probleme\n\n\nimmer im gleichen Format\n\n\n\n\nDiverses\n\n\n\n\nZugangsdaten f\u00fcr Webseite zusammenstellen\n\n\nIstaufnahme Webseite: Thomas\n\n\nIstaufnahme Wetterstation: Ladina",
+            "location": "/kickoff/", 
+            "text": "Kick off Meeting\n\n\n26.10.2017 - HTW Chur B3\n\n\nAllgemeine Zusammenarbeit\n\n\n\n\nDozent hat keine Hohlschuld\n\n\nFeedback muss konkret eingefordert werden\n\n\n\n\nZiel des Fachmoduls\n\n\n\n\nGenaue BA-Auftragsformulierung (was aus dem MindMap soll umgesetzt werden)\n\n\nInformationen sammeln\n\n\nHW / SW evaluieren (Marktanalyse)\n\n\nAnforderungsliste f\u00fcr Weboberfl\u00e4che\n\n\nAgiltes Vorgehen (modular)\n\n\nZustandsaufnahme Temperatursensoren\n\n\n\n\nDoku:\n\n\n\n\nKein chronologischer Ablauf\n\n\nStory erz\u00e4hlen\n\n\nwie vorgegangen\n\n\nStrategie, die angewendet wurde\n\n\nHintergrund-Infos (Ergebnisse und Schl\u00fcsse daraus)\n\n\nAufgabenstellung\n\n\nAm Schluss muss klar sein, was mit der BA erreicht werden soll\n\n\nAnhang: Standesaufnahme\n\n\nwo wollen wir hin\n\n\nRecherche: Was ist die Differenz von jetzt zu soll\n\n\nBilder / Tabellen einsetzten\n\n\n\n\nTools\n\n\n\n\nStundenjournal f\u00fchren (ehrlich ausf\u00fcllen, als Feedback interessant, im w\u00f6chentlichen Report jeweils eine Zusammenfassung davon abgeben)\n\n\nLaTeX-Vorlage (Makros von Ulrich)\n\n\nChat-Tool / Kommunikations-Tool\n\n\nVersionsverwaltung einsetzen (Z.B. git)\n\n\nallenfalls gesch\u00fctztes Repository (bezahlt durch BA-Budget)\n\n\nKANBAN anwenden (Scrum Tool ist nicht notwendig)\n\n\nz.B. Trello\n\n\nZugriff f\u00fcr Ulrich Hauser\n\n\n\n\nTermine / Ferien:\n\n\n\n\nFerien: im Juni beziehen; Ulrich ist Ende BA in den Ferien\n\n\nAufwand: 360h/Person\n\n\nDauer: 30.10. - 22.12.2017\n\n\n20.11.2017 Doku-Ger\u00fct abgeben (ohne Inhalt)\n\n\n11.12.2017 'Reife' Version des Berichts abgeben\n\n\n22.12.2017 Abgabe Bericht (offizieller Termin, evtl. auch sp\u00e4ter)\n\n\nW\u00f6chentlicher informeller Bericht (jeweils Sonntagabend)\n\n\n\n\nWochenbericht\n\n\n\n\nwas bisher geschah\n\n\nwo liegen Probleme\n\n\nimmer im gleichen Format\n\n\n\n\nDiverses\n\n\n\n\nZugangsdaten f\u00fcr Webseite zusammenstellen\n\n\nIstaufnahme Webseite: Thomas\n\n\nIstaufnahme Wetterstation: Ladina", 
             "title": "Kick off Meeting"
-        },
+        }, 
         {
-            "location": "/kickoff/#kick-off-meeting",
-            "text": "26.10.2017 - HTW Chur B3",
+            "location": "/kickoff/#kick-off-meeting", 
+            "text": "26.10.2017 - HTW Chur B3", 
             "title": "Kick off Meeting"
-        },
+        }, 
         {
-            "location": "/kickoff/#allgemeine-zusammenarbeit",
-            "text": "Dozent hat keine Hohlschuld  Feedback muss konkret eingefordert werden",
+            "location": "/kickoff/#allgemeine-zusammenarbeit", 
+            "text": "Dozent hat keine Hohlschuld  Feedback muss konkret eingefordert werden", 
             "title": "Allgemeine Zusammenarbeit"
-        },
+        }, 
         {
-            "location": "/kickoff/#ziel-des-fachmoduls",
-            "text": "Genaue BA-Auftragsformulierung (was aus dem MindMap soll umgesetzt werden)  Informationen sammeln  HW / SW evaluieren (Marktanalyse)  Anforderungsliste f\u00fcr Weboberfl\u00e4che  Agiltes Vorgehen (modular)  Zustandsaufnahme Temperatursensoren",
+            "location": "/kickoff/#ziel-des-fachmoduls", 
+            "text": "Genaue BA-Auftragsformulierung (was aus dem MindMap soll umgesetzt werden)  Informationen sammeln  HW / SW evaluieren (Marktanalyse)  Anforderungsliste f\u00fcr Weboberfl\u00e4che  Agiltes Vorgehen (modular)  Zustandsaufnahme Temperatursensoren", 
             "title": "Ziel des Fachmoduls"
-        },
+        }, 
         {
-            "location": "/kickoff/#doku",
-            "text": "Kein chronologischer Ablauf  Story erz\u00e4hlen  wie vorgegangen  Strategie, die angewendet wurde  Hintergrund-Infos (Ergebnisse und Schl\u00fcsse daraus)  Aufgabenstellung  Am Schluss muss klar sein, was mit der BA erreicht werden soll  Anhang: Standesaufnahme  wo wollen wir hin  Recherche: Was ist die Differenz von jetzt zu soll  Bilder / Tabellen einsetzten",
+            "location": "/kickoff/#doku", 
+            "text": "Kein chronologischer Ablauf  Story erz\u00e4hlen  wie vorgegangen  Strategie, die angewendet wurde  Hintergrund-Infos (Ergebnisse und Schl\u00fcsse daraus)  Aufgabenstellung  Am Schluss muss klar sein, was mit der BA erreicht werden soll  Anhang: Standesaufnahme  wo wollen wir hin  Recherche: Was ist die Differenz von jetzt zu soll  Bilder / Tabellen einsetzten", 
             "title": "Doku:"
-        },
+        }, 
         {
-            "location": "/kickoff/#tools",
-            "text": "Stundenjournal f\u00fchren (ehrlich ausf\u00fcllen, als Feedback interessant, im w\u00f6chentlichen Report jeweils eine Zusammenfassung davon abgeben)  LaTeX-Vorlage (Makros von Ulrich)  Chat-Tool / Kommunikations-Tool  Versionsverwaltung einsetzen (Z.B. git)  allenfalls gesch\u00fctztes Repository (bezahlt durch BA-Budget)  KANBAN anwenden (Scrum Tool ist nicht notwendig)  z.B. Trello  Zugriff f\u00fcr Ulrich Hauser",
+            "location": "/kickoff/#tools", 
+            "text": "Stundenjournal f\u00fchren (ehrlich ausf\u00fcllen, als Feedback interessant, im w\u00f6chentlichen Report jeweils eine Zusammenfassung davon abgeben)  LaTeX-Vorlage (Makros von Ulrich)  Chat-Tool / Kommunikations-Tool  Versionsverwaltung einsetzen (Z.B. git)  allenfalls gesch\u00fctztes Repository (bezahlt durch BA-Budget)  KANBAN anwenden (Scrum Tool ist nicht notwendig)  z.B. Trello  Zugriff f\u00fcr Ulrich Hauser", 
             "title": "Tools"
-        },
+        }, 
         {
-            "location": "/kickoff/#termine-ferien",
-            "text": "Ferien: im Juni beziehen; Ulrich ist Ende BA in den Ferien  Aufwand: 360h/Person  Dauer: 30.10. - 22.12.2017  20.11.2017 Doku-Ger\u00fct abgeben (ohne Inhalt)  11.12.2017 'Reife' Version des Berichts abgeben  22.12.2017 Abgabe Bericht (offizieller Termin, evtl. auch sp\u00e4ter)  W\u00f6chentlicher informeller Bericht (jeweils Sonntagabend)",
+            "location": "/kickoff/#termine-ferien", 
+            "text": "Ferien: im Juni beziehen; Ulrich ist Ende BA in den Ferien  Aufwand: 360h/Person  Dauer: 30.10. - 22.12.2017  20.11.2017 Doku-Ger\u00fct abgeben (ohne Inhalt)  11.12.2017 'Reife' Version des Berichts abgeben  22.12.2017 Abgabe Bericht (offizieller Termin, evtl. auch sp\u00e4ter)  W\u00f6chentlicher informeller Bericht (jeweils Sonntagabend)", 
             "title": "Termine / Ferien:"
-        },
+        }, 
         {
-            "location": "/kickoff/#wochenbericht",
-            "text": "was bisher geschah  wo liegen Probleme  immer im gleichen Format",
+            "location": "/kickoff/#wochenbericht", 
+            "text": "was bisher geschah  wo liegen Probleme  immer im gleichen Format", 
             "title": "Wochenbericht"
-        },
+        }, 
         {
-            "location": "/kickoff/#diverses",
-            "text": "Zugangsdaten f\u00fcr Webseite zusammenstellen  Istaufnahme Webseite: Thomas  Istaufnahme Wetterstation: Ladina",
+            "location": "/kickoff/#diverses", 
+            "text": "Zugangsdaten f\u00fcr Webseite zusammenstellen  Istaufnahme Webseite: Thomas  Istaufnahme Wetterstation: Ladina", 
             "title": "Diverses"
-        },
+        }, 
         {
-            "location": "/meetings/",
-            "text": "Meetings\n\n\nW\u00f6chentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgef\u00fchrt.\n\n\nMeeting vom 09.11.2017\n\n\nBesprochenes\n\n\n\n\nIn der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.\n\n\nBei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und gef\u00fchrt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' \u00fcbernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der n\u00e4chsten Sitzung (16.11.2017) noch n\u00e4her besprochen.\n\n\n\n\nN\u00e4chsten Schritte\n\n\n\n\nEin Branch auf Github erstellen.\n\n\nZeitplan f\u00fcr das Fachmodul aufsetzten.\n\n\n\n\nMeeting vom 16.11.2017\n\n\nTraktanden\n\n\n\n\nAufteilung Projekt, wer ist \"Teamleiter\"\n\n\nbranch 'gh-pages' mit html-files ok?\n\n\nVorlage Risikoanalyse\n\n\nFM-Termiplan besprechen\n\n\nFragen ....\n\n\nFragerunde",
+            "location": "/meetings/", 
+            "text": "Meetings\n\n\nW\u00f6chentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgef\u00fchrt.\n\n\nMeeting vom 09.11.2017\n\n\nBesprochenes\n\n\n\n\nIn der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.\n\n\nBei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und gef\u00fchrt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' \u00fcbernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der n\u00e4chsten Sitzung (16.11.2017) noch n\u00e4her besprochen.\n\n\n\n\nN\u00e4chsten Schritte\n\n\n\n\nEin Branch auf Github erstellen.\n\n\nZeitplan f\u00fcr das Fachmodul aufsetzten.\n\n\n\n\nMeeting vom 16.11.2017\n\n\nTraktanden\n\n\n\n\nAufteilung Projekt, wer ist \"Teamleiter\"\n\n\nbranch 'gh-pages' mit html-files ok?\n\n\nVorlage Risikoanalyse\n\n\nFM-Termiplan besprechen\n\n\nFragen ....\n\n\nFragerunde", 
             "title": "Meetings"
-        },
+        }, 
         {
-            "location": "/meetings/#meetings",
-            "text": "W\u00f6chentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgef\u00fchrt.",
+            "location": "/meetings/#meetings", 
+            "text": "W\u00f6chentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgef\u00fchrt.", 
             "title": "Meetings"
-        },
+        }, 
         {
-            "location": "/meetings/#meeting-vom-09112017",
-            "text": "",
+            "location": "/meetings/#meeting-vom-09112017", 
+            "text": "", 
             "title": "Meeting vom 09.11.2017"
-        },
+        }, 
         {
-            "location": "/meetings/#besprochenes",
-            "text": "In der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.  Bei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und gef\u00fchrt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' \u00fcbernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der n\u00e4chsten Sitzung (16.11.2017) noch n\u00e4her besprochen.",
+            "location": "/meetings/#besprochenes", 
+            "text": "In der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.  Bei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und gef\u00fchrt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' \u00fcbernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der n\u00e4chsten Sitzung (16.11.2017) noch n\u00e4her besprochen.", 
             "title": "Besprochenes"
-        },
+        }, 
         {
-            "location": "/meetings/#nachsten-schritte",
-            "text": "Ein Branch auf Github erstellen.  Zeitplan f\u00fcr das Fachmodul aufsetzten.",
+            "location": "/meetings/#nachsten-schritte", 
+            "text": "Ein Branch auf Github erstellen.  Zeitplan f\u00fcr das Fachmodul aufsetzten.", 
             "title": "N\u00e4chsten Schritte"
-        },
+        }, 
         {
-            "location": "/meetings/#meeting-vom-16112017",
-            "text": "",
+            "location": "/meetings/#meeting-vom-16112017", 
+            "text": "", 
             "title": "Meeting vom 16.11.2017"
-        },
+        }, 
         {
-            "location": "/meetings/#traktanden",
-            "text": "Aufteilung Projekt, wer ist \"Teamleiter\"  branch 'gh-pages' mit html-files ok?  Vorlage Risikoanalyse  FM-Termiplan besprechen  Fragen ....  Fragerunde",
+            "location": "/meetings/#traktanden", 
+            "text": "Aufteilung Projekt, wer ist \"Teamleiter\"  branch 'gh-pages' mit html-files ok?  Vorlage Risikoanalyse  FM-Termiplan besprechen  Fragen ....  Fragerunde", 
             "title": "Traktanden"
-        },
+        }, 
         {
-            "location": "/KW44/",
-            "text": "Wochenreport KW 44\n\n\nZiel dieser Woche\n\n\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nArbeitstools definieren und initialisieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nWir haben die Ideen aus dem mindmap folgendermassen unter uns aufgeteilt:\n\n\nLadina: \n\n\n\n\nWebseite (Semantisches Web / Usability / Barrierefreies Web)\n\n\nVorhersage (Windvorhersage-Dienste / API)\n\n\nPegelmessung (Sensor)\n\n\nStrahlungsmessung (Sensor)\n\n\nSerielle Schnittstelle (Ersatz f\u00fcr Weather Display)\n\n\n\n\nThomas:\n\n\n\n\nWebseite (Grafiken D3, Responsive Design / Mobile First)\n\n\nDatenbank (Maria DB / Aufbau / Historische Daten)\n\n\nAlarmmeldung (SMS-Versand, Benutzeroberfl\u00e4che)\n\n\nWebcam (Warteschlange, sektorweise Zoombeschr\u00e4nkung)\n\n\n\n\nEinige Ideen haben wir bewusst weggelassen wie z.B. eigener Server oder Korrelation Sturmwarnung, weil diese Ideen eine sehr tiefe Priorit\u00e4t aufweisen und sozusagen nur als Zeitf\u00fcller gedacht sind, falls wir widererwarten nichts mehr zu tun haben sollten w\u00e4hrend der Bachelor-Arbeit.\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n\n\n\ngit\n als Versionierungstool\n\n\ngit Pages\n mit \nmkdoks\n (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports\n\n\ntrello\n als Itemtracker nach KANBAN-System\n\n\ntoggl\n als Time Tracker\n\n\nslack\n als Projekt-Kommunikastionstool\n\n\nskype\n f\u00fcr Screen-Sharing und Telefonie\n\n\nLaTeX\n f\u00fcr die Dokumentation\n\n\n\n\nS\u00e4mtliche Tools sind kostenfrei und webbasiert bzw. plattform\u00fcbergreifend verf\u00fcgbar. Viele der Tools k\u00f6nnen untereinander verkn\u00fcpft werden. Wir erhoffen uns daraus, Synergien nutzen zu k\u00f6nnen (z.B. Toggl-Integration in Trello).\n\n\nProbleme / Herausforderungen\n\n\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass die Analyse der IST-Situation noch nicht begonnen werden konnte.\n\n\nDas Zeit-Tracking funktioniert noch nicht wie gew\u00fcnscht\n\n\nund wir m\u00fcssen uns erst mal mit all den Tools vertraut machen\n\n\nBild-Integration in git-pages funktioniert noch nicht\n\n\n\n\nJournal / Zeitaufwand\n\n\n6h Evaluation / Initialisierung der Tools\n\n3h Einarbeitung in LaTeX\n\n1h Administration",
+            "location": "/KW44/", 
+            "text": "Wochenreport KW 44\n\n\nZiel dieser Woche\n\n\n\n\nAufteilung der Themen\n\n\nPriorisierung der Themen\n\n\nArbeitstools definieren und initialisieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nAufteilung\n\n\nWir haben die Ideen aus dem mindmap folgendermassen unter uns aufgeteilt:\n\n\nLadina: \n\n\n\n\nWebseite (Semantisches Web / Usability / Barrierefreies Web)\n\n\nVorhersage (Windvorhersage-Dienste / API)\n\n\nPegelmessung (Sensor)\n\n\nStrahlungsmessung (Sensor)\n\n\nSerielle Schnittstelle (Ersatz f\u00fcr Weather Display)\n\n\n\n\nThomas:\n\n\n\n\nWebseite (Grafiken D3, Responsive Design / Mobile First)\n\n\nDatenbank (Maria DB / Aufbau / Historische Daten)\n\n\nAlarmmeldung (SMS-Versand, Benutzeroberfl\u00e4che)\n\n\nWebcam (Warteschlange, sektorweise Zoombeschr\u00e4nkung)\n\n\n\n\nEinige Ideen haben wir bewusst weggelassen wie z.B. eigener Server oder Korrelation Sturmwarnung, weil diese Ideen eine sehr tiefe Priorit\u00e4t aufweisen und sozusagen nur als Zeitf\u00fcller gedacht sind, falls wir widererwarten nichts mehr zu tun haben sollten w\u00e4hrend der Bachelor-Arbeit.\n\n\nTools\n\n\nWir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:\n\n\n\n\ngit\n als Versionierungstool\n\n\ngit Pages\n mit \nmkdoks\n (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports\n\n\ntrello\n als Itemtracker nach KANBAN-System\n\n\ntoggl\n als Time Tracker\n\n\nslack\n als Projekt-Kommunikastionstool\n\n\nskype\n f\u00fcr Screen-Sharing und Telefonie\n\n\nLaTeX\n f\u00fcr die Dokumentation\n\n\n\n\nS\u00e4mtliche Tools sind kostenfrei und webbasiert bzw. plattform\u00fcbergreifend verf\u00fcgbar. Viele der Tools k\u00f6nnen untereinander verkn\u00fcpft werden. Wir erhoffen uns daraus, Synergien nutzen zu k\u00f6nnen (z.B. Toggl-Integration in Trello).\n\n\nProbleme / Herausforderungen\n\n\n\n\nBisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass die Analyse der IST-Situation noch nicht begonnen werden konnte.\n\n\nDas Zeit-Tracking funktioniert noch nicht wie gew\u00fcnscht\n\n\nund wir m\u00fcssen uns erst mal mit all den Tools vertraut machen\n\n\nBild-Integration in git-pages funktioniert noch nicht\n\n\n\n\nJournal / Zeitaufwand\n\n\n6h Evaluation / Initialisierung der Tools\n\n3h Einarbeitung in LaTeX\n\n1h Administration", 
             "title": "KW44"
-        },
+        }, 
         {
-            "location": "/KW44/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW44/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW44/#ziel-dieser-woche",
-            "text": "Aufteilung der Themen  Priorisierung der Themen  Arbeitstools definieren und initialisieren",
+            "location": "/KW44/#ziel-dieser-woche", 
+            "text": "Aufteilung der Themen  Priorisierung der Themen  Arbeitstools definieren und initialisieren", 
             "title": "Ziel dieser Woche"
-        },
+        }, 
         {
-            "location": "/KW44/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW44/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW44/#aufteilung",
-            "text": "Wir haben die Ideen aus dem mindmap folgendermassen unter uns aufgeteilt:  Ladina:    Webseite (Semantisches Web / Usability / Barrierefreies Web)  Vorhersage (Windvorhersage-Dienste / API)  Pegelmessung (Sensor)  Strahlungsmessung (Sensor)  Serielle Schnittstelle (Ersatz f\u00fcr Weather Display)   Thomas:   Webseite (Grafiken D3, Responsive Design / Mobile First)  Datenbank (Maria DB / Aufbau / Historische Daten)  Alarmmeldung (SMS-Versand, Benutzeroberfl\u00e4che)  Webcam (Warteschlange, sektorweise Zoombeschr\u00e4nkung)   Einige Ideen haben wir bewusst weggelassen wie z.B. eigener Server oder Korrelation Sturmwarnung, weil diese Ideen eine sehr tiefe Priorit\u00e4t aufweisen und sozusagen nur als Zeitf\u00fcller gedacht sind, falls wir widererwarten nichts mehr zu tun haben sollten w\u00e4hrend der Bachelor-Arbeit.",
+            "location": "/KW44/#aufteilung", 
+            "text": "Wir haben die Ideen aus dem mindmap folgendermassen unter uns aufgeteilt:  Ladina:    Webseite (Semantisches Web / Usability / Barrierefreies Web)  Vorhersage (Windvorhersage-Dienste / API)  Pegelmessung (Sensor)  Strahlungsmessung (Sensor)  Serielle Schnittstelle (Ersatz f\u00fcr Weather Display)   Thomas:   Webseite (Grafiken D3, Responsive Design / Mobile First)  Datenbank (Maria DB / Aufbau / Historische Daten)  Alarmmeldung (SMS-Versand, Benutzeroberfl\u00e4che)  Webcam (Warteschlange, sektorweise Zoombeschr\u00e4nkung)   Einige Ideen haben wir bewusst weggelassen wie z.B. eigener Server oder Korrelation Sturmwarnung, weil diese Ideen eine sehr tiefe Priorit\u00e4t aufweisen und sozusagen nur als Zeitf\u00fcller gedacht sind, falls wir widererwarten nichts mehr zu tun haben sollten w\u00e4hrend der Bachelor-Arbeit.", 
             "title": "Aufteilung"
-        },
+        }, 
         {
-            "location": "/KW44/#tools",
-            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:   git  als Versionierungstool  git Pages  mit  mkdoks  (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports  trello  als Itemtracker nach KANBAN-System  toggl  als Time Tracker  slack  als Projekt-Kommunikastionstool  skype  f\u00fcr Screen-Sharing und Telefonie  LaTeX  f\u00fcr die Dokumentation   S\u00e4mtliche Tools sind kostenfrei und webbasiert bzw. plattform\u00fcbergreifend verf\u00fcgbar. Viele der Tools k\u00f6nnen untereinander verkn\u00fcpft werden. Wir erhoffen uns daraus, Synergien nutzen zu k\u00f6nnen (z.B. Toggl-Integration in Trello).",
+            "location": "/KW44/#tools", 
+            "text": "Wir haben uns f\u00fcr die Verwendung von folgenden Tools entschieden:   git  als Versionierungstool  git Pages  mit  mkdoks  (Markdown) als Kommunikationstools f\u00fcr die Weekly Reports  trello  als Itemtracker nach KANBAN-System  toggl  als Time Tracker  slack  als Projekt-Kommunikastionstool  skype  f\u00fcr Screen-Sharing und Telefonie  LaTeX  f\u00fcr die Dokumentation   S\u00e4mtliche Tools sind kostenfrei und webbasiert bzw. plattform\u00fcbergreifend verf\u00fcgbar. Viele der Tools k\u00f6nnen untereinander verkn\u00fcpft werden. Wir erhoffen uns daraus, Synergien nutzen zu k\u00f6nnen (z.B. Toggl-Integration in Trello).", 
             "title": "Tools"
-        },
+        }, 
         {
-            "location": "/KW44/#probleme-herausforderungen",
-            "text": "Bisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass die Analyse der IST-Situation noch nicht begonnen werden konnte.  Das Zeit-Tracking funktioniert noch nicht wie gew\u00fcnscht  und wir m\u00fcssen uns erst mal mit all den Tools vertraut machen  Bild-Integration in git-pages funktioniert noch nicht",
+            "location": "/KW44/#probleme-herausforderungen", 
+            "text": "Bisher fehlen die Zugangsdaten f\u00fcr die Webseite, sodass die Analyse der IST-Situation noch nicht begonnen werden konnte.  Das Zeit-Tracking funktioniert noch nicht wie gew\u00fcnscht  und wir m\u00fcssen uns erst mal mit all den Tools vertraut machen  Bild-Integration in git-pages funktioniert noch nicht", 
             "title": "Probleme / Herausforderungen"
-        },
+        }, 
         {
-            "location": "/KW44/#journal-zeitaufwand",
-            "text": "6h Evaluation / Initialisierung der Tools \n3h Einarbeitung in LaTeX \n1h Administration",
+            "location": "/KW44/#journal-zeitaufwand", 
+            "text": "6h Evaluation / Initialisierung der Tools \n3h Einarbeitung in LaTeX \n1h Administration", 
             "title": "Journal / Zeitaufwand"
-        },
+        }, 
         {
-            "location": "/KW45/",
-            "text": "Wochenreport KW 45\n\n\nZiel dieser Woche\n\n\n\n\nArbeitskarten in Trello erstellen\n\n\nVollst\u00e4ndiges Installieren aller Tools\n\n\nlaTeX installieren, erste versuche\n\n\nFM-Terminplan erstellen\n\n\nEinlesen ins Thema Storytelling\n\n\n\n\nResultat / Erkenntnisse\n\n\nArbeitskarten mit Trello erstellen\n\n\nBeim erstellen der Arbeitskarten in Trello, ist Aufgefallen das auch ein Zeitmanagement m\u00f6glich ist. So ist auch direkt klar wieviel Zeit in welche Aktivit\u00e4t gesteckt wurde, somit w\u00e4re Toggl als Tool \u00fcberfl\u00fcssig.\n\n\nZeitplan erstellen\n\n\nDer Zeitplan wurde anhand der erstellten Karten in Trello aufgesetzt. Dies soll uns als Team und den Betreuern eine ungef\u00e4hre Sch\u00e4tzung geben wo wir stehen und was noch zu tun ist.\n\n\nGitHub und GitHub Pages\n\n\nUnser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf.\n\nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert.\n\nAch ja und die Anzeige von Bildern funktioniert unterdessen auch.\n\n\nStorytelling\n\n\nDie Grundstruktur des Storytelling (narrative Kommunikation) besteht aus f\u00fcnf Bausteinen. Als erstes braucht es einen \nGrund\n f\u00fcr die Geschichte. Dann braucht es einen \nHelden\n bzw. einen Hauptdarsteller, mit dem sich die Zuh\u00f6rer identifizieren k\u00f6nnen. Der Held begibt sich auf eine Reise und ger\u00e4t in einen \nKonflikt\n. Eine gute Geschicht ber\u00fchrt \nemotional\n und ist \nviral\n d.h. wird gerne weitererz\u00e4hlt.\n\n\nBeispiele narrativer Kommunikation:\n\n\nBritish Airways - Visit Mum\n\n\neBay - Ed Church\n\n\nDer Grund warum ein Produkt entwickelt wurde, soll mit Hilfe des \ngolden circle\n Modells (Why-How-What) von Simon Sinek aufgezeigt werden. Dieses stellt die Vision (Why) der Entwickler in den Vordergrund. Das Produkt (What) selbst ist dann das Resultat daraus.\n\n\nProbleme / Herausforderungen\n\n\nVollst\u00e4ndiges installieren aller Tools\n\n\nHierbei gab es einige Probleme mit Github, dadurch das mir (Thomas) die Befehle noch nicht bekannt waren/sind. Mein Ziel ist es um diese Kommandos w\u00e4hrend dem Fachmodul zu erlernen und mit Github bzw. mit git zu arbeiten.\n\n\nJournal / Zeitaufwand\n\n\n6h Einlesen Storytelling\n\n4h GitHub / GitHub Pages\n\n1.5h Meeting\n\n5h Administration\n2h Planung",
+            "location": "/KW45/", 
+            "text": "Wochenreport KW 45\n\n\nZiel dieser Woche\n\n\n\n\nArbeitskarten in Trello erstellen\n\n\nVollst\u00e4ndiges Installieren aller Tools\n\n\nlaTeX installieren, erste versuche\n\n\nFM-Terminplan erstellen\n\n\nEinlesen ins Thema Storytelling\n\n\n\n\nResultat / Erkenntnisse\n\n\nArbeitskarten mit Trello erstellen\n\n\nBeim erstellen der Arbeitskarten in Trello, ist Aufgefallen das auch ein Zeitmanagement m\u00f6glich ist. So ist auch direkt klar wieviel Zeit in welche Aktivit\u00e4t gesteckt wurde, somit w\u00e4re Toggl als Tool \u00fcberfl\u00fcssig.\n\n\nZeitplan erstellen\n\n\nDer Zeitplan wurde anhand der erstellten Karten in Trello aufgesetzt. Dies soll uns als Team und den Betreuern eine ungef\u00e4hre Sch\u00e4tzung geben wo wir stehen und was noch zu tun ist.\n\n\nGitHub und GitHub Pages\n\n\nUnser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf.\n\nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert.\n\nAch ja und die Anzeige von Bildern funktioniert unterdessen auch.\n\n\nStorytelling\n\n\nDie Grundstruktur des Storytelling (narrative Kommunikation) besteht aus f\u00fcnf Bausteinen. Als erstes braucht es einen \nGrund\n f\u00fcr die Geschichte. Dann braucht es einen \nHelden\n bzw. einen Hauptdarsteller, mit dem sich die Zuh\u00f6rer identifizieren k\u00f6nnen. Der Held begibt sich auf eine Reise und ger\u00e4t in einen \nKonflikt\n. Eine gute Geschicht ber\u00fchrt \nemotional\n und ist \nviral\n d.h. wird gerne weitererz\u00e4hlt.\n\n\nBeispiele narrativer Kommunikation:\n\n\nBritish Airways - Visit Mum\n\n\neBay - Ed Church\n\n\nDer Grund warum ein Produkt entwickelt wurde, soll mit Hilfe des \ngolden circle\n Modells (Why-How-What) von Simon Sinek aufgezeigt werden. Dieses stellt die Vision (Why) der Entwickler in den Vordergrund. Das Produkt (What) selbst ist dann das Resultat daraus.\n\n\nProbleme / Herausforderungen\n\n\nVollst\u00e4ndiges installieren aller Tools\n\n\nHierbei gab es einige Probleme mit Github, dadurch das mir (Thomas) die Befehle noch nicht bekannt waren/sind. Mein Ziel ist es um diese Kommandos w\u00e4hrend dem Fachmodul zu erlernen und mit Github bzw. mit git zu arbeiten.\n\n\nJournal / Zeitaufwand\n\n\n6h Einlesen Storytelling\n\n4h GitHub / GitHub Pages\n\n1.5h Meeting\n\n5h Administration\n2h Planung", 
             "title": "KW45"
-        },
+        }, 
         {
-            "location": "/KW45/#wochenreport-kw-45",
-            "text": "",
+            "location": "/KW45/#wochenreport-kw-45", 
+            "text": "", 
             "title": "Wochenreport KW 45"
-        },
+        }, 
         {
-            "location": "/KW45/#ziel-dieser-woche",
-            "text": "Arbeitskarten in Trello erstellen  Vollst\u00e4ndiges Installieren aller Tools  laTeX installieren, erste versuche  FM-Terminplan erstellen  Einlesen ins Thema Storytelling",
+            "location": "/KW45/#ziel-dieser-woche", 
+            "text": "Arbeitskarten in Trello erstellen  Vollst\u00e4ndiges Installieren aller Tools  laTeX installieren, erste versuche  FM-Terminplan erstellen  Einlesen ins Thema Storytelling", 
             "title": "Ziel dieser Woche"
-        },
+        }, 
         {
-            "location": "/KW45/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW45/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW45/#arbeitskarten-mit-trello-erstellen",
-            "text": "Beim erstellen der Arbeitskarten in Trello, ist Aufgefallen das auch ein Zeitmanagement m\u00f6glich ist. So ist auch direkt klar wieviel Zeit in welche Aktivit\u00e4t gesteckt wurde, somit w\u00e4re Toggl als Tool \u00fcberfl\u00fcssig.",
+            "location": "/KW45/#arbeitskarten-mit-trello-erstellen", 
+            "text": "Beim erstellen der Arbeitskarten in Trello, ist Aufgefallen das auch ein Zeitmanagement m\u00f6glich ist. So ist auch direkt klar wieviel Zeit in welche Aktivit\u00e4t gesteckt wurde, somit w\u00e4re Toggl als Tool \u00fcberfl\u00fcssig.", 
             "title": "Arbeitskarten mit Trello erstellen"
-        },
+        }, 
         {
-            "location": "/KW45/#zeitplan-erstellen",
-            "text": "Der Zeitplan wurde anhand der erstellten Karten in Trello aufgesetzt. Dies soll uns als Team und den Betreuern eine ungef\u00e4hre Sch\u00e4tzung geben wo wir stehen und was noch zu tun ist.",
+            "location": "/KW45/#zeitplan-erstellen", 
+            "text": "Der Zeitplan wurde anhand der erstellten Karten in Trello aufgesetzt. Dies soll uns als Team und den Betreuern eine ungef\u00e4hre Sch\u00e4tzung geben wo wir stehen und was noch zu tun ist.", 
             "title": "Zeitplan erstellen"
-        },
+        }, 
         {
-            "location": "/KW45/#github-und-github-pages",
-            "text": "Unser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf. \nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert. \nAch ja und die Anzeige von Bildern funktioniert unterdessen auch.",
+            "location": "/KW45/#github-und-github-pages", 
+            "text": "Unser git-Repository ist nun so aufgebaut, dass s\u00e4mtliche Daten in einem einzigen Repository verwaltet werden. Die Wochenreports sind im master-branch im Unterordner 'report' als Markdown-Files abgelegt. Der master-branch weist nun KEINE kompilierten html-Files mehr auf. \nGitHub Pages ist ein 'static site hosting service'. Die Markdown-Files werden von mkdocs kompiliert und als html-files im branch 'gh-pages' gespeichert. \nAch ja und die Anzeige von Bildern funktioniert unterdessen auch.", 
             "title": "GitHub und GitHub Pages"
-        },
+        }, 
         {
-            "location": "/KW45/#storytelling",
-            "text": "Die Grundstruktur des Storytelling (narrative Kommunikation) besteht aus f\u00fcnf Bausteinen. Als erstes braucht es einen  Grund  f\u00fcr die Geschichte. Dann braucht es einen  Helden  bzw. einen Hauptdarsteller, mit dem sich die Zuh\u00f6rer identifizieren k\u00f6nnen. Der Held begibt sich auf eine Reise und ger\u00e4t in einen  Konflikt . Eine gute Geschicht ber\u00fchrt  emotional  und ist  viral  d.h. wird gerne weitererz\u00e4hlt.  Beispiele narrativer Kommunikation:  British Airways - Visit Mum  eBay - Ed Church  Der Grund warum ein Produkt entwickelt wurde, soll mit Hilfe des  golden circle  Modells (Why-How-What) von Simon Sinek aufgezeigt werden. Dieses stellt die Vision (Why) der Entwickler in den Vordergrund. Das Produkt (What) selbst ist dann das Resultat daraus.",
+            "location": "/KW45/#storytelling", 
+            "text": "Die Grundstruktur des Storytelling (narrative Kommunikation) besteht aus f\u00fcnf Bausteinen. Als erstes braucht es einen  Grund  f\u00fcr die Geschichte. Dann braucht es einen  Helden  bzw. einen Hauptdarsteller, mit dem sich die Zuh\u00f6rer identifizieren k\u00f6nnen. Der Held begibt sich auf eine Reise und ger\u00e4t in einen  Konflikt . Eine gute Geschicht ber\u00fchrt  emotional  und ist  viral  d.h. wird gerne weitererz\u00e4hlt.  Beispiele narrativer Kommunikation:  British Airways - Visit Mum  eBay - Ed Church  Der Grund warum ein Produkt entwickelt wurde, soll mit Hilfe des  golden circle  Modells (Why-How-What) von Simon Sinek aufgezeigt werden. Dieses stellt die Vision (Why) der Entwickler in den Vordergrund. Das Produkt (What) selbst ist dann das Resultat daraus.", 
             "title": "Storytelling"
-        },
+        }, 
         {
-            "location": "/KW45/#probleme-herausforderungen",
-            "text": "",
+            "location": "/KW45/#probleme-herausforderungen", 
+            "text": "", 
             "title": "Probleme / Herausforderungen"
-        },
+        }, 
         {
-            "location": "/KW45/#vollstandiges-installieren-aller-tools",
-            "text": "Hierbei gab es einige Probleme mit Github, dadurch das mir (Thomas) die Befehle noch nicht bekannt waren/sind. Mein Ziel ist es um diese Kommandos w\u00e4hrend dem Fachmodul zu erlernen und mit Github bzw. mit git zu arbeiten.",
+            "location": "/KW45/#vollstandiges-installieren-aller-tools", 
+            "text": "Hierbei gab es einige Probleme mit Github, dadurch das mir (Thomas) die Befehle noch nicht bekannt waren/sind. Mein Ziel ist es um diese Kommandos w\u00e4hrend dem Fachmodul zu erlernen und mit Github bzw. mit git zu arbeiten.", 
             "title": "Vollst\u00e4ndiges installieren aller Tools"
-        },
+        }, 
         {
-            "location": "/KW45/#journal-zeitaufwand",
-            "text": "6h Einlesen Storytelling \n4h GitHub / GitHub Pages \n1.5h Meeting \n5h Administration\n2h Planung",
+            "location": "/KW45/#journal-zeitaufwand", 
+            "text": "6h Einlesen Storytelling \n4h GitHub / GitHub Pages \n1.5h Meeting \n5h Administration\n2h Planung", 
             "title": "Journal / Zeitaufwand"
-        },
+        }, 
         {
-            "location": "/KW46/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nTest test test\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "location": "/KW46/", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nTest test test\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW46"
-        },
+        }, 
         {
-            "location": "/KW46/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW46/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW46/#ziel",
-            "text": "Test test test",
+            "location": "/KW46/#ziel", 
+            "text": "Test test test", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/KW46/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW46/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW46/#probleme",
-            "text": "",
+            "location": "/KW46/#probleme", 
+            "text": "", 
             "title": "Probleme"
-        },
+        }, 
         {
-            "location": "/KW47/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "location": "/KW47/", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW47"
-        },
+        }, 
         {
-            "location": "/KW47/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW47/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW47/#ziel",
-            "text": "",
+            "location": "/KW47/#ziel", 
+            "text": "", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/KW47/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW47/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW47/#probleme",
-            "text": "",
+            "location": "/KW47/#probleme", 
+            "text": "", 
             "title": "Probleme"
-        },
+        }, 
         {
-            "location": "/KW48/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "location": "/KW48/", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW48"
-        },
+        }, 
         {
-            "location": "/KW48/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW48/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW48/#ziel",
-            "text": "",
+            "location": "/KW48/#ziel", 
+            "text": "", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/KW48/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW48/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW48/#probleme",
-            "text": "",
+            "location": "/KW48/#probleme", 
+            "text": "", 
             "title": "Probleme"
-        },
+        }, 
         {
-            "location": "/KW49/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "location": "/KW49/", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW49"
-        },
+        }, 
         {
-            "location": "/KW49/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW49/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW49/#ziel",
-            "text": "",
+            "location": "/KW49/#ziel", 
+            "text": "", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/KW49/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW49/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW49/#probleme",
-            "text": "",
+            "location": "/KW49/#probleme", 
+            "text": "", 
             "title": "Probleme"
-        },
+        }, 
         {
-            "location": "/KW50/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "location": "/KW50/", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW50"
-        },
+        }, 
         {
-            "location": "/KW50/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW50/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW50/#ziel",
-            "text": "",
+            "location": "/KW50/#ziel", 
+            "text": "", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/KW50/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW50/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW50/#probleme",
-            "text": "",
+            "location": "/KW50/#probleme", 
+            "text": "", 
             "title": "Probleme"
-        },
+        }, 
         {
-            "location": "/KW51/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "location": "/KW51/", 
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
             "title": "KW51"
-        },
+        }, 
         {
-            "location": "/KW51/#wochenreport-kw-44",
-            "text": "",
+            "location": "/KW51/#wochenreport-kw-44", 
+            "text": "", 
             "title": "Wochenreport KW 44"
-        },
+        }, 
         {
-            "location": "/KW51/#ziel",
-            "text": "",
+            "location": "/KW51/#ziel", 
+            "text": "", 
             "title": "Ziel"
-        },
+        }, 
         {
-            "location": "/KW51/#resultat-erkenntnisse",
-            "text": "",
+            "location": "/KW51/#resultat-erkenntnisse", 
+            "text": "", 
             "title": "Resultat / Erkenntnisse"
-        },
+        }, 
         {
-            "location": "/KW51/#probleme",
-            "text": "",
+            "location": "/KW51/#probleme", 
+            "text": "", 
             "title": "Probleme"
-        },
+        }, 
         {
-            "location": "/about/",
-            "text": "Anleitung\n\n\nMkdocs\n\n\nBild einf\u00fcgen\n\n\nDas Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:\n\n\n![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*\n\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' > docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: \nToggl\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello\n\n\nKommunikation: slack\n\n\nScreen-Sharing und Telefonie: skype",
+            "location": "/about/", 
+            "text": "Anleitung\n\n\nMkdocs\n\n\nBild einf\u00fcgen\n\n\nDas Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:\n\n\n![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*\n\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' \n docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: \nToggl\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello\n\n\nKommunikation: slack\n\n\nScreen-Sharing und Telefonie: skype", 
             "title": "About"
-        },
+        }, 
         {
-            "location": "/about/#anleitung",
-            "text": "",
+            "location": "/about/#anleitung", 
+            "text": "", 
             "title": "Anleitung"
-        },
+        }, 
         {
-            "location": "/about/#mkdocs",
-            "text": "",
+            "location": "/about/#mkdocs", 
+            "text": "", 
             "title": "Mkdocs"
-        },
+        }, 
         {
-            "location": "/about/#bild-einfugen",
-            "text": "Das Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:  ![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*",
+            "location": "/about/#bild-einfugen", 
+            "text": "Das Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:  ![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*", 
             "title": "Bild einf\u00fcgen"
-        },
+        }, 
         {
-            "location": "/about/#neue-seite-erstellen",
-            "text": "Um eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:  curl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' > docs/about.md  Anschliessend im File  mkdocs.yml  die Seite verlinken:  site_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md",
+            "location": "/about/#neue-seite-erstellen", 
+            "text": "Um eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:  curl 'https://jaspervdj.be/lorem-markdownum/markdown.txt'   docs/about.md  Anschliessend im File  mkdocs.yml  die Seite verlinken:  site_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md", 
             "title": "Neue Seite erstellen"
-        },
+        }, 
         {
-            "location": "/about/#preview-auf-localhost-starten",
-            "text": "Im Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:  mkdocs serve",
+            "location": "/about/#preview-auf-localhost-starten", 
+            "text": "Im Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:  mkdocs serve", 
             "title": "Preview auf localhost starten"
-        },
+        }, 
         {
-            "location": "/about/#deployen-auf-github",
-            "text": "mkdocs gh-deploy  Achtung: nicht manuell d.h. mit  git add  deployen!",
+            "location": "/about/#deployen-auf-github", 
+            "text": "mkdocs gh-deploy  Achtung: nicht manuell d.h. mit  git add  deployen!", 
             "title": "Deployen auf github"
-        },
+        }, 
         {
-            "location": "/about/#tools-die-wir-verwenden",
-            "text": "Time Tracking:  Toggl  Reports: Mkdocs (Markdown) / Git Pages  Schlussbericht: LaTeX  Versionisierung: Git  Item Tracking: Trello  Kommunikation: slack  Screen-Sharing und Telefonie: skype",
+            "location": "/about/#tools-die-wir-verwenden", 
+            "text": "Time Tracking:  Toggl  Reports: Mkdocs (Markdown) / Git Pages  Schlussbericht: LaTeX  Versionisierung: Git  Item Tracking: Trello  Kommunikation: slack  Screen-Sharing und Telefonie: skype", 
             "title": "Tools, die wir verwenden"
         }
     ]
