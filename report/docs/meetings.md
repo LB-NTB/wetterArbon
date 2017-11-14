@@ -17,5 +17,6 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
 * branch 'gh-pages' mit html-files ok?
 * Vorlage Risikoanalyse
 * FM-Termiplan besprechen
+* Entwurf FM-Bericht
 * Fragen ....
 * Fragerunde
