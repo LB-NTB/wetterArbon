@@ -102,7 +102,7 @@
         },
         {
             "location": "/meetings/",
-            "text": "Meetings\n\n\nW\u00f6chentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgef\u00fchrt.\n\n\nMeeting vom 09.11.2017\n\n\nBesprochenes\n\n\n\n\nIn der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.\n\n\nBei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und gef\u00fchrt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' \u00fcbernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der n\u00e4chsten Sitzung (16.11.2017) noch n\u00e4her besprochen.\n\n\n\n\nN\u00e4chsten Schritte\n\n\n\n\nEin Branch auf Github erstellen.\n\n\nZeitplan f\u00fcr das Fachmodul aufsetzten.\n\n\n\n\nMeeting vom 16.11.2017\n\n\nTraktanden\n\n\n\n\nAufteilung Projekt, wer ist \"Teamleiter\"\n\n\nbranch 'gh-pages' mit html-files ok?\n\n\nVorlage Risikoanalyse\n\n\nFM-Termiplan besprechen\n\n\nEntwurf FM-Bericht\n\n\nBesprechung FM-Bericht und Pizza esssen (21.12.17)\n\n\nFragerunde",
+            "text": "Meetings\n\n\nW\u00f6chentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier aufgef\u00fchrt.\n\n\nMeeting vom 09.11.2017\n\n\nBesprochenes\n\n\n\n\nIn der Sitzung vom 09.11.2017 mit Ulrich und Lukas, wurde uns empfohlen mit einem einzigen GitHub-Repository zu arbeiten und nur einen branch zu gebrauchen. Zudem soll vermieden werden, dass kompilierte Datien auf GitHub gespeichert werden.\n\n\nBei der Bachelorarbeit geht es nicht nur um die technische Umsetzung, sondern auch darum, zu lernen wie ein Projekt organisiert und gef\u00fchrt wird. Ulrich hat empfohlen, dass Thomas die 'Leitung' \u00fcbernimmt, da Ladina schon einmal eine Bachelorarbeit geschrieben hat. Dieses Thema wird bei der n\u00e4chsten Sitzung (16.11.2017) noch n\u00e4her besprochen.\n\n\n\n\nN\u00e4chsten Schritte\n\n\n\n\nEin Branch auf Github erstellen.\n\n\nZeitplan f\u00fcr das Fachmodul aufsetzten.\n\n\n\n\nMeeting vom 16.11.2017\n\n\nTraktanden\n\n\n\n\nAufteilung Projekt, wer ist \"Teamleiter\"\n\n\nbranch 'gh-pages' mit html-files ok?\n\n\nVorlage Risikoanalyse\n\n\nFM-Termiplan besprechen\n\n\nEntwurf FM-Bericht\n\n\nBesprechung FM-Bericht und Pizza essen (21.12.17)\n\n\nFragerunde",
             "title": "Meetings"
         },
         {
@@ -132,7 +132,7 @@
         },
         {
             "location": "/meetings/#traktanden",
-            "text": "Aufteilung Projekt, wer ist \"Teamleiter\"  branch 'gh-pages' mit html-files ok?  Vorlage Risikoanalyse  FM-Termiplan besprechen  Entwurf FM-Bericht  Besprechung FM-Bericht und Pizza esssen (21.12.17)  Fragerunde",
+            "text": "Aufteilung Projekt, wer ist \"Teamleiter\"  branch 'gh-pages' mit html-files ok?  Vorlage Risikoanalyse  FM-Termiplan besprechen  Entwurf FM-Bericht  Besprechung FM-Bericht und Pizza essen (21.12.17)  Fragerunde",
             "title": "Traktanden"
         },
         {
