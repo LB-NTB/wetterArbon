@@ -1,21 +1,124 @@
-\documentclass[12pt]{report}
-\usepackage{german}
+\documentclass[a4paper,ngerman, 12pt]{report}
+
+%% Päambel
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+
+%%  Variablen
+\newcommand{\authorName}{Ladina Bilgery \and Thomas Wieling}
+\newcommand{\auftraggeber}{Interessengemeinschaft Wetterstation Arbon}
+\newcommand{\auftragnehmer}{Interstaatliche Hochschule für Technik NTB}
+\newcommand{\projektName}{User Interface und Datenmanagement für die Wetterstation Arbon}
+\title{\projektName~(Fachmodul)}
+\author{\authorName}
+\date{\today}
+
+%%  Create a shorter version for tables. DO NOT CHANGE 
+\newcommand\addrow[2]{#1 &#2\\ }
+\newcommand\addheading[2]{#1 &#2\\ \hline}
+\newcommand\tabularhead{\begin{tabular}{lp{13cm}}
+\hline
+}
+\newcommand\addmulrow[2]{ \begin{minipage}[t][][t]{2.5cm}#1\end{minipage}
+   &\begin{minipage}[t][][t]{8cm}
+    \begin{enumerate} #2   \end{enumerate}
+    \end{minipage}\\ }
+\newenvironment{usecase}{\tabularhead}
+{\hline\end{tabular}}
+
+
+
+%%  Beginn Dokument
 \begin{document}
-\title{Fachmodul 2017 / User Interface und Datenmanagement f"ur die Wetterstation Arbon}
-\author{Ladina Bilgery \and Thomas Wieling}
-\maketitle
-\tableofcontents
+\pagenumbering{roman}
+\input{Deckblatt}
+\setcounter{page}{2}
+\tableofcontents          
+\clearpage
+\pagenumbering{arabic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Zusammenfassung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Hier kommt eine kurze Zusammenfassung des Fachmoduls.
+Braucht es eine Zusammenfassung?
 \end{abstract}
-\chapter{Literaturrecherche}
-\chapter{Spezifikation}
-\chapter{Risikoanalyse}
-\chapter{Entwicklungsprozess}
-\chapter{Zu entwickelnde Artefakte}
-\chapter{Versionsverwaltung}
-\chapter{Rechtliche Ansprüche}
-\chapter{BA-Projektplan}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Einführung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Einführung}
+Ziel des Fachmoduls, Aufträge, Vorgehensweise, Vorstellung Wetterstation Arbon
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Hauptteil
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Hauptteil}
+
+\section{IST-Zustand}
+Hardware und Software, 
+Skizze, 
+Übersicht, 
+Verbindungen/Verknüpfungen untereinander
+
+\section{Vorhandene Probleme}
+Beschreibung, 
+Begründung, 
+Erkenntnisse aus IST-Analyse
+
+\section{SOLL-Zustand}
+Lösungsansätze = zu entwickelnde Artefakte, 
+Resultat aus Literaturrecherche, 
+Konzepte
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Spezifikation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Spezifikation / Pflichtenheft}
+Anforderungen nach dem SMART-Prinzip formulieren
+\input{Spezifikation}   
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Projektmanagement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Projektmanagement}
+\section{Entwicklungsprozess}
+V-Modell XT oder KANBAN oder eine Mischung davon, Begründung warum kein Scrum, graphische Darstellung, müssen sämtliche KANBAN-Karten schon bekannt sein?
+
+
+\section{Projektplan für die Bachelor-Arbeit}
+Hier wäre ein A3-Blatt quer noch cool. Darauf sollten alle Wochen von Start BA bis zur Abgabe sein.
+Alle offiziellen Termine, alle Meilensteine usw.
+Eine Zeile für Meetings (Führungsrythmus)
+Abhängigkeit der einzelnen Artefakte voneinander (evtl. mit MS-Project arbeiten)
+Was gehört alles in eine Projektplan. Was ist der Unterschied zwischen Projekt- und Terminplan?
+
+\section{Risikoanalyse}
+Risikotabelle mit Wahrscheinlichkeit und Auswirkung gewichtet, Risikomatrix als Übersicht, Themen sind technische Umsetzung, Zusammenarbeit mit Dritten, Termine, Ressourcen, 
+
+\section{Dokumentation}
+Versionsverwaltung, Dokumentationskonzept, Tools?
+
+\section{Rechtliche Ansprüche}
+siehe separates Dokument
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Schluss
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Schluss}
+Erkenntnisse, Einschätzungen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Verzeichnisse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{Literaturverzeichnis}
 
 \begin{thebibliography}{9}
@@ -24,4 +127,7 @@ Autor
 \textit{Verlag}. 
 Welche Seite?, Jahr?
 \end{thebibliography}
+
+
+
 \end{document}
