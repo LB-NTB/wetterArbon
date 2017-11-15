@@ -18,5 +18,5 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
 * Vorlage Risikoanalyse
 * FM-Termiplan besprechen
 * Entwurf FM-Bericht
-* Besprechung FM-Bericht und Pizza esssen (21.12.17)
+* Besprechung FM-Bericht und Pizza essen (21.12.17)
 * Fragerunde
