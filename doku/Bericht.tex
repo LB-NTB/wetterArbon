@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
+\usepackage{cite}
 
 %%  Variablen
 \newcommand{\authorName}{Ladina Bilgery \and Thomas Wieling}
@@ -100,6 +101,7 @@ Abhängigkeit der einzelnen Artefakte voneinander (evtl. mit MS-Project arbeiten
 Was gehört alles in eine Projektplan. Was ist der Unterschied zwischen Projekt- und Terminplan?
 
 \section{Risikoanalyse}
+\input{Risikoanalyse}   
 Risikotabelle mit Wahrscheinlichkeit und Auswirkung gewichtet, Risikomatrix als Übersicht, Themen sind technische Umsetzung, Zusammenarbeit mit Dritten, Termine, Ressourcen, 
 
 \section{Dokumentation}
@@ -116,18 +118,12 @@ siehe separates Dokument
 Erkenntnisse, Einschätzungen
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Verzeichnisse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliography{Literaturverzeichnis}
-
-\begin{thebibliography}{9}
-\bibitem{Was kommt hier?} 
-Autor
-\textit{Verlag}. 
-Welche Seite?, Jahr?
-\end{thebibliography}
-
+\bibliography{literatur}{}	
+\bibliographystyle{plain}
 
 
 \end{document}
