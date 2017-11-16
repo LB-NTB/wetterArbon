@@ -1,0 +1,10 @@
+* Webseite:
+  * Eigene HTML/Javascripts einsetzen möglich?
+  * Wie und wo werden applikationen erstellt?
+  * Wo ist die SW für die wetterdatenverarbeitung zu finden?
+  * Webseite bei Hostpoint hosten?
+  * Komplett neue Seite? Warum bei screenbox bleiben? Weil von Arbon gehostet?
+
+* Datenbank
+  * Wie werden die Daten ausgelesen?
+  * Wieviel Zeit vergeht bis zu nächsten auslesung?
