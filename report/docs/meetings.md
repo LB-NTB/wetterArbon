@@ -20,3 +20,42 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
 * Entwurf FM-Bericht
 * Besprechung FM-Bericht und Pizza essen (21.12.17)
 * Fragerunde
+
+###Besprochenes
+
+* Aufteilung Projekt, wer ist "Teamleiter"
+  Für das Fachmodul und insbesondere die BA ist es von Vorteil wenn einer die Leitung übernimmt. Ulrich hat hier Thomas vorgestellt, da Ladina schon einige Erfahrung hat und viele Arbeiten vor Ort erledigen muss. Die wesentlichen Aufgaben des Teamleiters sind:
+    * Fortschritt des Projekts verfolgen
+    * Organisation der Meetings
+    * Erstellung der erforderlichen Dokumente
+    * Wenn Schritte fehlschlagen oder nicht rechtzeitig abgeben werden können, muss dies vom Projektleiter gemeldet werden
+* branch "gh-pages" mit html-Files ok?
+  Auf dem Masterbranch sind jetzt nur die sourcefiles sichtbar und die gerenderten Files im gh-pages branch. Dies ist zwar nicht optimal, solange es aber keine Probleme gibt kann man dies so belassen.
+
+* Risikoanalyse
+  Die Dozenten Ulrich und Lukas möchten gerne eine Risikoanalyse, in diesem sollten folgende Fragen beantwortet werden:
+    * was könnte schief gehen?
+    * Was könnte nicht nach wunsch laufen?
+    * Wie können die Risikos minimmiert werden?
+  Die Risikoanalyse soll sich vorallem auf die Bachelorarbeit konzentrieren.
+
+* FM-Terminplan
+  Die eigentlichen aufgeschriebenen Punkte waren in Ordnung so. Ulrich und Lukas stellen sich jedoch eine genauere Wochenplanung mit einer Stundenschätzung vor. Vorgeschlagen wurde die Planung von Flavio und Christian zu benutzen.
+
+* Vorlage FM-Bericht
+  Die erstellte Vorlage entspricht dem was sich Ulrich und Lukas gewünscht haben, es müssen jedoch noch zwei Punkte angepasst werden.
+    * Das Kapitel vorhande Probleme in Problemanalyse ändern
+    * Lukas und Ulrich wünschten sich noch eine Wissenschaftliche Fragestellung und diese nach einer solchen Methode zu beantworten,    dies ist nicht notwendig würde aber der BA einen Mehrwert liefern. Mögliche Fragen könnten sein (nicht ausgearbeitet):
+      * Vergleich Windgeschwindigkeit mit effektiven Wert?
+        * welche Modelle gibt es hierzu?
+        * Ist eine eigene Vorhersage möglich auf Basis der Daten?
+        * Gibt es überhaupt schon vergleiche zwischen effektiv- und Vorhersagewert?
+        * Vorhersage Wassertemperatur?
+        * Vorhersage Wellengang?
+
+* Besprechung definitiver FM Bericht
+  Termin 21.12.17, 18:00 bei Ulrich zuhause
+
+##Meeting vom 23.11.2017
+
+###Traktanden
