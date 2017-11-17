@@ -65,16 +65,49 @@ Hardware und Software,
 Skizze, 
 Übersicht, 
 Verbindungen/Verknüpfungen untereinander
+  
+\subsection{Was ist Openfile64?}
+Openfile64 ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in opfile64 als sogenannte Applikationen behandelt.
 
-\section{Vorhandene Probleme}
+\subsection{Wie und wo werden Applikationen erstellt?}
+Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applikationen zu erstellen. Die gewünschte Applikation, d.h. eine PHP Referenzdatei, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen, müssen im Ordner application werden und in der Datenbank in der Tabelle applications gespeichert werden.
+
+\subsection{Wetterapplikation Wassersport und Touristik}
+Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet und dargestellt. Die Applikation wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Bei der Übersetzung hat es Fehler gegeben, des Weiteren läuft die Applikation nur mit Flash, welches nicht von allen Geräten unterstützt wird. Um dieses Problem aus der Welt zu schaffen, macht die Seite einen Screenshot der aktuellen Daten beim Aufrufen der Seite. Mit dem Screenshot gibt es aber keine dynamische Seite, d.h. die Anzeigen ändern beispielsweise bei einer Richtungsänderung des Windes die Richtung nicht mit. 
+
+\subsection{Warum wird kein Flash mehr gebraucht?}
+  
+https://www.heise.de/download/blog/Im-Web-surfen-ohne-den-Adobe-Flash-Player-3278307
+Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash.
+
+
+
+
+Datenbank: Wie werden die Daten eingelesen? Wie viel Zeit vergeht bis zu nächsten Einlesung?
+  
+
+\section{Problemanalyse}
 Beschreibung, 
 Begründung, 
 Erkenntnisse aus IST-Analyse
+
+\subsection{Webseite}
+Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. 
+
+Wo ist die SW für die Wetterdatenverarbeitung zu finden?
 
 \section{SOLL-Zustand}
 Lösungsansätze = zu entwickelnde Artefakte, 
 Resultat aus Literaturrecherche, 
 Konzepte
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Wissenschaftliche Fragestellung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Wissenschaftliche Fragestellung}
+
+Fragestellung, welche in der BA beantwortet bzw. umgesetzt werden soll. <- Wollen wir das wirklich?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
