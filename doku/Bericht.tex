@@ -57,6 +57,8 @@ Braucht es eine Zusammenfassung?
 \chapter{Einführung}
 Ziel des Fachmoduls, Aufträge, Vorgehensweise, Vorstellung Wetterstation Arbon
 
+\Diskussionspunkt{Foto Wetterstation}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Hauptteil
@@ -68,6 +70,27 @@ Ziel des Fachmoduls, Aufträge, Vorgehensweise, Vorstellung Wetterstation Arbon
 Skizze, 
 Übersicht, 
 Verbindungen/Verknüpfungen untereinander}
+\Diskussionspunkt{Bild}
+
+\subsection{Installierte Komponenten}
+
+Die Wetterstation Arbon besteht aus folgenden Sensoren bzw. Sensor-Einheiten:
+\begin{itemize}  
+\item Webcam
+\item Kombi-Wetter-Transmitter
+\item Wassertemperatur-Sensor
+\item Pegel-Sensor (defekt)
+\end{itemize}
+
+
+Die Webcam ist 360 Grad drehbar, schwenkbar, verfügt über eine Zoomfunktion und kann ferngesteuert werden.  Der Kombi-Wetter-Transmitter vereint mehrere Sensoren in einem Gehäuse. Dies sind Windgeschwindigkeit und -richtung, Lufttemperatur, relative und absolute Luftfeuchtigkeit, Regenmenge und Luftdruck. Der Wassertemperatur-Sensor besteht aus mehreren PT100-Widerständen, die in einem Kunststoffrohr im Abstand von 20cm montiert sind. Bei den Temperaturwiderständen ist einer defekt. Der Wert dieses Sensors wird mit Hilfe der beiden Nachbar-Wiederständen interpoliert. Den defekten Temperaturwiderstand zu ersetzen ist zu aufwändig. Der Pegelsensor ist im gleichen Kunststoffrohr verbaut wie die Temperatur-Widerstände und misst den hydrostatischen Druck. Das Kunststoffrohr ist gegen den Seegrund hin offen und nach oben verschlossen.
+
+Die Wetterstation ist auf einem Pfahl ausserhalb des Hafens Arbon montiert. Auf dem Pfahl befindet sich ein kleiner Schaltschrank, jedoch keine Auswertelogik. Sämtliche Daten werden in IP-Pakete verpackt und über eine Glasfaser-Leitung an den Server gesendet.
+
+Die verbauten Komponenten sind in der folgenden Abbildung schematisch dargestellt.
+
+\Diskussionspunkt{Bild Hardware}
+
   
 \subsection{Was ist Openfile64?}
 Openfile64 ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in opfile64 als sogenannte Applikationen behandelt.
@@ -86,11 +109,13 @@ Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer 
 \subsection{Welche Komponenten hat die Datenbank?}
 Für die Webseite und die Wetterstation, hat es vier verschiedene Datenbanken. Diese werden in diesem Kapitel einzeln behandelt und erklärt wie Sie zusammenhängen bzw. welche Rolle sie für die Webseite spielen. Die vier Datenbanken heissen:
 \Diskussionspunkt{
-- igwetter meteotmpl
-- igwetter wettertest
-- igwetter wp0
-- igwetter openfile64Light
-Wie mache ich eine Liste?, bekomme nur Fehlermeldungen}
+\begin{itemize}  
+\item igwetter meteotmpl
+\item igwetter wettertest
+\item gwetter wp0
+\item gwetter openfile64Light
+\end{itemize}
+}
 
 Die Datenbank igwetter meteotmpl beinhaltet alle relevanten Daten, d.h. von der Temperatur bis zur Windrichtung. In dieser Datenbank sind jedoch keine Daten vorhanden und dient momentan nur als Template.\\
 
@@ -106,6 +131,17 @@ Anders als bei den vorherigen Datenbanken hat die igwetter opfile64Light Datenba
 \Diskussionspunkt{Beschreibung, 
 Begründung, 
 Erkenntnisse aus IST-Analyse}
+
+\subsection{Hardware}
+Sowohl die Webcam, als auch der Kombi-Wetter-Transmitter funktionieren einwandfrei. Der defekte Temperaturwiderstand wird akzeptiert, da dessen Wert interpoliert werden kann. Der Pegel-Sensor hingegen ist defekt und muss ersetzt werden. Der bisherige Sensor nutzte das Prinzip der hydrostatischen Druckmessung. Für die Pegelmessung konnten wir drei verschiedene Messprinzipien eruiert, die eingesetzt werden können:
+
+\begin{itemize}  
+\item Hydrostatische Druckmessung
+\item Ultraschall-Distanzmessung
+\item Radar-Distanzmessung
+\end{itemize}
+
+
 
 \subsection{Webseite}
 Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. 
