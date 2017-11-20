@@ -5,6 +5,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
 \usepackage{cite}
+\usepackage{xcolor}
+\newcommand\Diskussionspunkt[1]{\textcolor{red}{#1}}
+
 
 %%  Variablen
 \newcommand{\authorName}{Ladina Bilgery \and Thomas Wieling}
@@ -61,10 +64,10 @@ Ziel des Fachmoduls, Aufträge, Vorgehensweise, Vorstellung Wetterstation Arbon
 \chapter{Hauptteil}
 
 \section{IST-Zustand}
-Hardware und Software, 
+\Diskussionspunkt{Hardware und Software, 
 Skizze, 
 Übersicht, 
-Verbindungen/Verknüpfungen untereinander
+Verbindungen/Verknüpfungen untereinander}
   
 \subsection{Was ist Openfile64?}
 Openfile64 ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in opfile64 als sogenannte Applikationen behandelt.
@@ -80,26 +83,47 @@ Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet u
 https://www.heise.de/download/blog/Im-Web-surfen-ohne-den-Adobe-Flash-Player-3278307
 Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash.
 
+\subsection{Welche Komponenten hat die Datenbank?}
+Für die Webseite und die Wetterstation, hat es vier verschiedene Datenbanken. Diese werden in diesem Kapitel einzeln behandelt und erklärt wie Sie zusammenhängen bzw. welche Rolle sie für die Webseite spielen. Die vier Datenbanken heissen:
+\Diskussionspunkt{
+- igwetter meteotmpl
+- igwetter wettertest
+- igwetter wp0
+- igwetter openfile64Light
+Wie mache ich eine Liste?, bekomme nur Fehlermeldungen}
 
+Die Datenbank igwetter meteotmpl beinhaltet alle relevanten Daten, d.h. von der Temperatur bis zur Windrichtung. In dieser Datenbank sind jedoch keine Daten vorhanden und dient momentan nur als Template.\\
 
-
-Datenbank: Wie werden die Daten eingelesen? Wie viel Zeit vergeht bis zu nächsten Einlesung?
+\Diskussionspunkt{Wo vergibt man den Namen der Applikation?}\\
+Die zweite Datenbank welche nicht aktiv ist, heisst igwetter wp0, \Diskussionspunkt{diese wurde zu Beginn für eine Wordpress Webseite benutzt? Stimmt das?} Die dritte Datenbank ist die igwetter wettertest. Diese ist im Gegensatz zu den vorherigen beiden Datenbanken im Gebrauch. In der Tabelle wx data sind die Daten ab dem 25.02.2015 bis zum jetzigen Zeitpunkt gespeichert. Daten zwischen dem 14.07.2012 und 25.02.2015 sind nicht in der Datenbank hinterlegt. Vor diesem Zeitpunkt bis zum 25.02.2005 sind die täglichen Minimum, sowie Maximum Daten in der Tabelle tblgestern gespeichert.\\
+Anders als bei den vorherigen Datenbanken hat die igwetter opfile64Light Datenbank eine Funktion für die Webseite. In diesem Fall ist die ganze Webseite abhängig von dieser, denn das CMS basiert auf einer Datenbank. Dies wurde im Kapitel Wie und wo werden Applikationen erstellt bereits erläutert. Für die BA, sowie das Fachmodul ist nur die Tabelle applications interessant, denn dort werden die Applikationen unter einem bestimmten Namen abgespeichert und aufgerufen. Die Webseite weiss dann welche Datei sie öffnen muss, damit die Applikation läuft.\\
+\Diskussionspunkt{Was ist mit den Daten zwischen 14.7.2012 und 25.02.2015?}
+\Diskussionspunkt{Wofür sind die .txt Files im Ordner WDL?}
+\Diskussionspunkt{Datenbank: Wie werden die Daten eingelesen? Wie viel Zeit vergeht bis zu nächsten Einlesung?}
   
 
 \section{Problemanalyse}
-Beschreibung, 
+\Diskussionspunkt{Beschreibung, 
 Begründung, 
-Erkenntnisse aus IST-Analyse
+Erkenntnisse aus IST-Analyse}
 
 \subsection{Webseite}
 Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. 
+\subsection{Datenbank}
+Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Das Problem hierbei ist das auf dem ersten Blick nicht sichtbar ist, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Auch ist unklar was mit den Daten zwischen 14.7.2012 und 25.02.2015 geschehen ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. 
 
-Wo ist die SW für die Wetterdatenverarbeitung zu finden?
+\Diskussionspunkt{Wo ist die SW für die Wetterdatenverarbeitung zu finden?}
 
 \section{SOLL-Zustand}
-Lösungsansätze = zu entwickelnde Artefakte, 
+\Diskussionspunkt{Lösungsansätze = zu entwickelnde Artefakte, 
 Resultat aus Literaturrecherche, 
-Konzepte
+Konzepte}
+
+\subsection{Webseite}
+Die Webseite soll auf dem neusten Stand der Technik gebracht werden. Konkret heisst dies, der Flash wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. 
+
+\subsection{Datenbank}
+Die Datenbank sollte den Mitglieder der IGWetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Die igwetter wettertest, sollte neu klarer strukturiert werden, in eine Tabelle mit allen Daten, wobei Daten \Diskussionspunkt{,welche 5 Jahre und älter sind} gelöscht werden um unnötigen Speicherplatz nicht zu belasten. Zusätzlich sollte eine Tabelle mit den historischen Daten d.h. \Diskussionspunkt{5 Jahre} und älter mit den Minimalen, Maximalen und den Mittelwert aller aufgezeichneten Werte enthalten. Hierbei sollten auch die schon vorhandenen Daten integriert werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist. \Diskussionspunkt{Die Datenbanken, welche nicht im Gebrauch sind werden gelöscht um eine klare Struktur herzustellen.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,6 +181,5 @@ Erkenntnisse, Einschätzungen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{literatur}{}	
 \bibliographystyle{plain}
-
 
 \end{document}

@@ -1,10 +1,29 @@
-* Webseite:
-  * Eigene HTML/Javascripts einsetzen möglich?
-  * Wie und wo werden applikationen erstellt?
-  * Wo ist die SW für die wetterdatenverarbeitung zu finden?
-  * Webseite bei Hostpoint hosten?
-  * Komplett neue Seite? Warum bei screenbox bleiben? Weil von Arbon gehostet?
-
-* Datenbank
+﻿* Datenbank
   * Wie werden die Daten ausgelesen?
   * Wieviel Zeit vergeht bis zu nächsten auslesung?
+
+BA Projektplan:
+
+Meilensteine:
+-Erster Entwurf der verschiedenen Seiten(Handskizze z.B.)
+	-Mobile Device
+	-PC
+	-Farbschema
+	-Welche Daten sollen auf dem ersten Blick sichtbar sein
+
+-Datenbank Entwurf
+-Installieren der neuen HW Komponenten
+-Funktionstest HW Komponenten
+-Implementation Prototyp SW
+-Funktionstest SW
+-Implementation definitiver SW
+-Funktionstest
+-Implementation Datenbank
+-Datenbank Funktionstest
+-
+Anzugebende Dokumente:
+-
+-
+-
+-
+
