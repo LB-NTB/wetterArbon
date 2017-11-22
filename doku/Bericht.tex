@@ -1,4 +1,4 @@
-\documentclass[a4paper,ngerman, 12pt]{report}
+\documentclass[a4paper,ngerman, 11pt]{report}
 
 %% Päambel
 \usepackage[T1]{fontenc}
@@ -7,6 +7,38 @@
 \usepackage{cite}
 \usepackage{xcolor}
 \newcommand\Diskussionspunkt[1]{\textcolor{red}{#1}}
+
+% Grafikpaket laden
+\usepackage{graphicx}
+
+% Quelltext
+\usepackage{listings}
+ \usepackage{color}
+ 
+ \definecolor{middlegray}{rgb}{0.5,0.5,0.5}
+ \definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+ \definecolor{orange}{rgb}{0.8,0.3,0.3}
+ \definecolor{yac}{rgb}{0.6,0.6,0.1}
+ 
+  \lstset{
+   basicstyle=\scriptsize\ttfamily,
+   keywordstyle=\bfseries\ttfamily\color{orange},
+   stringstyle=\color{green}\ttfamily,
+   commentstyle=\color{middlegray}\ttfamily,
+   emph={square}, 
+   emphstyle=\color{blue}\texttt,
+   emph={[2]root,base},
+   emphstyle={[2]\color{yac}\texttt},
+   showstringspaces=false,
+   flexiblecolumns=false,
+   tabsize=2,
+   numbers=left,
+   numberstyle=\tiny,
+   numberblanklines=false,
+   stepnumber=1,
+   numbersep=10pt,
+   xleftmargin=15pt
+ }
 
 
 %%  Variablen
@@ -46,9 +78,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Zusammenfassung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
-Braucht es eine Zusammenfassung?
-\end{abstract}
+%\begin{abstract}
+%Braucht es eine Zusammenfassung?
+
+%\end{abstract}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,6 +93,19 @@ Ziel des Fachmoduls, Aufträge, Vorgehensweise, Vorstellung Wetterstation Arbon
 
 \Diskussionspunkt{Foto Wetterstation}
 
+
+\Diskussionspunkt{Beispiel für eine Bildintegration inkl. Referenz darauf:}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/grafik}
+	\caption{eine Grafik ohne Sinn und Verstand}
+	\label{img:grafik-dummy}
+\end{figure}
+
+Weiterhin wollen wir an dieser Stelle Bezug auf die Grafik
+\ref{img:grafik-dummy} auf Seite \pageref{img:grafik-dummy} nehmen, was uns
+hiermit gelungen sein dürfte. Latex passt die Seitenzahl aber auch die Nummer
+der Grafik automatisch an, wir müssen uns um nichts kümmern.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Hauptteil
@@ -87,9 +134,14 @@ Die Webcam ist 360 Grad drehbar, schwenkbar, verfügt über eine Zoomfunktion un
 
 Die Wetterstation ist auf einem Pfahl ausserhalb des Hafens Arbon montiert. Auf dem Pfahl befindet sich ein kleiner Schaltschrank, jedoch keine Auswertelogik. Sämtliche Daten werden in IP-Pakete verpackt und über eine Glasfaser-Leitung an den Server gesendet.
 
-Die verbauten Komponenten sind in der folgenden Abbildung schematisch dargestellt.
+Die verbauten Komponenten sind in der Grafik \ref{img:HW-Aufbau} schematisch dargestellt.
 
-\Diskussionspunkt{Bild Hardware}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\linewidth]{img/HW-Aufbau}
+	\caption{Hardware-Aufbau der Wetterstation Arbon}
+	\label{img:HW-Aufbau}
+\end{figure}
 
   
 \subsection{Was ist Openfile64?}
@@ -102,6 +154,22 @@ Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applika
 Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet und dargestellt. Die Applikation wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Bei der Übersetzung hat es Fehler gegeben, des Weiteren läuft die Applikation nur mit Flash, welches nicht von allen Geräten unterstützt wird. Um dieses Problem aus der Welt zu schaffen, macht die Seite einen Screenshot der aktuellen Daten beim Aufrufen der Seite. Mit dem Screenshot gibt es aber keine dynamische Seite, d.h. die Anzeigen ändern beispielsweise bei einer Richtungsänderung des Windes die Richtung nicht mit. 
 
 \subsection{Warum wird kein Flash mehr gebraucht?}
+
+\Diskussionspunkt{Test um Programmiercode darzustellen:}
+\begin{lstlisting}
+if (swfobject.hasFlashPlayerVersion("1")) {
+document.write('
+<iframe 
+src="https://www.wetter-arbon.ch/WDL/index.html">
+</iframe>');
+} 
+else {
+document.write('
+<img class="pageImage" 
+src="https://www.wetter-arbon.ch/WDL/WDL.png" alt="Bodensee West" 
+/>');
+}
+\end{lstlisting}
   
 https://www.heise.de/download/blog/Im-Web-surfen-ohne-den-Adobe-Flash-Player-3278307
 Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash.
@@ -195,10 +263,29 @@ Was gehört alles in eine Projektplan. Was ist der Unterschied zwischen Projekt-
 
 \section{Risikoanalyse}
 \input{Risikoanalyse}   
-Risikotabelle mit Wahrscheinlichkeit und Auswirkung gewichtet, Risikomatrix als Übersicht, Themen sind technische Umsetzung, Zusammenarbeit mit Dritten, Termine, Ressourcen, 
+\Diskussionspunkt{Risikotabelle mit Wahrscheinlichkeit und Auswirkung gewichtet, Risikomatrix als Übersicht, Themen sind technische Umsetzung, Zusammenarbeit mit Dritten, Termine, Ressourcen, }
+
+
 
 \section{Dokumentation}
-Versionsverwaltung, Dokumentationskonzept, Tools?
+\Diskussionspunkt{Versionsverwaltung, Dokumentationskonzept, Tools?, Printscreens}
+
+%Allgemein
+Für die Bachelor-Arbeit verwenden wir unterschiedliche Dokumentationswerkzeuge. Bei der Auswahl haben wir darauf geachtet, das die Tools kostenlos nutzbar und für sämtliche Plattformen verfügbar sind (Windows, Mac, iPad, usw.) Weiter war uns wichtig, dass die Tools untereinander kommunizieren können. 
+
+% github / Trello / Toggl
+Sämtliche Artefakte speichern wir auf \textit{github}. Wir haben somit eine automatische Versionierung der Dokumente und können unabhängig voneinander an den Dokumenten arbeiten. Die Planung bzw. Darstellung des Entwicklungsprozesses erledigen wir mir \textit{Trello}. Es ist ein intuitives Tool, welche diverse Integrationsmöglichkeiten mit den anderen Tools bietet. Für die Zeiterfassung verwenden wir \textit{Toggl}, welches mittels Plugin direkt in Trello integriert werden kann.
+
+% Kommunikation nach aussen
+Damit wir keine Besprechungsprotokolle verschicken müssen und dass alle Informationen für alle immer zugänglich sind, haben wir entschieden das Reporting in Form einer öffentlichen Webseite zu erstellen. github bietet mit \textit{GitPages} einen Hosting-Service an, der genau dies ermöglicht. Der Vorteil von GitPages ist, dass wir sämtliche Daten in einem einzigen Ort bzw. Repository vereint haben. Damit wir uns nicht mit Formatierung u.a. herumschlagen müssen und uns auf den Inhalt konzentrieren können, verwenden wir \textit{mkdocs} als Template Engine. Die Webseiten-Einträge können wir dadurch auf simple Art in Form von Markdown-Files erstellen.
+
+% Kommunikation nach innen
+Innerhalb des Teams nutzen wir das Kommunikationstool \textit{Slack}. Dieses ermöglich uns Konversationen als Chat aufzuzeichnen und nach Themen zu gruppieren. Weiter lassen sich Dokumente austauschen. Sämtliche git-Posts werden von Slack automatisch geloggt und können, falls gewünscht, als push-Notification angezeigt werden.
+Das wöchentliche Team-Meeting findet über \textit{Skype} statt, da wir den regelmässigen mündlichen Austausch aus zentralen Punkt erachten.
+
+% Bericht = LaTeX
+Den Bericht werden wir in LaTeX verfassen. Wir haben uns für LaTeX entschieden, da wir uns auf den Inhalt konzentrieren können und das Layout automatisiert ist. Weiters ist LaTeX in der Wissenschaft weit verbreitet. Die Bachelor-Arbeit ist deshalb eine gute Gelegenheit uns in dieses Thema einzuarbeiten.
+
 
 \section{Rechtliche Ansprüche}
 siehe separates Dokument
@@ -208,7 +295,8 @@ siehe separates Dokument
 %%  Schluss
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Schluss}
-Erkenntnisse, Einschätzungen
+\Diskussionspunkt{Erkenntnisse, Einschätzungen}
+
 
 
 
