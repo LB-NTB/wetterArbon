@@ -144,18 +144,31 @@ Die verbauten Komponenten sind in der Grafik \ref{img:HW-Aufbau} schematisch dar
 \end{figure}
 
   
-\subsection{Was ist Openfile64?}
-Openfile64 ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in opfile64 als sogenannte Applikationen behandelt.
+\subsection{Was ist Openfile64Light?}
+Openfile64Light ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Worin unterscheidet sich openfile64Light zu openfile64? Die Light Version des CMS lässt folgende Funktionen nicht zu:
+\begin{itemize}
+\item Mehrsprachig (D/E/F)
+\item Automatische Volltextsuche und Sitemaperstellung
+\item Rollen- und gruppenbasierende Benutzerverwaltung
+\end{itemize}
+
 
 \subsection{Wie und wo werden Applikationen erstellt?}
 Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applikationen zu erstellen. Die gewünschte Applikation, d.h. eine PHP Referenzdatei, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen, müssen im Ordner application werden und in der Datenbank in der Tabelle applications gespeichert werden.
+\Diskussionspunkt{Wo vergibt man den Namen der Applikation?}\\
 
 \subsection{Wetterapplikation Wassersport und Touristik}
-Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet und dargestellt. Die Applikation wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Bei der Übersetzung hat es Fehler gegeben, des Weiteren läuft die Applikation nur mit Flash, welches nicht von allen Geräten unterstützt wird. Um dieses Problem aus der Welt zu schaffen, macht die Seite einen Screenshot der aktuellen Daten beim Aufrufen der Seite. Mit dem Screenshot gibt es aber keine dynamische Seite, d.h. die Anzeigen ändern beispielsweise bei einer Richtungsänderung des Windes die Richtung nicht mit. 
+Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet und von Weather-Display Live dargestellt. Die Applikation Weather-Display Live wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Bei der Übersetzung hat es Fehler gegeben, des Weiteren läuft die Applikation nur mit Flash, welches nicht von allen Geräten unterstützt wird. Um dieses Problem aus der Welt zu schaffen, macht die Seite einen Screenshot der aktuellen Daten beim Aufrufen der Seite. Mit dem Screenshot gibt es aber keine dynamische Seite, d.h. die Anzeigen ändern beispielsweise bei einer Richtungsänderung des Windes die Richtung nicht mit.  
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/grafik}
+	\caption{Datenanzeige wetter-arbon.ch}
+	\label{img:grafik-dummy}
+\end{figure}
 
 \subsection{Warum wird kein Flash mehr gebraucht?}
+Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash. Zum jetzigen Zeitpunkt wird der Entscheid ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Zuerst wird abgefragt ob das object eine Flashplayerversion hat, so ja wird die index.html Seite geöffnet. Ist die if abfrage negativ wird die WDL.png geöffnet.
 
-\Diskussionspunkt{Test um Programmiercode darzustellen:}
 \begin{lstlisting}
 if (swfobject.hasFlashPlayerVersion("1")) {
 document.write('
@@ -170,29 +183,42 @@ src="https://www.wetter-arbon.ch/WDL/WDL.png" alt="Bodensee West"
 />');
 }
 \end{lstlisting}
-  
-https://www.heise.de/download/blog/Im-Web-surfen-ohne-den-Adobe-Flash-Player-3278307
-Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash.
+
+\subsection{Sturmwarnung}
+Die Seite mir der Sturmwarnung gibt es im eigentlichen nicht mehr. Es wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Der Grund dafür ist das die verlinkte Seite, welche zuerst integriert war nicht dem HTTPS sondern dem HTTP standard entspricht. 
 
 \subsection{Welche Komponenten hat die Datenbank?}
 Für die Webseite und die Wetterstation, hat es vier verschiedene Datenbanken. Diese werden in diesem Kapitel einzeln behandelt und erklärt wie Sie zusammenhängen bzw. welche Rolle sie für die Webseite spielen. Die vier Datenbanken heissen:
-\Diskussionspunkt{
 \begin{itemize}  
 \item igwetter meteotmpl
 \item igwetter wettertest
 \item gwetter wp0
 \item gwetter openfile64Light
 \end{itemize}
-}
 
-Die Datenbank igwetter meteotmpl beinhaltet alle relevanten Daten, d.h. von der Temperatur bis zur Windrichtung. In dieser Datenbank sind jedoch keine Daten vorhanden und dient momentan nur als Template.\\
-
-\Diskussionspunkt{Wo vergibt man den Namen der Applikation?}\\
-Die zweite Datenbank welche nicht aktiv ist, heisst igwetter wp0, \Diskussionspunkt{diese wurde zu Beginn für eine Wordpress Webseite benutzt? Stimmt das?} Die dritte Datenbank ist die igwetter wettertest. Diese ist im Gegensatz zu den vorherigen beiden Datenbanken im Gebrauch. In der Tabelle wx data sind die Daten ab dem 25.02.2015 bis zum jetzigen Zeitpunkt gespeichert. Daten zwischen dem 14.07.2012 und 25.02.2015 sind nicht in der Datenbank hinterlegt. Vor diesem Zeitpunkt bis zum 25.02.2005 sind die täglichen Minimum, sowie Maximum Daten in der Tabelle tblgestern gespeichert.\\
+Die Datenbank igwetter meteotmpl beinhaltet alle relevanten Datenpunkte, d.h. von der Temperatur bis zur Windrichtung. In dieser Datenbank sind jedoch keine Daten vorhanden und dient momentan nur als Template.\\
+Die zweite Datenbank welche nicht aktiv ist, heisst igwetter wp0, diese wurde für eine kurze Zeit für eine Wordpress-Seite benutzt.\\
+Die dritte Datenbank ist die igwetter wettertest. Diese ist im Gegensatz zu den vorherigen beiden Datenbanken im Gebrauch. In der Tabelle wx data sind die Daten ab dem 25.02.2015 bis zum jetzigen Zeitpunkt gespeichert. Daten zwischen dem 14.07.2012 und 25.02.2015 sind nicht in der Datenbank hinterlegt. Vor diesem Zeitpunkt bis zum 25.02.2005 sind die täglichen Minimum, sowie Maximum Daten in der Tabelle tblgestern gespeichert.\\
 Anders als bei den vorherigen Datenbanken hat die igwetter opfile64Light Datenbank eine Funktion für die Webseite. In diesem Fall ist die ganze Webseite abhängig von dieser, denn das CMS basiert auf einer Datenbank. Dies wurde im Kapitel Wie und wo werden Applikationen erstellt bereits erläutert. Für die BA, sowie das Fachmodul ist nur die Tabelle applications interessant, denn dort werden die Applikationen unter einem bestimmten Namen abgespeichert und aufgerufen. Die Webseite weiss dann welche Datei sie öffnen muss, damit die Applikation läuft.\\
-\Diskussionspunkt{Was ist mit den Daten zwischen 14.7.2012 und 25.02.2015?}
-\Diskussionspunkt{Wofür sind die .txt Files im Ordner WDL?}
-\Diskussionspunkt{Datenbank: Wie werden die Daten eingelesen? Wie viel Zeit vergeht bis zu nächsten Einlesung?}
+
+
+\subsection{Daten vom 14.7.2012 bis 25.02.2015}
+Die Wetterstation in Arbon musste im Jahr 2012 vom Netz genommen werden, weil sich die technischen Probleme überhäuften. Nachdem sich immer mehr Interessenten meldeten, dass die Wetterstation wieder aufgebaut werden muss, hat man 2015 die Arbeiten wieder aufgenommen um diverse modernisierungen vorzunehmen. Dies ist der Grund warum es zwischen 2012 und 2015 keine Daten der Wetterstation gibt. \cite{Felix:ErweiterteHorizonte}
+
+\subsection{Wofür sind die .txt Files}
+Die Weahter-Display Software speichert alle Daten welche von der Wetterstation kommen in ein .txt File. Das Weather-Display live nimmt die Daten anschliessend direkt aus diesem File um die Anzeigen zu erstellen. Die Daten werden in 4 verschiedenen Textfiles mit unterschiedlichen Funktionen gespeichert.
+\begin{itemize}  
+\item clientraw.txt
+\item clientrawextra.txt
+\item clientrawhour.txt
+\item clientrawdaily.txt
+\end{itemize}
+
+Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Intervall der Aktualisierung dieser Datei wird in der Datei wdlconfig.xml eingestellt. Im Fall von Arbon wird die Datei alle 5 Sekunden aktualisiert.  Hier werden auch die restlichen Parameter bzw. Einheiten in der die Daten gespeichert werden sollen eingestellt. Die clientrawextra.txt enthält die historischen Extremwerte. Die Datei clientrawhour.txt enthält die aufgezeichneten Daten der letzten Stunde im Minutentakt.\cite{WeatherDisplay}
+
+
+\subsection{Wie kommen die Daten in die Datenbank?}
+
   
 
 \section{Problemanalyse}
@@ -212,11 +238,11 @@ Sowohl die Webcam, als auch der Kombi-Wetter-Transmitter funktionieren einwandfr
 
 
 \subsection{Webseite}
-Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. 
+Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Nebst diesen erwähnten Problemen ist es auch nicht mehr möglich um auf der Webseite selber Sturmwarnungen anzuzeigen. Das Problem hierbei ist das die Webseite auf welche verlinkt wurde mit dem HTTP standard erstellt wurde und nicht mit HTTPS.
 \subsection{Datenbank}
-Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Das Problem hierbei ist das auf dem ersten Blick nicht sichtbar ist, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Auch ist unklar was mit den Daten zwischen 14.7.2012 und 25.02.2015 geschehen ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. 
+Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Das Problem hierbei ist das auf dem ersten Blick nicht sichtbar ist, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische" Datenbank abgelegt. 
 
-\Diskussionspunkt{Wo ist die SW für die Wetterdatenverarbeitung zu finden?}
+
 
 \section{SOLL-Zustand}
 \Diskussionspunkt{Lösungsansätze = zu entwickelnde Artefakte, 
@@ -227,7 +253,7 @@ Konzepte}
 Die Webseite soll auf dem neusten Stand der Technik gebracht werden. Konkret heisst dies, der Flash wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. 
 
 \subsection{Datenbank}
-Die Datenbank sollte den Mitglieder der IGWetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Die igwetter wettertest, sollte neu klarer strukturiert werden, in eine Tabelle mit allen Daten, wobei Daten \Diskussionspunkt{,welche 5 Jahre und älter sind} gelöscht werden um unnötigen Speicherplatz nicht zu belasten. Zusätzlich sollte eine Tabelle mit den historischen Daten d.h. \Diskussionspunkt{5 Jahre} und älter mit den Minimalen, Maximalen und den Mittelwert aller aufgezeichneten Werte enthalten. Hierbei sollten auch die schon vorhandenen Daten integriert werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist. \Diskussionspunkt{Die Datenbanken, welche nicht im Gebrauch sind werden gelöscht um eine klare Struktur herzustellen.}
+Die Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Die igwetter wettertest, sollte neu klarer strukturiert werden, in eine Tabelle mit allen Daten, wobei Daten gelöscht werden sollten um unnötigen Speicherplatz nicht zu belasten. Zusätzlich sollte eine Tabelle mit den historischen Daten mit den aufgezeichneten Werten enthalten. Hierbei sollten auch die schon vorhandenen Daten integriert werden. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -249,7 +275,7 @@ V-Modell XT oder KANBAN oder eine Mischung davon, Begründung warum kein Scrum, 
 \section{Projektplan für die Bachelor-Arbeit}
 Hier wäre ein A3-Blatt quer noch cool. Darauf sollten alle Wochen von Start BA bis zur Abgabe sein.
 Alle offiziellen Termine, alle Meilensteine usw.
-Eine Zeile für Meetings (Führungsrythmus)
+Eine Zeile für Meetings (Führungsrhythmus)
 Abhängigkeit der einzelnen Artefakte voneinander (evtl. mit MS-Project arbeiten)
 Was gehört alles in eine Projektplan. Was ist der Unterschied zwischen Projekt- und Terminplan?
 
@@ -276,7 +302,7 @@ Innerhalb des Teams nutzen wir das Kommunikationstool \textit{Slack}. Dieses erm
 Das wöchentliche Team-Meeting findet über \textit{Skype} statt, da wir den regelmässigen mündlichen Austausch aus zentralen Punkt erachten.
 
 % Bericht = LaTeX
-Den Bericht werden wir in LaTeX verfassen. Wir haben uns für LaTeX entschieden, da wir uns auf den Inhalt konzentrieren können und das Layout automatisiert ist. Weiters ist LaTeX in der Wissenschaft weit verbreitet. Die Bachelor-Arbeit ist deshalb eine gute Gelegenheit uns in dieses Thema einzuarbeiten.
+Den Bericht werden wir in LaTeX verfassen. Wir haben uns für LaTeX entschieden, da wir uns auf den Inhalt konzentrieren können und das Layout automatisiert ist. Weiter ist LaTeX in der Wissenschaft weit verbreitet. Die Bachelor-Arbeit ist deshalb eine gute Gelegenheit uns in dieses Thema einzuarbeiten.
 
 
 \section{Rechtliche Ansprüche}
