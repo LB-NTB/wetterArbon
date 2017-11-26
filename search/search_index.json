@@ -287,17 +287,17 @@
         }, 
         {
             "location": "/KW47/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
+            "text": "Wochenreport KW 47\n\n\nZiel\n\n\n\n\nEinlesen ins Thema Kanban\n\n\nEnscheid Vorgehensmodell / Entwicklungsprozess\n\n\nMeeting mit Informatiker der IG Wetterstation\n\n\n\n\nResultat / Erkenntnisse\n\n\nVorgehensmodell\n\n\nIn der IT haben sich \u00fcber die Zeit verschiedene Vorgehensmodell entwickelt. Das heute am beliebtesten ist Scrum. Dieses eignet sich f\u00fcr gr\u00f6ssere Teams und komplexe Projekte. F\u00fcr die BA ist es aber \u00fcberladen und w\u00fcrde zu viel administrativen Aufwand generieren. Ein sequenzielles Vorgehen l\u00e4sst sich viel besser mit den Randbedingungen der NTB (z.B. Fachmodul = Spezifikation; Bachelor-Arbeit = Coding) vereinbaren. Wir haben uns deshalb f\u00fcr das Vorgehensmodell von Royce entschieden.\n\n\nKanban\n\n\nKanban ist ein Prozess, der nach dem Pull-System funktioniert. Es gibt keinen Prjektmanager, der die Aufgaben verteilt, jedes Team-Mitglied entnimmt selbst\u00e4ndig aus dem Vorratstopf eine Aufgabe, sobald die vorherige erleidigt ist. Das erm\u00f6glicht ein effizientes und selbst\u00e4ndigs Arbeiten Zudem bietet das Kanban-Board eine \u00fcbersichtliche Darstellungs des aktuellen Projektfortschritts. Die einfach Handhabung und der kleine Managementaufwand haben dazu gef\u00fchrt, dass wir uns f\u00fcr diesen Entwicklungsprozess entschieden haben.\n\n\nProbleme\n\n\nBibtex, welches wir f\u00fcr die Literaturverweise verwenden, konnte anfangs Verweise auf URL nicht anzeigen. Dies ist unterdessen behoben. Noch offen ist das Problem mit der Gross-/Kleinschreibung bei den Angaben im Literaturverzeichnis.\n\n\nJournal\n\n\n2h Einarbeitung Kanban \n\n3h Entwicklungsprozess und Vorgehensmodell definieren\n\n1h LaTeX Fehlersuche BibTeX\n\n1h Meeting Informatiker Wetterstation Arbon\n\n1h Report erstellen", 
             "title": "KW47"
         }, 
         {
-            "location": "/KW47/#wochenreport-kw-44", 
+            "location": "/KW47/#wochenreport-kw-47", 
             "text": "", 
-            "title": "Wochenreport KW 44"
+            "title": "Wochenreport KW 47"
         }, 
         {
             "location": "/KW47/#ziel", 
-            "text": "", 
+            "text": "Einlesen ins Thema Kanban  Enscheid Vorgehensmodell / Entwicklungsprozess  Meeting mit Informatiker der IG Wetterstation", 
             "title": "Ziel"
         }, 
         {
@@ -306,9 +306,24 @@
             "title": "Resultat / Erkenntnisse"
         }, 
         {
+            "location": "/KW47/#vorgehensmodell", 
+            "text": "In der IT haben sich \u00fcber die Zeit verschiedene Vorgehensmodell entwickelt. Das heute am beliebtesten ist Scrum. Dieses eignet sich f\u00fcr gr\u00f6ssere Teams und komplexe Projekte. F\u00fcr die BA ist es aber \u00fcberladen und w\u00fcrde zu viel administrativen Aufwand generieren. Ein sequenzielles Vorgehen l\u00e4sst sich viel besser mit den Randbedingungen der NTB (z.B. Fachmodul = Spezifikation; Bachelor-Arbeit = Coding) vereinbaren. Wir haben uns deshalb f\u00fcr das Vorgehensmodell von Royce entschieden.", 
+            "title": "Vorgehensmodell"
+        }, 
+        {
+            "location": "/KW47/#kanban", 
+            "text": "Kanban ist ein Prozess, der nach dem Pull-System funktioniert. Es gibt keinen Prjektmanager, der die Aufgaben verteilt, jedes Team-Mitglied entnimmt selbst\u00e4ndig aus dem Vorratstopf eine Aufgabe, sobald die vorherige erleidigt ist. Das erm\u00f6glicht ein effizientes und selbst\u00e4ndigs Arbeiten Zudem bietet das Kanban-Board eine \u00fcbersichtliche Darstellungs des aktuellen Projektfortschritts. Die einfach Handhabung und der kleine Managementaufwand haben dazu gef\u00fchrt, dass wir uns f\u00fcr diesen Entwicklungsprozess entschieden haben.", 
+            "title": "Kanban"
+        }, 
+        {
             "location": "/KW47/#probleme", 
-            "text": "", 
+            "text": "Bibtex, welches wir f\u00fcr die Literaturverweise verwenden, konnte anfangs Verweise auf URL nicht anzeigen. Dies ist unterdessen behoben. Noch offen ist das Problem mit der Gross-/Kleinschreibung bei den Angaben im Literaturverzeichnis.", 
             "title": "Probleme"
+        }, 
+        {
+            "location": "/KW47/#journal", 
+            "text": "2h Einarbeitung Kanban  \n3h Entwicklungsprozess und Vorgehensmodell definieren \n1h LaTeX Fehlersuche BibTeX \n1h Meeting Informatiker Wetterstation Arbon \n1h Report erstellen", 
+            "title": "Journal"
         }, 
         {
             "location": "/KW48/", 
