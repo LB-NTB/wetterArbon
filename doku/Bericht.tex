@@ -8,6 +8,9 @@
 \usepackage{xcolor}
 \newcommand\Diskussionspunkt[1]{\textcolor{red}{#1}}
 
+\usepackage{url}
+\usepackage{hyperref}
+
 % Grafikpaket laden
 \usepackage{graphicx}
 
@@ -73,16 +76,6 @@
 \tableofcontents          
 \clearpage
 \pagenumbering{arabic}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Zusammenfassung
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{abstract}
-%Braucht es eine Zusammenfassung?
-
-%\end{abstract}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,7 +196,7 @@ Anders als bei den vorherigen Datenbanken hat die igwetter opfile64Light Datenba
 
 
 \subsection{Daten vom 14.7.2012 bis 25.02.2015}
-Die Wetterstation in Arbon musste im Jahr 2012 vom Netz genommen werden, weil sich die technischen Probleme überhäuften. Nachdem sich immer mehr Interessenten meldeten, dass die Wetterstation wieder aufgebaut werden muss, hat man 2015 die Arbeiten wieder aufgenommen um diverse modernisierungen vorzunehmen. Dies ist der Grund warum es zwischen 2012 und 2015 keine Daten der Wetterstation gibt. \cite{Felix:ErweiterteHorizonte}
+Die Wetterstation in Arbon musste im Jahr 2012 vom Netz genommen werden, weil sich die technischen Probleme überhäuften. Nachdem sich immer mehr Interessenten meldeten, dass die Wetterstation wieder aufgebaut werden muss, hat man 2015 die Arbeiten wieder aufgenommen um diverse Modernisierungen vorzunehmen. Dies ist der Grund warum es zwischen 2012 und 2015 keine Daten der Wetterstation gibt. ~\cite{Felix:ErweiterteHorizonte}
 
 \subsection{Wofür sind die .txt Files}
 Die Weahter-Display Software speichert alle Daten welche von der Wetterstation kommen in ein .txt File. Das Weather-Display live nimmt die Daten anschliessend direkt aus diesem File um die Anzeigen zu erstellen. Die Daten werden in 4 verschiedenen Textfiles mit unterschiedlichen Funktionen gespeichert.
@@ -233,6 +226,7 @@ Sowohl die Webcam, als auch der Kombi-Wetter-Transmitter funktionieren einwandfr
 \item Hydrostatische Druckmessung
 \item Ultraschall-Distanzmessung
 \item Radar-Distanzmessung
+\item Time-of-light-Distanzmessung
 \end{itemize}
 
 
@@ -268,9 +262,10 @@ Anforderungen nach dem SMART-Prinzip formulieren
 %%  Projektmanagement
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Projektmanagement}
-\section{Entwicklungsprozess}
-V-Modell XT oder KANBAN oder eine Mischung davon, Begründung warum kein Scrum, graphische Darstellung, müssen sämtliche KANBAN-Karten schon bekannt sein?
+Wir wollen das Projektmanagement schlank halten um möglichst viel Zeit in die Entwicklung der Artefakte stecken zu können.
+Dieser Grundgedanke hat uns bei der im Folgenden beschrieben Auswahl der Modelle und Prozesse geleitet.
 
+\input{Entwicklungsprozess}
 
 \section{Projektplan für die Bachelor-Arbeit}
 Hier wäre ein A3-Blatt quer noch cool. Darauf sollten alle Wochen von Start BA bis zur Abgabe sein.

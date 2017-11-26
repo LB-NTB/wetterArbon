@@ -1,0 +1,38 @@
+\section{Vorgehensmodell}
+
+Die Anforderungen an das Vorgehensmodell haben wir folgendermassen definiert:
+
+\begin{itemize}  
+\item wenig administrativer Aufwand, schlank
+\item passend zur Projektgrösse
+\item kompatibel mit den NTB-Vorgaben (Aufteilung Fachmodul, Bachelor-Arbeit)
+\end{itemize}
+
+Schnell merkten wir, dass die heutzutage beliebten agilen Vorgehensmodelle wie XP oder Scrum für uns ein Overkill darstellen und aus mehrerer Hinsicht nicht geeignet sind. Bei der Bachelor-Arbeit sind die Anforderungen im Fachmodul-Bericht definiert und ändern sich während der Bachelor-Arbeit nicht mehr. Die zu bearbeitenden Themen-Blöcke weisen untereinander nur sehr wenige Schnittstellen auf und können dadurch als eigenständige Teilprojekte das Modell durchlaufen. Unser Team besteht zudem nur aus zwei Personen, was den Koordinationsaufwand auf ein minimum reduziert.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/royce-largePrograms}
+	\caption{Vorgehensmodell nach Royce}
+	\label{img:royce-largePrograms}
+\end{figure}
+
+
+Unsere Bedürfnisse deckt das Vorgehensmodell von Royce ~\cite{Royce1970}, welches in Abbildung  \ref{img:royce-largePrograms} dargestellt ist, am besten ab. Es besteht grundsätzlich aus einem sequentiellen Ablauf der Entwicklungsphasen, berücksichtigt dabei aber auch die Notwendigkeit von Rücksprüngen zur vorherigen Phase.
+Die ersten Phasen von der Definition der "System Requirement" bis zu den ersten Gedanken zum Thema "Program Design" behandeln wir im Fachmodul. Der zweite Teil mit der genauen Definition des Programm Designs bis zum Betrieb der Software findet anschliessend während der Bachelor-Arbeitszeit statt.
+
+\section{Entwicklungsprozess}
+
+Den Entwicklungsprozess führen wir mit Kanban. Kanban basiert auf dem Pull-Prinzip d.h. jeder, der im Projekt arbeitet, holt sich selbst einen neuen Arbeitsauftrag, sobald er mit einem fertig ist. Die führt dazu, dass die Arbeiten speditiver abgewickelt werden und spart zudem die Stelle des Projektmanagers, der die Aufgaben verteilt.
+
+\Diskussionspunkt{Bild Kanban-Board}
+
+David Anderson \cite{AndersonDavidJ2011K:eC} hat das System Kanban, welches ursprünglich aus der Industrie kommt, auf die IT angepasst und dadurch das "Virtuelle Kanban System" entwickelt. Die grundlegenden Regeln daraus lauten:
+
+\begin{itemize}  
+\item Jede Karte ist eine Aufgabe
+\item Die Aufgabe soll maximal 8-16h benötigen
+\item Pro Spalte sind die Anzahl Karten limitiert
+\item Eine neue Karte darf erst gezogen werden, wenn die vorherige fertig ist (Multitasking-Vermeidung)
+\end{itemize}
+
