@@ -138,7 +138,7 @@ Die verbauten Komponenten sind in der Grafik \ref{img:HW-Aufbau} schematisch dar
 
   
 \subsection{Was ist Openfile64Light?}
-Openfile64Light ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Worin unterscheidet sich openfile64Light zu openfile64? Die Light Version des CMS lässt folgende Funktionen nicht zu:
+Openfile64Light ist ein CMS der Firma Screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Worin unterscheidet sich openfile64Light zu openfile64? Die Light Version des CMS lässt folgende Funktionen nicht zu:
 \begin{itemize}
 \item Mehrsprachig (D/E/F)
 \item Automatische Volltextsuche und Sitemaperstellung
@@ -147,8 +147,7 @@ Openfile64Light ist ein CMS der Firma screenbox. Mit diesem ist es möglich um m
 
 
 \subsection{Wie und wo werden Applikationen erstellt?}
-Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applikationen zu erstellen. Die gewünschte Applikation, d.h. eine PHP Referenzdatei, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen, müssen im Ordner application werden und in der Datenbank in der Tabelle applications gespeichert werden.
-\Diskussionspunkt{Wo vergibt man den Namen der Applikation?}\\
+Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applikationen zu erstellen. Die gewünschte Applikation, d.h. eine PHP Referenzdatei, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen, müssen im Ordner application werden und in der Datenbank in der Tabelle applications gespeichert werden. Um eigene Applikationen in das CMS einzubinden, muss dies über Screenbox gehen. Diese erstellen dort die Applikation in der Datenbank und vergeben auch die Namen, damit diese auf der Webseite ausgewählt werden kann. Die geschieht gegen einen Unkosten Beitrag von 75 Schweizer Franken.
 
 \subsection{Wetterapplikation Wassersport und Touristik}
 Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet und von Weather-Display Live dargestellt. Die Applikation Weather-Display Live wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Bei der Übersetzung hat es Fehler gegeben, des Weiteren läuft die Applikation nur mit Flash, welches nicht von allen Geräten unterstützt wird. Um dieses Problem aus der Welt zu schaffen, macht die Seite einen Screenshot der aktuellen Daten beim Aufrufen der Seite. Mit dem Screenshot gibt es aber keine dynamische Seite, d.h. die Anzeigen ändern beispielsweise bei einer Richtungsänderung des Windes die Richtung nicht mit.  
@@ -160,7 +159,8 @@ Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet u
 \end{figure}
 
 \subsection{Warum wird kein Flash mehr gebraucht?}
-Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash. Zum jetzigen Zeitpunkt wird der Entscheid ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Zuerst wird abgefragt ob das object eine Flashplayerversion hat, so ja wird die index.html Seite geöffnet. Ist die if abfrage negativ wird die WDL.png geöffnet.
+Zu beginn des Internetzeitalters, war Flash essentiell für dynamische Webseiten. Mit ihm konnten einfach dynamische Inhalte erstellt und administriert werden. Jedoch gab es immer wieder gravierende Sicherheitslücken und Weiterentwicklungen im Bereich Web. Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Nicht zuletzt auch durch ein Kommuniqué von Steve Jobs. In diesem erklärt er warum seine Firma (Apple) nicht auf Flash, sondern HTML5 und Javascript setzt. Einer der Gründe für dieser Entscheidung ist, dass Flash keine open-source Software ist. D.h Adobe kontrolliert das System. Hierbei erwähnt Steve Jobs auch das Apple ein closed-source system ist, sie jedoch an einen offenen Webstandard glauben. Der zweite Grund ist warum Apple sich nicht für Flash entschieden hat ist, dass die Videos bzw. Games seit diesem offenen Brief aus dem Jahr 2009 auch in den neuen Standards, H.264, erhältlich ist. Der dritte Grund, das Apple nicht auf Flash gesetzt hat ist die Sicherheit. Aus Untersuchungen im Jahr 2009 ging hervor, dass die ihre Macs abstürzen. Dies kommt durch die Flashsoftware von Adobe. Dazu kommt, dass Flash auf den mobilen Geräten von Apple nicht sicher lief. Mehrmals wurde Adobe gefragt um eine laufende Version zu erstellen, dies hat Adobe jedoch nicht geschafft. Aus diesen Gründen hat Apple, welcher einer der Vorreiter von Smartphones war, sich entschieden um Flash nicht zu benutzen. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. \\
+Der wichtigste Grund ist das Adobe ab 2020 Flash nicht mehr weiterentwickelt und keine Updates mehr herausgeben wird. Dies aufgrund der oben genannten Tatsachen und das zur heutigen Zeit vielmals Flash umgangen wird und andere Lösungen gebraucht werden. Aufgrund von dies wird ab 2020 auch kein Browser mehr das Plugin zulassen und Seiten welche Flashinhalte benutzen sind nicht mehr Vollständig verfügbar. Somit ist auch die Wetter-Arbon Seite von dieser Tatsache betroffen. Um trotzdem erreichbar zu sein auf Endgeräte ohne Flash wird in der Wassersport.php bzw. Touristik.php Datei der Entscheid gefällt ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Zuerst wird abgefragt ob das object eine Flashplayerversion hat, so ja wird die index.html Seite geöffnet. Ist die if abfrage negativ wird die WDL.png geöffnet.
 
 \begin{lstlisting}
 if (swfobject.hasFlashPlayerVersion("1")) {
@@ -176,6 +176,13 @@ src="https://www.wetter-arbon.ch/WDL/WDL.png" alt="Bodensee West"
 />');
 }
 \end{lstlisting}
+
+\subsection{Mobile Webseite}
+Zusätzlich zur Desktop-Seite, auf welcher alle Informationen verfügbar sind, gibt es eine mobile abgespecktere Version der Wetterstation, diese ist erreichbar unter m.wetter-arbon.ch. Auf dieser werden die zwei aktuellsten Bilder der Touristikseite, bzw. der Wassersportseite auf einer Seite dargestellt. Zusätzlich gibt es einen Link welche die Bilder der Webcam, sowie deren Steuerungseinheit darstellt.
+\Diskussionspunkt{BILD DER MOBILEN SEITE}
+
+\Diskussionspunkt{Welche unterschiede gibt es zur Desktop-Seite}
+
 
 \subsection{Sturmwarnung}
 Die Seite mir der Sturmwarnung gibt es im eigentlichen nicht mehr. Es wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Der Grund dafür ist das die verlinkte Seite, welche zuerst integriert war nicht dem HTTPS sondern dem HTTP standard entspricht. 
@@ -211,6 +218,7 @@ Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Inte
 
 
 \subsection{Wie kommen die Daten in die Datenbank?}
+Die Daten, welche von der Wetterstation an einen Server in der Uni Liechstein gesendet werden, werden über die Software Weather-Display direkt in die Datenbank ig wettertest Tabelle wxdata geschrieben. Die Daten werden hier im Minutentakt eingelesen.
 
   
 
