@@ -149,7 +149,7 @@ Die verbauten Komponenten sind in der Grafik \ref{img:HW-Aufbau} schematisch dar
 
   
 \subsection{Was ist Openfile64Light?}
-Openfile64Light ist ein CMS der Firma screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Worin unterscheidet sich openfile64Light zu openfile64? Die Light Version des CMS lässt folgende Funktionen nicht zu:
+Openfile64Light ist ein CMS der Firma Screenbox. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden. Der Nachteil des CMS ist, dass auf die Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Worin unterscheidet sich openfile64Light zu openfile64? Die Light Version des CMS lässt folgende Funktionen nicht zu:
 \begin{itemize}
 \item Mehrsprachig (D/E/F)
 \item Automatische Volltextsuche und Sitemaperstellung
@@ -158,8 +158,7 @@ Openfile64Light ist ein CMS der Firma screenbox. Mit diesem ist es möglich um m
 
 
 \subsection{Wie und wo werden Applikationen erstellt?}
-Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applikationen zu erstellen. Die gewünschte Applikation, d.h. eine PHP Referenzdatei, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen, müssen im Ordner application werden und in der Datenbank in der Tabelle applications gespeichert werden.
-\Diskussionspunkt{Wo vergibt man den Namen der Applikation?}\\
+Eine Möglichkeit um eigene Änderungen zu tätigen ist, eine sogenannte Applikationen zu erstellen. Die gewünschte Applikation, d.h. eine PHP Referenzdatei, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen, müssen im Ordner application werden und in der Datenbank in der Tabelle applications gespeichert werden. Um eigene Applikationen in das CMS einzubinden, muss dies über Screenbox gehen. Diese erstellen dort die Applikation in der Datenbank und vergeben auch die Namen, damit diese auf der Webseite ausgewählt werden kann. Die geschieht gegen einen Unkosten Beitrag von 75 Schweizer Franken.
 
 \subsection{Wetterapplikation Wassersport und Touristik}
 Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet und von Weather-Display Live dargestellt. Die Applikation Weather-Display Live wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Bei der Übersetzung hat es Fehler gegeben, des Weiteren läuft die Applikation nur mit Flash, welches nicht von allen Geräten unterstützt wird. Um dieses Problem aus der Welt zu schaffen, macht die Seite einen Screenshot der aktuellen Daten beim Aufrufen der Seite. Mit dem Screenshot gibt es aber keine dynamische Seite, d.h. die Anzeigen ändern beispielsweise bei einer Richtungsänderung des Windes die Richtung nicht mit.  
@@ -171,7 +170,8 @@ Die Wetterdaten der Wetterstation Arbon werden von Weather-Display ausgewertet u
 \end{figure}
 
 \subsection{Warum wird kein Flash mehr gebraucht?}
-Flash wies in der Vergangenheit vielmals Sicherheitslücken auf, dies ist einer der Gründe warum Flash immer unbeliebter wird. Weiter werden von den Mobilen Devices kein Flash unterstützt, Android unterstütze zu Beginn noch Flash, heutzutage wird sie aber von Adobe nicht mehr weiterentwickelt und empfohlen. Ein weiterer Grund das Flash nicht mehr unterstützt wird ist, das neue Web-Techniken entwickelt wurden wie HTML5, JavaScript und CSS mit denen sich Multimediainhalte auch bestens abspielen lassen und dazu noch sicherer sind als Flash. Zum jetzigen Zeitpunkt wird der Entscheid ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Zuerst wird abgefragt ob das object eine Flashplayerversion hat, so ja wird die index.html Seite geöffnet. Ist die if abfrage negativ wird die WDL.png geöffnet.
+Zu beginn des Internetzeitalters, war Flash essentiell für dynamische Webseiten. Mit ihm konnten einfach dynamische Inhalte erstellt und administriert werden. Jedoch gab es immer wieder gravierende Sicherheitslücken und Weiterentwicklungen im Bereich Web. Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Nicht zuletzt auch durch ein Kommuniqué von Steve Jobs. In diesem erklärt er warum seine Firma (Apple) nicht auf Flash, sondern HTML5 und Javascript setzt. Einer der Gründe für dieser Entscheidung ist, dass Flash keine open-source Software ist. D.h Adobe kontrolliert das System. Hierbei erwähnt Steve Jobs auch das Apple ein closed-source system ist, sie jedoch an einen offenen Webstandard glauben. Der zweite Grund ist warum Apple sich nicht für Flash entschieden hat ist, dass die Videos bzw. Games seit diesem offenen Brief aus dem Jahr 2009 auch in den neuen Standards, H.264, erhältlich ist. Der dritte Grund, das Apple nicht auf Flash gesetzt hat ist die Sicherheit. Aus Untersuchungen im Jahr 2009 ging hervor, dass die ihre Macs abstürzen. Dies kommt durch die Flashsoftware von Adobe. Dazu kommt, dass Flash auf den mobilen Geräten von Apple nicht sicher lief. Mehrmals wurde Adobe gefragt um eine laufende Version zu erstellen, dies hat Adobe jedoch nicht geschafft. Aus diesen Gründen hat Apple, welcher einer der Vorreiter von Smartphones war, sich entschieden um Flash nicht zu benutzen. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. \cite{Apple:ThoughtsOnFlash} \\
+Der wichtigste Grund ist das Adobe ab 2020 Flash nicht mehr weiterentwickelt und keine Updates mehr herausgeben wird. Dies aufgrund der oben genannten Tatsachen und das zur heutigen Zeit vielmals Flash umgangen wird und andere Lösungen gebraucht werden. Aufgrund von dies wird ab 2020 auch kein Browser mehr das Plugin zulassen und Seiten welche Flashinhalte benutzen sind nicht mehr Vollständig verfügbar. Somit ist auch die Wetter-Arbon Seite von dieser Tatsache betroffen. Um trotzdem erreichbar zu sein auf Endgeräte ohne Flash wird in der Wassersport.php bzw. Touristik.php Datei der Entscheid gefällt ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Zuerst wird abgefragt ob das object eine Flashplayerversion hat, so ja wird die index.html Seite geöffnet. Ist die if abfrage negativ wird die WDL.png geöffnet. \cite{Adobe:FlashTheFutureofInteractiveContent}
 
 \begin{lstlisting}
 if (swfobject.hasFlashPlayerVersion("1")) {
@@ -188,8 +188,24 @@ src="https://www.wetter-arbon.ch/WDL/WDL.png" alt="Bodensee West"
 }
 \end{lstlisting}
 
+\subsection{Mobile Webseite}
+Zusätzlich zur Desktop-Seite, auf welcher alle Informationen verfügbar sind, gibt es eine mobile abgespecktere Version der Wetterstation, siehe \ref{img:mobilewebseite} auf Seite \pageref{img:mobilewebseite}, diese ist erreichbar unter m.wetter-arbon.ch. Auf dieser werden die zwei aktuellsten Bilder der Touristikseite, bzw. der Wassersportseite auf einer Seite dargestellt. Zusätzlich gibt es einen Link welche die Bilder der Webcam, sowie deren Steuerungseinheit darstellt.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/mobile_webseite}
+	\caption{Datenanzeige m.wetter-arbon.ch}
+	\label{img:mobilewebseite}
+\end{figure}
+
+
 \subsection{Sturmwarnung}
-Die Seite mir der Sturmwarnung gibt es im eigentlichen nicht mehr. Es wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Der Grund dafür ist das die verlinkte Seite, welche zuerst integriert war nicht dem HTTPS sondern dem HTTP standard entspricht. 
+Die Seite mir der Sturmwarnung, siehe \ref{img:sturmwarnung} auf Seite \pageref{img:sturmwarnung} gibt es im eigentlichen nicht mehr, dies wurde beginn November umgestellt aus Sicherheitsgründen, welche in der Problemanalyse erläutert werden. Zum jetzigen Zeitpunkt wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Die Daten dieser Seite werden mit dem deutschen Wetterdienst in Stuttgart sowie Meteo Schweiz erstellt und dienen auf der Webseite nur als Information. Es sollte vor Ort beachtet werden ob die Warnlampen eingeschalten sind. Zu beachten ist hierbei, dass die Sturmwarnungen Bürozeiten haben. D.h. konkret vom 1. April bis 31 Oktober zwischen 6 und 22 Uhr und vom 1. November bis 31. März zwischen 7 und 20 Uhr. Der deutsche Wetterdienst und Meteo Schweiz unterscheiden zwei verschiedene Kategorien. Zum einen starke Windböen zwischen 25 und 33 Knoten, dies wird 40 Blitze pro Minute an den Leuchten signalisiert. Zum anderen Sturmböen von 34 und mehr Knoten, welche mit 90 Blitze pro Minute signalisiert werden. Zusätzlich zu den beiden Kategorien wird der Bodensee in 3 verschiedene Zonen unterteilt, West, Mitte und Ost, wobei Arbon in zur Zone Ost gehört. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/sturmwarnung}
+	\caption{Sturmwarnung vom Kanton Thurgau}
+	\label{img:Sturmwarnung}
+\end{figure}
 
 \subsection{Welche Komponenten hat die Datenbank?}
 Für die Webseite und die Wetterstation, hat es vier verschiedene Datenbanken. Diese werden in diesem Kapitel einzeln behandelt und erklärt wie Sie zusammenhängen bzw. welche Rolle sie für die Webseite spielen. Die vier Datenbanken heissen:
@@ -222,8 +238,71 @@ Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Inte
 
 
 \subsection{Wie kommen die Daten in die Datenbank?}
+Die Daten, welche von der Wetterstation an einen Server in der Uni Liechstein gesendet werden, werden über die Software Weather-Display direkt in die Datenbank ig wettertest Tabelle wxdata geschrieben. Die Daten werden hier im Minutentakt eingelesen.
 
-  
+\subsection{Webcam}
+Zur Wetterstation Arbon gehört auch eine Webcam der Marke Axis. Diese ist auch wieder über ein Applikationsplugin in die Webseite integriert. Auf dieser können per schort links sechs verschiedene Positionen angefahren werden:
+\begin{itemize}  
+\item Home
+\item See Nord
+\item Schloss
+\item Hafeneinfahrt
+\item Horn
+\item Seerettung
+\end{itemize}
+ In der Betriebseigenen Software lassen sich viele Parameter ändern bzw. Beschränken. Sowie die Vergrösserung. Diese ist jedoch aus  Datenschutzgründen die 4-fache Vergrösserung limitiert, möglich wäre eine 216-fache Vergrösserung. Neben den voreingestellten Positionen, kann die Kamera auch frei Positioniert werden. Dies freie Positionierung erfolgt über Pfeile, sowie die Plus und Minus am Bildrand, jenachdem welcher Button geklickt wird, sendet die Webseite das Kommando an die Webcam. Dies geschieht mittels Javascript, wie man dem folgenden Code entnehmen kann.
+ 
+\begin{lstlisting}
+ <div class="container webcam" id="webcam_585">
+	<div class="up"></div>
+	<div class="left"></div>
+	<div class="right"></div>
+	<img class="pageImage" src="https://webcam.wetter-arbon.ch/mjpg/video.mjpg" alt="" />
+	<div class="down"></div>
+	<div class="zoomOut"></div>
+	<div class="zoomIn"></div>
+	<span class="home">Home</span>
+	<span class="SeeNord">See Nord</span>
+	<span class="Schloss">Schloss</span>
+	<span class="Hafeneinfahrt">Hafeneinfahrt</span>
+	<span class="Horn">Horn</span>
+	<span class="Seerettung">Seerettung</span>
+</div>
+<script type="text/javascript">
+	function changeWebCam(command) {
+		var urlAddition;
+		
+		switch (command) {
+			case 'up':
+			case 'down':
+			case 'left':
+			case 'right':
+			case 'home':
+				urlAddition = 'move=' + command;
+				break;
+				
+			case 'zoomIn':
+				urlAddition = 'rzoom=2500';
+				break;
+				
+			case 'zoomOut':
+				urlAddition = 'rzoom=-2500';
+				break;
+				
+			case 'SeeNord':
+			case 'Schloss':
+			case 'Hafeneinfahrt':
+			case 'Horn':
+			case 'Seerettung':
+				urlAddition = 'gotoserverpresetname=' + command;
+				break;
+				
+		}
+		
+		console.log('changeWebCam');
+		$.get('https://webcam.wetter-arbon.ch/axis-cgi/com/ptz.cgi?camera=1&' + urlAddition);
+	}
+\end{lstlisting}
 
 \section{Problemanalyse}
 \Diskussionspunkt{Beschreibung, 
@@ -240,14 +319,17 @@ Sowohl die Webcam, als auch der Kombi-Wetter-Transmitter funktionieren einwandfr
 \item Time-of-light-Distanzmessung
 \end{itemize}
 
-
-
 \subsection{Webseite}
-Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Nebst diesen erwähnten Problemen ist es auch nicht mehr möglich um auf der Webseite selber Sturmwarnungen anzuzeigen. Das Problem hierbei ist das die Webseite auf welche verlinkt wurde mit dem HTTP standard erstellt wurde und nicht mit HTTPS.
+Die Webseite der IG Wetterstation Arbon, ist bei auf den Seiten Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik. Es wird Flash benutzt, welcher heutzutage schon fast verpönt ist. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr unterstützen und die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung ist. Weiter fällt bei der Begutachtung der Webseite das es einige Schreibfehler bzw. Übersetzungsfehler gibt, welche die Webseite auch nicht in einem besseren Licht da stehen lässt. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Ein weiteres Problem der Webseite sind die die Anzeigen auf der Touristik bzw. Wassersport Seite. Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind sehr unübersichtlich. Zusätzlich zur Unübersichtlichkeit wechselt der Graph automatisch die Skalierung, je nach Windstärke, welches ein direktes ablesen zusätzlich erschwert. 
+
 \subsection{Datenbank}
-Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Das Problem hierbei ist das auf dem ersten Blick nicht sichtbar ist, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische" Datenbank abgelegt. 
+Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Das Problem hierbei ist das auf dem ersten Blick nicht sichtbar ist, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische" Datenbank abgelegt.
 
+\subsection{Webcam}
+Die Limitierung des Zooms der Webcam sollte möglichst dynamisch sein. Im jetzigen Zustand ist es nur möglich überall den gleichen Zoomfaktor zu benutzen, obwohl dies nicht notwendig wäre. Beispielsweise könnte der Zoomfaktor auf den See hinaus um einiges grösser sein als auf die umliegenden Häuser. Das Problem hierbei ist jedoch, dass sich dies nicht in der angebotenen Software der Webcam umsetzen lässt und somit andere Möglichkeiten evaluiert werden müssen.
 
+\subsection{Sturmwarnung}
+Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrowser stellen die Unterstützung dieses Standards langsam aber sicher ein und werden dann nur noch HTTPS unterstützen\cite{Mozilla:DeprecatingNon-SecureHTTP}. Deswegen ist die Sturmwarnung nur über einen Link aufrufbar. Des Weiteren wurde öfters der Wunsch nach einer SMS-Benachrichtigung geäussert, dies ist momentan nicht realisiert und soll auch teil unserer BA sein, ein möglicher Anbieter kann hier clickatell oder Swisscom sein. 
 
 \section{SOLL-Zustand}
 \Diskussionspunkt{Lösungsansätze = zu entwickelnde Artefakte, 
@@ -255,10 +337,14 @@ Resultat aus Literaturrecherche,
 Konzepte}
 
 \subsection{Webseite}
-Die Webseite soll auf dem neusten Stand der Technik gebracht werden. Konkret heisst dies, der Flash wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. 
+Die Webseite soll auf dem neusten Stand der Technik gebracht werden. Konkret heisst dies, der Flash wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist.
+
 
 \subsection{Datenbank}
 Die Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Die igwetter wettertest, sollte neu klarer strukturiert werden, in eine Tabelle mit allen Daten, wobei Daten gelöscht werden sollten um unnötigen Speicherplatz nicht zu belasten. Zusätzlich sollte eine Tabelle mit den historischen Daten mit den aufgezeichneten Werten enthalten. Hierbei sollten auch die schon vorhandenen Daten integriert werden. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
+
+\subsection{Sturmwarnung}
+Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine SMS-Benachrichtigung zu registrieren. Hierbei soll auch die Möglichkeit gegeben werden um selber einen Sollwert der Windstärke einzustellen um ab dieser Stärke eine Benachrichtugung zu bekommen. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
