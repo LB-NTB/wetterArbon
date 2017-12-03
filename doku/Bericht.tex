@@ -1,4 +1,4 @@
-\documentclass[a4paper,ngerman, 11pt]{report}
+\documentclass[a4paper,ngerman, 11pt, pagesize]{report}
 
 %% Päambel
 \usepackage[T1]{fontenc}
@@ -13,6 +13,17 @@
 
 % Grafikpaket laden
 \usepackage{graphicx}
+
+% Tabellen
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% pdf einbinden (A3)
+\usepackage{nextpage}
+\usepackage{afterpage}
+\usepackage{pdfpages} 
+\usepackage{typearea}
+\usepackage{pdfpages} 
 
 % Quelltext
 \usepackage{listings}
@@ -253,8 +264,6 @@ Die Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick kla
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Spezifikation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Spezifikation / Pflichtenheft}
-Anforderungen nach dem SMART-Prinzip formulieren
 \input{Spezifikation}   
 
 
@@ -268,18 +277,19 @@ Dieser Grundgedanke hat uns bei der im Folgenden beschrieben Auswahl der Modelle
 \input{Entwicklungsprozess}
 
 \section{Projektplan für die Bachelor-Arbeit}
-Hier wäre ein A3-Blatt quer noch cool. Darauf sollten alle Wochen von Start BA bis zur Abgabe sein.
+\Diskussionspunkt{Hier wäre ein A3-Blatt quer noch cool. Darauf sollten alle Wochen von Start BA bis zur Abgabe sein.
 Alle offiziellen Termine, alle Meilensteine usw.
 Eine Zeile für Meetings (Führungsrhythmus)
 Abhängigkeit der einzelnen Artefakte voneinander (evtl. mit MS-Project arbeiten)
-Was gehört alles in eine Projektplan. Was ist der Unterschied zwischen Projekt- und Terminplan?
+Was gehört alles in eine Projektplan. Was ist der Unterschied zwischen Projekt- und Terminplan?}
 
+
+% Risiko
 \section{Risikoanalyse}
 \input{Risikoanalyse}   
-\Diskussionspunkt{Risikotabelle mit Wahrscheinlichkeit und Auswirkung gewichtet, Risikomatrix als Übersicht, Themen sind technische Umsetzung, Zusammenarbeit mit Dritten, Termine, Ressourcen, }
 
 
-
+% Dokumentation
 \section{Dokumentation}
 \Diskussionspunkt{Versionsverwaltung, Dokumentationskonzept, Tools?, Printscreens}
 

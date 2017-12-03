@@ -1,8 +1,63 @@
+\chapter{Spezifikation / Pflichtenheft}
+
+Anforderungen nach dem SMART-Prinzip formulieren:
+
+\begin{itemize}  
+\item S: Spezifisch 
+\item M: Messbar
+\item A: Akzeptiert
+\item R: Realistisch
+\item T: Terminierbar
+\end{itemize}
+
+
+\section{User Interface}
+\Diskussionspunkt{Responsive Design, ...}
+
+\section{Datenbank}
+\Diskussionspunkt{alle Daten in Datenbank erfassen (Wassertemperatur, Pegel), Webseite um Abfragen zu tätigen, Daten nach einem Jahr verringern}
+
+\section{Sensoren}
+\Diskussionspunkt{Randbedingungen, Kosten, Genauigkeit, Pegelsensor}
+
+
+\Diskussionspunkt{Test-Tabelle:}
+\begin{table}[]
+%\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ID      & \multicolumn{3}{l|}{Titel der Anforderung}            &   Typ\\ \hline
+1        & \multicolumn{3}{l|}{Responsive Design}            &  FA \\ \hline
+\multicolumn{5}{|l|}{blabla Beschreibung}                         \\ \hline
+\multicolumn{5}{|l|}{blabal Test}                         \\ \hline
+\multicolumn{2}{|l|}{MUSS} & \multicolumn{3}{l|}{Reserve} \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+\Diskussionspunkt{https://www.tablesgenerator.com}
+
+
+\section{Vorhersage}
+\Diskussionspunkt{...}
+
+\section{Webcam}
+\Diskussionspunkt{Warteschlange, evtl. sektorweise Zoombeschränung}
+
+
 \section{Nutzeranalyse}
+
 Welches sind die Nutzer und was sind deren Bedürfnisse
 
+
 \section{Funktionale Anforderungen}
+\Diskussionspunkt{Daten, Funktionen, Verhalten, Fehlerreaktionen}
+
 \begin{usecase}
+
   \addheading{Nummer}{Beschreibung} 
   \addrow{/FA10/}{Temperaturanzeige in Grad und Fahrenheit}
   \addrow{/FA20/}{Windgeschwindigkeitsanzeige in Knoten, Km/h, m/s, mph, Bft  }
@@ -13,6 +68,8 @@ Welches sind die Nutzer und was sind deren Bedürfnisse
 
 
 \section{Nicht-Funktionale Anforderungen}
+\Diskussionspunkt{Leistungsanforderungen, Qualität, Randbedingungen}
+
 \begin{usecase}
   \addheading{Nummer}{Beschreibung} 
   \addrow{/FA10/}{Webseite soll im responsive Design erstellt sein}
