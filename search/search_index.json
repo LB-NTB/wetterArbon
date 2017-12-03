@@ -337,17 +337,17 @@
         },
         {
             "location": "/KW48/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "text": "Wochenreport KW 48\n\n\nZiel\n\n\n\n\nAnalyse der (mobilen) Webseite\n\n\nWebcam Software analysiert\n\n\nErste evaluierungen SMS alarmierung\n\n\nLiteraturrecherche D3\n\n\n\n\nResultat / Erkenntnisse\n\n\nAnalyse (mobile) Webseite\n\n\nDie mobile Webseite wurde ebenfalls analysiert, die Erkentnisse daraus wurden in den Bericht niedergeschrieben. Die Punkte welche letzte Woche im zweier Gespr\u00e4ch besprochen wurden sind jetzt abgekl\u00e4rt. D.h. die Sturmwarnung, die mobile Webseite und die Wetteranzeigen sind jetzt auch in den Bericht aufgenommen.\n\n\nWebcam Software analysiert\n\n\nDie Software der Webcam wurde analysiert, hierbei wurde vorallem darauf geachtet wie die Einstellungen f\u00fcr die k\u00fcnftige Webseite gemacht werden k\u00f6nnten. Momentan wird die Webcam per Jvascript gesteuert, es w\u00e4re denkbar dies weiter auszuf\u00fchren in der BA.\n\n\nErste evaluierungen SMS alarmierung\n\n\nZur SMS benachrichtigung gibt es viele verschiedene M\u00f6glichkeiten. Es wurden erstmal ein !uberblick geschaffen was es alles gibt und wie man es dann umsetzen k\u00f6nnte.\n\n\nLieteraturrecherche D3\n\n\nEs wurden bis jetzt erste Beispiele angeschaut, bzw. analysiert wie D3 in etwa aufgebaut ist und ob eine Wetteranzeige hiermit m\u00f6glich w\u00e4re. Verschiedene Beispiele best\u00e4tigten dies.\n\n\nProbleme\n\n\nJournal\n\n\n3h Analyse der (mobilen) Webseite\n2h Analyse Webcam Software\n2h Evaluierung SMS alarmierung\n1.5h Literaturrecherche D3",
             "title": "KW48"
         },
         {
-            "location": "/KW48/#wochenreport-kw-44",
+            "location": "/KW48/#wochenreport-kw-48",
             "text": "",
-            "title": "Wochenreport KW 44"
+            "title": "Wochenreport KW 48"
         },
         {
             "location": "/KW48/#ziel",
-            "text": "",
+            "text": "Analyse der (mobilen) Webseite  Webcam Software analysiert  Erste evaluierungen SMS alarmierung  Literaturrecherche D3",
             "title": "Ziel"
         },
         {
@@ -356,9 +356,34 @@
             "title": "Resultat / Erkenntnisse"
         },
         {
+            "location": "/KW48/#analyse-mobile-webseite",
+            "text": "Die mobile Webseite wurde ebenfalls analysiert, die Erkentnisse daraus wurden in den Bericht niedergeschrieben. Die Punkte welche letzte Woche im zweier Gespr\u00e4ch besprochen wurden sind jetzt abgekl\u00e4rt. D.h. die Sturmwarnung, die mobile Webseite und die Wetteranzeigen sind jetzt auch in den Bericht aufgenommen.",
+            "title": "Analyse (mobile) Webseite"
+        },
+        {
+            "location": "/KW48/#webcam-software-analysiert",
+            "text": "Die Software der Webcam wurde analysiert, hierbei wurde vorallem darauf geachtet wie die Einstellungen f\u00fcr die k\u00fcnftige Webseite gemacht werden k\u00f6nnten. Momentan wird die Webcam per Jvascript gesteuert, es w\u00e4re denkbar dies weiter auszuf\u00fchren in der BA.",
+            "title": "Webcam Software analysiert"
+        },
+        {
+            "location": "/KW48/#erste-evaluierungen-sms-alarmierung",
+            "text": "Zur SMS benachrichtigung gibt es viele verschiedene M\u00f6glichkeiten. Es wurden erstmal ein !uberblick geschaffen was es alles gibt und wie man es dann umsetzen k\u00f6nnte.",
+            "title": "Erste evaluierungen SMS alarmierung"
+        },
+        {
+            "location": "/KW48/#lieteraturrecherche-d3",
+            "text": "Es wurden bis jetzt erste Beispiele angeschaut, bzw. analysiert wie D3 in etwa aufgebaut ist und ob eine Wetteranzeige hiermit m\u00f6glich w\u00e4re. Verschiedene Beispiele best\u00e4tigten dies.",
+            "title": "Lieteraturrecherche D3"
+        },
+        {
             "location": "/KW48/#probleme",
             "text": "",
             "title": "Probleme"
+        },
+        {
+            "location": "/KW48/#journal",
+            "text": "3h Analyse der (mobilen) Webseite\n2h Analyse Webcam Software\n2h Evaluierung SMS alarmierung\n1.5h Literaturrecherche D3",
+            "title": "Journal"
         },
         {
             "location": "/KW49/",
