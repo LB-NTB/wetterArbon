@@ -56,6 +56,8 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
 * Besprechung definitiver FM Bericht
   Termin 21.12.17, 18:00 bei Ulrich zuhause
 
-##Meeting vom 23.11.2017
+##Meeting vom 07.12.2017
 
 ###Traktanden
+* Feedback Bericht
+*
