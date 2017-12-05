@@ -329,7 +329,7 @@ Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch z
 Die Limitierung des Zooms der Webcam sollte möglichst dynamisch sein. Im jetzigen Zustand ist es nur möglich überall den gleichen Zoomfaktor zu benutzen, obwohl dies nicht notwendig wäre. Beispielsweise könnte der Zoomfaktor auf den See hinaus um einiges grösser sein als auf die umliegenden Häuser.
 
 \subsection{Sturmwarnung}
-Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrowser stellen die Unterstützung dieses Standards langsam aber sicher ein und werden dann nur noch HTTPS unterstützen\cite{Mozilla:DeprecatingNon-SecureHTTP}. Deswegen ist die Sturmwarnung nur über einen Link aufrufbar. Des Weiteren wurde öfters der Wunsch nach einer SMS-Benachrichtigung geäussert, dies ist momentan nicht realisiert und soll auch teil unserer BA sein, ein möglicher Anbieter kann hier clickatell oder Swisscom sein. 
+Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrowser stellen die Unterstützung dieses Standards langsam aber sicher ein und werden dann nur noch HTTPS unterstützen\cite{Mozilla:DeprecatingNon-SecureHTTP}. Deswegen ist die Sturmwarnung nur über einen Link aufrufbar. Des Weiteren wurde öfters der Wunsch nach einer SMS-Benachrichtigung geäussert, dies ist momentan nicht realisiert und soll auch teil unserer BA sein. 
 
 \section{SOLL-Zustand}
 \Diskussionspunkt{Lösungsansätze = zu entwickelnde Artefakte, 
@@ -344,10 +344,10 @@ Die Webseite soll auf dem neusten Stand der Technik gebracht werden. Konkret hei
 Die Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Die igwetter wettertest, sollte neu klarer strukturiert werden, in eine Tabelle mit allen Daten, wobei Daten gelöscht werden sollten um unnötigen Speicherplatz nicht zu belasten. Zusätzlich sollte eine Tabelle mit den historischen Daten mit den aufgezeichneten Werten enthalten. Hierbei sollten auch die schon vorhandenen Daten integriert werden. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
 
 \subsection{Sturmwarnung}
-Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine SMS-Benachrichtigung zu registrieren. Hierbei soll auch die Möglichkeit gegeben werden um selber einen Sollwert der Windstärke einzustellen um ab dieser Stärke eine Benachrichtugung zu bekommen.
+Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine SMS-Benachrichtigung zu registrieren. Hierbei soll auch die Möglichkeit gegeben werden um selber einen Sollwert der Windstärke einzustellen um ab dieser Stärke eine Benachrichtigung zu bekommen. Für die Benachrichtigung gibt es verschiedenen Möglichkeiten. Eine der Möglichkeiten ist ein Dienst namens clickatell, ein weiterer wäre ein Dienst von Swisscom. Des weiteren gibt es eine API um 
 
 \subsection{Webcam}
-Der Zoom soll auf gewissen Positionen, vorallem auf den See hinaus in vollem Umfang benutzt werden können. Die Position der Kamera kann mit einer einfachen HTTP GET anfrage aufgerufen werden. Mit der Position der Kamera weiss man in welche Richtung die Kamera steht. D.h. so kann mittels Javascript der Zoom in Richtung Arbon beschränkt werden und auf den See hinaus kann diese Beschränkung aufgehoben werden.
+Der Zoom soll auf gewissen Positionen, vor allem auf den See hinaus in vollem Umfang benutzt werden können. Die Position der Kamera kann mit einer einfachen HTTP GET anfrage aufgerufen werden. Mit der Position der Kamera weiss man in welche Richtung die Kamera steht. D.h. so kann mittels Javascript der Zoom in Richtung Arbon beschränkt werden und auf den See hinaus kann diese Beschränkung aufgehoben werden.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Spezifikation
