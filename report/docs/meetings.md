@@ -59,5 +59,7 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
 ##Meeting vom 07.12.2017
 
 ###Traktanden
+* Feedback Planung Fachmodul
 * Feedback Bericht
-*
+* Fragen Ladina zu LaTeX
+* Fragerunde
