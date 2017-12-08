@@ -397,7 +397,7 @@
         },
         {
             "location": "/KW49/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme",
+            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nLaTeX Fehlersuche\n\n\nEvaluierung SMS Benachrichtigung\n\n\nHTML5 M\u00f6glichkeiten\n\n\n\n\nResultat / Erkenntnisse\n\n\nLaTeX Fehlersuche\n\n\nDer Grund warum im Dokument bspw. bei Kapitel 2.1.7 Fragezeichen anstatt eine Referenz stand ist gefunden. Das Problem hier war ein Schreibfehler in der Referenz. Das PDF kompiliert eigentlich alles richtig, trotzdem kommt eine Fehlermeldung das die Bilder nicht auffindbar sind.\n\n\nEvaluierung SMS Benachrichtigung\n\n\nF\u00fcr die Evaluierung wurde eine Nutzwertanalyse erstellt, mit den bewertbaren Punkten:\n * Kosten\n * Einfachheit\n * Programmieraufwand\n * Erweitbarkeit\n * ...\n\n\nDiese punkte wurden bei jedem m\u00f6glichen L\u00f6sungsansatz mit Punkten (1 sehr schlecht, 5 sehr gut) bewertet. Diese bewertunge sollte mit den verantwortlichen der IG besprochen werden.\n\n\nProbleme\n\n\nLaTeX Fehlersuche\n\n\nDer Grund warum die Fehlermeldungen kommen konnte noch nicht behoben werden.",
             "title": "KW49"
         },
         {
@@ -407,7 +407,7 @@
         },
         {
             "location": "/KW49/#ziel",
-            "text": "",
+            "text": "LaTeX Fehlersuche  Evaluierung SMS Benachrichtigung  HTML5 M\u00f6glichkeiten",
             "title": "Ziel"
         },
         {
@@ -416,9 +416,24 @@
             "title": "Resultat / Erkenntnisse"
         },
         {
+            "location": "/KW49/#latex-fehlersuche",
+            "text": "Der Grund warum im Dokument bspw. bei Kapitel 2.1.7 Fragezeichen anstatt eine Referenz stand ist gefunden. Das Problem hier war ein Schreibfehler in der Referenz. Das PDF kompiliert eigentlich alles richtig, trotzdem kommt eine Fehlermeldung das die Bilder nicht auffindbar sind.",
+            "title": "LaTeX Fehlersuche"
+        },
+        {
+            "location": "/KW49/#evaluierung-sms-benachrichtigung",
+            "text": "F\u00fcr die Evaluierung wurde eine Nutzwertanalyse erstellt, mit den bewertbaren Punkten:\n * Kosten\n * Einfachheit\n * Programmieraufwand\n * Erweitbarkeit\n * ...  Diese punkte wurden bei jedem m\u00f6glichen L\u00f6sungsansatz mit Punkten (1 sehr schlecht, 5 sehr gut) bewertet. Diese bewertunge sollte mit den verantwortlichen der IG besprochen werden.",
+            "title": "Evaluierung SMS Benachrichtigung"
+        },
+        {
             "location": "/KW49/#probleme",
             "text": "",
             "title": "Probleme"
+        },
+        {
+            "location": "/KW49/#latex-fehlersuche_1",
+            "text": "Der Grund warum die Fehlermeldungen kommen konnte noch nicht behoben werden.",
+            "title": "LaTeX Fehlersuche"
         },
         {
             "location": "/KW50/",
