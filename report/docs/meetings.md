@@ -63,3 +63,26 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
 * Feedback Bericht
 * Fragen Ladina zu LaTeX
 * Fragerunde
+
+###Besprochenes
+* Feedback Planung Fachmodul
+  * Zeiterfassung mit Toggl durchziehen, am Ende des Berichts eine Zusammenstellung der Zeiten einfügen
+* Report
+  * Erkentnisse deutlicher aufschreiben -> kurze Zusammenfassung, Stihwortartig die wichtigsten Erkenntnisse aufzeigen
+* Feedback Bericht
+  * Feedback wird bis Ende der Woche erstellt
+  * Github Link an Ulrich / Lukas senden
+  * Vorschlag für die Anforderungen
+    * Zuerst grobe Anforderungen -> daraus feinere Anforderungen erstellen
+    * Anforderungen in einem Kapitel -> Unterkapitel mit den Anforderungen
+    * Nicht durchnummerieren
+  * Vorschlag für SMS-Alarmierung
+    * Einlesen in die Nutzwertanalyse
+  * Vorschlag für die Datenbankabfrage
+    * Mit REST Service arbeiten
+    * Einlesen in REST, wie funktioniert REST?
+    * Intern mit SQL Abfragen arbeiten
+* LaTeX
+  * Fehlermeldungen möglichst vermeiden
+* BA-Planung
+  * Erste zwei Monate alle zwei Wochen ein Meeting, dann einmal im Monat
