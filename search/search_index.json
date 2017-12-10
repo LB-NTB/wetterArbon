@@ -397,17 +397,17 @@
         },
         {
             "location": "/KW49/",
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\n\n\nLaTeX Fehlersuche\n\n\nEvaluierung SMS Benachrichtigung\n\n\nHTML5 M\u00f6glichkeiten\n\n\n\n\nResultat / Erkenntnisse\n\n\nLaTeX Fehlersuche\n\n\nDer Grund warum im Dokument bspw. bei Kapitel 2.1.7 Fragezeichen anstatt eine Referenz stand ist gefunden. Das Problem hier war ein Schreibfehler in der Referenz. Das PDF kompiliert eigentlich alles richtig, trotzdem kommt eine Fehlermeldung das die Bilder nicht auffindbar sind.\n\n\nEvaluierung SMS Benachrichtigung\n\n\nF\u00fcr die Evaluierung wurde eine Nutzwertanalyse erstellt, mit den bewertbaren Punkten:\n * Kosten\n * Einfachheit\n * Programmieraufwand\n * Erweitbarkeit\n * ...\n\n\nDiese punkte wurden bei jedem m\u00f6glichen L\u00f6sungsansatz mit Punkten (1 sehr schlecht, 5 sehr gut) bewertet. Diese bewertunge sollte mit den verantwortlichen der IG besprochen werden.\n\n\nProbleme\n\n\nLaTeX Fehlersuche\n\n\nDer Grund warum die Fehlermeldungen kommen konnte noch nicht behoben werden.",
+            "text": "Wochenreport KW 49\n\n\nZiel\n\n\n\n\nLaTeX Fehlersuche\n\n\nEvaluierung SMS Benachrichtigung\n\n\nRecherche HTML5\n\n\n\n\nResultat / Erkenntnisse\n\n\nLaTeX Fehlersuche\n\n\nDer Grund warum im Dokument bspw. bei Kapitel 2.1.7 Fragezeichen anstatt eine Referenz stand ist gefunden. Das Problem hier war ein Schreibfehler in der Referenz. Das PDF kompiliert eigentlich alles richtig, trotzdem kommt eine Fehlermeldung das die Bilder nicht auffindbar sind.\n\n\nEvaluierung SMS Benachrichtigung\n\n\nF\u00fcr die Evaluierung haben wir und in die Nutzwertanalyse eingelesen und so eine Bewertungstabelle erstellt mit folgende Punkten:\n\n Kosten\n\n Einfachheit\n\n Programmieraufwand\n\n Anpassbarkeit\n* Support\n\n\nDiese punkte wurden bei jedem m\u00f6glichen L\u00f6sungsansatz mit Punkten (1 sehr schlecht, 5 sehr gut) bewertet. Anhand der Berwertung kann anschliessend eine Entscheidung gef\u00e4llt werden.\n\n\nRecherche HTML5\n\n\nF\u00fcr die Webseite ist es wichtig, dass diese in HTML5 geschrieben wird. D.h. z.B. die zuk\u00fcnftige Webseite soll auch die neuen semantische tags benutzen. Somit kann sichergestellt werden, dass die vorleseprogramme, sowie die Browser die Webseite richtig intepretieren.   \n\n\nProbleme\n\n\nLaTeX Fehlersuche\n\n\nDer Grund warum die Fehlermeldungen kommen konnte noch nicht behoben werden.\n\n\nJournal\n\n\n1h LaTeX Fehlersuche\n1.5h Evaluierung SMS Benachrichtigung\n1h Recherche HTML5\n1h Meeting\n1h Administration",
             "title": "KW49"
         },
         {
-            "location": "/KW49/#wochenreport-kw-44",
+            "location": "/KW49/#wochenreport-kw-49",
             "text": "",
-            "title": "Wochenreport KW 44"
+            "title": "Wochenreport KW 49"
         },
         {
             "location": "/KW49/#ziel",
-            "text": "LaTeX Fehlersuche  Evaluierung SMS Benachrichtigung  HTML5 M\u00f6glichkeiten",
+            "text": "LaTeX Fehlersuche  Evaluierung SMS Benachrichtigung  Recherche HTML5",
             "title": "Ziel"
         },
         {
@@ -422,8 +422,13 @@
         },
         {
             "location": "/KW49/#evaluierung-sms-benachrichtigung",
-            "text": "F\u00fcr die Evaluierung wurde eine Nutzwertanalyse erstellt, mit den bewertbaren Punkten:\n * Kosten\n * Einfachheit\n * Programmieraufwand\n * Erweitbarkeit\n * ...  Diese punkte wurden bei jedem m\u00f6glichen L\u00f6sungsansatz mit Punkten (1 sehr schlecht, 5 sehr gut) bewertet. Diese bewertunge sollte mit den verantwortlichen der IG besprochen werden.",
+            "text": "F\u00fcr die Evaluierung haben wir und in die Nutzwertanalyse eingelesen und so eine Bewertungstabelle erstellt mit folgende Punkten:  Kosten  Einfachheit  Programmieraufwand  Anpassbarkeit\n* Support  Diese punkte wurden bei jedem m\u00f6glichen L\u00f6sungsansatz mit Punkten (1 sehr schlecht, 5 sehr gut) bewertet. Anhand der Berwertung kann anschliessend eine Entscheidung gef\u00e4llt werden.",
             "title": "Evaluierung SMS Benachrichtigung"
+        },
+        {
+            "location": "/KW49/#recherche-html5",
+            "text": "F\u00fcr die Webseite ist es wichtig, dass diese in HTML5 geschrieben wird. D.h. z.B. die zuk\u00fcnftige Webseite soll auch die neuen semantische tags benutzen. Somit kann sichergestellt werden, dass die vorleseprogramme, sowie die Browser die Webseite richtig intepretieren.",
+            "title": "Recherche HTML5"
         },
         {
             "location": "/KW49/#probleme",
@@ -434,6 +439,11 @@
             "location": "/KW49/#latex-fehlersuche_1",
             "text": "Der Grund warum die Fehlermeldungen kommen konnte noch nicht behoben werden.",
             "title": "LaTeX Fehlersuche"
+        },
+        {
+            "location": "/KW49/#journal",
+            "text": "1h LaTeX Fehlersuche\n1.5h Evaluierung SMS Benachrichtigung\n1h Recherche HTML5\n1h Meeting\n1h Administration",
+            "title": "Journal"
         },
         {
             "location": "/KW50/",
