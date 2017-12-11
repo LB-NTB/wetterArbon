@@ -345,6 +345,43 @@ Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der
 \subsection{Webcam}
 Der Zoom soll auf gewissen Positionen, vor allem auf den See hinaus in vollem Umfang benutzt werden können. Die Position der Kamera kann mit einer einfachen HTTP GET anfrage aufgerufen werden. Mit der Position der Kamera weiss man in welche Richtung die Kamera steht. D.h. so kann mittels Javascript der Zoom in Richtung Arbon beschränkt werden und auf den See hinaus kann diese Beschränkung aufgehoben werden.
 
+
+\subsection{Notifications}
+Für die Notification wurden 3 verschiedene Möglichkeiten ausgewählt und mit der Nutzweranalyse ausgewertet. Ziel bei allen Möglichkeiten ist es, dass der Benutzer die Möglichkeit hat sich zu registrieren und Alarmkriterien zu bestimmen. Werden die gewählten Alarmkriterien erreicht bzw. wird eine Sturmwarnung herausgegeben, wird der Benutzer benachrichtigt. Hiermit soll die Möglichkeit gegeben werden, dass der Benutzer in Echtzeit informiert wird und somit keine Warnung oder sein "perfektes" Segelwetter verpasst.  
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}||p{1cm}|p{2cm}|p{3.5cm}|p{2.5cm}|p{1.5cm}|}
+ \hline
+ \multicolumn{6}{|c|}{Nutzwertanalyse} \\
+ \hline
+	Möglichkeiten & Kosten & Einfachheit & Programmieraufwand & Anpassbarkeit & Support\\
+ \hline
+	SMS & 1 & 4 & 3 & 3 & 5 \\
+	E-Mail & 5 & 4 & 5 & 5 & 1 \\
+	FacebookMessenger & 5 & 4 & 3 & 4 & 1 \\
+ 
+\hline
+\end{tabular}
+\end{center}
+
+
+
+
+
+%\begin{center}
+%\begin{tabular}{ |c|c|c| } 
+% \hline
+ % 
+ %SMS & 1 & 4 & 3 & 3 & 5 \\ 
+% E-Mail & 5 & 4 & 5 & 5 & 1 \\ 
+% FacebookMessenger & 5 & 4 & 3 & 4 & 3 \\
+% \hline
+%\end{tabular}
+%\end{center}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Spezifikation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
