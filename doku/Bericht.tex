@@ -145,17 +145,19 @@ Die verbauten Komponenten sind in der Grafik \ref{img:HW-Aufbau} schematisch dar
 \end{figure}
 
   
-\section{Die Webseite und deren wichtigsten Applikationen}
-Die Webseite der Wetterstation ist mit dem CMS Openfile64Light der Firma Screenbox erstellt. Mit diesem ist es möglich um mit ein paar Klicks eine Webseite erstellt werden kann. Es kann direkt in einem Browser der gewollte Text sowie Bilder und Graphiken eingesetzt werden. Des Weiteren können auch Formulare, Menüs und Applikationen einfach mit einem Mausklick eingesetzt werden.Screenbox bietet hierfür zwei Versionen des CMS an, openfile64Light und openfile64? Dabei enthält die Light Version des CMS folgende Funktionen nicht:
-\begin{itemize}
-\item Mehrsprachig (D/E/F)
-\item Automatische Volltextsuche und Sitemaperstellung
-\item Rollen- und gruppenbasierende Benutzerverwaltung
-\end{itemize}
+\section{Die Webseite}
+Die Webseite der Wetterstation ist mit dem CMS Openfile64Light der Firma Screenbox erstellt. Der Nachteil am CMS ist, dass auf der Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Um eigene Inhalte zu erstellen muss für die gewünschte Applikation eine PHP Referenzdatei erstellt werden, \Diskussionspunkt{welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen,diese muss im Ordner application abgelegt werden und in der Datenbank in der Tabelle applications gespeichert werden. Zusätzlich muss die Applikation über Screenbox erstellt werden. Diese erstellen dort die Applikation in der Datenbank und vergeben auch die Namen, damit diese auf der Webseite ausgewählt werden kann. Die geschieht gegen einen Unkosten Beitrag von 75 Schweizer Franken.} \\
 
-Der Nachteil am CMS ist, dass auf der Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Somit können eigene Änderungen an der Webseite nicht durchgeführt werden und ist man vom CMS abhängig. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Um eigene Inhalte zu erstellen muss für die gewünschte Applikation eine PHP Referenzdatei erstellt werden, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen,diese muss im Ordner application abgelegt werden und in der Datenbank in der Tabelle applications gespeichert werden. Zusätzlich muss die Applikation über Screenbox erstellt werden. Diese erstellen dort die Applikation in der Datenbank und vergeben auch die Namen, damit diese auf der Webseite ausgewählt werden kann. Die geschieht gegen einen Unkosten Beitrag von 75 Schweizer Franken. \\
 
-Für die Wetteraplikation Wassersport, sowie Touristik wurde genau dies gemacht. Somit ist es möglich diese zwei in die Webseite zu integrieren. Zusätzlich zu dieser Integrierung läuft im Hintergrund eine Software namens Weather-Display Live welche die Daten von Weahther Display auswertet und anschliessend darstellt. Die Software Weather-Display Live wurde im Auftrag der IG Wetterstation Arbon erstellt und auf Deutsch übersetzt. Die erstellten Applikationen funktionieren mit Flash, dies wird jedoch, aus folgendem Grund, nicht mehr von allen Geräten unterstützt, war jedoch zu beginn des Internetzeitalters essentiell für dynamische Webseiten. Mit ihm konnten einfach dynamische Inhalte erstellt und administriert werden. Jedoch gab es immer wieder gravierende Sicherheitslücken und Weiterentwicklungen im Bereich Web. Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Nicht zuletzt auch durch ein Kommuniqué von Steve Jobs. In diesem erklärt er warum seine Firma (Apple) nicht auf Flash, sondern HTML5 und Javascript setzt. Einer der Gründe für dieser Entscheidung ist, dass Flash keine open-source Software ist. D.h Adobe kontrolliert das System. Hierbei erwähnt Steve Jobs auch das Apple ein closed-source system ist, sie jedoch an einen offenen Webstandard glauben. Der zweite Grund ist warum Apple sich nicht für Flash entschieden hat ist, dass die Videos bzw. Games seit diesem offenen Brief aus dem Jahr 2009 auch in den neuen Standards, H.264, erhältlich ist. Der dritte Grund, das Apple nicht auf Flash gesetzt hat ist die Sicherheit. Aus Untersuchungen im Jahr 2009 ging hervor, dass die ihre Macs abstürzen. Dies kommt durch die Flashsoftware von Adobe. Dazu kommt, dass Flash auf den mobilen Geräten von Apple nicht sicher lief. Mehrmals wurde Adobe gefragt um eine laufende Version zu erstellen, dies hat Adobe jedoch nicht geschafft. Aus diesen Gründen hat Apple, welcher einer der Vorreiter von Smartphones war, sich entschieden um Flash nicht zu benutzen. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. \cite{Apple:ThoughtsOnFlash} \\
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\linewidth]{img/Sequenzdiagramm_Wetter}
+	\caption{Sequenzdiagramm Ablauf von der Datenerfassung bis zur Anzeige}
+	\label{img:Sequenzdiagramm}
+\end{figure}
+
+
+Für die Anzeige der von Weather-Display ausgewerteten Daten läuft wird Weather-Display Live. Das Weather-Display live funktioniert mit Flash, dies wird jedoch, aus folgendem Grund, nicht mehr von allen Geräten unterstützt, war jedoch zu beginn des Internetzeitalters essentiell für dynamische Webseiten. Mit ihm konnten einfach dynamische Inhalte erstellt und administriert werden. Jedoch gab es immer wieder gravierende Sicherheitslücken und Weiterentwicklungen im Bereich Web. Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Nicht zuletzt auch durch ein Kommuniqué von Steve Jobs. In diesem erklärt er warum seine Firma (Apple) nicht auf Flash, sondern HTML5 und Javascript setzt. Einer der Gründe für dieser Entscheidung ist, dass Flash keine open-source Software ist. D.h Adobe kontrolliert das System. Hierbei erwähnt Steve Jobs auch das Apple ein closed-source system ist, sie jedoch an einen offenen Webstandard glauben. Der zweite Grund ist warum Apple sich nicht für Flash entschieden hat ist, dass die Videos bzw. Games seit diesem offenen Brief aus dem Jahr 2009 auch in den neuen Standards, H.264, erhältlich ist. Der dritte Grund, das Apple nicht auf Flash gesetzt hat ist die Sicherheit. Aus Untersuchungen im Jahr 2009 ging hervor, dass die ihre Macs abstürzen. Dies kommt durch die Flashsoftware von Adobe. Dazu kommt, dass Flash auf den mobilen Geräten von Apple nicht sicher lief. Mehrmals wurde Adobe gefragt um eine laufende Version zu erstellen, dies hat Adobe jedoch nicht geschafft. Aus diesen Gründen hat Apple, welcher einer der Vorreiter von Smartphones war, sich entschieden um Flash nicht zu benutzen. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. \cite{Apple:ThoughtsOnFlash} \\
 Der wichtigste Grund ist das Adobe ab 2020 Flash nicht mehr weiterentwickelt und keine Updates mehr herausgeben wird. Dies aufgrund der oben genannten Tatsachen und das zur heutigen Zeit vielmals Flash umgangen wird und andere Lösungen gebraucht werden. Aufgrund von dies wird ab 2020 auch kein Browser mehr das Plugin zulassen und Seiten welche Flashinhalte benutzen sind nicht mehr Vollständig verfügbar. Somit ist auch die Wetter-Arbon Seite von dieser Tatsache betroffen. \cite{Adobe:FlashTheFutureofInteractiveContent}\\
 Um trotzdem erreichbar, auf Endgeräte ohne Flash, zu sein wird in der Wassersport.php bzw. Touristik.php Datei der Entscheid gefällt ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Dies wird mit folgendem Code entschieden: 
 
@@ -195,7 +197,7 @@ Daraus kann man konkludieren, dass die Aplikationen Wetter Touristik bzw. Wasser
 
 Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage. 
 
-\subsection{Sturmwarnung}
+\subsection{Sturmwarnung}\Diskussionspunkt{zu webseite hinzu oder einzelnes Kapitel zusammen mit notification?}
 
 Die Seite mir der Sturmwarnung, siehe \ref{img:Sturmwarnung} auf Seite \pageref{img:Sturmwarnung} gibt es im eigentlichen nicht mehr, dies wurde beginn November umgestellt aus Sicherheitsgründen, welche in der Problemanalyse erläutert werden. Zum jetzigen Zeitpunkt wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Die Daten dieser Seite werden mit dem deutschen Wetterdienst in Stuttgart sowie Meteo Schweiz erstellt und dienen auf der Webseite nur als Information. Es sollte vor Ort beachtet werden ob die Warnlampen eingeschalten sind. Zu beachten ist hierbei, dass die Sturmwarnungen Bürozeiten haben. D.h. konkret vom 1. April bis 31 Oktober zwischen 6 und 22 Uhr und vom 1. November bis 31. März zwischen 7 und 20 Uhr. Der deutsche Wetterdienst und Meteo Schweiz unterscheiden zwei verschiedene Kategorien. Zum einen starke Windböen zwischen 25 und 33 Knoten, dies wird 40 Blitze pro Minute an den Leuchten signalisiert. Zum anderen Sturmböen von 34 und mehr Knoten, welche mit 90 Blitze pro Minute signalisiert werden. Zusätzlich zu den beiden Kategorien wird der Bodensee in 3 verschiedene Zonen unterteilt, West, Mitte und Ost, wobei Arbon in zur Zone Ost gehört. 
 \begin{figure}[htbp]
@@ -205,7 +207,8 @@ Die Seite mir der Sturmwarnung, siehe \ref{img:Sturmwarnung} auf Seite \pageref{
 	\label{img:Sturmwarnung}
 \end{figure}
 
-\subsection{Welche Komponenten hat die Datenbank?}
+
+\section{Die Datenbank}
 Für die Webseite und die Wetterstation, hat es vier verschiedene Datenbanken. Diese werden in diesem Kapitel einzeln behandelt und erklärt wie Sie zusammenhängen bzw. welche Rolle sie für die Webseite spielen. Die vier Datenbanken heissen:
 \begin{itemize}  
 \item igwetter meteotmpl
@@ -218,13 +221,9 @@ Die Datenbank igwetter meteotmpl beinhaltet alle relevanten Datenpunkte, d.h. vo
 Die zweite Datenbank welche nicht aktiv ist, heisst igwetter wp0, diese wurde für eine kurze Zeit für eine Wordpress-Seite benutzt.\\
 Die dritte Datenbank ist die igwetter wettertest. Diese ist im Gegensatz zu den vorherigen beiden Datenbanken im Gebrauch. In der Tabelle wx data sind die Daten ab dem 25.02.2015 bis zum jetzigen Zeitpunkt gespeichert. Daten zwischen dem 14.07.2012 und 25.02.2015 sind nicht in der Datenbank hinterlegt. Vor diesem Zeitpunkt bis zum 25.02.2005 sind die täglichen Minimum, sowie Maximum Daten in der Tabelle tblgestern gespeichert.\\
 Anders als bei den vorherigen Datenbanken hat die igwetter opfile64Light Datenbank eine Funktion für die Webseite. In diesem Fall ist die ganze Webseite abhängig von dieser, denn das CMS basiert auf einer Datenbank. Dies wurde im Kapitel Wie und wo werden Applikationen erstellt bereits erläutert. Für die BA, sowie das Fachmodul ist nur die Tabelle applications interessant, denn dort werden die Applikationen unter einem bestimmten Namen abgespeichert und aufgerufen. Die Webseite weiss dann welche Datei sie öffnen muss, damit die Applikation läuft.\\
+\Diskussionspunkt{Datenbankabbildung, besprechen}\\
 
-
-\subsection{Daten vom 14.7.2012 bis 25.02.2015}
-Die Wetterstation in Arbon musste im Jahr 2012 vom Netz genommen werden, weil sich die technischen Probleme überhäuften. Nachdem sich immer mehr Interessenten meldeten, dass die Wetterstation wieder aufgebaut werden muss, hat man 2015 die Arbeiten wieder aufgenommen um diverse Modernisierungen vorzunehmen. Dies ist der Grund warum es zwischen 2012 und 2015 keine Daten der Wetterstation gibt. ~\cite{Felix:ErweiterteHorizonte}
-
-\subsection{Wofür sind die .txt Files}
-Die Weahter-Display Software speichert alle Daten welche von der Wetterstation kommen in ein .txt File. Das Weather-Display live nimmt die Daten anschliessend direkt aus diesem File um die Anzeigen zu erstellen. Die Daten werden in 4 verschiedenen Textfiles mit unterschiedlichen Funktionen gespeichert.
+Die Daten, welche von der Wetterstation an einen Server in der Uni Liechstein gesendet werden, werden über die Software Weather-Display direkt in die Datenbank ig wettertest Tabelle wxdata geschrieben. Diese Daten werden hier im Minutentakt eingelesen und in der tabelle wx data gespeichert. Die Weahter-Display Software speichert zusätzlich alle Daten, welche von der Wetterstation sind, in ein .txt File. Das Weather-Display live nimmt die Daten anschliessend direkt aus diesem File um die Anzeigen zu erstellen. Die Daten werden in 4 verschiedenen Textfiles mit unterschiedlichen Funktionen gespeichert.
 \begin{itemize}  
 \item clientraw.txt
 \item clientrawextra.txt
@@ -232,11 +231,19 @@ Die Weahter-Display Software speichert alle Daten welche von der Wetterstation k
 \item clientrawdaily.txt
 \end{itemize}
 
-Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Intervall der Aktualisierung dieser Datei wird in der Datei wdlconfig.xml eingestellt. Im Fall von Arbon wird die Datei alle 5 Sekunden aktualisiert.  Hier werden auch die restlichen Parameter bzw. Einheiten in der die Daten gespeichert werden sollen eingestellt. Die clientrawextra.txt enthält die historischen Extremwerte. Die Datei clientrawhour.txt enthält die aufgezeichneten Daten der letzten Stunde im Minutentakt.\cite{WeatherDisplay}
+Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Intervall der Aktualisierung dieser Datei wird in der Datei wdlconfig.xml eingestellt. Im Fall von Arbon wird die Datei alle 5 Sekunden aktualisiert.  Hier werden auch die restlichen Parameter bzw. Einheiten in der die Daten gespeichert werden sollen eingestellt. Die clientrawextra.txt enthält die historischen Extremwerte. Die Datei clientrawhour.txt enthält die aufgezeichneten Daten der letzten Stunde im Minutentakt.\cite{WeatherDisplay} \\
+Das Problem hierbei ist folgendes schaut man die Datenbanken zum jetzigen Zeitpunkt an, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Da es mehrere Datenbanken gibt,  ist es auf dem ersten Blick nicht sichtbar, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische", tblgestern, Tabelle abgelegt. \\
+In der Bachelorarbeit soll dieses Problem folgendermassen gelöst werden. Bei der Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Es wird eine neue Datenbank erstellt welche klarer strukturiert wird, hierbei sollten neue Tabellen entstehenen, wobei Daten gelöscht werden können um unnötigen Speicherplatz nicht zu belasten. Die "Haupttabelle" soll alle aktuelle Daten enthalten. Zusätzlich soll Tabelle erstellt werden mit zukünftigen und vorhandenen historischen Daten. Um die übersichtlichkeit zu gewähren wird eine Tabelle mit Maximal sowie Minimal Daten erstellt. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
 
 
-\subsection{Wie kommen die Daten in die Datenbank?}
-Die Daten, welche von der Wetterstation an einen Server in der Uni Liechstein gesendet werden, werden über die Software Weather-Display direkt in die Datenbank ig wettertest Tabelle wxdata geschrieben. Die Daten werden hier im Minutentakt eingelesen.
+
+\Diskussionspunkt{\subsection{Daten vom 14.7.2012 bis 25.02.2015}
+Die Wetterstation in Arbon musste im Jahr 2012 vom Netz genommen werden, weil sich die technischen Probleme überhäuften. Nachdem sich immer mehr Interessenten meldeten, dass die Wetterstation wieder aufgebaut werden muss, hat man 2015 die Arbeiten wieder aufgenommen um diverse Modernisierungen vorzunehmen. Dies ist der Grund warum es zwischen 2012 und 2015 keine Daten der Wetterstation gibt. ~\cite{Felix:ErweiterteHorizonte}}
+
+
+
+
+
 
 \subsection{Webcam}
 Zur Wetterstation Arbon gehört auch eine Webcam der Marke Axis. Diese ist auch wieder über ein Applikationsplugin in die Webseite integriert. Auf dieser können per schort links sechs verschiedene Positionen angefahren werden:
@@ -319,9 +326,6 @@ Sowohl die Webcam, als auch der Kombi-Wetter-Transmitter funktionieren einwandfr
 
 
 
-\subsection{Datenbank}
-Werden die Datenbanken zum jetzigen Zeitpunkt angeschaut, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Das Problem hierbei ist das auf dem ersten Blick nicht sichtbar ist, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische" Datenbank abgelegt.
-
 \subsection{Webcam}
 Die Limitierung des Zooms der Webcam sollte möglichst dynamisch sein. Im jetzigen Zustand ist es nur möglich überall den gleichen Zoomfaktor zu benutzen, obwohl dies nicht notwendig wäre. Beispielsweise könnte der Zoomfaktor auf den See hinaus um einiges grösser sein als auf die umliegenden Häuser.
 
@@ -333,11 +337,6 @@ Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrows
 Resultat aus Literaturrecherche, 
 Konzepte}
 
-
-
-
-\subsection{Datenbank}
-Die Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Die igwetter wettertest, sollte neu klarer strukturiert werden, in eine Tabelle mit allen Daten, wobei Daten gelöscht werden sollten um unnötigen Speicherplatz nicht zu belasten. Zusätzlich sollte eine Tabelle mit den historischen Daten mit den aufgezeichneten Werten enthalten. Hierbei sollten auch die schon vorhandenen Daten integriert werden. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
 
 \subsection{Sturmwarnung}
 Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine SMS-Benachrichtigung zu registrieren. Hierbei soll auch die Möglichkeit gegeben werden um selber einen Sollwert der Windstärke einzustellen um ab dieser Stärke eine Benachrichtigung zu bekommen. Für die Benachrichtigung gibt es verschiedenen Möglichkeiten. Eine der Möglichkeiten ist ein Dienst namens clickatell, ein weiterer wäre ein Dienst von Swisscom. Des weiteren gibt es eine API um 
@@ -363,22 +362,6 @@ Für die Notification wurden 3 verschiedene Möglichkeiten ausgewählt und mit d
 \hline
 \end{tabular}
 \end{center}
-
-
-
-
-
-%\begin{center}
-%\begin{tabular}{ |c|c|c| } 
-% \hline
- % 
- %SMS & 1 & 4 & 3 & 3 & 5 \\ 
-% E-Mail & 5 & 4 & 5 & 5 & 1 \\ 
-% FacebookMessenger & 5 & 4 & 3 & 4 & 3 \\
-% \hline
-%\end{tabular}
-%\end{center}
-
 
 
 
