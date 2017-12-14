@@ -25,6 +25,9 @@
 \usepackage{typearea}
 \usepackage{pdfpages}
 
+\usepackage{lscape}
+
+
 % Quelltext
 \usepackage{listings}
  \usepackage{color}
@@ -94,7 +97,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Einführung}
 
+Im Fachmodul geht es darum, die heutige Situation, das Problem der Situation und die Lösung zu erarbeiten. In der heutigen Situation wird beschrieben, welche Komponenten das Projekt hat, in diesem Fall die der Wetterstation in Arbon. Bei der Problemanalyse wird aufgezeigt mit welchen Problemen die Wetterstation zu kämpfen hat. Im letzen Schritt, werden dann die Möglichkeiten zur Problemlösung aufgezeigt. Dies heisst aber nicht, dass die Probleme schon gelöst werden und in der Bachelorarbeit "nur" noch Programmiert bzw. eingebaut werden muss. Das Fachmodul wird folgende Komponenten enthalten:
+ 
+\begin{itemize}  
+\item Spezifikation
+\item Risikoanalyse (Zeit, Umsetzung,..)
+\item Entwicklungsprozess (z.B. V-Modell -> skizzieren)
+\item Konzeptbeschreibung für die zu entwickelnden Artefakte
+\item Konzept der Dokumenten- und Versionsverwaltung
+\item Ein Dokument, welches die rechtlichen Ansprüche regelt
+\item Ein Projektplan (Meilensteine)
+\end{itemize}
 \Diskussionspunkt{Ziel des Fachmoduls, Aufträge, Vorgehensweise, Vorstellung Wetterstation Arbon}
+
+Die Wetterstation Arbon ist online erreichbar. Auf der Webseite der Station sind Informationen zum Wetter, Warnungen und die Geschichte der Station publiziert. Im Fachmodul, sowie später in der Bachelorarbeit wird nur ein Teil der Webseite und deren Komponenten gesprochen. Diese sind im Bild \ref{img:cms_struktur} auf Seite \pageref{img:cms_struktur} gelb umrandet. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/cms_struktur}
+	\caption{Struktur der Webseite sichtbar im CMS}
+	\label{img:cms_struktur}
+\end{figure}
+
+
 \Diskussionspunkt{Foto Wetterstation}
 
 
@@ -146,16 +170,7 @@ Die verbauten Komponenten sind in der Grafik \ref{img:HW-Aufbau} schematisch dar
 
   
 \section{Die Webseite}
-Die Webseite der Wetterstation ist mit dem CMS Openfile64Light der Firma Screenbox erstellt. Der Nachteil am CMS ist, dass auf der Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Um eigene Inhalte zu erstellen muss für die gewünschte Applikation eine PHP Referenzdatei erstellt werden, \Diskussionspunkt{welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen,diese muss im Ordner application abgelegt werden und in der Datenbank in der Tabelle applications gespeichert werden. Zusätzlich muss die Applikation über Screenbox erstellt werden. Diese erstellen dort die Applikation in der Datenbank und vergeben auch die Namen, damit diese auf der Webseite ausgewählt werden kann. Die geschieht gegen einen Unkosten Beitrag von 75 Schweizer Franken.} \\
-
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1\linewidth]{img/Sequenzdiagramm_Wetter}
-	\caption{Sequenzdiagramm Ablauf von der Datenerfassung bis zur Anzeige}
-	\label{img:Sequenzdiagramm}
-\end{figure}
-
+Die Webseite der Wetterstation ist mit dem CMS Openfile64Light der Firma Screenbox erstellt. Der Nachteil am CMS ist, dass auf der Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Um eigene Inhalte zu erstellen muss für die gewünschte Applikation eine PHP Referenzdatei erstellt werden, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen,diese muss im Ordner application abgelegt werden und in der Datenbank in der Tabelle applications gespeichert werden.\\
 
 Für die Anzeige der von Weather-Display ausgewerteten Daten läuft wird Weather-Display Live. Das Weather-Display live funktioniert mit Flash, dies wird jedoch, aus folgendem Grund, nicht mehr von allen Geräten unterstützt, war jedoch zu beginn des Internetzeitalters essentiell für dynamische Webseiten. Mit ihm konnten einfach dynamische Inhalte erstellt und administriert werden. Jedoch gab es immer wieder gravierende Sicherheitslücken und Weiterentwicklungen im Bereich Web. Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Nicht zuletzt auch durch ein Kommuniqué von Steve Jobs. In diesem erklärt er warum seine Firma (Apple) nicht auf Flash, sondern HTML5 und Javascript setzt. Einer der Gründe für dieser Entscheidung ist, dass Flash keine open-source Software ist. D.h Adobe kontrolliert das System. Hierbei erwähnt Steve Jobs auch das Apple ein closed-source system ist, sie jedoch an einen offenen Webstandard glauben. Der zweite Grund ist warum Apple sich nicht für Flash entschieden hat ist, dass die Videos bzw. Games seit diesem offenen Brief aus dem Jahr 2009 auch in den neuen Standards, H.264, erhältlich ist. Der dritte Grund, das Apple nicht auf Flash gesetzt hat ist die Sicherheit. Aus Untersuchungen im Jahr 2009 ging hervor, dass die ihre Macs abstürzen. Dies kommt durch die Flashsoftware von Adobe. Dazu kommt, dass Flash auf den mobilen Geräten von Apple nicht sicher lief. Mehrmals wurde Adobe gefragt um eine laufende Version zu erstellen, dies hat Adobe jedoch nicht geschafft. Aus diesen Gründen hat Apple, welcher einer der Vorreiter von Smartphones war, sich entschieden um Flash nicht zu benutzen. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. \cite{Apple:ThoughtsOnFlash} \\
 Der wichtigste Grund ist das Adobe ab 2020 Flash nicht mehr weiterentwickelt und keine Updates mehr herausgeben wird. Dies aufgrund der oben genannten Tatsachen und das zur heutigen Zeit vielmals Flash umgangen wird und andere Lösungen gebraucht werden. Aufgrund von dies wird ab 2020 auch kein Browser mehr das Plugin zulassen und Seiten welche Flashinhalte benutzen sind nicht mehr Vollständig verfügbar. Somit ist auch die Wetter-Arbon Seite von dieser Tatsache betroffen. \cite{Adobe:FlashTheFutureofInteractiveContent}\\
@@ -186,7 +201,7 @@ Zusätzlich zur Desktop-Seite, auf welcher alle Informationen verfügbar sind, g
 	\label{img:mobilewebseite}
 \end{figure}
 
-Daraus kann man konkludieren, dass die Aplikationen Wetter Touristik bzw. Wassersport auf einem alten Stand der Technik sind. Das Problem hierbei ist, dass viele Geräte Flash nicht mehr oder in naher Zukunft nicht mehr unterstützen. Zusätzlich ist die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung. Auch sind die Schreibfehler, welche entdeckt wurden bei näherer Betrachtung auch nicht Vorteilhaft. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Zusätzlich zum Flash, von der gebrauch gemacht wird sind die Anzeigen auf der Touristik bzw. Wassersport Seite unübersichtlich. Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen automatisch die, je nach Windstärke, wechselt. Ein weiteres Problem bei den beiden Webseiten ist die Einstellung der Einheiten. Person A möchte den Wind in m/s Person B in Knoten. Die Auswahl der Einheiten ist momentan zwar möglich, muss aber bei jedem Besuch der Webseite neu ausgewählt werden.
+Das Problem der Webseite und vorallem der verschiedenen Applikationen ist, dass viele Geräte Flash nicht mehr oder in naher Zukunft nicht mehr unterstützen. Zusätzlich ist die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung. Auch sind die Schreibfehler, welche entdeckt wurden bei näherer Betrachtung auch nicht Vorteilhaft. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Zusätzlich zum Flash, von der Gebrauch gemacht wird sind die Anzeigen auf der Touristik bzw. Wassersport Seite unschön. Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen\Diskussionspunkt{Bild zweier Graphen, als Vergleich} automatisch die, je nach Windstärke, wechselt.
 
 \begin{figure}[htbp]
 	\centering
@@ -195,9 +210,17 @@ Daraus kann man konkludieren, dass die Aplikationen Wetter Touristik bzw. Wasser
 	\label{img:grafik-dummy}
 \end{figure}
 
-Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage. 
-
-\subsection{Sturmwarnung}\Diskussionspunkt{zu webseite hinzu oder einzelnes Kapitel zusammen mit notification?}
+Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage.  \\
+Damit alle erklärten Vorgänge besser verständlich sind, wurde ein Ablaufdiagramm erstellt mit der heutigen Situation und der zukünftigen erwünschten Situation.
+\begin{landscape}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\linewidth]{img/Sequenzdiagramm_Wetter}
+	\caption{Ablauf von der Datenerfassung bis zur Anzeige}
+	\label{img:Sequenzdiagramm}
+\end{figure}
+\end{landscape}
+\section{Die Sturmwarnung}\Diskussionspunkt{zu webseite hinzu oder einzelnes Kapitel zusammen mit notification?}
 
 Die Seite mir der Sturmwarnung, siehe \ref{img:Sturmwarnung} auf Seite \pageref{img:Sturmwarnung} gibt es im eigentlichen nicht mehr, dies wurde beginn November umgestellt aus Sicherheitsgründen, welche in der Problemanalyse erläutert werden. Zum jetzigen Zeitpunkt wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Die Daten dieser Seite werden mit dem deutschen Wetterdienst in Stuttgart sowie Meteo Schweiz erstellt und dienen auf der Webseite nur als Information. Es sollte vor Ort beachtet werden ob die Warnlampen eingeschalten sind. Zu beachten ist hierbei, dass die Sturmwarnungen Bürozeiten haben. D.h. konkret vom 1. April bis 31 Oktober zwischen 6 und 22 Uhr und vom 1. November bis 31. März zwischen 7 und 20 Uhr. Der deutsche Wetterdienst und Meteo Schweiz unterscheiden zwei verschiedene Kategorien. Zum einen starke Windböen zwischen 25 und 33 Knoten, dies wird 40 Blitze pro Minute an den Leuchten signalisiert. Zum anderen Sturmböen von 34 und mehr Knoten, welche mit 90 Blitze pro Minute signalisiert werden. Zusätzlich zu den beiden Kategorien wird der Bodensee in 3 verschiedene Zonen unterteilt, West, Mitte und Ost, wobei Arbon in zur Zone Ost gehört. 
 \begin{figure}[htbp]
@@ -206,6 +229,27 @@ Die Seite mir der Sturmwarnung, siehe \ref{img:Sturmwarnung} auf Seite \pageref{
 	\caption{Sturmwarnung vom Kanton Thurgau}
 	\label{img:Sturmwarnung}
 \end{figure}
+
+Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrowser stellen die Unterstützung dieses Standards langsam aber sicher ein und werden dann nur noch HTTPS unterstützen\cite{Mozilla:DeprecatingNon-SecureHTTP}. Deswegen ist die Sturmwarnung nur über einen Link aufrufbar. Des Weiteren wurde öfters der Wunsch nach einer SMS-Benachrichtigung geäussert, dies ist momentan nicht realisiert und soll auch teil unserer BA sein. 
+
+Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine Notification zu registrieren. Dafür wurden 3 verschiedene Möglichkeiten ausgewählt und mit der Nutzwertanalyse ausgewertet. Ziel bei allen Möglichkeiten ist es, dass der Benutzer die Möglichkeit hat sich zu registrieren und Alarmkriterien zu bestimmen. Werden die gewählten Alarmkriterien erreicht bzw. wird eine Sturmwarnung herausgegeben, wird der Benutzer benachrichtigt. Hiermit soll die Möglichkeit gegeben werden, dass der Benutzer in Echtzeit informiert wird und somit keine Warnung oder sein "perfektes" Segelwetter verpasst.  
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}||p{1cm}|p{2cm}|p{3.5cm}|p{2.5cm}|p{1.5cm}|}
+ \hline
+ \multicolumn{6}{|c|}{Nutzwertanalyse} \\
+ \hline
+	Möglichkeiten & Kosten & Einfachheit & Programmieraufwand & Anpassbarkeit & Support\\
+ \hline
+	SMS & 1 & 4 & 3 & 3 & 5 \\
+	E-Mail & 5 & 4 & 5 & 5 & 1 \\
+	FacebookMessenger & 5 & 4 & 3 & 4 & 1 \\
+ 
+\hline
+\end{tabular}
+\end{center}
+
+
 
 
 \section{Die Datenbank}
@@ -233,20 +277,11 @@ Die Daten, welche von der Wetterstation an einen Server in der Uni Liechstein ge
 
 Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Intervall der Aktualisierung dieser Datei wird in der Datei wdlconfig.xml eingestellt. Im Fall von Arbon wird die Datei alle 5 Sekunden aktualisiert.  Hier werden auch die restlichen Parameter bzw. Einheiten in der die Daten gespeichert werden sollen eingestellt. Die clientrawextra.txt enthält die historischen Extremwerte. Die Datei clientrawhour.txt enthält die aufgezeichneten Daten der letzten Stunde im Minutentakt.\cite{WeatherDisplay} \\
 Das Problem hierbei ist folgendes schaut man die Datenbanken zum jetzigen Zeitpunkt an, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Da es mehrere Datenbanken gibt,  ist es auf dem ersten Blick nicht sichtbar, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische", tblgestern, Tabelle abgelegt. \\
-In der Bachelorarbeit soll dieses Problem folgendermassen gelöst werden. Bei der Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Es wird eine neue Datenbank erstellt welche klarer strukturiert wird, hierbei sollten neue Tabellen entstehenen, wobei Daten gelöscht werden können um unnötigen Speicherplatz nicht zu belasten. Die "Haupttabelle" soll alle aktuelle Daten enthalten. Zusätzlich soll Tabelle erstellt werden mit zukünftigen und vorhandenen historischen Daten. Um die übersichtlichkeit zu gewähren wird eine Tabelle mit Maximal sowie Minimal Daten erstellt. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
+In der Bachelorarbeit soll dieses Problem folgendermassen gelöst werden. Bei der Datenbank sollte den Mitglieder der IG-Wetter Arbon auf dem ersten Blick klar sein, was wofür benutzt wird. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Es wird eine neue Datenbank erstellt welche klarer strukturiert wird, hierbei sollten neue Tabellen entstehenen, wobei Daten gelöscht werden können um unnötigen Speicherplatz nicht zu belasten. Die "Haupttabelle" soll alle aktuelle Daten enthalten. Zusätzlich soll Tabelle erstellt werden mit zukünftigen und vorhandenen historischen Daten. Um die Übersichtlichkeit zu gewähren wird eine Tabelle mit Maximal sowie Minimal Daten erstellt. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
 
 
-
-\Diskussionspunkt{\subsection{Daten vom 14.7.2012 bis 25.02.2015}
-Die Wetterstation in Arbon musste im Jahr 2012 vom Netz genommen werden, weil sich die technischen Probleme überhäuften. Nachdem sich immer mehr Interessenten meldeten, dass die Wetterstation wieder aufgebaut werden muss, hat man 2015 die Arbeiten wieder aufgenommen um diverse Modernisierungen vorzunehmen. Dies ist der Grund warum es zwischen 2012 und 2015 keine Daten der Wetterstation gibt. ~\cite{Felix:ErweiterteHorizonte}}
-
-
-
-
-
-
-\subsection{Webcam}
-Zur Wetterstation Arbon gehört auch eine Webcam der Marke Axis. Diese ist auch wieder über ein Applikationsplugin in die Webseite integriert. Auf dieser können per schort links sechs verschiedene Positionen angefahren werden:
+\section{Die Webcam}
+Zur Wetterstation Arbon gehört auch eine Webcam der Marke Axis. Diese ist auch wieder über ein Applikationsplugin in die Webseite integriert. Auf dieser können per shortlinks sechs verschiedene Positionen angefahren werden:
 \begin{itemize}  
 \item Home
 \item See Nord
@@ -255,8 +290,8 @@ Zur Wetterstation Arbon gehört auch eine Webcam der Marke Axis. Diese ist auch 
 \item Horn
 \item Seerettung
 \end{itemize}
- In der Betriebseigenen Software lassen sich viele Parameter ändern bzw. Beschränken. Sowie die Vergrösserung. Diese ist jedoch aus  Datenschutzgründen die 4-fache Vergrösserung limitiert, möglich wäre eine 216-fache Vergrösserung. Neben den voreingestellten Positionen, kann die Kamera auch frei Positioniert werden. Dies freie Positionierung erfolgt über Pfeile, sowie die Plus und Minus am Bildrand, jenachdem welcher Button geklickt wird, sendet die Webseite das Kommando an die Webcam. Dies geschieht mittels Javascript, wie man dem folgenden Code entnehmen kann.
- 
+
+Diese Positionen sind in der Betriebseigenen Software konfiguriert. Neben den voreingestellten Positionen, kann die Kamera auch frei Positioniert werden.\Diskussionspunkt{Bild Webcam} Diese freie Positionierung erfolgt über Pfeile, sowie die Plus und Minus am Bildrand, jenachdem welcher Button geklickt wird, sendet die Webseite das Kommando mittels HTTP an die Webcam. Die zusammenstellung der URL geschieht über ein Javascript, wie man dem folgenden Code entnehmen kann.
 \begin{lstlisting}
  <div class="container webcam" id="webcam_585">
 	<div class="up"></div>
@@ -309,6 +344,8 @@ Zur Wetterstation Arbon gehört auch eine Webcam der Marke Axis. Diese ist auch 
 	}
 \end{lstlisting}
 
+In der Betriebseigenen Software lassen sich viele Parameter Konfigurieren, wie auch der Zoomfaktor. Diese ist jedoch aus Datenschutzgründen auf die 4-fache Vergrösserung limitiert, möglich wäre aber eine 216-fache Vergrösserung. Daraus wird schon deutlich das die Webcam mehr Potential hat und die Limitierung des Zooms in der BA so Konfiguriert werden, dass diese möglichst dynamisch sein. D.h., dass jenach Position der Zoomfaktor auch mit ändert. Der Zoom soll, vor allem auf den See hinaus in vollem Umfang benutzt werden können. Die Position der Kamera kann mit einer einfachen HTTP GET anfrage aufgerufen werden. Daraus wird ersichtlich in welche Richtung die Kamera zeigt und kann so, mittels einem einfachen Javascript den Zoom beschränken oder erweitern.
+
 \section{Problemanalyse}
 \Diskussionspunkt{Beschreibung, 
 Begründung, 
@@ -326,11 +363,6 @@ Sowohl die Webcam, als auch der Kombi-Wetter-Transmitter funktionieren einwandfr
 
 
 
-\subsection{Webcam}
-Die Limitierung des Zooms der Webcam sollte möglichst dynamisch sein. Im jetzigen Zustand ist es nur möglich überall den gleichen Zoomfaktor zu benutzen, obwohl dies nicht notwendig wäre. Beispielsweise könnte der Zoomfaktor auf den See hinaus um einiges grösser sein als auf die umliegenden Häuser.
-
-\subsection{Sturmwarnung}
-Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrowser stellen die Unterstützung dieses Standards langsam aber sicher ein und werden dann nur noch HTTPS unterstützen\cite{Mozilla:DeprecatingNon-SecureHTTP}. Deswegen ist die Sturmwarnung nur über einen Link aufrufbar. Des Weiteren wurde öfters der Wunsch nach einer SMS-Benachrichtigung geäussert, dies ist momentan nicht realisiert und soll auch teil unserer BA sein. 
 
 \section{SOLL-Zustand}
 \Diskussionspunkt{Lösungsansätze = zu entwickelnde Artefakte, 
@@ -338,30 +370,7 @@ Resultat aus Literaturrecherche,
 Konzepte}
 
 
-\subsection{Sturmwarnung}
-Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine SMS-Benachrichtigung zu registrieren. Hierbei soll auch die Möglichkeit gegeben werden um selber einen Sollwert der Windstärke einzustellen um ab dieser Stärke eine Benachrichtigung zu bekommen. Für die Benachrichtigung gibt es verschiedenen Möglichkeiten. Eine der Möglichkeiten ist ein Dienst namens clickatell, ein weiterer wäre ein Dienst von Swisscom. Des weiteren gibt es eine API um 
 
-\subsection{Webcam}
-Der Zoom soll auf gewissen Positionen, vor allem auf den See hinaus in vollem Umfang benutzt werden können. Die Position der Kamera kann mit einer einfachen HTTP GET anfrage aufgerufen werden. Mit der Position der Kamera weiss man in welche Richtung die Kamera steht. D.h. so kann mittels Javascript der Zoom in Richtung Arbon beschränkt werden und auf den See hinaus kann diese Beschränkung aufgehoben werden.
-
-
-\subsection{Notifications}
-Für die Notification wurden 3 verschiedene Möglichkeiten ausgewählt und mit der Nutzweranalyse ausgewertet. Ziel bei allen Möglichkeiten ist es, dass der Benutzer die Möglichkeit hat sich zu registrieren und Alarmkriterien zu bestimmen. Werden die gewählten Alarmkriterien erreicht bzw. wird eine Sturmwarnung herausgegeben, wird der Benutzer benachrichtigt. Hiermit soll die Möglichkeit gegeben werden, dass der Benutzer in Echtzeit informiert wird und somit keine Warnung oder sein "perfektes" Segelwetter verpasst.  
-
-\begin{center}
-\begin{tabular}{ |p{3.5cm}||p{1cm}|p{2cm}|p{3.5cm}|p{2.5cm}|p{1.5cm}|}
- \hline
- \multicolumn{6}{|c|}{Nutzwertanalyse} \\
- \hline
-	Möglichkeiten & Kosten & Einfachheit & Programmieraufwand & Anpassbarkeit & Support\\
- \hline
-	SMS & 1 & 4 & 3 & 3 & 5 \\
-	E-Mail & 5 & 4 & 5 & 5 & 1 \\
-	FacebookMessenger & 5 & 4 & 3 & 4 & 1 \\
- 
-\hline
-\end{tabular}
-\end{center}
 
 
 
