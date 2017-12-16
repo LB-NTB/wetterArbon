@@ -1,15 +1,19 @@
-\documentclass[a4paper,ngerman, 11pt, pagesize]{report}
+\documentclass[a4paper,ngerman, 11pt, DIV11]{scrartcl}
+%\documentclass[a4paper,ngerman, 11pt, pagesize]{report}
 
 %% Päambel
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
+
 \usepackage{cite}
 \usepackage{xcolor}
 \newcommand\Diskussionspunkt[1]{\textcolor{red}{#1}}
 
 \usepackage{url}
-\usepackage{hyperref}
+% keine rote Rahmen um die Links anzeigen
+\usepackage[pdfborderstyle={/S/U/W 0}]{hyperref}
+%\usepackage{hyperref}
 
 % Grafikpaket laden
 \usepackage{graphicx}
@@ -62,7 +66,7 @@
 \newcommand{\authorName}{Ladina Bilgery \and Thomas Wieling}
 \newcommand{\auftraggeber}{Interessengemeinschaft Wetterstation Arbon}
 \newcommand{\auftragnehmer}{Interstaatliche Hochschule für Technik NTB}
-\newcommand{\projektName}{User Interface und Datenmanagement für die Wetterstation Arbon}
+\newcommand{\projektName}{Multiplattform-fähiges User Interface und Datenmanagement für die Wetterstation Arbon}
 \title{\projektName~(Fachmodul)}
 \author{\authorName}
 \date{\today}
@@ -81,6 +85,11 @@
 {\hline\end{tabular}}
 
 
+% damit Bilder im aktuellen Kapitel dargestellt werden
+\usepackage{placeins}
+\usepackage{geometry}
+
+
 
 %%  Beginn Dokument
 \begin{document}
@@ -90,24 +99,25 @@
 \tableofcontents          
 \clearpage
 \pagenumbering{arabic}
-\input{Einführung}
-\chapter{Hauptteil}
-\input{Hardware} 
-\input{Webseite}
-\input{Sturmwarnung}
-\input{Datenbank}
-\input{Webcam}
-\input{Spezifikation}   
-\chapter{Projektmanagement}
-Wir wollen das Projektmanagement schlank halten um möglichst viel Zeit in die Entwicklung der Artefakte stecken zu können.
-Dieser Grundgedanke hat uns bei der im Folgenden beschrieben Auswahl der Modelle und Prozesse geleitet.
 
-\input{Entwicklungsprozess}
-\input{Projektplan}
-\section{Risikoanalyse}
-\input{Risikoanalyse}   
+\input{Einfuehrung}
+\input{Webseite}
+\input{Datenbank}
+\input{Sensoren} 
+\input{Webcam}
+\input{Erweiterungen}
+\input{Anforderungen}   
+\input{Projektmanagement}
+
+% braucht es das?
+\FloatBarrier
+
 \input{Dokumentation}
+\input{Risikoanalyse}   
+\input{Recht}
 \input{Schluss}
+
+
 \bibliography{literatur}{}	
 \bibliographystyle{plain}
 

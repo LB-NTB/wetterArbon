@@ -1,0 +1,44 @@
+\section{Sensoren}
+Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensor und Pegelsensor. Auf der Plattform befindet sich lediglich ein Schaltschrank und keine Logikeinheit. Sämtliche Daten werden per TCP/IP an den Server geschickt. Abbildung\ref{img:schaltschrank}  zeigt den schematischen Aufbau des Schaltschranks und die angeschlossenen Sensoren. Der Pegelsensor ist defekt und muss ersetzt werden. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{img/schaltschrank}
+	\caption{Hardware-Aufbau der Wetterstation Arbon}
+	\label{img:schaltschrank}
+\end{figure}
+
+
+
+\subsection{Pegelmesser}
+Der bisherige Pegel-Sensor nutzte das Prinzip der hydrostatischen Druckmessung. Da der Sensor nun aber ersetzt werden muss kommen weitere potentielle Messprinzipien in Fragen. Sie alle erfüllen die Grundanforderung bezüglich Messdistanz und Robustheit. Während der Bachelor-Arbeit wird der  ideale Pegelsensor getestet und ausgewählt.
+
+\begin{itemize}  
+\item Hydrostatische Druckmessung
+\item Ultraschall-Distanzmessung
+\item Radar-Distanzmessung
+\item Time-of-flight-Distanzmessung
+\end{itemize}
+
+\Diskussionspunkt{Wellenmessung /-darstellung}
+
+\subsection{Wassertemperatursensoren}
+
+\Diskussionspunkt{Kapitel weglassen?}
+
+Die Wassertemperatur wird definitionsgemäss einen Meter unterhalb der Wasseroberfläche gemessen. Die Wetterstation Arbon verwendet eine Widerstandskaskade aus PT100-Widerständen. Diese sind in einem Kunststoffrohr im Abstand von 20cm angeordnet. Abhängig vom gemessenen Pegel kann so der richtige Temperatursensor für die Wassertemperatur ausgewählt werden.
+Von den zehn verbauten Sensoren ist einer defekt. Da die Reparatur allerdings sehr aufwändig ist, und der Wert durch die beiden Nachbarwiderstände interpoiert werden kann, wird der Widerstand nicht ersetzt.
+
+\Diskussionspunkt{Darstellung der Schichtung?}
+
+
+
+
+
+
+
+
+
+
+
+

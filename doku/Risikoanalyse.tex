@@ -1,11 +1,10 @@
-\Diskussionspunkt{Themen sind technische Umsetzung, Zusammenarbeit mit Dritten, Termine, Ressourcen, }
-\subsection{Risikoliste}
+\subsection{Risikoanalyse}
 Für die Risikoanalyse haben wir eine Liste der möglichen  Risiken erstellt. Als Grundlage verwendeten wir das Risikolexikon aus dem Buch \flqq IT-Risikomanagment leben!\frqq ~\cite{AhrendtsFabian2008Il:w}. 
 Für jedes Risiko haben wir die Eintretenswahrscheinlichkeit und das Ausmass abgeschätzt. Gegenüber den herkömmlichen Risikobeurteilungen, haben wir allerdings die Auswirkungen auf Kosten und Terminverzug weggelassen, da sie in unserem Projekt nicht relevant sind und uns auf den Stundenaufwand und den Funktionsumfang beschränkt. Um die Auswirkung der einzelen Risiken abschätzen zu können, haben wir eine Punkteskala mit entsprechenden Kriterien erstellt, wie in Tabelle \ref{tab:auswirkung} aufgeführt. Die komplette Risikoliste\ref{img:risikoliste} befindet sich auf Seite \pageref{img:risikoliste}.
 
 \vspace{5mm} %5mm vertical space
 
-\begin{table}[]
+\begin{table}[h]
 \centering
 \label{tab:auswirkung}
 \begin{tabular}{rl}
@@ -19,41 +18,43 @@ Wert	[-]	& 	Auswirkung bezüglich Umfang \\
 \end{tabular}
 \end{table}
 
-\subsection{Risikomatrix}
-Die Risikomatrix zeigt auf grafische Weise wie kritisch die einzelnen Risiken aus der Risikoliste\ref{img:risikoliste}  sind. Mindestens vier davon sind als hoch eingestuft und müssen im Rahmen der Bachelor-Arbeit reduziert werden.
+Die Risikomatrix zeigt auf grafische Weise wie kritisch die einzelnen Risiken aus der Risikoliste\ref{img:risikomatrix}  sind. Mindestens vier davon sind als hoch eingestuft und müssen im Rahmen der Bachelor-Arbeit reduziert werden.
 
 % Abbildung der Risikomatrix
-\begin{figure}[htbp]
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\linewidth]{img/risikomatrix} 
+	\includegraphics[width=0.6\linewidth]{img/risikomatrix} 
 	\caption{Risikomatrix}
 	\label{img:risikomatrix}
 \end{figure}
 
 
-% Abbildung der Risikoliste (A3)
-\newpage
-\clearpage
-\pagebreak
-\afterpage{ % Insert after the current page
+
+% Abbildung (A3)
+\afterpage{ 
 \clearpage
 \KOMAoptions{paper=a3, paper=landscape} 
 \recalctypearea
+\newgeometry{left=30mm,right=30mm,top=30mm,bottom=50mm}
 
-\begin{figure}[htbp]
+
+\begin{figure}[h!p]
 	\centering
-	\includegraphics[width=1.1\linewidth]{img/risikoliste} % ab heigth = 0.6 auf eigener Seite!
-	\caption{Risikoliste}
+	\includegraphics[width=2.4\linewidth]{img/risikoliste} % ab heigth = 0.6 auf eigener Seite!
+	\caption{Risikoliste: Ausgangssituation}
 	\label{img:risikoliste}
 \end{figure}
 
 
-% PDF einbinden
-%\includepdf[pages=1,  width=\textwidth, height=\textheight]{risikoliste.pdf} 
-\clearpage
+\restoregeometry
 \KOMAoptions{paper=A4,pagesize}
 \recalctypearea
 }
+
+
+
+
+
 
 
 

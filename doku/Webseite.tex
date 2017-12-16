@@ -1,51 +1,114 @@
-\section{Die Webseite}
-Die Webseite der Wetterstation ist mit dem CMS Openfile64Light der Firma Screenbox erstellt. Der Nachteil am CMS ist, dass auf der Seite selber keine eigenen HTML, CSS oder Javascript Dateien erlaubt. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt. Um eigene Inhalte zu erstellen muss für die gewünschte Applikation eine PHP Referenzdatei erstellt werden, welche auf die HTML, Javascript und CSS Dateien in einem eigenen Ordner verweisen,diese muss im Ordner application abgelegt werden und in der Datenbank in der Tabelle applications gespeichert werden.\\
+\section{Darstellungsprobleme auf der Webseite}
+Die Webseite der Wetterstation Arbon besteht neben der Homepage aus zwölf Unterseiten. Für uns wichtig sind all jene, die mit den Sensordaten, der Webcam, oder der Datebank in Verbindung stehen. (hervorgehoben in Abb.\ref{img:sitemap}). Im folgenden werden diese Seiten und deren Probleme genauer erläutert.
 
-Für die Anzeige der von Weather-Display ausgewerteten Daten läuft wird Weather-Display Live. Das Weather-Display live funktioniert mit Flash, dies wird jedoch, aus folgendem Grund, nicht mehr von allen Geräten unterstützt, war jedoch zu beginn des Internetzeitalters essentiell für dynamische Webseiten. Mit ihm konnten einfach dynamische Inhalte erstellt und administriert werden. Jedoch gab es immer wieder gravierende Sicherheitslücken und Weiterentwicklungen im Bereich Web. Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Nicht zuletzt auch durch ein Kommuniqué von Steve Jobs. In diesem erklärt er warum seine Firma (Apple) nicht auf Flash, sondern HTML5 und Javascript setzt. Einer der Gründe für dieser Entscheidung ist, dass Flash keine open-source Software ist. D.h Adobe kontrolliert das System. Hierbei erwähnt Steve Jobs auch das Apple ein closed-source system ist, sie jedoch an einen offenen Webstandard glauben. Der zweite Grund ist warum Apple sich nicht für Flash entschieden hat ist, dass die Videos bzw. Games seit diesem offenen Brief aus dem Jahr 2009 auch in den neuen Standards, H.264, erhältlich ist. Der dritte Grund, das Apple nicht auf Flash gesetzt hat ist die Sicherheit. Aus Untersuchungen im Jahr 2009 ging hervor, dass die ihre Macs abstürzen. Dies kommt durch die Flashsoftware von Adobe. Dazu kommt, dass Flash auf den mobilen Geräten von Apple nicht sicher lief. Mehrmals wurde Adobe gefragt um eine laufende Version zu erstellen, dies hat Adobe jedoch nicht geschafft. Aus diesen Gründen hat Apple, welcher einer der Vorreiter von Smartphones war, sich entschieden um Flash nicht zu benutzen. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. \cite{Apple:ThoughtsOnFlash} \\
-Der wichtigste Grund ist das Adobe ab 2020 Flash nicht mehr weiterentwickelt und keine Updates mehr herausgeben wird. Dies aufgrund der oben genannten Tatsachen und das zur heutigen Zeit vielmals Flash umgangen wird und andere Lösungen gebraucht werden. Aufgrund von dies wird ab 2020 auch kein Browser mehr das Plugin zulassen und Seiten welche Flashinhalte benutzen sind nicht mehr Vollständig verfügbar. Somit ist auch die Wetter-Arbon Seite von dieser Tatsache betroffen. \cite{Adobe:FlashTheFutureofInteractiveContent}\\
-Um trotzdem erreichbar, auf Endgeräte ohne Flash, zu sein wird in der Wassersport.php bzw. Touristik.php Datei der Entscheid gefällt ob die Flash-Seite oder die Bild-Seite geöffnet wird, im Code des Wassersport.php-File oder im Touristik.php-File, je nachdem welche Seite geöffnet wird gefällt. Dies wird mit folgendem Code entschieden: 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/sitemap}
+	\caption{Sitemap der Webseite}
+	\label{img:sitemap}
+\end{figure}
 
-\begin{lstlisting}
-if (swfobject.hasFlashPlayerVersion("1")) {
-document.write('
-<iframe 
-src="https://www.wetter-arbon.ch/WDL/index.html">
-</iframe>');
-} 
-else {
-document.write('
-<img class="pageImage" 
-src="https://www.wetter-arbon.ch/WDL/WDL.png" alt="Bodensee West" 
-/>');
-}
+
+\subsection{Adobe Flash: Workaround mit Nachteilen}
+
+% ################################
+% Problem Adobe Flash
+% ################################
+Um die Daten des Wettertransmitters auszulesen, wird Weather Display \footnote{ \url{http://www.weather-display.com/index.php }} verwendet. Dieses Programm liest die Daten des Wettertransmitters und stellt sie anderen Programmen zum Beispiel in Form eines Text-Files zur Verfügung. Weahter Display Live (WDL) \footnote{ \url{http://www.weather-display.de }} liest nun eben dieses Text-File und erstellt damit eine Adobe Flash Animations wie in Abb.\ref{img:responsive} dargestellt (gelb markiert).
+
+Adobe Flash war eine einfache Möglichkeit animierte Grafiken auf Webseiten darzustellen und wurde praktisch von allen Browsern, nach Installation des Plug-ins, unterstützt. Diverse Sicherheitslücken und der Umstand, dass es sich um eine proprietäre d.h. closed-source Software handelte, führten dazu, dass Apple entschied Adobe Flash auf ihrem Mobile-Betiebsystem iOS nicht mehr zu unterstützen. \cite{Apple:ThoughtsOnFlash} 
+
+Sämtliche Adobe Flash Animationen können somit nicht auf iPhone und iPad angezeigt werden. Da ein Grossteil der schweizer Bevölkerung jedoch genau diese Mobilgeräte verwendet, wurde für die Wetterstation folgender Workaround geschaffen: Der Browser prüft zuerst, ob das Gerät Adobe Flash unterstützt. Wenn ja wird die normale Applikation geladen, wenn nicht wird ein Printscreen der Applikaiton geladen (Code: \ref{lst:flash})
+
+\begin{lstlisting}[caption={Adobe Flash workaround für iOS},label={lst:flash},language=html]
+if (swfobject.hasFlashPlayerVersion("1")) {document.write('
+<iframe src="https://www.wetter-arbon.ch/WDL/index.html"></iframe>');} 
+else {document.write('
+<img class="pageImage" src="https://www.wetter-arbon.ch/WDL/WDL.png" />');}
 \end{lstlisting}
 
-Der Nachteil an der Bild-Seite ist jedoch, dass die Anzeigen nicht mehr dynamisch sind. So wird z.B. die Änderung der Windrichtung nicht angepasst und muss stetig von Hand aktualisiert werden, will man den aktuellen Wert sehen.\\
+% Problem Workaround
+Der Nachteil dieses Workarounds ist jedoch, dass die Anzeige weder dynamisch noch interaktiv ist. Um die aktuellen Werte zu erhalten muss die Seite jeweils neu geladen werden. Die interaktiven Elemente sind unbrauchbar d.h. die Änderung von Einheiten, Anzeige von Rekordwerten und weiteren Graphen ist nicht möglich.
 
-Zusätzlich zur Desktop-Seite, auf welcher alle Informationen verfügbar sind, gibt es eine mobile abgespeckte Version der Wetterstation, siehe \ref{img:mobilewebseite} auf Seite \pageref{img:mobilewebseite}, diese ist erreichbar unter m.wetter-arbon.ch. Auf dieser werden die zwei aktuellsten Bilder der Touristikseite, bzw. der Wassersportseite auf einer Seite dargestellt. Zusätzlich gibt es einen Link welche die Bilder der Webcam, sowie deren Steuerungseinheit darstellt.
-\begin{figure}[htbp]
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\linewidth]{img/mobile_webseite}
-	\caption{Datenanzeige m.wetter-arbon.ch}
-	\label{img:mobilewebseite}
+	\includegraphics[width=1\linewidth]{img/responsive}
+	\caption{Responsive Design; Problem Flash-Applikation}
+	\label{img:responsive}
 \end{figure}
 
-Das Problem der Webseite und vorallem der verschiedenen Applikationen ist, dass viele Geräte Flash nicht mehr oder in naher Zukunft nicht mehr unterstützen. Zusätzlich ist die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung. Auch sind die Schreibfehler, welche entdeckt wurden bei näherer Betrachtung auch nicht Vorteilhaft. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Zusätzlich zum Flash, von der Gebrauch gemacht wird sind die Anzeigen auf der Touristik bzw. Wassersport Seite unschön. Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen\Diskussionspunkt{Bild zweier Graphen, als Vergleich} automatisch die, je nach Windstärke, wechselt.
 
-\begin{figure}[htbp]
+% Lösung Flash
+Mit dem aufkommen der Smartphones wurde Flash immer weiter verdrängt durch HTML5 und Javascript. Dadurch haben auch andere Hersteller von mobilen Geräten nachgezogen und auf Flash möglichst verzichtet. 
+
+Der wichtigste Grund ist das Adobe ab 2020 Flash nicht mehr weiterentwickelt und keine Updates mehr herausgeben wird. Dies aufgrund der oben genannten Tatsachen und das zur heutigen Zeit vielmals Flash umgangen wird und andere Lösungen gebraucht werden. Aufgrund von dies wird ab 2020 auch kein Browser mehr das Plugin zulassen und Seiten welche Flashinhalte benutzen sind nicht mehr Vollständig verfügbar. Somit ist auch die Wetter-Arbon Seite von dieser Tatsache betroffen. \cite{Adobe:FlashTheFutureofInteractiveContent}\\
+
+
+% ################################
+% Problem Responsive Design
+% ################################
+\subsection{Wetterdaten ohne Responsive Design}
+Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \textit{Openfile64Light} der Firma Screenbox erstellt. Dieses unterstütz grundsätzlich responsive Design. Eigene Änderungen oder dynamische Inhalte, werden in openfile64Light als sogenannte Applikationen behandelt und in die Seite eingebettet. Unterstützt die eingebettete Applikation kein responsive Design, so wird dieser Teil einfach linear skaliert. Dies führt dazu, dass die Anzeige der Wetterstationsdaten auf einem Mobilgerät kaum mehr lesbar sind. (Abbildung \ref{img:responsive})
+
+
+
+
+
+% ################################
+% Problem Graphen
+% ################################
+\subsection{Automatische y-Skalierung von Graphen}
+Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen automatisch die, je nach Windstärke, wechselt.
+
+% Windgeschwindigkeit
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\linewidth]{img/grafik}
-	\caption{Datenanzeige wetter-arbon.ch}
-	\label{img:grafik-dummy}
+	\includegraphics[width=1\linewidth]{img/wind-geschw}
+	\caption{Anzeige der Windgeschwindigkeit mit variabler y-Skalierung}
+	\label{img:wind-geschw}
 \end{figure}
 
-Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage.  \\
+% Windrichtung
+% Printscreen fehlt noch
+
+
+
+% ################################
+% Problem Sturmwarnung
+% ################################
+\input{Sturmwarnung} 
+% inkl. Notification
+
+
+
+
+\subsection{Ablaufdiagramm}
 Damit alle erklärten Vorgänge besser verständlich sind, wurde ein Ablaufdiagramm erstellt mit der heutigen Situation und der zukünftigen erwünschten Situation.
-\begin{landscape}
-\begin{figure}[htbp]
+
+% Abbildung (A3)
+\afterpage{ 
+\clearpage
+\KOMAoptions{paper=a3, paper=landscape} 
+\recalctypearea
+\newgeometry{left=30mm,right=30mm,top=30mm,bottom=50mm}
+
+\begin{figure}[h!p]
 	\centering
-	\includegraphics[width=1\linewidth]{img/Sequenzdiagramm_Wetter}
+	\includegraphics[width=2.5\linewidth]{img/Sequenzdiagramm_Wetter}
 	\caption{Ablauf von der Datenerfassung bis zur Anzeige}
 	\label{img:Sequenzdiagramm}
 \end{figure}
-\end{landscape}
+
+
+\restoregeometry
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
+
+
+% Zusammenfassung
+\subsection{Verbesserungsvorschläge für die Darstellung der Wetterstations-Daten}
+Das Problem der Webseite und vorallem der verschiedenen Applikationen ist, dass viele Geräte Flash nicht mehr oder in naher Zukunft nicht mehr unterstützen. Zusätzlich ist die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung. Auch sind die Schreibfehler, welche entdeckt wurden bei näherer Betrachtung auch nicht Vorteilhaft. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Zusätzlich zum Flash, von der Gebrauch gemacht wird sind die Anzeigen auf der Touristik bzw. Wassersport Seite unschön. 
+
+Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage.
