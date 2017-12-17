@@ -1,16 +1,16 @@
 \section{Erweiterungen}
+In diesem Kapitel geht es nicht um die Verbesserung von bestehenden Problemen, sondern um die Erweiterung des Funktionsumfangs der Wetterstation Arbon. Es ist eine Auflistung möglicher Erweiterungen, die allerdings keine Priorität haben.
 
-\subsection{Benachrichtigungs-Service}
-Des Weiteren wurde öfters der Wunsch nach einer SMS-Benachrichtigung geäussert, dies ist momentan nicht realisiert und soll auch teil unserer BA sein. 
+\subsection{Individueller Benachrichtigungs-Service}
+Mit einem Benachrichtigungs-Service soll dem Benutzer die Möglichkeit gegeben werden, dass er zeitnah über Wetteränderungen informiert wird und somit keine Warnung oder sein "perfektes" Segelwetter verpasst. Dafür wurden drei verschiedene Möglichkeiten ausgewählt und mit der Nutzwertanalyse ausgewertet. Ziel bei allen Möglichkeiten ist es, dass der Benutzer die Möglichkeit hat Alarmkriterien selbst zu bestimmen. Werden die gewählten Alarmkriterien erreicht bzw. wird eine Sturmwarnung herausgegeben, wird der Benutzer benachrichtigt. Für die Evaluierung der Notifications wurde eine Nutzwertanalyse (Tabelle \ref{table:nutzwertanalyse}) erstellt. Dies ist eine gute Möglichkeit, um verschiedene Lösungsansätze zu bewerten. Der Nachteil hierbei ist jedoch, dass die Bewertung sehr subjektiv ist. Aus der Nutzwertanalyse geht hervor, dass die Benachrichtigung per E-Mail und Facebook Messenger die Lösungsansätze mit der höchsten Punktzahl sind . Der grösste Vorteil der beiden möglichen Lösungen sind, dass sie kostenlos sind. Der Nachteil an Facebook Messenger ist, dass nicht davon ausgegangen werden kann, dass jeder Benutzer ein Facebookprofil hat. 
 
-Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der Webseite soll die Möglichkeit haben sich für eine Notification zu registrieren. Dafür wurden 3 verschiedene Möglichkeiten ausgewählt und mit der Nutzwertanalyse ausgewertet. Ziel bei allen Möglichkeiten ist es, dass der Benutzer die Möglichkeit hat sich zu registrieren und Alarmkriterien zu bestimmen. Werden die gewählten Alarmkriterien erreicht bzw. wird eine Sturmwarnung herausgegeben, wird der Benutzer benachrichtigt. Hiermit soll die Möglichkeit gegeben werden, dass der Benutzer in Echtzeit informiert wird und somit keine Warnung oder sein "perfektes" Segelwetter verpasst. Für die evaluierung der Notifications wurde eine Nutzwertanalyse erstellt. Dies ist eine gute Möglichkeit, um verschiedene Lösungsansätze zu bewerten. Der Nachteil hierbei ist jedoch, dass die Bewertung sehr subjektiv ist. 
-
+\begin{table}
 \begin{center}
-\begin{tabular}{ |p{3.5cm}||p{1cm}|p{2cm}|p{3.5cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabular}{ |p{3.5cm}||p{1.1cm}|p{2cm}|p{1.7cm}|p{2.3cm}|p{1.4cm}|}
  \hline
  \multicolumn{6}{|c|}{Nutzwertanalyse} \\
  \hline
-	Möglichkeiten & Kosten & Einfachheit & Programmieraufwand & Anpassbarkeit & Support\\
+	Möglichkeiten & Kosten & Einfachheit & Aufwand & Anpassbarkeit & Support\\
  \hline
 	SMS & 1 & 4 & 3 & 3 & 5\\
 	E-Mail & 5 & 4 & 5 & 5 & 1\\
@@ -19,8 +19,22 @@ Die Sturmwarnung soll wieder auf der Webseite sichtbar sein und der Besucher der
 \hline
 \end{tabular}
 \end{center}
+\caption{Nutzwertanalyse verschiedner Notifikations-Möglichkeiten}
+\label{table:nutzwertanalyse}
+\end{table}
 
-Aus der Nutzwertanalyse ist Sichtbar, dass die Benachrichtigung per E-Mail und Facebook Messenger die Lösungsansätze mit der höchsten Punktzahl sind . Der grösste Vorteil der beiden möglichen Lösungen sind, dass sie Kostenlos sind. Der Nachteil an Facebook Messenger ist, das nicht davon ausgegangen werden kann, dass jeder Benutzer ein Facebookprofil hat. 
+
+% Wind
+\subsection{Überprüfung der Windprognose-Genauigkeit }
+Es gibt diverse Anbieter von Windprognosen für den Bodensee wie zum Beispiel Windfinder\footnote{ \url{https://www.windfinder.com/forecast/arbon}} und SRF Meteo\footnote{ \url{https://www.srf.ch/meteo/surf-und-segelwetter/detail/06621}}. Vorhersagen sind bekanntlich Hochrechnungen und mit gewissen Unsicherheiten behaftet. Interessant ist nun zu wissen wie gut die Windvorhersagen mit den Wind-Messwerten der Wetterstation Arbon übereinstimmen. Während der Bachleor-Arbeit soll nun eine Vergleichsgrafik erstellt werden, welche die Vorhersage den Messwerten gegenüber stellt.
 
 
-\subsection{Vergleich Windmessung mit Prognose}
+% Pegel
+\subsection{Berechnung und Darstellung der Wellenhöhe}
+Sobald ein funktionstüchtiger Pegelsensor installiert ist, können die Pegeldaten auch für andere Zwecke verwendet werden, zum Beispiel zur Berechnung der Wellenhöhe. Dies ist insbesondere für Motorboot-Fahrer interessant.
+
+
+% Wassertemperatur
+\subsection{Verlauf der Wassertemperatur in Abhängigkeit der Tiefe}
+Die Wetterstation Arbon verfügt über mehrere Temperatursensoren, die im Abstand von 20 Zentimeter die Wassertemperatur messen. Die Idee ist, die Temperaturschichtung des Wassers bestimmen zu können.
+

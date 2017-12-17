@@ -1,11 +1,35 @@
-\section{Datenmanagment mit Eigenheiten}
+\section{Datenmanagement mit Eigenheiten}
 
 % ################################
-% Datenfluss (Datenbanken und Textfiles)
+% Datenfluss (Datenbanken, Textfiles und wie alles verknüpft ist)
 % ################################
-\subsection{Datenfluss: Datenbanken und Text-Files}
-\Diskussionspunkt{Übersicht: in welcher DB ist welche Tabelle}
-\Diskussionspunkt{Bild des Datenflusses inkl. DB und Text-Files}
+\subsection{Datenfluss}
+Damit alle erklärten Vorgänge besser verständlich sind, wurde ein Ablaufdiagramm erstellt mit der heutigen Situation und der zukünftigen erwünschten Situation.
+
+
+\Diskussionspunkt{Ablaufdiagramm zusätzlich in Worten beschreiben; was sieht was, was ist an der alten Lösung nicht gut}\\
+
+% Abbildung (A3)
+\afterpage{ 
+\clearpage
+\KOMAoptions{paper=a3, paper=landscape} 
+\recalctypearea
+\newgeometry{left=30mm,right=30mm,top=30mm,bottom=50mm}
+
+\begin{figure}[h!p]
+	\centering
+	\includegraphics[width=2.5\linewidth]{img/Sequenzdiagramm_Wetter}
+	\caption{Ablauf von der Datenerfassung bis zur Anzeige}
+	\label{img:Sequenzdiagramm}
+\end{figure}
+
+
+\restoregeometry
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
+
 
 
 
@@ -26,8 +50,6 @@ Die dritte Datenbank ist die igwetter wettertest. Diese ist im Gegensatz zu den 
 Anders als bei den vorherigen Datenbanken hat die igwetter opfile64Light Datenbank eine Funktion für die Webseite. In diesem Fall ist die ganze Webseite abhängig von dieser, denn das CMS basiert auf einer Datenbank. Dies wurde im Kapitel Wie und wo werden Applikationen erstellt bereits erläutert. Für die BA, sowie das Fachmodul ist nur die Tabelle applications interessant, denn dort werden die Applikationen unter einem bestimmten Namen abgespeichert und aufgerufen. Die Webseite weiss dann welche Datei sie öffnen muss, damit die Applikation läuft.\\
 
 
-\Diskussionspunkt{Datenbankabbildung, besprechen}\\
-
 Die Daten, welche von der Wetterstation an einen Server in der Uni Liechstein gesendet werden, werden über die Software Weather-Display direkt in die Datenbank ig wettertest Tabelle wxdata geschrieben. Diese Daten werden hier im Minutentakt eingelesen und in der tabelle wx data gespeichert. 
 
 
@@ -39,24 +61,16 @@ Die Weahter-Display Software speichert zusätzlich alle Daten, welche von der We
 \item clientrawhour.txt
 \item clientrawdaily.txt
 \end{itemize}
-\Diskussionspunkt{lieber ein Bild aller Files als eine Aufzählung}
-\Diskussionspunkt{Warum kann nicht auf die txt-Files verzichtet werden}
-\Diskussionspunkt{API für Badi (Luft- und Wassertemperatur}
 
 
 Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Intervall der Aktualisierung dieser Datei wird in der Datei wdlconfig.xml eingestellt. Im Fall von Arbon wird die Datei alle 5 Sekunden aktualisiert.  Hier werden auch die restlichen Parameter bzw. Einheiten in der die Daten gespeichert werden sollen eingestellt. Die clientrawextra.txt enthält die historischen Extremwerte. Die Datei clientrawhour.txt enthält die aufgezeichneten Daten der letzten Stunde im Minutentakt.\cite{WeatherDisplay} \\
 
 
 % ################################
-% Datenmanagment
+% Datenmanagment und Datensicherung
 % ################################
-\subsection{Datenmanagement}
+\subsection{Datenmanagement und Datensicherung}
 \Diskussionspunkt{Ausdünnung der Daten; wieviel Daten fallen pro Tag an?}
-
-% ################################
-% Datensicherung
-% ################################
-\subsection{Datensicherung}
 
 
 % ################################
@@ -64,6 +78,10 @@ Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Inte
 % ################################
 \subsection{API}
 \Diskussionspunkt{REST-Servie?}
+
+\Diskussionspunkt{API für Badi (Luft- und Wassertemperatur}
+
+\Diskussionspunkt{Ich würde hier reinschreiben, dass wir bis jetzt noch keine Zeit hatten dieses Thema zu Bearbeiten, aber es bis am 5. Januar nachliefern....}
 
 Das Problem hierbei ist folgendes schaut man die Datenbanken zum jetzigen Zeitpunkt an, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Da es mehrere Datenbanken gibt,  ist es auf dem ersten Blick nicht sichtbar, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische", tblgestern, Tabelle abgelegt. \\
 

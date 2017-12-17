@@ -57,10 +57,16 @@ Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \text
 % ################################
 % Problem Graphen
 % ################################
-\subsection{Automatische y-Skalierung von Graphen}
-Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen automatisch die, je nach Windstärke, wechselt.
+\subsection{Verwirrende Graphen}
+\Diskussionspunkt{Einführung zum Thema Graphen hinzufügen; wo werden sie dargestellt, was ist das Ziel}
+
 
 % Windgeschwindigkeit
+\subsubsection*{Automatische y-Skalierung von Graphen}
+Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen automatisch die, je nach Windstärke, wechselt.
+
+\Diskussionspunkt{Genauere Erklärung mit Bezug auf das Bild hinzufügen}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{img/wind-geschw}
@@ -68,47 +74,34 @@ Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind sc
 	\label{img:wind-geschw}
 \end{figure}
 
-% Windrichtung
-% Printscreen fehlt noch
 
+
+% Windrichtung
+\subsubsection*{Windrichtung}
+
+\Diskussionspunkt{Bild der Windrichtungsproblematik}
+
+\Diskussionspunkt{Erklärung der Problematik}
 
 
 % ################################
 % Problem Sturmwarnung
 % ################################
-\input{Sturmwarnung} 
-% inkl. Notification
+\subsection{Unsichere Sturmwarnung mit Öffnungszeiten}
+Die Seite mir der Sturmwarnung, siehe \ref{img:sturm}, wurde anfangs November umgestellt aus Sicherheitsgründen, welche in der Problemanalyse erläutert werden. Zum jetzigen Zeitpunkt wird nur noch ein Link zur Verfügung gestellt um auf die kantonale Sturmwarnseite zu kommen. Die Daten dieser Seite werden mit dem deutschen Wetterdienst in Stuttgart sowie Meteo Schweiz erstellt und dienen auf der Webseite nur als Information. Zu beachten ist hierbei, dass die Sturmwarnungen Bürozeiten haben. D.h. konkret vom 1. April bis 31 Oktober zwischen 6 und 22 Uhr und vom 1. November bis 31. März zwischen 7 und 20 Uhr. Der deutsche Wetterdienst und Meteo Schweiz unterscheiden zwei verschiedene Kategorien. Zum einen starke Windböen zwischen 25 und 33 Knoten, dies wird 40 Blitze pro Minute an den Leuchten signalisiert. Zum anderen Sturmböen von 34 und mehr Knoten, welche mit 90 Blitze pro Minute signalisiert werden. Zusätzlich zu den beiden Kategorien wird der Bodensee in 3 verschiedene Zonen unterteilt, West, Mitte und Ost, wobei Arbon in zur Zone Ost gehört. Wie schon erklärt ist das Problem hierbei der HTTP Standard, viele der Webbrowser stellen die Unterstützung dieses Standards langsam aber sicher ein und werden dann nur noch HTTPS unterstützen\cite{Mozilla:DeprecatingNon-SecureHTTP}. Deswegen ist die Sturmwarnung nur über einen Link aufrufbar. 
 
 
-
-
-\subsection{Ablaufdiagramm}
-Damit alle erklärten Vorgänge besser verständlich sind, wurde ein Ablaufdiagramm erstellt mit der heutigen Situation und der zukünftigen erwünschten Situation.
-
-% Abbildung (A3)
-\afterpage{ 
-\clearpage
-\KOMAoptions{paper=a3, paper=landscape} 
-\recalctypearea
-\newgeometry{left=30mm,right=30mm,top=30mm,bottom=50mm}
-
-\begin{figure}[h!p]
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=2.5\linewidth]{img/Sequenzdiagramm_Wetter}
-	\caption{Ablauf von der Datenerfassung bis zur Anzeige}
-	\label{img:Sequenzdiagramm}
+	\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Sturmwarnung vom Kanton Thurgau}
+	\label{img:sturm}
 \end{figure}
 
 
-\restoregeometry
-\KOMAoptions{paper=A4,pagesize}
-\recalctypearea
-}
 
 
-
-% Zusammenfassung
-\subsection{Verbesserungsvorschläge für die Darstellung der Wetterstations-Daten}
+\Diskussionspunkt{Die folgenden Aussagen bitte beim jeweiligen Kapitel hinzufügen: }
 Das Problem der Webseite und vorallem der verschiedenen Applikationen ist, dass viele Geräte Flash nicht mehr oder in naher Zukunft nicht mehr unterstützen. Zusätzlich ist die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung. Auch sind die Schreibfehler, welche entdeckt wurden bei näherer Betrachtung auch nicht Vorteilhaft. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Zusätzlich zum Flash, von der Gebrauch gemacht wird sind die Anzeigen auf der Touristik bzw. Wassersport Seite unschön. 
 
 Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage.
