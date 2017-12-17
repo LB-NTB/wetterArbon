@@ -452,28 +452,33 @@
         }, 
         {
             "location": "/KW50/", 
-            "text": "Wochenreport KW 44\n\n\nZiel\n\n\nResultat / Erkenntnisse\n\n\nProbleme", 
+            "text": "Wochenreport KW 50\n\n\nZiel\n\n\n\n\nKonzept f\u00fcr Roten Faden erstellen\n\n\nBericht schreiben\n\n\nFormatierung anpassen \n\n\nBildunterschriften hinzuf\u00fcgen\n\n\n\n\nResultat / Erkenntnisse\n\n\n\n\nDer erste Entwurf des Berichts steht\n\n\nDas Layout d.h. ein kleinerer Seitenrand sowie integrierte A3-Seiten ist fast wie gew\u00fcnscht umgesetzt. \n\n\nDas Kapitel API bzw. REST-Service konnten wir aus Zeitgr\u00fcnden noch nicht behandeln. Werden wir aber nachholen.\n\n\n\n\nProbleme\n\n\n\n\nDie Abbildungen im Bericht sind alle im png-Format. Dies erh\u00f6ht die Dateigr\u00f6sse des Berichts extrem. Bis zur definitven Abgabe suchen wir eine bessere L\u00f6sung und setzten wenn m\u00f6glich Vektorgrafiken ein.\n\n\n\n\nJournal\n\n\n13h Bericht schreiben\n\n0.5h Wochenbericht schreiben", 
             "title": "KW50"
         }, 
         {
-            "location": "/KW50/#wochenreport-kw-44", 
+            "location": "/KW50/#wochenreport-kw-50", 
             "text": "", 
-            "title": "Wochenreport KW 44"
+            "title": "Wochenreport KW 50"
         }, 
         {
             "location": "/KW50/#ziel", 
-            "text": "", 
+            "text": "Konzept f\u00fcr Roten Faden erstellen  Bericht schreiben  Formatierung anpassen   Bildunterschriften hinzuf\u00fcgen", 
             "title": "Ziel"
         }, 
         {
             "location": "/KW50/#resultat-erkenntnisse", 
-            "text": "", 
+            "text": "Der erste Entwurf des Berichts steht  Das Layout d.h. ein kleinerer Seitenrand sowie integrierte A3-Seiten ist fast wie gew\u00fcnscht umgesetzt.   Das Kapitel API bzw. REST-Service konnten wir aus Zeitgr\u00fcnden noch nicht behandeln. Werden wir aber nachholen.", 
             "title": "Resultat / Erkenntnisse"
         }, 
         {
             "location": "/KW50/#probleme", 
-            "text": "", 
+            "text": "Die Abbildungen im Bericht sind alle im png-Format. Dies erh\u00f6ht die Dateigr\u00f6sse des Berichts extrem. Bis zur definitven Abgabe suchen wir eine bessere L\u00f6sung und setzten wenn m\u00f6glich Vektorgrafiken ein.", 
             "title": "Probleme"
+        }, 
+        {
+            "location": "/KW50/#journal", 
+            "text": "13h Bericht schreiben \n0.5h Wochenbericht schreiben", 
+            "title": "Journal"
         }, 
         {
             "location": "/KW51/", 
