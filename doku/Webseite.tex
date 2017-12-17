@@ -58,14 +58,11 @@ Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \text
 % Problem Graphen
 % ################################
 \subsection{Verwirrende Graphen}
-\Diskussionspunkt{Einführung zum Thema Graphen hinzufügen; wo werden sie dargestellt, was ist das Ziel}
-
+Die Graphen auf den beiden Wetterseiten verwirren teilweise mehr, als das sie einem klar eine die vergangenen Werte zeigen. Das Ziel in der BA ist, dass die Aussagen der Graphen auf dem ersten Blick klar sind.
 
 % Windgeschwindigkeit
 \subsubsection*{Automatische y-Skalierung von Graphen}
-Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen automatisch die, je nach Windstärke, wechselt.
-
-\Diskussionspunkt{Genauere Erklärung mit Bezug auf das Bild hinzufügen}
+Die Graphen, bspw. der Windanzeige mit ihrer Richtung sowie die Stärke, sind schwer lesbar, da die Skalierung des Graphen automatisch die, je nach Windstärke, wechselt. Das Bild \ref{img:wind-geschw} zeigt auf wie die Skalierung der Y-Achse bei unterschiedlichen Achsen wechselt. Beim linken Graph geht die Skalierung von 0 bis 30 Knoten, beim rechten von 0 bis 14 Knoten. Das Problem ist, dass ein schnelles ablesen der Anzeige nicht möglich ist.
 
 \begin{figure}[h!]
 	\centering
@@ -98,10 +95,6 @@ Die Seite mir der Sturmwarnung, siehe \ref{img:sturm}, wurde anfangs November um
 	\label{img:sturm}
 \end{figure}
 
-
-
-
-\Diskussionspunkt{Die folgenden Aussagen bitte beim jeweiligen Kapitel hinzufügen: }
 Das Problem der Webseite und vorallem der verschiedenen Applikationen ist, dass viele Geräte Flash nicht mehr oder in naher Zukunft nicht mehr unterstützen. Zusätzlich ist die Lösung mit dem Screenshot der aktuellen Verhältnisse auch keine optimale Lösung. Auch sind die Schreibfehler, welche entdeckt wurden bei näherer Betrachtung auch nicht Vorteilhaft. Weiter ist die Wetterapplikation nicht nach dem Prinzip responsive Design aufgebaut, welches in der heutigen Zeit ein wichtiger Bestandteil einer Webseite ist. Zusätzlich zum Flash, von der Gebrauch gemacht wird sind die Anzeigen auf der Touristik bzw. Wassersport Seite unschön. 
 
 Um die Webseite auf den neusten Stand der Technik zu bringen sollten folgende Änderungen durchgeführt werden.Die Flash-Software wird ausgemustert und die Applikation wird auf HTML5 und Javascript umgestellt. Die Webseite soll zudem im responsive Design entwickelt werden, damit auch auf mobilen Geräten die aktuelle Wetterlage sichtbar ist. Die dynamischen, sowie auch die teilweise statischen Anzeigen, werden wo möglich mithilfe der Javascript Bibliothek D3.js oder Google Charts erstellt, hiermit lassen sich ansehnliche und moderne Grafiken erstellen. Die Grafiken, sollten so gestaltet sein das auch Sehbehinderte Personen erkennen wie das Wetter momentan ist. Das heisst beispielsweise, dass die Farben auch für Farbenblinde unterscheidbar sein sollten oder blinde Personen anhand eines Vorleseprogramms erkennen wie das Wetter ist. Ein weiterer Punkt ist die Auswahl der Einheiten, diese sollen nach dem ersten Besuch gespeichert bleiben beim Client mithilfe von Webstorage.
