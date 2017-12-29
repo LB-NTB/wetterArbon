@@ -1,10 +1,40 @@
 \section{Datenmanagement mit Eigenheiten}
 
+\subsection{Daten}
+In diesem Kapitel wird kurz erklärt welche Daten in der Datenbank, sowie in der später erklärten clientraw Dateien verarbeitet werden. Das Weather Display verarbeitet folgende Daten in für Menschen lesbare Produkte:
+\begin{itemize}
+\item Temperatur
+\item Gefühlte Temperatur (Windchill)
+\item Maximale, minimale gefühlte Temperatur (Windchill)
+\item Gefühlte Temperatur (Hitzeindex)
+\item Maximale, minimale gefühlte Temperatur (Hitzeindex)
+\item Maximale, minimale Temperatur 
+\item Windgeschwindigkeit
+\item Maximale Windgeschwindigkeit des Tages 
+\item Windrichtung
+\item Böengeschwindigkeit
+\item Maximale Böengeschwindigkeit des Tages
+\item Luftfeuchtigkeit
+\item Luftdruck
+\item Barometertrend letzte Stunde
+\item Regenmenge (täglich, monatlich, jährlich)
+\item Regenrate
+\item Taupunkt
+\item Wolkenhöhe
+\item Batteriegstand
+
+
+
+
+\end{itemize}
+
 % ################################
 % Datenfluss (Datenbanken, Textfiles und wie alles verknüpft ist)
 % ################################
 \subsection{Datenfluss}
+\textbf{Ist}\\
 Damit alle erklärten Vorgänge besser verständlich sind, wurde ein Ablaufdiagramm erstellt mit der heutigen Situation und der zukünftigen erwünschten Situation. Die heutige Situation, braun,  sieht folgendermassen aus. Die Daten werden von der Wetterstation an das Weather-Display gesendet. Dieses verarbeitet die Daten und schreibt sie in eine Textdatei, sowie im minuten Takt in die Datenbank. Das Weather-Display Live verarbeitet die Daten der Textdatei in eine dynamische Anzeige und erstellt gleichzeitig ein Bild davon. Die Webseite entscheidet dann, ob die dynamische oder die Bild-Anzeige angezeigt wird. Bei der mobilen Webseite wird in jedem Fall vom Bild Gebrauch gemacht. \\
+\textbf{Soll}\\
 In Zukunft, blau, soll der Datenfluss bis zur Textdatei gleich sein. Anschliessend soll aber ein Javascript Anzeigen von den verarbeiteten Daten erstellen und auf die responsive Webseite angezeigt werden.\\
 
 % Abbildung (A3)
@@ -32,6 +62,7 @@ In Zukunft, blau, soll der Datenfluss bis zur Textdatei gleich sein. Anschliesse
 
 
 % Datenbanken
+\textbf{Ist}\\
 Für die Webseite und die Wetterstation, hat es vier verschiedene Datenbanken. Diese werden in diesem Kapitel einzeln behandelt und erklärt wie Sie zusammenhängen bzw. welche Rolle sie für die Webseite spielen. Die vier Datenbanken heissen:
 \begin{itemize}  
 \item igwetter meteotmpl
@@ -67,9 +98,12 @@ Die clientraw.txt Datei enthält die aktuellen Wetterdaten der Station. Der Inte
 % Datenmanagment und Datensicherung
 % ################################
 \subsection{Datenmanagement und Datensicherung}
+\textbf{Ist}\\
 Täglich fallen 93600 Datenpunkte an, diese Daten werden alle seit 2015 gespeichert und nicht ausgedünnt. Das Problem hierbei ist folgendes schaut man die Datenbanken zum jetzigen Zeitpunkt an, scheint es chaotisch zu sein. Im Grunde werden nur die igwetter openfile64Light und die igwetter wettertest Datenbank benutzt. Da es aber mehrere Datenbanken gibt,  ist es auf dem ersten Blick nicht sichtbar, was wo gemacht wird und welche Datenbank für wofür zuständig ist. Ein weiterer Punkt sind die riesigen Mengen an Daten, diese verzögert eine Abfrage in der Datenbank enorm. Des weiteren wird nicht nur eine Datenbank sondern auch .txt Files benutzt um ein Backup zu erstellen, sowie die aktuellen Daten zu speichern. Die historischen Daten in der Datenbank sind nicht vollständig, zum einen gibt es für den gesagten Zeitraum zwischen 2012 und 2015 keine Daten und zum anderen werden die seit dem erstellten Daten nicht auch in die "historische" Tabelle tblgestern abgelegt.\\
-
-Das zeigt auch auf wie wichtig eine gute Strukturierung der Datenbank ist. Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Es wird eine neue Datenbank erstellt welche klarer strukturiert wird, hierbei sollten neue Tabellen entstehenen, wobei Daten ausgedünnt werden können um keinen unnötigen Speicherplatz zu belasten. Die Haupttabelle soll alle aktuelle Daten enthalten. Zusätzlich soll Tabelle erstellt werden mit zukünftigen und vorhandenen historischen Daten. Um die Übersichtlichkeit zu gewähren wird eine Tabelle mit Maximal sowie Minimal Daten erstellt. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
+\textbf{Problem}\\
+Das zeigt auch auf wie wichtig eine gute Strukturierung der Datenbank ist. 
+\textbf{Soll}\\
+Hierfür wird vorgeschlagen die Datenbank igwetter openfile64Light so zu belassen, da diese für das CMS zuständig ist. Es wird eine neue Datenbank erstellt welche klarer strukturiert wird, hierbei sollten neue Tabellen entstehenen, wobei Daten ausgedünnt werden können um keinen unnötigen Speicherplatz zu belasten. Die Haupttabelle soll alle aktuelle Daten enthalten. Zusätzlich soll Tabelle erstellt werden mit zukünftigen und vorhandenen historischen Daten. Um die Übersichtlichkeit zu gewähren wird eine Tabelle mit Maximal sowie Minimal Daten erstellt. Die Zeitabstände, in der die Daten gelöscht bzw. zu historischen Daten werden, müssen noch mit den Mitgliedern der IG-Wetter abgesprochen werden. Ein weiterer Punkt auf der Liste sollten die zukünftigen Backups sein, d.h. diese sollten nicht als .txt sonder auch als .sql File gespeichert sein damit im Falle eines Datenverlustes die Datenbank einfach wiederherzustellen ist.
 
 % ################################
 % API
