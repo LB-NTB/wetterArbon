@@ -3,7 +3,7 @@ report/site/
 # TeX/LaTeX intermediates # 
 ########################### 
 *.*~
-#*.pdf 
+*.pdf 
 *.aux 
 *.log 
 *.tmp 
