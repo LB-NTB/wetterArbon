@@ -1,6 +1,8 @@
 \section{Erweiterungen}
 In diesem Kapitel geht es nicht um die Verbesserung von bestehenden Problemen, sondern um die Erweiterung des Funktionsumfangs der Wetterstation Arbon. Es ist eine Auflistung möglicher Erweiterungen, die allerdings keine Priorität haben.
 
+
+% Benachrichtigungen
 \subsection{Individueller Benachrichtigungs-Service}
 Mit einem Benachrichtigungs-Service soll dem Benutzer die Möglichkeit gegeben werden, dass er zeitnah über Wetteränderungen informiert wird und somit keine Warnung oder sein perfektes Segelwetter verpasst. Dafür wurden drei verschiedene Möglichkeiten ausgewählt und mit der Nutzwertanalyse ausgewertet. Ziel bei allen Möglichkeiten ist es, dass der Benutzer die Möglichkeit hat Alarmkriterien selbst zu bestimmen. Werden die gewählten Alarmkriterien erreicht bzw. wird eine Sturmwarnung herausgegeben, wird der Benutzer benachrichtigt. Für die Evaluierung der Notifications wurde eine Nutzwertanalyse (Tabelle \ref{table:nutzwertanalyse}) erstellt. Dies ist eine gute Möglichkeit, um verschiedene Lösungsansätze zu bewerten. Der Nachteil hierbei ist jedoch, dass die Bewertung sehr subjektiv ist. Aus der Nutzwertanalyse geht hervor, dass die Benachrichtigung per E-Mail und Facebook Messenger die Lösungsansätze mit der höchsten Punktzahl sind . Der grösste Vorteil der beiden möglichen Lösungen sind, dass sie kostenlos sind. Der Nachteil an Facebook Messenger ist, dass nicht davon ausgegangen werden kann, dass jeder Benutzer ein Facebookprofil hat. 
 
@@ -24,17 +26,28 @@ Mit einem Benachrichtigungs-Service soll dem Benutzer die Möglichkeit gegeben w
 \end{table}
 
 
-% Wind
+% Windprognose-Genauigkeit
 \subsection{Überprüfung der Windprognose-Genauigkeit }
 Es gibt diverse Anbieter von Windprognosen für den Bodensee wie zum Beispiel Windfinder\footnote{ \url{https://www.windfinder.com/forecast/arbon}} und SRF Meteo\footnote{ \url{https://www.srf.ch/meteo/surf-und-segelwetter/detail/06621}}. Vorhersagen sind bekanntlich Hochrechnungen und mit gewissen Unsicherheiten behaftet. Interessant ist nun zu wissen wie gut die Windvorhersagen mit den Wind-Messwerten der Wetterstation Arbon übereinstimmen. Während der Bachleor-Arbeit soll nun eine Vergleichsgrafik erstellt werden, welche die Vorhersage den Messwerten gegenüber stellt.
 
 
-% Pegel
+% Wellenhöhe
 \subsection{Berechnung und Darstellung der Wellenhöhe}
 Sobald ein funktionstüchtiger Pegelsensor installiert ist, können die Pegeldaten auch für andere Zwecke verwendet werden, zum Beispiel zur Berechnung der Wellenhöhe. Dies ist insbesondere für Motorboot-Fahrer interessant.
 
 
-% Wassertemperatur
+% Schichtung Wassertemperatur
 \subsection{Verlauf der Wassertemperatur in Abhängigkeit der Tiefe}
 Die Wetterstation Arbon verfügt über mehrere Temperatursensoren, die im Abstand von 20 Zentimeter die Wassertemperatur messen. Die Idee ist, die Temperaturschichtung des Wassers bestimmen zu können.
+
+
+% API
+\subsection{Schnittstelle zu den aktuellen Messwerten (API)}
+Die Wetterstation Arbon misst die Lufttemperatur und kann mit Hilfe des Pegels und den Temperaturwiderständen die Wassertemperatur des Bodensees bestimmen. Die Badi Arbon, welche ca. einen Kilometer von der Wetterstation entfernt, zeigt auf ihrer Infotafel und auf ihrer Webseite\footnote{ \url{https://www.schwimmbad-arbon.ch}} ebenfalls die Luft- und Wassertemperatur an. Da die Badi aber keine eigene Messstation hat, wird der Lufttemperatur von opeanWatherMap bezogen. openWeatherMap hat aber auch keine Messwerte aus Arbon und interpoliert deshalb die Lufttemperatur vom Flughafen Zürich und die Wassertemperatur von Friedrichshafen.
+
+\subsection*{Problem: Unterschiedlieche Werte für Luft- und Wassertemperatur}
+Dass die gemessenen Werte der Wetterstation nicht mit den hochgerechneten Werten von Zürich und Friedrichshafen übereinstimmt ist nicht verwunderlich. Bei der Bevölkerung ist dieser Umstand verwirrend und wirft ein schlechtes Licht auf die Stadtverwaltung, die sowohl die Wetterstation, als auch die Badi-Webseite betreibt.
+
+\subsection*{Lösungsansatz}
+Die aktuellen Werte der Wetterstation sollen über ein REST Web-API von Dritten, wie zum Beispiel der Badi Arbon, abgerufen werden können. Das heute am meisten verwendete Format ist JSON.
 
