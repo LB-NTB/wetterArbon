@@ -1,39 +1,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Datenbank
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Analyse back end}
-%
-%\subsection{Daten}
-%In diesem Kapitel wird kurz erklärt welche Daten in der Datenbank, sowie in der später erklärten clientraw Dateien verarbeitet werden. Das Weather Display verarbeitet folgende Daten in für Menschen lesbare Produkte:
-%\begin{itemize}
-%\item Temperatur
-%\item Gefühlte Temperatur (Windchill)
-%\item Maximale, minimale gefühlte Temperatur (Windchill)
-%\item Gefühlte Temperatur (Hitzeindex)
-%\item Maximale, minimale gefühlte Temperatur (Hitzeindex)
-%\item Maximale, minimale Temperatur 
-%\item Windgeschwindigkeit
-%\item Maximale Windgeschwindigkeit des Tages 
-%\item Windrichtung
-%\item Böengeschwindigkeit
-%\item Maximale Böengeschwindigkeit des Tages
-%\item Luftfeuchtigkeit
-%\item Luftdruck
-%\item Barometertrend letzte Stunde
-%\item Regenmenge (täglich, monatlich, jährlich)
-%\item Regenrate
-%\item Taupunkt
-%\item Wolkenhöhe
-%\item Batteriestand
-%\end{itemize}
+Der Kombi-Wettert-Tansmitter sendet seine Daten über eine RS-484 Schnittstelle. Die Software \textit{WeatherDisplay} verarbeitet diese Daten und erstellt unterschiedliche Text-Files, die anschliessend von andere Anwendungen, wie zum Beispiel \textit{WeatherDisplay Live}, verwendet werden. Zusätzlich sendet \textit{WeatherDisplay} einmal pro Minute sämtliche Werte an die MySQL-Datenbank.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/datenfluss}
+	\caption{Datenfluss vom Sensor bis zu Webseite}
+	\label{img:datenfluss}
+\end{figure}
+
+
 
 % ################################
-% Datenfluss, Text-Files
+% Text-Files
 % ################################
-\subsection{Datenzwischenspeicherung mittels Text-Files}
-Die Daten werden von der Wetterstation an Weather-Display gesendet. Dieses verarbeitet die Daten und erstellt mehrere Text-Dateien (Tabelle~\ref{table:text-files}). Die Text-Dateien dienen WeatherDisplay Live als Grundlage für die Anzeigegrafiken. Neben den Text-Dateien sendet WeatherDisplay zudem einmal pro Minute sämtliche Werte an die MySQL-Datenbank.
-
+\subsection{Schnittstelle zum Kombi-Wetter-Transmitter}
+Die Software \textit{WeatherDisplay} \footnote{ \url{http://www.weather-display.com}} dient als Schnittstelle zum Kombi-Wetter-Transmitter. Der Auftraggeber möchte diese Software beibehalten. Interessant sind deshalb die Daten, die  \textit{WeatherDisplay} liefert. Dies sind vier verschiedene Textfiles, deren Inhalt in Tabelle~\ref{table:text-files}) genauer erläutet sind sowie ein minütlicher Eintrag sämtlicher Messwerte in die Datenbank.
+\newline
 
 \begin{table}[h!]
 \centering
@@ -49,11 +34,13 @@ Die Daten werden von der Wetterstation an Weather-Display gesendet. Dieses verar
 \label{table:text-files}
 \end{table}
 
+\noindent
+%\subsection*{Problem}
+Der Nachteil ist, dass der Inhalt der Text-Dateien nicht angepasst werden kann. Das bedeutet insbesondere, dass der Intervall der Messresultate nicht verändert werden kann. Zudem sind in diesen Text-Files nur die Daten des Kombi-Wetter-Transmitters aufgeführt. Zusatzsensoren wie Pegel und Wassertemperatur sind nicht enthalten.
+\newline
 
-\subsection*{Problem}
-Der Inhalt der Text-Dateien kann nicht angepasst werden. Das bedeutet insbesondere, dass der Zeitabstand zwischen den Messungen nicht verringert werden kann. Zudem sind in diesen Text-Files nur die Daten des Multiwetter-Transmitters aufgeführt. Zusatzsensoren wie Pegel und Wassertemperatur sind nicht enthalten.
-
-\subsection*{Lösungsansatz}
+\noindent
+%\subsection*{Lösungsansatz}
 Während der Bachelor-Arbeit soll geprüft werden in wie weit die Daten aus den Text-Files für die Erstellung der neuen Anzeige-Elemente verwendet werden kann. 
 
 
