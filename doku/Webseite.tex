@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analyse der Webseite (front end)}
 
-Die Webseite der Wetterstation Arbon besteht neben der Homepage aus zwölf Unterseiten. Für uns wichtig sind all jene, die mit den Sensordaten, der Webcam, oder der Datenbank in Verbindung stehen. (hervorgehoben in Abb.\ref{img:sitemap}). Im folgenden werden diese Seiten und deren Probleme genauer erläutert.
+Die Webseite der Wetterstation Arbon besteht neben der Homepage aus zwölf Unterseiten. Für uns wichtig sind all jene, die mit den Sensordaten, der Webcam, oder der Datenbank in Verbindung stehen. (hervorgehoben in Abb.\ref{img:sitemap}). Im Folgenden werden die gefundenen Schwachstellen erklärt.
 
 \begin{figure}[h!]
 	\centering
@@ -20,8 +20,6 @@ Die Webseite der Wetterstation Arbon besteht neben der Homepage aus zwölf Unter
 \label{subsec:flash}
 Die Anzeige der Wetterdaten erfolgt durch die Software \textit{WeahterDisplay Live}\footnote{ \url{http://www.weather-display.com/wdlive}}. WeahterDisplay Live erstellt aus den Messwerten eine Adobe Flash Applikation, welche auf der Webseite eingebettet wird, wie in Abbildung~\ref{img:responsive}, dargestellt (gelb markiert).
 \newline
-
-%Der Wettertransmitter sendet seine Daten über eine RS-484 Schnittstelle. Die Software \textit{Weather Display} \footnote{ \url{http://www.weather-display.com}} verarbeitet diese Daten und stellt sie als Text-Files für andere Anwendungen zur Verfügung. Die Zusatzsoftware \textit{Weahter Display Live} (WDL) \footnote{ \url{http://www.weather-display.com/wdlive}} liest nun eben dieses Text-File ein, und erstellt damit eine Adobe Flash Animation, wie in Abbildung~\ref{img:responsive} dargestellt (gelb markiert).
 
 \noindent
 %\subsection*{Problem}
@@ -84,13 +82,6 @@ Mit der Adobe Flash Applikation lässt sich dieses Problem nicht lösen. Da aber
 Vielfach sind nicht nur die aktuellen Messwerte, sondern auch der Verlauf der Wetterdaten interessant. Für Segler ist beispielsweise entscheidend wie sich die Windgeschwindigkeit über die letzten paar Stunden entwickelt hat. Auf der Webseite werden deshalb neben den aktuellen Wetterdaten ausgewählte Wetterdatenverläufe dargestellt, wie in Abbildung~\ref{img:responsive} ersichtlich. Bei diesen Grafiken geht es darum die Tendenz und die Grössenordnung der Wetterdaten abschätzen zu können.
 \newline
 
-\noindent
-Beim genaueren Betrachten der Verläufe von Windgeschwindigkeit und Windrichtung zeigen sich jedoch zwei Probleme.
-% Windgeschwindigkeit
-%\subsubsection*{Problem: Automatische y-Skalierung von Graphen}
-Bei der Windstärke-Anzeige, passt sich die Skalierung der y-Achse sich je nach Windstärke automatisch an, wie Abbildung \ref{img:wind-geschw} zeigt. Das Problem ist, dass ein schnelles Ablesen der Anzeige nicht möglich ist, da die Anzeige immer zuerst in Relation zur y-Skalierung gesetzt werden muss, was mühsam ist.
-
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{img/wind-geschw}
@@ -98,6 +89,16 @@ Bei der Windstärke-Anzeige, passt sich die Skalierung der y-Achse sich je nach 
 	\label{img:wind-geschw}
 \end{figure}
 
+\noindent
+Beim genaueren Betrachten der Verläufe von Windgeschwindigkeit und Windrichtung zeigen sich jedoch zwei Probleme.
+% Windgeschwindigkeit
+%\subsubsection*{Problem: Automatische y-Skalierung von Graphen}
+Bei der Windstärke-Anzeige, passt sich die Skalierung der y-Achse sich je nach Windstärke automatisch an, wie Abbildung \ref{img:wind-geschw} zeigt. Das Problem ist, dass ein schnelles Ablesen der Anzeige nicht möglich ist, da die Anzeige immer zuerst in Relation zur y-Skalierung gesetzt werden muss, was mühsam ist.
+\newline
+
+
+
+\noindent
 % Windrichtung
 %\subsubsection*{Problem: Sprung in der Windrichtungsanzeige}
 Bei der Anzeige der Windrichtung wird der zeitliche Verlauf als Linie in einem xy-Graphen dargestellt. Die y-Achse zeigt die Himmelsrichtung an, aus der der Wind kommt von 0 Grad bis 360 Grad. Das Problem bei dieser Darstellung ist, dass wenn der Wind über Norden dreht dies als Sprung in der Grafik abgebildet wird, wie in Abbildung~ \ref{img:wind-richtung} dargestellt. Durch die Interpolation der Werte entsteht so eine verwirrende und falsche Aussage.

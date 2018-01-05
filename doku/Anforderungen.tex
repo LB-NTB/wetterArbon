@@ -45,9 +45,9 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 % 
 \begin{usecase}
   \addheading{UI 060}{Samplerate} 
-  \addrow{Anforderung}{Die Sample-Rate der Graphen ist kleiner gleich zehn Minuten auf der Wassersport-Seite und kleiner gleich eine Stunde auf der Tourismus-Seite.}
+  \addrow{Anforderung}{Die Sample-Rate der Graphen ist kleiner gleich zehn Minuten auf der Wassersport-Seite und kleiner gleich eine Stunde auf der Tourismus-Seite. Der Graph auf der Wassersport-Seite zeigt die letzten 24h, der Graph auf der Tourismus-Seite die letzten sieben Tage.}
   \addrow{Wichtigkeit}{SOLL}
-  \addrow{Test}{Pro Graph sind für die Wassersport-Seite mindestens 24*6=144 Punkte eingezeichnet, für die Tourismus-Seite mindestens 7*24=168 Werte.}
+  \addrow{Test}{Pro Graph sind für die Wassersport-Seite mindestens $24*6=144$ Punkte eingezeichnet, für die Tourismus-Seite mindestens $7*24=168$ Werte.}
 \end{usecase}
 % 
 \begin{usecase}
@@ -101,7 +101,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
   \addheading{DB 020}{Schutz vor Missbrauch} 
   \addrow{Anforderung}{Die Schnittstelle zur Datenbank d.h. die Datenbank-Abfrage ist gegen schädliche Zugriffe geschützt.}
   \addrow{Wichtigkeit}{MUSS}
-  \addrow{Test}{Die Abfrage des Pegels seit Inbetriebnahme der Wetterstation wird als File exportier und kann anschliessend in Excel geöffnet werden.}
+  \addrow{Test}{Die Eingabe von SQL-Befehlen führt höchstens zu einer Eingabe-Fehlermeldung. Es werden keine administrativen Daten der Datenbank angezeigt.}
 \end{usecase}
 %
 \begin{usecase}
@@ -139,9 +139,9 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 %
 \begin{usecase}
   \addheading{TD 020}{Schnittstelle zur Wassertemperatur} 
-  \addrow{Anforderung}{Die Wetterstation Arbon verfügt über eine öffentlich nutzbar Schnittstelle (API) für die Wassertemperatur, sodass z.B. das Seebad diese übernehmen kann.}
+  \addrow{Anforderung}{Die Wetterstation Arbon verfügt über eine öffentlich nutzbar Schnittstelle (API) für Luft- und Wassertemperatur, sodass z.B. das Seebad diese übernehmen kann.}
   \addrow{Wichtigkeit}{MUSS}
-  \addrow{Test}{Die Wassertemperatur kann über ein API abgerufen werden.}
+  \addrow{Test}{Die Luft- und Wassertemperatur kann über ein API abgerufen werden und ist in JSON formatiert.}
 \end{usecase}
 %
 \begin{usecase}

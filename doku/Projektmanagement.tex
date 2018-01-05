@@ -25,7 +25,7 @@ Schnell merkten wir, dass die heutzutage beliebten agilen Vorgehensmodelle wie X
 
 
 Unsere Bedürfnisse deckt das Vorgehensmodell von Royce ~\cite{Royce1970}, welches in Abbildung  \ref{img:royce-largePrograms} dargestellt ist, am besten ab. Es besteht grundsätzlich aus einem sequentiellen Ablauf der Entwicklungsphasen, berücksichtigt dabei aber auch die Notwendigkeit von Rücksprüngen zur vorherigen Phase.
-Die ersten Phasen von der Definition der "System Requirement" bis zu den ersten Gedanken zum Thema "Program Design" behandeln wir im Fachmodul. Der zweite Teil mit der genauen Definition des Programm Designs bis zum Betrieb der Software findet anschliessend während der Bachelor-Arbeitszeit statt.
+Die ersten Phasen von der Definition der \textit{System Requirements} bis zu den ersten Gedanken zum Thema \textit{Program Design} behandeln wir im Fachmodul. Der zweite Teil mit der genauen Definition des \textit{Programm Designs} bis zum Betrieb der Software findet anschliessend während der Bachelor-Arbeitszeit statt.
 
 
 % ################################
@@ -42,14 +42,54 @@ Den Entwicklungsprozess führen wir mit Kanban. Kanban basiert auf dem Pull-Prin
 \end{figure}
 
 
-David Anderson \cite{AndersonDavidJ2011K:eC} hat das System Kanban, welches ursprünglich aus der Industrie kommt, auf die IT angepasst und dadurch das "Virtuelle Kanban System" entwickelt. Die grundlegenden Regeln daraus lauten:
+David Anderson \cite{AndersonDavidJ2011K:eC} hat das System Kanban, welches ursprünglich aus der Industrie kommt, auf die IT angepasst und dadurch das \textit{Virtuelle Kanban System} entwickelt. Die grundlegenden Regeln daraus lauten:
 
 \begin{itemize}  
 \item Jede Karte ist eine Aufgabe
-\item Die Aufgabe soll maximal 8-16h benötigen
-\item Pro Spalte sind die Anzahl Karten limitiert
+\item Die Aufgabe soll maximal 8 bis16~h benötigen
+\item Pro Arbeits-Spalte sind die Anzahl Karten limitiert
 \item Eine neue Karte darf erst gezogen werden, wenn die vorherige fertig ist (Multitasking-Vermeidung)
 \end{itemize}
+
+% ################################
+% Risikoanalyse
+% ################################
+\subsection{Risikoanalyse}
+Für die Risikoanalyse haben wir eine Liste der möglichen  Risiken erstellt. Als Grundlage verwendeten wir das Risikolexikon aus dem Buch \flqq IT-Risikomanagment leben!\frqq ~\cite{AhrendtsFabian2008Il:w}. 
+Für jedes Risiko haben wir die Eintretenswahrscheinlichkeit und das Ausmass abgeschätzt. Gegenüber den herkömmlichen Risikobeurteilungen, haben wir allerdings die Auswirkungen auf Kosten und Terminverzug weggelassen, da sie in unserem Projekt nicht relevant sind und uns auf den Stundenaufwand und den Funktionsumfang beschränkt. Um die Auswirkung der einzelen Risiken abschätzen zu können, haben wir eine Punkteskala mit entsprechenden Kriterien erstellt, wie in Tabelle \ref{tab:auswirkung} aufgeführt. \vspace{5mm} %5mm vertical space
+
+\begin{table}[h!]
+\centering
+\label{tab:auswirkung}
+\begin{tabular}{rl}
+Wert	[-]	& 	Auswirkung bezüglich Umfang \\
+\hline
+10	&	Gesamter Block nicht funktionsfähig \\
+8	&	Einzelne Funktion nicht umgesetzt  \\
+6	&	Bemerkbar, keine Funktionseinbusse \\
+4	&	von eingeschränkter Benutzergruppe bemerkbar \\
+2	&	von Kunden nicht bemerkbar
+\end{tabular}
+\end{table}
+
+Die Risikomatrix in Abbildung \ref{img:risikomatrix} zeigt auf grafische Weise wie kritisch die einzelnen Risiken aus der Risikoliste sind. Mindestens vier davon sind als hoch eingestuft und müssen im Rahmen der Bachelor-Arbeit reduziert werden. Dies sind:
+
+\begin{itemize}  
+\item Komplexe Datenmigration
+\item Mangel an Echtzeitverhalten
+\item Mangelnde Ressourcenverfügbarkeit
+\item Mangelnde Anforderungsqualität
+\end{itemize}
+
+
+% Abbildung der Risikomatrix
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/risikomatrix.pdf} 
+	\caption{Risikomatrix}
+	\label{img:risikomatrix}
+\end{figure}
+
 
 
 % ################################
@@ -60,27 +100,11 @@ David Anderson \cite{AndersonDavidJ2011K:eC} hat das System Kanban, welches ursp
 Der Zeitplan für die Bachelor-Arbeit ist in Abbildung \ref{img:terminplan} auf Seite \pageref{img:terminplan} dargestellt.
 Im oberen Teil sind die allgemeinen Termine und Abwesenheiten aufgeführt. Der mittlere Teil zeigt die Arbeitsverteilung über das Semester und am Schluss kommen die Zeitaufwände für Doku und Meetings. Die Dokumentation wollen wir kontinuierlich erstellen, sodass wöchentlich ein entsprechender Block vorgesehen ist.
 
-% Abbildung (A3)
-\afterpage{ 
-\clearpage
-\KOMAoptions{paper=a3, paper=landscape} 
-\recalctypearea
-\newgeometry{left=30mm,right=30mm,top=30mm,bottom=50mm}
-
-
-\begin{figure}[h!p]
-	\centering
-	\includegraphics[width=2.4\linewidth]{img/terminplan} % ab heigth = 0.6 auf eigener Seite!
-	\caption{Projektplan}
-	\label{img:terminplan}
+\begin{figure}[h!]
+\includegraphics[angle=90,height=1\textheight,keepaspectratio]{img/terminplan.pdf}
+\caption{Projektplan für die Bachelor-Arbeit}
+\label{img:terminplan}
 \end{figure}
-
-
-\restoregeometry
-\KOMAoptions{paper=A4,pagesize}
-\recalctypearea
-}
-
 
 
 
