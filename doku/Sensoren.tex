@@ -1,5 +1,5 @@
 \section{Sensoren}
-Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensor und Pegelsensor. Auf der Plattform im See draussen befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt.
+Die Wetterstation Arbon verfügt über vier Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensor und Pegelsensor. Auf der Plattform im See draussen befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt.
 
 \begin{figure}[h]
 	\centering
@@ -21,12 +21,16 @@ Der bisherige Pegel-Sensor nutzte das Prinzip der hydrostatischen Druckmessung. 
 \end{itemize}
 
 \subsection{Wassertemperatursensoren}
-Die Wassertemperatur wird definitionsgemäss einen Meter unterhalb der Wasseroberfläche gemessen. Die Wetterstation Arbon verwendet eine Widerstandskaskade aus PT100-Widerständen. Diese sind in einem Kunststoffrohr im Abstand von 20cm angeordnet. Abhängig vom gemessenen Pegel kann so der richtige Temperatursensor für die Wassertemperatur ausgewählt werden. 
+Die Wassertemperatur wird definitionsgemäss einen Meter unterhalb der Wasseroberfläche gemessen. Die Wetterstation Arbon verwendet eine Reihe von acht PT100-Widerständen. Diese sind in einem Kunststoffrohr im Abstand von 50~cm angeordnet. Abhängig vom gemessenen Pegel kann so der richtige Temperatursensor für die Wassertemperatur ausgewählt werden. 
+\newline
 
-\subsection*{Problem: Defekter Widerstand}
-Von den zehn verbauten Sensoren ist einer defekt. 
+\noindent
+%\subsection*{Problem: Defekter Widerstand}
+Von den acht verbauten Sensoren ist einer defekt. 
+\newline
 
-\subsection*{Lösungsansatz}
+\noindent
+%\subsection*{Lösungsansatz}
 Da die Reparatur allerdings sehr aufwändig ist, und der Wert durch die beiden Nachbarwiderstände interpoliert werden kann, wird der Widerstand nicht ersetzt. Für uns besteht diesbezüglich kein Handlungsbedarf.
 
 

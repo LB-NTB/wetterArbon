@@ -1,6 +1,5 @@
 \section{Erweiterungen}
-In diesem Kapitel geht es nicht um die Verbesserung von bestehenden Problemen, sondern um die Erweiterung des Funktionsumfangs der Wetterstation Arbon. Es ist eine Auflistung möglicher Erweiterungen, die allerdings keine Priorität haben.
-
+In diesem Kapitel geht es nicht um die Verbesserung von bestehenden Problemen, sondern um die Erweiterung des Funktionsumfangs der Wetterstation Arbon. Es ist eine Auflistung möglicher Erweiterungen.
 
 % Benachrichtigungen
 \subsection{Individueller Benachrichtigungs-Service}
@@ -28,7 +27,7 @@ Mit einem Benachrichtigungs-Service soll dem Benutzer die Möglichkeit gegeben w
 
 % Windprognose-Genauigkeit
 \subsection{Überprüfung der Windprognose-Genauigkeit }
-Es gibt diverse Anbieter von Windprognosen für den Bodensee wie zum Beispiel Windfinder\footnote{ \url{https://www.windfinder.com/forecast/arbon}} und SRF Meteo\footnote{ \url{https://www.srf.ch/meteo/surf-und-segelwetter/detail/06621}}. Vorhersagen sind bekanntlich Hochrechnungen und mit gewissen Unsicherheiten behaftet. Interessant ist nun zu wissen wie gut die Windvorhersagen mit den Wind-Messwerten der Wetterstation Arbon übereinstimmen. Während der Bachleor-Arbeit soll nun eine Vergleichsgrafik erstellt werden, welche die Vorhersage den Messwerten gegenüber stellt.
+Es gibt diverse Anbieter von Windprognosen für den Bodensee wie zum Beispiel Windfinder\footnote{ \url{https://www.windfinder.com/forecast/arbon}} und SRF Meteo\footnote{ \url{https://www.srf.ch/meteo/surf-und-segelwetter/detail/06621}}. Vorhersagen sind Extrapolationen von Wettermodell-Berechnungen und mit gewissen Unsicherheiten behaftet. Interessant ist nun zu wissen wie gut die Windvorhersagen mit den Wind-Messwerten der Wetterstation Arbon übereinstimmen. Während der Bachleor-Arbeit soll eine Vergleichsgrafik erstellt werden, welche die Vorhersage den Messwerten gegenüber stellt.
 
 
 % Wellenhöhe
@@ -38,16 +37,20 @@ Sobald ein funktionstüchtiger Pegelsensor installiert ist, können die Pegeldat
 
 % Schichtung Wassertemperatur
 \subsection{Verlauf der Wassertemperatur in Abhängigkeit der Tiefe}
-Die Wetterstation Arbon verfügt über mehrere Temperatursensoren, die im Abstand von 20 Zentimeter die Wassertemperatur messen. Die Idee ist, die Temperaturschichtung des Wassers bestimmen zu können.
+Die Wetterstation Arbon verfügt über mehrere Temperatursensoren, die im Abstand von 50 Zentimeter die Wassertemperatur messen. Die Idee ist, die Temperaturschichtung des Wassers bestimmen zu können.
 
 
 % API
 \subsection{Schnittstelle zu den aktuellen Messwerten (API)}
-Die Wetterstation Arbon misst die Lufttemperatur und kann mit Hilfe des Pegels und den Temperaturwiderständen die Wassertemperatur des Bodensees bestimmen. Die Badi Arbon, welche ca. einen Kilometer von der Wetterstation entfernt, zeigt auf ihrer Infotafel und auf ihrer Webseite\footnote{ \url{https://www.schwimmbad-arbon.ch}} ebenfalls die Luft- und Wassertemperatur an. Da die Badi aber keine eigene Messstation hat, wird der Lufttemperatur von opeanWatherMap bezogen. openWeatherMap hat aber auch keine Messwerte aus Arbon und interpoliert deshalb die Lufttemperatur vom Flughafen Zürich und die Wassertemperatur von Friedrichshafen.
+Die Wetterstation Arbon misst die Lufttemperatur und die Wassertemperatur des Bodensees. Die Badi Arbon, welche ca. einen Kilometer von der Wetterstation entfernt ist, zeigt auf ihrer Infotafel und auf ihrer Webseite\footnote{ \url{https://www.schwimmbad-arbon.ch}} ebenfalls die Luft- und Wassertemperatur an, bezieht diese aber von \textit{openWeatherMap}, welche die Temperaturen von Stationen aus Zürich und Friedrichshafen interpoliert. 
+\newline
 
-\subsection*{Problem: Unterschiedlieche Werte für Luft- und Wassertemperatur}
-Dass die gemessenen Werte der Wetterstation nicht mit den hochgerechneten Werten von Zürich und Friedrichshafen übereinstimmt ist nicht verwunderlich. Bei der Bevölkerung ist dieser Umstand verwirrend und wirft ein schlechtes Licht auf die Stadtverwaltung, die sowohl die Wetterstation, als auch die Badi-Webseite betreibt.
+\noindent
+%\subsection*{Problem: Unterschiedliche Werte für Luft- und Wassertemperatur}
+Dass die gemessenen Werte der Wetterstation nicht mit den interpolierten Werten von Zürich und Friedrichshafen übereinstimmt ist nicht verwunderlich. Für der Bevölkerung ist die Differenz jedoch unverständlich. Die Stadt Arbon möchte deshalb, dass die Badi die Messwerte der Wetterstation nutzen kann.
+\newline
 
-\subsection*{Lösungsansatz}
-Die aktuellen Werte der Wetterstation sollen über ein REST Web-API von Dritten, wie zum Beispiel der Badi Arbon, abgerufen werden können. Das heute am meisten verwendete Format ist JSON.
+\noindent
+%\subsection*{Lösungsansatz}
+Die aktuellen Werte der Wetterstation sollen über ein REST Web-API von Dritten, wie zum Beispiel der Badi Arbon, abgerufen werden können. Das heute am meisten verwendete Format dafür ist JSON.
 
