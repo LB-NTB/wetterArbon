@@ -1,6 +1,6 @@
 \section{Anforderungen}
-Die im folgenden aufgelisteten Anforderungen sind in fünf Blöcke unterteilt: User Interface, Datenbank, Sensoren, Webcam und nicht-funktionale Anforderungen.
-Jede Anforderung besitzt eine eindeutige Identifizierungsnummer, Titel, Beschreibung der Anforderung, Wichtigkeit und einen Beschrieb wie der Nachweis erfolgen soll.
+Die im Folgenden aufgelisteten Anforderungen sind in fünf Blöcke unterteilt: User Interface, Datenbank, Sensoren, Webcam und nicht-funktionale Anforderungen.
+Jede Anforderung besitzt eine eindeutige Identifizierungsnummer, Titel, Beschreibung der Anforderung, Wichtigkeit und einen Beschrieb, wie der Nachweis erfolgen soll.
 Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwingend für die Umsetzung der Arbeit. SOLL-Anforderungen bringen einen erheblichen Mehrwert und KANN-Anforderungen sind eher unwichtig und können gegebenenfalls auch weggelassen werden.
 
 % ###############################################
@@ -31,7 +31,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 % 
 \begin{usecase}
   \addheading{UI 040}{Wetterdaten für Tourismus} 
-  \addrow{Anforderung}{Die Anzeige der Wettertransmitterdaten erfolgt in allgemein verständlichen Einheiten d.h. die Windgeschwindigkeit wird in km/h angeben. Graphen zeigen den Verlauf von Temperatur, Niederschlag und Windchill der letzten sieben Tage auf. }
+  \addrow{Anforderung}{Die Anzeige der Wettertransmitterdaten erfolgt in allgemein verständlichen Einheiten, d.h. die Windgeschwindigkeit wird in km/h angeben. Graphen zeigen den Verlauf von Temperatur, Niederschlag und Windchill der letzten sieben Tage auf. }
   \addrow{Wichtigkeit}{MUSS}
   \addrow{Test}{Die Windgeschwindigkeit wird in km/h angezeigt. Die x-Achse der Graphen zeigt die letzten sieben Tage. }
 \end{usecase}
@@ -44,7 +44,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 \end{usecase}
 % 
 \begin{usecase}
-  \addheading{UI 060}{Samplerate} 
+  \addheading{UI 060}{Sample-Rate} 
   \addrow{Anforderung}{Die Sample-Rate der Graphen ist kleiner gleich zehn Minuten auf der Wassersport-Seite und kleiner gleich eine Stunde auf der Tourismus-Seite. Der Graph auf der Wassersport-Seite zeigt die letzten 24h, der Graph auf der Tourismus-Seite die letzten sieben Tage.}
   \addrow{Wichtigkeit}{SOLL}
   \addrow{Test}{Pro Graph sind für die Wassersport-Seite mindestens $24*6=144$ Punkte eingezeichnet, für die Tourismus-Seite mindestens $7*24=168$ Werte.}
@@ -61,7 +61,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
   \addheading{UI 080}{Anzeige Windrichtung} 
   \addrow{Anforderung}{Die Anzeige der Windrichtung kann sich kontinuierlich ändern, ohne dass in der Momentananzeige bzw. im Graphen ein Sprung entsteht.}
   \addrow{Wichtigkeit}{SOLL}
-  \addrow{Test}{Wenn sich der Wind einem um 360 Grad dreht ist auf der Anzeige und im Graphen keine Sprung erkennbar.}
+  \addrow{Test}{Wenn sich der Wind um 360 Grad dreht, ist auf der Anzeige und im Graphen kein Sprung erkennbar.}
 \end{usecase}
 % 
 \begin{usecase}
@@ -73,7 +73,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 % 
 \begin{usecase}
   \addheading{UI 100}{Notification} 
-  \addrow{Anforderung}{Der User kann sich selbst eine Notifikation einrichten. Er erhält eine Nachricht sobald der von ihm definierte Wert der Wetterstation unter- bzw. überschritten wird}
+  \addrow{Anforderung}{Der User kann sich selbst eine Notifikation einrichten. Er erhält eine Nachricht, sobald der von ihm definierte Wert der Wetterstation unter- bzw. überschritten wird}
   \addrow{Wichtigkeit}{KANN}
   \addrow{Test}{Der User richtet sich eine Notification ein für Wassertemperatur grösser als 20 Grad und Windgeschwindigkeit grösser 10 Knoten und erhält für jede Anweisung eine separate Nachricht, sobald diese erfüllt ist.}
 \end{usecase}
@@ -99,7 +99,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 %
 \begin{usecase}
   \addheading{DB 020}{Schutz vor Missbrauch} 
-  \addrow{Anforderung}{Die Schnittstelle zur Datenbank d.h. die Datenbank-Abfrage ist gegen schädliche Zugriffe geschützt.}
+  \addrow{Anforderung}{Die Schnittstelle zur Datenbank, d.h. die Datenbank-Abfrage ist gegen schädliche Zugriffe geschützt.}
   \addrow{Wichtigkeit}{MUSS}
   \addrow{Test}{Die Eingabe von SQL-Befehlen führt höchstens zu einer Eingabe-Fehlermeldung. Es werden keine administrativen Daten der Datenbank angezeigt.}
 \end{usecase}
@@ -108,7 +108,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
   \addheading{DB 030}{Fehleingaben} 
   \addrow{Anforderung}{Die Abfrage-Seite ist so ausgeführt, dass sie Fehleingaben verunmöglicht.}
   \addrow{Wichtigkeit}{MUSS}
-  \addrow{Test}{Der User versucht eine unplausible Abfrage zu senden.}
+  \addrow{Test}{Der User versucht, eine unplausible Abfrage zu senden und erhält eine Fehlermeldung.}
 \end{usecase}
 %
 \begin{usecase}
@@ -122,7 +122,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
   \addheading{DB 050}{Daten-Export} 
   \addrow{Anforderung}{Die Resultate der getätigten Abfragen können als Datei exportiert werden.}
   \addrow{Wichtigkeit}{KANN}
-  \addrow{Test}{}
+  \addrow{Test}{Der User ruft die Windgeschwindigkeit der letzen sieben Tage ab und exportiert die Daten in Excel.}
 \end{usecase}
 
 
@@ -132,21 +132,21 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 \subsection*{Sensoren (TD)}
 \begin{usecase}
   \addheading{TD 010}{Pegel-Messer} 
-  \addrow{Anforderung}{Die Wetterstation Arbon erhält einen geeigneten Pegel-Sensor, welcher mit den bereits verbauten Komponenten betrieben werden kann. Die Kosten für Anschaffung und Betrieb des neuen Sensors lieben innerhalb des Budgets der Wetterstation Arbon.}
+  \addrow{Anforderung}{Die Wetterstation Arbon erhält einen geeigneten Pegel-Sensor, welcher mit den bereits verbauten Komponenten betrieben werden kann. Die Kosten für Anschaffung und Betrieb des neuen Sensors liegen innerhalb des Budgets der Wetterstation Arbon.}
   \addrow{Wichtigkeit}{MUSS}
   \addrow{Test}{Der Pegel Arbon wird auf der Station gemessen und ist auf der Webseite ersichtlich.}
 \end{usecase}
 %
 \begin{usecase}
   \addheading{TD 020}{Schnittstelle zur Wassertemperatur} 
-  \addrow{Anforderung}{Die Wetterstation Arbon verfügt über eine öffentlich nutzbar Schnittstelle (API) für Luft- und Wassertemperatur, sodass z.B. das Seebad diese übernehmen kann.}
+  \addrow{Anforderung}{Die Wetterstation Arbon verfügt über eine öffentlich nutzbare Schnittstelle (API) für Luft- und Wassertemperatur, sodass z.B. das Seebad diese übernehmen kann.}
   \addrow{Wichtigkeit}{MUSS}
   \addrow{Test}{Die Luft- und Wassertemperatur kann über ein API abgerufen werden und ist in JSON formatiert.}
 \end{usecase}
 %
 \begin{usecase}
   \addheading{TD 030}{Sturmwarnung} 
-  \addrow{Anforderung}{Auf der Webseite wird die aktuelle Sturmwarn-Situtation dargestellt. Falls es sich um eine engebettete Seite handelt, muss diese https-fähig sein.}
+  \addrow{Anforderung}{Auf der Webseite wird die aktuelle Sturmwarn-Situtation dargestellt. Falls es sich um eine eingebettete Seite handelt, muss diese https-fähig sein.}
   \addrow{Wichtigkeit}{SOLL}
   \addrow{Test}{Die aktuelle Sturmwarn-Situation ist für den User auf der Webseite der Wetterstation Arbon einsehbar, ohne Verlinkung auf fremde Seiten.}
 \end{usecase}
@@ -167,7 +167,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 %
 \begin{usecase}
   \addheading{TD 060}{Strahlungssensor} 
-  \addrow{Anforderung}{Die Wetterstation Arbon erhält einen geeigneten Sonnenstrahlungs-Sensor. Die Kosten für Anschaffung und Betrieb des neuen Sensors lieben innerhalb des Budgets der Wetterstation Arbon.}
+  \addrow{Anforderung}{Die Wetterstation Arbon erhält einen geeigneten Sonnenstrahlungs-Sensor. Die Kosten für Anschaffung und Betrieb des neuen Sensors liegen innerhalb des Budgets der Wetterstation Arbon.}
   \addrow{Wichtigkeit}{KANN}
   \addrow{Test}{Die Sonnenstrahlung wird auf der Station gemessen und ist auf der Webseite ersichtlich.}
 \end{usecase}
@@ -179,16 +179,16 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
 \subsection*{Webcam (CA)}
 \begin{usecase}
   \addheading{CA 010}{Warteschlange} 
-  \addrow{Anforderung}{Die Webcam verfügt über eine Warteschlage, sodass wenn mehrere User auf der Seite sind, jeder die Steuerung der Webcam für eine gewisse Zeit für sich alleine hat.}
+  \addrow{Anforderung}{Die Webcam verfügt über eine Warteschlage, sodass, wenn mehrere User auf der Seite sind, jeder die Steuerung der Webcam für eine gewisse Zeit für sich alleine hat.}
   \addrow{Wichtigkeit}{SOLL}
   \addrow{Test}{Zwei User greifen zur gleichen Zeit auf die Webcam zu. Der zweite erhält die Steuerung, sobald die Zeit des ersten Users abgelaufen ist.}
 \end{usecase}
 %
 \begin{usecase}
-  \addheading{CA 020}{Sekotrweise Zoombeschränkung} 
+  \addheading{CA 020}{Sektorweise Zoombeschränkung} 
   \addrow{Anforderung}{Die Zoomstufe ist abhängig von der Ausrichtung der Webcam. Richtung Land ist der Zoom beschränkt, Richtung See offen.}
   \addrow{Wichtigkeit}{KANN}
-  \addrow{Test}{Der User zoomt einmal maximal Richtung Land und einmal maximal Richtung See. Die Zoomstufe Richtung Land ist kleiner, als Richtung See.}
+  \addrow{Test}{Der User zoomt einmal maximal Richtung Land und einmal maximal Richtung See. Die Zoomstufe Richtung Land ist kleiner als Richtung See.}
 \end{usecase}
 
 
@@ -200,7 +200,7 @@ Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwinge
   \addheading{NF 010}{Reaktionsgeschwindigkeit} 
   \addrow{Anforderung}{Bei ausreichendem Netz werden die Messdaten innerhalb von drei Sekunden angezeigt. Datenbank-Abfragen werden innerhalb von fünf Sekunden angezeigt.}
   \addrow{Wichtigkeit}{SOLL}
-  \addrow{Test}{Der User ruft die Seite auf und sieht die Messresultate innerhalb von drei Sekunden. Der User wählt die Wassertemperatur der letzten zwölf Monate und erhält fünf Sekunden nach absenden der Abfrage das Resultat.}
+  \addrow{Test}{Der User ruft die Seite auf und sieht die Messresultate innerhalb von drei Sekunden. Der User wählt die Wassertemperatur der letzten zwölf Monate und erhält fünf Sekunden nach Absenden der Abfrage das Resultat.}
 \end{usecase}
 
 

@@ -2,7 +2,7 @@
 %%  Datenbank
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analyse back end}
-Der Kombi-Wettert-Tansmitter sendet seine Daten über eine RS-484 Schnittstelle. Die Software \textit{WeatherDisplay} verarbeitet diese Daten und erstellt unterschiedliche Text-Files, die anschliessend von anderen Anwendungen, wie zum Beispiel \textit{WeatherDisplay Live}, verwendet werden. Zusätzlich sendet \textit{WeatherDisplay} einmal pro Minute sämtliche Werte an die MySQL-Datenbank. Abbildung \ref{img:datenfluss} zeigt den Datenfluss vom Sensor bis zur Webseite. 
+Der Kombi-Wettert-Transmitter sendet seine Daten über eine RS-484 Schnittstelle. Die Software \textit{WeatherDisplay} verarbeitet diese Daten und erstellt unterschiedliche Text-Files, die anschliessend von anderen Anwendungen, wie zum Beispiel \textit{WeatherDisplay Live}, verwendet werden. Zusätzlich sendet \textit{WeatherDisplay} einmal pro Minute sämtliche Werte an die MySQL-Datenbank. Abbildung \ref{img:datenfluss} zeigt den Datenfluss vom Sensor bis zur Webseite. 
 
 \begin{figure}[h!]
 	\centering
@@ -17,7 +17,7 @@ Der Kombi-Wettert-Tansmitter sendet seine Daten über eine RS-484 Schnittstelle.
 % Schnittstelle zum Kombi-Wetter-Transmitter
 % ################################
 \subsection{Schnittstelle zum Kombi-Wetter-Transmitter}
-Die Software \textit{WeatherDisplay} \footnote{ \url{http://www.weather-display.com}} dient als Schnittstelle zum Kombi-Wetter-Transmitter. Der Auftraggeber möchte diese Software beibehalten. Interessant für uns sind deshalb die Daten, die  \textit{WeatherDisplay} liefert. Dies sind vier verschiedene Textfiles, deren Inhalt in Tabelle~\ref{table:text-files} aufgelistet sind, sowie ein minütlicher Eintrag sämtlicher Messwerte in die Datenbank.
+Die Software \textit{WeatherDisplay} \footnote{ \url{http://www.weather-display.com}} dient als Schnittstelle zum Kombi-Wetter-Transmitter. Der Auftraggeber möchte diese Software beibehalten. Interessant für uns sind deshalb die Daten, die  \textit{WeatherDisplay} liefert. Dies sind vier verschiedene Text-files, deren Inhalt in Tabelle~\ref{table:text-files} aufgelistet sind, sowie ein minütlicher Eintrag sämtlicher Messwerte in die Datenbank.
 \newline
 
 \begin{table}[h]
@@ -36,19 +36,19 @@ Die Software \textit{WeatherDisplay} \footnote{ \url{http://www.weather-display.
 
 \noindent
 %\subsection*{Problem}
-Der Nachteil ist, dass der Inhalt und Aufbau der Text-Dateien fix vorgegeben sind. Das bedeutet insbesondere, dass das Intervall der Messresultate nicht verändert werden kann. Bei einem 24-Stunden-Rückblick beispielsweise, ist nur jeweils ein Wert pro Stunde vorhanden, was zu einer sehr groben Darstellung führt, wie in Abbildung~\ref{img:wind-richtung}, links erkennbar. Zudem sind in diesen Text-Files nur die Daten des Kombi-Wetter-Transmitters aufgeführt. Weitere Sensoren wie Pegel und Wassertemperatur sind nicht enthalten. Diese müssen ohnehin separat behandelt werden.
+Der Nachteil ist, dass der Inhalt und Aufbau der Text-Dateien fix vorgegeben sind. Das bedeutet insbesondere, dass das Intervall der Messresultate nicht verändert werden kann. Bei einem 24-Stunden-Rückblick beispielsweise ist nur jeweils ein Wert pro Stunde vorhanden, was zu einer sehr groben Darstellung führt, wie in Abbildung~\ref{img:wind-richtung}, links erkennbar. Zudem sind in diesen Text-Files nur die Daten des Kombi-Wetter-Transmitters aufgeführt. Weitere Sensoren wie Pegel und Wassertemperatur sind nicht enthalten. Diese müssen ohnehin separat behandelt werden.
 \newline
 
 \noindent
 %\subsection*{Lösungsansatz}
-Während der Bachelor-Arbeit soll geprüft werden in wie weit die Daten aus den Text-Files für die Erstellung der neuen Anzeige-Elemente verwendet werden können. Die Alternative besteht darin sämtliche Daten aus der Datenbank zu beziehen.
+Während der Bachelor-Arbeit soll geprüft werden, in wie weit die Daten aus den Text-Files für die Erstellung der neuen Anzeige-Elemente verwendet werden können. Die Alternative besteht darin, sämtliche Daten aus der Datenbank zu beziehen.
 
 
 % ################################
 % Speicherung historischer Daten
 % ################################
 \subsection{Speicherung historischer Daten}
-Um die Daten der Wetterstation zu speichern wird eine MySQL-Datenbank verwendet. Da die Wetterstation kontinuierlich umgebaut und erweitert wurde, besteht die Datenbank aus mehreren Tabellen, die sich in Inhalt, Intervall und Zeitraum unterscheiden, wie in Tabelle~\ref{table:db-tables} dargestellt. Bisher wurden diese Daten nicht verwendet. Es ist aber vorgesehen, dass es zukünftig auf der Webseite eine Möglichkeit gibt auf die historischen Daten zuzugreifen.
+Um die Daten der Wetterstation zu speichern, wird eine MySQL-Datenbank verwendet. Da die Wetterstation kontinuierlich umgebaut und erweitert wurde, besteht die Datenbank aus mehreren Tabellen, die sich in Inhalt, Intervall und Zeitraum unterscheiden, wie in Tabelle~\ref{table:db-tables} dargestellt. Bisher wurden diese Daten nicht verwendet. Es ist aber vorgesehen, dass es zukünftig auf der Webseite eine Möglichkeit gibt, auf die historischen Daten zuzugreifen.
 \newline
 
 \begin{table}[h!]
@@ -69,7 +69,7 @@ Um die Daten der Wetterstation zu speichern wird eine MySQL-Datenbank verwendet.
 
 \noindent
 %\subsection*{Problem}
-Um auf die Daten zugreifen zu können, müssen mehrere Tabellen abgefragt werden, was die Query und die Anzeige der Daten erschwert. Zudem fehlt ein Konzept welche Daten wo, wie und wie häufig gespeichert werden sollen.
+Um auf die Daten zugreifen zu können, müssen mehrere Tabellen abgefragt werden, was die Query und die Anzeige der Daten erschwert. Zudem fehlt ein Konzept, welche Daten wo, wie und wie häufig gespeichert werden sollen.
 \newline
 
 \noindent
@@ -91,6 +91,6 @@ Der Speicherplatzbedarf der Datenbank ist momentan noch kein Problem. Hingegen i
 
 \noindent
 %\subsection*{Lösungsansatz}
-Die Daten sollen deshalb zeitabhängig ausgedünnt werden. Die Zeitabstände, in denen die Daten gelöscht beziehungsweise gemittelt werden, müssen während der Bachelor-Arbeit mit dem Auftraggeber abgesprochen werden. Weiter soll geprüft werden, ob zusätzliche Tabellen mit zum Beispiel den Minimal- und Maximalwerten erstellt werden sollen um die Performance der Abfragen zu erhöhen.
+Die Daten sollen deshalb zeitabhängig ausgedünnt werden. Die Zeitabstände, in denen die Daten gelöscht, beziehungsweise gemittelt werden, müssen während der Bachelor-Arbeit mit dem Auftraggeber abgesprochen werden. Weiter soll geprüft werden, ob zusätzliche Tabellen mit zum Beispiel den Minimal- und Maximalwerten erstellt werden sollen, um die Performance der Abfragen zu erhöhen.
 
 

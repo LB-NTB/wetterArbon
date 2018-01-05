@@ -14,53 +14,17 @@ Zur Wetterstation Arbon gehört eine schwenk- und zoombare Webcam. Diese ist üb
 
 % Warteschlange
 \subsection{Warteschlange für Webcam-Steuerung}
-Der Benutzer hat die Möglichkeit die Webcam nach oben/unten und nach links/rechts zu bewegen. Sechs voreingestellte Positionen stehen als Shortlinks zur Verfügung. Diese Positionen sind in der betriebseigenen Software der Webcam konfigurierbar.
+Der Benutzer hat die Möglichkeit, die Webcam nach oben/unten und nach links/rechts zu bewegen. Sechs voreingestellte Positionen stehen als Shortlinks zur Verfügung. Diese Positionen sind in der betriebseigenen Software der Webcam konfigurierbar.
 \newline
-
-%Die freie Positionierung erfolgt über Pfeile, sowie die Plus und Minus am Bildrand, je nachdem welcher Button geklickt wird, sendet die Webseite das Kommando mittels HTTP an die Webcam. Die Zusammenstellung des URLs geschieht über ein Javascript, wie man dem Code in Listing \ref{lst:cam} entnehmen kann.
-
-%\begin{lstlisting}[caption={Positionsänderung der Webcam},label={lst:cam},language=html]
-% <div class="container webcam" id="webcam_585">
-%	<img class="pageImage" src="https://webcam.wetter-arbon.ch/mjpg/video.mjpg"/>
-%</div>
-%<script type="text/javascript">
-%	function changeWebCam(command) {
-%		var urlAddition;
-%		switch (command) {
-%			case 'up':
-%			case 'down':
-%			case 'left':
-%			case 'right':
-%			case 'home':
-%				urlAddition = 'move=' + command;
-%				break;
-%				
-%			case 'zoomIn':
-%				urlAddition = 'rzoom=2500';
-%				break;
-%				
-%			case 'zoomOut':
-%				urlAddition = 'rzoom=-2500';
-%				break;
-%				
-%			case 'Hafeneinfahrt':
-%				urlAddition = 'gotoserverpresetname=' + command;
-%				break;		
-%		}
-%		console.log('changeWebCam');
-%		$.get('https://webcam.wetter-arbon.ch/axis-cgi/com/ptz.cgi?camera=1&' + urlAddition);
-%	}
-%\end{lstlisting}
-
 
 \noindent
 %\subsection*{Problem}
-Die Möglichkeit der Webcam-Steuerung übers Web ist zwar sehr attraktiv, hat aber auch seine Nachteile. Zum Beispiel wenn mehrere Personen gleichzeitig auf die Webcam zugreifen. Zur Zeit ist es so dass, die HTTP-Request der Reihe nach abgearbeitet werden. Es ist also möglich, dass sich die Benutzer gegenseitig in der Bedienung stören, was unter Umständen recht mühsam ist. 
+Die Möglichkeit der Webcam-Steuerung übers Web ist zwar sehr attraktiv, hat aber auch seine Nachteile. Zum Beispiel wenn mehrere Personen gleichzeitig auf die Webcam zugreifen. Zur Zeit ist es so, dass die HTTP-Request der Reihe nach abgearbeitet werden. Es ist also möglich, dass sich die Benutzer gegenseitig in der Bedienung stören, was unter Umständen recht mühsam ist. 
 \newline
 
 \noindent
 %\subsection*{Lösungsansatz}
-Das Prinzip der Warteschlange kann hier Abhilfe schaffen. Jeder Benutzer erhält eine bestimmte Zeit den alleinigen Zugriff auf die Steuerung der Webcam. So eine Lösung setzt zum Beispiel der Flughaben Zürich\footnote{ \url{https://www.flughafen-zuerich.ch/passagiere-und-besucher/shopping-und-erlebnis/webcams/webcam-dock-b}} ein, wie in Abbildung \ref{img:warteschlange} rechts dargestellt.
+Das Prinzip der Warteschlange kann hier Abhilfe schaffen. Jeder Benutzer erhält für eine bestimmte Zeit den alleinigen Zugriff auf die Steuerung der Webcam. Eine solche Lösung setzt zum Beispiel der Flughaben Zürich\footnote{ \url{https://www.flughafen-zuerich.ch/passagiere-und-besucher/shopping-und-erlebnis/webcams/webcam-dock-b}} ein, wie in Abbildung \ref{img:warteschlange} rechts dargestellt.
 
 
 
@@ -71,11 +35,11 @@ In der betriebseigenen Software der Webcam lassen sich viele Parameter konfiguri
 
 \noindent
 %\subsection*{Problem}
-Das Problem ist, dass der Zoomfaktor nur allgemein eingestellt werden kann, das heisst die Beschränkung gilt immer, egal ob die Kamera auf eine Wohnung zeigt oder auf den See raus. Aus Persönlichkeitsschutz-Gründen musste deshalb der Zoomfaktor auf die 4-fache Vergrösserung limitiert werden, möglich wäre aber eine 216-fache Vergrösserung. Daraus wird deutlich, dass die Webcam eigentlich ein viel grösseres Potential hätte.
+Das Problem ist, dass der Zoomfaktor nur allgemein eingestellt werden kann, das heisst die Beschränkung gilt immer, egal ob die Kamera auf eine Wohnung zeigt oder auf den See hinaus. Aus Persönlichkeitsschutz-Gründen musste deshalb der Zoomfaktor auf die 4-fache Vergrösserung limitiert werden, möglich wäre aber eine 216-fache Vergrösserung. Daraus wird deutlich, dass die Webcam eigentlich ein viel grösseres Potential hätte.
 \newline
 
 \noindent
 %\subsection*{Lösungsansatz}
-Die Idee ist nun die Limitierung des Zooms so zu programmieren, dass diese möglichst dynamisch ist. Das heisst, dass je nach Position die Zoom-Limitierung ändert. Der Zoom soll, vor allem auf den See hinaus, in vollem Umfang genutzt werden können. Zudem darf die Funktion nicht umgangen werden können.
+Die Idee ist nun, die Limitierung des Zooms so zu programmieren, dass diese möglichst dynamisch ist. Das heisst, dass je nach Position die Zoom-Limitierung ändert. Der Zoom soll vor allem auf den See hinaus in vollem Umfang genutzt werden können. Zudem darf die Funktion nicht umgangen werden können.
 
 
