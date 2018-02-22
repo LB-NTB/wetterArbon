@@ -1,0 +1,224 @@
+\section{Anforderungen}
+Die im Folgenden aufgelisteten Anforderungen sind in fünf Blöcke unterteilt: User Interface, Datenbank, Sensoren, Webcam und nicht-funktionale Anforderungen.
+Jede Anforderung besitzt eine eindeutige Identifizierungsnummer, Titel, Beschreibung der Anforderung, Wichtigkeit und einen Beschrieb, wie der Nachweis erfolgen soll.
+Die Wichtigkeit ist MUSS, SOLL oder KANN. MUSS-Anforderungen sind absolut zwingend für die Umsetzung der Arbeit. SOLL-Anforderungen bringen einen erheblichen Mehrwert und KANN-Anforderungen sind eher unwichtig und können gegebenenfalls auch weggelassen werden.
+
+% ###############################################
+%. Anforderungen zum User Interface
+% ###############################################
+\subsection*{User Interface (UI)}
+% 
+\begin{usecase}
+  \addheading{UI 010}{Flash-less Webseite (FA)} 
+  \addrow{Anforderung}{Sämtliche Webseiten der Wetterstation Arbon funktionieren ohne direkte bzw. indirekte Verwendung von Adobe Flash.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Sämtliche Webseiten der Wetterstation Arbon können von folgenden Browsern angezeigt werden, ohne dass Adobe Flash aktiviert bzw. installiert ist: Safari (Mobile \& Desktop), Google Chrome (Mobile \& Desktop), Firefox, Edge und Internet Explorer. }
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 020}{Einheiten} 
+  \addrow{Anforderung}{Für die Anzeige der Messwerte werden folgende Einheiten verwendet: Temperatur in C, Luftdruck in hPa, Windrichtung mindestens in Grad, Niederschlagsmenge in mm, Relative Luftfeuchtigkeit in \% }
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Die Messwerte werden in C, hPa, Grad, mm und \% angezeigt. }
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 030}{Wetterdaten für Wassersportler} 
+  \addrow{Anforderung}{Die Anzeige der Wettertransmitterdaten erfolgt in nautischen Einheiten d.h. die Windgeschwindigkeit wird in Knoten angegeben und parallel dazu in Beaufort. Graphen zeigen den Verlauf von Luftdruck, Windgeschwindigkeit und Windrichtung der letzten 24h auf.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Die aktuelle Windgeschwindigkeit wird auf der Wassersport-Seite in Knoten und Beaufort angegeben. Die x-Achse der Graphen zeigt die letzten 24h. }
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 040}{Wetterdaten für Tourismus} 
+  \addrow{Anforderung}{Die Anzeige der Wettertransmitterdaten erfolgt in allgemein verständlichen Einheiten, d.h. die Windgeschwindigkeit wird in km/h angeben. Graphen zeigen den Verlauf von Temperatur, Niederschlag und Windchill der letzten sieben Tage auf. }
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Die Windgeschwindigkeit wird in km/h angezeigt. Die x-Achse der Graphen zeigt die letzten sieben Tage. }
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 050}{Responsive Design} 
+  \addrow{Anforderung}{Die Werte der Wetterstation sind unabhängig von der Bildschirmgrösse übersichtlich und lesbar dargestellt. Horizontales Scrollen ist nicht erforderlich.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Die Webseite der Wetterdaten wird mit einem iPhone 5, iPad und Desktop so dargestellt, dass kein horizontaler Scrollbalken auftritt.}
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 060}{Sample-Rate} 
+  \addrow{Anforderung}{Die Sample-Rate der Graphen ist kleiner gleich zehn Minuten auf der Wassersport-Seite und kleiner gleich eine Stunde auf der Tourismus-Seite. Der Graph auf der Wassersport-Seite zeigt die letzten 24h, der Graph auf der Tourismus-Seite die letzten sieben Tage.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Pro Graph sind für die Wassersport-Seite mindestens $24*6=144$ Punkte eingezeichnet, für die Tourismus-Seite mindestens $7*24=168$ Werte.}
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 070}{Fixe Y-Achse} 
+  \addrow{Anforderung}{Für die Graphen auf der Tourismus und Wassersport-Seite wird eine fixe Y-Achs-Skalierung verwendet.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Unabhängig von den Messwerten ist die Skalierung der y-Achse sämtlicher Graphen auf der Tourismus- und Wassersport-Seite konstant.}
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 080}{Anzeige Windrichtung} 
+  \addrow{Anforderung}{Die Anzeige der Windrichtung kann sich kontinuierlich ändern, ohne dass in der Momentananzeige bzw. im Graphen ein Sprung entsteht.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Wenn sich der Wind um 360 Grad dreht, ist auf der Anzeige und im Graphen kein Sprung erkennbar.}
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 090}{Barrierefreiheit} 
+  \addrow{Anforderung}{Die Anzeige der Wetterstation soll sowohl mit rot/grün Sehschwäche, als auch für sehbehinderte Menschen verständlich sein.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Die Seiten werden mit einem Online-Color-Checker und einem Screen-Reader auf deren Verständlichkeit überprüft}
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 100}{Notification} 
+  \addrow{Anforderung}{Der User kann sich selbst eine Notifikation einrichten. Er erhält eine Nachricht, sobald der von ihm definierte Wert der Wetterstation unter- bzw. überschritten wird}
+  \addrow{Wichtigkeit}{KANN}
+  \addrow{Test}{Der User richtet sich eine Notification ein für Wassertemperatur grösser als 20 Grad und Windgeschwindigkeit grösser 10 Knoten und erhält für jede Anweisung eine separate Nachricht, sobald diese erfüllt ist.}
+\end{usecase}
+% 
+\begin{usecase}
+  \addheading{UI 110}{Favicon} 
+  \addrow{Anforderung}{Wenn die Webseite auf dem Homescreen eines Mobilgerätes abgespeichert wird, ist das Favicon der Wetterstation Arbon abgebildet.}
+  \addrow{Wichtigkeit}{KANN}
+  \addrow{Test}{Der User speichert die Webseite auf einem iPhone und sieht das Wetterstation Arbon Favicon}
+\end{usecase}
+
+
+% ###############################################
+%. Anforderungen zur Datenbank
+% ###############################################
+\subsection*{Datenbank (DB)}
+\begin{usecase}
+  \addheading{DB 010}{Abfrage-Seite} 
+  \addrow{Anforderung}{Auf der Webseite der Wetterstation Arbon gibt es eine eigene Seite, auf der vom User Datenbank-Abfragen ausgeführt werden können. Das Resultat wird jeweils graphisch dargestellt. Die Abfragen können auf sämtliche Messwerte der Wetterstation und über den Zeitraum seit Datenerfassung durchgeführt werden. Liegen für einen bestimmten Zeitraum keine Messwerte vor, werden keine Werte angezeigt, und es findet auch keine Interpolation statt.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Der User macht zwei Abfragen: In der ersten Abfrage soll die Windgeschwindigkeit in km/h seit Messbeginn aufgezeichnet werden. In der zweiten Abfrage soll der Pegel im ersten Betriebsjahr aufgezeichnet werden. Die Werte werden korrekt in der Grafik abgebildet inkl. Messlücke.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{DB 020}{Schutz vor Missbrauch} 
+  \addrow{Anforderung}{Die Schnittstelle zur Datenbank, d.h. die Datenbank-Abfrage ist gegen schädliche Zugriffe geschützt.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Die Eingabe von SQL-Befehlen führt höchstens zu einer Eingabe-Fehlermeldung. Es werden keine administrativen Daten der Datenbank angezeigt.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{DB 030}{Fehleingaben} 
+  \addrow{Anforderung}{Die Abfrage-Seite ist so ausgeführt, dass sie Fehleingaben verunmöglicht.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Der User versucht, eine unplausible Abfrage zu senden und erhält eine Fehlermeldung.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{DB 040}{Datenmanagement} 
+  \addrow{Anforderung}{Die Daten in der Datenbank werden periodisch ausgedünnt d.h. zusammengefasst.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Messwerte, die älter als eine Woche sind, werden zusammengefasst zu maximal einem Wert pro Stunde.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{DB 050}{Daten-Export} 
+  \addrow{Anforderung}{Die Resultate der getätigten Abfragen können als Datei exportiert werden.}
+  \addrow{Wichtigkeit}{KANN}
+  \addrow{Test}{Der User ruft die Windgeschwindigkeit der letzen sieben Tage ab und exportiert die Daten in Excel.}
+\end{usecase}
+
+
+% ###############################################
+%. Anforderungen zu den Sensoren
+% ###############################################
+\subsection*{Sensoren (TD)}
+\begin{usecase}
+  \addheading{TD 010}{Pegel-Messer} 
+  \addrow{Anforderung}{Die Wetterstation Arbon erhält einen geeigneten Pegel-Sensor, welcher mit den bereits verbauten Komponenten betrieben werden kann. Die Kosten für Anschaffung und Betrieb des neuen Sensors liegen innerhalb des Budgets der Wetterstation Arbon.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Der Pegel Arbon wird auf der Station gemessen und ist auf der Webseite ersichtlich.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{TD 020}{Schnittstelle zur Wassertemperatur} 
+  \addrow{Anforderung}{Die Wetterstation Arbon verfügt über eine öffentlich nutzbare Schnittstelle (API) für Luft- und Wassertemperatur, sodass z.B. das Seebad diese übernehmen kann.}
+  \addrow{Wichtigkeit}{MUSS}
+  \addrow{Test}{Die Luft- und Wassertemperatur kann über ein API abgerufen werden und ist in JSON formatiert.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{TD 030}{Sturmwarnung} 
+  \addrow{Anforderung}{Auf der Webseite wird die aktuelle Sturmwarn-Situtation dargestellt. Falls es sich um eine eingebettete Seite handelt, muss diese https-fähig sein.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Die aktuelle Sturmwarn-Situation ist für den User auf der Webseite der Wetterstation Arbon einsehbar, ohne Verlinkung auf fremde Seiten.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{TD 040}{Vergleich Windvorhersage und Windmessresultate} 
+  \addrow{Anforderung}{Auf der Webseite ist grafisch ersichtlich wie die Windgeschwindigkeits-Vorhersage und die gemessene Windgeschwindigkeit zueinander stehen.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Die vorhergesagten und die gemessenen Windgeschwindigkeiten der letzten sieben Tage sind grafisch dargestellt.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{TD 050}{Wellenhöhen} 
+  \addrow{Anforderung}{Aus den Messwerten des Pegelsensors wird die durchschnittliche Wellenhöhe berechnet und angezeigt. Die Wellenhöhe wird in der Datenbank gespeichert.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Der User sieht auf der Webseite die aktuelle Wellenhöhe. Der User führt eine Datenbankabfrage aus und sieht den Verlauf der Wellenhöhe über die letzten drei Monate.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{TD 060}{Strahlungssensor} 
+  \addrow{Anforderung}{Die Wetterstation Arbon erhält einen geeigneten Sonnenstrahlungs-Sensor. Die Kosten für Anschaffung und Betrieb des neuen Sensors liegen innerhalb des Budgets der Wetterstation Arbon.}
+  \addrow{Wichtigkeit}{KANN}
+  \addrow{Test}{Die Sonnenstrahlung wird auf der Station gemessen und ist auf der Webseite ersichtlich.}
+\end{usecase}
+
+
+% ###############################################
+%. Anforderungen zur Webcam
+% ###############################################
+\subsection*{Webcam (CA)}
+\begin{usecase}
+  \addheading{CA 010}{Warteschlange} 
+  \addrow{Anforderung}{Die Webcam verfügt über eine Warteschlage, sodass, wenn mehrere User auf der Seite sind, jeder die Steuerung der Webcam für eine gewisse Zeit für sich alleine hat.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Zwei User greifen zur gleichen Zeit auf die Webcam zu. Der zweite erhält die Steuerung, sobald die Zeit des ersten Users abgelaufen ist.}
+\end{usecase}
+%
+\begin{usecase}
+  \addheading{CA 020}{Sektorweise Zoombeschränkung} 
+  \addrow{Anforderung}{Die Zoomstufe ist abhängig von der Ausrichtung der Webcam. Richtung Land ist der Zoom beschränkt, Richtung See offen.}
+  \addrow{Wichtigkeit}{KANN}
+  \addrow{Test}{Der User zoomt einmal maximal Richtung Land und einmal maximal Richtung See. Die Zoomstufe Richtung Land ist kleiner als Richtung See.}
+\end{usecase}
+
+
+% ###############################################
+%. Nicht Funktionale Anforderungen
+% ###############################################
+\subsection*{Nicht Funktionale Anforderungen (NF)}
+\begin{usecase}
+  \addheading{NF 010}{Reaktionsgeschwindigkeit} 
+  \addrow{Anforderung}{Bei ausreichendem Netz werden die Messdaten innerhalb von drei Sekunden angezeigt. Datenbank-Abfragen werden innerhalb von fünf Sekunden angezeigt.}
+  \addrow{Wichtigkeit}{SOLL}
+  \addrow{Test}{Der User ruft die Seite auf und sieht die Messresultate innerhalb von drei Sekunden. Der User wählt die Wassertemperatur der letzten zwölf Monate und erhält fünf Sekunden nach Absenden der Abfrage das Resultat.}
+\end{usecase}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

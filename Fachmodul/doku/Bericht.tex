@@ -1,0 +1,125 @@
+\documentclass[a4paper,ngerman, 11pt, DIV11]{scrartcl}
+%\documentclass[a4paper,ngerman, 11pt, pagesize]{report}
+
+%% Päambel
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+
+\usepackage{cite}
+\usepackage{xcolor}
+\newcommand\Diskussionspunkt[1]{\textcolor{red}{#1}}
+\usepackage{ulem}
+
+\usepackage{url}
+% keine rote Rahmen um die Links anzeigen
+\usepackage[pdfborderstyle={/S/U/W 0}]{hyperref}
+%\usepackage{hyperref}
+
+% Grafikpaket laden
+\usepackage{graphicx}
+
+% Tabellen
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% pdf einbinden (A3)
+\usepackage{nextpage}
+\usepackage{afterpage}
+\usepackage{pdfpages}
+\usepackage{typearea}
+\usepackage{pdfpages}
+
+\usepackage{lscape}
+
+
+% Quelltext
+\usepackage{listings}
+ \usepackage{color}
+ 
+ \definecolor{middlegray}{rgb}{0.5,0.5,0.5}
+ \definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+ \definecolor{orange}{rgb}{0.8,0.3,0.3}
+ \definecolor{yac}{rgb}{0.6,0.6,0.1}
+ 
+  \lstset{
+   basicstyle=\scriptsize\ttfamily,
+   keywordstyle=\bfseries\ttfamily\color{orange},
+   stringstyle=\color{green}\ttfamily,
+   commentstyle=\color{middlegray}\ttfamily,
+   emph={square}, 
+   emphstyle=\color{blue}\texttt,
+   emph={[2]root,base},
+   emphstyle={[2]\color{yac}\texttt},
+   showstringspaces=false,
+   flexiblecolumns=false,
+   tabsize=2,
+   numbers=left,
+   numberstyle=\tiny,
+   numberblanklines=false,
+   stepnumber=1,
+   numbersep=10pt,
+   xleftmargin=15pt
+ }
+
+
+%%  Variablen
+\newcommand{\authorName}{Ladina Bilgery \and Thomas Wieling}
+\newcommand{\auftraggeber}{Interessengemeinschaft Wetterstation Arbon}
+\newcommand{\auftragnehmer}{Interstaatliche Hochschule für Technik NTB}
+\newcommand{\projektName}{Multiplattform-fähiges und barrierefreies User Interface und Datenmanagement für die Wetterstation Arbon}
+\title{\projektName~(Fachmodul)}
+\author{\authorName}
+\date{\today}
+
+%%  Create a shorter version for tables. DO NOT CHANGE 
+\newcommand\addrow[2]{#1 &#2\\ }
+\newcommand\addheading[2]{#1 &#2\\ \hline}
+\newcommand\tabularhead{\begin{tabular}{lp{13cm}}
+\hline
+}
+\newcommand\addmulrow[2]{ \begin{minipage}[t][][t]{2.5cm}#1\end{minipage}
+   &\begin{minipage}[t][][t]{8cm}
+    \begin{enumerate} #2   \end{enumerate}
+    \end{minipage}\\ }
+\newenvironment{usecase}{\tabularhead}
+{\hline\end{tabular}}
+
+
+% damit Bilder im aktuellen Kapitel dargestellt werden
+\usepackage{placeins}
+\usepackage{geometry}
+
+
+
+%%  Beginn Dokument
+\begin{document}
+\pagenumbering{roman}
+\input{Deckblatt}
+\setcounter{page}{2}
+\tableofcontents          
+\clearpage
+\pagenumbering{arabic}
+
+\input{Einfuehrung}
+\input{Webseite}
+\input{Datenbank}
+\input{Sensoren} 
+\input{Webcam}
+\input{Erweiterungen}
+\input{Anforderungen}   
+\input{Projektmanagement}
+\input{Dokumentation}
+% braucht es das?
+\FloatBarrier
+
+\newpage
+\input{Schluss}
+\input{Recht}
+\newpage
+\bibliography{literatur}{}	
+\bibliographystyle{plain}
+\includepdf[pages=-]{img/rechtlicheAnspruecheIG.pdf} 
+
+
+\end{document}
