@@ -86,3 +86,49 @@ Wöchentlich findet ein Team-Meeting statt. Die besprochenen Punkte werden hier 
   * Fehlermeldungen möglichst vermeiden
 * BA-Planung
   * Erste zwei Monate alle zwei Wochen ein Meeting, dann einmal im Monat
+
+
+
+##Meeting vom 22.02.2018
+
+###Traktanden
+* Vorstellung BA-Planung
+* Fixierung Meilensteine
+* Feedback zu Fachmodul-Bericht
+
+
+###Vorstellung BA-Planung
+Für die BA ist ein Workload von 360h pro Person vorgesehen. Wir haben die verschiednen Tätigkeiten runtergebrochen auf 8h-Blöcke und diese auf Post-its notiert. Die Tätigkeiten haben wir dann unter Berücksichtigung der Abhängigkeiten den zur verfügung stehenden Arbeitswochen zugeteilt. Für jedes Post-it haben wir anschliessend ein Trello-Kärtchen erstellt.
+
+![Screenshot](/img/terminplan.png)
+*Abb.: BA-Planung*
+
+**Ferien**   
+* Ulrich KW29-KW32  
+* Lukas  KW30-KW32  
+
+
+###Fixierung Meilensteine 
+* 29.03.2018 Konzeptbesprechung
+* 16.04.2018 Vorstellung des Prototyps der Webseite (inkl. Auftraggeber)
+* 08.06.2018 Vorabgabe Bericht -> Rückmeldung von Ulrich und Thomas bis am 20.07.2018
+* 10.08.2018 Abgabe BA
+* 29.08.2018 Präsentation BA
+
+###Allgemein
+Die Wochenberichte werden zwischen KW08 und KW27 jeweils bis am Sonntagabend erstellt. Der Link auf den aktuellen Wochenbericht sendet Thomas jeweils per Mail.
+
+###Rückmeldung zum Fachmodul-Bericht
+* Schriftgrösse bei Abbidlungen nicht zu klein wählen
+* Bilder nahe an der Referenz platzieren
+* Auf alle Bilder verweisen
+* REST API: verschiedene Windeinheiten anbieten
+* Erklärung fehlt warum der Zoom Richtung Land beschränkt werden muss
+* Mehr Auswahl bei Lösungsmöglichkeiten
+* Skizze der neuen Site map fehlt
+
+###Pendenzen
+* Nächste Sitzung findet am 15.03.2018 11:00-12:00 statt -> Einladung versenden
+* Terminvorschlag für BA-Präsentation senden (1.5h)
+* Konzeptbesprechung findet am 29.03.2018 13:00-14:30 statt -> Einladung versenden
+* Doku-Struktur an Ulrich und Lukas senden (p.m.)
