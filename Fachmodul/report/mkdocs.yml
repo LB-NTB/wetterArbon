@@ -1,0 +1,19 @@
+site_name: Wetter Arbon
+
+pages:
+    - Home: index.md
+    - Meetings:
+        - idee.md
+        - kickoff.md
+        - meetings.md
+    - Reports:
+        - KW44 : KW44.md
+        - KW45 : KW45.md
+        - KW46 : KW46.md
+        - KW47 : KW47.md
+        - KW48 : KW48.md
+        - KW49 : KW49.md
+        - KW50 : KW50.md
+        - KW51 : KW51.md
+    - About: about.md
+# theme: readthedocs
