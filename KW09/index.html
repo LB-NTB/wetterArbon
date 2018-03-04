@@ -241,26 +241,35 @@
 <li>Objekt relationale DB</li>
 </ul>
 <h4 id="wie-ist-das-vorgehen-bei-der-datenbankentwicklung">Wie ist das vorgehen bei der Datenbankentwicklung?</h4>
-<p>Es gibt müssen folgende Schritte gemacht werden:
-  * Externe Phase (Ermittlung der Informationsstruktur)
-  * Konzeptionelle Phase (ER-Modell)
-  * Logische Phase (relationales Datenmodell)
-  * Physische Phase (Erstellung des Datenmodell)</p>
+<ul>
+<li>Externe Phase (Ermittlung der Informationsstruktur)</li>
+<li>Konzeptionelle Phase (ER-Modell)  </li>
+<li>Logische Phase (relationales Datenmodell)  </li>
+<li>Physische Phase (Erstellung des Datenmodell)</li>
+</ul>
 <h4 id="welche-uberlegungen-mussen-bei-der-entwicklung-der-neuen-struktur-gemacht-werden">Welche Überlegungen müssen bei der Entwicklung der neuen Struktur gemacht werden?</h4>
-<p>Wird das Konzept geschrieben machen werden wir uns folgende Überlegungen machen müssen:
-  * Welche Daten?
-  * In welchem Intervall?
-  * Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)
-  * Tabellennamen?
-  * Wieviele Daten werden erstellt und reicht der Speicher?</p>
+<ul>
+<li>Welche Daten?</li>
+<li>In welchem Intervall?</li>
+<li>Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)</li>
+<li>Tabellennamen?</li>
+<li>Wieviele Daten werden erstellt und reicht der Speicher?</li>
+</ul>
+<h3 id="einlesen-datenbanksicherheit-und-ein-konzept">Einlesen Datenbanksicherheit und ein Konzept</h3>
+<p>Das Konzept in einer kurzen Zusammenfassung inklusive den Punkten die zur Diskussion stehen:
+Backup:
+Es wird ein Backup system aufgesetzt welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden können. Dies wird mittels einem Script von einem Cronejob wöchentlich durchgeführt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gewählt und ob die Daten in einem kürzerem oder längerem Abstand gespeichert werden.</p>
+<p>Datenbanksicherheit:
+Die Datenbank soll primär gegen SQL-injection gesichert werden. Des Weiteren soll geloggt werden wann welche Anfragen stattfinden und wie diese aussehen. Sollte eine Abfrage aus dem Rahmen fallen, soll der Verein mittels E-Mail oder einer sonstigen Benachrichtigung gewarnt werden. Des Weiteren soll ein Cronejob und dem dazugehörigen Skript die Software auf dem neusten Stand halten. Bei der Datenbanksicherheit steht die Benachrichtigungsart und ein eventueller Proxy wie von MariaDB empfohlen zur Diskussion.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h3 id="kanban">Kanban</h3>
 <p>Beim Kanban Projektmanagement ist nur eine zu bearbeitende Tätigkeit erlaubt, diese muss abgeschlossen sein vor das die nächste Tätigkeit gestartet wird. Das Problem hierbei ist, dass wir in unserem Fall auf den HTW Server warten müssen. Hierbei sind wir abhängig von anderen Personen. Somit kann die Tätigkeit nicht abgeschlossen werden und in der Theorie auch weitergearbeitet werden. Wir haben uns deswegen entschlossen um trotzdem weiter zu arbeiten und die Karte noch nicht abzuschliessen. Es sollte jedoch nur eine Ausnahme sein und nicht zur Regel werden.</p>
 <h3 id="mkdocs">Mkdocs</h3>
 <p>Auf irgendeine Art und weise funktionierte bei Thomas das Mkdocs nicht mehr richtig, nach einer Stunde der Problemsuche wurde entschieden, git-cmd neu zu installieren. Nach der neuinstallation funktionierte alles wieder richtig und die Arbeiten konnten weitergeführt werden.</p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
-<p>6h Einlesen DB und organisation HTW-Server
-1.5h Projektmanagement</p></div>
+<p>5h Einlesen DB und organisation HTW-Server<br />
+3h Einlesen Datenbanksicherheit und Konzept<br />
+1.5h Projektmanagement  </p></div>
         </div>
 
         <footer class="col-md-12">

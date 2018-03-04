@@ -227,7 +227,7 @@
         },
         {
             "location": "/KW09/",
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\n\n\nEinlesen Datenbank und Webseite auf einen HTW-Server kopieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nEinlesen Datenbank\n\n\nBeim einlesen in die Datenbank haben wir uns folgende Fragen gestellt und Antworten erhalten:\n\n\nWelche Arten von Datenbanken gibt es?\n\n\n\n\nrelationale DB\n\n\nhierarchische DB\n\n\nNetzwerk DB\n\n\nObjekt relationale DB\n\n\n\n\nWie ist das vorgehen bei der Datenbankentwicklung?\n\n\nEs gibt m\u00fcssen folgende Schritte gemacht werden:\n  * Externe Phase (Ermittlung der Informationsstruktur)\n  * Konzeptionelle Phase (ER-Modell)\n  * Logische Phase (relationales Datenmodell)\n  * Physische Phase (Erstellung des Datenmodell)\n\n\nWelche \u00dcberlegungen m\u00fcssen bei der Entwicklung der neuen Struktur gemacht werden?\n\n\nWird das Konzept geschrieben machen werden wir uns folgende \u00dcberlegungen machen m\u00fcssen:\n  * Welche Daten?\n  * In welchem Intervall?\n  * Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)\n  * Tabellennamen?\n  * Wieviele Daten werden erstellt und reicht der Speicher?\n\n\nProbleme / Herausforderungen\n\n\nKanban\n\n\nBeim Kanban Projektmanagement ist nur eine zu bearbeitende T\u00e4tigkeit erlaubt, diese muss abgeschlossen sein vor das die n\u00e4chste T\u00e4tigkeit gestartet wird. Das Problem hierbei ist, dass wir in unserem Fall auf den HTW Server warten m\u00fcssen. Hierbei sind wir abh\u00e4ngig von anderen Personen. Somit kann die T\u00e4tigkeit nicht abgeschlossen werden und in der Theorie auch weitergearbeitet werden. Wir haben uns deswegen entschlossen um trotzdem weiter zu arbeiten und die Karte noch nicht abzuschliessen. Es sollte jedoch nur eine Ausnahme sein und nicht zur Regel werden.\n\n\nMkdocs\n\n\nAuf irgendeine Art und weise funktionierte bei Thomas das Mkdocs nicht mehr richtig, nach einer Stunde der Problemsuche wurde entschieden, git-cmd neu zu installieren. Nach der neuinstallation funktionierte alles wieder richtig und die Arbeiten konnten weitergef\u00fchrt werden.\n\n\nJournal / Zeitaufwand\n\n\n6h Einlesen DB und organisation HTW-Server\n1.5h Projektmanagement",
+            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\n\n\nEinlesen Datenbank und Webseite auf einen HTW-Server kopieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nEinlesen Datenbank\n\n\nBeim einlesen in die Datenbank haben wir uns folgende Fragen gestellt und Antworten erhalten:\n\n\nWelche Arten von Datenbanken gibt es?\n\n\n\n\nrelationale DB\n\n\nhierarchische DB\n\n\nNetzwerk DB\n\n\nObjekt relationale DB\n\n\n\n\nWie ist das vorgehen bei der Datenbankentwicklung?\n\n\n\n\nExterne Phase (Ermittlung der Informationsstruktur)\n\n\nKonzeptionelle Phase (ER-Modell)  \n\n\nLogische Phase (relationales Datenmodell)  \n\n\nPhysische Phase (Erstellung des Datenmodell)\n\n\n\n\nWelche \u00dcberlegungen m\u00fcssen bei der Entwicklung der neuen Struktur gemacht werden?\n\n\n\n\nWelche Daten?\n\n\nIn welchem Intervall?\n\n\nWelche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)\n\n\nTabellennamen?\n\n\nWieviele Daten werden erstellt und reicht der Speicher?\n\n\n\n\nEinlesen Datenbanksicherheit und ein Konzept\n\n\nDas Konzept in einer kurzen Zusammenfassung inklusive den Punkten die zur Diskussion stehen:\nBackup:\nEs wird ein Backup system aufgesetzt welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden k\u00f6nnen. Dies wird mittels einem Script von einem Cronejob w\u00f6chentlich durchgef\u00fchrt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gew\u00e4hlt und ob die Daten in einem k\u00fcrzerem oder l\u00e4ngerem Abstand gespeichert werden.\n\n\nDatenbanksicherheit:\nDie Datenbank soll prim\u00e4r gegen SQL-injection gesichert werden. Des Weiteren soll geloggt werden wann welche Anfragen stattfinden und wie diese aussehen. Sollte eine Abfrage aus dem Rahmen fallen, soll der Verein mittels E-Mail oder einer sonstigen Benachrichtigung gewarnt werden. Des Weiteren soll ein Cronejob und dem dazugeh\u00f6rigen Skript die Software auf dem neusten Stand halten. Bei der Datenbanksicherheit steht die Benachrichtigungsart und ein eventueller Proxy wie von MariaDB empfohlen zur Diskussion.\n\n\nProbleme / Herausforderungen\n\n\nKanban\n\n\nBeim Kanban Projektmanagement ist nur eine zu bearbeitende T\u00e4tigkeit erlaubt, diese muss abgeschlossen sein vor das die n\u00e4chste T\u00e4tigkeit gestartet wird. Das Problem hierbei ist, dass wir in unserem Fall auf den HTW Server warten m\u00fcssen. Hierbei sind wir abh\u00e4ngig von anderen Personen. Somit kann die T\u00e4tigkeit nicht abgeschlossen werden und in der Theorie auch weitergearbeitet werden. Wir haben uns deswegen entschlossen um trotzdem weiter zu arbeiten und die Karte noch nicht abzuschliessen. Es sollte jedoch nur eine Ausnahme sein und nicht zur Regel werden.\n\n\nMkdocs\n\n\nAuf irgendeine Art und weise funktionierte bei Thomas das Mkdocs nicht mehr richtig, nach einer Stunde der Problemsuche wurde entschieden, git-cmd neu zu installieren. Nach der neuinstallation funktionierte alles wieder richtig und die Arbeiten konnten weitergef\u00fchrt werden.\n\n\nJournal / Zeitaufwand\n\n\n5h Einlesen DB und organisation HTW-Server\n\n3h Einlesen Datenbanksicherheit und Konzept\n\n1.5h Projektmanagement",
             "title": "KW09"
         },
         {
@@ -257,13 +257,18 @@
         },
         {
             "location": "/KW09/#wie-ist-das-vorgehen-bei-der-datenbankentwicklung",
-            "text": "Es gibt m\u00fcssen folgende Schritte gemacht werden:\n  * Externe Phase (Ermittlung der Informationsstruktur)\n  * Konzeptionelle Phase (ER-Modell)\n  * Logische Phase (relationales Datenmodell)\n  * Physische Phase (Erstellung des Datenmodell)",
+            "text": "Externe Phase (Ermittlung der Informationsstruktur)  Konzeptionelle Phase (ER-Modell)    Logische Phase (relationales Datenmodell)    Physische Phase (Erstellung des Datenmodell)",
             "title": "Wie ist das vorgehen bei der Datenbankentwicklung?"
         },
         {
             "location": "/KW09/#welche-uberlegungen-mussen-bei-der-entwicklung-der-neuen-struktur-gemacht-werden",
-            "text": "Wird das Konzept geschrieben machen werden wir uns folgende \u00dcberlegungen machen m\u00fcssen:\n  * Welche Daten?\n  * In welchem Intervall?\n  * Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)\n  * Tabellennamen?\n  * Wieviele Daten werden erstellt und reicht der Speicher?",
+            "text": "Welche Daten?  In welchem Intervall?  Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)  Tabellennamen?  Wieviele Daten werden erstellt und reicht der Speicher?",
             "title": "Welche \u00dcberlegungen m\u00fcssen bei der Entwicklung der neuen Struktur gemacht werden?"
+        },
+        {
+            "location": "/KW09/#einlesen-datenbanksicherheit-und-ein-konzept",
+            "text": "Das Konzept in einer kurzen Zusammenfassung inklusive den Punkten die zur Diskussion stehen:\nBackup:\nEs wird ein Backup system aufgesetzt welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden k\u00f6nnen. Dies wird mittels einem Script von einem Cronejob w\u00f6chentlich durchgef\u00fchrt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gew\u00e4hlt und ob die Daten in einem k\u00fcrzerem oder l\u00e4ngerem Abstand gespeichert werden.  Datenbanksicherheit:\nDie Datenbank soll prim\u00e4r gegen SQL-injection gesichert werden. Des Weiteren soll geloggt werden wann welche Anfragen stattfinden und wie diese aussehen. Sollte eine Abfrage aus dem Rahmen fallen, soll der Verein mittels E-Mail oder einer sonstigen Benachrichtigung gewarnt werden. Des Weiteren soll ein Cronejob und dem dazugeh\u00f6rigen Skript die Software auf dem neusten Stand halten. Bei der Datenbanksicherheit steht die Benachrichtigungsart und ein eventueller Proxy wie von MariaDB empfohlen zur Diskussion.",
+            "title": "Einlesen Datenbanksicherheit und ein Konzept"
         },
         {
             "location": "/KW09/#probleme-herausforderungen",
@@ -282,7 +287,7 @@
         },
         {
             "location": "/KW09/#journal-zeitaufwand",
-            "text": "6h Einlesen DB und organisation HTW-Server\n1.5h Projektmanagement",
+            "text": "5h Einlesen DB und organisation HTW-Server \n3h Einlesen Datenbanksicherheit und Konzept \n1.5h Projektmanagement",
             "title": "Journal / Zeitaufwand"
         },
         {
@@ -1177,43 +1182,8 @@
         },
         {
             "location": "/about/",
-            "text": "Anleitung\n\n\nMkdocs\n\n\nBild einf\u00fcgen\n\n\nDas Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:\n\n\n![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*\n\n\n\nNeue Seite erstellen\n\n\nUm eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:\n\n\ncurl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' > docs/about.md\n\n\n\nAnschliessend im File \nmkdocs.yml\n die Seite verlinken:\n\n\nsite_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md\n\n\n\nPreview auf localhost starten\n\n\nIm Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:\n\n\nmkdocs serve\n\n\n\nDeployen auf github\n\n\nmkdocs gh-deploy\n\n\n\nAchtung: nicht manuell d.h. mit \ngit add\n deployen!\n\n\nTools, die wir verwenden\n\n\n\n\nTime Tracking: \nToggl\n\n\nReports: Mkdocs (Markdown) / Git Pages\n\n\nSchlussbericht: LaTeX\n\n\nVersionisierung: Git\n\n\nItem Tracking: Trello\n\n\nKommunikation: slack\n\n\nScreen-Sharing und Telefonie: skype",
+            "text": "",
             "title": "About"
-        },
-        {
-            "location": "/about/#anleitung",
-            "text": "",
-            "title": "Anleitung"
-        },
-        {
-            "location": "/about/#mkdocs",
-            "text": "",
-            "title": "Mkdocs"
-        },
-        {
-            "location": "/about/#bild-einfugen",
-            "text": "Das Bild muss im Ordner 'img' abgelegt werden.\nDie Verlinkung erfolgt dann mit:  ![Screenshot](/img/module.png)\n*Abb.: \u00dcbersicht Module*",
-            "title": "Bild einf\u00fcgen"
-        },
-        {
-            "location": "/about/#neue-seite-erstellen",
-            "text": "Um eine neue Seite zu erstellen im Terminal folgenden Befehl eingeben:  curl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' > docs/about.md  Anschliessend im File  mkdocs.yml  die Seite verlinken:  site_name: MkLorum\npages:\n  - Home: index.md\n  - About: about.md",
-            "title": "Neue Seite erstellen"
-        },
-        {
-            "location": "/about/#preview-auf-localhost-starten",
-            "text": "Im Terminal ins entsprechende Verzeichnis wechseln (dort wo das mkdocs.yml File liegt)\nAnschlissend den Server starten:  mkdocs serve",
-            "title": "Preview auf localhost starten"
-        },
-        {
-            "location": "/about/#deployen-auf-github",
-            "text": "mkdocs gh-deploy  Achtung: nicht manuell d.h. mit  git add  deployen!",
-            "title": "Deployen auf github"
-        },
-        {
-            "location": "/about/#tools-die-wir-verwenden",
-            "text": "Time Tracking:  Toggl  Reports: Mkdocs (Markdown) / Git Pages  Schlussbericht: LaTeX  Versionisierung: Git  Item Tracking: Trello  Kommunikation: slack  Screen-Sharing und Telefonie: skype",
-            "title": "Tools, die wir verwenden"
         }
     ]
 }
