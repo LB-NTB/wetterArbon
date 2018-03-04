@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-09">Wochenreport KW 09</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,14 +225,15 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-09">Wochenreport KW 09</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
 <ul>
 <li>Einlesen Datenbank und Webseite auf einen HTW-Server kopieren</li>
+<li>Recherche Pegel-/Wellenhöhensensoren</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="einlesen-datenbank">Einlesen Datenbank</h3>
-<p>Beim einlesen in die Datenbank haben wir uns folgende Fragen gestellt und Antworten erhalten:</p>
+<p>Beim Einlesen in die Datenbank haben wir uns folgende Fragen gestellt:</p>
 <h4 id="welche-arten-von-datenbanken-gibt-es">Welche Arten von Datenbanken gibt es?</h4>
 <ul>
 <li>relationale DB</li>
@@ -240,7 +241,7 @@
 <li>Netzwerk DB</li>
 <li>Objekt relationale DB</li>
 </ul>
-<h4 id="wie-ist-das-vorgehen-bei-der-datenbankentwicklung">Wie ist das vorgehen bei der Datenbankentwicklung?</h4>
+<h4 id="wie-ist-das-vorgehen-bei-der-datenbankentwicklung">Wie ist das Vorgehen bei der Datenbankentwicklung?</h4>
 <ul>
 <li>Externe Phase (Ermittlung der Informationsstruktur)</li>
 <li>Konzeptionelle Phase (ER-Modell)  </li>
@@ -258,18 +259,38 @@
 <h3 id="einlesen-datenbanksicherheit-und-ein-konzept">Einlesen Datenbanksicherheit und ein Konzept</h3>
 <p>Das Konzept in einer kurzen Zusammenfassung inklusive den Punkten die zur Diskussion stehen:
 Backup:
-Es wird ein Backup system aufgesetzt welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden können. Dies wird mittels einem Script von einem Cronejob wöchentlich durchgeführt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gewählt und ob die Daten in einem kürzerem oder längerem Abstand gespeichert werden.</p>
+Es wird ein Backupsystem aufgesetzt, welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden können. Dies wird mittels einem Script von einem Cronejob wöchentlich durchgeführt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gewählt und ob die Daten in einem kürzerem oder längerem Abstand gespeichert werden.</p>
 <p>Datenbanksicherheit:
 Die Datenbank soll primär gegen SQL-injection gesichert werden. Des Weiteren soll geloggt werden wann welche Anfragen stattfinden und wie diese aussehen. Sollte eine Abfrage aus dem Rahmen fallen, soll der Verein mittels E-Mail oder einer sonstigen Benachrichtigung gewarnt werden. Des Weiteren soll ein Cronejob und dem dazugehörigen Skript die Software auf dem neusten Stand halten. Bei der Datenbanksicherheit steht die Benachrichtigungsart und ein eventueller Proxy wie von MariaDB empfohlen zur Diskussion.</p>
+<h3 id="pegel-wellenhohensensor">Pegel-/Wellenhöhensensor</h3>
+<p>Für die Messung des Pegels liegt der Fokus auf folgenden Messprinzipien:</p>
+<ul>
+<li>Hydrostatik-Sensor</li>
+<li>Ultraschall-Sensor</li>
+<li>Radar-Sensor</li>
+<li>Optischer Sensor (TOF)</li>
+</ul>
+<p>Wir haben uns bei Sensorherstellern über die Eigenschaften der verschiedenen Messprinzipien erkundigt. Entgegen unseren Erwartungen weisen sämtliche Sensoren nicht zu vernachlässigende Nachteile auf. Zusammenfassend sind dies:</p>
+<ul>
+<li>Hydrostatik: Sensor ist in Konakt mit dem Wasser und somit einer erhöhten Verschmutzung ausgesetzt</li>
+<li>Ultraschall: Bei hohen Windgeschwindigkeiten kann das Signal nicht mehr zuverlässig eingefangen werden</li>
+<li>Radar: Die Reflexionsoberfläche muss senkrecht zum Radarstrahl sein. Die Messtoleranz liegt um +/- 30cm</li>
+<li>Optisch: Die durchsichtige Wasseroberfläche reflektiert den Lichtstrahl unzureichend</li>
+</ul>
+<p>Das hydrostatische Messprinzip ist das einzig direkt einsetzbare. Die anderen Messprinzipien wären zwar auch interessant, bedürfen aber einer umfangreichen Mess- bzw. Versuchsreihe, was den Umfang unserer Bachelor-Arbeit sprengen würde. Wir haben uns deshalb für einen hydrostatischen Abhängesensor mit Relativdruck-Messzelle entschieden:</p>
+<p><a href="http://www.acs-controlsystem.de/de/produkte/fuellstandmessung/hydrostatische-fuellstandsmessung/hydrocont-b/">ACS-Hydrocont B</a></p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h3 id="kanban">Kanban</h3>
 <p>Beim Kanban Projektmanagement ist nur eine zu bearbeitende Tätigkeit erlaubt, diese muss abgeschlossen sein vor das die nächste Tätigkeit gestartet wird. Das Problem hierbei ist, dass wir in unserem Fall auf den HTW Server warten müssen. Hierbei sind wir abhängig von anderen Personen. Somit kann die Tätigkeit nicht abgeschlossen werden und in der Theorie auch weitergearbeitet werden. Wir haben uns deswegen entschlossen um trotzdem weiter zu arbeiten und die Karte noch nicht abzuschliessen. Es sollte jedoch nur eine Ausnahme sein und nicht zur Regel werden.</p>
 <h3 id="mkdocs">Mkdocs</h3>
 <p>Auf irgendeine Art und weise funktionierte bei Thomas das Mkdocs nicht mehr richtig, nach einer Stunde der Problemsuche wurde entschieden, git-cmd neu zu installieren. Nach der neuinstallation funktionierte alles wieder richtig und die Arbeiten konnten weitergeführt werden.</p>
+<h3 id="wellenhohenmessung">Wellenhöhenmessung</h3>
+<p>Ursprünglich war die Idee die Wellenhöhe mit Hilfe des Pegelsensors zu messen. Wie oben beschrieben beabsichtigen wir einen hydrostatischen Sensor einzusetzen. Dieser misst den Druck der über ihm liegenden Wassersäule. Da sich der Druck aber räumlich ausgleicht, ist davon auszugehen, dass die Wellenhöhe nicht zuverlässig detektiert werden kann.</p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>5h Einlesen DB und organisation HTW-Server<br />
-3h Einlesen Datenbanksicherheit und Konzept<br />
-1.5h Projektmanagement  </p></div>
+3h Einlesen Datenbanksicherheit und Konzept <br />
+7.25h Recherche Pegelsensor <br />
+2.5h Projektmanagement  </p></div>
         </div>
 
         <footer class="col-md-12">
