@@ -36,17 +36,17 @@ Datentypen angeschaut auf w3schoolss:
 \end{itemize}
 
 
--Unterschied MariaDB und MySQL?
--Wieviele Daten werden gespeichert?
-Vor der neukonzipierung werden täglich 1440 Datensätze gespeichert. Das bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 einträge. Die gesamte relevante Datenbank igwetter_wettertest benötigt 323.17  Mb. Die Tabelle wx_data benötigt stand 1.3.18 311.94Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt 
--Wieviele Daten können gespeichert werden?
-Die igWetter hat bei Hostpoint einen Server mit 50 GB speicherplatz, rechnet man die vorherdehenden Zahlen hoch mit dem zur Verfügung stehenden Speicherplatz, hat es genügend Platz für die kommenden 45 Jahren. 
+Unterschied MariaDB und MySQL?\\
+Wie viele Daten werden gespeichert?\\
+Vor der Neukonzipierung werden täglich 1440 Datensätze gespeichert. Das bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 Einträge. Die gesamte relevante Datenbank igwetter wettertest benötigt 323.17  Mb. Die Tabelle wx data benötigt stand 1.3.18 311.94 Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt \\
+-Wie viele Daten können gespeichert werden?\\
+Die igWetter hat bei Hostpoint einen Server mit 50 GB Speicherplatz, rechnet man die vorhergehenden Zahlen hoch mit dem zur Verfügung stehenden Speicherplatz, hat es genügend Platz für die kommenden 45 Jahren.\\
 
 https://entwickler.de/online/datenbanken/datenbanken-grundlagen-und-entwurf-115676.html
-\Diskussionspunkt{Ende Einlesen in DB}
-\Diskussionspunkt {Beginn Einlesen DB Sicherheit}
+\Diskussionspunkt{Ende Einlesen in DB}\\
+\Diskussionspunkt {Beginn Einlesen DB Sicherheit}\\
 
-Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP top 10, eine Liste welche die wichtigsten Schwachstellen aufzeigt, ist die SQL injection in 2017 auf dem Platz 1. Was ist den eigentlich SQL Injection? SQL injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer im schlimmsten Fall auf die gespeicherten Daten des Administators kommt. Ein anderes beispiel wäre, dass der Angreifer an die Daten der Benutzer eines Online-Shops mit Kreditkartendaten oder ähnlichen sensitiven Daten kommt.
+Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP top 10, eine Liste welche die wichtigsten Schwachstellen aufzeigt, ist die SQL-injection in 2017 auf dem Platz 1. Was ist den eigentlich SQL Injection? SQL injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer im schlimmsten Fall auf die gespeicherten Daten des Administators kommt. Ein anderes Beispiel wäre, dass der Angreifer an die Daten der Benutzer eines Online-Shops mit Kreditkartendaten oder ähnlichen sensitiven Daten kommt.
 Weitere Fragen die auftauchen bei der Suche nach Datenbanksicherheit sind:
 \begin{itemize}
 \item Was für Arten von Daten beherbergt die Datenbank?
@@ -61,19 +61,49 @@ Neben dem Schutz vor potentiellen Angriffen ist auch der Schutz vor Datenverlust
 \item Wie oft wird ein Backup gemacht?
 \end{itemize}
 
-\Diskussionspunkt{Ende Einlesen DB Sicherheit}
+\Diskussionspunkt{Ende Einlesen DB Sicherheit}\\
 \Diskussionspunkt{Beginn Konzept DB Sicherheit}
-Um ein Konzept zu erstellen, werden die bei der Recherche aufgekommenen Fragen beantwortet. Die Datenbank der Wetterstation beinhaltet die Wetterdaten jeder Minute des Tages, des Weiteren erhält sich auch die historischen Daten der Wetterstation. Sensitive Daten sind in der Datenbank, welche bearbeitet wird nicht vorhanden, trotzdem sollte eine gewisse Grundsicherheit der Datenbank gewährleistet werden, damit die Daten nicht manipuliert bzw. die Datenbank nicht anderweitig benutzt werden kann. Die Datenbank stellt nur in dieser hinsicht ein potentielles Ziel dar. Benutzer der Datenbank hat es im eigentlichen Sinne nur zwei. Das ist der Administrator der Seite, sowie die Webseite. Jedoch sind die Benutzer der Seite auch Benutzer der Datenbank. Doch was haben diese direkt mit der Datenbank zu tun? Auf der zukünftigen Seite der historischen Daten, sollen die Benutzer entscheiden können von wann bis wann die Daten angezeigt werden sollen. Somit müssen diese eine Abfrage tätigen. Diese gilt es gegen SQL-injection zu sichern.
+In der Ausgangslage der Wetterstation und deren Datenbank wird kein Backup erstellt und ist gegen aussen nicht gesichert. Wichtig hierbei ist aber zu erwähnen, dass die Datenbank im Moment ein "Datenfriedhof" ist. Die Aufgezeichneten Daten werden nicht benutzt. Im Verlauf der Bachelorarbeit wird sich dies aber ändern, deswegen ist es für die Datenbank ist wichtig, dass Sie gegen aussen vor potentiellen Angreifern und einem Verlust der Daten beim Provider gesichert ist. \\
+Das Ziel ist es die Datenbank im Vergleich zu Kosten und Aufwand sicherer zu gestalten. Es wird erwartet das ein potentieller Angreifer nicht ohne Mühe in die Datenbank eindringen kann. Des Weiteren soll bei einem allfälligen Verlust der Daten auf dem Server eine schnelle Rekonstruktion der Datenbank inklusive Daten möglich sein, damit der angebotene Service schnellst möglich wieder zugänglich ist.\\ 
+Um eine Neukonzipierung zu erstellen wurde vorher eine Recherche durchgeführt. Wobei für das Konzept und die spätere Umsetzung verschiedenste Fragen aufgekommen sind. Wenn es um den erhalt der Daten, also ein Backup geht, stellen sich folgende drei Grundlegende Fragen:
+ \begin{itemize}
+\item Welche Daten sind wichtig?
+\item Wie wird das Backup umgesetzt?
+\item Wie oft wird ein Backup gemacht?
+\end{itemize}
 
-Um die Datenbank auch gegen einen allfälligen Datenverlust zu sichern ist ein Backup von wichtiger Bedeutung. Im Grunde sind alle Daten welche die Wetterstation ablegt von Wichtigkeit. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Bezüglich Speicherplatz und Aufwand, da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen. Bis zur  Umsetzung der neuen Struktur und Backup Möglichkeiten wurden \Diskussionspunkt{x. Anzahl Updates pro Jahr} erstellt. Diese wurden jedoch auf Hostpoint selber gespeichert. Was bei einem Ausfall des Providers keinen Mehrwert hat, jedoch einen Mehrwert wenn nur die Datenbank selber versagt. Deswegen ist es wichtig auch ein "externes" Backup zu erstellen. Es wird empfohlen ein wöchentliches Backup zu erstellen, dies aufgrund der Datenmengen. Fehlt eine Woche aufgrund eines Ausfalls ist der schaden geringer als ein monatliches oder jährliches Update. Das update wird mittels eines cronejobs, welches ein Backup-Script ausführt, auf dem Server durchgeführt. Die Daten werden anschliessend in einer Cloud nach Wahl hochgeladen. Zusätzlich wird das Backup auch auf dem gemieteten Server von Hostpoint gespeichert um einen schnelleren Zugriff zu gewährleisten. Um nicht zu viele Daten "unnötig" zu speichern, wird empfohlen die Daten der vorhergehenden Woche zu überspielen. 
+Geht es um den Schutz gegen aussen vor potentiellen Angriffen tauchen die folgenden Grundlegenden Fragen auf: 
+\begin{itemize}
+\item Was für Arten von Daten beherbergt die Datenbank?
+\item Hat es sensitive Daten?
+\item Ist die Datenbank überhaupt ein potentielles Angriffsziel?
+\item Wer sind die Benutzer der Datenbank?
+\end{itemize}
+Sind die obenstehenden Fragen beantwortet steht auch das Konzept.\\
+Um die Datenbank auch gegen einen allfälligen Datenverlust zu sichern ist ein Backup von wichtiger Bedeutung. Im Grunde sind alle Daten welche die Wetterstation ablegt von Wichtigkeit. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Bezüglich des Speicherplatzes und des Aufwands, da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen. Ein Backup nur auf dem Server des Providers macht technisch keinen Sinn, da es auch sein kann, dass dieser mal versagt und die Daten anschliessend für immer verschwunden sind. Deswegen ist es wichtig auch ein "externes" Backup zu erstellen. Es wird empfohlen ein wöchentliches Backup zu erstellen, dies aufgrund der Datenmengen, denn wöchentlich fallen 10080 Datensätze an. Fehlt eine Woche aufgrund eines Ausfalls ist der schaden geringer als ein monatliches oder jährliches Update.\\
+Das update wird mittels eines Cronejobs, welches ein Backup-Script ausführt, auf dem Server durchgeführt. Die Daten werden anschliessend in einer Cloud nach Wahl hochgeladen. Zusätzlich wird das Backup auch auf dem gemieteten Server von Hostpoint gespeichert um einen schnelleren Zugriff zu gewährleisten. Um nicht zu viele Daten "unnötig" zu speichern, wird empfohlen die Daten der vorhergehenden Woche zu überspielen. Der Nachteil dieser Lösung sind jedoch die Kosten welche bei einer \Diskussionspunkt{Cloud} anfallen. Hierbei bewegt man sich preislich bei circa 10 Franken pro Monat.
+
+Neben der Datensicherung in Form des Backups ist auch die Sicherheit im Betrieb massgebend. Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP top 10, eine Liste welche die wichtigsten Schwachstellen aufzeigt, ist die SQL-injection in 2017 auf dem Platz 1. Was ist den eigentlich SQL Injection? SQL injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer im schlimmsten Fall auf die gespeicherten Daten des Administators kommt. Ein anderes Beispiel wäre, dass der Angreifer an die Daten der Benutzer eines Online-Shops mit Kreditkartendaten oder ähnlichen sensitiven Daten kommt. Auf der Seite der MariaDB, welche in unserem Fall benutzt wird, werden 5 Essentielle Praktiken für die Datenbanksicherheit aufgezählt:
+\begin{itemize}
+\item Schütze gegen Attacken mit einem Datenbankproxy
+\item Setze ein auditing und robustes logging auf
+\item Praktiziere ein strenges user account management
+\item Halte die Datenbanksoftware und OS up-to-date
+\item Verschlüssle sensitive Daten
+\end{itemize}
+
+Die Wetterstation Arbon enthält jedoch keine sensitiven Daten. Deswegen muss die Datenbank nicht mit der höchsten Sicherheit ausgestattet sein.  Trotzdem ist Datenbank nach der Umsetzung der Bachelorarbeit eins der Herzstücke der Wetterstation. Denn diese beinhaltet die Wetterdaten jeder Minute des Tages, des Weiteren erhält sie sich auch die historischen Daten der Wetterstation. Deswegen sollte eine gewisse Grundsicherheit der Datenbank gewährleistet werden, damit die Daten nicht manipuliert bzw. die Datenbank nicht anderweitig benutzt werden kann. Die Datenbank stellt nur in dieser Hinsicht ein potentielles Ziel dar. Benutzer der Datenbank hat es im eigentlichen Sinne nur zwei. Das ist der Administrator der Seite, sowie die Webseite. Jedoch sind die Benutzer der Seite auch Benutzer der Datenbank. Doch was haben diese direkt mit der Datenbank zu tun? Auf der zukünftigen Seite der historischen Daten, sollen die Benutzer entscheiden können von wann bis wann die Daten angezeigt werden sollen. Somit müssen diese eine Abfrage tätigen.\\
+Um es den Angreifern nicht zu einfach zu gestalten sollte die Abfrage gegen Injection gesichert sein. Zusätzlich ist es sinnvoll mittels logging zu erfahren welche Anfragen getätigt wurden, sowie mittels eines Cronejobs die Datenbank auf dem neusten Stand zu halten. Beim logging soll bei einer Abweichung des Verhaltens, konkret heisst dies einer veränderten Abfrage, der Verein gewarnt werden. Dies kann mittels einer E-Mail stattfinden. Da es nur einen user account für den Verein hat ist es nötig diesen mit allen Privilegien auszustatten und hieran nichts zu ändern. Des Weiteren erhält wie erwähnt die Datenbank auch keine sensitiven Daten, womit ein verschlüsseln der Daten überflüssig wird. \Diskussionspunkt{Datenbankproxy}
 
 \Diskussionspunkt{Zusammenfassung}
 
-Datenbank gegen SQL injection sichern
-Historische Abfrage mittels Kalender auswählen und nicht "händisch" das Datum reinschreiben
-wöchentliches Backup mittels cronejob auf cloud
-wöchentliches Backup mittels cronejob auf hostpoint server
-Backup wöchentlich überschreiben um datenspeicher zu sparen
+Das Konzept in einer kurzen Zusammenfassung inklusive den Punkten die zur Diskussion stehen:\\
+Backup:\\
+Es wird ein Backup system aufgesetzt welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden können. Dies wird mittels einem Script von einem Cronejob wöchentlich durchgeführt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gewählt und ob die Daten in einem kürzerem oder längerem Abstand gespeichert werden.
+
+Datenbanksicherheit:\\
+Die Datenbank soll primär gegen SQL-injection gesichert werden. Des Weiteren soll geloggt werden wann welche Anfragen stattfinden und wie diese aussehen. Sollte eine Abfrage aus dem Rahmen fallen, soll der Verein mittels E-Mail oder einer sonstigen Benachrichtigung gewarnt werden. Des Weiteren soll ein Cronejob und dem dazugehörigen Skript die Software auf dem neusten Stand halten. Bei der Datenbanksicherheit steht die Benachrichtigungsart und ein eventueller Proxy wie von MariaDB empfohlen zur Diskussion. 
+
    
 
 
