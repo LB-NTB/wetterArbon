@@ -4,9 +4,7 @@ Beim Einlesen in das Thema API ist es wichtig sich vorher Fragen zu stellen, dam
 \begin{itemize}
 \item Was ist eine API?
 \item Wie wird eine API entwickelt?
-\item Was ist wichtig zu beachten bei der Entwicklung?
 \item Was ist state of the Art?
-\item 
 \end{itemize}
 
 \subsection{Was ist eine API?}
@@ -15,4 +13,30 @@ Eine API überbrückt die Schnittstellen zwischen verschiedenen Software teilen 
 http://www.omkt.de/api/
 
 \subsection{Was ist state of the Art?}
-Heutzutage wird darauf geschaut, dass die API nach der RESTful standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. 
+Heutzutage wird darauf geschaut, dass die API nach der RESTful Standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. Representational State Transfer, auch REST genannt ist eine Möglichkeit so zu programmieren, dass eine Zustandslosigkeit herrscht. Dies bedeutet, dass jede Nachricht in sich geschlossen ist und alle Informationen die der Client bzw. der Server benötigt. Die Umsetzung dieser Paradigmas wird mit Hilfe des HTTP bzw. HTTPS Standard gemacht. Dafür kann REST die bekannten Befehle von HTTP benutzen.\\
+
+https://www.oio.de/public/xml/rest-webservices.htm
+
+\subsection{Wie wird eine API entwickelt?}
+Zu Beginn der Entwicklung muss klar sein für was die API benötigt wird. Ist dies klar, kann gesagt werden welche Anforderungen die API erfüllen muss. Als nächstes muss ein URL Schema her. Dies wird benötigt um nach dem REST Standard zu arbeiten. Die URL sollte folgendermassen aussehen: \\ https://api.wetter-arbon.ch/Versionsnummer/Endpunkt\\
+Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein das nicht alle Nutzer der API schon auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden. Neben der URL ist es wichtig das die Kommunikation in einem bestimmten Datenformat erfolgt, hier gibt es die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches. Nebst der Entwicklung für die Server-Client kommunikation ist auch bei der API eine Zugangskontrolle bzw. eine Grundbasis in der Sicherheit notwendig. Neben der Möglichkeit HTTPS zu verwenden, ist es zusätzlich möglich den client über einen sogenannten Authorization Token zu zu authentifizieren. Eine andere Möglichkeit ist, den Zugriff durch eine IP-Whitelist zu begrenzen. \\
+
+https://poe-php.de/tutorial/rest-einfuehrung-in-die-api-erstellung\\
+http://edoc.sub.uni-hamburg.de/haw/volltexte/2016/3608/pdf/BAunterstrichLMauritz.pdf\\
+
+\subsection{API Konzept}
+
+Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Für die Wetterstation Arbon werden folgende Anforderungen gestellt:
+\begin{itemize}
+\item Wind / Windrichtung
+\item Niederschlag
+\item Temperatur / Gefühlte Temperatur
+\item Luftfeuchtigkeit
+\item Wassertemperatur (1m Unter der Wasseroberfläche)
+\item Wassertemperatur (Oberfläche)
+\item Wasserpegel
+\item Wellenhöhe
+\end{itemize}
+Die Aktualisierung der Daten soll pro Minute sein. Dies ist auch die aktualisierungsrate in der Datenbank, welche beibehalten werden sollte. Des Weiteren sollten nur GET Anfragen von aussen angenommen werden. Die GET Befehle sollten schematisch geplante URL beinhalten. Konkret auf die Anforderungsliste 
+
+\Diskussionspunkt{Mit oder ohne authentifizierung}
