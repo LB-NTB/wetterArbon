@@ -38,11 +38,11 @@ Achtung: nicht manuell d.h. mit *git add* deployen!
 
 
 ## Tools, die wir verwenden
-* Time Tracking: [Toggl](https://toggl.com)
+* Time Tracking: [Toggl](https://toggl.com/app/team/2386768)
 * Reports: Mkdocs (Markdown) / Git Pages
 * Schlussbericht: LaTeX
-* Versionisierung: Git
-* Item Tracking: Trello
+* Versionisierung: [Git](https://github.com/LB-NTB/wetterArbon)
+* Item Tracking: [Trello](https://trello.com/b/5cGzdFWq/bachelor-arbeit)
 * Kommunikation: slack
 * Screen-Sharing und Telefonie: skype
 
