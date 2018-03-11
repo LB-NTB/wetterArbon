@@ -1,0 +1,56 @@
+Gliederung der Dokumentation:
+
+Zusammenfassung
+1.	Einleitung
+        Einführung, Problem, Aufgabenstellung, Struktur des Berichts, Ziel des Berichts
+2.	Front end
+	2.1.	Grafische Darstellung der aktuellen Wetterdaten
+				HTML5, Barrierefreiheit
+	2.2.	Grafische Darstellung der Wetterdatenverläufe
+				Samplerate, fixe Y-Achse, Barrierefreiheit
+	2.3.	Responsive Design / Mobile First
+	2.4.	Vergleich Prognose/Ist Windgeschwindigkeit
+	2.5.	Historische Daten
+				Fehleingaben verhindern, Sicherheit gegen Angriffe?
+	2.6.	Anzeige Sturmwarndienst
+3.	Back end
+	3.1.	Übersicht
+				Aufgabe/Verknüpfung der einzelnen Programme/Scripts
+	3.2.	Datenspeicherung
+				Was, wie häufig, wo
+	3.3.	Datenausdünnung/-archivierung / Datenmanagement
+	3.4.	Backup / Sicherung
+	3.5.	Schnittstelle / API
+				Datenexport (Excel), Sicherheit gegen Angriffe, Abfragegeschwindigkeit
+	3.6.	Benachrichtigungsservice
+4.	Hardware / Sensoren
+	4.1.	Pegelsensor
+				Pegelmessung, Pegelberechnung, Wellenhöhenberechnung
+	4.2.	Strahlungssensor
+	4.3.	Wassertemperatur-Sensoren
+				Berechnung, Verlauf der Wassertemperatur in Abhängigkeit der Tiefe
+5.	Webcam
+	5.1.	Warteschlange
+	5.2.	Selektive Zoombeschränkung
+	5.3.	Foto-Funktion
+
+6.	Zusammenfassung / Schluss
+	   Schlussfolgerung / Aussichten / weitere Schritte
+	   Was waren die grössten Herausforderungen / was könnte besser gemacht werden
+	   Was konnte umgesetzt werden
+	   Welche Anforderungen wurden nicht erfüllt
+
+7.	Literaturverzeichnis
+
+8.	Anhang
+        Schema aller Geräte
+        Datenbankschema komplett
+        Schema Aufbau Back end
+        Schema Aufbau Webseite (screenbox)
+        Source-Code?
+        Links (URL, Git, GitPages, usw.)
+        Analyse Google Analytics
+        Anforderungen ink. Angabe ob erfüllt oder nicht -> Testresultate
+        Datenblätter
+
+
