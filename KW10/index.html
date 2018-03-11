@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-10">Wochenreport KW 10</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,12 +225,15 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-10">Wochenreport KW 10</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
 <ul>
 <li>Einlesen API, was ist stat of the art?</li>
+<li>Einlesen Barrierefreiheit</li>
 <li>Datenbank vs. Textfiles</li>
+<li>Gliederung für Dokumentation erstellen</li>
 <li>HTW Server organisieren</li>
+<li>Begutachtung Einbausituation Pegelsensor</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="einlesen-api-und-was-ist-state-of-the-art">Einlesen API und was ist state of the Art?</h3>
@@ -249,12 +252,38 @@ api.wetter-arbon.ch/Versionsnummer/Temperatur</p>
 <p>Für die BA wurde ein HTW-Server organisiert. Dieser wird für die Entwicklung der neuen DB sowie der neuen Webpage benötigt. In den nächsten Arbeitsschritten wird der Server soweit installiert, dass die DB und die Webseite der Wetterstation funktionieren.</p>
 <h3 id="performance-datenbank-vs-textfiles">Performance Datenbank vs. Textfiles</h3>
 <p>Bei der Recherche konnten keine vertrauenswürdigen Quellen welche die Performance behandeln gefunden werden. Jedoch ist das Thema in den einschlägigen Foren ein Thema. Hier wird immer wieder erwähnt, dass es auf die Anwendung darauf ankommt. Es konnte jedoch keine klare Antwort wo ein Strich gezogen werden kann gefunden werden. Es wird aber immer wieder erwähnt, dass ein Benchmark test klare Ergebnisse im direkten Vergleich gibt. Deswegen wurde entschieden um die Entscheidung ob die DB oder das Textfile benutzt wird vertagt bis die neue Datenbankstruktur aufgesetzt und Einsatzbereit ist.</p>
+<h3 id="barrierefreiheit">Barrierefreiheit</h3>
+<p>Die Vorgaben zu möglichst bedienerfreundlichen Webseiten liefern die "Web Content Accessibility Guidelines". Es handelt sich dabei um zwölf Richtlinien, die in folgende vier Prinzipien unterteilt sind:</p>
+<ul>
+<li>Prinzip 1: Wahrnehmbarkeit </li>
+<li>Prinzip 2: Bedienbarkeit</li>
+<li>Prinzip 3: Verständlichkeit</li>
+<li>Prinzip 4: Robustheit</li>
+</ul>
+<p>Wir haben die Richtlinien durchgearbeite und diejenigen Punkte, welche für uns relevant sind herausgenommen. U.a. sind dies:</p>
+<ul>
+<li>für alle Nicht-Text-Inhalte muss eine Textalternative vorhanden sein</li>
+<li>Farbe darf nicht das einzige visuelle Mittel sein um Informationen zu übermitteln</li>
+<li>die Textgrösse muss um 200% vergrössert werden können, ohne Verlust von Inhalt und Funktionalität</li>
+<li>uvm.</li>
+</ul>
+<h3 id="gliederung-fur-dokumentation">Gliederung für Dokumentation</h3>
+<p>Wir wollen unsere Erkenntnisse kontinuierlich und strukturiert dokumentieren. Wir haben deshalb bereit jetzt einen ersten Entwurf der Gliederung der BA-Dokumentation erstellt. Den Grundaufbau mit den vier Bereichen front end, back end, Sensoren und Webcam haben wir vom Fachmodul übernommen.
+Der Entwurf ist unter folgendem Link abgelegt:</p>
+<p><a href="https://github.com/LB-NTB/wetterArbon/blob/master/doku/Gliederung.txt">Gliederung</a></p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
+<p>Am 11.03. konnten wir die Einbausituation des bisherigen Pegelmessers vor Ort begutachten. Es handelt sich um einen hydrostatischen Abhänge-Drucksensor, welcher in einem 4m langen Rohr geführt ist (grüner Pfeil auf dem Foto). Am oberen Ende des Rohres ist das Kabel des Sensors festgemacht und hält so den Sensor in Position. Um den alten Sensor auszubauen bzw. einen neuen zu montieren muss man Zugang zu dieser Stelle haben. Das Problem ist nun, dass das Ende des Rohres rund 3m über der Wasseroberfläche und etwa 2m unterhalb der Plattform liegt. Es ist deshalb am ehesten mit Abseilen zugänglich.
+Wir gehen davon aus, dass der Sensor verschmutzt/verkalkt ist und deshalb nicht mehr funktioniert. Weiter muss davon ausgegangen werdne, dass die Rohröffnung, welche unter der Wasseroberfläche liegt mit Muscheln o.ä. befallen ist. Wir werden also auch das Rohr für die Reinigung ausbauen müssen.</p>
+<p><img alt="Screenshot" src="../img/pegelrohr.png" />
+<em>Abb.: Einbausituation Pegelsensor</em></p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
-<p>7h Einlesen API und was ist state of the art
-1h HTW Server organisieren
-1h Performance DB vs Textfile
-1h Wochenreport</p></div>
+<p>7h Einlesen API und was ist state of the art<br />
+5h Einlesen Vorgaben zu Barrierefreiheit<br />
+2h Erstellung Gliederung für Dokumentation<br />
+3h Begutachtung Einbausituation Pegelsensor<br />
+1h HTW Server organisieren<br />
+1h Performance DB vs. Textfile<br />
+2h Wochenreport  </p></div>
         </div>
 
         <footer class="col-md-12">
