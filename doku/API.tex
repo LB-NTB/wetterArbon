@@ -37,6 +37,16 @@ Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Für 
 \item Wasserpegel
 \item Wellenhöhe
 \end{itemize}
-Die Aktualisierung der Daten soll pro Minute sein. Dies ist auch die aktualisierungsrate in der Datenbank, welche beibehalten werden sollte. Des Weiteren sollten nur GET Anfragen von aussen angenommen werden. Die GET Befehle sollten schematisch geplante URL beinhalten. Konkret auf die Anforderungsliste 
+Die Datenabfrage über die API soll RESTful sein und mittels HTTP geschehen. Für die Nutzer der API soll die Abfrage im Minutentakt über eine GET abfrage möglich sein. Wie in der Frage wie wird eine API entwickelt wird ein URL Schema erstellt, welches folgendermassen für die folgenden GET abfragen aussehen wird:
+\begin{itemize}
+\item api.wetter-arbon.ch/V1.1/onedate/wind
+\item api.wetter-arbon.ch/V1.1/onedate/niederschlag
+\item api.wetter-arbon.ch/V1.1/onedata/temperatur
+\item api.wetter-arbon.ch/V1.1/onedata/luftfeuchtigkeit
+\item api.wetter-arbon.ch/V1.1/onedata/wassertemperatur
+\item api.wetter-arbon.ch/V1.1/onedata/wasserpegel
+\item api.wetter-arbon.ch/V1.1/onedata/wellenhoehe
+
+\end{itemize}
 
 \Diskussionspunkt{Mit oder ohne authentifizierung}
