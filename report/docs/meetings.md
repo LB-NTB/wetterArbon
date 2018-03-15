@@ -133,29 +133,22 @@ Die Wochenberichte werden zwischen KW08 und KW27 jeweils bis am Sonntagabend ers
 * Konzeptbesprechung findet am 29.03.2018 13:00-14:30 statt -> Einladung versenden
 * Doku-Struktur an Ulrich und Lukas senden (p.m.)
 
-##Meeting vom 15.03.18
+
+##Meeting vom 15.03.2018
 
 ###Traktanden
-* Doku Struktur
-* Feedback Bewertungsbogen
-* Stand Pegel / Wellensensor
-* API stand / vorstellung
-  * Idee ganze webseite auf HTW Server
-* Vorstellung API Postman
-* Diskussion onedate oder ein json mit aktuellen Werten
-* Myphpadmin installation
+* Gliederung der Dokumentation
+* Bewertungsbogen für Bachelor-Arbeit
+* Stand Pegel-/Wellenmessung
+* API
 
-#### Dokustruktur
 
-Die Dokustruktur wurde aktzeptiert. Die Struktur wird ins LaTeX übernommen.
 
-#### Feedback Bewertungsbogen
+###Gliederung der Dokumentation
 
-Der Bewertungsbogen wird so übernommen, wie der Vorschlag war.
+###Bewertungsbogen für Bachelor-Arbeit
 
-#### Stand Pegel / Wellensensor
-
-Diese beiden müssen unterschieden werden. Ein Wellensensor ist schwierig zu bekommen. Das Problem sind die Wetterbedingungen bzw die Auflösung der Wellen. Bei Radar ist die Auflösung bspw. 0.5m. Toflsensor von Tobias leutenegger.
+###Stand Pegel-/Wellenmessung
 
 #### API
 hallo ich bin api
