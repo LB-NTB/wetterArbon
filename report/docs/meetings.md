@@ -132,3 +132,22 @@ Die Wochenberichte werden zwischen KW08 und KW27 jeweils bis am Sonntagabend ers
 * Terminvorschlag für BA-Präsentation senden (1.5h)
 * Konzeptbesprechung findet am 29.03.2018 13:00-14:30 statt -> Einladung versenden
 * Doku-Struktur an Ulrich und Lukas senden (p.m.)
+
+
+##Meeting vom 15.03.2018
+
+###Traktanden
+* Gliederung der Dokumentation
+* Bewertungsbogen für Bachelor-Arbeit
+* Stand Pegel-/Wellenmessung
+* API
+
+
+
+###Gliederung der Dokumentation
+
+###Bewertungsbogen für Bachelor-Arbeit
+
+###Stand Pegel-/Wellenmessung
+
+###API

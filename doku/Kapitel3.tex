@@ -13,9 +13,13 @@ Gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrier
 
 
 
+
+
+
+
 \subsection{Web Content Accessibility Guidelines (WCAG)}
 
-Die aktuellen Web Content Accessibility Guidelines 2.0 (WCAG2) fordern die Einhaltung von vier technikunabhängigen Designprinzipien:
+Die aktuellen Web Content Accessibility Guidelines 2.0 (WCAG2) fordern die Einhaltung von vier Designprinzipien:
 
 \begin{itemize}  
 \item Prinzip 1: Wahrnehmbarkeit 
@@ -35,8 +39,10 @@ Priorität 3 („Kann-Kriterien“): Diese AAA-Anforderungen können erfüllt we
 \subsection{Relevante Anforderungen für die Webseite der Wetterstation}
 
 \subsubsection*{Prinzip 1: Wahrnehmbarkeit}
-Anforderung 1.1: Text-Alternativen
-Anforderung 1.2: Zeitbasierte Medien
+Anforderung 1.1: Text-Alternativen 
+-> für alle Anzeigegrafiken und Bilder
+Anforderung 1.2: Zeitbasierte Medien 
+-> Film-Aufnahme
 Anforderung 1.3: Anpassbarkeit
 Anforderung 1.4: Unterscheidbarkeit
 
@@ -56,3 +62,28 @@ Anforderung 3.3: Hilfestellung bei der Eingabe
 \subsubsection*{Prinzip 4: Robustheit}
 Anforderung 4.1: Kompatibilität
 
+
+\subsection{Accessible Rich Internet Applications (WAI-ARIA) 1.1 -> Semantik}
+
+WAI-ARIA ist eine technische Spezifikation, die ein Framework für die Verbesserung der Zugänglichkeit und Interoperabilität von Web-Inhalten und -Anwendungen bietet.
+
+Menschen mit bestimmten Arten von Behinderungen nutzen assistive Technologien (AT), um mit Inhalten zu interagieren. Assistive Technologien können die Präsentation von Inhalten in ein für den Benutzer besser geeignetes Format umwandeln und es dem Benutzer ermöglichen, auf unterschiedliche Weise zu interagieren. Um dies effektiv zu bewerkstelligen, muss die Software die Semantik der Inhalte verstehen. Semantik ist die Wissenschaft der Bedeutung; in diesem Fall wird sie verwendet, um Rollen, Zustände und Eigenschaften zuzuweisen, die für Benutzeroberflächen und Inhaltselemente gelten, wie sie ein Mensch verstehen würde. Rollen sind eine gemeinsame Eigenschaft von accessibility APIs für die Zugänglichkeit, die von assistiven Technologien verwendet werden, um dem Benutzer eine effektive Präsentation und Interaktion zu ermöglichen.
+
+Rollen sind Elementtypen und ändern sich nicht mit der Zeit oder Benutzeraktionen. Rolleninformationen werden von assistiven Technologien durch Interaktion mit dem User-Agent verwendet, um eine normale Verarbeitung des angegebenen Elementtyps zu ermöglichen. Zustände und Eigenschaften werden verwendet, um wichtige Attribute eines Elements zu deklarieren, die die Interaktion beeinflussen und beschreiben. 
+
+Schlagwörter:
+accessibility APIs
+WAI-ARIA Roles
+WAI-ARIA States and Properties
+
+Roles:
+Hauptindikator des Typs. Diese semantische Assoziation ermöglicht es den Werkzeugen, die Interaktion mit dem Objekt in einer Weise darzustellen und zu unterstützen, die mit den Erwartungen der Benutzer an andere Objekte dieses Typs übereinstimmt.
+
+Properties:
+Attribute, die für die Beschaffenheit eines bestimmten Objekts wesentlich sind oder einen mit dem Objekt verknüpften Datenwert repräsentieren. Eine Änderung einer Eigenschaft kann die Bedeutung oder Präsentation eines Objekts erheblich beeinflussen.
+
+
+States:
+Ein Zustand (state) ist eine dynamische Eigenschaft, die Eigenschaften eines Objekts ausdrückt, die sich als Reaktion auf Benutzeraktionen oder automatisierte Prozesse ändern können. Zustände haben keinen Einfluss auf die essentielle Natur des Objekts, sondern stellen Daten dar, die mit dem Objekt verbunden sind, oder Möglichkeiten der Benutzerinteraktion.
+
+https://www.w3.org/TR/wai-aria/#ua_noninterference
