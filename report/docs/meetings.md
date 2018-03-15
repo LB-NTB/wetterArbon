@@ -108,7 +108,7 @@ Für die BA ist ein Workload von 360h pro Person vorgesehen. Wir haben die versc
 * Lukas  KW30-KW32  
 
 
-###Fixierung Meilensteine 
+###Fixierung Meilensteine
 * 29.03.2018 Konzeptbesprechung
 * 16.04.2018 Vorstellung des Prototyps der Webseite (inkl. Auftraggeber)
 * 08.06.2018 Vorabgabe Bericht -> Rückmeldung von Ulrich und Thomas bis am 20.07.2018
@@ -132,3 +132,29 @@ Die Wochenberichte werden zwischen KW08 und KW27 jeweils bis am Sonntagabend ers
 * Terminvorschlag für BA-Präsentation senden (1.5h)
 * Konzeptbesprechung findet am 29.03.2018 13:00-14:30 statt -> Einladung versenden
 * Doku-Struktur an Ulrich und Lukas senden (p.m.)
+
+##Meeting vom 15.03.18
+
+###Traktanden
+* Doku Struktur
+* Feedback Bewertungsbogen
+* Stand Pegel / Wellensensor
+* API stand / vorstellung
+  * Idee ganze webseite auf HTW Server
+* Vorstellung API Postman
+* Diskussion onedate oder ein json mit aktuellen Werten
+* Myphpadmin installation
+
+#### Dokustruktur
+
+Die Dokustruktur wurde aktzeptiert. Die Struktur wird ins LaTeX übernommen.
+
+#### Feedback Bewertungsbogen
+
+Der Bewertungsbogen wird so übernommen, wie der Vorschlag war.
+
+#### Stand Pegel / Wellensensor
+
+Diese beiden müssen unterschieden werden. Ein Wellensensor ist schwierig zu bekommen. Das Problem sind die Wetterbedingungen bzw die Auflösung der Wellen. Bei Radar ist die Auflösung bspw. 0.5m. Toflsensor von Tobias leutenegger.
+
+#### API
