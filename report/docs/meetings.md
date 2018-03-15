@@ -158,3 +158,4 @@ Der Bewertungsbogen wird so übernommen, wie der Vorschlag war.
 Diese beiden müssen unterschieden werden. Ein Wellensensor ist schwierig zu bekommen. Das Problem sind die Wetterbedingungen bzw die Auflösung der Wellen. Bei Radar ist die Auflösung bspw. 0.5m. Toflsensor von Tobias leutenegger.
 
 #### API
+hallo ich bin api
