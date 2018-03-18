@@ -221,6 +221,7 @@
             <li><a href="#meeting-vom-16112017">Meeting vom 16.11.2017</a></li>
             <li><a href="#meeting-vom-07122017">Meeting vom 07.12.2017</a></li>
             <li><a href="#meeting-vom-22022018">Meeting vom 22.02.2018</a></li>
+            <li><a href="#meeting-vom-150318">Meeting vom 15.03.18</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -376,7 +377,46 @@
 <li>Terminvorschlag für BA-Präsentation senden (1.5h)</li>
 <li>Konzeptbesprechung findet am 29.03.2018 13:00-14:30 statt -&gt; Einladung versenden</li>
 <li>Doku-Struktur an Ulrich und Lukas senden (p.m.)</li>
-</ul></div>
+</ul>
+<h2 id="meeting-vom-150318">Meeting vom 15.03.18</h2>
+<h3 id="traktanden_3">Traktanden</h3>
+<ul>
+<li>Doku-Gliederung</li>
+<li>Feedback Bewertungsbogen</li>
+<li>Stand Pegel- / Wellensensor</li>
+<li>Stand und Diskussion API</li>
+</ul>
+<h3 id="doku-gliederung">Doku-Gliederung</h3>
+<p>Die Doku-Gliederung, wie im Wochenbericht von KW10 vorgeschlagen, wurde aktzeptiert. Die Gliederung kann in LaTeX übernommen werden.</p>
+<h3 id="feedback-bewertungsbogen">Feedback Bewertungsbogen</h3>
+<p>Der Bewertungsbogen wird wie vorgeschlagen übernommen. D.h. die Gewichtung sämtlicher Bewertungskriterien beträgt "1".</p>
+<h3 id="stand-pegel-wellensensor">Stand Pegel- / Wellensensor</h3>
+<p>Einen Wellenhöhensensor gibt es nicht direkt. Die betrachteten Messprinzipien mit Radar und Ultraschall scheitern entweder an der zu geringen Auflösung bzw. an der Winduntauglichkeit. Wir werden deshalb, wieder einen hydrostatischen Pegelsensor einbauen. Wie zuverlässig damit die Wellenhöhe gemessen werden kann, lässt sich nicht vorhersagen. Als weiteres potentielles Messprinzip kommt ein TOF-Sensor in Frage. Diesbezüglich werden wir uns mit Tobias Leutenegger vom Institut für Photonics in Verbindung setzten. Der bestehende Sensor wird, sofern es das Wetter zulässt, am Sonntag, 18.03.2018, ausgebaut.</p>
+<h3 id="api">API</h3>
+<p>Eine erste Version des API auf die Datenbank der Wetterstation Arbon wurde präsentiert. Die Rückmeldungen dazu:</p>
+<ul>
+<li>Bisher muss am Ende der URL ".php" angegeben werden. Wenn möglich sollte dies entfallen. Allenfalls muss mit Hostpoint Rücksprache genommen werden.</li>
+<li>Die URL sollte möglichst kurz sein</li>
+<li>Nur Kleinbuchstaben verwenden</li>
+<li>Die Abfrage soll sowohl auf alle aktuellen Wetterdaten gesamt, als auch auf die einzelen Wert möglich sein.</li>
+<li>Bezüglich REST sollte die Doktorarbeit von "Roy Fielding" konsultiert werden</li>
+<li>Evtl. Versionierung verwenden in der API-URL (Vorteil: Parallelbetrieb von versch. Verisonen möglich)</li>
+</ul>
+<h4 id="versionierung">Versionierung</h4>
+<p>Falls eine Versionierung verwendet wird, muss diese nach den Vorgaben der "Semantischen Versionierung" erfolgen: </p>
+<ol>
+<li>MAJOR (nicht kompatibel zu alter Version)</li>
+<li>MINOR (kompatibel zu alten Version; gerade = stabil, ungerade = instabil)</li>
+<li>PATCH (Bug fix, Patch)</li>
+</ol>
+<h4 id="api-dokumentation">API-Dokumentation</h4>
+<p>Die API muss sauber dokumentiert werden:</p>
+<ul>
+<li>swagger.io oder Alternative verwenden -&gt; Recherche durchführen</li>
+<li>Doku muss auf der Webseite einsehbar sein</li>
+</ul>
+<h3 id="allgemeine-hinweise">Allgemeine Hinweise</h3>
+<p>Bei Literaturverweisen wenn immer möglich Primärquellen verwenden und keine Sekundär-/Tertiärquellen.</p></div>
         </div>
 
         <footer class="col-md-12">
