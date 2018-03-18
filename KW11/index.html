@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-11">Wochenreport KW 11</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,9 +225,90 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-11">Wochenreport KW 11</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
+<ul>
+<li>API Konzept</li>
+<li>Backup Datenbank</li>
+</ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="api-konzept">API Konzept</h3>
+<p>Das API Konzept wurde so erstellt, das jenach wunsch des Benutzers alle aktuelle Werte oder jeder Wert einzeln abgefragt werden kann. die URL wird folgendermassen bspw. für die Luftemperatur so aussehen: api.wetter-arbon.ch/1.1.1/sensoren/airtemperature<br />
+Der zugehörige JSON tree wird folgendermassen aussehen:  </p>
+<p>{
+  "product": "api.wetter-arbon.ch",
+  "version": "1.1.1",
+  "sensors": {
+    "airtemperature": {
+      "name": "airtemperature",
+      "unit": "m/s",
+      "value": "5",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "humidity": {
+      "name": "humidity",
+      "unit": "%",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "wind-direction": {
+      "name": "wind direction",
+      "unit": "°",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "wind-speed": {
+      "name": "wind speed",
+      "unit": "m/s",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "rain": {
+      "name": "rain",
+      "unit": "mm/d",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "air-pressure": {
+      "name": "air pressure",
+      "unit": "mm/d",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "water-temperature": {
+      "name": "water temperature 1m under surface",
+      "unit": "°C",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "water-surface-temperature": {
+      "name": "water surface temperature",
+      "unit": "°C",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "level": {
+      "name": "level",
+      "unit": "m",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    }
+  },
+  "webcam": {
+    "name": "webcam wetter arbon",
+    "title": "webcam",
+    "webcamid": "id"
+  }
+}</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
         </div>
