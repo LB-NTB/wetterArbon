@@ -233,7 +233,7 @@
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="api-konzept">API Konzept</h3>
-<p>Das API Konzept wurde so erstellt, das jenach wunsch des Benutzers alle aktuelle Werte oder jeder Wert einzeln abgefragt werden kann. die URL wird folgendermassen bspw. für die Luftemperatur so aussehen: api.wetter-arbon.ch/1.1.1/sensoren/airtemperature<br />
+<p>Das API Konzept wurde so erstellt, das jenach wunsch des Benutzers alle aktuelle Werte oder jeder Wert einzeln abgefragt werden kann. die URL wird folgendermassen bspw. für die Luftemperatur so aussehen: api.wetter-arbon.ch/V1.1.1/sensoren/airtemperature<br />
 Der zugehörige JSON tree wird folgendermassen aussehen:  </p>
 <p>{
   "product": "api.wetter-arbon.ch",<br />
@@ -246,71 +246,78 @@ Der zugehörige JSON tree wird folgendermassen aussehen:  </p>
       "timestamp": "Zeitangabe mit Datum",<br />
       "frequency": "60"<br />
     },<br />
-    "humidity": {
-      "name": "humidity",
-      "unit": "%",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "wind-direction": {
-      "name": "wind direction",
-      "unit": "°",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "wind-speed": {
-      "name": "wind speed",
-      "unit": "m/s",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "rain": {
-      "name": "rain",
-      "unit": "mm/d",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "air-pressure": {
-      "name": "air pressure",
-      "unit": "mm/d",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "water-temperature": {
-      "name": "water temperature 1m under surface",
-      "unit": "°C",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "water-surface-temperature": {
-      "name": "water surface temperature",
-      "unit": "°C",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "level": {
-      "name": "level",
-      "unit": "m",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    }
-  },
-  "webcam": {
-    "name": "webcam wetter arbon",
-    "title": "webcam",
-    "webcamid": "id"
-  }
-}</p>
+    "humidity": {<br />
+      "name": "humidity",<br />
+      "unit": "%",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "wind-direction": {<br />
+      "name": "wind direction",<br />
+      "unit": "°",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "wind-speed": {<br />
+      "name": "wind speed",<br />
+      "unit": "m/s",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "rain": {<br />
+      "name": "rain",<br />
+      "unit": "mm/d",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "air-pressure": {<br />
+      "name": "air pressure",<br />
+      "unit": "mm/d",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "water-temperature": {<br />
+      "name": "water temperature 1m under surface",<br />
+      "unit": "°C",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "water-surface-temperature": {<br />
+      "name": "water surface temperature",<br />
+      "unit": "°C",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    },<br />
+    "level": {<br />
+      "name": "level",<br />
+      "unit": "m",<br />
+      "value": "10",<br />
+      "timestamp": "Zeitangabe mit Datum",<br />
+      "frequency": "60"<br />
+    }<br />
+  },<br />
+  "webcam": {<br />
+    "name": "webcam wetter arbon",<br />
+    "title": "webcam",<br />
+    "webcamid": "id"<br />
+  }<br />
+}<br />
+Für die Entwicklung der API wird voraussichtlich, wenn ein Test in einem nächsten Arbeitsschritt positiv ausfällt, mit dem Editor swagger.io entwickelt. Nach eine ersten begutachtung ist dieses Tool zur Entwicklung und Dokumentierung sehr gut geeignet. Zudem arbeitet swagger.io nach dem RESTful standard wie wir uns das vorgestellt haben.</p>
+<h3 id="backup-datenbank">Backup Datenbank</h3>
+<p>Es wurde ein Export der gesamten Datenbank ertstellt. Dieses wird auch auf dem Versuchsserver benutzt um die laufende Webseite nicht zu beeinträchtigen. Hostpoint bietet eine Backup Möglichkeit auf Knopfdruck an. Zusätzlich bieten Sie auch ein Kostenpflichtiges Backup an. Die dritte Möglichkeit welche Hostpoint anbietet ist die Hilfe mit der Einrichtung eines Cronjobs für das Backup.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<p>12h API Konzept<br />
+1h Backup Datenbank
+2h Meeting<br />
+1h Report</p></div>
         </div>
 
         <footer class="col-md-12">
