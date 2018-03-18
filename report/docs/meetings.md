@@ -137,25 +137,47 @@ Die Wochenberichte werden zwischen KW08 und KW27 jeweils bis am Sonntagabend ers
 ##Meeting vom 15.03.18
 
 ###Traktanden
-* Doku Struktur
+* Doku-Gliederung
 * Feedback Bewertungsbogen
-* Stand Pegel / Wellensensor
-* API stand / vorstellung
-  * Idee ganze webseite auf HTW Server
-* Vorstellung API Postman
-* Diskussion onedate oder ein json mit aktuellen Werten
-* Myphpadmin installation
+* Stand Pegel- / Wellensensor
+* Stand und Diskussion API
 
-#### Dokustruktur
+### Doku-Gliederung
+Die Doku-Gliederung, wie im Wochenbericht von KW10 vorgeschlagen, wurde aktzeptiert. Die Gliederung kann in LaTeX übernommen werden.
 
-Die Dokustruktur wurde aktzeptiert. Die Struktur wird ins LaTeX übernommen.
+### Feedback Bewertungsbogen
+Der Bewertungsbogen wird wie vorgeschlagen übernommen. D.h. die Gewichtung sämtlicher Bewertungskriterien beträgt "1".
 
-#### Feedback Bewertungsbogen
+### Stand Pegel- / Wellensensor
+Einen Wellenhöhensensor gibt es nicht direkt. Die betrachteten Messprinzipien mit Radar und Ultraschall scheitern entweder an der zu geringen Auflösung bzw. an der Winduntauglichkeit. Wir werden deshalb, wieder einen hydrostatischen Pegelsensor einbauen. Wie zuverlässig damit die Wellenhöhe gemessen werden kann, lässt sich nicht vorhersagen. Als weiteres potentielles Messprinzip kommt ein TOF-Sensor in Frage. Diesbezüglich werden wir uns mit Tobias Leutenegger vom Institut für Photonics in Verbindung setzten. Der bestehende Sensor wird, sofern es das Wetter zulässt, am Sonntag, 18.03.2018, ausgebaut.
 
-Der Bewertungsbogen wird so übernommen, wie der Vorschlag war.
 
-#### Stand Pegel / Wellensensor
 
-Diese beiden müssen unterschieden werden. Ein Wellensensor ist schwierig zu bekommen. Das Problem sind die Wetterbedingungen bzw die Auflösung der Wellen. Bei Radar ist die Auflösung bspw. 0.5m. Toflsensor von Tobias leutenegger.
+### API
+Eine erste Version des API auf die Datenbank der Wetterstation Arbon wurde präsentiert. Die Rückmeldungen dazu:
 
-#### API
+* Bisher muss am Ende der URL ".php" angegeben werden. Wenn möglich sollte dies entfallen. Allenfalls muss mit Hostpoint Rücksprache genommen werden.
+* Die URL sollte möglichst kurz sein
+* Nur Kleinbuchstaben verwenden
+* Die Abfrage soll sowohl auf alle aktuellen Wetterdaten gesamt, als auch auf die einzelen Wert möglich sein.
+* Bezüglich REST sollte die Doktorarbeit von "Roy Fielding" konsultiert werden
+* Evtl. Versionierung verwenden in der API-URL (Vorteil: Parallelbetrieb von versch. Verisonen möglich)
+
+#### Versionierung
+
+Falls eine Versionierung verwendet wird, muss diese nach den Vorgaben der "Semantischen Versionierung" erfolgen: 
+
+  1. MAJOR (nicht kompatibel zu alter Version)
+  2. MINOR (kompatibel zu alten Version; gerade = stabil, ungerade = instabil)
+  3. PATCH (Bug fix, Patch)
+
+#### API-Dokumentation
+Die API muss sauber dokumentiert werden:
+
+* swagger.io oder Alternative verwenden -> Recherche durchführen
+* Doku muss auf der Webseite einsehbar sein
+
+### Allgemeine Hinweise
+Bei Literaturverweisen wenn immer möglich Primärquellen verwenden und keine Sekundär-/Tertiärquellen.
+
+
