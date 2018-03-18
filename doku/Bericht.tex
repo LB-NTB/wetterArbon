@@ -6,6 +6,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
 
+% Grad Celsius Zeichen
+\usepackage{gensymb}
+
 \usepackage{cite}
 \usepackage{xcolor}
 \newcommand\Diskussionspunkt[1]{\textcolor{red}{#1}}
@@ -31,6 +34,8 @@
 \usepackage{pdfpages}
 
 \usepackage{lscape}
+
+
 
 
 % Quelltext
@@ -101,25 +106,24 @@
 \clearpage
 \pagenumbering{arabic}
 
-\input{Einfuehrung}
-\input{Zusammenfassung}
-\input{Datenbank}
-\input{API} 
-\input{Kapitel3}
-\input{Kapitel4}
-\input{Kapitel5}   
-\input{Projektmanagement}
-\input{Dokumentation}
+
+\input{zusammenfassung}
+\newpage
+\input{einleitung}
+\input{frontend}
+\input{backend} 
+\input{sensoren}
+\input{webcam}
 % braucht es das?
 \FloatBarrier
 
 \newpage
-\input{Schluss}
-\input{Recht}
-\input{Verzichtserklaerung}
+\input{schluss}
 \newpage
 \bibliography{literatur}{}	
 \bibliographystyle{plain} 
+\newpage
+\input{anhang}
 
 
 \end{document}
