@@ -37,16 +37,81 @@ Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Für 
 \item Wasserpegel
 \item Wellenhöhe
 \end{itemize}
-Die Datenabfrage über die API soll RESTful sein und mittels HTTP geschehen. Für die Nutzer der API soll die Abfrage im Minutentakt über eine GET abfrage möglich sein. Wie in der Frage wie wird eine API entwickelt wird ein URL Schema erstellt, welches folgendermassen für die folgenden GET abfragen aussehen wird:
-\begin{itemize}
-\item api.wetter-arbon.ch/v1.1/now/wind
-\item api.wetter-arbon.ch/V1.1/onedate/niederschlag
-\item api.wetter-arbon.ch/V1.1/onedata/temperatur
-\item api.wetter-arbon.ch/V1.1/onedata/luftfeuchtigkeit
-\item api.wetter-arbon.ch/V1.1/onedata/wassertemperatur
-\item api.wetter-arbon.ch/V1.1/onedata/wasserpegel
-\item api.wetter-arbon.ch/V1.1/onedata/wellenhoehe
+Die Datenabfrage über die API soll RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden. 
 
-\end{itemize}
-
-\Diskussionspunkt{Mit oder ohne authentifizierung}
+\begin{lstlisting}
+{
+  "product": "api.wetter-arbon.ch",
+  "version": "1.1.1",
+  "sensors": {
+    "airtemperature": {
+      "name": "airtemperature",
+      "unit": "m/s",
+      "value": "5",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "humidity": {
+      "name": "humidity",
+      "unit": "%",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "wind-direction": {
+      "name": "wind direction",
+      "unit": "°",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "wind-speed": {
+      "name": "wind speed",
+      "unit": "m/s",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "rain": {
+      "name": "rain",
+      "unit": "mm/d",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "air-pressure": {
+      "name": "air pressure",
+      "unit": "mm/d",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "water-temperature": {
+      "name": "water temperature 1m under surface",
+      "unit": "°C",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "water-surface-temperature": {
+      "name": "water surface temperature",
+      "unit": "°C",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    },
+    "level": {
+      "name": "level",
+      "unit": "m",
+      "value": "10",
+      "timestamp": "Zeitangabe mit Datum",
+      "frequency": "60"
+    }
+  },
+  "webcam": {
+    "name": "webcam wetter arbon",
+    "title": "webcam",
+    "webcamid": "id"
+  }
+}
+\end{lstlisting}
