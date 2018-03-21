@@ -132,6 +132,9 @@ In der Situation vor der Bachelorarbeit wurden die Daten der Wetterstation vom W
 \subsection{Datenarchivierung}
 \Diskussionspunkt{Datenausdünnung/-archivierung / Datenmanagement}
 
+Wird die Struktur vor der Bachelorarbeit angeschaut ist nicht auf dem ersten Blick nicht klar welche Datenbank bzw. welche Tabelle welche Daten enthalten. Ziel ist es die Datenbank nach dem relationalen Datenbankmodell neu zu strukturieren. Da obwohl die Tabelle, in welcher die aktuellen Daten gespeichert sind die sogenannte wx data, sehr gross ist benötigt diese nicht viel Speicherplatz. Trotzdem sollte die Datenbank in ihrer Struktur und Datenmenge ausgedünnt werden, dies dient vorallem der Übersicht und um es für die Anwender einfacher zu gestalten, wenn irgendwelche Änderungen vorgenommen werden müssen.//
+Die Tabelle wx data beinhaltet momentan 65 einzelne Attribute. Von der Stations ID bis zum Batterielevel der Station. Da die Datenbank nach der Bachelorarbeit vorallem für die API verwendet wird und es für den Benutzer uninteressant ist wie der Batteriestand ist, können diese Attribute herausgenommen werden. Stellt man die neuen Attribute, ohne auf sicht der neu Strukturierung zusammen würde dies für die wx data ein folgendes Bild ergeben /Diskussionspunkt{Foto neu wx data}
+
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
