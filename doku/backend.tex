@@ -132,8 +132,21 @@ In der Situation vor der Bachelorarbeit wurden die Daten der Wetterstation vom W
 \subsection{Datenarchivierung}
 \Diskussionspunkt{Datenausdünnung/-archivierung / Datenmanagement}
 
-Wird die Struktur vor der Bachelorarbeit angeschaut ist nicht auf dem ersten Blick nicht klar welche Datenbank bzw. welche Tabelle welche Daten enthalten. Ziel ist es die Datenbank nach dem relationalen Datenbankmodell neu zu strukturieren. Da obwohl die Tabelle, in welcher die aktuellen Daten gespeichert sind die sogenannte wx data, sehr gross ist benötigt diese nicht viel Speicherplatz. Trotzdem sollte die Datenbank in ihrer Struktur und Datenmenge ausgedünnt werden, dies dient vorallem der Übersicht und um es für die Anwender einfacher zu gestalten, wenn irgendwelche Änderungen vorgenommen werden müssen.//
-Die Tabelle wx data beinhaltet momentan 65 einzelne Attribute. Von der Stations ID bis zum Batterielevel der Station. Da die Datenbank nach der Bachelorarbeit vorallem für die API verwendet wird und es für den Benutzer uninteressant ist wie der Batteriestand ist, können diese Attribute herausgenommen werden. Stellt man die neuen Attribute, ohne auf sicht der neu Strukturierung zusammen würde dies für die wx data ein folgendes Bild ergeben /Diskussionspunkt{Foto neu wx data}
+Wird die Struktur vor der Bachelorarbeit angeschaut ist nicht auf dem ersten Blick nicht klar welche Datenbank bzw. welche Tabelle welche Daten enthalten. Ziel ist es die Datenbank nach dem relationalen Datenbankmodell neu zu strukturieren. Da obwohl die Tabelle, in welcher die aktuellen Daten gespeichert sind die sogenannte wx data, sehr gross ist benötigt diese nicht viel Speicherplatz. Trotzdem sollte die Datenbank in ihrer Struktur und Datenmenge ausgedünnt werden, dies dient vorallem der Übersicht und um es für die Anwender einfacher zu gestalten, wenn irgendwelche Änderungen vorgenommen werden müssen.\\
+
+Die Tabelle wx data beinhaltet momentan 65 einzelne Attribute. Von der Stations ID bis zum Batterielevel der Station. Da die Datenbank nach der Bachelorarbeit vor allem für die API und um ein Textfile zu erstellen verwendet wird und es für den Benutzer uninteressant ist wie der Batteriestand ist, die Idee war deswegen, dass die überflüssigen Attribute herausgenommen werden. Um eine klare Vorstellung zu haben wie eine Datenbank zu strukturieren ist und wie man eine Datenbank ausdünnt, wurde dieses Thema mit einem Datenbankspezialisten angeschaut. Hierbei hat sich ergeben, dass die Tabelle wx data so  belassen werden sollte, und die Abfrage dementsprechend angepasst werden sollte, ganz nach Sinne never change a running system. Ebenfalls besprochen wurde die Archivierung der Daten, hierbei wurden zwei verschiedene Möglichkeiten aufgezeigt. Eine Möglichkeit wäre die Daten aus der Tabelle wx data zu übernehmen und auf einem günstigeren Speichermedium zu speichern um diese als Archivierung zu benutzen. Die zweite Möglichkeit, welche besser zur Lösung passt, ist die Tabelle wx data auf dem Datenbankserver so zu belassen und diese auch als Archiv zu benutzen. Diese Möglichkeit ist die sinnvollere, da der Verein bei Hostpoint 50 Gb Speicherplatz besitzt und es keine Rolle im Preis spielt wie viel Speicher benutzt wird. Aus diesen Informationen und Tipps kann ein neues Datenbankkonzept entstehen welches darauf basiert, dass die jetzt Lauffähige Version der Datenbank bzw. der Tabelle wx data übernommen wird.
+
+\Diskussionspunkt{Beginn Datenbankkonzept}
+Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht aufschlussreich. Aus diesem Grund wird die Datenbank restrukturiert. Hierbei soll vorallem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Aus der Diskussion mit dem Spezialisten wurden einige Ansätze, wie eine völlige neu Organisation der Tabellen oder auch eine neue Datenbank besprochen. Aus der Diskussion kam jedoch heraus, dass die Datenbank in ihrem Aufbau weitestgehend so belassen werden kann. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor:
+\begin{itemize}
+\item Tabelle wx data wird in ihrem jetzigen Zustand belassen
+\item Tabelle tblwellen wird umbenannt in tblExtSensors und umstrukturiert
+\item Tabelle tblHistorical wird neu aufgebaut
+\end{itemize}
+
+Die Tabelle tblwellen beinhaltet die Pegeldaten der 
+
+ 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
