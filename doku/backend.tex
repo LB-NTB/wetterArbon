@@ -143,8 +143,8 @@ Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist
 \item Tabelle tblwellen wird umbenannt in tblExtSensors und umstrukturiert
 \item Tabelle tblHistorical wird neu aufgebaut
 \end{itemize}
-
-Die Tabelle tblwellen beinhaltet die Pegeldaten der 
+Die Tabelle \Diskussionspunkt{tblExtSensors} beinhaltet die Pegeldaten des Bodensees, sowie die Oberflächentemperatur und die Temperatur ein Meter unter Wasser. Des weiteren enthält sie als Fremdschlüssel einen Datums und Zeitstempel. Die beiden Tabellen wx data und tblExtSensors werden über eine Tabelle mit verschiedenen Formaten von Datums bzw Zeitstempel als Primärschlüssel miteinander Kombiniert. Somit kann sichergestellt werden, dass die Datenbank in Zukunft weiter wachsen kann und die Tabelle wx data in ihrem jetzigen Zustand so belassen werden kann. Die Zusammenführung kann in einer abfrage mit dem Befehl LEFT OUTER JOIN umgesetzt werden. So kann kann eine Tabelle mit den aktuellen Werten nach Wunsch erstellt werden.\\
+Die Tabelle tblHistorical wird die durchschnittlich gemessenen Werten im Stundentakt erhalten. Diese wird später auf der Seite mit historischen Daten benötigt. Um die Ladezeiten der Webseite, sowie die Sicherheit der Datenbank zu erhöhen wird im Minutentakt ein Textfile mit den aktuellen Werten erstellt. Ein weiterer Grund hierfür ist, dass so sichergestellt werden kann, dass jeder Benutzer der Webseite die gleichen Werte erhält. Im vorherigen Zustand der Wetterstation gab es auch schon ein Textfile, eines der Probleme bei diesem ist jedoch das Auslesen der Werte. Ein weiteres das nicht alle Daten welche Ausgelesen werden, konkret der Pegelsensor wie auch der Wassertemperatursensor, nicht erhalten sind. Auch kann dieses File für die aktuellen Werte der API benutzt werden. Um auf diese Weise auch wieder die Sicherheit der Datenbank zu erhöhen. Die Umsetzung zur Erstellung der Textfile wird mittels eines minütlichen Cronjobs umgesetzt. 
 
  
 
@@ -153,6 +153,12 @@ Die Tabelle tblwellen beinhaltet die Pegeldaten der
 %% ###################################################################################################
 
 \subsection{Datensicherung}
+Hostpiont bietet zur Datensicherung mehrere Möglichkeiten an:
+\begin{itemize}
+\item Cronjob
+\item Backup auf Knopfdruck
+\item Kostenplfichtige Wiederherstellung aller Daten
+\end{itemize}
 \Diskussionspunkt{Backup / Sicherung}
 
 
