@@ -228,16 +228,18 @@
 <h1 id="wochenreport-kw-12">Wochenreport KW 12</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
 <ul>
-<li>Datenbankstruktur ausdünnung</li>
-<li>Datenbankkonzept</li>
-<li>Textfile vs. DB</li>
+<li>Datenbankarchivierung prüfen</li>
+<li>Datenbankkonzept erstellen</li>
+<li>Gegenüberstellung Textfile vs. DB</li>
+<li>Ausbau des Pegelsensors</li>
+<li>Konzept zu Mobile First erstellen</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="datenbankstruktur-ausdunnung-datenbankkonzept">Datenbankstruktur ausdünnung / Datenbankkonzept</h3>
-<p>Es wurde eine Konzept erstellt, welches die jetzige Tabelle wx data unverändert lässt. Des Weiteren werden die bestehenden Tabellen tblWellen und tblWind gelöscht. Die Daten welche in der Tabelle sind werden in die neue Tabelle tblExtSensors übernommen. Diese Tabelle wird alle Externe Sensoren beinhalten und wäre auch weiter ausbaufähig im Falle neuer Sensoren. Die beiden Tabellen wx data und tblExtSensors werden über eine Datums und Zeit Tabelle miteinander Verknpft, indem das Datum und die Zeit der Fremdschlüssel ist und eine Tabelle tblData aufgebaut wird. Mit diesem Vorgehen kann die Datenbank weiter ausgebaut werden ohne das die funktionsfähige Tabelle wx data verändert wird.
-<img alt="Screenshot" src="../img/DatenbankNeu.jpg" />
-<em>Abb.: Neues Datenbankschema</em>
-Um die historischen Daten zu erstellen wird eine einzelne Tabelle erstellt, welche die minuten Daten der beiden Tabellen wx data und tblExtSensors pro Stunde mittelt in die tblHistorical schreibt.<br />
+<p>Es wurde eine Konzept erstellt, welches die jetzige Tabelle wx data unverändert lässt. Des Weiteren werden die bestehenden Tabellen tblWellen und tblWind gelöscht. Die Daten welche in der Tabelle sind werden in die neue Tabelle tblExtSensors übernommen. Diese Tabelle wird alle Externe Sensoren beinhalten und wäre auch weiter ausbaufähig im Falle neuer Sensoren. Die beiden Tabellen wx data und tblExtSensors werden über eine Datums und Zeit Tabelle miteinander Verknpft, indem das Datum und die Zeit der Fremdschlüssel ist und eine Tabelle tblData aufgebaut wird. Mit diesem Vorgehen kann die Datenbank weiter ausgebaut werden ohne das die funktionsfähige Tabelle wx data verändert wird.</p>
+<p><img alt="Screenshot" src="../img/DatenbankNeu.jpg" />
+<em>Abb.: Neues Datenbankschema</em></p>
+<p>Um die historischen Daten zu erstellen wird eine einzelne Tabelle erstellt, welche die minuten Daten der beiden Tabellen wx data und tblExtSensors pro Stunde mittelt in die tblHistorical schreibt.<br />
 Um die Sicherheit der Datenbank zu erhöhen werden auf dem Server Abfragen ausgeführt und diese Resultate anschliessend in ein Textfile geschrieben. So kann einerseits verhindert werden das jemand auf die Datenbank zugreift, andererseits wird so die Perfomance beim auslesen für die Grafiken erhöht.</p>
 <h3 id="textfile-vs-db">Textfile vs DB</h3>
 <p>Um die performance Unterschiede zwischen dem Auslesen der Textfiles sowie der Datenbank zu vergleichen wurde ein Testfile geschreieben welche den Zeitunterschied misst.</p>
@@ -351,14 +353,23 @@ Um die Sicherheit der Datenbank zu erhöhen werden auf dem Server Abfragen ausge
      ?&gt;
 </code></pre>
 
-<p>Beim Test stellte sich heraus das der Unterschied 7 bzw 1 Sekunde beträgt. Beim ersten Test wird die gesamte Datenbank ausgelesen, beim zweiten wird nur eine Abfrage auf die Temperatur gemacht. Das Testresultat kann unter www.wetter-arbon.ch/benchmark.php begutachtet werden</p>
+<p>Beim Test stellte sich heraus das der Unterschied 7 bzw 1 Sekunde beträgt. Beim ersten Test wird die gesamte Datenbank ausgelesen, beim zweiten wird nur eine Abfrage auf die Temperatur gemacht. Das Testresultat kann unter folgendem Link begutachtet werden:</p>
+<p><a href="../www.wetter-arbon.ch/benchmark.php">Benchmark.php</a></p>
+<h3 id="ausbau-des-pegelsensors">Ausbau des Pegelsensors</h3>
+<p>Am Samstagmorgen konnte der Pegelsensor ausgebaut werden. Als nächstes soll er mit Wasser und anschliessend im Ultraschallbad gereinigt werden. Falls sich die Kalkreste nicht lösen lassen kommt noch eine chemische Reinigung hinzu. Soblad der Sensor wieder einigermassen sauber ist, führen wir eine Funktionskontrolle durch. Diese wird zeigen, ob wir mit diesem Sensor weiterarbeiten können, oder ob ein neuer bestellt werden muss.</p>
+<p><img alt="Screenshot" src="../img/pegelsensor.png" />
+<em>Abb.: Ausgebauter Pegelsensor</em></p>
+<h3 id="konzept-zu-mobile-first">Konzept zu Mobile First</h3>
+<p>Das Mobile First Prinzip besteht darin, dass zuerst die mobile Webseite designt wird. Da diese nur einen Bruchteil der Information anzeigen kann wie eine Desktop-Seite, ist man gezwungen festzulegen welches die wichtigsten Informationen auf der Seite sind. Für diese Arbeit ist es wichtig zu verstehen wer die Zielgruppe der Webseite ist und was die Bedürfnisse und Erwartungen der Zielgruppe ist. Wir haben deshalb u.a. die Google Analytics Daten der wetter-arbon Seite ausgewertet und unser Konzept danach ausgerichtet.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <p>Der Testserver läuft noch nicht. Das Problem ist das intepretieren des PHP-codes. Für die Weiterarbeit ist dies jedoch kein Kriterium im Moment und es wird versucht auch diese Herausforderung zu meistern.</p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>2h Server aufsetzen<br />
-6h DB Konzept, ausdünnung<br />
+10h DB-Archivierung Konzept<br />
 2h DB vs. Textfile<br />
-1h Ausbau Pegelsensor  </p></div>
+3.5h Ausbau Pegelsensor<br />
+4.5h Mobile First<br />
+1h Wochenreport   </p></div>
         </div>
 
         <footer class="col-md-12">
