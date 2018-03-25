@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-12">Wochenreport KW 12</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,11 +225,27 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-12">Wochenreport KW 12</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
+<ul>
+<li>Datenbankstruktur ausdünnung</li>
+<li>Datenbankkonzept</li>
+<li>Textfile vs. DB</li>
+</ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="datenbankstruktur-ausdunnung-datenbankkonzept">Datenbankstruktur ausdünnung / Datenbankkonzept</h3>
+<p>Es wurde eine Konzept erstellt, welches die jetzige Tabelle wx data unverändert lässt. (BILD VON DATENBANK EINFÜGEN) Des Weiteren werden die bestehenden Tabellen tblWellen und tblWind gelöscht. Die Daten welche in der Tabelle sind werden in die neue Tabelle tblExtSensors übernommen. Diese Tabelle wird alle Externe Sensoren beinhalten und wäre auch weiter ausbaufähig im Falle neuer Sensoren. Die beiden Tabellen wx data und tblExtSensors werden über eine Datums und Zeit Tabelle miteinander Verknpft, indem das Datum und die Zeit der Fremdschlüssel ist und eine Tabelle tblData aufgebaut wird. Mit diesem Vorgehen kann die Datenbank weiter ausgebaut werden ohne das die funktionsfähige Tabelle wx data verändert wird.<br />
+Um die historischen Daten zu erstellen wird eine einzelne Tabelle erstellt, welche die minuten Daten der beiden Tabellen wx data und tblExtSensors pro Stunde mittelt in die tblHistorical schreibt.<br />
+Um die Sicherheit der Datenbank zu erhöhen werden auf dem Server Abfragen ausgeführt und diese Resultate anschliessend in ein Textfile geschrieben. So kann einerseits verhindert werden das jemand auf die Datenbank zugreift, andererseits wird so die Perfomance beim auslesen für die Grafiken erhöht.</p>
+<h3 id="textfile-vs-db">Textfile vs DB</h3>
+<p>Um die performance Unterschiede zwischen dem Auslesen der Textfiles sowie der Datenbank zu vergleichen wurde ein Testfile geschreieben welche den Zeitunterschied misst. (PHP CODE EINFÜGEN DATENBANK DATEN ENTFERNEN) Beim Test stellte sich heraus das der Unterschied 7 bzw 1 Sekunde beträgt. Beim ersten Test wird die gesamte Datenbank ausgelesen, beim zweiten wird nur eine Abfrage auf die Temperatur gemacht. (TESTRESULTAT)</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<p>Der Testserver läuft noch nicht. Das Problem ist das intepretieren des PHP-codes. Für die Weiterarbeit ist dies jedoch kein Kriterium im Moment und es wird versucht auch diese Herausforderung zu meistern.</p>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<p>2h Server aufsetzen<br />
+6h DB Konzept, ausdünnung<br />
+2h DB vs. Textfile<br />
+1h Ausbau Pegelsensor  </p></div>
         </div>
 
         <footer class="col-md-12">
