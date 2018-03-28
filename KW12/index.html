@@ -236,125 +236,15 @@
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="datenbankkonzept-datenarchivierung">Datenbankkonzept / Datenarchivierung</h3>
-<p>Es wurde eine Konzept erstellt, welches die jetzige Tabelle wx-data unverändert lässt. Des Weiteren werden die bestehenden Tabellen tblWellen und tblWind gelöscht. Die Daten welche in der Tabelle sind werden in die neue Tabelle tblExtSensors übernommen. Diese Tabelle wird alle externen Sensoren beinhalten und wäre auch weiter ausbaufähig im Falle neuer Sensoren. Die beiden Tabellen wx-data und tblExtSensors werden über eine Datums und Zeit Tabelle miteinander verknüpft, indem das Datum und die Zeit der Fremdschlüssel ist und eine Tabelle tblData aufgebaut wird. Mit diesem Vorgehen kann die Datenbank weiter ausgebaut werden, ohne dass die funktionsfähige Tabelle wx-data verändert wird.</p>
+<p>Es wurde eine Konzept erstellt, welches die jetzige Tabelle wx-data unverändert lässt. Des Weiteren wird vorgeschlagen die bestehenden Tabellen tblWellen und tblWind zu löschen. Die Daten welche in den beiden Tabellen sind werden in die neue Tabelle tblExtSensors übernommen. Diese Tabelle wird alle externen Sensoren beinhalten und wäre auch weiter ausbaufähig im Falle neuer Sensoren. Die beiden Tabellen wx-data und tblExtSensors werden über eine Datums und Zeit Tabelle miteinander verknüpft, indem das Datum und die Zeit der Fremdschlüssel ist und eine Tabelle tblData aufgebaut wird. Mit diesem Vorgehen kann die Datenbank weiter ausgebaut werden, ohne dass die funktionsfähige Tabelle wx-data verändert wird.</p>
 <p><img alt="Screenshot" src="../img/DatenbankNeu.jpg" />
 <em>Abb.: Neues Datenbankschema</em></p>
 <p>Um die historischen Daten zu erstellen wird eine einzelne Tabelle erstellt, welche die Minuten-Daten der beiden Tabellen wx-data und tblExtSensors pro Stunde mittelt und in die tblHistorical schreibt.<br />
-Um die Sicherheit der Datenbank zu erhöhen werden auf dem Server Abfragen ausgeführt und diese Resultate anschliessend in ein Textfile geschrieben. So kann einerseits verhindert werden, dass jemand auf die Datenbank zugreift, andererseits wird so die Perfomance beim Auslesen für die Grafiken erhöht.</p>
+Um die Perfomance und Zugriffssicherheit zu erhöhen wird ein Textfile erstellt welches die aktuellen Werte aus der Datenbank enthält.</p>
 <h3 id="textfile-vs-db">Textfile vs. DB</h3>
-<p>Um die Performance-Unterschiede zwischen dem Auslesen der Textfiles sowie der Datenbank zu vergleichen wurde ein Testfile geschreieben, welches den Zeitunterschied misst.</p>
-<pre><code>&lt;?php
-
-     echo(&quot;&lt;h3&gt;Test without condition!&lt;/h3&gt;&quot;);
-     echo &quot;Reading File ... &lt;BR /&gt;&quot;;
-
-     $start = explode(&quot; &quot;,microtime());
-     $beginfile = $start[1]+$start[0];
-
-     $h = fopen(&quot;WDL/clientraw.txt&quot;,&quot;r&quot;);
-     if (!$h) return;
-         $msg=&quot;&quot;;
-
-     while (!feof($h))
-         fgets($h);
-
-     $start = explode(&quot; &quot;,microtime());
-     $endfile = $start[1]+$start[0];
-
-     echo &quot;Reading Database ... &lt;BR /&gt;&quot;;
-
-     $start = explode(&quot; &quot;,microtime());
-     $begindb = $start[1]+$start[0];
-
-     $db=mysql_connect(&quot;&quot;);
-     mysql_select_db(&quot;igwetter_wettertest&quot;);
-     $r = mysql_query(&quot;SELECT * FROM wx_data WHERE `date`= '2018-03-13' AND time = '19:21:00'&quot;);
-
-     while($f = mysql_fetch_array($r));
-
-     $start = explode(&quot; &quot;,microtime());
-     $enddb = $start[1]+$start[0];
-
-     echo &quot;Result of benchmark&quot;;
-
-     $resultfile = $endfile - $beginfile;
-     $resultdb = $enddb - $begindb;
-
-     echo &quot;&lt;BR /&gt;Flat File time span to do the operation ==&gt; $resultfile .&quot;;
-     echo &quot;&lt;BR /&gt;Database time span to do the operation ==&gt; $resultdb .&lt;br/&gt;&quot;;
-
-     if($resultdb&gt;$resultfile)
-     {
-         $diff=$resultdb - $resultfile;
-         printf(&quot;File operation was faster by %f&quot;,$diff);
-     }
-     else
-     {
-         $diff=$resultfile-$resultdb;
-         printf(&quot;Database operation was faster by %f&quot;,$diff);
-     }
-
-     mysql_close($db);
-     fclose($h);
-
-
-     //NEW TEST
-     echo(&quot;&lt;h3&gt;Test with condition temperature&lt;/h3&gt;&quot;);
-     echo &quot;Reading File ... &lt;BR /&gt;&quot;;
-     $start = explode(&quot; &quot;,microtime());
-     $beginfile = $start[1]+$start[0];
-
-     $h = fopen(&quot;WDL/clientraw.txt&quot;,&quot;r&quot;);
-
-     while (!feof($h))
-     {
-         $line=fgets($h);
-         $temperature = $line[17].$line[18].$line[19].$line[20];
-         if(eregi(&quot;^a&quot;,$line));
-     }
-
-     $start = explode(&quot; &quot;,microtime());
-     $endfile = $start[1]+$start[0];
-
-     echo &quot;Reading Database ... &lt;BR /&gt;&quot;;
-
-     $start = explode(&quot; &quot;,microtime());
-     $begindb = $start[1]+$start[0];
-
-     $db=mysql_connect(&quot;&quot;);
-     mysql_select_db(&quot;igwetter_wettertest&quot;);
-     $r = mysql_query(&quot;SELECT `temperature`, MAX(time) lastTime FROM wx_data WHERE `date` = CURRENT_DATE &quot;);
-
-     while($f = mysql_fetch_array($r));
-
-     $start = explode(&quot; &quot;,microtime());
-     $enddb = $start[1]+$start[0];
-
-     echo &quot;Result of benchmark&quot;;
-
-     $resultfile = $endfile - $beginfile;
-     $resultdb = $enddb - $begindb;
-
-     echo &quot;&lt;BR /&gt;Flat File time span to do the operation ==&gt; $resultfile .&quot;;
-     echo &quot;&lt;BR /&gt;Database time span to do the operation ==&gt; $resultdb .&lt;br/&gt;&quot;;
-
-     if($resultdb&gt;$resultfile)
-     {
-         $diff=$resultdb - $resultfile;
-         printf(&quot;File operation was faster by %f&quot;,$diff);
-     }
-     else
-     {
-         $diff=$resultfile-$resultdb;
-         printf(&quot;Database operation was faster by %f&quot;,$diff);
-     }
-
-
-     ?&gt;
-</code></pre>
-
-<p>Beim Test stellte sich heraus, dass der Unterschied 7 bzw 1 Sekunde beträgt. Beim ersten Test wird die gesamte Datenbank ausgelesen, beim zweiten wird nur eine Abfrage auf die Temperatur gemacht. Das Testresultat kann unter folgendem Link begutachtet werden:</p>
+<p>Um die Performance-Unterschiede zwischen dem Auslesen der Textfiles sowie der Datenbank zu vergleichen wurde ein Testfile geschreieben, welches den Zeitunterschied misst. Beim Test stellte sich heraus, dass der Unterschied 7 bzw 1 Sekunde beträgt. Beim ersten Test wird die gesamte Datenbank ausgelesen, beim zweiten wird nur eine Abfrage auf die Temperatur gemacht. Das Testresultat kann unter folgendem Link begutachtet werden:</p>
 <p><a href="https://www.wetter-arbon.ch/benchmark.php">Benchmark.php</a></p>
+<p>Auch wurde uns von einem Datenbank Experten empfohlen Textfiles zu benutzen um die Anzeigen zu erstellen. Somit kann gesagt werden, dass das Textfile in unserer Arbeit die bessere Lösung ist.</p>
 <h3 id="ausbau-des-pegelsensors">Ausbau des Pegelsensors</h3>
 <p>Am Samstagmorgen konnte der Pegelsensor ausgebaut werden. Als nächstes soll er mit Wasser und anschliessend im Ultraschallbad gereinigt werden. Falls sich die Kalkreste nicht lösen lassen kommt noch eine chemische Reinigung hinzu. Soblad der Sensor wieder einigermassen sauber ist, führen wir eine Funktionskontrolle durch. Diese wird zeigen, ob wir mit diesem Sensor weiterarbeiten können, oder ob ein neuer bestellt werden muss.</p>
 <p><img alt="Screenshot" src="../img/pegelsensor.png" />
