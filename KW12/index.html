@@ -252,7 +252,8 @@ Um die Perfomance und Zugriffssicherheit zu erhöhen wird ein Textfile erstellt 
 <h3 id="konzept-zu-mobile-first">Konzept zu Mobile First</h3>
 <p>Das Mobile First Prinzip besteht darin, dass zuerst die mobile Webseite designt wird. Da diese nur einen Bruchteil der Information anzeigen kann wie eine Desktop-Seite, ist man gezwungen festzulegen welches die wichtigsten Informationen auf der Seite sind. Für diese Arbeit ist es wichtig zu verstehen wer die Zielgruppe der Webseite ist und was die Bedürfnisse und Erwartungen der Zielgruppe ist. Wir haben deshalb u.a. die Google Analytics Daten der wetter-arbon Seite ausgewertet und unser Konzept danach ausgerichtet.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<p>Der Testserver läuft noch nicht. Das Problem ist das Intepretieren des PHP-Codes. Für die Weiterarbeit ist dies jedoch kein Kriterium im Moment und es wird versucht auch diese Herausforderung zu meistern.</p>
+<p>Der Testserver läuft noch nicht. Das Problem ist das Intepretieren des PHP-Codes. Für die Weiterarbeit ist dies jedoch kein Kriterium im Moment und es wird versucht auch diese Herausforderung zu meistern. In der error.log Datei von Apache2 kommt folgende Meldung:
+<code>PHP Fatal error:  Uncaught Error: Call to undefined function getPageNames() in /var/www/html/cgi-bin/openFileMain.php:73\nStack trace:\n#0 /var/www/html/index.php(9): include()\n#1 {main}\n  thrown in /var/www/html/cgi-bin/openFileMain.php on line 73</code></p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>2h Server aufsetzen<br />
 10h DB-Archivierung Konzept<br />
