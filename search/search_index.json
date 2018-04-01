@@ -492,17 +492,17 @@
         },
         {
             "location": "/KW13/",
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\nResultat / Erkenntnisse\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand",
+            "text": "Wochenreport KW 13\n\n\nZiel dieser Woche\n\n\n\n\nMeilenstein Konzeptbesprechung\n\n\nErste versuche mit Swagger.io\n\n\n\n\nResultat / Erkenntnisse\n\n\nKonzeptbesprechung\n\n\nIm ersten Meilenstein Konzeptbesprechung, wurden die erstellten Konzepte diskutiert. Anhand der Feedbacks, konnten Anpassungen und das weitere Vorgehen geplant werden.\n\n\nDatenbank\n\n\nDie Datenbank wurde soweit als in Ordnung empfunden. Es bestehen jedoch einige Punkte die w\u00e4hrend der Umsetzung beachtet bzw. noch recherchiert werden m\u00fcssen:\n\n\n Zeitstempel soll so erstellt werden, damit dieser Weltweit verstanden wird bzw. verwendet werden kann\n\n\n Zeitumstellung muss richtig behandelt werden\n\n Die Zeiten im Script zum Einlesen der Werte sollte aus Bibliotheken stammen, damit diese auch immer stimmt (Stichwort Schaltjahr, Schaltsekunde, ...)\n\nDas JSON Konzeptfile welches in \nKW12\n erstellt wurde, ist mit folgenden Anpassungen aktzeptiert worden:\n\n\n interval von 1/minute in 60 als integer\n* Zus\u00e4tzlich zu interval ein Datenfeld mit intervalUnit \"minute\" um Klarheit zu schaffen in welcher Einheit der intervall ist\n\n\nJSON File\n\n\nF\u00fcr das Auslesen der Werte beim Benutzer und der Webseite wurde vorgeschlagen im minutentakt ein JSON File zu schreiben. Hier wurde uns empfohlen darauf zu verzichten, da die Chance besteht, dass w\u00e4hrend dem Schreiben auch ausgelesen wird. Somit k\u00f6nnte das File unlesbar werden. Auch der Sicherheitsaspekt und die Performance leidet nicht zu sehr bei der Verwendung der Datenbank. Deshalb wurde entschieden dieses wegzulassen.  \n\n\nErste Versuche Swagger.io\n\n\nUm die API zu erstellen wurde uns swagger.io empfohlen, hiermit wurden erste Versuche get\u00e4tigt. Dabei wurde entschieden dieses Tool nicht zu verwenden, da Hostpoint die Formate von Swagger.io nicht unterst\u00fctzt. Um ein geeignetes Tool zu finden bzw. zu entscheiden wie die API erstellt werden soll wird in der kommenden Woche weiterhin weiterrecherchiert und ausprobiert.\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand\n\n\n4.5h Erste Versuche Swagger.io\n\n6h HTW-Server aufsetzen\n\n2.5h Pegeldaten einlesen und speichern\n\n2h Meilensteinbesprechung Konzepte\n\n0.5h Wochenreport",
             "title": "KW13"
         },
         {
-            "location": "/KW13/#wochenreport-kw-08",
+            "location": "/KW13/#wochenreport-kw-13",
             "text": "",
-            "title": "Wochenreport KW 08"
+            "title": "Wochenreport KW 13"
         },
         {
             "location": "/KW13/#ziel-dieser-woche",
-            "text": "",
+            "text": "Meilenstein Konzeptbesprechung  Erste versuche mit Swagger.io",
             "title": "Ziel dieser Woche"
         },
         {
@@ -511,13 +511,33 @@
             "title": "Resultat / Erkenntnisse"
         },
         {
+            "location": "/KW13/#konzeptbesprechung",
+            "text": "Im ersten Meilenstein Konzeptbesprechung, wurden die erstellten Konzepte diskutiert. Anhand der Feedbacks, konnten Anpassungen und das weitere Vorgehen geplant werden.",
+            "title": "Konzeptbesprechung"
+        },
+        {
+            "location": "/KW13/#datenbank",
+            "text": "Die Datenbank wurde soweit als in Ordnung empfunden. Es bestehen jedoch einige Punkte die w\u00e4hrend der Umsetzung beachtet bzw. noch recherchiert werden m\u00fcssen:   Zeitstempel soll so erstellt werden, damit dieser Weltweit verstanden wird bzw. verwendet werden kann   Zeitumstellung muss richtig behandelt werden  Die Zeiten im Script zum Einlesen der Werte sollte aus Bibliotheken stammen, damit diese auch immer stimmt (Stichwort Schaltjahr, Schaltsekunde, ...) \nDas JSON Konzeptfile welches in  KW12  erstellt wurde, ist mit folgenden Anpassungen aktzeptiert worden:   interval von 1/minute in 60 als integer\n* Zus\u00e4tzlich zu interval ein Datenfeld mit intervalUnit \"minute\" um Klarheit zu schaffen in welcher Einheit der intervall ist",
+            "title": "Datenbank"
+        },
+        {
+            "location": "/KW13/#json-file",
+            "text": "F\u00fcr das Auslesen der Werte beim Benutzer und der Webseite wurde vorgeschlagen im minutentakt ein JSON File zu schreiben. Hier wurde uns empfohlen darauf zu verzichten, da die Chance besteht, dass w\u00e4hrend dem Schreiben auch ausgelesen wird. Somit k\u00f6nnte das File unlesbar werden. Auch der Sicherheitsaspekt und die Performance leidet nicht zu sehr bei der Verwendung der Datenbank. Deshalb wurde entschieden dieses wegzulassen.",
+            "title": "JSON File"
+        },
+        {
+            "location": "/KW13/#erste-versuche-swaggerio",
+            "text": "Um die API zu erstellen wurde uns swagger.io empfohlen, hiermit wurden erste Versuche get\u00e4tigt. Dabei wurde entschieden dieses Tool nicht zu verwenden, da Hostpoint die Formate von Swagger.io nicht unterst\u00fctzt. Um ein geeignetes Tool zu finden bzw. zu entscheiden wie die API erstellt werden soll wird in der kommenden Woche weiterhin weiterrecherchiert und ausprobiert.",
+            "title": "Erste Versuche Swagger.io"
+        },
+        {
             "location": "/KW13/#probleme-herausforderungen",
             "text": "",
             "title": "Probleme / Herausforderungen"
         },
         {
             "location": "/KW13/#journal-zeitaufwand",
-            "text": "",
+            "text": "4.5h Erste Versuche Swagger.io \n6h HTW-Server aufsetzen \n2.5h Pegeldaten einlesen und speichern \n2h Meilensteinbesprechung Konzepte \n0.5h Wochenreport",
             "title": "Journal / Zeitaufwand"
         },
         {
