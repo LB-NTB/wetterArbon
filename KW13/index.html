@@ -239,8 +239,8 @@
 <em> Zeitstempel soll so erstellt werden, damit dieser Weltweit verstanden wird bzw. verwendet werden kann<br />
 </em> Zeitumstellung muss richtig behandelt werden
 <em> Die Zeiten im Script zum Einlesen der Werte sollte aus Bibliotheken stammen, damit diese auch immer stimmt (Stichwort Schaltjahr, Schaltsekunde, ...)<br />
-Das JSON Konzeptfile welches in <a href="https://lb-ntb.github.io/wetterArbon/KW11/">KW12</a> erstellt wurde, ist mit folgenden Anpassungen aktzeptiert worden:<br />
-</em> interval von 1/minute in 60 als integer
+Das JSON Konzeptfile welches in <a href="https://lb-ntb.github.io/wetterArbon/KW11/">KW11</a> erstellt wurde, ist mit folgenden Anpassungen aktzeptiert worden:<br />
+</em> interval von 1/minute in 60 als integer<br />
 * Zusätzlich zu interval ein Datenfeld mit intervalUnit "minute" um Klarheit zu schaffen in welcher Einheit der intervall ist</p>
 <h4 id="json-file">JSON File</h4>
 <p>Für das Auslesen der Werte beim Benutzer und der Webseite wurde vorgeschlagen im minutentakt ein JSON File zu schreiben. Hier wurde uns empfohlen darauf zu verzichten, da die Chance besteht, dass während dem Schreiben auch ausgelesen wird. Somit könnte das File unlesbar werden. Auch der Sicherheitsaspekt und die Performance leidet nicht zu sehr bei der Verwendung der Datenbank. Deshalb wurde entschieden dieses wegzulassen.  </p>
