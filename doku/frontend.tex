@@ -3,19 +3,78 @@
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
 %% ###################################################################################################
-
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
 
 \subsubsection*{HTML5}
+Quelle: https://www.fusioncharts.com/javascript-charts-guide/
 
+
+1. Cross Browser Compatibility
+It is a pain to handle cross-browser compatibility issues, and we believe the library you choose should do it for you.
+Examples of libraries that work only on modern browsers: D3.JS, Chart.js and Chartist.js.
+Examples of libraries that work in all the browsers: FusionCharts, amCharts and Highcharts.
+
+2. Cross Device Compatibility
+but if you want to ensure a consistent experience across hand-held devices as well, the charting library you choose should be responsive.
+If you are making an application only for mobile, then you need to consider size of the library as well. This is because of lower processing power and browsing-speed issues in smartphones. A library with lower footprint is highly recommended in this case.
+
+3. Input Data Format
+Although JSON (JavaScript Object Notation) is gradually becoming the standard format especially when it comes to charting libraries. Most of the times you will have to load the data from a database like MySQL, Oracle or SQL Server. In this case you need to take into account the format which is acceptable to both your library and other parts of the application.
+
+4. Customizability
+This is one of the biggest decision factors for many. Is the charting library flexible enough so that you can make it do what you want, or will it just look good on defaults and you are on your own if you try to customize it?
+But with great customizability, comes great complexities. A good example of this is D3.js. It practically allows you to configure every element on the chart, but doing so is effort intensive. Then you have libraries like FusionCharts and Highcharts which strike a perfect balance between these two. Here you get a lot of freedom to customize your charts with minimum effort on your end.
+
+5. Range of Available Charts
+This one is a no brainer. Whatever visualization you want to create should be a part of the library. One useful advice here is that you should always consider your future needs as well and not just present ones. 
+
+
+6. Learning Curve
+No doubt D3.js is very powerful, but if you are running on a tight deadline or using a charting library for the first time, it is not recommended to use D3.js.
+
+7. Compatibility With Other Parts of Code OR Compatibility with Web-Frameworks
+Imagine you are comfortable using PHP, ASP.NET, AngularJS or jQuery and are not familiar with vanilla JavaScript very much. Wouldn’t it be great if you can build charts using framework specific plugins or wrappers?
+
+Some libraries have free plugins and wrappers that generate the required JavaScript and HTML code for you, which is then used to render charts on a web page.
+
+8. Performance
+If you have to plot fewer data points then most of the libraries will perform on a similar scale and you can neglect this factor. On the other hand if you have to render millions of data points, then performance becomes a major deciding factor as each fraction of second saved will have a huge impact in aggregate.
+
+9. Exporting
+It will be better that the charting library you choose supports export feature out of the box. Common export formats to look for are JPEG, PNG, PDF and SVG. There are two ways to export charts - client side and server side. Libraries like FusionCharts and Highcharts support both the ways of exporting. Only adding one line of code is enough to get this working. 
+
+10. Design and Interactivity
+Design is more than just look and feel of a chart. It should not only look good (themes, color scheme), but it should have meaningful interactivity (hovering, click-through drill downs, live data updates, etc). For example, clicking a legend icon in multi-series line chart should toggle the visibility of related data plot. Custom code should not be required for that. Themes: another important design feature is the ability to theme your charts to match the design language of the rest of your application. A centralized theme manager - one place to manage the theming of your charts - will make your job much easier.
+
+
+11. Community and Support
+So when you face a problem, you might need some external support to solve it. 
+
+12. Accessibility
+ does a charting library comply with 508 standards? Are screen readers like JAWS able to read the charts rendered by a library?
+
+ WEbseite: http://accessibility.psu.edu/images/charts/
+ jQuery Visualize: https://www.filamentgroup.com/lab/update-to-jquery-visualize-accessible-charts-with-html5-from-designing-with.html
+
+13. Pricing and Licensing Terms
+ Terms and pricing varies depending on factors like number of users, type of application (SaaS, intranet, web) and number of servers.
+
+14. Open Source or Commercial
+ Open-source is in fashion nowadays, but it’s not the right solution for every need.
+ https://www.codeproject.com/Articles/581146/8-reasons-to-choose-commercial-library-instead-of
+
+
+
+ D3 is an awesome javascript library, but it has no “ready to ship” charts and graphs.
 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
 %% ###################################################################################################
-
-
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
+
+
+
 
 \Diskussionspunkt{Samplerate, fixe Y-Achse, Barrierefreiheit}
 
@@ -23,7 +82,6 @@
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
 %% ###################################################################################################
-
 \subsection{Responsive Design / Mobile First}
 
 Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel \footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins A List Apart veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen musste. Marcotte schreibt von drei Faktoren, die ein responsive Design benötigt: Fluid grids, flexible images und media queries.
