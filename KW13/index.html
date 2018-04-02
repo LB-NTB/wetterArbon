@@ -230,21 +230,37 @@
 <ul>
 <li>HTW-Server aufsetzen</li>
 <li>Meilenstein Konzeptbesprechung</li>
+<li>Schnittstelle zu Pegelsensor</li>
+<li>HTML5-Grafik-Bibliotheken</li>
 <li>Erste versuche mit Swagger.io</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="konzeptbesprechung">Konzeptbesprechung</h3>
 <p>Im ersten Meilenstein Konzeptbesprechung, wurden die erstellten Konzepte diskutiert. Anhand der Feedbacks, konnten Anpassungen und das weitere Vorgehen geplant werden.</p>
 <h4 id="datenbank">Datenbank</h4>
-<p>Die Datenbank wurde soweit als in Ordnung empfunden. Es bestehen jedoch einige Punkte die während der Umsetzung beachtet bzw. noch recherchiert werden müssen:<br />
-<em> Zeitstempel soll so erstellt werden, damit dieser Weltweit verstanden wird bzw. verwendet werden kann<br />
-</em> Zeitumstellung muss richtig behandelt werden
-<em> Die Zeiten im Script zum Einlesen der Werte sollte aus Bibliotheken stammen, damit diese auch immer stimmt (Stichwort Schaltjahr, Schaltsekunde, ...)<br />
-Das JSON Konzeptfile welches in <a href="https://lb-ntb.github.io/wetterArbon/KW11/">KW11</a> erstellt wurde, ist mit folgenden Anpassungen aktzeptiert worden:<br />
-</em> interval von 1/minute in 60 als integer<br />
-* Zusätzlich zu interval ein Datenfeld mit intervalUnit "minute" um Klarheit zu schaffen in welcher Einheit der intervall ist</p>
+<p>Die Datenbank wurde soweit als in Ordnung empfunden. Es bestehen jedoch einige Punkte die während der Umsetzung beachtet bzw. noch recherchiert werden müssen:</p>
+<ul>
+<li>Zeitstempel soll so erstellt werden, damit dieser Weltweit verstanden wird bzw. verwendet werden kann  </li>
+<li>Zeitumstellung muss richtig behandelt werden</li>
+<li>Die Zeiten im Script zum Einlesen der Werte sollte aus Bibliotheken stammen, damit diese auch immer stimmt (Stichwort Schaltjahr, Schaltsekunde, ...)  </li>
+<li>Das JSON Konzeptfile welches in <a href="https://lb-ntb.github.io/wetterArbon/KW11/">KW11</a> erstellt wurde, ist mit folgenden Anpassungen aktzeptiert worden:<ul>
+<li>interval von 1/minute in 60 als integer  </li>
+<li>Zusätzlich zu interval ein Datenfeld mit intervalUnit "minute" um Klarheit zu schaffen in welcher Einheit der intervall ist</li>
+</ul>
+</li>
+</ul>
 <h4 id="json-file">JSON File</h4>
 <p>Für das Auslesen der Werte beim Benutzer und der Webseite wurde vorgeschlagen im minutentakt ein JSON File zu schreiben. Hier wurde uns empfohlen darauf zu verzichten, da die Chance besteht, dass während dem Schreiben auch ausgelesen wird. Somit könnte das File unlesbar werden. Auch der Sicherheitsaspekt und die Performance leidet nicht zu sehr bei der Verwendung der Datenbank. Deshalb wurde entschieden dieses wegzulassen.  </p>
+<h3 id="html5-grafiken">HTML5-Grafiken</h3>
+<p>Für die Darstellung der Wetterdaten und -verläufe sehen wir primär folgende Grafiktypen:</p>
+<ul>
+<li>Halbrunde Anzeigeelemente (Windgeschwindigkeit u.ä.)</li>
+<li>Lineare Anzeigeelemente (Thermometer u.ä.)</li>
+<li>Lineare Graphen (Verläufe)</li>
+</ul>
+<p>Wir haben uns verschieden JS-Bibliotheken zum Erstellen von Grafiken angeschaut. Eines der Hauptkriterien war, dass die Dateigrösse minimal ist, und dass die Grafiken im Format svg vorliegen. Eine sehr simple und extrem kleine Grafik-Bibliothek ist <a href="https://gionkunz.github.io/chartist-js/index.html">CHARTIST.JS</a>. Sie bietet nach den ersten Versuchen alles, was wir benötigen. Die Anpassbarkeit ist zwar einschränkt, trotzdem wagen wir den Versuch die Darstellung der Wetterdaten mit dieser Bibliothek umzusetzen. Einfache svg-Grafiken wie z.B. das Thermometer erstellen wir selbst.</p>
+<h3 id="pegel-und-wassertemperaturdaten-einlesen">Pegel- und Wassertemperaturdaten einlesen</h3>
+<p>Wir haben uns mit dem Informatiker der IG getroffen und die Funktionsweise und Schnittstelle der Datenübermittlung angeschaut. Da der Pegelsensor noch in Bestellung ist, haben wir den Analog/Ethernet-Wandler mitgenommen um erste Tests am Land durchführen zu können.</p>
 <h3 id="erste-versuche-swaggerio">Erste Versuche Swagger.io</h3>
 <p>Um die API zu erstellen wurde uns swagger.io empfohlen, hiermit wurden erste Versuche getätigt. Dabei wurde entschieden dieses Tool nicht zu verwenden, da Hostpoint die Formate von Swagger.io nicht unterstützt. Um ein geeignetes Tool zu finden bzw. zu entscheiden wie die API erstellt werden soll wird in der kommenden Woche weiterhin weiterrecherchiert und ausprobiert.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
@@ -252,10 +268,12 @@ Das JSON Konzeptfile welches in <a href="https://lb-ntb.github.io/wetterArbon/KW
 <p>Beim aufsetzen des HTW-Servers tauchten einige Probleme auf. Dies vorallem im Bezug auf eine Kopie der laufenden Webseite. Um nicht mehr Zeit darin zu investieren wurde entschieden das Angebot für eine Kopie von Screenbox anzunehmen, welches uns diese Woche gemacht wurde. Somit kann darauf getestet werden und die wetter-arbon.ch kann normal weiterlaufen. </p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>4.5h Erste Versuche Swagger.io<br />
-6h HTW-Server aufsetzen<br />
-2.5h Pegeldaten einlesen und speichern<br />
-2h Meilensteinbesprechung Konzepte<br />
-0.5h Wochenreport</p></div>
+5h HTW-Server aufsetzen<br />
+5h HTML5-Grafikbibliotheken evaluieren<br />
+5h Pegeldaten einlesen<br />
+6h Präsentation erstellen <br />
+4h Meilensteinbesprechung Konzepte<br />
+1h Wochenreport</p></div>
         </div>
 
         <footer class="col-md-12">
