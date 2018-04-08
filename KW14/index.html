@@ -217,96 +217,43 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#wochenreport-kw-14">Wochenreport KW 14</a></li>
-        <li class="main "><a href="#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
             <li><a href="#journal-zeitaufwand">Journal / Zeitaufwand</a></li>
-            <li><a href="#journal-zeitaufwand_1">Journal / Zeitaufwand</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="wochenreport-kw-14">Wochenreport KW 14</h1>
-<h1 id="head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h1>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>47c73f68ec4a73d32be140c93a2b8641680793e4</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
 <ul>
 <li>Datenbankstruktur programmieren</li>
 <li>CSS-Framework evaluieren</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <h3 id="datenbankstruktur-programmieren">Datenbankstruktur programmieren</h3>
 <p>Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enthält wurde in der neuen Datenbank namens igwetter_data nur die Spalten übernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch (anzahl noch angeben) übrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enthält:</p>
-<p>=======
-Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enthält wurde in der neuen Datenbank namens igwetter_data nur die Spalten übernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch 28 übrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enthält:</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>47c73f68ec4a73d32be140c93a2b8641680793e4
-<em> datumzeit
-</em> level (Pegelhöhe)
-<em> watersurfacetemperature
-</em> underwatertemperature</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enthält wurde in der neuen Datenbank namens igwetter_data nur die Spalten übernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch 28 übrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enthält:</p>
+<ul>
+<li>datumzeit</li>
+<li>level (Pegelhöhe)</li>
+<li>watersurfacetemperature</li>
+<li>underwatertemperature</li>
+</ul>
 <p>Die Daten in diesen Spalten wurde aus der alten Tabelle tblwellen entnommen.</p>
 <h3 id="css-framework-evaluieren">CSS-Framework evaluieren</h3>
 <p>Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung des GUI haben wir uns deshalb entschlossen ein CSS-Framework zu benutzen. Dieses soll möglichst intuitiv zu bedienen sein, eine ausführliche Dokumentation aufweisen und eine geringe Dateigrösse haben. Wir sind dabei auf <a href="https://www.w3schools.com/w3css/">w3.css</a> gestossen, welches unsere Anforderung recht gut abdeckt.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h3 id="datenbankstruktur-programmieren_1">Datenbankstruktur programmieren</h3>
-<p>Um die Daten mit einem Einheitlichen Zeitstempel zu versehen wurde versucht diesen vor dem Import zu ändern. Leider ist hat die nicht funktioniert. Dies sollte aber kein Problem sein, da die für die Daten ein einzelnes Skript geschrieben werden muss und es mittels einer SELECT abfrage möglich ist die Sekunden auf null bzw. nicht anzuzeigen. In der kommenden Woche wird jedoch nochmals versucht dies zu ändern, damit auch diese Tabelle am Schluss einheitlich ist.
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>Um die Daten mit einem Einheitlichen Zeitstempel zu versehen wurde versucht diesen vor dem Import zu ändern. Leider ist hat die nicht funktioniert. Dies sollte aber kein Problem sein, da die für die Daten ein einzelnes Skript geschrieben werden muss und es mittels einer SELECT abfrage möglich ist die Sekunden auf null bzw. nicht anzuzeigen. In der kommenden Woche wird jedoch nochmals versucht dies zu ändern, damit auch diese Tabelle am Schluss einheitlich ist.</p>
 <h3 id="zweispaltige-ansicht-auf-mobilgeraten-nur-bedingt-moglich">Zweispaltige Ansicht auf Mobilgeräten nur bedingt möglich</h3>
 <p>Wie weiter oben erwähnt haben wir uns aus verschiedenen Gründen für das CSS-Framework <em>w3.css</em> entschieden. Dieses bietet eine breite Unterstützung für responsive Design. Eine Folge davon ist, dass Container auf die Gesamtbreite des Displays skaliert werden, wenn die Displaygrösse weniger als 600px  beträgt. Eine Umsetzung des zweispaltigen Layouts für Mobilgeräte, wie wir es an der Konezptbesprechung vorgestellt haben, ist somit nur mit Zusatzaufwand möglich.</p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
-<p>6h Datenbankstruktur programmieren<br />
+<p>9h Datenbankstruktur programmieren<br />
 9h CSS-Framework evaluieren<br />
 3h Einarbeitung ins Thema svg-Grafiken<br />
-1h Wochenreport
-=======</p>
-<h2 id="journal-zeitaufwand_1">Journal / Zeitaufwand</h2>
-<p>9h Datenbankstruktur programmieren<br />
-0.5 h Wochenreport</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>47c73f68ec4a73d32be140c93a2b8641680793e4</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote></div>
+1h Wochenreport</p></div>
         </div>
 
         <footer class="col-md-12">
