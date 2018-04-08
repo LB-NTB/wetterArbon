@@ -232,7 +232,7 @@
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="datenbankstruktur-programmieren">Datenbankstruktur programmieren</h3>
-<p>Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enthält wurde in der neuen Datenbank namens igwetter_data nur die Spalten übernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch (anzahl noch angeben) übrig sind. Neu ist auch der Name der Tabell, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enthält:
+<p>Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enthält wurde in der neuen Datenbank namens igwetter_data nur die Spalten übernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch (anzahl noch angeben) übrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enthält:
 <em> datumzeit
 </em> level (Pegelhöhe)
 <em> watersurfacetemperature
@@ -240,7 +240,7 @@
 Die Daten in diesen Spalten wurde aus der alten Tabelle tblwellen entnommen.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h3 id="datenbankstruktur-programmieren_1">Datenbankstruktur programmieren</h3>
-<p>Um die Daten mit einem Einheitlichen Zeitstempel zu versehen wurde versucht diesen vor dem Import zu ändern. Leider ist hat die nicht funktioniert. Dies sollte aber kein Problem sein, da die für die Daten ein einzelnes Skript geschrieben werden muss und es mittels einer SELECT abfrage möglich ist die Sekunden auf null bzw. nicht anzuzeigen.</p>
+<p>Um die Daten mit einem Einheitlichen Zeitstempel zu versehen wurde versucht diesen vor dem Import zu ändern. Leider ist hat die nicht funktioniert. Dies sollte aber kein Problem sein, da die für die Daten ein einzelnes Skript geschrieben werden muss und es mittels einer SELECT abfrage möglich ist die Sekunden auf null bzw. nicht anzuzeigen. In der kommenden Woche wird jedoch nochmals versucht dies zu ändern, damit auch diese Tabelle am Schluss einheitlich ist. </p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>6h Datenbankstruktur programmieren<br />
 0.5 h Wochenreport</p></div>
