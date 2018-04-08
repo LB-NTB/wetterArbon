@@ -557,13 +557,13 @@
         },
         {
             "location": "/KW14/",
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\n\n\nDatenbankstruktur programmieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nDatenbankstruktur programmieren\n\n\nWie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enth\u00e4lt wurde in der neuen Datenbank namens igwetter_data nur die Spalten \u00fcbernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch (anzahl noch angeben) \u00fcbrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enth\u00e4lt:\n\n datumzeit\n\n level (Pegelh\u00f6he)\n\n watersurfacetemperature\n\n underwatertemperature\nDie Daten in diesen Spalten wurde aus der alten Tabelle tblwellen entnommen.\n\n\nProbleme / Herausforderungen\n\n\nDatenbankstruktur programmieren\n\n\nUm die Daten mit einem Einheitlichen Zeitstempel zu versehen wurde versucht diesen vor dem Import zu \u00e4ndern. Leider ist hat die nicht funktioniert. Dies sollte aber kein Problem sein, da die f\u00fcr die Daten ein einzelnes Skript geschrieben werden muss und es mittels einer SELECT abfrage m\u00f6glich ist die Sekunden auf null bzw. nicht anzuzeigen. In der kommenden Woche wird jedoch nochmals versucht dies zu \u00e4ndern, damit auch diese Tabelle am Schluss einheitlich ist. \n\n\nJournal / Zeitaufwand\n\n\n6h Datenbankstruktur programmieren\n\n0.5 h Wochenreport",
+            "text": "Wochenreport KW 14\n\n\nZiel dieser Woche\n\n\n\n\nDatenbankstruktur programmieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nDatenbankstruktur programmieren\n\n\nWie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enth\u00e4lt wurde in der neuen Datenbank namens igwetter_data nur die Spalten \u00fcbernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch 28 \u00fcbrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enth\u00e4lt:\n\n datumzeit\n\n level (Pegelh\u00f6he)\n\n watersurfacetemperature\n\n underwatertemperature\nDie Daten in diesen Spalten wurde aus der alten Tabelle tblwellen entnommen.\n\n\nProbleme / Herausforderungen\n\n\nDatenbankstruktur programmieren\n\n\nUm die Daten mit einem Einheitlichen Zeitstempel zu versehen wurde versucht diesen vor dem Import zu \u00e4ndern. Leider ist hat die nicht funktioniert. Dies sollte aber kein Problem sein, da die f\u00fcr die Daten ein einzelnes Skript geschrieben werden muss und es mittels einer SELECT abfrage m\u00f6glich ist die Sekunden auf null bzw. nicht anzuzeigen. In der kommenden Woche wird jedoch nochmals versucht dies zu \u00e4ndern, damit auch diese Tabelle am Schluss einheitlich ist.\n\n\nJournal / Zeitaufwand\n\n\n9h Datenbankstruktur programmieren\n\n0.5 h Wochenreport",
             "title": "KW14"
         },
         {
-            "location": "/KW14/#wochenreport-kw-08",
+            "location": "/KW14/#wochenreport-kw-14",
             "text": "",
-            "title": "Wochenreport KW 08"
+            "title": "Wochenreport KW 14"
         },
         {
             "location": "/KW14/#ziel-dieser-woche",
@@ -577,7 +577,7 @@
         },
         {
             "location": "/KW14/#datenbankstruktur-programmieren",
-            "text": "Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enth\u00e4lt wurde in der neuen Datenbank namens igwetter_data nur die Spalten \u00fcbernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch (anzahl noch angeben) \u00fcbrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enth\u00e4lt:  datumzeit  level (Pegelh\u00f6he)  watersurfacetemperature  underwatertemperature\nDie Daten in diesen Spalten wurde aus der alten Tabelle tblwellen entnommen.",
+            "text": "Wie im Konzeptmeeting besprochen, wurde die Datenbank so programmiert. Aus der Tabelle wx_data, welche die aktuellen Wetterdaten aus dem Weather-Display enth\u00e4lt wurde in der neuen Datenbank namens igwetter_data nur die Spalten \u00fcbernommen, welche dynamisch sind. Daraus erfolgt das aus 64 Spalten nur noch 28 \u00fcbrig sind. Neu ist auch der Name der Tabelle, tblwettertransmitter. Zudem wurde eine Tabelle namens tblextsenors erstellt, welche folgende Spalten enth\u00e4lt:  datumzeit  level (Pegelh\u00f6he)  watersurfacetemperature  underwatertemperature\nDie Daten in diesen Spalten wurde aus der alten Tabelle tblwellen entnommen.",
             "title": "Datenbankstruktur programmieren"
         },
         {
@@ -592,7 +592,7 @@
         },
         {
             "location": "/KW14/#journal-zeitaufwand",
-            "text": "6h Datenbankstruktur programmieren \n0.5 h Wochenreport",
+            "text": "9h Datenbankstruktur programmieren \n0.5 h Wochenreport",
             "title": "Journal / Zeitaufwand"
         },
         {
