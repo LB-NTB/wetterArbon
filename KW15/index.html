@@ -228,23 +228,27 @@
 <h1 id="wochenreport-kw-15">Wochenreport KW 15</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
 <ul>
-<li>API Programmierung Output</li>
-<li>DB Strukturprogrammierung</li>
+<li>API-Programmierung Output</li>
+<li>DB-Strukturprogrammierung</li>
 <li>DB mit historischen Daten erstellen</li>
-<li>HTML 5 Grafiken programmieren</li>
+<li>HTML5 Grafiken programmieren</li>
+<li>Entwurf für die Darstellung der historischen Daten</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="api-programmierung">API Programmierung</h3>
 <p>Die API ist soweit wie möglich fertig programmiert. Die einzelnen JSON-Objekte können aufgerufen werden. Im momentanen Zustand werden die Werte vom 31.03.2018 angezeigt. Dies ändert sich sobald die Werte des Wettertransmitters sowie des Pegelsensors aktualisiert werden.
-Beispiele für die API:
-<a href="https://api.wetter-arbon.ch/version3/sensors/">/sensors</a><br />
-<a href="https://api.wetter-arbon.ch/version3/sensors/airtemperature/">/airtemperature</a><br />
-<a href="https://api.wetter-arbon.ch/version3/sensors/airtemperature/">/airtemperature</a><br />
-<a href="https://api.wetter-arbon.ch/version3/sensors/humidity">/humidity</a></p>
-<p>Es gibt noch folgende Details die nicht nach Wunsch sind oder noch erledigt werden müssen:<br />
-<em> Bei der Gesamtübersicht /sensors ist stimmt das erstellte JSON nicht
-</em> Die URL müssen noch so umgestellt werden, dass diese mit und ohne / am Ende aufgerufen werden können
-* Die Dokumentation der API muss noch erstellt werden</p>
+Beispiele für die API:</p>
+<ul>
+<li><a href="https://api.wetter-arbon.ch/version3/sensors/">/sensors</a>    </li>
+<li><a href="https://api.wetter-arbon.ch/version3/sensors/airtemperature/">/airtemperature</a></li>
+<li><a href="https://api.wetter-arbon.ch/version3/sensors/humidity">/humidity</a></li>
+</ul>
+<p>Es gibt noch folgende Details die nicht nach Wunsch sind oder noch erledigt werden müssen: </p>
+<ul>
+<li>Bei der Gesamtübersicht /sensors stimmt das erstellte JSON nicht</li>
+<li>Die URL müssen noch so umgestellt werden, dass diese mit und ohne / am Ende aufgerufen werden können</li>
+<li>Die Dokumentation der API muss noch erstellt werden</li>
+</ul>
 <p>Die aufgezählten Schritte behindern die Weiterentwicklung der weiteren Aufgaben nicht.</p>
 <h3 id="db-strukturprogrammierung-db-mit-historischen-daten-erstellen">DB Strukturprogrammierung / DB mit historischen Daten erstellen</h3>
 <p>Es wurde versucht die Tabelle datemaster zu importieren. Hierbei gab es jedoch Schwierigkeiten, siehe Probleme. Es wurde Recherchiert wie der Median erstellt werden kann mittels einer SQL Abfrage. Hierbei ist die Funktion MEDIAN() aufgetaucht, leider wird diese erst ab MariaDB 10.3 unterstützt. Hostpoint bietet jedoch nur die Version 10.1 an. Auch eine Anfrage bei Hostpoint um die Software auf den neusten Stand zu bringen war leider erfolglos. Hostpoint hat den Vorschlag gemacht den Median in einem PHP-Skript zu berechnen. Eine weitere Möglichkeit wäre jedoch auch die erstellung der Mittelwertes mit der Funktion AVG() welche unterstützt wird. Diese beiden Punkte müssen noch evaluiert werden.</p>
@@ -252,16 +256,24 @@ Beispiele für die API:
 <p>Die Graphen, sowie die Gauges für die Darstellung der Wetterdaten sind für die Konzeptbesprechnung mit dem IG programmiert.<br />
 <a href="https://wetter-arbon.ch/Test">Neue Wetterseite</a></p>
 <h3 id="graphen">Graphen</h3>
-<p>Die Graphen sind im jetzigen Zustand so programmiert das Sie fixe Achsen besitzen. Betrachtet man bspw. Den Luftdruck, kann dies in dieser Konfiguration so fehl intepretiert werden das es keine Änderung gab. Somit sollte diese Achse automatisch skaliert werden. Beim Regengraph ist die Anordnung der Labels noch nicht korrekt, dies wird sowie die restlichen Graphen noch angepasst nach der Konzeptbesprechung. Der Graph mit der Windgeschwindigkeit kann soweit beibehalten werden. Der letzte Graph, die Windrichtung, ist soweit auch in Ordnung. Hier sollte der Punkt noch durch einen Pfeil sowie die skalierung in der Y-Achse auf 360 Grad begrentzt werden.<br />
+<p>Die Graphen sind im jetzigen Zustand so programmiert, dass sie fixe Achsen besitzen. Betrachtet man bspw. den Luftdruck, kann dies in dieser Konfiguration so fehl intepretiert werden, dass es keine Änderung gab. Somit sollte diese Achse automatisch skaliert werden. Beim Regengraph ist die Anordnung der Labels noch nicht korrekt, dies wird sowie die restlichen Graphen noch angepasst nach der Konzeptbesprechung. Der Graph mit der Windgeschwindigkeit kann soweit beibehalten werden. Der letzte Graph, die Windrichtung, ist soweit auch in Ordnung. Hier sollte der Punkt noch durch einen Pfeil sowie die skalierung in der Y-Achse auf 360 Grad begrentzt werden.<br />
 Die gesamten Graphen beziehen sich jetzt auf die neu aufgestellte Datenbank. Die Daten sind jedoch noch nicht aus der historischen Tabelle, da diese noch nicht besteht.</p>
+<h3 id="entwurf-fur-die-darstellung-der-historischen-daten">Entwurf für die Darstellung der historischen Daten</h3>
+<p>Die Daten der ursprünglichen Wetterstation stellten sich als wenig brauchbar heraus (Datenlücken, unrealistische Skalierung), sodass wir uns auf die mit der neuen Wetterstation gesammelten Daten konzentriert haben. Die Darstellung der Messwerte über Zeit schien uns nicht sehr aussagekräftig. Wir haben uns deshalb auf die Korrelationen und die Häufigkeiten der Messdaten konzentriert. Ein erster Entwurf des interaktiven Dashboards findet sich unter:</p>
+<p><a href="https://public.tableau.com/profile/ladina#!/vizhome/Wetterstation/Dashboard">Historische Daten</a></p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h3 id="db-strukturprogrammierung">DB Strukturprogrammierung</h3>
 <p>Die Tabelle datemaster, welche zusammen mit einem Experten in KW 12 erstellt wurde, konnte nicht importiert werden. Die Vermutung ist, dass die Datei mit 1.5 GB zu gross ist.</p>
+<h3 id="fehlerhafte-darstellung-der-anzeigeelemente-in-mobile-browsern-und-safari">Fehlerhafte Darstellung der Anzeigeelemente in Mobile-Browsern und Safari</h3>
+<p>Für die Darstellung der aktuellen Daten verwenden wir das Javascirpt-Framework <em>justgage.js</em>. Sowohl lokal als auch direkt auf dem Hostpoint-Server werden die Anzeigelemente korrekt angezeigt. Sobald wir die Anzeigelemente aber in die CMS-php-Seite integrieren, werden die Anzeigelemente nicht mehr korrekt angezeigt (siehe Foto). Dies tritt aber nur beim Safari-Browser und bei allen Mobile-Browsern auf. Zur Zeit wissen wir nicht was die Ursache ist.</p>
+<p><img alt="Screenshot" src="../img/gaugesfault.png" />
+<em>Abb.: Fehlerhafte Anzeige</em></p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
-<p>13.5h API Programmierung Output<br />
-3h DB Strukturprogrammierung<br />
-24h HTML 5 Grafiken programmieren<br />
-1h Wochenreport</p></div>
+<p>19h API Programmierung Output<br />
+40h HTML5 Grafiken programmieren inkl. Fehlersuche <br />
+6h DB Strukturprogrammierung<br />
+8h Konzept und Entwurf Auswerteseite<br />
+2h Wochenreport</p></div>
         </div>
 
         <footer class="col-md-12">
