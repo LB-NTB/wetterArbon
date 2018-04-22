@@ -672,17 +672,17 @@
         }, 
         {
             "location": "/KW16/", 
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\nResultat / Erkenntnisse\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand", 
+            "text": "Wochenreport KW 16\n\n\nZiel dieser Woche\n\n\n\n\nMeilenstein: Vorstellung Prototyp der Webseite\n\n\nBesprechung mit Screenbox\n\n\nSubdomain in Betrieb nehmen\n\n\nWettervorhersagedienste recherchieren\n\n\n\n\nResultat / Erkenntnisse\n\n\nVorstellung Prototyp\n\n\nDer Prototyp der Webseite und der API wurde der IG Wetterstation pr\u00e4sentiert. Die R\u00fcckmeldungen waren durchwegs positiv. \n\n\nBesprechung mit Screenbox\n\n\nDas CMS erlaubt nur in einem kleinen Bereich eigene \"Applikationen\" anzuzeigen. Wir haben uns deshalb mit Screenbox getroffen um m\u00f6gliche Alternativen zu besprechen. Der Programmierer von Screenbox war sehr zuvorkommend und so haben wir nun die gesamte Content-Breite f\u00fcr unseren Inhalt zur Verf\u00fcgung. Damit wir nicht am Live-System arbeiten m\u00fcssen hat uns Screenbox zudem eine Subdomain erstellt:\n\n\ndev.wetter-arbon.ch\n\n\nRecherche Wettervorhersagedienste\n\n\nNach ersten Abkl\u00e4rungen bietet kein (bei Seglern beliebter) Windvorhersagedienst eine API an. Wir werden die Recherche kommende Woche fortsetzen und dann entscheiden ob wir einen \"seglerfremden\" Vorhersagedienst mit API verwenden, oder ob wir die Daten der einschl\u00e4gigen Vorhersagedienste anderweitig abgreifen.\n\n\nProbleme / Herausforderungen\n\n\nDas Problem mit der fehlerhaften Darstellung der Anzeigelemente konnte gel\u00f6st werden. Ein Filter, der vom Framework benutzt wurde war die Ursache. Dieser konnte einfach Deaktiviert werden. Die Wetterseite wird nun auf allen Desktop- und Mobile-Browsern korrekt angezeigt.\n\n\nJournal / Zeitaufwand\n\n\n2.5h Vorbereitung und Pr\u00e4sentation IG Wetterstation\n\n1h Besprechung mit Screenbox\n\n1h Subdomain in Betrieb nehmen\n\n4.5h Recherche Windvorhersage", 
             "title": "KW16"
         }, 
         {
-            "location": "/KW16/#wochenreport-kw-08", 
+            "location": "/KW16/#wochenreport-kw-16", 
             "text": "", 
-            "title": "Wochenreport KW 08"
+            "title": "Wochenreport KW 16"
         }, 
         {
             "location": "/KW16/#ziel-dieser-woche", 
-            "text": "", 
+            "text": "Meilenstein: Vorstellung Prototyp der Webseite  Besprechung mit Screenbox  Subdomain in Betrieb nehmen  Wettervorhersagedienste recherchieren", 
             "title": "Ziel dieser Woche"
         }, 
         {
@@ -691,13 +691,28 @@
             "title": "Resultat / Erkenntnisse"
         }, 
         {
+            "location": "/KW16/#vorstellung-prototyp", 
+            "text": "Der Prototyp der Webseite und der API wurde der IG Wetterstation pr\u00e4sentiert. Die R\u00fcckmeldungen waren durchwegs positiv.", 
+            "title": "Vorstellung Prototyp"
+        }, 
+        {
+            "location": "/KW16/#besprechung-mit-screenbox", 
+            "text": "Das CMS erlaubt nur in einem kleinen Bereich eigene \"Applikationen\" anzuzeigen. Wir haben uns deshalb mit Screenbox getroffen um m\u00f6gliche Alternativen zu besprechen. Der Programmierer von Screenbox war sehr zuvorkommend und so haben wir nun die gesamte Content-Breite f\u00fcr unseren Inhalt zur Verf\u00fcgung. Damit wir nicht am Live-System arbeiten m\u00fcssen hat uns Screenbox zudem eine Subdomain erstellt:  dev.wetter-arbon.ch", 
+            "title": "Besprechung mit Screenbox"
+        }, 
+        {
+            "location": "/KW16/#recherche-wettervorhersagedienste", 
+            "text": "Nach ersten Abkl\u00e4rungen bietet kein (bei Seglern beliebter) Windvorhersagedienst eine API an. Wir werden die Recherche kommende Woche fortsetzen und dann entscheiden ob wir einen \"seglerfremden\" Vorhersagedienst mit API verwenden, oder ob wir die Daten der einschl\u00e4gigen Vorhersagedienste anderweitig abgreifen.", 
+            "title": "Recherche Wettervorhersagedienste"
+        }, 
+        {
             "location": "/KW16/#probleme-herausforderungen", 
-            "text": "", 
+            "text": "Das Problem mit der fehlerhaften Darstellung der Anzeigelemente konnte gel\u00f6st werden. Ein Filter, der vom Framework benutzt wurde war die Ursache. Dieser konnte einfach Deaktiviert werden. Die Wetterseite wird nun auf allen Desktop- und Mobile-Browsern korrekt angezeigt.", 
             "title": "Probleme / Herausforderungen"
         }, 
         {
             "location": "/KW16/#journal-zeitaufwand", 
-            "text": "", 
+            "text": "2.5h Vorbereitung und Pr\u00e4sentation IG Wetterstation \n1h Besprechung mit Screenbox \n1h Subdomain in Betrieb nehmen \n4.5h Recherche Windvorhersage", 
             "title": "Journal / Zeitaufwand"
         }, 
         {
