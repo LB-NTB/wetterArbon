@@ -234,10 +234,11 @@
 <li>Testen des neuen Pegelsensors</li>
 <li>Testen des Pegel-Interfaces</li>
 <li>Wassertemperaturdaten einlesen uns speichern</li>
+<li>Wetterdaten in neue Datenbank Schreiben</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
 <h3 id="db-mit-historischen-datenstundendaten-erstellen">DB mit historischen Daten/Stundendaten erstellen</h3>
-<p>Das Problem aus der <a href="">KW16</a> ist gelöst. Es war ein Programmierfehler, welcher behoben werden konnte. Die Daten werden jetzt in die neue Datenbank geschrieben. Da dies grosse Menge an Daten sind dauert dies seine Zeit.</p>
+<p>Das Problem aus der <a href="https://lb-ntb.github.io/wetterArbon/KW16/">KW16</a> ist gelöst. Es war ein Programmierfehler, welcher behoben werden konnte. Die Daten werden jetzt in die neue Datenbank geschrieben. Da dies grosse Menge an Daten sind dauert dies seine Zeit.</p>
 <h3 id="auswahl-der-wettervorhersagedienste">Auswahl der Wettervorhersagedienste</h3>
 <p>Für die Windvorhersage haben wir zwei Anbieter ausgewählt:</p>
 <ul>
@@ -249,16 +250,31 @@
 <p>Die Dokumentation der API ist <a href="http://api.wetter-arbon.ch/">hier</a> einsehbar. Wir haben uns für Postman entschieden um eine Dokumentation zu erstellen. Dies aufgrund der Einfachheit, es können auch zu einem späteren Zeitpunkt noch Änderungen vorgenommen werden. Die Dokumentationsseite liegt jedoch nicht auf dem Server von Hostpoint selber, diese wird von Postman gehostet.</p>
 <h3 id="ausmessen-des-neuen-pegelsensors">Ausmessen des neuen Pegelsensors</h3>
 <p>Der neue Pegelsensor ist einsatzbereit. Erste Tests an Land sind erfolgreich verlaufen. Sobald der Strahlungsmesser eingetroffen ist, können beide Sensoren montiert werden.</p>
+<h3 id="script-einlesen-des-pegels">Script einlesen des Pegels</h3>
+<p>Um die Daten auszulesen wurde ein Pythonskript erstellt. Dieses greift per HTTP GET Anfrage die Werte des Pegelsensors ab. Das Skript für den Pegel kann jedoch erst fertig konfiguriert werden, wenn der neue Pegelsensor montiert ist.</p>
 <h3 id="script-einlesen-des-pegels-und-der-wassertemperaturdaten">Script einlesen des Pegels und der Wassertemperaturdaten</h3>
 <p>Es wurde ein Skript erstellt, welches per HTTP GET die Wassertemperatur-Werte der PT100 abholt und in die Datenbank speichert. Ziel ist ehrauszufinden, ob der defekte Messwiderstand einen konstanten Offset aufweist.</p>
+<h3 id="wetterdaten-in-neue-datenbank-schreiben">Wetterdaten in neue Datenbank Schreiben</h3>
+<p>Die Wetterdaten wurden bis letzte Woche in die alte Datenbank geschrieben.Dies wurde am letzen Mittwoch geändert, dass die API auch aktuelle Werte liefern kann und die Datenbankabfrage angepasst werden kann. Leider ist hier ein Problem aufgetauch, welches im Abschnitt Probleme behandelt wird.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h3 id="auslesen-der-windvorhersagewerte">Auslesen der Windvorhersagewerte</h3>
 <p>Wie oben beschrieben müssen wir die Vorhersagedaten von Windfinder aus der Webseite extrahieren. Lokal funktioniert die Abfrage. Auf dem Hostpoint-Server haben wir aber die Berechtigung nicht um BeautifulSoup zu installieren. Lösungsvorschläge sind erwünscht.</p>
+<h3 id="wetterdaten-in-neue-datenbank-schreiben_1">Wetterdaten in neue Datenbank schreiben</h3>
+<p>Der Wechsel auf die neue Datenbank hat nicht ganz reibungslos abgelaufen. Die Daten wurden ab Mittwochabend nicht mehr geschrieben. Das Problem konnte jedoch am Donnerstag behoben werden, nach eine Neustart des Servers. Die Software verträgt laut dem Informatiker der IG solche Umstellungen nicht immer, nach einem Neustart sollte jedoch alles wieder funktionieren.</p>
+<h3 id="api">API</h3>
+<p>Die Dokumentationsseite wird per Weiterleitung aufgerufen. Jedoch ist hier ein Fehler in der Umleitung, sodass auch von der /sensors Seite auf die Dokumentation weitergeleitet wird. Dies sollte nächste Woche aber behoben sein. Weiter besteht noch die Herausforderung die Datenbankabfrage so zu gestalten, dass die aktuellen Daten immer angezeigt werden. Das Problem im Moment an einem Beispiel:<br />
+Ist die Zeit bspw. 15:45:15 Uhr, funktioniert die Datenbankabfrage nicht.<br />
+Ist es jedoch 15:45:32 Uhr oder später funktioniert die Abfrage.<br />
+Die Schwierigkeit liegt bei den Sekunden sodass im Moment die Datenbankabfrage nichti immer greift. Dies
+sollte nächste Woche jedoch erledigt sein.</p>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>4h Interface für Pegel und Strahlungsmesser testen<br />
 3h Konzept erstellen für Vorhersagedaten<br />
 10h Vorhersagedaten einlesen<br />
-0.5h Wochenreport<br />
+6.5h DB mit historischen Daten erstellen
+7h Skript erstellen für Pegel und Temperaturesensor
+5h API Programmierung input / Webseite mit Dokumentation<br />
+1h Wochenreport<br />
 0.5h Ausmessen neuer Pegelsensor</p></div>
         </div>
 
