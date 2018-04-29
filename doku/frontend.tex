@@ -209,15 +209,37 @@ Die voreingestellte menschliche Sprache jeder Webseite kann programmgesteuert be
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
 %% ###################################################################################################
-
 \subsection{Vergleich Prognose/Ist Windgeschwindigkeit}
+
+Die Messdaten der Wetterstation werden mit zwei Vorhersagediensten verglichen. Dabei wird jeweils die Eintages-Vorschau und die Dreitagesvorschau betrachtet.
+Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen wir die Vorhersagedaten abgreifen und in unsere Datenbank speichern. Die Vorhersagen haben häufig einen Intervall von drei Stunden. Wir erstellen somit ein Skript, welche alle drei Stunden die Daten abfragt und speichert.
+
+Die Darstellung von Vorhersage und Messresultaten erfolgt in einem Graphen, der den heutigen Tag, links davon die letzten 14 Tage und rechts davon die nächsten drei Tage anzeigt. Pro Anbieter und Prognoseart (1Tag bzw. 3 Tage) wird ein eigener Graph erstellt.
+
+Diese Vergleiche werden aus reinem Interesse der IG erstellt und stellen keinen Service der IG dar. Die Wetterstation ist zudem windtechnisch eher an einem ungünstigen Ort platziert (Bucht), sodass die Messwerte nicht für den ganzen See representativ sind.
+Aus diesen Gründen wird die Webseite zwar veröffentlicht, aber kein Link dazu auf der Webseite zur Verfügung gestellt.
+
+Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API an. Dies Daten müssen somit aus der Windfinder-Webseite extrahiert werden.
+
+Für die Darstellung der aktuellen Windgeschwindigkeit verwenden wir den Mittelwert der drei Werte aus der Stundenwert-Datenbank.
+
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
 %% ###################################################################################################
 
 \subsection{Historische Daten}
-\Diskussionspunkt{Fehleingaben verhindern, Sicherheit gegen Angriffe?}
+Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
+Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
+Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
+
+Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -geschwindigkeit sowie den Regen konzentriert.
+Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
+
+
+
+
+
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
