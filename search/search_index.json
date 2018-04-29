@@ -732,23 +732,38 @@
         },
         {
             "location": "/KW17/",
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\nResultat / Erkenntnisse\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand",
+            "text": "Wochenreport KW 17\n\n\nZiel dieser Woche\n\n\n\n\nDB mit historischen Daten/Stundendaten erstellen\n\n\nAPI programmierung output / API Dokumentation\n\n\nScript einlesen des Pegels und der Wassertemperaturdaten\n\n\n\n\nResultat / Erkenntnisse\n\n\nDB mit historischen Daten/Stundendaten erstellen\n\n\nDas Problem aus der \nKW16\n ist gel\u00f6st. Es war ein Programmierfehler, welcher behoben werden konnte. Die Daten werden jetzt in die neue Daten geschrieben. Da dies grosse Menge an Daten sind dauert dies seine Zeit.\n\n\nAPI programmierung output / API Dokumentation\n\n\nDie Dokumentation der API ist \nhier\n einsehbar. Wir haben uns f\u00fcr Postman entschieden um eine Dokumentation zu erstellen. Dies aufgrund der Einfachheit, es k\u00f6nnen auch zu einem sp\u00e4teren Zeitpunkt noch \u00c4nderungen vorgenommen werden. Die Dokumentationsseite liegt jedoch nicht auf dem Server von Hostpoint selber, diese wird von Postman gehostet.\n\n\nScript einlesen des Pegels und der Wassertemperaturdaten\n\n\nEs wurde ein Skript erstellt, welches per HTTP GET die Werte abholt\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand",
             "title": "KW17"
         },
         {
-            "location": "/KW17/#wochenreport-kw-08",
+            "location": "/KW17/#wochenreport-kw-17",
             "text": "",
-            "title": "Wochenreport KW 08"
+            "title": "Wochenreport KW 17"
         },
         {
             "location": "/KW17/#ziel-dieser-woche",
-            "text": "",
+            "text": "DB mit historischen Daten/Stundendaten erstellen  API programmierung output / API Dokumentation  Script einlesen des Pegels und der Wassertemperaturdaten",
             "title": "Ziel dieser Woche"
         },
         {
             "location": "/KW17/#resultat-erkenntnisse",
             "text": "",
             "title": "Resultat / Erkenntnisse"
+        },
+        {
+            "location": "/KW17/#db-mit-historischen-datenstundendaten-erstellen",
+            "text": "Das Problem aus der  KW16  ist gel\u00f6st. Es war ein Programmierfehler, welcher behoben werden konnte. Die Daten werden jetzt in die neue Daten geschrieben. Da dies grosse Menge an Daten sind dauert dies seine Zeit.",
+            "title": "DB mit historischen Daten/Stundendaten erstellen"
+        },
+        {
+            "location": "/KW17/#api-programmierung-output-api-dokumentation",
+            "text": "Die Dokumentation der API ist  hier  einsehbar. Wir haben uns f\u00fcr Postman entschieden um eine Dokumentation zu erstellen. Dies aufgrund der Einfachheit, es k\u00f6nnen auch zu einem sp\u00e4teren Zeitpunkt noch \u00c4nderungen vorgenommen werden. Die Dokumentationsseite liegt jedoch nicht auf dem Server von Hostpoint selber, diese wird von Postman gehostet.",
+            "title": "API programmierung output / API Dokumentation"
+        },
+        {
+            "location": "/KW17/#script-einlesen-des-pegels-und-der-wassertemperaturdaten",
+            "text": "Es wurde ein Skript erstellt, welches per HTTP GET die Werte abholt",
+            "title": "Script einlesen des Pegels und der Wassertemperaturdaten"
         },
         {
             "location": "/KW17/#probleme-herausforderungen",
