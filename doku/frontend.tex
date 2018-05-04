@@ -223,6 +223,10 @@ Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entsc
 
 Für die Darstellung der aktuellen Windgeschwindigkeit verwenden wir den Mittelwert der drei Werte aus der Stundenwert-Datenbank.
 
+Openweathermap schein sehr ungenaue Windvorhersagen zu liefern.
+
+-> Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap
+
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                      
@@ -247,25 +251,31 @@ Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst we
 
 \subsection{Anzeige Sturmwarndienst}
 
+Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein. Auf der Webseite \footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} wir der Status der Sturmwarnung wiedergegeben.
+
+Meteoschweiz stellt die Informationen auch als Dienstleistung zur Verfügung. Diese kostet aber 1300CHF/Jahr (siehe Offerte im Anhang). Um trotzdem an die Daten zu gelangen muss die kttg-Webseite ausgelesen werden.
+Dies geschieht über eine Python-Bibliothek namens "Beautiful Soup". Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
+
+Das Problem ist immer noch, dass der Sturmwarndienst nur am Tag aktiv ist. Dies liegt aber nicht an der Kapo. Schon die Updatefiles von Meteoschweiz werden nur während des Tages aktualisiert. Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer Mobileapp die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+
+DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
+
+-> Foto Zeitstempel Meteoschweiz und kttg.ch
+
+
+
 
 
 
 Problem ÖFFNUNGSZEITEN!
 
 -> Verweis auf Zeitungsartikel
+-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
 
 
 Art. 6.13: Fahrt bei unsichtigem Wetter, Starkwind und Sturm
-Bereits bei Starkwind- und Sturmwarnung (Anlage B Buchstaben H.1 und H.2) muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen
+Bereits bei Starkwind- und Sturmwarnung (Anlage B Buchstabe H.1 und H.2) muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen
 (BSO Artikel 1.03 und 1.04).
-
-  Art. 6.13 Fahrt bei unsichtigem Wetter, Starkwind und Sturm1
-
-1 Bei unsichtigem Wetter (z. B. Nebel, Schneetreiben) dürfen Fahrzeuge, welche die nach Artikel 6.14 vorgeschriebenen Schallzeichen nicht geben können, nicht ausfahren. Befinden sich solche Fahrzeuge beim Eintreten unsichtigen Wetters auf dem Gewässer, so müssen sie die Häfen oder die Nähe des Ufers so rasch aufsuchen, als es die Umstände zulassen.
-
-2 Bei unsichtigem Wetter müssen Fahrzeuge, bei denen die Entfernung zwischen Steuerstand und Bug mehr als 15 m beträgt, Radar nach Artikel 6.12 benützen. Andere Fahrzeuge müssen ihre Geschwindigkeit entsprechend der verminderten Sicht herabsetzen; dies gilt nicht für Fahrzeuge, die sich in Radarfahrt nach Artikel 6.12 befinden.2
-
-3 …3
 
 
 H.1 Starkwindwarnung
@@ -285,12 +295,11 @@ Sturmwarnungen kündigen das Auftreten von Windböen von 34 Knoten und mehr an (
 
 Eingefügt durch den Beschluss der Internationalen Schifffahrtskommission vom 27. Juni 2001, genehmigt vom BR am 21. Nov. 2001, in Kraft seit 1. Jan. 2002 (AS 2002 284 283).
 
-https://www.admin.ch/opc/de/classified-compilation/19760005/index.html#a6tttttttttttt
+\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}
+
 
 Anlage: 
-https://www.admin.ch/opc/de/classified-compilation/19760005/index.html#app2ahref9
+\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}
 
-
-früher: https://www.google.com/search?client=safari&rls=en&q=www.meteoschweiz.ch/web/de/+services/telekommunikation/sms.html&ie=UTF-8&oe=UTF-8
 
 
