@@ -812,17 +812,17 @@
         },
         {
             "location": "/KW18/",
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\nResultat / Erkenntnisse\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand",
+            "text": "Wochenreport KW 18\n\n\nZiel dieser Woche\n\n\n\n\nProgrammierung input und Dokumentation API\n\n\nSkript Wassertemeperatur zum passenden Pegel  \n\n\nAnzeigeelemente f\u00fcr alle Messwerte  \n\n\nZugang zu Sturmwarndaten\n\n\n\n\nResultat / Erkenntnisse\n\n\nSkript Wassertemperatur zum passenden Pegel\n\n\nDie Skripte um die einzelnen Werte der Pegeldaten bzw. Wassertemperaturdaten herauszulesen und speichern wurden letze Woche schon erstellt. Mit der Sicherheit, dass diese im Testlauf funktionieren wurde ein Skript erstellt, welches die beiden Daten kombiniert. D.h. die Temperatur kann jetzt zum passenden Pegel ausgelesen werden. Konkret ist dies einmal 0.5 m unter dem Pegel und einmal 1 m unter dem Pegel. Der Grund f\u00fcr die beiden Temperaturen ist, dass die Badi in Arbon die Temperatur bei 0.5m gew\u00fcnscht hat, denn die offizielle Temperatur wird bei 1 m unter dem Pegel gemessen.  Ein richtiger Test steht noch aus, da der Pegelsensor noch eingebaut werden muss.\n\n\nAnzeigeelemente f\u00fcr alle Messwerte\n\n\nDie Sturmwarnung und die Anzeige f\u00fcr die Windrichtung wurden selber als SVG-Datei gezeichnet. Die beiden \u00e4ndern ihren Zustand, wenn im Javascript sturmwarnung.js bzw. windrichtung.js eine \u00c4nderung der Daten bemerkt wird.\n\n\nProbleme / Herausforderungen\n\n\nProgrammierung input und Dokumentation API\n\n\nDie Herausforderung hierbei war, den Fehler bei der Weiterleitung auf die Dokumentationsseite zu finden. Das Problem konnte nach einem eigenen und ungewolltem DDOS Angriff und einem Telefon bei Hostpoint gekl\u00e4rt werden. Bei der index Seite war eine falsche Weiterleitung programmiert, welche einen Loop verursachte und so den Server zum erliegen brachte. Die Weiterleitung funktioniert jetzt und die API Dokumentation kann \nhier\n begutachtet werden. Feedback dazu ist erw\u00fcnscht.\n\n\nZugang zu Sturmwarndaten\n\n\nDie Suche nach einer API, welche die Sturmwarnung f\u00fcr den Bodensee ausgibt war leider erfolglos. Es wurde auch bei den \u00d6rtlichen Sicherheitsbeh\u00f6rden nachgefragt ob die uns die Daten zur Verf\u00fcgung stellen k\u00f6nnen, da diese die Warnleuchten ein und ausschalten. Nach einigen Weiterleitung und einem Mail, wurde uns mittgeteilt, dass diese Daten uns aus Sicherheitsgr\u00fcnden nicht weitergegeben werden k\u00f6nnen. Wir sollen auf die uns bekannte und \nWebseite\n verlinken. Da wir genau dies aber verhindern m\u00f6chten und eine Einbindung nicht m\u00f6glich ist, da die Seite nicht dem HTTPS Standard entspricht, wurde entschieden die Daten mittels einem Pythonskript und einem Cronjob auszulesen und in die Datenbank zu speichern. So besteht f\u00fcr uns auch die M\u00f6glichkeit diese Informationen in die API zus\u00e4tzlich f\u00fcr andere zur Verg\u00fcgung zu stellen.\n\n\nJournal / Zeitaufwand\n\n\n\n\n1.5h API programmierung  \n\n\n3h Skript Wassertemeperatur zum passenden Pegel  \n\n\n7h Anzeigeelemente f\u00fcr alle Messwerte  \n\n\n1.5h Projektmanagement/Protokoll",
             "title": "KW18"
         },
         {
-            "location": "/KW18/#wochenreport-kw-08",
+            "location": "/KW18/#wochenreport-kw-18",
             "text": "",
-            "title": "Wochenreport KW 08"
+            "title": "Wochenreport KW 18"
         },
         {
             "location": "/KW18/#ziel-dieser-woche",
-            "text": "",
+            "text": "Programmierung input und Dokumentation API  Skript Wassertemeperatur zum passenden Pegel    Anzeigeelemente f\u00fcr alle Messwerte    Zugang zu Sturmwarndaten",
             "title": "Ziel dieser Woche"
         },
         {
@@ -831,13 +831,33 @@
             "title": "Resultat / Erkenntnisse"
         },
         {
+            "location": "/KW18/#skript-wassertemperatur-zum-passenden-pegel",
+            "text": "Die Skripte um die einzelnen Werte der Pegeldaten bzw. Wassertemperaturdaten herauszulesen und speichern wurden letze Woche schon erstellt. Mit der Sicherheit, dass diese im Testlauf funktionieren wurde ein Skript erstellt, welches die beiden Daten kombiniert. D.h. die Temperatur kann jetzt zum passenden Pegel ausgelesen werden. Konkret ist dies einmal 0.5 m unter dem Pegel und einmal 1 m unter dem Pegel. Der Grund f\u00fcr die beiden Temperaturen ist, dass die Badi in Arbon die Temperatur bei 0.5m gew\u00fcnscht hat, denn die offizielle Temperatur wird bei 1 m unter dem Pegel gemessen.  Ein richtiger Test steht noch aus, da der Pegelsensor noch eingebaut werden muss.",
+            "title": "Skript Wassertemperatur zum passenden Pegel"
+        },
+        {
+            "location": "/KW18/#anzeigeelemente-fur-alle-messwerte",
+            "text": "Die Sturmwarnung und die Anzeige f\u00fcr die Windrichtung wurden selber als SVG-Datei gezeichnet. Die beiden \u00e4ndern ihren Zustand, wenn im Javascript sturmwarnung.js bzw. windrichtung.js eine \u00c4nderung der Daten bemerkt wird.",
+            "title": "Anzeigeelemente f\u00fcr alle Messwerte"
+        },
+        {
             "location": "/KW18/#probleme-herausforderungen",
             "text": "",
             "title": "Probleme / Herausforderungen"
         },
         {
+            "location": "/KW18/#programmierung-input-und-dokumentation-api",
+            "text": "Die Herausforderung hierbei war, den Fehler bei der Weiterleitung auf die Dokumentationsseite zu finden. Das Problem konnte nach einem eigenen und ungewolltem DDOS Angriff und einem Telefon bei Hostpoint gekl\u00e4rt werden. Bei der index Seite war eine falsche Weiterleitung programmiert, welche einen Loop verursachte und so den Server zum erliegen brachte. Die Weiterleitung funktioniert jetzt und die API Dokumentation kann  hier  begutachtet werden. Feedback dazu ist erw\u00fcnscht.",
+            "title": "Programmierung input und Dokumentation API"
+        },
+        {
+            "location": "/KW18/#zugang-zu-sturmwarndaten",
+            "text": "Die Suche nach einer API, welche die Sturmwarnung f\u00fcr den Bodensee ausgibt war leider erfolglos. Es wurde auch bei den \u00d6rtlichen Sicherheitsbeh\u00f6rden nachgefragt ob die uns die Daten zur Verf\u00fcgung stellen k\u00f6nnen, da diese die Warnleuchten ein und ausschalten. Nach einigen Weiterleitung und einem Mail, wurde uns mittgeteilt, dass diese Daten uns aus Sicherheitsgr\u00fcnden nicht weitergegeben werden k\u00f6nnen. Wir sollen auf die uns bekannte und  Webseite  verlinken. Da wir genau dies aber verhindern m\u00f6chten und eine Einbindung nicht m\u00f6glich ist, da die Seite nicht dem HTTPS Standard entspricht, wurde entschieden die Daten mittels einem Pythonskript und einem Cronjob auszulesen und in die Datenbank zu speichern. So besteht f\u00fcr uns auch die M\u00f6glichkeit diese Informationen in die API zus\u00e4tzlich f\u00fcr andere zur Verg\u00fcgung zu stellen.",
+            "title": "Zugang zu Sturmwarndaten"
+        },
+        {
             "location": "/KW18/#journal-zeitaufwand",
-            "text": "",
+            "text": "1.5h API programmierung    3h Skript Wassertemeperatur zum passenden Pegel    7h Anzeigeelemente f\u00fcr alle Messwerte    1.5h Projektmanagement/Protokoll",
             "title": "Journal / Zeitaufwand"
         },
         {

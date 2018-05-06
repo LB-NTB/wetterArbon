@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-18">Wochenreport KW 18</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,11 +225,31 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-18">Wochenreport KW 18</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
+<ul>
+<li>Programmierung input und Dokumentation API</li>
+<li>Skript Wassertemeperatur zum passenden Pegel  </li>
+<li>Anzeigeelemente für alle Messwerte  </li>
+<li>Zugang zu Sturmwarndaten</li>
+</ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="skript-wassertemperatur-zum-passenden-pegel">Skript Wassertemperatur zum passenden Pegel</h3>
+<p>Die Skripte um die einzelnen Werte der Pegeldaten bzw. Wassertemperaturdaten herauszulesen und speichern wurden letze Woche schon erstellt. Mit der Sicherheit, dass diese im Testlauf funktionieren wurde ein Skript erstellt, welches die beiden Daten kombiniert. D.h. die Temperatur kann jetzt zum passenden Pegel ausgelesen werden. Konkret ist dies einmal 0.5 m unter dem Pegel und einmal 1 m unter dem Pegel. Der Grund für die beiden Temperaturen ist, dass die Badi in Arbon die Temperatur bei 0.5m gewünscht hat, denn die offizielle Temperatur wird bei 1 m unter dem Pegel gemessen.  Ein richtiger Test steht noch aus, da der Pegelsensor noch eingebaut werden muss.</p>
+<h3 id="anzeigeelemente-fur-alle-messwerte">Anzeigeelemente für alle Messwerte</h3>
+<p>Die Sturmwarnung und die Anzeige für die Windrichtung wurden selber als SVG-Datei gezeichnet. Die beiden ändern ihren Zustand, wenn im Javascript sturmwarnung.js bzw. windrichtung.js eine Änderung der Daten bemerkt wird.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<h3 id="programmierung-input-und-dokumentation-api">Programmierung input und Dokumentation API</h3>
+<p>Die Herausforderung hierbei war, den Fehler bei der Weiterleitung auf die Dokumentationsseite zu finden. Das Problem konnte nach einem eigenen und ungewolltem DDOS Angriff und einem Telefon bei Hostpoint geklärt werden. Bei der index Seite war eine falsche Weiterleitung programmiert, welche einen Loop verursachte und so den Server zum erliegen brachte. Die Weiterleitung funktioniert jetzt und die API Dokumentation kann <a href="https://documenter.getpostman.com/view/4035921/api-wetter-arbon/RW1XMhBK">hier</a> begutachtet werden. Feedback dazu ist erwünscht.</p>
+<h3 id="zugang-zu-sturmwarndaten">Zugang zu Sturmwarndaten</h3>
+<p>Die Suche nach einer API, welche die Sturmwarnung für den Bodensee ausgibt war leider erfolglos. Es wurde auch bei den Örtlichen Sicherheitsbehörden nachgefragt ob die uns die Daten zur Verfügung stellen können, da diese die Warnleuchten ein und ausschalten. Nach einigen Weiterleitung und einem Mail, wurde uns mittgeteilt, dass diese Daten uns aus Sicherheitsgründen nicht weitergegeben werden können. Wir sollen auf die uns bekannte und <a href="http://www.kttg.ch/kapo/htm/stwarn.shtml">Webseite</a> verlinken. Da wir genau dies aber verhindern möchten und eine Einbindung nicht möglich ist, da die Seite nicht dem HTTPS Standard entspricht, wurde entschieden die Daten mittels einem Pythonskript und einem Cronjob auszulesen und in die Datenbank zu speichern. So besteht für uns auch die Möglichkeit diese Informationen in die API zusätzlich für andere zur Vergügung zu stellen.</p>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<ul>
+<li>1.5h API programmierung  </li>
+<li>3h Skript Wassertemeperatur zum passenden Pegel  </li>
+<li>7h Anzeigeelemente für alle Messwerte  </li>
+<li>1.5h Projektmanagement/Protokoll </li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
