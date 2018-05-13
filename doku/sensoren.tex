@@ -4,23 +4,53 @@
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
-
 \subsection{Pegelsensor}
 \Diskussionspunkt{Pegelmessung, Pegelberechnung, Wellenhöhenberechnung}
+\Diskussionspunkt{Gegenüberstellung Messprinzipien, Vor- und Nachteile}
 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
-
 \subsection{Strahlungssensor}
-\Diskussionspunkt{Globalstrahlung, Direktstrahlung}
+\Diskussionspunkt{Ziel: Sonnenstunden messen? Wen interessieren die Sonnenstunden?}
+\Diskussionspunkt{Wann reicht Globalstrahlung, wann wird Direktstrahlung benötigt?}
+\Diskussionspunkt{Was kann auf PV-Berechnungstools eingegeben werden?}
+
+
+Das Pyranometer basiert auf dem Messprinzip eines Thermoelements. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme „fliesst“ dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom bzw. zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe geschalten, welches Thermosäule genannt wird. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Response time liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen. Das spektrale Verhalten wird durch den Glasdom definiert. Bei Glas liegt dieser im Bereich von 350 bis 2800 nm. Durch Erhöhung der Güte des Doms (Quarzglas) kann der spektrale Bereich erweitert werden von 300 bis 3600 nm. Für Pyranometer existiert ein Standard nach WMO: ISO 9060, mit folgenden Güteklassen:
+
+\begin{itemize}  
+\item Secondary Standard
+\item first class
+\item second class 
+\end{itemize}
+
+\Diskussionspunkt{ISO 9060:1990 Solar energy -- Specification and classification of instruments for measuring hemispherical solar and direct solar radiation}
+
+Die Serie SR05 ist die preiswerteste Serie von Pyranometern, die die Anforderungen der zweiten Klasse nach ISO 9060 erfüllt. SR05 misst die von einer ebenen Fläche empfangene Sonnenstrahlung in W/m2 aus einem Blickwinkel von 180 Grad. Es ist ideal für allgemeine Sonnenstrahlungsmessungen in (agro-)meteorologischen Netzen und PV-Monitoring. Das Pyranometer ist einfach zu montieren und zu installieren, insbesondere mit dem Kugelausgleichsmechanismus des SR05. Zur einfachen Integration stehen verschiedene digitale und analoge Ausgänge zur Verfügung.
+
+
+\subsubsection{Berechnung der Sonnenstunden}
+Zur Messung der Sonnenstunden gibt es gemäss  \flqq Guide to Meteorological Instruments and Methods of Observation\frqq ~\cite{WMO2014Gtmi}  fünf Messprinzipien, wobei die pyranometrische Methode, die einfachste und kostengünstigste Methode darstellt. Nach WMO ist die Sonnenscheindauer während eines bestimmten Zeitraums definiert als die Summe der Zeit, für die die direkte Sonneneinstrahlung 120 W m -2 übersteigt. Die physikalische Größe der Sonnenscheindauer (SD) ist Zeit. Die verwendeten Einheiten sind Sekunden oder Stunden. Der Messzeitraum (Tag, Dekade, Monat, Jahr usw.) ist ein wichtiger Zusatz zur Einheit. Sonnenstunden sollten mit einer Auflösung von 0,1 h gemessen werden.
+
+Der wichtigste Zusammenhang zwischen Sonnenscheindauer und Globalstrahlung G wird durch die sogenannte Ångström-Formel beschrieben:
+\Diskussionspunkt{Ångström-Formel }
+
+Pyranometrische Methode: Pyranometrische Messung der globalen (G) Sonneneinstrahlung zur Abschätzung der Sonnenscheindauer. Art des Instruments: Ein Pyranometer in Kombination mit einem elektronischen oder computergesteuerten Gerät, das in der Lage ist 1 Minute globale (G) Sonneneinstrahlung zu liefern.
+
+\Diskussionspunkt{ANNEX 8.B. ALGORITHM TO ESTIMATE SUNSHINE DURATION FROM 1 MIN GLOBAL IRRADIANCE MEASUREMENTS}
+
 
 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
-
 \subsection{Wassertemperatur-Sensoren}
 \Diskussionspunkt{Berechnung, Verlauf der Wassertemperatur in Abhängigkeit der Tiefe}
+\Diskussionspunkt{Welcher Sensor muss auf Grund des Pegels ausgewählt werden -> Skizze}
+\Diskussionspunkt{Offset des defekten Sensors -> Grafik}
+
+
+
