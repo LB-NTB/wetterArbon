@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-19">Wochenreport KW 19</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,11 +225,29 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-19">Wochenreport KW 19</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
+<ul>
+<li>Historische Daten erstellen in der DB</li>
+<li>API programmierung</li>
+<li>Cronjobs externe Sensoren</li>
+</ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="historische-daten-erstellen-in-der-db">Historische Daten erstellen in der DB</h3>
+<p>Die Stundendaten wurden bis zum 31.3 erstellt. Für die Min und Max Werte wurden die stündlichen Min und Max Werte genommen. Für die restlichen Daten der Mittelwert. Der Grund den Mittelwert zu nehmen und nicht den Median ist folgender. Die neu geschriebene Sorftware sollte möglichst einfach verständlich und schnell anpassbar sein. Da es für den Mittelwert einen Befehl in MariaDB 10.1 gibt und für den Median erst ab Version 10.3, ist dies einfach anpassbar wenn Hostpoint die neue Version zur Verfügung stellt. Die restlichen Daten werden in der kommenden Woche geschrieben, da dann die DateMaster Tabelle auch vollständig importiert sein sollte.</p>
+<h3 id="api-programmierung">API programmierung</h3>
+<p>Bei der API gab es noch einige Änderungen wie die Namen der verschiedenen JSONs, sowie die Eiheiten. Die Windgeschwindigkeit wurde durch km/h und Beaufort ergänzt. Auch wurde sie mit den externen Sensoren vervollständigt und sind jetzt auch aufrufbar.</p>
+<h3 id="cronjobs-externe-sensoren">Cronjobs externe Sensoren</h3>
+<p>Nach dem montieren der Sensoren wurden die Cronjobs fertig gestellt und getestet. Die Cronjobs lesen jetzt im minuten Takt den Pegel, die Wassertemperatur und die Sonnenstrahlung aus und schreibt diese in die Datenbank.<br />
+Der Cronjob ,welcher schon Testweise für das Auslesen der Sturmwarnung geschrieben wurde, wies heute einen Fehler beim schreiben der Sturmwarnzeit auf. Der Fehler, Datumsformatfehler, konnte behoben werden und somit ist das Problem auch gelöst.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<ul>
+<li>5h API programmierung  </li>
+<li>3h Historische Stundendaten erstellen  </li>
+<li>2.5h Cronjobs erstellen</li>
+<li>1.5h Projektmanagement</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
