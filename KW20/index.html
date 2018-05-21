@@ -244,13 +244,29 @@ Der Benutzer kann sich registrieren um in die Warteschlange aufgenommen zu werde
 Benutzer 2 registriert sich um 14:21:35 =&gt; Der Benutzer muss warten. Wartezeit ist 20s-5s= 15s =&gt; Bedienzeit um 14:21:50 bis 14:22:10<br />
 Benutzer 3 registriert sich um 14:21:40 =&gt; Der Benutzer muss warten. Wartezeit ist 15s + 20s - 5s= 30s Bedienzeit um 14:22:10<br />
 Wie man sieht ist die Aufgabe nicht ganz trivial, wenn es mehr wie zwei Benutzer gibt.<br />
-Nach den anfänglichen Schwierigkeiten, wie die Warteschlange mit PHP umgesetzt werden kann, kommt jetzt die Programmierung. Bis Ende nächster Woche sollte die Warteschlange funktionsfähig sein.  </p>
+Nach den anfänglichen Schwierigkeiten, wie die Warteschlange mit PHP umgesetzt werden kann, kommt jetzt die Programmierung. Bis Ende nächster Woche sollte die Warteschlange funktionsfähig sein.</p>
+<h3 id="responsive-design-mit-tableau">Responsive Design mit Tableau</h3>
+<p>Tableau Public d.h. die Gratisversion von Tableau stellt keine responsive Darstellung zur Verfügung. Es können aber verschiedene Dashboards mit unterschiedlicher Breite und Höhe erstellt werden. Wir haben statt einem responsive nun ein adaptive Design: Ist die Bildschirmbreite kleiner als 768px wird das schmale Dashboard geladen, ansonsten das breite.  </p>
+<h3 id="konzept-fur-das-front-end-des-notification-services">Konzept für das Front end des Notification-Services</h3>
+<p>Der Notification-Service ist eine KANN-Anforderung und soll primär als Test umgesetzt werden. Clientseitig gibt es ein Formular mit vier Feldern und einem Button:</p>
+<ul>
+<li>Dropdown-Menü mit auszuwählenden Messwert</li>
+<li>Radio-Buttons mit "grösser als" und "kleiner als"</li>
+<li>Schieberegler, mit dem der Schwellwert eingestellt werden kann</li>
+<li>E-Mail-Eingabefeld</li>
+<li>Absenden-Button</li>
+</ul>
+<p>Der ganze Service soll ohne Login erfolgen. Meldet sich jemand an, so erhält die Person ein E-Mail um das Abo zu bestätigen. Gelöscht wird das Abo ebenfalls über einen Link im E-Mail.</p>
+<p>Pro Tag und Abo wird maximal ein E-Mail versendet. Die konkrete Umsetzung serverseitig schauen wir uns nächste Woche an.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
 <h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
 <p>0.5h API Dokumentation<br />
 2h DB historische Daten<br />
+3h Front end optimieren<br />
+5.5h mobile Seite für historische Daten<br />
+1h Konzept Notifications<br />
 6.5h Warteschlange Webcam<br />
-0.5h Report</p></div>
+1h Report  </p></div>
         </div>
 
         <footer class="col-md-12">
