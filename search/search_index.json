@@ -927,7 +927,7 @@
         },
         {
             "location": "/KW20/",
-            "text": "Wochenreport KW 20\n\n\nZiel dieser Woche\n\n\n\n\nKonzept/Programmierung Webcam\n\n\n\n\nResultat / Erkenntnisse\n\n\nKonzept / Programmierung Webcam\n\n\nF\u00fcr die Webcam wird eine Warteschlange vorgesehen. Diese soll verhindern, dass die Benutzer einander in die Quere kommen mit bedienen. So k\u00f6nnen die Benutzer 20 Sekunden lang die Webcam bedienen. Das Konzept sieht folgendermassen aus:\n\nDer Benutzer kann sich registrieren um in die Warteschlange aufgenommen zu werden. Dann wird eine Session gestartet und folgende Daten in eine Tabelle geschrieben Registrierungszeit, Session Id und Wartezeit. Um sich das ganze besser Vorzustellen ein kleines Beispiel:\n\n\nBenutzer 1 registriert sich um 14:21:30 => Direkt an der Reihe, 20 Sekunden Bedienzeit\n                               14:21:50 => Bedienzeit fertig\nBenutzer 2 registriert sich um 14:21:35 =>\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand",
+            "text": "Wochenreport KW 20\n\n\nZiel dieser Woche\n\n\n\n\nAPI Dokumentation  \n\n\nDB mit historischen Daten  \n\n\nKonzept/Programmierung Webcam\n\n\n\n\nResultat / Erkenntnisse\n\n\nAPI Dokumentation\n\n\nBei der Dokumentation wurden noch letze Anpassungen vorgenommen, sodass jetzt die Dokumentation vollst\u00e4ndig sein sollte.\n\n\nDB mit historischen Daten\n\n\nDie Tabelle DateMaster wurde geschrieben. Die restlichen Daten k\u00f6nnen geschrieben werden, wenn der Cronjob richtig funktioniert.\n\n\nKonzept / Programmierung Webcam\n\n\nF\u00fcr die Webcam wird eine Warteschlange vorgesehen. Diese soll verhindern, dass die Benutzer einander in die Quere kommen mit bedienen. So k\u00f6nnen die Benutzer 20 Sekunden lang die Webcam bedienen. Das Konzept sieht folgendermassen aus:\n\nDer Benutzer kann sich registrieren um in die Warteschlange aufgenommen zu werden. Dann wird eine Session gestartet und folgende Daten in eine Tabelle geschrieben Registrierungszeit, Session Id und Wartezeit. Um sich das ganze besser Vorzustellen ein kleines Beispiel:\n\n\nBenutzer 1 registriert sich um 14:21:30 => Direkt an der Reihe, 20 Sekunden Bedienzeit 14:21:50 => Bedienzeit fertig\n\nBenutzer 2 registriert sich um 14:21:35 => Der Benutzer muss warten. Wartezeit ist 20s-5s= 15s => Bedienzeit um 14:21:50 bis 14:22:10\n\nBenutzer 3 registriert sich um 14:21:40 => Der Benutzer muss warten. Wartezeit ist 15s + 20s - 5s= 30s Bedienzeit um 14:22:10\n\nWie man sieht ist die Aufgabe nicht ganz trivial, wenn es mehr wie zwei Benutzer gibt.\n\nNach den anf\u00e4nglichen Schwierigkeiten, wie die Warteschlange mit PHP umgesetzt werden kann, kommt jetzt die Programmierung. Bis Ende n\u00e4chster Woche sollte die Warteschlange funktionsf\u00e4hig sein.  \n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand\n\n\n0.5h API Dokumentation\n\n2h DB historische Daten\n\n6.5h Warteschlange Webcam\n\n0.5h Report",
             "title": "KW20"
         },
         {
@@ -937,7 +937,7 @@
         },
         {
             "location": "/KW20/#ziel-dieser-woche",
-            "text": "Konzept/Programmierung Webcam",
+            "text": "API Dokumentation    DB mit historischen Daten    Konzept/Programmierung Webcam",
             "title": "Ziel dieser Woche"
         },
         {
@@ -946,8 +946,18 @@
             "title": "Resultat / Erkenntnisse"
         },
         {
+            "location": "/KW20/#api-dokumentation",
+            "text": "Bei der Dokumentation wurden noch letze Anpassungen vorgenommen, sodass jetzt die Dokumentation vollst\u00e4ndig sein sollte.",
+            "title": "API Dokumentation"
+        },
+        {
+            "location": "/KW20/#db-mit-historischen-daten",
+            "text": "Die Tabelle DateMaster wurde geschrieben. Die restlichen Daten k\u00f6nnen geschrieben werden, wenn der Cronjob richtig funktioniert.",
+            "title": "DB mit historischen Daten"
+        },
+        {
             "location": "/KW20/#konzept-programmierung-webcam",
-            "text": "F\u00fcr die Webcam wird eine Warteschlange vorgesehen. Diese soll verhindern, dass die Benutzer einander in die Quere kommen mit bedienen. So k\u00f6nnen die Benutzer 20 Sekunden lang die Webcam bedienen. Das Konzept sieht folgendermassen aus: \nDer Benutzer kann sich registrieren um in die Warteschlange aufgenommen zu werden. Dann wird eine Session gestartet und folgende Daten in eine Tabelle geschrieben Registrierungszeit, Session Id und Wartezeit. Um sich das ganze besser Vorzustellen ein kleines Beispiel:  Benutzer 1 registriert sich um 14:21:30 => Direkt an der Reihe, 20 Sekunden Bedienzeit\n                               14:21:50 => Bedienzeit fertig\nBenutzer 2 registriert sich um 14:21:35 =>",
+            "text": "F\u00fcr die Webcam wird eine Warteschlange vorgesehen. Diese soll verhindern, dass die Benutzer einander in die Quere kommen mit bedienen. So k\u00f6nnen die Benutzer 20 Sekunden lang die Webcam bedienen. Das Konzept sieht folgendermassen aus: \nDer Benutzer kann sich registrieren um in die Warteschlange aufgenommen zu werden. Dann wird eine Session gestartet und folgende Daten in eine Tabelle geschrieben Registrierungszeit, Session Id und Wartezeit. Um sich das ganze besser Vorzustellen ein kleines Beispiel:  Benutzer 1 registriert sich um 14:21:30 => Direkt an der Reihe, 20 Sekunden Bedienzeit 14:21:50 => Bedienzeit fertig \nBenutzer 2 registriert sich um 14:21:35 => Der Benutzer muss warten. Wartezeit ist 20s-5s= 15s => Bedienzeit um 14:21:50 bis 14:22:10 \nBenutzer 3 registriert sich um 14:21:40 => Der Benutzer muss warten. Wartezeit ist 15s + 20s - 5s= 30s Bedienzeit um 14:22:10 \nWie man sieht ist die Aufgabe nicht ganz trivial, wenn es mehr wie zwei Benutzer gibt. \nNach den anf\u00e4nglichen Schwierigkeiten, wie die Warteschlange mit PHP umgesetzt werden kann, kommt jetzt die Programmierung. Bis Ende n\u00e4chster Woche sollte die Warteschlange funktionsf\u00e4hig sein.",
             "title": "Konzept / Programmierung Webcam"
         },
         {
@@ -957,7 +967,7 @@
         },
         {
             "location": "/KW20/#journal-zeitaufwand",
-            "text": "",
+            "text": "0.5h API Dokumentation \n2h DB historische Daten \n6.5h Warteschlange Webcam \n0.5h Report",
             "title": "Journal / Zeitaufwand"
         },
         {

@@ -228,17 +228,29 @@
 <h1 id="wochenreport-kw-20">Wochenreport KW 20</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
 <ul>
+<li>API Dokumentation  </li>
+<li>DB mit historischen Daten  </li>
 <li>Konzept/Programmierung Webcam</li>
 </ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="api-dokumentation">API Dokumentation</h3>
+<p>Bei der Dokumentation wurden noch letze Anpassungen vorgenommen, sodass jetzt die Dokumentation vollständig sein sollte.</p>
+<h3 id="db-mit-historischen-daten">DB mit historischen Daten</h3>
+<p>Die Tabelle DateMaster wurde geschrieben. Die restlichen Daten können geschrieben werden, wenn der Cronjob richtig funktioniert.</p>
 <h3 id="konzept-programmierung-webcam">Konzept / Programmierung Webcam</h3>
 <p>Für die Webcam wird eine Warteschlange vorgesehen. Diese soll verhindern, dass die Benutzer einander in die Quere kommen mit bedienen. So können die Benutzer 20 Sekunden lang die Webcam bedienen. Das Konzept sieht folgendermassen aus:<br />
 Der Benutzer kann sich registrieren um in die Warteschlange aufgenommen zu werden. Dann wird eine Session gestartet und folgende Daten in eine Tabelle geschrieben Registrierungszeit, Session Id und Wartezeit. Um sich das ganze besser Vorzustellen ein kleines Beispiel:</p>
-<p>Benutzer 1 registriert sich um 14:21:30 =&gt; Direkt an der Reihe, 20 Sekunden Bedienzeit
-                               14:21:50 =&gt; Bedienzeit fertig
-Benutzer 2 registriert sich um 14:21:35 =&gt;</p>
+<p>Benutzer 1 registriert sich um 14:21:30 =&gt; Direkt an der Reihe, 20 Sekunden Bedienzeit 14:21:50 =&gt; Bedienzeit fertig<br />
+Benutzer 2 registriert sich um 14:21:35 =&gt; Der Benutzer muss warten. Wartezeit ist 20s-5s= 15s =&gt; Bedienzeit um 14:21:50 bis 14:22:10<br />
+Benutzer 3 registriert sich um 14:21:40 =&gt; Der Benutzer muss warten. Wartezeit ist 15s + 20s - 5s= 30s Bedienzeit um 14:22:10<br />
+Wie man sieht ist die Aufgabe nicht ganz trivial, wenn es mehr wie zwei Benutzer gibt.<br />
+Nach den anfänglichen Schwierigkeiten, wie die Warteschlange mit PHP umgesetzt werden kann, kommt jetzt die Programmierung. Bis Ende nächster Woche sollte die Warteschlange funktionsfähig sein.  </p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<p>0.5h API Dokumentation<br />
+2h DB historische Daten<br />
+6.5h Warteschlange Webcam<br />
+0.5h Report</p></div>
         </div>
 
         <footer class="col-md-12">
