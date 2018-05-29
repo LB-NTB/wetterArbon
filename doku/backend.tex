@@ -176,3 +176,19 @@ Hostpiont bietet zur Datensicherung mehrere Möglichkeiten an:
 
 \subsection{Benachrichtigungsservice}
 
+\subsection{Funktionsüberwachung mit Mail-Service}
+
+Um die Funktion der Software zu gewährleisten, sollte bei einem Absturz der Verantwortliche der IG benachrichtigt werden. Folgende Funktionen müssen bei einem Absturz eine Meldung geben.
+\begin{itemize}
+\item Einlesen Sensordaten extern
+\item Einlesen Wettertransmitter Daten
+\item Erstellen der API
+\item Erstellung der stündlichen historischen Daten
+\end{itemize}
+Für die Benachrichtigung können die Funktionen in zwei Hauptthemen geteilt werden, einmal in Cronjobs und einmal in Webservices. Unter den Cronjobs fallen das Einlesen der Sensordaten und der Wettertransmitter Daten, sowie das erstellen der historischen Daten. Für die Cronjobs bietet Hostpoint den Service das bei einem print() die Ausgaben per Mail an eine bestimmte Mailadresse gesendet werden. Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen aus. Können einer der Webservices vom \Diskussionspukt{A/E Wandler} nicht erreicht werden, wird die folgende Mail generiert:\\
+Es ist ein Problem mit (der Temperatur, dem Pegel, dem Strahlungssensor) aufgetreten. Exception: ...\\
+Jenach Sensor wird dieser genannt und das Problem welches aufgetreten ist. Für die Erstellung der historischen Daten und dem einlesen der Wettertransmitter Daten sieht die Lösung ähnlich aus. Jedoch werden diese beiden im gleichen Cronjob, dem erstellen der historischen Daten kontrolliert. Zuerst wird kontrolliert ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, würde es bedeuten, dass das WeatherDisplay, welches die Daten des Transmitters aufbereitet, abgestürzt ist und neu gestartet werden muss. Das zweite was in diesem Cronjob kontrolliert wird, ist dass Kontrolliert werden muss ob die Daten in die historische Tabelle geschrieben sind. Die beiden Meldungen sehen dann so aus:\\
+Bitte starte das WeatherDisplay neu, es wurden nur (Anzahl Datensätze) Daten geschrieben.\\
+Die historischen Daten können nicht geschrieben werden, es besteht folgendes Problem (Exception).\\
+
+Um diese Funktionen zu erstellen wird gebrauch gemacht vom try, except Verfahren in Python. Funktioniert der try nicht wird im exception weitergemacht und das Problem wird dargestellt. 
