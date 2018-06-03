@@ -227,9 +227,20 @@
 
 <h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
+<ul>
+<li>Funktionsüberwachung</li>
+</ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="funktionsuberwachung">Funktionsüberwachung</h3>
+<p>Um die einzelnen Funktionen sicherzustellen wurde bei den Cronjobs eine Funktionsüberwachung implementiert. Diese Funktioniert folgendermassen:<br />
+Die Cronjobs sind mit einem try except ausgestattet. Kann der Code im try aus irgendwelchen Gründen nicht komplett durchgeführt werden, geht es im except weiter. Hier wird ein print(exception) ausfgeführt. Dieser print hat zur folge, dass dieser nicht auf der Konsole ausgegeben wird sondern an eine vordefinierte Mail-Adresse weitergeleitet wird. Dies ist eine Funktion welche von Hostpoint angeboten wird. Somit kann verhindert werden, dass bspw. die externen Sensoren nicht mehr ausgelesen werden und es unentdeckt bleibt.</p>
+<h3 id="sicherheit-datenbank">Sicherheit Datenbank</h3>
+<p>Für die Datenbank sind keine Sicherheitstest notwendig. Der Grund hierfür ist, dass die Funktionen welche auf die Datenbank zugreifen alle bis auf das Tableau auf dem Server ausgeführt werden. Das Tableau jedoch erlaubt in unserem Fall nur das auswählen von Parameter mittels anklicken der jeweiligen Boxen. Somit können alle potentielle Angriffe von aussen geschützt werden, solange man sich auf das Tableau auch verlassen kann.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<p>1h Funktionsüberwachung
+1.5h Datenbanksicherheit<br />
+0.5h Projektmanagement</p></div>
         </div>
 
         <footer class="col-md-12">
