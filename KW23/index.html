@@ -216,7 +216,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wochenreport-kw-08">Wochenreport KW 08</a></li>
+        <li class="main active"><a href="#wochenreport-kw-23">Wochenreport KW 23</a></li>
             <li><a href="#ziel-dieser-woche">Ziel dieser Woche</a></li>
             <li><a href="#resultat-erkenntnisse">Resultat / Erkenntnisse</a></li>
             <li><a href="#probleme-herausforderungen">Probleme / Herausforderungen</a></li>
@@ -225,11 +225,18 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wochenreport-kw-08">Wochenreport KW 08</h1>
+<h1 id="wochenreport-kw-23">Wochenreport KW 23</h1>
 <h2 id="ziel-dieser-woche">Ziel dieser Woche</h2>
+<ul>
+<li>Berechnung der Sonnenstunden</li>
+</ul>
 <h2 id="resultat-erkenntnisse">Resultat / Erkenntnisse</h2>
+<h3 id="berechnung-der-sonnenstunden">Berechnung der Sonnenstunden</h3>
+<p>Der Cronjob, welcher die externen Sensoren ausliest wurde erweitert durch das berechnen der Sonnenstunden. Wird der errechnete Schwellwert, welcher jenach Tag und Tageszeit ändert, überschritten, wird der Minuteneintrag um eins hochgezählt. Der Wert wird um 00:00 Uhr wieder auf 0 gesetzt. Das Skript läuft jetzt noch in der Testphase um zu sehen ob alles richtig funktioniert.</p>
 <h2 id="probleme-herausforderungen">Probleme / Herausforderungen</h2>
-<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2></div>
+<h2 id="journal-zeitaufwand">Journal / Zeitaufwand</h2>
+<p>5h Sonnenstunden berechnen<br />
+0.25h Report</p></div>
         </div>
 
         <footer class="col-md-12">
