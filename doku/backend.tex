@@ -6,18 +6,22 @@
 
 \subsection{Übersicht}
 \Diskussionspunkt{Aufgabe/Verknüpfung der einzelnen Programme/Scripts}
+In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Die Datenbank glich vor der Bearbeitung einem Datenfriedhof. Im jetzigen Zustand werden die Daten die schon geschrieben waren, sowie die neu geschrieben werden aktiv für folgende Aufgaben benutzt:\\
+\begin{itemize}
+\item API
+\item Dreitage Rückschau der verschiedenen Sensoren
+\item Historische Daten
+\end{itemize}
 
+Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, sei es in Bezug auf die Aufbereitung der historischen Daten oder aber auch die API, welche einfach erweiterbar sein soll. 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
 
 \subsection{Datenspeicherung}
-\Diskussionspunkt{Was, wie häufig, wo}
-
-
-\Diskussionspunkt{Beginn Einlesen in DB}
-Verschiedene Arten von Datenbanken:
+\subsubsection{Vorgaben}
+Bei der Entwicklung einer Datenbank müssen verschiedene Punkte vorher klar sein. Zum einen welche Datenbank steht zur Verfügung und welches Datenmodell bildet diese. Der wichtigere Punkt der beiden Fragen ist welches Datenmodell wird benutzt denn es bestehen folgende Arten von Datenmodellen:
 \begin{itemize}
 \item relationale DB
 \item hierarchisches Datenmodell
@@ -25,16 +29,59 @@ Verschiedene Arten von Datenbanken:
 \item Objekt relationale Datenbank
 \end{itemize}
 
-Das relationale Datenmodell ist das weit verbreitetste Modell, dass hierarchische wegen der beschränkten Anwendbarkeit kaum noch vorhanden.
+Im Falle der zu bearbeitenden Datenbank ist steht eine MariaDB mit einer relationalen Struktur zur Verfügung. Die relationale Datenstruktur heisst so, weil es in diesem Fall der Modellbildung sich überlappende Spalten geben kann.\cite{IntroductionToRelationalDatabases:MariaDB} Hiermit können die verschiedenen Tabellen welche entwickelt werden auf beliebige Weise durch dieses Feld zusammengefügt werden. Im Falle der neuen Datenbank wird es die Spalte Datetime sein, dazu aber später mehr.\\
 
-Vorgehen Datenbankentwicklung:
-
+\subsubsection{Methodik}
+Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kann es verschiedene Methoden geben. Im Falle dieser Datenbank wurde entschieden nach einer Methode mit vier verschiedenen Phasen zu nehmen. \cite{Datenbanken:GrundlagenUndEntwurf:VeikkoKrypczyk} Dieses Vorgehen sieht folgendermassen aus:
 \begin{itemize}
 \item Externe Phase (Ermittlung der Informationsstruktur)
 \item Konzeptionelle Phase (ER-Modell)
 \item Logische Phase (relationales Datenmodell)
 \item Physische Phase (Erstellung des Datenmodell)
 \end{itemize}
+
+\textbf{Externe Phase}\\
+In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Denn im Falle der alten Tabelle gibt es viele Einträge welche entweder immer eine 0, 100 oder ein NULL beinhalten. Deswegen sind folgende Spalten interessant: 
+ \begin{itemize}
+\item average_windspeed
+\item max_average_windspeed_day 
+\item gust_windspeed
+\item  max_gust_current_day 
+\item  wind_direction 
+\item  temperature  
+\item  max_daily_temperature 
+\item  min_daily_temperature  
+\item  dew_point_temperature 
+\item  current_windchill  
+\item  max_windchill 
+\item  min_windchill
+\item  current_humidex  
+\item  min_humidex  
+\item  max_humidex  
+\item  heat_index 
+\item  max_heat_index 
+\item  min_heat_index 
+\item  outdoor_humidity 
+\item  barometer 
+\item  barometer_trend_last_hour 
+\item  daily_rainfall  
+\item  rain_rate  
+\item  cloud_height  
+\item  icon_type  
+\item  forecast_icon
+\end{itemize}
+
+Obwohl die in diesem Stadium die externe Sensoren noch nicht funktioniern oder genau definiert ist, ob diese kommen sollten folgende Datenpunkte schon definiert sein: 
+\begin{itemize}
+\item waterlevel
+\item waveheight
+\item watertemperature50cm 
+\item watertemperature100cm 
+\item radiation 
+\end{itemize}
+
+\textbf{Konzeptionelle Phase}\\
+Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte relevant für die API sowie die neue Webseite sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. 
 
 Punkte zur Überlegung neuer Datenbankstruktur:
 \begin{itemize}
@@ -78,7 +125,7 @@ Neben dem Schutz vor potentiellen Angriffen ist auch der Schutz vor Datenverlust
 \item Wie wird das Backup umgesetzt?
 \item Wie oft wird ein Backup gemacht?
 \end{itemize}
-\\
+
 \Diskussionspunkt{Lösung}\\
 Die Zugriffe auf die Datenbank sind so gestaltet, dass darauf nur Serverseitig zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Infection möglich ist. Die einzige Seite welche direk auf die Datenbank zugreift ist die historische Datenbank. Hier wird jedoch das Risiko so unterbunden, dass nur ein Klicken möglich ist auf der Webseite. Der Rest wird im Backend von Tableau gemacht. Hier muss jedoch auf die richtige Funktion von Tableau vertraut werden. 
 
@@ -159,7 +206,7 @@ Die Tabelle tblHistorical wird die durchschnittlich gemessenen Werten im Stunden
 %% ###################################################################################################
 
 \subsection{Datensicherung}
-Hostpiont bietet zur Datensicherung mehrere Möglichkeiten an:
+Hostpoint bietet zur Datensicherung mehrere Möglichkeiten an:
 \begin{itemize}
 \item Cronjob
 \item Backup auf Knopfdruck
@@ -190,7 +237,7 @@ Um die Funktion der Software zu gewährleisten, sollte bei einem Absturz der Ver
 \item Einlesen Wettertransmitter Daten
 \item Erstellung der stündlichen historischen Daten
 \end{itemize}
-Die Aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Für die Cronjobs bietet Hostpoint den Service, dass bei einem print() die Ausgaben per Mail an eine bestimmte Mailadresse gesendet werden. Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen aus. Können einer der Webservices vom \Diskussionspukt{A/E Wandler} nicht erreicht werden, wird die folgende Mail generiert:\\
+Die Aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Für die Cronjobs bietet Hostpoint den Service, dass bei einem print() die Ausgaben per Mail an eine bestimmte Mailadresse gesendet werden. Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen aus. Können einer der Webservices vom \Diskussionspunkt{A/E Wandler} nicht erreicht werden, wird die folgende Mail generiert:\\
 Es ist ein Problem mit (der Temperatur, dem Pegel, dem Strahlungssensor) aufgetreten. Exception: ...\\
 Jenach Sensor wird dieser genannt und das Problem welches aufgetreten ist. Für die Erstellung der historischen Daten und dem einlesen der Wettertransmitter Daten sieht die Lösung ähnlich aus. Jedoch werden diese beiden im gleichen Cronjob, dem erstellen der historischen Daten kontrolliert. Zuerst wird kontrolliert ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, würde es bedeuten, dass das WeatherDisplay, welches die Daten des Transmitters aufbereitet, abgestürzt ist und neu gestartet werden muss. Das zweite was in diesem Cronjob kontrolliert wird, ist dass Kontrolliert werden muss ob die Daten in die historische Tabelle geschrieben sind. Die beiden Meldungen sehen dann so aus:\\
 Bitte starte das WeatherDisplay neu, es wurden nur (Anzahl Datensätze) Daten geschrieben.\\
