@@ -5,7 +5,7 @@
 %% ###################################################################################################
 
 \subsection{Übersicht}
-\Diskussionspunkt{Aufgabe/Verknüpfung der einzelnen Programme/Scripts}
+
 In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Die Datenbank glich vor der Bearbeitung einem Datenfriedhof. Im jetzigen Zustand werden die Daten die schon geschrieben waren, sowie die neu geschrieben werden aktiv für folgende Aufgaben benutzt:\\
 \begin{itemize}
 \item API
@@ -20,6 +20,9 @@ Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, se
 %% ###################################################################################################
 
 \subsection{Datenspeicherung}
+\subsubsection{Warum eine Umstrukturierung der Datenbank?}
+Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht sehr aufschlussreich. Aus diesem Grund wird die Datenbank umstrukturiert. Hierbei soll vor allem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Die Daten werden zudem nicht verwendet. Dies ist sehr schade, da es auch für vergangene Daten Anwendungen gibt, bspw. könnten Benutzer zurück schauen um zu sehen wie das Wetter vor einem Jahr war. 
+
 \subsubsection{Vorgaben}
 Bei der Entwicklung einer Datenbank müssen verschiedene Punkte vorher klar sein. Zum einen welche Datenbank steht zur Verfügung und welches Datenmodell bildet diese. Der wichtigere Punkt der beiden Fragen ist welches Datenmodell wird benutzt denn es bestehen folgende Arten von Datenmodellen:
 \begin{itemize}
@@ -39,49 +42,62 @@ Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kan
 \item Logische Phase (relationales Datenmodell)
 \item Physische Phase (Erstellung des Datenmodell)
 \end{itemize}
-
+\subsubsection{Neugestaltung der Datenbank}
 \textbf{Externe Phase}\\
-In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Denn im Falle der alten Tabelle gibt es viele Einträge welche entweder immer eine 0, 100 oder ein NULL beinhalten. Deswegen sind folgende Spalten interessant: 
- \begin{itemize}
-\item average_windspeed
-\item max_average_windspeed_day 
-\item gust_windspeed
-\item  max_gust_current_day 
-\item  wind_direction 
-\item  temperature  
-\item  max_daily_temperature 
-\item  min_daily_temperature  
-\item  dew_point_temperature 
-\item  current_windchill  
-\item  max_windchill 
-\item  min_windchill
-\item  current_humidex  
-\item  min_humidex  
-\item  max_humidex  
-\item  heat_index 
-\item  max_heat_index 
-\item  min_heat_index 
-\item  outdoor_humidity 
-\item  barometer 
-\item  barometer_trend_last_hour 
-\item  daily_rainfall  
-\item  rain_rate  
-\item  cloud_height  
-\item  icon_type  
-\item  forecast_icon
+In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor:
+\begin{itemize}
+\item Die Tabelle wx data welche die Daten des Wettertransmitters beinhaltet wird in ihrem jetzigen Zustand belassen, allerdings sollten die nicht benutzten Spalten entfernt werden, wile es viele Spalten welche entweder immer eine 0, 100 oder ein NULL beinhalten.
+\item Tabelle tblwellen wird umbenannt in tblextsensors und umstrukturiert
+\item Tabelle tblhistorical wird neu aufgebaut, sodass die Daten aus den beiden oben genannten Tabellen in Stundenwerte komprimiert werden. 
 \end{itemize}
 
-Obwohl die in diesem Stadium die externe Sensoren noch nicht funktioniern oder genau definiert ist, ob diese kommen sollten folgende Datenpunkte schon definiert sein: 
+Die neue Tabellenstruktur der wx data würde folgende Spalten beinhalten: 
+ \begin{itemize}
+\item average windspeed
+\item max average windspeed day 
+\item gust windspeed
+\item max gust current day 
+\item wind direction 
+\item temperature  
+\item max daily temperature 
+\item min daily temperature  
+\item dew point temperature 
+\item current windchill  
+\item max windchill 
+\item min windchill
+\item current humidex  
+\item min humidex  
+\item max humidex  
+\item heat index 
+\item max heat index 
+\item min heat index 
+\item outdoor humidity 
+\item barometer 
+\item barometer trend last hour 
+\item daily rainfall  
+\item rain rate  
+\item cloud height  
+\item icon type  
+\item forecast icon
+\end{itemize}
+
+Obwohl die in diesem Stadium die externe Sensoren noch nicht funktionieren oder genau definiert ist, ob diese kommen sollten folgende Spalten für die Tabelle tblextsensors schon definiert sein: 
 \begin{itemize}
 \item waterlevel
 \item waveheight
 \item watertemperature50cm 
 \item watertemperature100cm 
-\item radiation 
+\item radiation
 \end{itemize}
 
+Bei der historischen Tabelle tblhistorical, werden die Spalten aus den beiden obengenannten Tabellen zusammengesetzt. 
 \textbf{Konzeptionelle Phase}\\
-Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte relevant für die API sowie die neue Webseite sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. 
+Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte relevant für die API sowie die neue Webseite sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Im Falle der Neukonzipierung der Wetterstation Datenbank sieht das ER-Modell wie in Bild() aus.  
+
+\textbf{Logische Phase (relationales Datenmodell)}
+Die Tabelle tblextsensors  enthält sie als Fremdschlüssel einen Datums und Zeitstempel. Die beiden Tabellen wx data und tblExtSensors werden über eine Tabelle mit verschiedenen Formaten von Datums bzw Zeitstempel als Primärschlüssel miteinander Kombiniert. Somit kann sichergestellt werden, dass die Datenbank in Zukunft weiter wachsen kann und die Tabelle wx data in ihrem jetzigen Zustand so belassen werden kann. Die Zusammenführung kann in einer abfrage mit dem Befehl LEFT OUTER JOIN umgesetzt werden. So kann kann eine Tabelle mit den aktuellen Werten nach Wunsch erstellt werden.
+
+\Diskussionspunkt{Fertigstellen}\\
 
 Punkte zur Überlegung neuer Datenbankstruktur:
 \begin{itemize}
@@ -97,19 +113,15 @@ Datentypen angeschaut auf w3schoolss:
 \item Welcher Datumstyp?
 
 \end{itemize}
+\textbf{Physische Phase (Erstellung des Datenmodell)}
 
+\Diskussionspunkt{Fertigstellen}\\
 
-Unterschied MariaDB und MySQL?\\
-Wie viele Daten werden gespeichert?\\
-Vor der Neukonzipierung werden täglich 1440 Datensätze gespeichert. Das bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 Einträge. Die gesamte relevante Datenbank igwetter wettertest benötigt 323.17  Mb. Die Tabelle wx data benötigt stand 1.3.18 311.94 Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt \\
--Wie viele Daten können gespeichert werden?\\
-Die igWetter hat bei Hostpoint einen Server mit 50 GB Speicherplatz, rechnet man die vorhergehenden Zahlen hoch mit dem zur Verfügung stehenden Speicherplatz, hat es genügend Platz für die kommenden 45 Jahren.\\
-
-https://entwickler.de/online/datenbanken/datenbanken-grundlagen-und-entwurf-115676.html
-\Diskussionspunkt{Ende Einlesen in DB}\\
+\subsubsection{Speicherplatz und Backup}
+Während der Laufzeit werden grosse Mengen an Daten in die Datenbank geschrieben, vor der Neukonzipierung werden täglich 1440 Datensätze gespeichert. Dies bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 Einträge, die gesamte für die Arbeit relevante Datenbank igwetter wettertest benötigt 323.17  Mb. Nur schon die Tabelle wx data, diese beinhaltet die Minutenwerte des Wettertransmitters, benötigt stand 1.3.18 311.94 Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt. Für den Speicherplatz, welcher 50 Gb bietet, stellt dies kein Problem dar, da wenn man die Zahlen hochrechnet genügend Platz für die kommenden 45 Jahren.\\
 
 \subsection{Datenbanksicherheit}
-\Diskussionspunkt {Beginn Einlesen DB Sicherheit}\\
+\subsubsection{Angriffssicherheit}
 
 Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP top 10, eine Liste welche die wichtigsten Schwachstellen aufzeigt, ist die SQL-injection in 2017 auf dem Platz 1. Was ist den eigentlich SQL Injection? SQL injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer im schlimmsten Fall auf die gespeicherten Daten des Administators kommt. Ein anderes Beispiel wäre, dass der Angreifer an die Daten der Benutzer eines Online-Shops mit Kreditkartendaten oder ähnlichen sensitiven Daten kommt.
 Weitere Fragen die auftauchen bei der Suche nach Datenbanksicherheit sind:
@@ -119,64 +131,21 @@ Weitere Fragen die auftauchen bei der Suche nach Datenbanksicherheit sind:
 \item Ist die Datenbank überhaupt ein potentielles Angriffsziel?
 \item Wer sind die Benutzer der Datenbank?
 \end{itemize}
-Neben dem Schutz vor potentiellen Angriffen ist auch der Schutz vor Datenverlust wichtig. Dieser Schutz kann sehr einfach durch ein Backup der Datenbank umgesetzt werden. Jedoch stellen sich auch hier folgende Fragen:
+
+Bei der Wetterstation Arbon, bestehen keine persönliche oder Sicherheitsrelevante Daten in der Datenbank. Somit ist diese aus sicht eine potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, da es vorallem schade wäre wenn die Daten verloren gingen. Andererseits aber auch das kein Missbrauch vom Server gemacht werden kann. 
+
+Die Zugriffe auf die Datenbank sind so gestaltet, dass darauf nur Server seitig zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Infection möglich ist. Die einzige Seite welche direkt auf die Datenbank zugreift ist die historische Datenbank. Hier wird jedoch das Risiko so unterbunden, dass mit der Openversion von Tableau gearbeitet wird, hierdurch kann sichergegangen werden das Tableau den direkten Zugriff durch die Benutzer verweigert und die Daten so sicher sind. Somit sind keine weiteren Sicherheitsmassnahmen notwendig.
+
+\subsubsection{Backup}
+
+Um die Datenbank auch gegen einen allfälligen Datenverlust zu sichern ist ein Backup von wichtiger Bedeutung. Deswegen ist das Backup ein weiterer Aspekt gegen den Verlust von Daten. Hierbei sind folgende Fragen relevant:
 \begin{itemize}
-\item Welche Daten sind wichtig?
-\item Wie wird das Backup umgesetzt?
-\item Wie oft wird ein Backup gemacht?
+\item Welche Daten sollen gesichert werden
+\item Wie oft sollten die Daten gesichert werden?
+\item Wie bzw. wo sollte das Backup gelagert werden? 
 \end{itemize}
 
-\Diskussionspunkt{Lösung}\\
-Die Zugriffe auf die Datenbank sind so gestaltet, dass darauf nur Serverseitig zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Infection möglich ist. Die einzige Seite welche direk auf die Datenbank zugreift ist die historische Datenbank. Hier wird jedoch das Risiko so unterbunden, dass nur ein Klicken möglich ist auf der Webseite. Der Rest wird im Backend von Tableau gemacht. Hier muss jedoch auf die richtige Funktion von Tableau vertraut werden. 
-
-
-\Diskussionspunkt{Ende Einlesen DB Sicherheit}\\
-\Diskussionspunkt{Beginn Konzept DB Sicherheit}
-In der Ausgangslage der Wetterstation und deren Datenbank wird kein Backup erstellt und ist gegen aussen nicht gesichert. Wichtig hierbei ist aber zu erwähnen, dass die Datenbank im Moment ein "Datenfriedhof" ist. Die Aufgezeichneten Daten werden nicht benutzt. Im Verlauf der Bachelorarbeit wird sich dies aber ändern, deswegen ist es für die Datenbank ist wichtig, dass Sie gegen aussen vor potentiellen Angreifern und einem Verlust der Daten beim Provider gesichert ist. \\
-Das Ziel ist es die Datenbank im Vergleich zu Kosten und Aufwand sicherer zu gestalten. Es wird erwartet das ein potentieller Angreifer nicht ohne Mühe in die Datenbank eindringen kann. Des Weiteren soll bei einem allfälligen Verlust der Daten auf dem Server eine schnelle Rekonstruktion der Datenbank inklusive Daten möglich sein, damit der angebotene Service schnellst möglich wieder zugänglich ist.\\ 
-Um eine Neukonzipierung zu erstellen wurde vorher eine Recherche durchgeführt. Wobei für das Konzept und die spätere Umsetzung verschiedenste Fragen aufgekommen sind. Wenn es um den erhalt der Daten, also ein Backup geht, stellen sich folgende drei Grundlegende Fragen:
- \begin{itemize}
-\item Welche Daten sind wichtig?
-\item Wie wird das Backup umgesetzt?
-\item Wie oft wird ein Backup gemacht?
-\end{itemize}
-
-Geht es um den Schutz gegen aussen vor potentiellen Angriffen tauchen die folgenden Grundlegenden Fragen auf: 
-\begin{itemize}
-\item Was für Arten von Daten beherbergt die Datenbank?
-\item Hat es sensitive Daten?
-\item Ist die Datenbank überhaupt ein potentielles Angriffsziel?
-\item Wer sind die Benutzer der Datenbank?
-\end{itemize}
-Sind die obenstehenden Fragen beantwortet steht auch das Konzept.\\
-Um die Datenbank auch gegen einen allfälligen Datenverlust zu sichern ist ein Backup von wichtiger Bedeutung. Im Grunde sind alle Daten welche die Wetterstation ablegt von Wichtigkeit. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Bezüglich des Speicherplatzes und des Aufwands, da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen. Ein Backup nur auf dem Server des Providers macht technisch keinen Sinn, da es auch sein kann, dass dieser mal versagt und die Daten anschliessend für immer verschwunden sind. Deswegen ist es wichtig auch ein "externes" Backup zu erstellen. Es wird empfohlen ein wöchentliches Backup zu erstellen, dies aufgrund der Datenmengen, denn wöchentlich fallen 10080 Datensätze an. Fehlt eine Woche aufgrund eines Ausfalls ist der schaden geringer als ein monatliches oder jährliches Update.\\
-Das update wird mittels eines Cronejobs, welches ein Backup-Script ausführt, auf dem Server durchgeführt. Die Daten werden anschliessend in einer Cloud nach Wahl hochgeladen. Zusätzlich wird das Backup auch auf dem gemieteten Server von Hostpoint gespeichert um einen schnelleren Zugriff zu gewährleisten. Um nicht zu viele Daten "unnötig" zu speichern, wird empfohlen die Daten der vorhergehenden Woche zu überspielen. Der Nachteil dieser Lösung sind jedoch die Kosten welche bei einer \Diskussionspunkt{Cloud} anfallen. Hierbei bewegt man sich preislich bei circa 10 Franken pro Monat.
-
-Neben der Datensicherung in Form des Backups ist auch die Sicherheit im Betrieb massgebend. Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP top 10, eine Liste welche die wichtigsten Schwachstellen aufzeigt, ist die SQL-injection in 2017 auf dem Platz 1. Was ist den eigentlich SQL Injection? SQL injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer im schlimmsten Fall auf die gespeicherten Daten des Administators kommt. Ein anderes Beispiel wäre, dass der Angreifer an die Daten der Benutzer eines Online-Shops mit Kreditkartendaten oder ähnlichen sensitiven Daten kommt. Auf der Seite der MariaDB, welche in unserem Fall benutzt wird, werden 5 Essentielle Praktiken für die Datenbanksicherheit aufgezählt:
-\begin{itemize}
-\item Schütze gegen Attacken mit einem Datenbankproxy
-\item Setze ein auditing und robustes logging auf
-\item Praktiziere ein strenges user account management
-\item Halte die Datenbanksoftware und OS up-to-date
-\item Verschlüssle sensitive Daten
-\end{itemize}
-
-Die Wetterstation Arbon enthält jedoch keine sensitiven Daten. Deswegen muss die Datenbank nicht mit der höchsten Sicherheit ausgestattet sein.  Trotzdem ist Datenbank nach der Umsetzung der Bachelorarbeit eins der Herzstücke der Wetterstation. Denn diese beinhaltet die Wetterdaten jeder Minute des Tages, des Weiteren erhält sie sich auch die historischen Daten der Wetterstation. Deswegen sollte eine gewisse Grundsicherheit der Datenbank gewährleistet werden, damit die Daten nicht manipuliert bzw. die Datenbank nicht anderweitig benutzt werden kann. Die Datenbank stellt nur in dieser Hinsicht ein potentielles Ziel dar. Benutzer der Datenbank hat es im eigentlichen Sinne nur zwei. Das ist der Administrator der Seite, sowie die Webseite. Jedoch sind die Benutzer der Seite auch Benutzer der Datenbank. Doch was haben diese direkt mit der Datenbank zu tun? Auf der zukünftigen Seite der historischen Daten, sollen die Benutzer entscheiden können von wann bis wann die Daten angezeigt werden sollen. Somit müssen diese eine Abfrage tätigen.\\
-Um es den Angreifern nicht zu einfach zu gestalten sollte die Abfrage gegen Injection gesichert sein. Zusätzlich ist es sinnvoll mittels logging zu erfahren welche Anfragen getätigt wurden, sowie mittels eines Cronejobs die Datenbank auf dem neusten Stand zu halten. Beim logging soll bei einer Abweichung des Verhaltens, konkret heisst dies einer veränderten Abfrage, der Verein gewarnt werden. Dies kann mittels einer E-Mail stattfinden. Da es nur einen user account für den Verein hat ist es nötig diesen mit allen Privilegien auszustatten und hieran nichts zu ändern. Des Weiteren erhält wie erwähnt die Datenbank auch keine sensitiven Daten, womit ein verschlüsseln der Daten überflüssig wird. \Diskussionspunkt{Datenbankproxy}
-
-\Diskussionspunkt{Zusammenfassung}
-
-Das Konzept in einer kurzen Zusammenfassung inklusive den Punkten die zur Diskussion stehen:\\
-Backup:\\
-Es wird ein Backup system aufgesetzt welches sicherstellt, dass die Daten einmal auf dem Server von Hostpoint sowie auf extern in einer Cloud oder sonstigem externen Speicher gespeichert werden können. Dies wird mittels einem Script von einem Cronejob wöchentlich durchgeführt. Der Diskussionspunkt ist hierbei, welche der beiden externen Varianten wird gewählt und ob die Daten in einem kürzerem oder längerem Abstand gespeichert werden.
-
-Datenbanksicherheit:\\
-Die Datenbank soll primär gegen SQL-injection gesichert werden. Des Weiteren soll geloggt werden wann welche Anfragen stattfinden und wie diese aussehen. Sollte eine Abfrage aus dem Rahmen fallen, soll der Verein mittels E-Mail oder einer sonstigen Benachrichtigung gewarnt werden. Des Weiteren soll ein Cronejob und dem dazugehörigen Skript die Software auf dem neusten Stand halten. Bei der Datenbanksicherheit steht die Benachrichtigungsart und ein eventueller Proxy wie von MariaDB empfohlen zur Diskussion. 
-\Diskussionspunkt{Ende Konzept DB Sicherheit}
-
-\Diskussionspunkt{Beginn DB vs. txtfile performance}
-In der Situation vor der Bachelorarbeit wurden die Daten der Wetterstation vom WeatherDisplay Live direkt in die Datenbank und in die sogenannten clientrax Textfiles eingelesen. Die Datenbank wurde nicht benutzt und war somit ein Datenfriedhof. Während des Fachmoduls tauchte die Frage auf, warum nicht ganz auf die Datenbank umsteigen? Aus sich der Programmierung sowie der Ausbaufähigkeit würde dies sinn machen. Jedoch warum wird denn alles über die Textfiles gemacht? Daraus stellte sich eine weitere Frage, ist es aus Performance Gründen besser die Textfiles beizubehalten?  Bei der Recherche nach genauen Antworten gibt es keine Vertrauenswürdige Literatur. In den verschiedenen bekannten Foren, wie bspw. Stackoverflow sind diese Fragen auch präsent. Jedoch sind hier die Antworten sehr widersprüchlich und es wird immer wieder erwähnt es kommt drauf an was du möchtest. Es wird jedoch immer wieder empfohlen einen Benchmark Test durchzuführen und anhand von diesem zu entscheiden. Dieser sollte jedoch erst gemacht werden, wenn die neue Datenbankstruktur aufgesetzt ist und läuft. 
-\Diskussionspunkt{Ende DB vs. textfile perfomance}
+Da alle Daten in der DB gleich relevant sind sollten auch alle so behandelt werden und im Backup vorhanden sein. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Bezüglich des Speicherplatzes und des Aufwands, da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen.Zusätzlich sollte das Backup nicht auf dem Server des Providers gespeichert werden, da wenn etwas schief geht mit dem Server die Daten auch weg sind. Deswegen ist es wichtig auch ein "externes" Backup zu erstellen. Um den Aufwand klein zu halten wird empfohlen ein monatliches Backup mit der Backup funktion von Hostpoint durchzuführen und dies auf einer Festplatte zu speichern. Sollte trotzdem mal das Backup nicht funktionierten oder vergessen gegangen sein, kann auf den Hostpoint-Service züruck gegriffen werden. Diese erstellen selber ein tägliches Backup, welches für 50 Franken wieder eingespielt werden kann. Somit können sich, davon ausgehend, dass Hostpoint einen guten Job macht Kosten für bspw. ein Cloudaccount gespart werden.
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
@@ -190,14 +159,7 @@ Wird die Struktur vor der Bachelorarbeit angeschaut ist nicht auf dem ersten Bli
 Die Tabelle wx data beinhaltet momentan 65 einzelne Attribute. Von der Stations ID bis zum Batterielevel der Station. Da die Datenbank nach der Bachelorarbeit vor allem für die API und um ein Textfile zu erstellen verwendet wird und es für den Benutzer uninteressant ist wie der Batteriestand ist, die Idee war deswegen, dass die überflüssigen Attribute herausgenommen werden. Um eine klare Vorstellung zu haben wie eine Datenbank zu strukturieren ist und wie man eine Datenbank ausdünnt, wurde dieses Thema mit einem Datenbankspezialisten angeschaut. Hierbei hat sich ergeben, dass die Tabelle wx data so  belassen werden sollte, und die Abfrage dementsprechend angepasst werden sollte, ganz nach Sinne never change a running system. Ebenfalls besprochen wurde die Archivierung der Daten, hierbei wurden zwei verschiedene Möglichkeiten aufgezeigt. Eine Möglichkeit wäre die Daten aus der Tabelle wx data zu übernehmen und auf einem günstigeren Speichermedium zu speichern um diese als Archivierung zu benutzen. Die zweite Möglichkeit, welche besser zur Lösung passt, ist die Tabelle wx data auf dem Datenbankserver so zu belassen und diese auch als Archiv zu benutzen. Diese Möglichkeit ist die sinnvollere, da der Verein bei Hostpoint 50 Gb Speicherplatz besitzt und es keine Rolle im Preis spielt wie viel Speicher benutzt wird. Aus diesen Informationen und Tipps kann ein neues Datenbankkonzept entstehen welches darauf basiert, dass die jetzt Lauffähige Version der Datenbank bzw. der Tabelle wx data übernommen wird.
 
 \Diskussionspunkt{Beginn Datenbankkonzept}
-Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht aufschlussreich. Aus diesem Grund wird die Datenbank restrukturiert. Hierbei soll vorallem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Aus der Diskussion mit dem Spezialisten wurden einige Ansätze, wie eine völlige neu Organisation der Tabellen oder auch eine neue Datenbank besprochen. Aus der Diskussion kam jedoch heraus, dass die Datenbank in ihrem Aufbau weitestgehend so belassen werden kann. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor:
-\begin{itemize}
-\item Tabelle wx data wird in ihrem jetzigen Zustand belassen
-\item Tabelle tblwellen wird umbenannt in tblExtSensors und umstrukturiert
-\item Tabelle tblHistorical wird neu aufgebaut
-\end{itemize}
-Die Tabelle \Diskussionspunkt{tblExtSensors} beinhaltet die Pegeldaten des Bodensees, sowie die Oberflächentemperatur und die Temperatur ein Meter unter Wasser. Des weiteren enthält sie als Fremdschlüssel einen Datums und Zeitstempel. Die beiden Tabellen wx data und tblExtSensors werden über eine Tabelle mit verschiedenen Formaten von Datums bzw Zeitstempel als Primärschlüssel miteinander Kombiniert. Somit kann sichergestellt werden, dass die Datenbank in Zukunft weiter wachsen kann und die Tabelle wx data in ihrem jetzigen Zustand so belassen werden kann. Die Zusammenführung kann in einer abfrage mit dem Befehl LEFT OUTER JOIN umgesetzt werden. So kann kann eine Tabelle mit den aktuellen Werten nach Wunsch erstellt werden.\\
-Die Tabelle tblHistorical wird die durchschnittlich gemessenen Werten im Stundentakt erhalten. Diese wird später auf der Seite mit historischen Daten benötigt. Um die Ladezeiten der Webseite, sowie die Sicherheit der Datenbank zu erhöhen wird im Minutentakt ein Textfile mit den aktuellen Werten erstellt. Ein weiterer Grund hierfür ist, dass so sichergestellt werden kann, dass jeder Benutzer der Webseite die gleichen Werte erhält. Im vorherigen Zustand der Wetterstation gab es auch schon ein Textfile, eines der Probleme bei diesem ist jedoch das Auslesen der Werte. Ein weiteres das nicht alle Daten welche Ausgelesen werden, konkret der Pegelsensor wie auch der Wassertemperatursensor, nicht erhalten sind. Auch kann dieses File für die aktuellen Werte der API benutzt werden. Um auf diese Weise auch wieder die Sicherheit der Datenbank zu erhöhen. Die Umsetzung zur Erstellung der Textfile wird mittels eines minütlichen Cronjobs umgesetzt. 
+
 
  
 
