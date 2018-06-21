@@ -3,22 +3,28 @@
 %% ###################################################################################################
 
 \subsection{API}
-\Diskussionspunkt{Einlesen API}
-\Diskussionspunkt{Datenexport (Excel), Sicherheit gegen Angriffe, Abfragegeschwindigkeit}
-Beim Einlesen in das Thema API ist es wichtig sich vorher Fragen zu stellen, damit nicht darauflos rechechiert wird. Folgende Fragen sollten zu am Ende des Einlesens vor der Konzeptionierung beantwortet sein:
+Für die neue Webseite und für andere Anwender ist eine API erstellt worden. Um eine API zu entwickeln muss zuerst verstanden werden was eine API ist. Deswegen werden zu beginn folgende Fragen gestellt und beantwortet. 
 \begin{itemize}
 \item Was ist eine API?
 \item Wie wird eine API entwickelt?
 \item Was ist state of the Art?
 \end{itemize}
 
+Anschliessend wird in diesem Kapitel aufgezeigt wie die API entwickelt wurde und wo diese zum Einsatz kommt.
+
 \subsubsection{Was ist eine API?}
-Eine API überbrückt die Schnittstellen zwischen verschiedenen Software teilen und strukturiert die dabei anfallende Datenübergabe dazwischen. Die API ermöglicht es Software zu modularisieren und die Kommunikation zu vereinfachen. Konkret heisst das, die einzelnen Programmteile werden voneinander abgekapselt und kommunizieren nur über die Festgelegte API. Der Vorteil hierbei ist, das die API veröffentlicht werden kann und somit auch anderen die Möglichkeit gegeben werden kann die angebotenen Dienste mittels der API zu erhalten. Nicht zuletz ist auch das Testen ein wichtiger Punkt, da alle Programmteile nur über die API miteinander kommunizieren sollten muss die Software auch nur in der Zusammenarbeit mit der API getestet werden. 
+Eine API überbrückt die Schnittstellen zwischen verschiedenen Software teilen und strukturiert die dabei anfallende Datenübergabe dazwischen. Sie ermöglicht es Software zu modularisieren und die Kommunikation zu vereinfachen. Konkret heisst diess, dass die einzelnen Programmteile werden voneinander abgekapselt und kommunizieren nur über die Festgelegte API. Der Vorteil hierbei ist, das die API veröffentlicht werden kann und somit auch anderen die Möglichkeit gegeben werden kann die angebotenen Dienste mittels der API zu erhalten. Zusätzlich können so auch die einzelnen modularisierte Softwareteile unabhängig voneinander weiterentwickelt werden. Nicht zuletzt ist auch das Testen ein wichtiger Punkt, da alle Programmteile nur über die API miteinander kommunizieren sollten muss die Software auch nur in der Zusammenarbeit mit der API getestet werden.
 
 http://www.omkt.de/api/
 
 \subsubsection{Was ist state of the Art?}
-Heutzutage wird darauf geschaut, dass die API nach der RESTful Standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. Representational State Transfer, auch REST genannt ist eine Möglichkeit so zu programmieren, dass eine Zustandslosigkeit herrscht. Dies bedeutet, dass jede Nachricht in sich geschlossen ist und alle Informationen die der Client bzw. der Server benötigt. Die Umsetzung dieser Paradigmas wird mit Hilfe des HTTP bzw. HTTPS Standard gemacht. Dafür kann REST die bekannten Befehle von HTTP benutzen.\\
+Heutzutage wird darauf geschaut, dass die API nach dem RESTful Standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. Representational State Transfer, auch REST genannt ist eine Möglichkeit so zu programmieren, dass eine Zustandslosigkeit herrscht. Ein beispiel dafür wäre die Abfrage zur Temperatur wie in Abb. \ref{img:Sequenzdiagramm_API}).  Dies bedeutet, dass jede Nachricht in sich geschlossen ist und alle Informationen die der Client bzw. der Server benötigt. Die Umsetzung dieser Paradigmas wird mit Hilfe des HTTP bzw. HTTPS Standard gemacht. Dafür kann REST die bekannten CRUD (Create, Read, Update, Delete) Befehle von HTTP benutzen.\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/Sequenzdiagramm_API}
+	\caption{Beispiel einer API GET-Abfrage}
+	\label{img:wetterstation}
+\end{figure}
 
 https://www.oio.de/public/xml/rest-webservices.htm
 
@@ -30,6 +36,7 @@ https://poe-php.de/tutorial/rest-einfuehrung-in-die-api-erstellung\\
 http://edoc.sub.uni-hamburg.de/haw/volltexte/2016/3608/pdf/BAunterstrichLMauritz.pdf\\
 
 \subsubsection{API Konzept}
+Nachdem die Fragen zur API beantwortet sind kann die API für die Wetterstation Arbon Konzipiert und umgesetzt werden. Für die API gibt es jedoch eine wichtige Bedingung. Sie muss in php geschrieben werden, da Hostpoint kein Javascript auf der Serverseite erlaubt. 
 
 Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Für die Wetterstation Arbon werden folgende Anforderungen gestellt:
 \begin{itemize}
@@ -41,82 +48,253 @@ Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Für 
 \item Wassertemperatur (Oberfläche)
 \item Wasserpegel
 \item Wellenhöhe
+\item Radiation /daily sunduration
+\item Webcam
+\item Sturmwarnung
 \end{itemize}
-Die Datenabfrage über die API soll RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden. 
+Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen, da die API öffentlich sein soll ist auch kein Token notwendig für die Authentifizierung.
+
+\paragraph{JSON Struktur}
+
+Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden. 
 
 \begin{lstlisting}
 {
   "product": "api.wetter-arbon.ch",
   "version": "1.1.1",
-  "sensors": {
-    "airtemperature": {
-      "name": "airtemperature",
-      "unit": "m/s",
-      "value": "5",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "humidity": {
-      "name": "humidity",
-      "unit": "\%",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "wind-direction": {
-      "name": "wind direction",
-      "unit": "Grad",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "wind-speed": {
-      "name": "wind speed",
-      "unit": "m/s",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "rain": {
-      "name": "rain",
-      "unit": "mm/d",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "air-pressure": {
-      "name": "air pressure",
-      "unit": "mm/d",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "water-temperature": {
-      "name": "water temperature 1m under surface",
-      "unit": "GradC",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "water-surface-temperature": {
-      "name": "water surface temperature",
-      "unit": "GradC",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    },
-    "level": {
-      "name": "level",
-      "unit": "m",
-      "value": "10",
-      "timestamp": "Zeitangabe mit Datum",
-      "frequency": "60"
-    }
-  },
-  "webcam": {
-    "name": "webcam wetter arbon",
-    "title": "webcam",
-    "webcamid": "id"
-  }
+	"v1": {
+		"misc": {
+			"west": {
+				"description": "Warnlevel west",
+				"warnlevel": 0,
+				"onset": null,
+				"expires": null,
+				"timestamp": "2018-06-21 11:32:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"middle": {
+				"description": "Warnlevel middle",
+				"warnlevel": 0,
+				"onset": null,
+				"expires": null,
+				"timestamp": "2018-06-21 11:32:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"east": {
+				"description": "Warnlevel east",
+				"warnlevel": 0,
+				"onset": null,
+				"expires": null,
+				"timestamp": "2018-06-21 11:32:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			}
+		},
+		"webcam": {
+			"name": "Webcam Wetter Arbon",
+			"title": "webcam",
+			"url": "https:\/\/webcam.wetter-arbon.ch\/mjpg\/video.mjpg"
+		},
+		"data": {
+			"temperature": {
+				"description": "Lufttemperatur",
+				"unit": "\u00b0C",
+				"value": 22.3,
+				"dailymax": 22.7,
+				"dailymin": 18.8,
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"windchill": {
+				"description": "Windchill",
+				"unit": "\u00b0C",
+				"value": 22.3,
+				"dailymax": 22.7,
+				"dailymin": 18.8,
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"humidity": {
+				"description": "Relative Luftfeuchtigkeit",
+				"unit": "%",
+				"value": 63,
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"winddirection": {
+				"description": "Windrichtung",
+				"unit": "\u00b0",
+				"value": 84,
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"windspeed": {
+				"knoten": {
+					"value": 3.1,
+					"dailymax": 8.6,
+					"unit": "kn"
+				},
+				"kmph": {
+					"value": 5.74,
+					"dailymax": 15.93,
+					"unit": "km\/h"
+				},
+				"beaufort": {
+					"value": 2,
+					"dailymax": 3,
+					"unit": "Bft"
+				},
+				"description": "Windgeschwindigkeit",
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"gust": {
+				"knoten": {
+					"value": 3,
+					"dailymax": 10,
+					"unit": "kn"
+				},
+				"kmph": {
+					"value": 5.56,
+					"dailymax": 18.52,
+					"unit": "km\/h"
+				},
+				"beaufort": {
+					"value": 1,
+					"dailymax": 3,
+					"unit": "Bft"
+				},
+				"description": "B\u00f6en",
+				"unit": "kn",
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"precipitation": {
+				"description": "Niederschlagsmenge seit Mitternacht",
+				"unit": "mm",
+				"value": 0,
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"pressure": {
+				"description": "Luftdruck",
+				"unit": "hPa",
+				"value": 1018.3,
+				"timestamp": "2018-06-21 11:31:32",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"watertemperature1m": {
+				"description": "Wassertemperatur 1m unter der Wasseroberfl\u00e4che",
+				"unit": "\u00b0C",
+				"value": 23.8,
+				"timestamp": "2018-06-21 11:31:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"watertemperature0m5": {
+				"description": "Wassertemperatur 0.5m unter der Wasseroberfl\u00e4che",
+				"unit": "\u00b0C",
+				"value": 23.9,
+				"timestamp": "2018-06-21 11:31:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"waterlevel": {
+				"description": "Bodenseepegel",
+				"unit": "Meter",
+				"value": 4.09,
+				"timestamp": "2018-06-21 11:31:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			},
+			"radiation": {
+				"radiation": {
+					"description": "Globalstrahlung",
+					"value": 877,
+					"unit": "Watt pro Quadrameter"
+				},
+				"daily_sunduration": {
+					"description": "Anzahl Sonnenminuten pro Tag",
+					"value": 154,
+					"unit": "min"
+				},
+				"timestamp": "2018-06-21 11:31:00",
+				"interval": 60,
+				"intervalUnit": "seconds"
+			}
+		}
+	}
 }
+
 \end{lstlisting}
+
+\paragraph{Verzeichnisstruktur und PHP Files}
+
+Jetzt wo die Struktur steht kann auch das PHP-Konzept erstellt werden. Das Verzeichnis soll folgendermassen aufgebaut werden:
+
+\begin{itemize}
+\item Versionsnummer (V1)
+\begin{itemize}
+\item Data
+\begin{itemize}
+\item config
+\end{itemize}
+\item Webcam
+\item misc (Verschiedenes)
+\begin{itemize}
+\item config
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar strukturiert ist. Im Verzeichnis Data werden die alle Sensordaten verarbeitet, im Verzeichnis Webcam wird nur das JSON für die Webcam erstellt, da hier keine Datenbankabfrage notwendig ist und im Verzeichnis misc werden verschiedene Daten von dritten verarbeitet. 
+
+\paragraph{PHP Files}
+In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzugzeigen. 
+Vom Grundaufbau die Dateien im Config-Ordner alle gleich d.h ein File mit der Datenbankverbindung:
+\begin{itemize}
+\item path
+\item database
+\item databaseQuery
+\item createJson
+\end{itemize}
+
+Im File Path wird die URL ausgelesen und dem richtigen Case zugewiesen. Siehe Bild. In der Zeile 21 wird die URL für den case überprüft. Ist diese richtig, wird der entsprechende Tabellenname in der dieses Attribut vorhanden ist angegeben, dies ist für die Datenbankabfrage. Anschliessend wird angegeben welche Sensorwerte aus der Datenbank benötigt werden. In Zeile 31 wird das sogenannte dataJsonStatic erstellt, hierbei wird die Beschreibung (description) und die Einheit (unit) der Daten angegeben. Grund für diesen Arraynamen ist das diese Daten statisch sind. Anschliessend wird der JSON Name vergeben in Zeile 37. Zum Schluss in Zeile wird die entsprechende Funktion im createJson aufgerufen mit der entsprechenden Parameterliste
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/API_temperature_code_path}
+	\caption{Beispiel des Temperatur cases}
+	\label{img:wetterstation}
+\end{figure}
+
+Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File createJson bestehen verschiedene Funktionen, passend zur Anforderung. Es bestehen folgenden Funktionen welche kurz umschrieben werden welches Ziel diese haben.\\ 
+
+CreateJsonMinMax:\\
+Diese Funktion erstellt die JSONs mit dem aktuellen Wert sowie den Extrema des Tages.\\
+CreateJson:\\
+Erstellt das Json für die Daten, welche keine Extrema oder sonstige umrechnungen benötigen. 
+CreateJsonConversion:\\
+Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten Km/h, knoten und beufort. Umgerechnet werden die aktuellen Werte, sowie die Extrema.\\
+createJsonRadiation:\\
+Erstellt das Json für die Globalstrahlung zusammen mit der Sonnendauer in Minuten.\\
+
+Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 6 und 7 wird die Verbindung zur Datenbank hergestellt, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat in 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/API_temperature_code_createJson}
+	\caption{Beispiel des Temperatur cases}
+	\label{img:wetterstation}
+\end{figure}
+
+
