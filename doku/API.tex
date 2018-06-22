@@ -238,9 +238,9 @@ Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree
 
 \end{lstlisting}
 
-\paragraph{Verzeichnisstruktur und PHP Files}
+\subsubsection{Umsetzung der API}
 
-Jetzt wo die Struktur steht kann auch das PHP-Konzept erstellt werden. Das Verzeichnis soll folgendermassen aufgebaut werden:
+Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeichnis soll folgendermassen aufgebaut werden:
 
 \begin{itemize}
 \item Versionsnummer (V1)
@@ -274,7 +274,7 @@ Im File Path wird die URL ausgelesen und dem richtigen Case zugewiesen. Siehe Bi
 	\centering
 	\includegraphics[width=1\linewidth]{img/API_temperature_code_path}
 	\caption{Beispiel des Temperatur cases}
-	\label{img:wetterstation}
+	\label{img:case}
 \end{figure}
 
 Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File createJson bestehen verschiedene Funktionen, passend zur Anforderung. Es bestehen folgenden Funktionen welche kurz umschrieben werden welches Ziel diese haben.\\ 
@@ -288,13 +288,40 @@ Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten
 createJsonRadiation:\\
 Erstellt das Json für die Globalstrahlung zusammen mit der Sonnendauer in Minuten.\\
 
-Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 6 und 7 wird die Verbindung zur Datenbank hergestellt, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat in 
+Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 6 und 7 wird die Verbindung zur Datenbank hergestellt, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat mittels einer while-Schlaufe in die einzelnen Spalten zerlegt und als Array gespeichert. Von Zeile 16 bis 23 wird das assoziative Array dataJson aufgebaut um in der Zeile 26 mit dem Array im File path.php zusammengefügt zu werden. Anschliessen wird das Array mittel einem echo zurückgegeben. Die restlichen Funktionen unterscheiden sich nur im Aufbau des Arrays, die Datenbankabfrage, das Aufbauen des dataJson und das Zusammenfügen sowie das zurückgeben funktioniert überall gleich. 
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{img/API_temperature_code_createJson}
+	\caption{Beispiel Erstellen des JSON}
+	\label{img:wetterstation}
+\end{figure}
+
+Vor das die Datenbankabfrage ausgeführt werden kann, muss eine Datenbankverbindung hergestellt werden wie in \Diskussionspunkt{Bild} zu sehen ist. Hier wird Gebrauch vom try, catch Verfahren gemacht. Hiermit ist es möglich wie auch in anderen Programmiersprachen eine Ausnahme (Exception) abgefangen werden \cite{Ausnahmebehandlung:ThePHPGroup}. In der Zeile 21 d.h. im try wird die Verbindung durch eine Instanz der PDO Klasse erzeugt. Diese benötigt die richtigen Parameter für die Verbidung, d.h. den host, den Datenbanknamen, den Datenbankbenutzer und das Passwort. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/API_temperature_code_database}
+	\caption{Beispiel Datenbankabfrage}
+	\label{img:wetterstation}
+\end{figure}
+
+Nachdem die Verbindung aufgebaut ist, wird wie bei der erklärung für das CreateJson und deren Funktion erwähnt die Datenbankabfrage durchgeführt. In Zeile 16 wird die Abrage erstellt, im Beispiel für die Temperatur würde für die variablen folgende Strings stehen:\\
+\begin{lstlisting}
+$requiredData['value'] -> temperature
+$requiredData['min'] -> min_daily_temperature
+$requiredData['max'] -> max_daily_temperature
+$table ->  tblwettertransmitter
+\end{lstlisting}
+Diese Werte würden vorher aus der Funktion creatJsonMinMax übergeben. Ist die Query erstellt, wird diese in Zeile 20 vorbereitet und in Zeile 27 ausgeführt. Nachdem diese Ausgeführt wurde wird sie zurückgegeben an die Funktion createJsonMinMax wo die Resultate wie beschrieben aufbereitet werden zu einem Json. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/API_temperature_code_databaseQuery}
 	\caption{Beispiel des Temperatur cases}
 	\label{img:wetterstation}
 \end{figure}
+
+
 
 
