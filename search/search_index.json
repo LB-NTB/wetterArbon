@@ -1162,17 +1162,17 @@
         },
         {
             "location": "/KW25/",
-            "text": "Wochenreport KW 08\n\n\nZiel dieser Woche\n\n\nResultat / Erkenntnisse\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand",
+            "text": "Wochenreport KW 25\n\n\nZiel dieser Woche\n\n\n\n\nDokumentation\n\n\n\n\nResultat / Erkenntnisse\n\n\nDokumentation\n\n\nDiese Woche wurde an der Dokumentation geschrieben.\n\n\nProbleme / Herausforderungen\n\n\nJournal / Zeitaufwand\n\n\n10h Dokumentation\n5 min Report",
             "title": "KW25"
         },
         {
-            "location": "/KW25/#wochenreport-kw-08",
+            "location": "/KW25/#wochenreport-kw-25",
             "text": "",
-            "title": "Wochenreport KW 08"
+            "title": "Wochenreport KW 25"
         },
         {
             "location": "/KW25/#ziel-dieser-woche",
-            "text": "",
+            "text": "Dokumentation",
             "title": "Ziel dieser Woche"
         },
         {
@@ -1181,13 +1181,18 @@
             "title": "Resultat / Erkenntnisse"
         },
         {
+            "location": "/KW25/#dokumentation",
+            "text": "Diese Woche wurde an der Dokumentation geschrieben.",
+            "title": "Dokumentation"
+        },
+        {
             "location": "/KW25/#probleme-herausforderungen",
             "text": "",
             "title": "Probleme / Herausforderungen"
         },
         {
             "location": "/KW25/#journal-zeitaufwand",
-            "text": "",
+            "text": "10h Dokumentation\n5 min Report",
             "title": "Journal / Zeitaufwand"
         },
         {
