@@ -4,9 +4,109 @@
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
-\subsection{Pegelsensor}
+\subsection{Pegelsensor und Wellenhöhenmessung}
 \Diskussionspunkt{Pegelmessung, Pegelberechnung, Wellenhöhenberechnung}
 \Diskussionspunkt{Gegenüberstellung Messprinzipien, Vor- und Nachteile}
+
+Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können.
+
+\begin{itemize}
+\item Hydrostatische Messmethode (bisheriges Messprinzip)
+\item Ultraschall
+\item Radar
+\item TOF
+\item Boje
+\end{itemize}
+
+
+\begin{table}[htb!]
+\setlength\extrarowheight{3pt} % for a more "open" look
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{1.5cm}||X|X|}
+\hline
+ & \bfseries\large Vorteile & \bfseries\large Nachteile\\
+
+
+\hline
+\textbf{Hydrostatisch}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item einfache Auswertung
+\item mechanische Dämpfung
+\item sehr kleiner Energieverbrauch
+\end{itemize}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item anfällig auf Verschmutzung
+\item keine Wellenmessung möglich
+\end{itemize}\\
+
+\hline
+\textbf{Ultraschall}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item berührungslos
+\item geringer Energiebedarf
+\end{itemize}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item anfällig auf Wind
+\item 
+\end{itemize}\\
+
+\hline
+\textbf{Radar}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item blablabla
+\item blebleble
+\end{itemize}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item bliblibli
+\item blobloblo
+\end{itemize}\\
+
+\hline
+\textbf{TOF}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item blablabla
+\item blebleble
+\end{itemize}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item bliblibli
+\item blobloblo
+\end{itemize}\\
+
+\hline
+\textbf{Boje}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item blablabla
+\item blebleble
+\end{itemize}
+&
+\begin{itemize}[nosep,leftmargin=*]
+\item bliblibli
+\item blobloblo
+\end{itemize}\\
+
+
+\hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Pegelberechnung}
+Der Pegelsensor liefert 4...20mA bei einer Messhöhe von 6 Meter. Der Pegelsensor ist ??? Meter über dem Pegelnullstand (Definition!!!) angebracht.
+Für die Berechnung des Bodensee-Pegels aus dem Messwert ergibt sich analog der Geradengleichung $ y = m * x + q  $ wie in der Formel \ref{eq:Pegelformel} dargestellt.
+
+\begin{equation}
+\label{eq:Pegelformel}
+Pegel [m] = 6m/16mA * Messwert [mA] + ???m
+\end{equation}
+
+\Diskussionspunkt{Wie ist der Bodenseepegel definiert? Quelle?}
 
 
 %% ###################################################################################################
@@ -20,10 +120,10 @@
 
 Das Pyranometer basiert auf dem Messprinzip eines Thermoelements. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme „fliesst“ dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom bzw. zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe geschalten, welches Thermosäule genannt wird. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Response time liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen. Das spektrale Verhalten wird durch den Glasdom definiert. Bei Glas liegt dieser im Bereich von 350 bis 2800 nm. Durch Erhöhung der Güte des Doms (Quarzglas) kann der spektrale Bereich erweitert werden von 300 bis 3600 nm. Für Pyranometer existiert ein Standard nach WMO: ISO 9060, mit folgenden Güteklassen:
 
-\begin{itemize}  
+\begin{itemize}
 \item Secondary Standard
 \item first class
-\item second class 
+\item second class
 \end{itemize}
 
 \Diskussionspunkt{ISO 9060:1990 Solar energy -- Specification and classification of instruments for measuring hemispherical solar and direct solar radiation}
@@ -54,7 +154,3 @@ Pyranometrische Methode: Pyranometrische Messung der globalen (G) Sonneneinstrah
 
 \subsubsection{Auswahl des richtigen Temperatursensors}
 Um die richtige Temperaturen bestimmen zu können ist der Pegel notwendig, hierfür wird im Cronjob zuerst den Pegel ausgelesen und anschliesend mittels der if Funktion, dies musste mit einem if gemacht werden, da Python keine cases kennt, den richtigen Sensor ausgewählt.
-
-
-
-
