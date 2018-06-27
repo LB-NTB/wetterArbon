@@ -6,7 +6,7 @@
 
 \subsection{Übersicht}
 
-In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Die Datenbank glich vor der Bearbeitung einem Datenfriedhof. Im jetzigen Zustand werden die Daten die schon geschrieben waren, sowie die neu geschrieben werden aktiv für folgende Aufgaben benutzt:\\
+In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Die Datenbank glich vor der Bearbeitung einem Datenfriedhof. Im jetzigen Zustand werden die Daten die schon geschrieben waren, sowie die neu geschrieben werden aktiv für folgende Aufgaben benutzt:\\
 \begin{itemize}
 \item API
 \item Dreitage Rückschau der verschiedenen Sensoren
@@ -21,7 +21,7 @@ Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, se
 
 \subsection{Datenspeicherung}
 \subsubsection{Warum eine Umstrukturierung der Datenbank?}
-Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht sehr aufschlussreich. Aus diesem Grund wird die Datenbank umstrukturiert. Hierbei soll vor allem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Die Daten werden zudem nicht verwendet. Dies ist sehr schade, da es auch für vergangene Daten Anwendungen gibt, bspw. könnten Benutzer zurück schauen um zu sehen wie das Wetter vor einem Jahr war. 
+Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht sehr aufschlussreich. Aus diesem Grund wird die Datenbank umstrukturiert. Hierbei soll vor allem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Die Daten werden zudem nicht verwendet. Dies ist sehr schade, da es auch für vergangene Daten Anwendungen gibt, bspw. könnten Benutzer zurück schauen um zu sehen wie das Wetter vor einem Jahr war. Hierfür wird eine Seite mit einer solchen Anwendung erstellt.
 
 \subsubsection{Vorgaben}
 Bei der Entwicklung einer Datenbank müssen verschiedene Punkte vorher klar sein. Zum einen welche Datenbank steht zur Verfügung und welches Datenmodell bildet diese. Der wichtigere Punkt der beiden Fragen ist welches Datenmodell wird benutzt denn es bestehen folgende Arten von Datenmodellen:
@@ -32,7 +32,7 @@ Bei der Entwicklung einer Datenbank müssen verschiedene Punkte vorher klar sein
 \item Objekt relationale Datenbank
 \end{itemize}
 
-Im Falle der zu bearbeitenden Datenbank ist steht eine MariaDB mit einer relationalen Struktur zur Verfügung. Die relationale Datenstruktur heisst so, weil es in diesem Fall der Modellbildung sich überlappende Spalten geben kann.\cite{IntroductionToRelationalDatabases:MariaDB} Hiermit können die verschiedenen Tabellen welche entwickelt werden auf beliebige Weise durch dieses Feld zusammengefügt werden. Im Falle der neuen Datenbank wird es die Spalte Datetime sein, dazu aber später mehr.\\
+Im Falle der zu bearbeitenden Datenbank ist steht eine MariaDB mit einer relationalen Struktur zur Verfügung. Die relationale Datenstruktur heisst so, weil es in diesem Fall der Modellbildung sich überlappende Spalten geben kann.\cite{IntroductionToRelationalDatabases:MariaDB} Hiermit werden die verschiedenen Tabellen welche entwickelt werden auf beliebige Weise durch dieses Feld verknüpft. Im Falle der neuen Datenbank wird es die Spalte datetime sein, dazu aber später mehr.\\
 
 \subsubsection{Methodik}
 Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kann es verschiedene Methoden geben. Im Falle dieser Datenbank wurde entschieden nach einer Methode mit vier verschiedenen Phasen zu nehmen. \cite{Datenbanken:GrundlagenUndEntwurf:VeikkoKrypczyk} Dieses Vorgehen sieht folgendermassen aus:
@@ -42,6 +42,8 @@ Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kan
 \item Logische Phase (relationales Datenmodell)
 \item Physische Phase (Erstellung des Datenmodell)
 \end{itemize}
+
+Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie umgesetzt. 
 \subsubsection{Neugestaltung der Datenbank}
 \textbf{Externe Phase}\\
 In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor:
@@ -81,7 +83,7 @@ Die neue Tabellenstruktur der wx data würde folgende Spalten beinhalten:
 \item forecast icon
 \end{itemize}
 
-Obwohl die in diesem Stadium die externe Sensoren noch nicht funktionieren oder genau definiert ist, ob diese kommen sollten folgende Spalten für die Tabelle tblextsensors schon definiert sein: 
+Obwohl die in diesem Stadium die externe Sensoren noch nicht alle funktionieren oder genau definiert sind welche umgesetzt werden sollten die  Spalten für die Tabelle tblextsensors schon definiert sein: 
 \begin{itemize}
 \item waterlevel
 \item waveheight
@@ -108,7 +110,7 @@ Punkte zur Überlegung neuer Datenbankstruktur:
 \item 
 \end{itemize}
 
-Datentypen angeschaut auf w3schoolss:
+Datentypen angeschaut auf w3schools:
 \begin{itemize}
 \item Welcher Datumstyp?
 
