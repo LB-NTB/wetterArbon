@@ -1,5 +1,14 @@
 \section{Sensoren}
 
+\subsection{Übersicht der Hardware}
+Die Wetterstation Arbon verfügt über vier Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensor und Pegelsensor. Auf der Plattform im See draussen befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/schaltschrank.png}
+	\caption{Hardware-Aufbau der Wetterstation Arbon}
+	\label{img:schaltschrank}
+\end{figure}
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
@@ -109,6 +118,7 @@ Die Sonnenscheindauer dient der näherungsweisen Abschätzung der Einstrahlung a
 Die effektiv mögliche Sonnenscheindauer wird durch Landschaftshorizonte verkürzt, sodass die Sonnenscheindauer im Dezember in gewissen Tälern im Gebirge sogar Null betragen kann.
 Die relative Sonnenscheindauer beschreibt den Anteil der tatsächlichen an der effektiv möglichen Sonnenscheindauer in Prozent. Durch sie kann man Sonnenscheinverhältnisse verschiedener Gebiete vergleichen.
 
+\subsubsection{Auswahl der Hardware}
 
 \Diskussionspunkt{Bild Funktionsweise eines Pyranometers}
 \Diskussionspunkt{Foto Hukseflux}
@@ -142,12 +152,6 @@ Gemäss ANNEX 8.B. der Richtlinie ~\cite{WMO2014Gtmi} kann die Sonnenscheindauer
 G_{thr} = A + B * cos(\frac{360*d}{24*365}) * 1080 * sin(h)^{1.25}
 \end{equation}
 
-\begin{lstlisting}
-if h>3 and G >= Gthr:
-    print("plus 1 min")
-\end{lstlisting}
-
-
 wobei:
 \begin{conditions}
 $G_{thr}$  &  Schwellwert der Globalstrahlung \\
@@ -157,7 +161,7 @@ $A$        &  Empirisch bestimmter Koeffizient (0.65) \\
 $B$        &  Empirisch bestimmter Koeffizient (0.15) \\
 \end{conditions}
 
-Wenn der Winkel $h$ grösser oder gleich 3° ist, und der gemittelte Minutenwert der Solarstrahlung höher ist als der Schwellwert, wird der Zähler für die Sonnenstunde um eine Minute erhöht.
+Wenn der Winkel $h$ grösser oder gleich 3 Grad ist, und der gemittelte Minutenwert der Solarstrahlung höher ist als der Schwellwert, wird der Zähler für die Sonnenstunde um eine Minute erhöht.
 
 Guten Tag Frau Bilgery,
 scheint grössere Abweichungen zu geben. Habe es mit zwei anderen Datensätzen versucht mit dem ähnlichen Ergebnis.
@@ -166,6 +170,8 @@ Im beiliegenden File habe ich die Strahlung bei einer Sonnenhöhe <3° auf Null 
 Für Buchs ist dies zulässig da die umliegenden Berge über einem Höhenwinkel von 3° liegen. Dies wird aber in der Literatur auch für südliche Regionen ohne Berge durchgeführt. D.h. dies ist eine Massnahme. Weitere Massnahme ist die Reduktion der Faktoren A und B bis die Werte übereinstimmen.
 
 Faktor B-Reduktion kann beurteilt werden, wenn ein Sommertag und Wintertag betrachtet wird, da dieser die Saisonalität bestimmt.
+
+
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
@@ -176,3 +182,10 @@ Faktor B-Reduktion kann beurteilt werden, wenn ein Sommertag und Wintertag betra
 
 \subsubsection{Auswahl des richtigen Temperatursensors}
 Um die richtige Temperaturen bestimmen zu können ist der Pegel notwendig, hierfür wird im Cronjob zuerst den Pegel ausgelesen und anschliesend mittels der if Funktion, dies musste mit einem if gemacht werden, da Python keine cases kennt, den richtigen Sensor ausgewählt.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
+	\caption{Zusammenhang zwischen Pegel und PT100-Temperaturwiderständen}
+	\label{img:wassertempsensoren}
+\end{figure}

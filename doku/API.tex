@@ -2,8 +2,8 @@
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
 
-\subsection{API}
-Für die neue Webseite und für andere Anwender ist eine API erstellt worden. Um eine API zu entwickeln muss zuerst verstanden werden was eine API ist. Deswegen werden zu beginn folgende Fragen gestellt und beantwortet. 
+\section{ Web-Programmierschnittstelle (Web-API)}
+Für die neue Webseite und für andere Anwender ist eine API erstellt worden. Um eine API zu entwickeln muss zuerst verstanden werden was eine API ist. Deswegen werden zu beginn folgende Fragen gestellt und beantwortet.
 \begin{itemize}
 \item Was ist eine API?
 \item Wie wird eine API entwickelt?
@@ -12,12 +12,12 @@ Für die neue Webseite und für andere Anwender ist eine API erstellt worden. Um
 
 Anschliessend wird in diesem Kapitel aufgezeigt wie die API entwickelt wurde und wo diese zum Einsatz kommt.
 
-\subsubsection{Was ist eine API?}
+\subsection{Was ist eine API?}
 Eine API überbrückt die Schnittstellen zwischen verschiedenen Software teilen und strukturiert die dabei anfallende Datenübergabe dazwischen. Sie ermöglicht es Software zu modularisieren und die Kommunikation zu vereinfachen. Konkret heisst diess, dass die einzelnen Programmteile werden voneinander abgekapselt und kommunizieren nur über die Festgelegte API. Der Vorteil hierbei ist, das die API veröffentlicht werden kann und somit auch anderen die Möglichkeit gegeben werden kann die angebotenen Dienste mittels der API zu erhalten. Zusätzlich können so auch die einzelnen modularisierte Softwareteile unabhängig voneinander weiterentwickelt werden. Nicht zuletzt ist auch das Testen ein wichtiger Punkt, da alle Programmteile nur über die API miteinander kommunizieren sollten muss die Software auch nur in der Zusammenarbeit mit der API getestet werden.
 
 http://www.omkt.de/api/
 
-\subsubsection{Was ist state of the Art?}
+\subsection{Was ist state of the Art?}
 Heutzutage wird darauf geschaut, dass die API nach dem RESTful Standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. Representational State Transfer, auch REST genannt ist eine Möglichkeit so zu programmieren, dass eine Zustandslosigkeit herrscht. Ein beispiel dafür wäre die Abfrage zur Temperatur wie in Abb. \ref{img:Sequenzdiagramm_API}).  Dies bedeutet, dass jede Nachricht in sich geschlossen ist und alle Informationen die der Client bzw. der Server benötigt. Die Umsetzung dieser Paradigmas wird mit Hilfe des HTTP bzw. HTTPS Standard gemacht. Dafür kann REST die bekannten CRUD (Create, Read, Update, Delete) Befehle von HTTP benutzen.\\
 \begin{figure}[h!]
 	\centering
@@ -28,15 +28,15 @@ Heutzutage wird darauf geschaut, dass die API nach dem RESTful Standard entwicke
 
 https://www.oio.de/public/xml/rest-webservices.htm
 
-\subsubsection{Wie wird eine API entwickelt?}
+\subsection{Wie wird eine API entwickelt?}
 Zu Beginn der Entwicklung muss klar sein für was die API benötigt wird. Ist dies klar, kann gesagt werden welche Anforderungen die API erfüllen muss. Als nächstes muss ein URL Schema her. Dies wird benötigt um nach dem REST Standard zu arbeiten. Die URL sollte folgendermassen aussehen: \\ https://api.wetter-arbon.ch/Versionsnummer/Endpunkt\\
 Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein das nicht alle Nutzer der API schon auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden. Neben der URL ist es wichtig das die Kommunikation in einem bestimmten Datenformat erfolgt, hier gibt es die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches. Nebst der Entwicklung für die Server-Client kommunikation ist auch bei der API eine Zugangskontrolle bzw. eine Grundbasis in der Sicherheit notwendig. Neben der Möglichkeit HTTPS zu verwenden, ist es zusätzlich möglich den client über einen sogenannten Authorization Token zu zu authentifizieren. Eine andere Möglichkeit ist, den Zugriff durch eine IP-Whitelist zu begrenzen. \\
 
 https://poe-php.de/tutorial/rest-einfuehrung-in-die-api-erstellung\\
 http://edoc.sub.uni-hamburg.de/haw/volltexte/2016/3608/pdf/BAunterstrichLMauritz.pdf\\
 
-\subsubsection{API Konzept}
-Nachdem die Fragen zur API beantwortet sind kann die API für die Wetterstation Arbon Konzipiert und umgesetzt werden. Für die API gibt es jedoch eine wichtige Bedingung. Sie muss in php geschrieben werden, da Hostpoint kein Javascript auf der Serverseite erlaubt. 
+\subsection{API Konzept}
+Nachdem die Fragen zur API beantwortet sind kann die API für die Wetterstation Arbon Konzipiert und umgesetzt werden. Für die API gibt es jedoch eine wichtige Bedingung. Sie muss in php geschrieben werden, da Hostpoint kein Javascript auf der Serverseite erlaubt.
 
 Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Für die Wetterstation Arbon werden folgende Anforderungen gestellt:
 \begin{itemize}
@@ -56,9 +56,9 @@ Die Datenabfrage über die API soll wie es State of the Art entwickelt wird REST
 
 \paragraph{JSON Struktur}
 
-Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden. 
+Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
 
-\begin{lstlisting}
+\begin{lstlisting}[label=lst:Referenz,caption=Titel, language=JSON]
 {
   "product": "api.wetter-arbon.ch",
   "version": "1.1.1",
@@ -238,7 +238,7 @@ Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree
 
 \end{lstlisting}
 
-\subsubsection{Umsetzung der API}
+\subsection{Umsetzung der API}
 
 Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeichnis soll folgendermassen aufgebaut werden:
 
@@ -257,10 +257,10 @@ Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeich
 \end{itemize}
 \end{itemize}
 
-Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar strukturiert ist. Im Verzeichnis Data werden die alle Sensordaten verarbeitet, im Verzeichnis Webcam wird nur das JSON für die Webcam erstellt, da hier keine Datenbankabfrage notwendig ist und im Verzeichnis misc werden verschiedene Daten von dritten verarbeitet. 
+Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar strukturiert ist. Im Verzeichnis Data werden die alle Sensordaten verarbeitet, im Verzeichnis Webcam wird nur das JSON für die Webcam erstellt, da hier keine Datenbankabfrage notwendig ist und im Verzeichnis misc werden verschiedene Daten von dritten verarbeitet.
 
 \paragraph{PHP Files}
-In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzugzeigen. 
+In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzugzeigen.
 Vom Grundaufbau die Dateien im Config-Ordner alle gleich d.h ein File mit der Datenbankverbindung:
 \begin{itemize}
 \item path
@@ -277,18 +277,18 @@ Im File Path wird die URL ausgelesen und dem richtigen Case zugewiesen. Siehe Bi
 	\label{img:case}
 \end{figure}
 
-Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File createJson bestehen verschiedene Funktionen, passend zur Anforderung. Es bestehen folgenden Funktionen welche kurz umschrieben werden welches Ziel diese haben.\\ 
+Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File createJson bestehen verschiedene Funktionen, passend zur Anforderung. Es bestehen folgenden Funktionen welche kurz umschrieben werden welches Ziel diese haben.\\
 
 CreateJsonMinMax:\\
 Diese Funktion erstellt die JSONs mit dem aktuellen Wert sowie den Extrema des Tages.\\
 CreateJson:\\
-Erstellt das Json für die Daten, welche keine Extrema oder sonstige umrechnungen benötigen. 
+Erstellt das Json für die Daten, welche keine Extrema oder sonstige umrechnungen benötigen.
 CreateJsonConversion:\\
 Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten Km/h, knoten und beufort. Umgerechnet werden die aktuellen Werte, sowie die Extrema.\\
 createJsonRadiation:\\
 Erstellt das Json für die Globalstrahlung zusammen mit der Sonnendauer in Minuten.\\
 
-Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 6 und 7 wird die Verbindung zur Datenbank hergestellt, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat mittels einer while-Schlaufe in die einzelnen Spalten zerlegt und als Array gespeichert. Von Zeile 16 bis 23 wird das assoziative Array dataJson aufgebaut um in der Zeile 26 mit dem Array im File path.php zusammengefügt zu werden. Anschliessen wird das Array mittel einem echo zurückgegeben. Die restlichen Funktionen unterscheiden sich nur im Aufbau des Arrays, die Datenbankabfrage, das Aufbauen des dataJson und das Zusammenfügen sowie das zurückgeben funktioniert überall gleich. 
+Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 6 und 7 wird die Verbindung zur Datenbank hergestellt, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat mittels einer while-Schlaufe in die einzelnen Spalten zerlegt und als Array gespeichert. Von Zeile 16 bis 23 wird das assoziative Array dataJson aufgebaut um in der Zeile 26 mit dem Array im File path.php zusammengefügt zu werden. Anschliessen wird das Array mittel einem echo zurückgegeben. Die restlichen Funktionen unterscheiden sich nur im Aufbau des Arrays, die Datenbankabfrage, das Aufbauen des dataJson und das Zusammenfügen sowie das zurückgeben funktioniert überall gleich.
 
 \begin{figure}[h!]
 	\centering
@@ -297,7 +297,7 @@ Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 6 und 7 
 	\label{img:wetterstation}
 \end{figure}
 
-Vor das die Datenbankabfrage ausgeführt werden kann, muss eine Datenbankverbindung hergestellt werden wie in \Diskussionspunkt{Bild} zu sehen ist. Hier wird Gebrauch vom try, catch Verfahren gemacht. Hiermit ist es möglich wie auch in anderen Programmiersprachen eine Ausnahme (Exception) abgefangen werden \cite{Ausnahmebehandlung:ThePHPGroup}. In der Zeile 21 d.h. im try wird die Verbindung durch eine Instanz der PDO Klasse erzeugt. Diese benötigt die richtigen Parameter für die Verbidung, d.h. den host, den Datenbanknamen, den Datenbankbenutzer und das Passwort. 
+Vor das die Datenbankabfrage ausgeführt werden kann, muss eine Datenbankverbindung hergestellt werden wie in \Diskussionspunkt{Bild} zu sehen ist. Hier wird Gebrauch vom try, catch Verfahren gemacht. Hiermit ist es möglich wie auch in anderen Programmiersprachen eine Ausnahme (Exception) abgefangen werden \cite{Ausnahmebehandlung:ThePHPGroup}. In der Zeile 21 d.h. im try wird die Verbindung durch eine Instanz der PDO Klasse erzeugt. Diese benötigt die richtigen Parameter für die Verbidung, d.h. den host, den Datenbanknamen, den Datenbankbenutzer und das Passwort.
 
 \begin{figure}[h!]
 	\centering
@@ -313,7 +313,7 @@ $requiredData['min'] -> min_daily_temperature
 $requiredData['max'] -> max_daily_temperature
 $table ->  tblwettertransmitter
 \end{lstlisting}
-Diese Werte würden vorher aus der Funktion creatJsonMinMax übergeben. Ist die Query erstellt, wird diese in Zeile 20 vorbereitet und in Zeile 27 ausgeführt. Nachdem diese Ausgeführt wurde wird sie zurückgegeben an die Funktion createJsonMinMax wo die Resultate wie beschrieben aufbereitet werden zu einem Json. 
+Diese Werte würden vorher aus der Funktion creatJsonMinMax übergeben. Ist die Query erstellt, wird diese in Zeile 20 vorbereitet und in Zeile 27 ausgeführt. Nachdem diese Ausgeführt wurde wird sie zurückgegeben an die Funktion createJsonMinMax wo die Resultate wie beschrieben aufbereitet werden zu einem Json.
 
 \begin{figure}[h!]
 	\centering
@@ -321,7 +321,3 @@ Diese Werte würden vorher aus der Funktion creatJsonMinMax übergeben. Ist die 
 	\caption{Beispiel des Temperatur cases}
 	\label{img:wetterstation}
 \end{figure}
-
-
-
-

@@ -3,6 +3,7 @@ Gliederung der Dokumentation:
 Zusammenfassung
 1.	Einleitung
         Einführung, Problem, Aufgabenstellung, Struktur des Berichts, Ziel des Berichts
+
 2.	Front end
 	2.1.	Grafische Darstellung der aktuellen Wetterdaten
 				HTML5, Barrierefreiheit
@@ -13,6 +14,7 @@ Zusammenfassung
 	2.5.	Historische Daten
 				Fehleingaben verhindern, Sicherheit gegen Angriffe?
 	2.6.	Anzeige Sturmwarndienst
+
 3.	Back end
 	3.1.	Übersicht
 				Aufgabe/Verknüpfung der einzelnen Programme/Scripts
@@ -23,12 +25,14 @@ Zusammenfassung
 	3.5.	Schnittstelle / API
 				Datenexport (Excel), Sicherheit gegen Angriffe, Abfragegeschwindigkeit
 	3.6.	Benachrichtigungsservice
+
 4.	Hardware / Sensoren
 	4.1.	Pegelsensor
 				Pegelmessung, Pegelberechnung, Wellenhöhenberechnung
 	4.2.	Strahlungssensor
 	4.3.	Wassertemperatur-Sensoren
 				Berechnung, Verlauf der Wassertemperatur in Abhängigkeit der Tiefe
+
 5.	Webcam
 	5.1.	Warteschlange
 	5.2.	Selektive Zoombeschränkung
@@ -52,5 +56,3 @@ Zusammenfassung
         Analyse Google Analytics
         Anforderungen ink. Angabe ob erfüllt oder nicht -> Testresultate
         Datenblätter
-
-

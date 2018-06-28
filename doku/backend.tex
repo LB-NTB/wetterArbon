@@ -1,4 +1,4 @@
-\section{back end}
+\section{Datenbank / back end / cronjobs}
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
@@ -13,7 +13,7 @@ In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenomme
 \item Historische Daten
 \end{itemize}
 
-Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, sei es in Bezug auf die Aufbereitung der historischen Daten oder aber auch die API, welche einfach erweiterbar sein soll. 
+Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, sei es in Bezug auf die Aufbereitung der historischen Daten oder aber auch die API, welche einfach erweiterbar sein soll.
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
@@ -43,58 +43,58 @@ Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kan
 \item Physische Phase (Erstellung des Datenmodell)
 \end{itemize}
 
-Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie umgesetzt. 
+Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie umgesetzt.
 \subsubsection{Neugestaltung der Datenbank}
 \textbf{Externe Phase}\\
 In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor:
 \begin{itemize}
 \item Die Tabelle wx data welche die Daten des Wettertransmitters beinhaltet wird in ihrem jetzigen Zustand belassen, allerdings sollten die nicht benutzten Spalten entfernt werden, wile es viele Spalten welche entweder immer eine 0, 100 oder ein NULL beinhalten.
 \item Tabelle tblwellen wird umbenannt in tblextsensors und umstrukturiert
-\item Tabelle tblhistorical wird neu aufgebaut, sodass die Daten aus den beiden oben genannten Tabellen in Stundenwerte komprimiert werden. 
+\item Tabelle tblhistorical wird neu aufgebaut, sodass die Daten aus den beiden oben genannten Tabellen in Stundenwerte komprimiert werden.
 \end{itemize}
 
-Die neue Tabellenstruktur der wx data würde folgende Spalten beinhalten: 
+Die neue Tabellenstruktur der wx data würde folgende Spalten beinhalten:
  \begin{itemize}
 \item average windspeed
-\item max average windspeed day 
+\item max average windspeed day
 \item gust windspeed
-\item max gust current day 
-\item wind direction 
-\item temperature  
-\item max daily temperature 
-\item min daily temperature  
-\item dew point temperature 
-\item current windchill  
-\item max windchill 
+\item max gust current day
+\item wind direction
+\item temperature
+\item max daily temperature
+\item min daily temperature
+\item dew point temperature
+\item current windchill
+\item max windchill
 \item min windchill
-\item current humidex  
-\item min humidex  
-\item max humidex  
-\item heat index 
-\item max heat index 
-\item min heat index 
-\item outdoor humidity 
-\item barometer 
-\item barometer trend last hour 
-\item daily rainfall  
-\item rain rate  
-\item cloud height  
-\item icon type  
+\item current humidex
+\item min humidex
+\item max humidex
+\item heat index
+\item max heat index
+\item min heat index
+\item outdoor humidity
+\item barometer
+\item barometer trend last hour
+\item daily rainfall
+\item rain rate
+\item cloud height
+\item icon type
 \item forecast icon
 \end{itemize}
 
-Obwohl die in diesem Stadium die externe Sensoren noch nicht alle funktionieren oder genau definiert sind welche umgesetzt werden sollten die  Spalten für die Tabelle tblextsensors schon definiert sein: 
+Obwohl die in diesem Stadium die externe Sensoren noch nicht alle funktionieren oder genau definiert sind welche umgesetzt werden sollten die  Spalten für die Tabelle tblextsensors schon definiert sein:
 \begin{itemize}
 \item waterlevel
 \item waveheight
-\item watertemperature50cm 
-\item watertemperature100cm 
+\item watertemperature50cm
+\item watertemperature100cm
 \item radiation
 \end{itemize}
 
-Bei der historischen Tabelle tblhistorical, werden die Spalten aus den beiden obengenannten Tabellen zusammengesetzt. 
+Bei der historischen Tabelle tblhistorical, werden die Spalten aus den beiden obengenannten Tabellen zusammengesetzt.
 \textbf{Konzeptionelle Phase}\\
-Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte relevant für die API sowie die neue Webseite sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Im Falle der Neukonzipierung der Wetterstation Datenbank sieht das ER-Modell wie in Bild() aus.\Diskussionspunkt{ER-Modell Bild}  
+Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte relevant für die API sowie die neue Webseite sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Im Falle der Neukonzipierung der Wetterstation Datenbank sieht das ER-Modell wie in Bild() aus.\Diskussionspunkt{ER-Modell Bild}
 
 \textbf{Logische Phase (relationales Datenmodell)}\\
 Die Tabelle tblextsensors  enthält sie als Fremdschlüssel einen Datums und Zeitstempel. Die beiden Tabellen wx data und tblExtSensors werden über eine Tabelle mit verschiedenen Formaten von Datums bzw Zeitstempel als Primärschlüssel miteinander Kombiniert. Somit kann sichergestellt werden, dass die Datenbank in Zukunft weiter wachsen kann und die Tabelle wx data in ihrem jetzigen Zustand so belassen werden kann. Die Zusammenführung kann in einer abfrage mit dem Befehl LEFT OUTER JOIN umgesetzt werden. So kann kann eine Tabelle mit den aktuellen Werten nach Wunsch erstellt werden.
@@ -107,7 +107,7 @@ Punkte zur Überlegung neuer Datenbankstruktur:
 \item In welchem Intervall?
 \item Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)
 \item Tabellennamen?
-\item 
+\item
 \end{itemize}
 
 Datentypen angeschaut auf w3schools:
@@ -135,7 +135,7 @@ Weitere Fragen die auftauchen bei der Suche nach Datenbanksicherheit sind:
 \item Wer sind die Benutzer der Datenbank?
 \end{itemize}
 
-Bei der Wetterstation Arbon, bestehen keine persönliche oder Sicherheitsrelevante Daten in der Datenbank. Somit ist diese aus sicht eine potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, da es vorallem schade wäre wenn die Daten verloren gingen. Andererseits aber auch das kein Missbrauch vom Server gemacht werden kann. 
+Bei der Wetterstation Arbon, bestehen keine persönliche oder Sicherheitsrelevante Daten in der Datenbank. Somit ist diese aus sicht eine potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, da es vorallem schade wäre wenn die Daten verloren gingen. Andererseits aber auch das kein Missbrauch vom Server gemacht werden kann.
 
 Die Zugriffe auf die Datenbank sind so gestaltet, dass darauf nur Server seitig zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Infection möglich ist. Die einzige Seite welche direkt auf die Datenbank zugreift ist die historische Datenbank. Hier wird jedoch das Risiko so unterbunden, dass mit der Openversion von Tableau gearbeitet wird, hierdurch kann sichergegangen werden das Tableau den direkten Zugriff durch die Benutzer verweigert und die Daten so sicher sind. Somit sind keine weiteren Sicherheitsmassnahmen notwendig.
 
@@ -145,7 +145,7 @@ Um die Datenbank auch gegen einen allfälligen Datenverlust zu sichern ist ein B
 \begin{itemize}
 \item Welche Daten sollen gesichert werden
 \item Wie oft sollten die Daten gesichert werden?
-\item Wie bzw. wo sollte das Backup gelagert werden? 
+\item Wie bzw. wo sollte das Backup gelagert werden?
 \end{itemize}
 
 Da alle Daten in der DB gleich relevant sind sollten auch alle so behandelt werden und im Backup vorhanden sein. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Bezüglich des Speicherplatzes und des Aufwands, da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen.Zusätzlich sollte das Backup nicht auf dem Server des Providers gespeichert werden, da wenn etwas schief geht mit dem Server die Daten auch weg sind. Deswegen ist es wichtig auch ein "externes" Backup zu erstellen. Hostpoint bietet für das Backup verschiedene Varianten:
@@ -167,22 +167,12 @@ Um den Aufwand klein zu halten wird empfohlen ein monatliches Backup mit der Bac
 Bei der Datenarchivierung geht es vorallem darum, wie mit den vergangenen Daten umgegangen wird. Da nach der Umgestaltung eine neue Tabelle tblhistorical entstanden ist, bestehen zwei möglichkeiten um mit den Daten umzugehen. Allerdings ist eine Anforderung an die tblhistorical, dass diese nur Stundenwerte beinhaltet. Konkret bedeutet dies, dass aus den Werten einer Stunde der Median und die Extremwerte extrahiert werden. Auf die zwei Möglichkeiten bezogen bedeutet dies folgendes: \\
 Die erste Variante ist die historische Tabelle stündlich zu füllen mit einem Datensatz und bei den beiden Tabellen tblwettertransmitter, sowie tblextsensors die Werte wieder zu löschen. Dies würde bedeuten, dass schlussendlich nur die historische Tabelle vorhanden ist um in die Vergangenheit zu schauen.\\
 Die zweite Variante ist, die historische Tabelle stündlich zu füllen, jedoch die Tabelle des Wettertransmitters und der externen Sensoren gefüllt zu lassen mit den historischen Minuten Werte.\\
-Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden. Diese hat zudem noch den Vorteil, dass die Minuten Werte der Vergangenheit noch vorhanden sind, sollte eine zusätzliche Anwendung hierfür entstehen. 
+Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden. Diese hat zudem noch den Vorteil, dass die Minuten Werte der Vergangenheit noch vorhanden sind, sollte eine zusätzliche Anwendung hierfür entstehen.
 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
-
-\input{api}
-
-
-
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
-
-\subsection{Benachrichtigungsservice}
 
 \subsection{Funktionsüberwachung mit Mail-Service}
 

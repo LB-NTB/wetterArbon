@@ -1,7 +1,7 @@
-\section{front end}
+\section{Website / front end}
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
 
@@ -26,7 +26,7 @@ This is one of the biggest decision factors for many. Is the charting library fl
 But with great customizability, comes great complexities. A good example of this is D3.js. It practically allows you to configure every element on the chart, but doing so is effort intensive. Then you have libraries like FusionCharts and Highcharts which strike a perfect balance between these two. Here you get a lot of freedom to customize your charts with minimum effort on your end.
 
 5. Range of Available Charts
-This one is a no brainer. Whatever visualization you want to create should be a part of the library. One useful advice here is that you should always consider your future needs as well and not just present ones. 
+This one is a no brainer. Whatever visualization you want to create should be a part of the library. One useful advice here is that you should always consider your future needs as well and not just present ones.
 
 
 6. Learning Curve
@@ -41,14 +41,14 @@ Some libraries have free plugins and wrappers that generate the required JavaScr
 If you have to plot fewer data points then most of the libraries will perform on a similar scale and you can neglect this factor. On the other hand if you have to render millions of data points, then performance becomes a major deciding factor as each fraction of second saved will have a huge impact in aggregate.
 
 9. Exporting
-It will be better that the charting library you choose supports export feature out of the box. Common export formats to look for are JPEG, PNG, PDF and SVG. There are two ways to export charts - client side and server side. Libraries like FusionCharts and Highcharts support both the ways of exporting. Only adding one line of code is enough to get this working. 
+It will be better that the charting library you choose supports export feature out of the box. Common export formats to look for are JPEG, PNG, PDF and SVG. There are two ways to export charts - client side and server side. Libraries like FusionCharts and Highcharts support both the ways of exporting. Only adding one line of code is enough to get this working.
 
 10. Design and Interactivity
 Design is more than just look and feel of a chart. It should not only look good (themes, color scheme), but it should have meaningful interactivity (hovering, click-through drill downs, live data updates, etc). For example, clicking a legend icon in multi-series line chart should toggle the visibility of related data plot. Custom code should not be required for that. Themes: another important design feature is the ability to theme your charts to match the design language of the rest of your application. A centralized theme manager - one place to manage the theming of your charts - will make your job much easier.
 
 
 11. Community and Support
-So when you face a problem, you might need some external support to solve it. 
+So when you face a problem, you might need some external support to solve it.
 
 12. Accessibility
  does a charting library comply with 508 standards? Are screen readers like JAWS able to read the charts rendered by a library?
@@ -69,7 +69,7 @@ So when you face a problem, you might need some external support to solve it.
 
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
 
@@ -80,7 +80,7 @@ So when you face a problem, you might need some external support to solve it.
 
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
 \subsection{Responsive Design / Mobile First}
 
@@ -88,7 +88,7 @@ Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artike
 
 Fluid grids: Die Anordnung der Elemente passt sich dynamisch der Bildschirmgrösse an.
 flexible images: Bilder haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus.
-Media queries: sind die technische Basis für die beiden oberen Anforderungen. 
+Media queries: sind die technische Basis für die beiden oberen Anforderungen.
 
 Die "Mobile Web Best Practices" des W3C \footnote{ \url{https://www.w3.org/TR/mobile-bp}} empfiehlt, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können (One Web Design).
 
@@ -98,7 +98,7 @@ Mobile First wurde von Luke Wroblewski 2009 das erste Mal vorgeschlagen. Es geht
 
 Vorgehen:
 
-\begin{itemize}  
+\begin{itemize}
 \item Ziel der Webseite definieren
 \item Zielgruppe definieren
 \item Ziel/Erwartungen der Zielgruppe erfassen
@@ -123,23 +123,22 @@ Layout, gezeichnet mit balsamiq, ohne genaue Designangaben.
 
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
-
 \subsection{Barrierefreiheit}
 
 Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Dazu zählen nicht nur Menschen mit Einschränkungen. Auch veraltete Technik oder aber der allerneueste Stand der Technik können zu Schwierigkeiten führen. Ein hoher Lärmpegel (z.B. in einer Fabrikhalle) oder der Zwang zur Stille (z.B. in einer Bibliothek), der keine akustische Ausgabe gestatten oder Lichtverhältnisse, die einen besonders hohen Kontrast erfordern beeinflussen die Bedienbarkeit einer Webseite. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
 Die aktuellen Web Content Accessibility Guidelines\footnote{ \url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien:
 
-\begin{itemize}  
-\item Prinzip 1: Wahrnehmbarkeit 
+\begin{itemize}
+\item Prinzip 1: Wahrnehmbarkeit
 \item Prinzip 2: Bedienbarkeit
 \item Prinzip 3: Verständlichkeit
 \item Prinzip 4: Robustheit
 \end{itemize}
 
-Die Ziele dieser vier Prinzipien sind durch zwölf Richtlinien genauer spezifiziert. 
+Die Ziele dieser vier Prinzipien sind durch zwölf Richtlinien genauer spezifiziert.
 
 % Zu jeder Richtlinie geben die WCAG2 testbare Erfolgskriterien (Success Criteria) vor.
 
@@ -154,7 +153,7 @@ Daraus ergeben sich folgende relevante Anforderungen für die Webseite der Wette
 
 
 \subsubsection*{Wahrnehmbarkeit}
-% Anforderung 1.1: Text-Alternativen 
+% Anforderung 1.1: Text-Alternativen
 % Anforderung 1.2: Zeitbasierte Medien -> nicht relevant
 % Anforderung 1.3: Anpassbarkeit
 % Anforderung 1.4: Unterscheidbarkeit
@@ -170,9 +169,9 @@ Der Zeilenabstand (Vorspann) ist innerhalb von Absätzen mindestens anderthalb m
 Die Größe des Textes kann ohne Hilfsmittel bis zu 200 Prozent verändert werden, ohne dass der Benutzer horizontal scrollen muss, um eine Textzeile in einem Vollbildfenster zu lesen.
 
 Interessante Farb-Auswahlwerkzeuge:
-Colorchecker\footnote{ \url{http://accessible-colors.com}} 
-Colorsave\footnote{ \url{http://colorsafe.co}} 
-Colorbrewer\footnote{ \url{http://colorbrewer2.org}} 
+Colorchecker\footnote{ \url{http://accessible-colors.com}}
+Colorsave\footnote{ \url{http://colorsafe.co}}
+Colorbrewer\footnote{ \url{http://colorbrewer2.org}}
 
 
 Problematisch ist die Kombination von Komplementärfarben, weil sie zu Flimmern führen können.~\cite{HellbuschJanEric2011Bvuu}
@@ -184,7 +183,7 @@ Problematisch ist die Kombination von Komplementärfarben, weil sie zu Flimmern 
 % Anforderung 2.4: Navigierbarkeit
 Alle Funktionen des Inhalts sind über eine Tastaturschnittstelle bedienbar.
 Webseiten enthalten nichts, was in einer Sekunde mehr als dreimal blinkt.
-Der Zweck eines jeden Links kann aus dem Linktext allein oder aus dem Linktext zusammen mit seinem programmatisch festgelegten Linkkontext bestimmt werden. Es gibt mehr als eine Möglichkeit, eine Webseite innerhalb einer Gruppe von Webseiten zu lokalisieren. Überschriften und Labels beschreiben das Thema oder den Zweck. Jede Tastatur bedienbare Benutzeroberfläche hat eine Betriebsart, bei der die Tastaturfokusanzeige sichtbar ist. Informationen über den Standort des Benutzers innerhalb einer Reihe von Webseiten sind verfügbar. Abschnittsüberschriften dienen der inhaltlichen Gliederung. 
+Der Zweck eines jeden Links kann aus dem Linktext allein oder aus dem Linktext zusammen mit seinem programmatisch festgelegten Linkkontext bestimmt werden. Es gibt mehr als eine Möglichkeit, eine Webseite innerhalb einer Gruppe von Webseiten zu lokalisieren. Überschriften und Labels beschreiben das Thema oder den Zweck. Jede Tastatur bedienbare Benutzeroberfläche hat eine Betriebsart, bei der die Tastaturfokusanzeige sichtbar ist. Informationen über den Standort des Benutzers innerhalb einer Reihe von Webseiten sind verfügbar. Abschnittsüberschriften dienen der inhaltlichen Gliederung.
 
 
 
@@ -199,15 +198,15 @@ Die voreingestellte menschliche Sprache jeder Webseite kann programmgesteuert be
 
 \subsubsection*{Robustheit}
 % Anforderung 4.1: Kompatibilität
- In Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden, haben Elemente vollständige Start- und End-Tags, Elemente werden entsprechend ihrer Spezifikationen verschachtelt, Elemente enthalten keine doppelten Attribute und alle IDs sind eindeutig. 
- 
- 
- 
+ In Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden, haben Elemente vollständige Start- und End-Tags, Elemente werden entsprechend ihrer Spezifikationen verschachtelt, Elemente enthalten keine doppelten Attribute und alle IDs sind eindeutig.
+
+
+
 
 
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
 \subsection{Vergleich Prognose/Ist Windgeschwindigkeit}
 
@@ -229,7 +228,7 @@ Openweathermap schein sehr ungenaue Windvorhersagen zu liefern.
 
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
 
 \subsection{Historische Daten}
@@ -246,60 +245,76 @@ Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst we
 
 
 %% ###################################################################################################
-%%   Unterkapitel                                                                                                                                      
+%%   Unterkapitel
 %% ###################################################################################################
+\subsection{Anzeige der aktuellen Sturmwarn-Situation}
+\label{subsec:sturmwarnung}
 
-\subsection{Anzeige Sturmwarndienst}
+% was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
+Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
 
-Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein. Auf der Webseite \footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} wir der Status der Sturmwarnung wiedergegeben.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/sturm2}
+	\caption{Sturmwarndienst Bodensee}
+	\label{img:sturm2}
+\end{figure}
 
-Meteoschweiz stellt die Informationen auch als Dienstleistung zur Verfügung. Diese kostet aber 1300CHF/Jahr (siehe Offerte im Anhang). Um trotzdem an die Daten zu gelangen muss die kttg-Webseite ausgelesen werden.
-Dies geschieht über eine Python-Bibliothek namens "Beautiful Soup". Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
+% Problem: Kostenpflichtige Informaiton
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Kostenlos gibt es nur zwei browserkomatible Quellen: Das eine ist die allgemeine Mini-Warnkarte (173 x 109 Pixel) von meteoschweiz (siehe Abbildung \ref{img:sturm}, links) und das andere ist die Anzeige auf der Webseite der Kantonspolizei, Abbildung \ref{img:sturm}, rechts.
 
-Das Problem ist immer noch, dass der Sturmwarndienst nur am Tag aktiv ist. Dies liegt aber nicht an der Kapo. Schon die Updatefiles von Meteoschweiz werden nur während des Tages aktualisiert. Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer Mobileapp die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Kostenlose Browserdarstellung}
+	\label{img:sturm}
+\end{figure}
 
-DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
+Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
 
--> Foto Zeitstempel Meteoschweiz und kttg.ch
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=Python]
+page = requests.get("http://www.kttg.ch/kapo/htm/stwarn.shtml")
+soup = BeautifulSoup(page.text, 'html.parser')
 
+# Einschaltzeit auslesen
+soup.select('table tr:nth-of-type(4) td'):
 
+# Status auslesen
+soup.select('.titelfett strong'):
+\end{lstlisting}
 
+% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
+Das Problem beim Verwenden des Web Crawlers besteht darin, dass sobald die URL oder die Webseite geändert wird, der Crawler angepasst werden muss. Da der Crawler jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, müssen wir dieses Risiko akzeptieren.
 
+% Problem 2: Öffnungszeiten -> keine Warnung in der NAcht
+Der Sturmwarndienst wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
 
+\begin{itemize}
+\item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
+\item 1. November - 31. März: 07:00 - 20:00 Uhr
+\end{itemize}
 
-Problem ÖFFNUNGSZEITEN!
+\noindent
+% Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
+Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
 
--> Verweis auf Zeitungsartikel
--> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
+\begin{quote}
+\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen \frqq
+\end{quote}
 
-
-Art. 6.13: Fahrt bei unsichtigem Wetter, Starkwind und Sturm
-Bereits bei Starkwind- und Sturmwarnung (Anlage B Buchstabe H.1 und H.2) muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen
-(BSO Artikel 1.03 und 1.04).
-
-
-H.1 Starkwindwarnung
-
-Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten.
-
-Starkwindwarnungen weisen auf starke Windböen zwischen 25 Knoten und 33 Knoten hin (ab Beaufort 6).
-
-H.2 Sturmwarnung
-
-Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten.
-
-Sturmwarnungen kündigen das Auftreten von Windböen von 34 Knoten und mehr an (Beaufort 8 und grösser).
-
-
-4 Bereits bei Starkwind- und Sturmwarnung (Anlage B Buchstaben H.1 und H.2) muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen (Artikel 1.03 und 1.04).4
-
-Eingefügt durch den Beschluss der Internationalen Schifffahrtskommission vom 27. Juni 2001, genehmigt vom BR am 21. Nov. 2001, in Kraft seit 1. Jan. 2002 (AS 2002 284 283).
-
-\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}
-
-
-Anlage: 
-\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}
+\noindent
+ Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
 
 
+
+%-> Verweis auf Zeitungsartikel
+%-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
+
+% ins Kapitel API bzw. Cronjobs übernehmen
+%Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
+
+% nur im Vortrag erwähnen
+% DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
+% -> Foto Zeitstempel Meteoschweiz und kttg.ch
+% Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
