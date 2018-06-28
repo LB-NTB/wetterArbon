@@ -29,6 +29,12 @@
 % Tabellen
 \usepackage{tabularx,enumitem,ragged2e}
 
+% Formeln
+\usepackage{array}
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
 % pdf einbinden (A3)
 \usepackage{nextpage}
 \usepackage{afterpage}
