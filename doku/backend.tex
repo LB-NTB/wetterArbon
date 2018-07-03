@@ -15,6 +15,21 @@ In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenomme
 
 Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, sei es in Bezug auf die Aufbereitung der historischen Daten oder aber auch die API, welche einfach erweiterbar sein soll.
 
+
+
+%% ###################################################################################################
+%%   Unterkapitel                                                                                                                                                                              #
+%% ###################################################################################################
+\subsection{Datenerfassung}
+\subsubsection{Erfassung der Daten des Wetter-Transmitters}
+\Diskussionspunkt{- Konfiguration von WeatherDisplay}\newline
+\Diskussionspunkt{- Was passiert wenn DB-Eintrag nicht erstellt werden kann}\newline
+
+\subsubsection{Einlesen von Pegel- und Strahlungsmesswerten (Strom to Ethernet)}
+\Diskussionspunkt{- wie werden Daten abgerufen?}\newline
+\Diskussionspunkt{- was passiert wenn keine Antwort kommt}\newline
+
+
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
@@ -189,3 +204,18 @@ Bitte starte das WeatherDisplay neu, es wurden nur (Anzahl Datensätze) Daten ge
 Die historischen Daten können nicht geschrieben werden, es besteht folgendes Problem (Exception).\\
 
 Um diese Funktionen zu erstellen wird Gebrauch gemacht vom try, except Verfahren in Python. Zu Beginn wird der Code im try ausgeführt, tretet keine exception auf wird das except übersprungen und der anschliessende Code ausgeführt. Tritt aber während dem try eine exception auf, wird der Code unterbrochen und der im except weitergeführt. Anschliessend wird der Code nach dem Exception Handling ausgeführt.\cite{ThePythonTutorial8.ErrorsAndExceptions:Python}
+
+%% ###################################################################################################
+%%   Unterkapitel                                                                                                                                                                              #
+%% ###################################################################################################
+\subsection{Cron-Jobs}
+\Diskussionspunkt{- Printscreen cronjobs-Konfig auf Hostpoint}\newline
+
+
+%% ###################################################################################################
+%%   Unterkapitel                                                                                                                                                                              #
+%% ###################################################################################################
+\subsection{Problematik Zeitumstellung}
+
+
+

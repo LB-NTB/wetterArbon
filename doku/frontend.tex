@@ -5,7 +5,71 @@
 %% ###################################################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
 
+\subsubsection{svg-Grafiken mit Wertangabe}
+\subsubsection{Gauges}
+
+
+\subsubsection{Google Analytics}
+
+
+
+% #####################################################################################
+% Browser-Kompatibilität
+% ################################
+\subsubsection*{Browser-Kompatibilität}
+\label{subsec:flash}
+Die Anzeige der Wetterdaten erfolgt bis anhin durch die Software \textit{WeatherDisplay Live}\footnote{ \url{http://www.weather-display.com/wdlive}}. WeatherDisplay Live erstellt aus den Messwerten eine Adobe Flash Applikation, welche auf der Webseite eingebettet wird, wie in Abbildung~\ref{img:responsive} dargestellt (gelb markiert).
+\newline
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/responsive}
+	\caption{Responsive Design: Vergleich Desktop und Mobile}
+	\label{img:responsive}
+\end{figure}
+
+
+\noindent
+%\subsection*{Problem}
+Adobe Flash war eine einfache Möglichkeit, animierte Grafiken auf Webseiten darzustellen und wurde praktisch von allen Browsern, nach Installation des Plug-ins, unterstützt. Diverse Sicherheitslücken und der Umstand, dass es sich um eine proprietäre, das heisst closed-source Software handelte, führten dazu, dass Apple 2010 entschied, Adobe Flash auf ihrem Mobile-Bertiebssystem \textit{iOS} nicht mehr zu unterstützen\cite{Apple:ThoughtsOnFlash}. Sämtliche Adobe Flash Animationen können somit nicht auf iPhone und iPad angezeigt werden.
+
+Da ein Grossteil der Schweizer Bevölkerung jedoch genau diese Mobilgeräte verwendet, wurde für die Wetterstation folgender Workaround geschaffen: Der Browser prüft zuerst, ob das Gerät Adobe Flash unterstützt. Wenn ja, wird die normale Applikation geladen, wenn nicht, wird ein Printscreen der Applikation geladen. Der Nachteil dieses Workarounds ist jedoch, dass der Printscreen weder dynamisch noch interaktiv ist. Um die aktuellen Werte zu erhalten, muss die Seite jeweils neu geladen werden. Die interaktiven Elemente sind unbrauchbar, das heisst die Änderung von Einheiten, Anzeige von Rekordwerten und weiteren Graphen ist nicht möglich. Im Juli 2017 hat Adobe zudem angekündigt, dass Adobe Flash im Jahr 2020 eingestellt wird\cite{Adobe:FlashTheFutureofInteractiveContent}.
+\newline
+
+\noindent
+%\subsection*{Lösungsansatz}
+2014 wurde die neue HTML-Spezifikation, HTML5, fertiggestellt. HTML5 bietet diverse neue Funktionen, unter anderem im Bereich dynamischer Grafiken. Es ist der neue Web-Standard und wird von allen modernen Web-Browsern unterstützt, ohne dass irgendwelche Plug-ins installiert werden müssen. Es gibt zudem diverse Javascript-Bibliotheken, mit denen sich ansehnliche und moderne Grafiken erstellen lassen. HTML5 eignet sich somit ideal als Ersatz von Adobe Flash, um die Wetterdaten grafisch darzustellen. 
+
+
+% #####################################################################################
+% Responsive Design
+% ################################
+\subsubsection*{Responsive Design}
+Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \textit{Openfile64Light} der Firma Screenbox\footnote{ \url{https://screenbox.net/internet}}  erstellt. Dieses unterstützt grundsätzlich responsive Design. Das CMS gibt den Rahmen der Webseite vor. Spezielle Inhalte, wie zum Beispiel die Adobe Flash Animation, werden als sogenannte Applikationen behandelt und in die Seite eingebettet, gelb markiert in Abbildung~\ref{img:responsive}, links.
+\newline
+
+\noindent
+%\subsubsection*{Problem}
+Unterstützt die eingebettete Applikation kein responsive Design, so wird dieser Teil einfach linear skaliert. Dies führt dazu, dass die Anzeige der Wetterstationsdaten auf einem Mobilgerät kaum mehr lesbar sind, wie in Abbildung~\ref{img:responsive}, rechts dargestellt.
+\newline
+
+
+
+\noindent
+%\subsubsection*{Lösungsansatz}
+Da davon auszugehen ist, dass die Webseite häufig von Mobilgeräten aus betrachtet wird, wird das Designkonzept \textit{mobile first} angewendet. Das bedeutet, dass zuerst die Mobile-Seite designt wird und anschliessend die Desktop-Seite.
+
+
+
+
+
 \subsubsection*{HTML5}
+\Diskussionspunkt{- CSS-Framework, w3.css, chartist.css}\newline
+\Diskussionspunkt{- JS-Framework, justgage.js und raphael.js, jquery}\newline
+\Diskussionspunkt{- code sniplet justgae, update}\newline
+\Diskussionspunkt{- codesniplet update justgage}\newline
+\Diskussionspunkt{- Welche Frameworks wurden betrachtet, warum ausgewählt?}\newline
+
 Quelle: https://www.fusioncharts.com/javascript-charts-guide/
 
 
@@ -22,7 +86,7 @@ If you are making an application only for mobile, then you need to consider size
 Although JSON (JavaScript Object Notation) is gradually becoming the standard format especially when it comes to charting libraries. Most of the times you will have to load the data from a database like MySQL, Oracle or SQL Server. In this case you need to take into account the format which is acceptable to both your library and other parts of the application.
 
 4. Customizability
-This is one of the biggest decision factors for many. Is the charting library flexible enough so that you can make it do what you want, or will it just look good on defaults and you are on your own if you try to customize it?
+This is one of the biggest decision factors for many. Is the charting library flexible enough so that you can make it do what you want, or will it just look good on defaults and you are on your own if you try to customize it?*
 But with great customizability, comes great complexities. A good example of this is D3.js. It practically allows you to configure every element on the chart, but doing so is effort intensive. Then you have libraries like FusionCharts and Highcharts which strike a perfect balance between these two. Here you get a lot of freedom to customize your charts with minimum effort on your end.
 
 5. Range of Available Charts
@@ -72,17 +136,19 @@ So when you face a problem, you might need some external support to solve it.
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
-
-
-
-
-\Diskussionspunkt{Samplerate, fixe Y-Achse, Barrierefreiheit}
+\Diskussionspunkt{- Verwendetes JS-Framework (Chartist)}\newline
+\Diskussionspunkt{- Samplerate, fixe Y-Achse, Barrierefreiheit}\newline
+\Diskussionspunkt{- x-Tage-Rückschau}\newline
 
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
-\subsection{Responsive Design / Mobile First}
+\subsection{Allgemein: Responsive Design / Mobile First}
+
+\Diskussionspunkt{- Aufbau openfile64}\newline
+\Diskussionspunkt{- Grafik mit den verwendbaren DIV}\newline
+\Diskussionspunkt{- Google Analytics}\newline
 
 Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel \footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins A List Apart veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen musste. Marcotte schreibt von drei Faktoren, die ein responsive Design benötigt: Fluid grids, flexible images und media queries.
 
@@ -125,7 +191,21 @@ Layout, gezeichnet mit balsamiq, ohne genaue Designangaben.
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
-\subsection{Barrierefreiheit}
+\subsection{Barrierefreier Zugang}
+Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. 
+\newline
+
+\noindent
+%\subsection*{Problem}
+WeatherDisplay Live, welches zum Anzeigen der Wetterdaten verwendet wird, ist eine proprietäre Software, die nur sehr eingeschränkt angepasst werden kann und auf Adobe Flash basiert. Es lassen sich beispielsweise die Anordnung der Anzeigeelemente und die Einheiten konfigurieren. Viel mehr nicht.  Adobe Flash gilt als kritische Technologie in Hinblick auf Barrierefreiheit. Mit der jetzigen Konfiguration können die Anforderung an eine barrierefreie Seite nicht umgesetzt werde.
+\newline
+
+\noindent
+%\subsection*{Lösungsansatz}
+Wie in Abschnitt \ref{subsec:flash} erläutert, muss WeatherDisplay Live ersetzt werden. Das bietet die Möglichkeit, dass die Entwicklung der neuen Webseite nach den oben erwähnten Richtlinien erfolgen kann.
+
+
+
 
 Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Dazu zählen nicht nur Menschen mit Einschränkungen. Auch veraltete Technik oder aber der allerneueste Stand der Technik können zu Schwierigkeiten führen. Ein hoher Lärmpegel (z.B. in einer Fabrikhalle) oder der Zwang zur Stille (z.B. in einer Bibliothek), der keine akustische Ausgabe gestatten oder Lichtverhältnisse, die einen besonders hohen Kontrast erfordern beeinflussen die Bedienbarkeit einer Webseite. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
@@ -230,8 +310,15 @@ Openweathermap schein sehr ungenaue Windvorhersagen zu liefern.
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
+\subsubsection{Daten der alten Wetterstation}
+\Diskussionspunkt{- sind unbrauchbar weil.....}\newline
+\Diskussionspunkt{- Grafik der Daten auf Zeitschiene}\newline
 
-\subsection{Historische Daten}
+
+\subsection{Darstellung der historischen Daten}
+\Diskussionspunkt{- Printscreen ungefiltert}\newline
+\Diskussionspunkt{- Printscreen gefiltert}\newline
+
 Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
 Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
 Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
@@ -239,8 +326,22 @@ Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisieru
 Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -geschwindigkeit sowie den Regen konzentriert.
 Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
 
+\subsubsection{Filtermöglichkeiten}
+Zeitfilter
 
 
+\subsubsection{Nachteil von Tableau Public}
+% Nachteil 1: Keine direkte Verbindung zur Datenbank
+Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlos, biete jedoch keine Möglichkeit live auf die Datenbank zuzugreifen. Die historischen Daten müssen demnach manuell periodisch auf den Tableau-Server kopiert werden.\newline
+
+%Nachteil 2: Nicht responsive -> Workaround nötig
+\Diskussionspunkt{- Mobile Darstellunbg}\newline
+\Diskussionspunkt{- Printscreen der mobilen Darstellung}\newline
+\Diskussionspunkt{- Codesniplet auswahl desktop oder mobile}\newline
+
+% Nachteil 3: nicht barrierefrei
+\Diskussionspunkt{- Barrierefreiheit? Farben}\newline
+\Diskussionspunkt{- Barrierefreiheit? Semantisches Web}\newline
 
 
 
@@ -318,3 +419,40 @@ Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anz
 % DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
 % -> Foto Zeitstempel Meteoschweiz und kttg.ch
 % Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
+
+
+%% ###################################################################################################
+%%   Unterkapitel
+%% ###################################################################################################
+\subsection{Automatische Aktualisierung der Anzeigeelemente}
+Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
+
+
+\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=html]
+(function poll() {
+        $.get('https://api.wetter-arbon.ch/v1/')
+          .done(function(res) {updateData(res);})
+          .always(function() { setTimeout(poll, 61000); });
+})();
+
+function updateData(res){
+        pressure_gauge.refresh(res.v1.data.pressure.value);
+        $("#cwassertemp1m") = res.v1.data.watertemperature1m.value;
+}
+    
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
