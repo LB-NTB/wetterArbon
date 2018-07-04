@@ -1,18 +1,18 @@
 \section{Website / front end}
-\Diskussionspunkt{- Einleitung, Kurzzusammenfassung Problem Frontend}\newline
-
 Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht). Die neue (2014) HTML5-Spezifikation ermöglicht es dynamische Grafiken zu erzeugen, die nativ von allen Web-Browsern dargestellt werden können.
+
+
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Nutzungsanalyse der Webseite mittels Google Analytics}
+\label{subsec:googleAnalytics}
 Zuerst wurden die Zugriffsdaten auf die bestehende Webseite mittels Google Analytics analysiert. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \textit{Wetter Tourismus} und \textit{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung \ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\% und 80\% beträgt. Dies wiederspiegelt den Trend zum mobilen Internet und zeigt wie wichtig die mobile Version einer Webseite ist. Dies geht soweit, dass sogar die mobile Seite als Ausgangspunkt für die Entwicklung der Homepage dient nach dem Designkonzept \textit{Mobile First}.
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_mobile}}
 	\centering
-	%\includegraphics[width=1\linewidth]{img/google_mobile}
 	\caption{Anteil der mobilen Zugriffe auf die Wetterwebseite}
 	\label{img:google_mobile}
 \end{figure}
@@ -22,86 +22,132 @@ Es lässt sich ebenfalls erkennen welche Browser am häufigsten verwendet werden
 \begin{figure}[h!]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_browser}}
-	%\includegraphics[width=1\linewidth]{img/google_browser}
 	\caption{Verwendete Browser und Beliebtheit der Seiten}
 	\label{img:google_browser}
 \end{figure}
 
 
-\Diskussionspunkt{- Wer sind die Nutzer}\newline
-\Diskussionspunkt{- Warum Mobile First}\newline
-
-
-
-\begin{itemize}
-\item Ziel der Webseite definieren
-\item Zielgruppe definieren
-\item Ziel/Erwartungen der Zielgruppe erfassen
-\item Wo wird die Infrmation gelesen
-\item Was sind die Bedürfnisse der Benutzer
-\item Scribbles erstellen
-\item Wireframes erstellen
-\end{itemize}
-
-\subsubsection*{Ziel der Wetterstation-Webseite}
-Interessierten, die wichtigsten Wetterparameter in leicht verständlicher Art zu präsentieren
-\subsubsection*{Zielgruppe}
-Touristen, Bevölkerung, Sportler, Interessierte
-\subsubsection*{Erwartungen der Zielgruppe}
-einfach und schnell verständliche Information
-\subsubsection*{Scribbles}
-Papierzeichnungen als erste Entwürfe
-\subsubsection*{Wireframes}
-Layout, gezeichnet mit balsamiq, ohne genaue Designangaben.
-
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
-\subsection{Darstellungskonzept / Nutzungskonzept}
-\Diskussionspunkt{- Grafik mit den verwendbaren DIV}\newline
-\Diskussionspunkt{- CSS-Framework, w3.css, chartist.css}\newline
-
-
-\subsubsection{Randbedingungen durch CMS}
-\Diskussionspunkt{- Aufbau openfile64}\newline
-Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \textit{Openfile64Light} der Firma Screenbox\footnote{ \url{https://screenbox.net/internet}}  erstellt. Dieses unterstützt grundsätzlich responsive Design. Das CMS gibt den Rahmen der Webseite vor. Spezielle Inhalte, wie zum Beispiel die Adobe Flash Animation, werden als sogenannte Applikationen behandelt und in die Seite eingebettet, gelb markiert in Abbildung~\ref{img:responsive}, links.
+\subsection{Konzeption der crossplattformfähigen Benutzeroberfläche}
+Wie im Abschnitt \ref{subsec:googleAnalytics} aufgezeigt werden bereits heute 50\% bis 80\% der Aufrufe von mobilen Geräten ausgeführt, Tendenz steigend. Es ist deshalb naheliegend das mobile Design als Startpunkt zu verwenden. Diese Vorgehensweise nennt sich \textit{Mobile First}. Es ist ein Designkonzept, das von Luke Wroblewski 2009 das erste Mal vorgeschlagen wurde. Die optimale Darstellung einer Website auf mobilen Endgeräten hat dabei oberste Priorität. Bei Mobile First beginnt der Designer mit dem Mobile-Design und arbeitet sich dann schrittweise zur grösseren Desktop-Version vor. Die \flqq Mobile Web Best Practices\frqq \footnote{ \url{https://www.w3.org/TR/mobile-bp}} des W3C empfiehlt zudem, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können. Dieser Grundsatz nennt sich \textit{One Web Design}.
 
 \begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/scribbles}}
 	\centering
-	\includegraphics[width=1\linewidth]{img/responsive}
-	\caption{Responsive Design: Vergleich Desktop und Mobile}
-	\label{img:responsive}
+	\caption{Erste Designentwürfe nach dem Mobile First Prinzip}
+	\label{img:scribbles}
 \end{figure}
 
+Beim Erstellen der ersten Designentwürfe, wie in Abbildung \ref{img:scribbles}, dargestellt, stellte sich schnell heraus, dass die einfachste Möglichkeit die Daten auf allen Bildschirmgrössen darzustellenzu können, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorradend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
 
 
-\subsubsection{Vorgehensweise, Design Konzept}
-\Diskussionspunkt{- Responsive / Mobile First}\newline
+\subsubsection{W3.css als Layout-Framework}
+Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen ein CSS-Framework zu benutzen. Dieses soll möglichst einfach und intuitiv zu bedienen sein, das Kachel-Design (auch Card-Design genannt) unterstützen, eine ausführliche Dokumentation aufweisen und eine geringe Dateigrösse haben. Wir haben drei verschieden CSS-Frameworks evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-framework} ersichtlich.
 
-Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel \footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins A List Apart veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen musste. Marcotte schreibt von drei Faktoren, die ein responsive Design benötigt: Fluid grids, flexible images und media queries.
+\begin{table}[htb!]
+\setlength\extrarowheight{3pt} % for a more "open" look
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{4cm}||X|X|X|}
 
-Fluid grids: Die Anordnung der Elemente passt sich dynamisch der Bildschirmgrösse an.
-flexible images: Bilder haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus.
-Media queries: sind die technische Basis für die beiden oberen Anforderungen.
+\hline
+& \bfseries\large \href{https://www.w3schools.com/w3css/default.asp}{W3.css}
+& \bfseries\large \href{https://purecss.io/start/}{Pure.css}
+& \bfseries\large \href{http://getbootstrap.com/docs/4.1/getting-started/introduction/}{Bootstrap}\\
 
-Die "Mobile Web Best Practices" des W3C \footnote{ \url{https://www.w3.org/TR/mobile-bp}} empfiehlt, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können (One Web Design).
+\hline
+\textbf{Grid Design}
+& ++
+& ++
+& ++ \\
 
-Mobile First ist ein Designkonzept, bei dem die optimale Darstellung einer Website auf mobilen Endgeräten oberste Priorität hat. Bei Mobile First beginnt der Designer mit dem Mobile-Design und arbeitet sich dann schrittweise zur grösseren Desktop-Version vor. Vorteil: Da bei Mobile First die Grafiken und interaktiven Elemente schon zu Beginn für die Mobilversion optimiert werden, wird automatisch sichergestellt, dass diese auf jeder anderen Screengrösse auch umsetzbar sind.
+\hline
+\textbf{Footprint}
+& 23 kB
+& 14 kB
+& 141 kB \\
 
-Mobile First wurde von Luke Wroblewski 2009 das erste Mal vorgeschlagen. Es geht darum sich beim Designen einer Webseite zu erst auf die Kernfunktion zu konzentireren und diese zielgerichtet umzusetzen. Die benötigt eine vertiefte Analyse der Zielgruppe.
+\hline
+\textbf{Usability}
+& ++
+& +
+& + \\
 
-Vorgehen:
+\hline
+\textbf{Card-Design}
+& +
+& -
+& ++ \\
+
+\hline
+\textbf{Dokumentation}
+& +++
+& 0
+& ++ \\
+
+\hline
+\textbf{Cross-Browser}
+& ++
+& ++
+& +++ \\
+
+\hline
+\textbf{Funktionsumfang}
+& +
+& 0
+& ++ \\
+
+\hline
+\end{tabularx}
+\caption{Beurteilungsmatrix der evaluierten css-Frameworks}
+\label{table:css-framework} % label muss NACH caption stehen!!!!
+\end{table}
+
+\noindent
+Als Sieger stellt sich das W3.css-Framework heraus, da es den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zumdem weist es eine hervorragende Dokumentation auf.
 
 
+\subsubsection{Responsive Design}
+\label{subsec:responsiveFactors}
+Die Benutzeroberfläche muss Cross-Plattform-fähig sein d.h. die Darstellung muss sich je nach Bildschirmgrösse automatisch anpassen. Man nennt dies \textit{Responsive Design}. Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel\footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins \textit{A List Apart} veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen wollte. Marcotte schreibt von drei Faktoren, die ein responsive Design benötigt: Fluid grids, flexible images und media queries. Fluid grids bedeutet, dass sich die Anordnung der Elemente dynamisch der Bildschirmgrösse anpasst. Flexible Bilder haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus und die Media queries sind die technische Basis für die beiden oberen Anforderungen.
 
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/kacheln2}}
+	\centering
+	\caption{Anordnung der Kacheln auf grossen und kleinen Bildschirmen}
+	\label{img:kacheln2}
+\end{figure}
 
+\noindent
+Das Konezt des Grid-View teilt den Bildschirm in zwölf Spalten ein. Über eine media-Query fragt die Webseite die Grösse des Bildschirms ab. Es gibt drei Kategorien small, medium, large, deren Grenzen folgendermassen festgelegt sind:
 
+\begin{itemize}
+\item Small: s $\leq$ 600px (z.B. iPhone Hochformat)
+\item Medium: 600px < m $\leq$ 992px (z.B. iPhopne Querformat, iPad Hochformat)
+\item Large: 993px < l (z.B. Desktop)
+\end{itemize}
+
+\noindent
+Im css-Framework kann nun sehr einfach definiert werden wie sich die Kacheln bei diesen drei Bildschirmkategorien verhalten sollen. Die Kacheln der aktuellen Daten sind auf grossen (large) Bildschirmen \nicefrac{2}{12}, auf mittleren Bildschirmen \nicefrac{3}{12} und auf kleinen Bildschirmen \nicefrac{6}{12} breit. Bei den Datenverläufen werden bei mittleren und grossen Bildschirmen zwei nebeneinander dargestellt, bei kleinen Bildschirmen alle untereinander.
+
+\begin{lstlisting}[label=lst:kacheln,caption=Konfiguration der Anzahl Kacheln abhähngig von der Bildschirmgrösse, language=HTML5, style=htmlcssjs]
+<!-- Aktuelle Daten -->
+<div class="w3-col l2 m3 s6">
+	<div class="w3-card">...</div>
+</div>
+
+<!-- Datenverlauf -->
+<div class="l6 m6 s12">
+	<div class="w3-card">...</div>
+</div>
+\end{lstlisting}
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
+\Diskussionspunkt{- Grafik mit den verwendbaren DIV}\newline
 \Diskussionspunkt{- JS-Framework, justgage}\newline
 \Diskussionspunkt{- code sniplet justgae, update}\newline
 \Diskussionspunkt{- codesniplet update justgage}\newline
@@ -225,6 +271,7 @@ Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anz
 \Diskussionspunkt{- Welche Frameworks wurden betrachtet, warum ausgewählt?}\newline
 \Diskussionspunkt{- Samplerate, fixe Y-Achse, Barrierefreiheit}\newline
 \Diskussionspunkt{- x-Tage-Rückschau}\newline
+\Diskussionspunkt{chartist.css}\newline
 
 Quelle: https://www.fusioncharts.com/javascript-charts-guide/
 
