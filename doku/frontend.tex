@@ -1,25 +1,69 @@
 \section{Website / front end}
+\Diskussionspunkt{- Einleitung, Kurzzusammenfassung Problem Frontend}\newline
+
+Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht). Die neue (2014) HTML5-Spezifikation ermöglicht es dynamische Grafiken zu erzeugen, die nativ von allen Web-Browsern dargestellt werden können.
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
-\subsection{Grafische Darstellung der aktuellen Wetterdaten}
+\subsection{Nutzungsanalyse der Webseite mittels Google Analytics}
+Zuerst wurden die Zugriffsdaten auf die bestehende Webseite mittels Google Analytics analysiert. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \textit{Wetter Tourismus} und \textit{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung \ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\% und 80\% beträgt. Dies wiederspiegelt den Trend zum mobilen Internet und zeigt wie wichtig die mobile Version einer Webseite ist. Dies geht soweit, dass sogar die mobile Seite als Ausgangspunkt für die Entwicklung der Homepage dient nach dem Designkonzept \textit{Mobile First}.
 
-\subsubsection{svg-Grafiken mit Wertangabe}
-\subsubsection{Gauges}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/google_mobile}
+	\caption{Anteil der mobilen Zugriffe auf die Wetterwebseite}
+	\label{img:google_mobile}
+\end{figure}
+
+Es lässt sich ebenfalls erkennen welche Browser am häufigsten verwendet werden und welches die beliebteste Seite der Website ist, wie in Abbildung \ref{img:google_browser} dargestellt.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/google_browser}
+	\caption{Verwendete Browser und Beliebtheit der Seiten}
+	\label{img:google_browser}
+\end{figure}
 
 
-\subsubsection{Google Analytics}
+\Diskussionspunkt{- Wer sind die Nutzer}\newline
+\Diskussionspunkt{- Warum Mobile First}\newline
 
 
 
-% #####################################################################################
-% Browser-Kompatibilität
-% ################################
-\subsubsection*{Browser-Kompatibilität}
-\label{subsec:flash}
-Die Anzeige der Wetterdaten erfolgt bis anhin durch die Software \textit{WeatherDisplay Live}\footnote{ \url{http://www.weather-display.com/wdlive}}. WeatherDisplay Live erstellt aus den Messwerten eine Adobe Flash Applikation, welche auf der Webseite eingebettet wird, wie in Abbildung~\ref{img:responsive} dargestellt (gelb markiert).
-\newline
+\begin{itemize}
+\item Ziel der Webseite definieren
+\item Zielgruppe definieren
+\item Ziel/Erwartungen der Zielgruppe erfassen
+\item Wo wird die Infrmation gelesen
+\item Was sind die Bedürfnisse der Benutzer
+\item Scribbles erstellen
+\item Wireframes erstellen
+\end{itemize}
+
+\subsubsection*{Ziel der Wetterstation-Webseite}
+Interessierten, die wichtigsten Wetterparameter in leicht verständlicher Art zu präsentieren
+\subsubsection*{Zielgruppe}
+Touristen, Bevölkerung, Sportler, Interessierte
+\subsubsection*{Erwartungen der Zielgruppe}
+einfach und schnell verständliche Information
+\subsubsection*{Scribbles}
+Papierzeichnungen als erste Entwürfe
+\subsubsection*{Wireframes}
+Layout, gezeichnet mit balsamiq, ohne genaue Designangaben.
+
+
+%% ###################################################################################################
+%%   Unterkapitel
+%% ###################################################################################################
+\subsection{Darstellungskonzept / Nutzungskonzept}
+\Diskussionspunkt{- Grafik mit den verwendbaren DIV}\newline
+\Diskussionspunkt{- CSS-Framework, w3.css, chartist.css}\newline
+
+
+\subsubsection{Randbedingungen durch CMS}
+\Diskussionspunkt{- Aufbau openfile64}\newline
+Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \textit{Openfile64Light} der Firma Screenbox\footnote{ \url{https://screenbox.net/internet}}  erstellt. Dieses unterstützt grundsätzlich responsive Design. Das CMS gibt den Rahmen der Webseite vor. Spezielle Inhalte, wie zum Beispiel die Adobe Flash Animation, werden als sogenannte Applikationen behandelt und in die Seite eingebettet, gelb markiert in Abbildung~\ref{img:responsive}, links.
 
 \begin{figure}[h!]
 	\centering
@@ -29,49 +73,132 @@ Die Anzeige der Wetterdaten erfolgt bis anhin durch die Software \textit{Weather
 \end{figure}
 
 
-\noindent
-%\subsection*{Problem}
-Adobe Flash war eine einfache Möglichkeit, animierte Grafiken auf Webseiten darzustellen und wurde praktisch von allen Browsern, nach Installation des Plug-ins, unterstützt. Diverse Sicherheitslücken und der Umstand, dass es sich um eine proprietäre, das heisst closed-source Software handelte, führten dazu, dass Apple 2010 entschied, Adobe Flash auf ihrem Mobile-Bertiebssystem \textit{iOS} nicht mehr zu unterstützen\cite{Apple:ThoughtsOnFlash}. Sämtliche Adobe Flash Animationen können somit nicht auf iPhone und iPad angezeigt werden.
 
-Da ein Grossteil der Schweizer Bevölkerung jedoch genau diese Mobilgeräte verwendet, wurde für die Wetterstation folgender Workaround geschaffen: Der Browser prüft zuerst, ob das Gerät Adobe Flash unterstützt. Wenn ja, wird die normale Applikation geladen, wenn nicht, wird ein Printscreen der Applikation geladen. Der Nachteil dieses Workarounds ist jedoch, dass der Printscreen weder dynamisch noch interaktiv ist. Um die aktuellen Werte zu erhalten, muss die Seite jeweils neu geladen werden. Die interaktiven Elemente sind unbrauchbar, das heisst die Änderung von Einheiten, Anzeige von Rekordwerten und weiteren Graphen ist nicht möglich. Im Juli 2017 hat Adobe zudem angekündigt, dass Adobe Flash im Jahr 2020 eingestellt wird\cite{Adobe:FlashTheFutureofInteractiveContent}.
-\newline
+\subsubsection{Vorgehensweise, Design Konzept}
+\Diskussionspunkt{- Responsive / Mobile First}\newline
 
-\noindent
-%\subsection*{Lösungsansatz}
-2014 wurde die neue HTML-Spezifikation, HTML5, fertiggestellt. HTML5 bietet diverse neue Funktionen, unter anderem im Bereich dynamischer Grafiken. Es ist der neue Web-Standard und wird von allen modernen Web-Browsern unterstützt, ohne dass irgendwelche Plug-ins installiert werden müssen. Es gibt zudem diverse Javascript-Bibliotheken, mit denen sich ansehnliche und moderne Grafiken erstellen lassen. HTML5 eignet sich somit ideal als Ersatz von Adobe Flash, um die Wetterdaten grafisch darzustellen. 
+Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel \footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins A List Apart veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen musste. Marcotte schreibt von drei Faktoren, die ein responsive Design benötigt: Fluid grids, flexible images und media queries.
 
+Fluid grids: Die Anordnung der Elemente passt sich dynamisch der Bildschirmgrösse an.
+flexible images: Bilder haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus.
+Media queries: sind die technische Basis für die beiden oberen Anforderungen.
 
-% #####################################################################################
-% Responsive Design
-% ################################
-\subsubsection*{Responsive Design}
-Die Webseite der Wetterstation ist mit dem Content-Management-System (CMS) \textit{Openfile64Light} der Firma Screenbox\footnote{ \url{https://screenbox.net/internet}}  erstellt. Dieses unterstützt grundsätzlich responsive Design. Das CMS gibt den Rahmen der Webseite vor. Spezielle Inhalte, wie zum Beispiel die Adobe Flash Animation, werden als sogenannte Applikationen behandelt und in die Seite eingebettet, gelb markiert in Abbildung~\ref{img:responsive}, links.
-\newline
+Die "Mobile Web Best Practices" des W3C \footnote{ \url{https://www.w3.org/TR/mobile-bp}} empfiehlt, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können (One Web Design).
 
-\noindent
-%\subsubsection*{Problem}
-Unterstützt die eingebettete Applikation kein responsive Design, so wird dieser Teil einfach linear skaliert. Dies führt dazu, dass die Anzeige der Wetterstationsdaten auf einem Mobilgerät kaum mehr lesbar sind, wie in Abbildung~\ref{img:responsive}, rechts dargestellt.
-\newline
+Mobile First ist ein Designkonzept, bei dem die optimale Darstellung einer Website auf mobilen Endgeräten oberste Priorität hat. Bei Mobile First beginnt der Designer mit dem Mobile-Design und arbeitet sich dann schrittweise zur grösseren Desktop-Version vor. Vorteil: Da bei Mobile First die Grafiken und interaktiven Elemente schon zu Beginn für die Mobilversion optimiert werden, wird automatisch sichergestellt, dass diese auf jeder anderen Screengrösse auch umsetzbar sind.
 
+Mobile First wurde von Luke Wroblewski 2009 das erste Mal vorgeschlagen. Es geht darum sich beim Designen einer Webseite zu erst auf die Kernfunktion zu konzentireren und diese zielgerichtet umzusetzen. Die benötigt eine vertiefte Analyse der Zielgruppe.
 
-
-\noindent
-%\subsubsection*{Lösungsansatz}
-Da davon auszugehen ist, dass die Webseite häufig von Mobilgeräten aus betrachtet wird, wird das Designkonzept \textit{mobile first} angewendet. Das bedeutet, dass zuerst die Mobile-Seite designt wird und anschliessend die Desktop-Seite.
+Vorgehen:
 
 
 
 
 
-\subsubsection*{HTML5}
-\Diskussionspunkt{- CSS-Framework, w3.css, chartist.css}\newline
-\Diskussionspunkt{- JS-Framework, justgage.js und raphael.js, jquery}\newline
+
+%% ###################################################################################################
+%%   Unterkapitel
+%% ###################################################################################################
+\subsection{Grafische Darstellung der aktuellen Wetterdaten}
+\Diskussionspunkt{- JS-Framework, justgage}\newline
 \Diskussionspunkt{- code sniplet justgae, update}\newline
 \Diskussionspunkt{- codesniplet update justgage}\newline
+\Diskussionspunkt{- JS-Framework, justgage.js und raphael.js, jquery}\newline
+
+
+\subsubsection{Gauges}
+\Diskussionspunkt{- JS-Framework, justgage}\newline
+
+\subsubsection{svg-Grafiken mit Wertangabe}
+\Diskussionspunkt{- verwendete Icon-Bibliothek}\newline
+
+
+\subsubsection{Anzeige der aktuellen Sturmwarn-Situation}
+\label{subsec:sturmwarnung}
+
+% was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
+Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/sturm2}
+	\caption{Sturmwarndienst Bodensee}
+	\label{img:sturm2}
+\end{figure}
+
+% Problem: Kostenpflichtige Informaiton
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Kostenlos gibt es nur zwei browserkomatible Quellen: Das eine ist die allgemeine Mini-Warnkarte (173 x 109 Pixel) von meteoschweiz (siehe Abbildung \ref{img:sturm}, links) und das andere ist die Anzeige auf der Webseite der Kantonspolizei, Abbildung \ref{img:sturm}, rechts.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Kostenlose Browserdarstellung}
+	\label{img:sturm}
+\end{figure}
+
+Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
+
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=Python]
+page = requests.get("http://www.kttg.ch/kapo/htm/stwarn.shtml")
+soup = BeautifulSoup(page.text, 'html.parser')
+
+# Einschaltzeit auslesen
+soup.select('table tr:nth-of-type(4) td'):
+
+# Status auslesen
+soup.select('.titelfett strong'):
+\end{lstlisting}
+
+% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
+Das Problem beim Verwenden des Web Crawlers besteht darin, dass sobald die URL oder die Webseite geändert wird, der Crawler angepasst werden muss. Da der Crawler jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, müssen wir dieses Risiko akzeptieren.
+
+% Problem 2: Öffnungszeiten -> keine Warnung in der NAcht
+Der Sturmwarndienst wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
+
+\begin{itemize}
+\item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
+\item 1. November - 31. März: 07:00 - 20:00 Uhr
+\end{itemize}
+
+\noindent
+% Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
+Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
+
+\begin{quote}
+\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen \frqq
+\end{quote}
+
+\noindent
+ Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+
+
+
+
+%-> Verweis auf Zeitungsartikel
+%-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
+
+% ins Kapitel API bzw. Cronjobs übernehmen
+%Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
+
+% nur im Vortrag erwähnen
+% DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
+% -> Foto Zeitstempel Meteoschweiz und kttg.ch
+% Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
+
+
+
+%% ###################################################################################################
+%%   Unterkapitel
+%% ###################################################################################################
+\subsection{Grafische Darstellung der Wetterdatenverläufe}
+\Diskussionspunkt{- Verwendetes JS-Framework (Chartist)}\newline
 \Diskussionspunkt{- Welche Frameworks wurden betrachtet, warum ausgewählt?}\newline
+\Diskussionspunkt{- Samplerate, fixe Y-Achse, Barrierefreiheit}\newline
+\Diskussionspunkt{- x-Tage-Rückschau}\newline
 
 Quelle: https://www.fusioncharts.com/javascript-charts-guide/
 
+\subsubsection{Auswahl des JS-Frameworks}
 
 1. Cross Browser Compatibility
 It is a pain to handle cross-browser compatibility issues, and we believe the library you choose should do it for you.
@@ -132,67 +259,103 @@ So when you face a problem, you might need some external support to solve it.
  D3 is an awesome javascript library, but it has no “ready to ship” charts and graphs.
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
-\subsection{Grafische Darstellung der Wetterdatenverläufe}
-\Diskussionspunkt{- Verwendetes JS-Framework (Chartist)}\newline
-\Diskussionspunkt{- Samplerate, fixe Y-Achse, Barrierefreiheit}\newline
-\Diskussionspunkt{- x-Tage-Rückschau}\newline
+\subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
+
+Die Messdaten der Wetterstation werden mit zwei Vorhersagediensten verglichen. Dabei wird jeweils die Eintages-Vorschau und die Dreitagesvorschau betrachtet.
+Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen wir die Vorhersagedaten abgreifen und in unsere Datenbank speichern. Die Vorhersagen haben häufig einen Intervall von drei Stunden. Wir erstellen somit ein Skript, welche alle drei Stunden die Daten abfragt und speichert.
+
+Die Darstellung von Vorhersage und Messresultaten erfolgt in einem Graphen, der den heutigen Tag, links davon die letzten 14 Tage und rechts davon die nächsten drei Tage anzeigt. Pro Anbieter und Prognoseart (1Tag bzw. 3 Tage) wird ein eigener Graph erstellt.
+
+Diese Vergleiche werden aus reinem Interesse der IG erstellt und stellen keinen Service der IG dar. Die Wetterstation ist zudem windtechnisch eher an einem ungünstigen Ort platziert (Bucht), sodass die Messwerte nicht für den ganzen See representativ sind.
+Aus diesen Gründen wird die Webseite zwar veröffentlicht, aber kein Link dazu auf der Webseite zur Verfügung gestellt.
+
+Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API an. Dies Daten müssen somit aus der Windfinder-Webseite extrahiert werden.
+
+Für die Darstellung der aktuellen Windgeschwindigkeit verwenden wir den Mittelwert der drei Werte aus der Stundenwert-Datenbank.
+
+Openweathermap scheint sehr ungenaue Windvorhersagen zu liefern.
+
+\Diskussionspunkt{-> Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap}\newline
+
+
+
+
+
+
+
+
+
+
 
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
-\subsection{Allgemein: Responsive Design / Mobile First}
+\subsection{Darstellung der historischen Daten}
 
-\Diskussionspunkt{- Aufbau openfile64}\newline
-\Diskussionspunkt{- Grafik mit den verwendbaren DIV}\newline
-\Diskussionspunkt{- Google Analytics}\newline
+\subsubsection{Daten der alten Wetterstation}
+\Diskussionspunkt{- sind unbrauchbar weil.....}\newline
+\Diskussionspunkt{- Grafik der Daten auf Zeitschiene}\newline
+\Diskussionspunkt{- Pegeldaten (Excel)}\newline
 
-Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel \footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins A List Apart veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen musste. Marcotte schreibt von drei Faktoren, die ein responsive Design benötigt: Fluid grids, flexible images und media queries.
+\subsubsection{Daten der neuen Wetterstation}
+\Diskussionspunkt{- Printscreen ungefiltert}\newline
+\Diskussionspunkt{- Printscreen gefiltert}\newline
 
-Fluid grids: Die Anordnung der Elemente passt sich dynamisch der Bildschirmgrösse an.
-flexible images: Bilder haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus.
-Media queries: sind die technische Basis für die beiden oberen Anforderungen.
+Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
+Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
+Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
 
-Die "Mobile Web Best Practices" des W3C \footnote{ \url{https://www.w3.org/TR/mobile-bp}} empfiehlt, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können (One Web Design).
-
-Mobile First ist ein Designkonzept, bei dem die optimale Darstellung einer Website auf mobilen Endgeräten oberste Priorität hat. Bei Mobile First beginnt der Designer mit dem Mobile-Design und arbeitet sich dann schrittweise zur grösseren Desktop-Version vor. Vorteil: Da bei Mobile First die Grafiken und interaktiven Elemente schon zu Beginn für die Mobilversion optimiert werden, wird automatisch sichergestellt, dass diese auf jeder anderen Screengrösse auch umsetzbar sind.
-
-Mobile First wurde von Luke Wroblewski 2009 das erste Mal vorgeschlagen. Es geht darum sich beim Designen einer Webseite zu erst auf die Kernfunktion zu konzentireren und diese zielgerichtet umzusetzen. Die benötigt eine vertiefte Analyse der Zielgruppe.
-
-Vorgehen:
-
-\begin{itemize}
-\item Ziel der Webseite definieren
-\item Zielgruppe definieren
-\item Ziel/Erwartungen der Zielgruppe erfassen
-\item Wo wird die Infrmation gelesen
-\item Was sind die Bedürfnisse der Benutzer
-\item Scribbles erstellen
-\item Wireframes erstellen
-\end{itemize}
-
-\subsubsection*{Ziel der Wetterstation-Webseite}
-Interessierten, die wichtigsten Wetterparameter in leicht verständlicher Art zu präsentieren
-\subsubsection*{Zielgruppe}
-Touristen, Bevölkerung, Sportler, Interessierte
-\subsubsection*{Erwartungen der Zielgruppe}
-einfach und schnell verständliche Information
-\subsubsection*{Scribbles}
-Papierzeichnungen als erste Entwürfe
-\subsubsection*{Wireframes}
-Layout, gezeichnet mit balsamiq, ohne genaue Designangaben.
+Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -geschwindigkeit sowie den Regen konzentriert.
+Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
 
 
+\subsubsection{Tableau Public}
+\Diskussionspunkt{- Filtermöglichkeiten}\newline
+
+% Nachteil 1: Keine direkte Verbindung zur Datenbank
+Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlos, bietet jedoch keine Möglichkeit live auf die Datenbank zuzugreifen. Die historischen Daten müssen demnach manuell periodisch auf den Tableau-Server kopiert werden.\newline
+
+%Nachteil 2: Nicht responsive -> Workaround nötig
+\Diskussionspunkt{- Mobile Darstellunbg}\newline
+\Diskussionspunkt{- Printscreen der mobilen Darstellung}\newline
+\Diskussionspunkt{- Codesniplet auswahl desktop oder mobile}\newline
+
+% Nachteil 3: nicht barrierefrei
+\Diskussionspunkt{- Barrierefreiheit? Farben}\newline
+\Diskussionspunkt{- Barrierefreiheit? Semantisches Web}\newline
+
+
+
+
+
+%% ###################################################################################################
+%%   Unterkapitel
+%% ###################################################################################################
+\subsection{Automatische Aktualisierung der Anzeigeelemente}
+Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
+
+
+\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=html]
+(function poll() {
+        $.get('https://api.wetter-arbon.ch/v1/')
+          .done(function(res) {updateData(res);})
+          .always(function() { setTimeout(poll, 61000); });
+})();
+
+function updateData(res){
+        pressure_gauge.refresh(res.v1.data.pressure.value);
+        $("#cwassertemp1m") = res.v1.data.watertemperature1m.value;
+}
+
+\end{lstlisting}
 
 
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Barrierefreier Zugang}
-Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. 
+Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann.
 \newline
 
 \noindent
@@ -203,9 +366,6 @@ WeatherDisplay Live, welches zum Anzeigen der Wetterdaten verwendet wird, ist ei
 \noindent
 %\subsection*{Lösungsansatz}
 Wie in Abschnitt \ref{subsec:flash} erläutert, muss WeatherDisplay Live ersetzt werden. Das bietet die Möglichkeit, dass die Entwicklung der neuen Webseite nach den oben erwähnten Richtlinien erfolgen kann.
-
-
-
 
 Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Dazu zählen nicht nur Menschen mit Einschränkungen. Auch veraltete Technik oder aber der allerneueste Stand der Technik können zu Schwierigkeiten führen. Ein hoher Lärmpegel (z.B. in einer Fabrikhalle) oder der Zwang zur Stille (z.B. in einer Bibliothek), der keine akustische Ausgabe gestatten oder Lichtverhältnisse, die einen besonders hohen Kontrast erfordern beeinflussen die Bedienbarkeit einer Webseite. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
@@ -279,180 +439,3 @@ Die voreingestellte menschliche Sprache jeder Webseite kann programmgesteuert be
 \subsubsection*{Robustheit}
 % Anforderung 4.1: Kompatibilität
  In Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden, haben Elemente vollständige Start- und End-Tags, Elemente werden entsprechend ihrer Spezifikationen verschachtelt, Elemente enthalten keine doppelten Attribute und alle IDs sind eindeutig.
-
-
-
-
-
-
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
-\subsection{Vergleich Prognose/Ist Windgeschwindigkeit}
-
-Die Messdaten der Wetterstation werden mit zwei Vorhersagediensten verglichen. Dabei wird jeweils die Eintages-Vorschau und die Dreitagesvorschau betrachtet.
-Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen wir die Vorhersagedaten abgreifen und in unsere Datenbank speichern. Die Vorhersagen haben häufig einen Intervall von drei Stunden. Wir erstellen somit ein Skript, welche alle drei Stunden die Daten abfragt und speichert.
-
-Die Darstellung von Vorhersage und Messresultaten erfolgt in einem Graphen, der den heutigen Tag, links davon die letzten 14 Tage und rechts davon die nächsten drei Tage anzeigt. Pro Anbieter und Prognoseart (1Tag bzw. 3 Tage) wird ein eigener Graph erstellt.
-
-Diese Vergleiche werden aus reinem Interesse der IG erstellt und stellen keinen Service der IG dar. Die Wetterstation ist zudem windtechnisch eher an einem ungünstigen Ort platziert (Bucht), sodass die Messwerte nicht für den ganzen See representativ sind.
-Aus diesen Gründen wird die Webseite zwar veröffentlicht, aber kein Link dazu auf der Webseite zur Verfügung gestellt.
-
-Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API an. Dies Daten müssen somit aus der Windfinder-Webseite extrahiert werden.
-
-Für die Darstellung der aktuellen Windgeschwindigkeit verwenden wir den Mittelwert der drei Werte aus der Stundenwert-Datenbank.
-
-Openweathermap schein sehr ungenaue Windvorhersagen zu liefern.
-
--> Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap
-
-
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
-\subsubsection{Daten der alten Wetterstation}
-\Diskussionspunkt{- sind unbrauchbar weil.....}\newline
-\Diskussionspunkt{- Grafik der Daten auf Zeitschiene}\newline
-
-
-\subsection{Darstellung der historischen Daten}
-\Diskussionspunkt{- Printscreen ungefiltert}\newline
-\Diskussionspunkt{- Printscreen gefiltert}\newline
-
-Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
-Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
-Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
-
-Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -geschwindigkeit sowie den Regen konzentriert.
-Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
-
-\subsubsection{Filtermöglichkeiten}
-Zeitfilter
-
-
-\subsubsection{Nachteil von Tableau Public}
-% Nachteil 1: Keine direkte Verbindung zur Datenbank
-Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlos, biete jedoch keine Möglichkeit live auf die Datenbank zuzugreifen. Die historischen Daten müssen demnach manuell periodisch auf den Tableau-Server kopiert werden.\newline
-
-%Nachteil 2: Nicht responsive -> Workaround nötig
-\Diskussionspunkt{- Mobile Darstellunbg}\newline
-\Diskussionspunkt{- Printscreen der mobilen Darstellung}\newline
-\Diskussionspunkt{- Codesniplet auswahl desktop oder mobile}\newline
-
-% Nachteil 3: nicht barrierefrei
-\Diskussionspunkt{- Barrierefreiheit? Farben}\newline
-\Diskussionspunkt{- Barrierefreiheit? Semantisches Web}\newline
-
-
-
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
-\subsection{Anzeige der aktuellen Sturmwarn-Situation}
-\label{subsec:sturmwarnung}
-
-% was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
-Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\linewidth]{img/sturm2}
-	\caption{Sturmwarndienst Bodensee}
-	\label{img:sturm2}
-\end{figure}
-
-% Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Kostenlos gibt es nur zwei browserkomatible Quellen: Das eine ist die allgemeine Mini-Warnkarte (173 x 109 Pixel) von meteoschweiz (siehe Abbildung \ref{img:sturm}, links) und das andere ist die Anzeige auf der Webseite der Kantonspolizei, Abbildung \ref{img:sturm}, rechts.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Kostenlose Browserdarstellung}
-	\label{img:sturm}
-\end{figure}
-
-Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
-
-\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=Python]
-page = requests.get("http://www.kttg.ch/kapo/htm/stwarn.shtml")
-soup = BeautifulSoup(page.text, 'html.parser')
-
-# Einschaltzeit auslesen
-soup.select('table tr:nth-of-type(4) td'):
-
-# Status auslesen
-soup.select('.titelfett strong'):
-\end{lstlisting}
-
-% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
-Das Problem beim Verwenden des Web Crawlers besteht darin, dass sobald die URL oder die Webseite geändert wird, der Crawler angepasst werden muss. Da der Crawler jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, müssen wir dieses Risiko akzeptieren.
-
-% Problem 2: Öffnungszeiten -> keine Warnung in der NAcht
-Der Sturmwarndienst wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
-
-\begin{itemize}
-\item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
-\item 1. November - 31. März: 07:00 - 20:00 Uhr
-\end{itemize}
-
-\noindent
-% Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
-Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
-
-\begin{quote}
-\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen \frqq
-\end{quote}
-
-\noindent
- Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
-
-
-
-
-%-> Verweis auf Zeitungsartikel
-%-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
-
-% ins Kapitel API bzw. Cronjobs übernehmen
-%Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
-
-% nur im Vortrag erwähnen
-% DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
-% -> Foto Zeitstempel Meteoschweiz und kttg.ch
-% Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
-
-
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
-\subsection{Automatische Aktualisierung der Anzeigeelemente}
-Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
-
-
-\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=html]
-(function poll() {
-        $.get('https://api.wetter-arbon.ch/v1/')
-          .done(function(res) {updateData(res);})
-          .always(function() { setTimeout(poll, 61000); });
-})();
-
-function updateData(res){
-        pressure_gauge.refresh(res.v1.data.pressure.value);
-        $("#cwassertemp1m") = res.v1.data.watertemperature1m.value;
-}
-    
-\end{lstlisting}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
