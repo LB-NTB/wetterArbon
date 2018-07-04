@@ -147,17 +147,19 @@ Im css-Framework kann nun sehr einfach definiert werden wie sich die Kacheln bei
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
-\Diskussionspunkt{- Grafik mit den verwendbaren DIV}\newline
-\Diskussionspunkt{- JS-Framework, justgage}\newline
-\Diskussionspunkt{- code sniplet justgae, update}\newline
-\Diskussionspunkt{- codesniplet update justgage}\newline
-\Diskussionspunkt{- JS-Framework, justgage.js und raphael.js, jquery}\newline
+Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe eines Frameworks erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein die Werte zu aktualisieren.
 
+Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Ein sehr einfaches JavaScript-Framework ist \textit{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine JavaScript-Datei konfigurieren, die Grafiken selbst sind im svg-Format und somit von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}}—JavaScript Bibliothek.
 
-\subsubsection{Gauges}
-\Diskussionspunkt{- JS-Framework, justgage}\newline
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/gauges}}
+	\centering
+	\caption{Anzeigelemente mit Justgage/Raphaël}
+	\label{img:gauges}
+\end{figure}
 
--> erstellt eine svg-Grafik!!!!
+Raphaël ist eine kleine JavaScript-Bibliothek, die Ihnen die Arbeit mit Vektorgrafiken im Web erleichtern soll. Wenn Sie z.B. Ihr eigenes Diagramm oder Bildausschnitt erstellen und das Widget drehen möchten, können Sie dies einfach und bequem mit dieser Bibliothek erreichen. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, das Sie erstellen, auch ein DOM-Objekt ist, so dass Sie JavaScript-Ereignisbehandler anhängen oder später ändern können. Raphaëls Ziel ist es, einen Adapter zur Verfügung zu stellen, der das Zeichnen von Vektorgrafiken browserübergreifend und einfach macht.
+
 
 \begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
     var temperature_gauge = new JustGage({
@@ -170,6 +172,7 @@ Im css-Framework kann nun sehr einfach definiert werden wie sich die Kacheln bei
     });
 \end{lstlisting}
 
+Um die Grafik anzuzeigen muss nur ein DIV mit der selben ID auf der Webseite erstellt werden wie in Listing \ref{lst:gaugeHTML} dargestellt.
 
 \begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
 	<!-- Lufttemperatur -->
@@ -183,83 +186,17 @@ Im css-Framework kann nun sehr einfach definiert werden wie sich die Kacheln bei
 	</div>
 \end{lstlisting}
 
-\subsubsection{svg-Grafiken mit Wertangabe}
-\Diskussionspunkt{- verwendete Icon-Bibliothek}\newline
+Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons. Es wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, die kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \textit{Weahter Icons}\footnote{\url{http://erikflowers.github.io/weather-icons/}} von Erik Flowers.
 
-
-\subsubsection{Anzeige der aktuellen Sturmwarn-Situation}
-\label{subsec:sturmwarnung}
-
-% was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
-Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
 
 \begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/icons}}
 	\centering
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm2}}
-	%\includegraphics[width=1\linewidth]{img/sturm2}
-	\caption{Sturmwarndienst Bodensee}
-	\label{img:sturm2}
+	\caption{Icons aus der Weather Icons Bibliothek}
+	\label{img:icons}
 \end{figure}
 
-% Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Kostenlos gibt es nur zwei browserkomatible Quellen: Das eine ist die allgemeine Mini-Warnkarte (173 x 109 Pixel) von meteoschweiz (siehe Abbildung \ref{img:sturm}, links) und das andere ist die Anzeige auf der Webseite der Kantonspolizei, Abbildung \ref{img:sturm}, rechts.
 
-\begin{figure}[h!]
-	\centering
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm}}
-	%\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Kostenlose Browserdarstellung}
-	\label{img:sturm}
-\end{figure}
-
-Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
-
-\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=python, style=py]
-page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
-soup = BeautifulSoup(page.text, 'html.parser')
-
-# Einschaltzeit auslesen
-soup.select('table tr:nth-of-type(4) td'):
-
-# Status auslesen
-soup.select('.titelfett strong'):
-\end{lstlisting}
-
-% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
-Das Problem beim Verwenden des Web Crawlers besteht darin, dass sobald die URL oder die Webseite geändert wird, der Crawler angepasst werden muss. Da der Crawler jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, müssen wir dieses Risiko akzeptieren.
-
-% Problem 2: Öffnungszeiten -> keine Warnung in der NAcht
-Der Sturmwarndienst wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
-
-\begin{itemize}
-\item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
-\item 1. November - 31. März: 07:00 - 20:00 Uhr
-\end{itemize}
-
-\noindent
-% Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
-Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
-
-\begin{quote}
-\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen \frqq
-\end{quote}
-
-\noindent
- Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
-
-
-
-
-%-> Verweis auf Zeitungsartikel
-%-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
-
-% ins Kapitel API bzw. Cronjobs übernehmen
-%Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
-
-% nur im Vortrag erwähnen
-% DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
-% -> Foto Zeitstempel Meteoschweiz und kttg.ch
-% Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
 
 
 
@@ -272,6 +209,7 @@ Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anz
 \Diskussionspunkt{- Samplerate, fixe Y-Achse, Barrierefreiheit}\newline
 \Diskussionspunkt{- x-Tage-Rückschau}\newline
 \Diskussionspunkt{chartist.css}\newline
+\Diskussionspunkt{- Warum nicht D3 oder googleCharts?}\newline
 
 Quelle: https://www.fusioncharts.com/javascript-charts-guide/
 
@@ -356,7 +294,82 @@ Openweathermap scheint sehr ungenaue Windvorhersagen zu liefern.
 
 
 
+%% ###################################################################################################
+%%   Unterkapitel
+%% ###################################################################################################
+\subsection{Anzeige der aktuellen Sturmwarn-Situation}
+\label{subsec:sturmwarnung}
 
+% was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
+Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
+
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm2}}
+	%\includegraphics[width=1\linewidth]{img/sturm2}
+	\caption{Sturmwarndienst Bodensee}
+	\label{img:sturm2}
+\end{figure}
+
+% Problem: Kostenpflichtige Informaiton
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Kostenlos gibt es nur zwei browserkomatible Quellen: Das eine ist die allgemeine Mini-Warnkarte (173 x 109 Pixel) von meteoschweiz (siehe Abbildung \ref{img:sturm}, links) und das andere ist die Anzeige auf der Webseite der Kantonspolizei, Abbildung \ref{img:sturm}, rechts.
+
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm}}
+	%\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Kostenlose Browserdarstellung}
+	\label{img:sturm}
+\end{figure}
+
+Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
+
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=python, style=py]
+page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
+soup = BeautifulSoup(page.text, 'html.parser')
+
+# Einschaltzeit auslesen
+soup.select('table tr:nth-of-type(4) td'):
+
+# Status auslesen
+soup.select('.titelfett strong'):
+\end{lstlisting}
+
+% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
+Das Problem beim Verwenden des Web Crawlers besteht darin, dass sobald die URL oder die Webseite geändert wird, der Crawler angepasst werden muss. Da der Crawler jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, müssen wir dieses Risiko akzeptieren.
+
+% Problem 2: Öffnungszeiten -> keine Warnung in der NAcht
+Der Sturmwarndienst wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
+
+\begin{itemize}
+\item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
+\item 1. November - 31. März: 07:00 - 20:00 Uhr
+\end{itemize}
+
+\noindent
+% Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
+Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
+
+\begin{quote}
+\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen \frqq
+\end{quote}
+
+\noindent
+ Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+
+
+
+
+%-> Verweis auf Zeitungsartikel
+%-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
+
+% ins Kapitel API bzw. Cronjobs übernehmen
+%Der Status der drei Teilabschnitte wird dann mintütlich in die Datenbank geschrieben. So kann der aktuelle Stand normal über die API abgefragt werden.
+
+% nur im Vortrag erwähnen
+% DAs JSON von Meteoschweiz kann leider nicht verwendet werden, da dessen URL bei jedem Update wechselt. Der genaue Pfad lässt sich nicht vorhersagen. Auf Grund des Zeitstempels lässt sich erahnen, dass es keine automatische Verbindung zwischen Meteoschweiz und den Sturmwarnleuchten am Bodensee gibt. Auf der Meteoschweiz-Seite ist z.B. der Zeitstempel 12:00 und auf der kttg.ch Seite 12:07. Wahrscheinlich erfolgt die Aktivierung manuell. Dies würde die Zeitdifferenz erklären.
+% -> Foto Zeitstempel Meteoschweiz und kttg.ch
+% Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
 
 
 
@@ -410,6 +423,7 @@ Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlo
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Automatische Aktualisierung der Anzeigeelemente}
+\Diskussionspunkt{Initial Values beschreiben}\newline
 Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
 
 
