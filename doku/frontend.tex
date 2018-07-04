@@ -10,8 +10,9 @@ Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von all
 Zuerst wurden die Zugriffsdaten auf die bestehende Webseite mittels Google Analytics analysiert. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \textit{Wetter Tourismus} und \textit{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung \ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\% und 80\% beträgt. Dies wiederspiegelt den Trend zum mobilen Internet und zeigt wie wichtig die mobile Version einer Webseite ist. Dies geht soweit, dass sogar die mobile Seite als Ausgangspunkt für die Entwicklung der Homepage dient nach dem Designkonzept \textit{Mobile First}.
 
 \begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_mobile}}
 	\centering
-	\includegraphics[width=1\linewidth]{img/google_mobile}
+	%\includegraphics[width=1\linewidth]{img/google_mobile}
 	\caption{Anteil der mobilen Zugriffe auf die Wetterwebseite}
 	\label{img:google_mobile}
 \end{figure}
@@ -20,7 +21,8 @@ Es lässt sich ebenfalls erkennen welche Browser am häufigsten verwendet werden
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\linewidth]{img/google_browser}
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_browser}}
+	%\includegraphics[width=1\linewidth]{img/google_browser}
 	\caption{Verwendete Browser und Beliebtheit der Seiten}
 	\label{img:google_browser}
 \end{figure}
@@ -109,6 +111,32 @@ Vorgehen:
 \subsubsection{Gauges}
 \Diskussionspunkt{- JS-Framework, justgage}\newline
 
+-> erstellt eine svg-Grafik!!!!
+
+\begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
+    var temperature_gauge = new JustGage({
+        id: 'temperature_gauge',
+        value: initialValues.v1.data.temperature.value,
+        min: -10,
+        max: 40,
+        symbol: "${^\circ}$C",
+        title: 'Luft',
+    });
+\end{lstlisting}
+
+
+\begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
+	<!-- Lufttemperatur -->
+	<div class="w3-cell w3-col l2 m3 s6">
+		<div class="w3-card">
+			<div class="w3-container">
+        		<p>Temperatur</p>
+      </div>
+			<div id="temperature_gauge" class="gauge"></div>
+		</div>
+	</div>
+\end{lstlisting}
+
 \subsubsection{svg-Grafiken mit Wertangabe}
 \Diskussionspunkt{- verwendete Icon-Bibliothek}\newline
 
@@ -121,7 +149,8 @@ Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufko
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\linewidth]{img/sturm2}
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm2}}
+	%\includegraphics[width=1\linewidth]{img/sturm2}
 	\caption{Sturmwarndienst Bodensee}
 	\label{img:sturm2}
 \end{figure}
@@ -131,15 +160,16 @@ Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, a
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\linewidth]{img/sturm}
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm}}
+	%\includegraphics[width=1\linewidth]{img/sturm}
 	\caption{Kostenlose Browserdarstellung}
 	\label{img:sturm}
 \end{figure}
 
 Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
 
-\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=Python]
-page = requests.get("http://www.kttg.ch/kapo/htm/stwarn.shtml")
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=python, style=py]
+page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
 soup = BeautifulSoup(page.text, 'html.parser')
 
 # Einschaltzeit auslesen
@@ -336,11 +366,11 @@ Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlo
 Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
 
 
-\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=html]
+\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
 (function poll() {
         $.get('https://api.wetter-arbon.ch/v1/')
-          .done(function(res) {updateData(res);})
-          .always(function() { setTimeout(poll, 61000); });
+          .done(function(response) {updateData(response);})
+          .always(function() {setTimeout(poll, 61000); });
 })();
 
 function updateData(res){
