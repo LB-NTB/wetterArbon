@@ -109,6 +109,32 @@ Vorgehen:
 \subsubsection{Gauges}
 \Diskussionspunkt{- JS-Framework, justgage}\newline
 
+-> erstellt eine svg-Grafik!!!!
+
+\begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
+    var temperature_gauge = new JustGage({
+        id: 'temperature_gauge',
+        value: initialValues.v1.data.temperature.value,
+        min: -10,
+        max: 40,
+        symbol: "${^\circ}$C",
+        title: 'Luft',
+    });
+\end{lstlisting}
+
+
+\begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
+	<!-- Lufttemperatur -->
+	<div class="w3-cell w3-col l2 m3 s6">
+		<div class="w3-card">
+			<div class="w3-container">
+        		<p>Temperatur</p>
+      </div>
+			<div id="temperature_gauge" class="gauge"></div>
+		</div>
+	</div>
+\end{lstlisting}
+
 \subsubsection{svg-Grafiken mit Wertangabe}
 \Diskussionspunkt{- verwendete Icon-Bibliothek}\newline
 
@@ -138,8 +164,8 @@ Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, a
 
 Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
 
-\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=Python]
-page = requests.get("http://www.kttg.ch/kapo/htm/stwarn.shtml")
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=python, style=py]
+page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
 soup = BeautifulSoup(page.text, 'html.parser')
 
 # Einschaltzeit auslesen
