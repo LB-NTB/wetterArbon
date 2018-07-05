@@ -62,55 +62,10 @@ Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kan
 Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie umgesetzt.
 \subsubsection{Neugestaltung der Datenbank}
 \textbf{Externe Phase}\\
-In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor:
-\begin{itemize}
-\item Die Tabelle wx data welche die Daten des Wettertransmitters beinhaltet wird in ihrem jetzigen Zustand belassen, allerdings sollten die nicht benutzten Spalten entfernt werden, wile es viele Spalten welche entweder immer eine 0, 100 oder ein NULL beinhalten.
-\item Tabelle tblwellen wird umbenannt in tblextsensors und umstrukturiert
-\item Tabelle tblhistorical wird neu aufgebaut, sodass die Daten aus den beiden oben genannten Tabellen in Stundenwerte komprimiert werden.
-\end{itemize}
+In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor. Die Tabelle wx data, beinhaltet die Daten des Wettertransmitters wird möglichst in ihrem Zustand belassen. Es werden einzig die Spalten, welche immer eine 0, 100 oder ein NULL beinhalten gelöscht. Die restlichen Daten werden in eine neue Tabelle überführt. Die Tabelle tblwellen, beinhaltet den Pegel wird gelöscht. Dafür kommt eine neue Tabelle welche alle Daten der externen Sensoren beinhaltet. Zudem wird eine historische Tabelle erstellt, welche die Daten aus den beiden vorher erwähnten Tabellen zusammengesetzt wird erstellt. Diese wird für die Seite mit historischen Daten weiterverwendet. Welche Datenpunkte übernommen werden kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\
 
-Die neue Tabellenstruktur der wx data würde folgende Spalten beinhalten:
- \begin{itemize}
-\item average windspeed
-\item max average windspeed day
-\item gust windspeed
-\item max gust current day
-\item wind direction
-\item temperature
-\item max daily temperature
-\item min daily temperature
-\item dew point temperature
-\item current windchill
-\item max windchill
-\item min windchill
-\item current humidex
-\item min humidex
-\item max humidex
-\item heat index
-\item max heat index
-\item min heat index
-\item outdoor humidity
-\item barometer
-\item barometer trend last hour
-\item daily rainfall
-\item rain rate
-\item cloud height
-\item icon type
-\item forecast icon
-\end{itemize}
-
-Obwohl die in diesem Stadium die externe Sensoren noch nicht alle funktionieren oder genau definiert sind welche umgesetzt werden sollten die  Spalten für die Tabelle tblextsensors schon definiert sein:
-\begin{itemize}
-\item waterlevel
-\item waveheight
-\item watertemperature50cm
-\item watertemperature100cm
-\item radiation
-\end{itemize}
-
-Bei der historischen Tabelle tblhistorical, werden die Spalten aus den beiden obengenannten Tabellen zusammengesetzt.
 \textbf{Konzeptionelle Phase}\\
-Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte relevant für die API sowie die neue Webseite sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Im Falle der Neukonzipierung der Wetterstation Datenbank sieht das ER-Modell wie in Bild() aus.\Diskussionspunkt{ER-Modell Bild}
+Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte für die API sowie die neue Webseite relevant sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Im Falle der Neukonzipierung der Wetterstation Datenbank sieht das ER-Modell wie in Bild() aus.\Diskussionspunkt{ER-Modell Bild}
 
 \textbf{Logische Phase (relationales Datenmodell)}\\
 Die Tabelle tblextsensors  enthält sie als Fremdschlüssel einen Datums und Zeitstempel. Die beiden Tabellen wx data und tblExtSensors werden über eine Tabelle mit verschiedenen Formaten von Datums bzw Zeitstempel als Primärschlüssel miteinander Kombiniert. Somit kann sichergestellt werden, dass die Datenbank in Zukunft weiter wachsen kann und die Tabelle wx data in ihrem jetzigen Zustand so belassen werden kann. Die Zusammenführung kann in einer abfrage mit dem Befehl LEFT OUTER JOIN umgesetzt werden. So kann kann eine Tabelle mit den aktuellen Werten nach Wunsch erstellt werden.
