@@ -162,28 +162,28 @@ Raphaël ist eine kleine JavaScript-Bibliothek, die Ihnen die Arbeit mit Vektorg
 
 
 \begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
-    var temperature_gauge = new JustGage({
-        id: 'temperature_gauge',
-        value: initialValues.v1.data.temperature.value,
-        min: -10,
-        max: 40,
-        symbol: "${^\circ}$C",
-        title: 'Luft',
-    });
+var temperature_gauge = new JustGage({
+  id:     temperature_gauge,
+  value:  initialValues.v1.data.temperature.value,
+  min:    -10,
+  max:    40,
+  symbol: C,
+  title:  Luft
+});
 \end{lstlisting}
 
 Um die Grafik anzuzeigen muss nur ein DIV mit der selben ID auf der Webseite erstellt werden wie in Listing \ref{lst:gaugeHTML} dargestellt.
 
 \begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
-	<!-- Lufttemperatur -->
-	<div class="w3-cell w3-col l2 m3 s6">
-		<div class="w3-card">
-			<div class="w3-container">
-        		<p>Temperatur</p>
-      </div>
-			<div id="temperature_gauge" class="gauge"></div>
-		</div>
-	</div>
+<!-- Lufttemperatur -->
+<div class="w3-cell w3-col l2 m3 s6">
+  <div class="w3-card">
+    <div class="w3-container">
+      <p>Temperatur</p>
+    </div>
+    <div id="temperature_gauge" class="gauge"></div>
+  </div>
+</div>
 \end{lstlisting}
 
 Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons. Es wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, die kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \textit{Weahter Icons}\footnote{\url{http://erikflowers.github.io/weather-icons/}} von Erik Flowers.
@@ -204,74 +204,103 @@ Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zu
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
-\Diskussionspunkt{- Verwendetes JS-Framework (Chartist)}\newline
-\Diskussionspunkt{- Welche Frameworks wurden betrachtet, warum ausgewählt?}\newline
-\Diskussionspunkt{- Samplerate, fixe Y-Achse, Barrierefreiheit}\newline
-\Diskussionspunkt{- x-Tage-Rückschau}\newline
-\Diskussionspunkt{chartist.css}\newline
-\Diskussionspunkt{- Warum nicht D3 oder googleCharts?}\newline
+Die Wetterverlaufsdarstellung soll einen Überblick über die Wettertendenz der letzten beiden Tage liefern. Die Samplerate beträgt 1h, d.h. die Daten werden aus der Tabelle der historischen Werte abgerufen.
 
-Quelle: https://www.fusioncharts.com/javascript-charts-guide/
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/charts}}
+	\centering
+	\caption{Verlaufsdiagramm mit chartist.js}
+	\label{img:charts}
+\end{figure}
+
+
 
 \subsubsection{Auswahl des JS-Frameworks}
+Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden js-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei js-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE js-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, was wir explizit nicht möchten.
 
-1. Cross Browser Compatibility
-It is a pain to handle cross-browser compatibility issues, and we believe the library you choose should do it for you.
-Examples of libraries that work only on modern browsers: D3.JS, Chart.js and Chartist.js.
-Examples of libraries that work in all the browsers: FusionCharts, amCharts and Highcharts.
+\begin{table}[htb!]
+\setlength\extrarowheight{3pt} % for a more "open" look
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3.5cm}||X|X|X|}
 
-2. Cross Device Compatibility
-but if you want to ensure a consistent experience across hand-held devices as well, the charting library you choose should be responsive.
-If you are making an application only for mobile, then you need to consider size of the library as well. This is because of lower processing power and browsing-speed issues in smartphones. A library with lower footprint is highly recommended in this case.
+\hline
+& \bfseries\large \href{https://gionkunz.github.io/chartist-js/index.html}{chartist.js}
+& \bfseries\large \href{https://www.fusioncharts.com}{Fusion Charts}
+& \bfseries\large \href{https://developers.google.com/chart/}{Google Charts}\\
 
-3. Input Data Format
-Although JSON (JavaScript Object Notation) is gradually becoming the standard format especially when it comes to charting libraries. Most of the times you will have to load the data from a database like MySQL, Oracle or SQL Server. In this case you need to take into account the format which is acceptable to both your library and other parts of the application.
+\hline
+\textbf{Footprint}
+& 10 kB
+& >1000 kB
+& 110 kB \\
 
-4. Customizability
-This is one of the biggest decision factors for many. Is the charting library flexible enough so that you can make it do what you want, or will it just look good on defaults and you are on your own if you try to customize it?*
-But with great customizability, comes great complexities. A good example of this is D3.js. It practically allows you to configure every element on the chart, but doing so is effort intensive. Then you have libraries like FusionCharts and Highcharts which strike a perfect balance between these two. Here you get a lot of freedom to customize your charts with minimum effort on your end.
+\hline
+\textbf{Barrierefrei}
+& +
+& 0
+& + \\
 
-5. Range of Available Charts
-This one is a no brainer. Whatever visualization you want to create should be a part of the library. One useful advice here is that you should always consider your future needs as well and not just present ones.
+\hline
+\textbf{Anpassbarkeit}
+& ++
+& +++
+& ++ \\
+
+\hline
+\textbf{Dokumentation}
+& +++
+& +++
+& ++ \\
+
+\hline
+\textbf{Kostenlos}
+& +
+& --
+& + \\
+
+\hline
+\textbf{Funktionsumfang}
+& ++
+& +++
+& + \\
+
+\hline
+\end{tabularx}
+\caption{Beurteilungsmatrix der evaluierten js-Frameworks}
+\label{table:js-framework} % label muss NACH caption stehen!!!!
+\end{table}
+
+\noindent
+Chartist.js stellte den besten Kompromiss zwischen Funktionsumfang, Einfachheit und Dokumentation dar. Insbesondere die Dateigrösse war ausschlaggebend, da die Webseite, wie in Abschnitt \ref{subsec:googleAnalytics} erklärt, primär von mobilen Nutzer genutz wird.
+
+% Code-Beispiel
+\begin{lstlisting}[label=lst:charts,caption=Konfiguration der Verlaufsdiagramme, language=HTML5, style=htmlcssjs]
+//Luftdruck
+var Barometer = {
+  labels: [48,...,1],
+  series: [dataBarometerHistoric]
+};
+new Chartist.Line('#air-chart', Barometer);
+
+//Regen
+var Rain = {
+	labels: [48,...,1],
+	series: [dataRainHistoric]
+};
+var options = {
+low: 0,
+high: 30,
+};
+new Chartist.Bar('#rain-chart', Rain, options);
+\end{lstlisting}
+\ \\
 
 
-6. Learning Curve
-No doubt D3.js is very powerful, but if you are running on a tight deadline or using a charting library for the first time, it is not recommended to use D3.js.
-
-7. Compatibility With Other Parts of Code OR Compatibility with Web-Frameworks
-Imagine you are comfortable using PHP, ASP.NET, AngularJS or jQuery and are not familiar with vanilla JavaScript very much. Wouldn’t it be great if you can build charts using framework specific plugins or wrappers?
-
-Some libraries have free plugins and wrappers that generate the required JavaScript and HTML code for you, which is then used to render charts on a web page.
-
-8. Performance
-If you have to plot fewer data points then most of the libraries will perform on a similar scale and you can neglect this factor. On the other hand if you have to render millions of data points, then performance becomes a major deciding factor as each fraction of second saved will have a huge impact in aggregate.
-
-9. Exporting
-It will be better that the charting library you choose supports export feature out of the box. Common export formats to look for are JPEG, PNG, PDF and SVG. There are two ways to export charts - client side and server side. Libraries like FusionCharts and Highcharts support both the ways of exporting. Only adding one line of code is enough to get this working.
-
-10. Design and Interactivity
-Design is more than just look and feel of a chart. It should not only look good (themes, color scheme), but it should have meaningful interactivity (hovering, click-through drill downs, live data updates, etc). For example, clicking a legend icon in multi-series line chart should toggle the visibility of related data plot. Custom code should not be required for that. Themes: another important design feature is the ability to theme your charts to match the design language of the rest of your application. A centralized theme manager - one place to manage the theming of your charts - will make your job much easier.
+Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wurd bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder eher tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möchglichst die gesamte Höhe des Diagramms genutzer werden soll. Es wird daher eine automaitsche Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfach JS-File wie in Listing Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
 
 
-11. Community and Support
-So when you face a problem, you might need some external support to solve it.
+\subsubsection{Anzeige der Windrichtung}
+\Diskussionspunkt{- Windrichtungsverlauf -> geht nicht mit chartist -> welche andere js-Bibliothek?}\newline
 
-12. Accessibility
- does a charting library comply with 508 standards? Are screen readers like JAWS able to read the charts rendered by a library?
-
- WEbseite: http://accessibility.psu.edu/images/charts/
- jQuery Visualize: https://www.filamentgroup.com/lab/update-to-jquery-visualize-accessible-charts-with-html5-from-designing-with.html
-
-13. Pricing and Licensing Terms
- Terms and pricing varies depending on factors like number of users, type of application (SaaS, intranet, web) and number of servers.
-
-14. Open Source or Commercial
- Open-source is in fashion nowadays, but it’s not the right solution for every need.
- https://www.codeproject.com/Articles/581146/8-reasons-to-choose-commercial-library-instead-of
-
-
-
- D3 is an awesome javascript library, but it has no “ready to ship” charts and graphs.
 
 
 \subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
@@ -292,7 +321,38 @@ Openweathermap scheint sehr ungenaue Windvorhersagen zu liefern.
 
 \Diskussionspunkt{-> Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap}\newline
 
+% API
+% Crawlers
+Windfinder bietet keine API an nur Windget
 
+Für die Windvorhersage haben wir zwei Anbieter ausgewählt:
+
+Windfinder
+Openweathermap
+Ziel ist, dass wir die Vorhersagedaten der beiden Anbieter abrufen und bei uns in der Datenbank speichern. Openweathermap bietet eine kostenlose Web-API an, windfinder leider nicht. Wir rufen die Daten über ein Python-Skritp ab. Da Windfinder keine API anbietet, müssen die Daten aus der Webseite extrahiert werden. Ein mögliches Tool dazu ist BeautifulSoup.
+
+Für den Vergleich der Windvorhersagedaten hatten wir zwei Dienstleister ausgewählt:
+
+Windfinder
+Openweathermap
+Von beiden haben wir während den letzten zwei Wochen die Windvorhersagedaten ausgelesen und in unsere Datenbank gespeicher. Es hat sich allerdings gezeigt, dass die Vorhersagedaten von Openweathermap nicht brauchbar sind. Die Vorhersage schwankt konstant zwischen 0kn und 1kn. Wir haben uns deshalb auf die Vorhersage von Windfinder konzentriert und arbeiten mit diesen Daten weiter.
+
+Wie oben beschrieben müssen wir die Vorhersagedaten von Windfinder aus der Webseite extrahieren. Lokal funktioniert die Abfrage. Auf dem Hostpoint-Server haben wir aber die Berechtigung nicht um BeautifulSoup zu installieren. Lösungsvorschläge sind erwünscht.
+
+%View
+SELECT ABS(TIMEDIFF("2018-07-01 23:00", "2018-07-02 00:30")); Resultat: 13'000
+
+
+\begin{lstlisting}[label=lst:viewForecast,caption=Erzeugung der VIEW für den Forecast-Vergleich, language=SQL, style=htmlcssjs]
+SELECT *
+FROM 'tblcompwindfinder'
+WHERE
+(datetime + interval 3 day) <= now() #heute vor drei Tagen
+AND
+abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
+ORDER BY datetime DESC
+LIMIT 3
+\end{lstlisting}
 
 %% ###################################################################################################
 %%   Unterkapitel
@@ -530,3 +590,9 @@ Die voreingestellte menschliche Sprache jeder Webseite kann programmgesteuert be
 \subsubsection*{Robustheit}
 % Anforderung 4.1: Kompatibilität
  In Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden, haben Elemente vollständige Start- und End-Tags, Elemente werden entsprechend ihrer Spezifikationen verschachtelt, Elemente enthalten keine doppelten Attribute und alle IDs sind eindeutig.
+
+
+
+
+\subsubsection{Barrierefreie Grafiken}
+\Diskussionspunkt{- Barrierefreiheit}\newline

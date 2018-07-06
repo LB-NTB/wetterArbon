@@ -11,7 +11,8 @@ Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Web
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{img/schaltschrank.png}
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/schaltschrank.png}}
+	%\includegraphics[width=0.9\linewidth]{img/schaltschrank.png}
 	\caption{Hardware-Aufbau der Wetterstation Arbon}
 	\label{img:schaltschrank}
 \end{figure}
@@ -20,17 +21,18 @@ Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Web
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
 \subsection{Sonnenstrahlungssensor}
-Die Sonnenscheindauer dient der näherungsweisen Abschätzung der Einstrahlung an einem bestimmten Ort und gibt gleichzeitig Hinweise auf Zeit und Stärke der Bewölkung. Die Angabe der Sonnenstunden diente ursprünglich der Charakterisierung von Kurorten. Dabei wurde die psychologische Wirkung von Sonnenlicht auf das menschliche Wohlbefinden hervorgehoben. Die Sonnenstunden werden heute immer noch verwendet um touristische Ziele zu fördern. 
+Die Sonnenscheindauer dient der näherungsweisen Abschätzung der Einstrahlung an einem bestimmten Ort und gibt gleichzeitig Hinweise auf Zeit und Stärke der Bewölkung. Die Angabe der Sonnenstunden diente ursprünglich der Charakterisierung von Kurorten. Dabei wurde die psychologische Wirkung von Sonnenlicht auf das menschliche Wohlbefinden hervorgehoben. Die Sonnenstunden werden heute immer noch verwendet um touristische Ziele zu fördern.
 
 \noindent
 Zur Messung der Sonnenstunden gibt es gemäss  \flqq Guide to Meteorological Instruments and Methods of Observation\frqq ~\cite{WMO2014Gtmi}  fünf Messprinzipien, wobei die pyranometrische Methode, die einfachste und kostengünstigste Methode darstellt. Gemäss WMO~\cite{WMO2014Gtmi} Kapitel 8.1.4 kann die Sonnenscheindauer durch die Messung der globalen Sonneneinstrahlung $G$ abgeschätzt werden. Die Globalstrahlung wird dabei von einem Pyranometer gemessen.
 
 \subsubsection{Funktionsprinzip eines Pyranometers}
-Das Pyranometer basiert auf dem Messprinzip eines Thermoelements, wie in Abbildung \ref{img:pyranometer}  dargestellt. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme „fliesst“ dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom bzw. zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe geschalten, welches Thermosäule genannt wird. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Response time liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen. 
+Das Pyranometer basiert auf dem Messprinzip eines Thermoelements, wie in Abbildung \ref{img:pyranometer}  dargestellt. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme „fliesst“ dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom bzw. zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe geschalten, welches Thermosäule genannt wird. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Response time liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{img/pyranometer.png}
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pyranometer.png}}
+	%\includegraphics[width=0.9\linewidth]{img/pyranometer.png}
 	\caption{Pyranometer}
 	\label{img:pyranometer}
 \end{figure}
@@ -51,7 +53,7 @@ d        &  Laufende Stunde seit Anfang Jahr \\
 h        &  Elevationswinkel der Sonne in Grad \\
 A        &  empirisch bestimmter Koeffizient (0.65) \\
 B        &  empirisch bestimmter Koeffizient (0.15) \\
-\end{conditions} 
+\end{conditions}
 
 %Die physikalische Größe der Sonnenscheindauer (SD) ist Zeit. Die verwendeten Einheiten sind Sekunden oder Stunden.
 %Der Messzeitraum (Tag, Dekade, Monat, Jahr usw.) ist ein wichtiger Zusatz zur Einheit.
@@ -197,7 +199,8 @@ Um die richtige Temperaturen bestimmen zu können ist der Pegel notwendig, hierf
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/wassertempsensoren.png}}
+	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
 	\caption{Zusammenhang zwischen Pegel und PT100-Temperaturwiderständen}
 	\label{img:wassertempsensoren}
 \end{figure}
@@ -207,11 +210,3 @@ Um die richtige Temperaturen bestimmen zu können ist der Pegel notwendig, hierf
 \Diskussionspunkt{- Offset des defekten Sensors}\newline
 \Diskussionspunkt{- Grafik der aufgezeichneten Daten -> kein klarer Offset vorhanden!}\newline
 \Diskussionspunkt{- Wie wurde Problem gelöst -> Code}\newline
-
-
-
-
-
-
-
-
