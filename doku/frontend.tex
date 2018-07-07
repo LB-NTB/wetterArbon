@@ -299,50 +299,38 @@ Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, w
 
 
 \subsubsection{Anzeige der Windrichtung}
-\Diskussionspunkt{- Windrichtungsverlauf -> geht nicht mit chartist -> welche andere js-Bibliothek?}\newline
+Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet wie in Abbildung \ref{img:windrichtung}, links dargestellt. Es konnt jedoch kein Framework gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung \ref{img:windrichtung}, rechts dargestellt verwendet.
 
-
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/windrichtung}}
+	\caption{Windrichtungsanzeige soll und ist}
+	\label{img:windrichtung}
+\end{figure}
 
 \subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
+Insbesondere bei Seglern sind Windprognosenseiten sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist nicht erkennbar wie gut dir Prognose war. Geanu dies ist aber eine spannende Frage weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden daher mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
 
-Die Messdaten der Wetterstation werden mit zwei Vorhersagediensten verglichen. Dabei wird jeweils die Eintages-Vorschau und die Dreitagesvorschau betrachtet.
-Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen wir die Vorhersagedaten abgreifen und in unsere Datenbank speichern. Die Vorhersagen haben häufig einen Intervall von drei Stunden. Wir erstellen somit ein Skript, welche alle drei Stunden die Daten abfragt und speichert.
+\begin{itemize}
+\item Openweathermap
+\item Windfinder
+\end{itemize}
 
-Die Darstellung von Vorhersage und Messresultaten erfolgt in einem Graphen, der den heutigen Tag, links davon die letzten 14 Tage und rechts davon die nächsten drei Tage anzeigt. Pro Anbieter und Prognoseart (1Tag bzw. 3 Tage) wird ein eigener Graph erstellt.
+\noindent
+Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verfügung stellt. Windfinder ist unter den Seglern das beliebteste Tool. Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen die Vorhersagedaten abgegriffen und gespeichert werden. Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API sondern lediglich ein Widget für den gewünschten Standort an. Dies Daten müssen somit aus dem Windfinder-Widget, siehe Abbildung \ref{img:windfinder}, mittels Crawler extrahiert werden, analog Listing \ref{lst:kttgCrawler}.
 
-Diese Vergleiche werden aus reinem Interesse der IG erstellt und stellen keinen Service der IG dar. Die Wetterstation ist zudem windtechnisch eher an einem ungünstigen Ort platziert (Bucht), sodass die Messwerte nicht für den ganzen See representativ sind.
-Aus diesen Gründen wird die Webseite zwar veröffentlicht, aber kein Link dazu auf der Webseite zur Verfügung gestellt.
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/windfinder}}
+	\caption{Widget von Windfinder}
+	\label{img:windfinder}
+\end{figure}
 
-Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API an. Dies Daten müssen somit aus der Windfinder-Webseite extrahiert werden.
+Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap absolut unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten auch wenn die Wetterstation 15 Knoten messte. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weitervervolgt.
 
-Für die Darstellung der aktuellen Windgeschwindigkeit verwenden wir den Mittelwert der drei Werte aus der Stundenwert-Datenbank.
+Die Abfrage der Datenban stellt sich als recht kompliziert heraus. Sodass entschieden wurde eine VIEW einzusetzten. Diese wird dynamisch bei Aufrufen erzeugt und enthält die gewünschten Daten. Der SQL-Befehl für die Erzeugung der VIEW ist vereinfacht in Listing \ref{lst:viewForecast} aufgeführt. Primär gibt es zwei Bediungungen. Erstens sollen nur die Dreitageverhersagewerte verwendet werden und zweitens sollen die Vorhersagewerte verwendet werden, die am nächsten bei der aktuellen Zeit liegen. Da das Vorhersageintervall 3 Stunden beträgt ist die Verhersage maximal 1.5 Stunden verschoben.
 
-Openweathermap scheint sehr ungenaue Windvorhersagen zu liefern.
-
-\Diskussionspunkt{-> Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap}\newline
-
-% API
-% Crawlers
-Windfinder bietet keine API an nur Windget
-
-Für die Windvorhersage haben wir zwei Anbieter ausgewählt:
-
-Windfinder
-Openweathermap
-Ziel ist, dass wir die Vorhersagedaten der beiden Anbieter abrufen und bei uns in der Datenbank speichern. Openweathermap bietet eine kostenlose Web-API an, windfinder leider nicht. Wir rufen die Daten über ein Python-Skritp ab. Da Windfinder keine API anbietet, müssen die Daten aus der Webseite extrahiert werden. Ein mögliches Tool dazu ist BeautifulSoup.
-
-Für den Vergleich der Windvorhersagedaten hatten wir zwei Dienstleister ausgewählt:
-
-Windfinder
-Openweathermap
-Von beiden haben wir während den letzten zwei Wochen die Windvorhersagedaten ausgelesen und in unsere Datenbank gespeicher. Es hat sich allerdings gezeigt, dass die Vorhersagedaten von Openweathermap nicht brauchbar sind. Die Vorhersage schwankt konstant zwischen 0kn und 1kn. Wir haben uns deshalb auf die Vorhersage von Windfinder konzentriert und arbeiten mit diesen Daten weiter.
-
-Wie oben beschrieben müssen wir die Vorhersagedaten von Windfinder aus der Webseite extrahieren. Lokal funktioniert die Abfrage. Auf dem Hostpoint-Server haben wir aber die Berechtigung nicht um BeautifulSoup zu installieren. Lösungsvorschläge sind erwünscht.
-
-%View
-SELECT ABS(TIMEDIFF("2018-07-01 23:00", "2018-07-02 00:30")); Resultat: 13'000
-
-
+%View erstellen
 \begin{lstlisting}[label=lst:viewForecast,caption=Erzeugung der VIEW für den Forecast-Vergleich, language=SQL, style=htmlcssjs]
 SELECT *
 FROM 'tblcompwindfinder'
@@ -353,6 +341,15 @@ abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
 ORDER BY datetime DESC
 LIMIT 3
 \end{lstlisting}
+
+\Diskussionspunkt{- Eintagesvorschau}\newline
+\Diskussionspunkt{- Mittels Tableau? Eigen Webseite?}\newline
+\Diskussionspunkt{- Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap}\newline
+
+% Graphen, der den heutigen Tag, links davon die letzten 14 Tage und rechts davon die nächsten drei Tage anzeigt.
+% Pro Anbieter und Prognoseart (1Tag bzw. 3 Tage) wird ein eigener Graph erstellt.
+% Aus diesen Gründen wird die Webseite zwar veröffentlicht, aber kein Link dazu auf der Webseite zur Verfügung gestellt.
+% Werte aus der Stundenwert-Datenbank?
 
 %% ###################################################################################################
 %%   Unterkapitel
@@ -432,27 +429,26 @@ Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anz
 % Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
 
 
-
-
-
-
-
-
 %% ###################################################################################################
 %%   Unterkapitel
 %% ###################################################################################################
 \subsection{Darstellung der historischen Daten}
+Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahren, welche ebenfalls auf der Webseite verfügbar sein soll. Es gibt drei drei Grundlagen für die historischen Daten:
 
-\subsubsection{Daten der alten Wetterstation}
-\Diskussionspunkt{- sind unbrauchbar weil.....}\newline
-\Diskussionspunkt{- Grafik der Daten auf Zeitschiene}\newline
-\Diskussionspunkt{- Pegeldaten (Excel)}\newline
+\begin{itemize}
+\item Historische Daten der neuen Wetterstation
+\item Historische Daten der alten Wetterstation
+\item Excel mit Pegeldaten von 1953 bis 2005
+\end{itemize}
 
-\subsubsection{Daten der neuen Wetterstation}
-\Diskussionspunkt{- Printscreen ungefiltert}\newline
-\Diskussionspunkt{- Printscreen gefiltert}\newline
+Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
+
+
+\subsubsection{Daten der neuen Wetterstation mit Tableau}
 Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
+
+
 Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
 Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
 
@@ -460,22 +456,65 @@ Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -
 Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
 
 
-\subsubsection{Tableau Public}
-\Diskussionspunkt{- Filtermöglichkeiten}\newline
+Das Dashboard ist interaktiv d.h. der Benutzer kann den Betrachtungszeitraum selbst wählen. Die Grafiken passen sich automatisch der Auswahl an.
+Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informaitonen angezeigt.
 
-% Nachteil 1: Keine direkte Verbindung zur Datenbank
-Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlos, bietet jedoch keine Möglichkeit live auf die Datenbank zuzugreifen. Die historischen Daten müssen demnach manuell periodisch auf den Tableau-Server kopiert werden.\newline
+
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tableau}}
+	\caption{Darstellung der historschen Daten (Desktop und Mobile)}
+	\label{img:tableau}
+\end{figure}
+
 
 %Nachteil 2: Nicht responsive -> Workaround nötig
-\Diskussionspunkt{- Mobile Darstellunbg}\newline
-\Diskussionspunkt{- Printscreen der mobilen Darstellung}\newline
-\Diskussionspunkt{- Codesniplet auswahl desktop oder mobile}\newline
+\noindent
+Neben den vielen Vorteilen, hat Tableau Pubilc auf ein paar Nachteile. Das Dashbaord kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurd so gelöst, dass zwei verschiedene Dashboard (siehe Abbildung \ref{img:tableau}) erstellt werden. Eines für die Anzeige auf einem grossen Dispaly und eines für die Anzeige auf Mobiltelefonen. Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
 
-% Nachteil 3: nicht barrierefrei
-\Diskussionspunkt{- Barrierefreiheit? Farben}\newline
-\Diskussionspunkt{- Barrierefreiheit? Semantisches Web}\newline
+\begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anahnd der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]
+(function () {
+	var viewportWidth = $(window).width();
+	if (viewportWidth > 767) {
+		$('#area_3').load('application/php/tableauDesktop.php');
+	}
+	else {
+		$('#area_3').load('application/php/tableauMobile.php');
+	}
+}());
+\end{lstlisting}
 
 
+% Nachteil 1: Keine direkte Verbindung zur Datenbank
+\noindent
+Ein weiteren Nachteil von Tableau Public, welches kostenlos ist gegenüber Tableau, welches kostenpflicht ist, ist dass Tableau Public keinen Live-Zugriff auf die Datenbank ermöglicht. Die Daten müssen somit manuell periodisch auf den Tableau Public Server kopiert werden, damit sie im Dashboard verfügbar sind.
+
+
+
+\subsubsection{Daten der alten Wetterstation}
+Abbildung \ref{img:histAlt} zeigt eine Zusammenfassung der von der alten Wetterstation vorhandenen Daten. Es gibt diverse Messlücken wie z.B. das komplette Jahr 2010 und 2012. Weiter sind z.T. unplausible Grössenordnungen vorhanden wie z.B. die Windgeschwindigkeit von 500, wo nicht klar ist, zu welcher Einheit dieser Angabe gehört. Die Wellenhöhe sieht mehr nach Signalrauschen aus, als nach plausiblem Messwert. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation anzuzeigen. Die Pegeldaten werden in die Grafik, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben integriert.
+
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/histAlt}}
+	%\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Übersicht über die gespeicherten Daten der alten Wetterstation}
+	\label{img:histAlt}
+\end{figure}
+
+
+
+\subsubsection{Pegeldaten 1953 bis 2005}
+\label{subsec:pegelhistory}
+Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente u.a. ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung erfolgt analog Abbildung \ref{img:histPegel}. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht.
+
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/histPegel}}
+	%\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Darstellung der historischen Pegelmesswerte}
+	\label{img:histPegel}
+\end{figure}
 
 
 
@@ -485,7 +524,6 @@ Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist kostenlo
 \subsection{Automatische Aktualisierung der Anzeigeelemente}
 \Diskussionspunkt{Initial Values beschreiben}\newline
 Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
-
 
 \begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
 (function poll() {
@@ -497,8 +535,8 @@ Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen 
 function updateData(res){
         pressure_gauge.refresh(res.v1.data.pressure.value);
         $("#cwassertemp1m") = res.v1.data.watertemperature1m.value;
+        ...
 }
-
 \end{lstlisting}
 
 
@@ -508,6 +546,12 @@ function updateData(res){
 \subsection{Barrierefreier Zugang}
 Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann.
 \newline
+
+
+% Tableau Nachteil 3: nicht barrierefrei
+\Diskussionspunkt{- Barrierefreiheit? Farben}\newline
+\Diskussionspunkt{- Barrierefreiheit? Semantisches Web}\newline
+
 
 \noindent
 %\subsection*{Problem}
