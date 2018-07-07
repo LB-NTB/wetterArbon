@@ -65,28 +65,45 @@ Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werde
 In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor. Die Tabelle wx data, beinhaltet die Daten des Wettertransmitters wird möglichst in ihrem Zustand belassen. Es werden einzig die Spalten, welche immer eine 0, 100 oder ein NULL beinhalten gelöscht. Die restlichen Daten werden in eine neue Tabelle überführt. Die Tabelle tblwellen, beinhaltet den Pegel wird gelöscht. Dafür kommt eine neue Tabelle welche alle Daten der externen Sensoren beinhaltet. Zudem wird eine historische Tabelle erstellt, welche die Daten aus den beiden vorher erwähnten Tabellen zusammengesetzt wird erstellt. Diese wird für die Seite mit historischen Daten weiterverwendet. Welche Datenpunkte übernommen werden kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\
 
 \textbf{Konzeptionelle Phase}\\
-Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte für die API sowie die neue Webseite relevant sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Im Falle der Neukonzipierung der Wetterstation Datenbank sieht das ER-Modell wie in Bild() aus.\Diskussionspunkt{ER-Modell Bild}
+Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte für die API sowie die neue Webseite relevant sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet.\cite{FrankGeisler2011mitpu} Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Die Daten werden in Zukunft in drei Tabellen aufgeführt, welche je ein eigenes ER-Modell beinhalten.\\
+
+Beim ER-Modell für die Daten des Wettertransmitters, Bild \ref{img:ER_Modell Wettertransmitter},  beinhaltet jeder Zeitstempeleintrag, das bedeutet jede Minute des Tages die Daten des Wettertransmitters. 
+
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_Wettertransmitter}}
+	\centering
+	\caption{ER-Modell der Daten vom Wettertransmitter}
+	\label{img:ER_Modell Wettertransmitter}
+\end{figure}
+
+Dasselbe, wie beim ER-Modell für den Wettertransmitter, gilt auch für die externe Sensoren, wie in Bild \ref{img:ER_Modell externe Sensoren} zu sehen ist. 
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_externe_Sensoren}}
+	\centering
+	\caption{ER-Modell der externen Sensoren}
+	\label{img:ER_Modell externe Sensoren}
+\end{figure}
+
+Beim Modell der historischen Daten sieht das ganze anders aus, siehe Bild \ref{img:ER_Modell historische Daten}. Hier beinhaltet jeder Zeitstempel den Median sowie die Extremwerte der Daten vom Wettertransmitter und die der externen Sensoren. 
+
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_historisch}}
+	\centering
+	\caption{ER-Modell historische Daten}
+	\label{img:ER_Modell historische Daten}
+\end{figure}
 
 \textbf{Logische Phase (relationales Datenmodell)}\\
-Die Tabelle tblextsensors  enthält sie als Fremdschlüssel einen Datums und Zeitstempel. Die beiden Tabellen wx data und tblExtSensors werden über eine Tabelle mit verschiedenen Formaten von Datums bzw Zeitstempel als Primärschlüssel miteinander Kombiniert. Somit kann sichergestellt werden, dass die Datenbank in Zukunft weiter wachsen kann und die Tabelle wx data in ihrem jetzigen Zustand so belassen werden kann. Die Zusammenführung kann in einer abfrage mit dem Befehl LEFT OUTER JOIN umgesetzt werden. So kann kann eine Tabelle mit den aktuellen Werten nach Wunsch erstellt werden.
-\Diskussionspunkt{relationales Datenmodell Bild}
-\Diskussionspunkt{Fertigstellen}\\
 
-Punkte zur Überlegung neuer Datenbankstruktur:
-\begin{itemize}
-\item Welche Daten?
-\item In welchem Intervall?
-\item Welche Tabellen? (Welche Daten zusammen?, eine grosse Tabelle?)
-\item Tabellennamen?
-\item
-\end{itemize}
+In der logischen Phase geht es darum das ER-Modell in ein relationales Datenmodell zu überführen. Hierbei wird entschieden welches die primärschlüssel der einzelnen Tabellen sind und wie diese zusammenhängen. Im zweiten Schritt wird, wenn nötig eine Normalisierung vorgenommen. Das relationale Datenmodell unterscheidet sich in der Struktur nicht gross vom ER-Modell. Der grosse Unterschied hierbei ist jedoch, dass die Primärschlüssel, sowie die verschiedenen Datentypen entschieden werden. Die sogenannten Schlüssel sind im relationalen Datenmodell auch ein wichtiges Merkmal. Die Schlüssel sind entscheidend beim zukünftigen Datenbankeintrag, beispielsweise wenn zu einem bestimmten Zeitpunkt nur ein Datensatz vorhanden sein kann. In diesem Fall wird ein Zeitstempel als Primärschlüssel definiert. Weitere Möglichkeiten wäre auch ID, welche automatisch hochzählt. Für die Datenbank des Wetterdaten, soll von einem Zeitstempel gebraucht gemacht werden. Dieser wird jedoch nicht in der Datenbank generiert, sondern beim Auslesen der Daten. D.h. der Datentyp ist Datetime, da ansonsten der Zeitstempel von der Datenbank übernommen wird. Das relationale Datenmodell kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\ \Diskussionspunkt{Was ist normalisierung}\\
 
-Datentypen angeschaut auf w3schools:
-\begin{itemize}
-\item Welcher Datumstyp?
 
-\end{itemize}
-\textbf{Physische Phase (Erstellung des Datenmodell)}
+\textbf{Physische Phase (Erstellung des Datenmodell)}\\
+
+In der physischen Phase wird das Konzept, welches in den vorherigen Schritten erstellt wurde umgesetzt. Bei der Umsetzung entstanden einige nicht vorgesehene Probleme. Dazu aber später mehr. Die drei konzipierten Tabellen konnten wie gewünscht umgesetzt werden. Der Code für die Umsetzung der Tabellen kann aus dem Anhang entnommen werden.\\
+Das Problem bei der Umsetzung war, das die historische Tabelle welche aus den beiden Tabellen tblwettertransmitter und tblextsensors. Bei der Query um die Extrema und Mediane zu erstellen stellte sich heraus, dass die beiden Tabellen zu gross sind um es direkt mit einem LEFT JOIN umzusetzen. Deswegen musste hier auf eine sogenannte View zurückgegriffen werden.   
+
+
 
 \Diskussionspunkt{Fertigstellen}\\
 
