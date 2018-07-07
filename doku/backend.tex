@@ -59,10 +59,10 @@ Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei kan
 \item Physische Phase (Erstellung des Datenmodell)
 \end{itemize}
 
-Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie umgesetzt.
+Diese vier Phasen führen vom Beginn der Enwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie gleich umgesetzt.
 \subsubsection{Neugestaltung der Datenbank}
 \textbf{Externe Phase}\\
-In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor. Die Tabelle wx data, beinhaltet die Daten des Wettertransmitters wird möglichst in ihrem Zustand belassen. Es werden einzig die Spalten, welche immer eine 0, 100 oder ein NULL beinhalten gelöscht. Die restlichen Daten werden in eine neue Tabelle überführt. Die Tabelle tblwellen, beinhaltet den Pegel wird gelöscht. Dafür kommt eine neue Tabelle welche alle Daten der externen Sensoren beinhaltet. Zudem wird eine historische Tabelle erstellt, welche die Daten aus den beiden vorher erwähnten Tabellen zusammengesetzt wird erstellt. Diese wird für die Seite mit historischen Daten weiterverwendet. Welche Datenpunkte übernommen werden kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\
+In der externen Phase gilt es herauszufinden, welche Daten aus der realen Welt dargestellt werden sollten, sowie das Problem darzustellen. Das Problem bei dieser Arbeit sind die Menge an Daten, vor der Bearbeitung der Datenbankt fällten Stündlich 60 Einträge mit 65 Datenpunkte an. Dies ergab über die 3 Jahre an der Die Datenbank mehr oder weniger minütlich gefüllt wurde 1143847 Einträge. Dieser ganze Satz an Daten gilt es zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat hervor. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor. Die Tabelle wx data, beinhaltet die Daten des Wettertransmitters wird möglichst in ihrem Zustand belassen. Es werden einzig die Spalten, welche immer eine 0, 100 oder ein NULL beinhalten gelöscht. Die restlichen Daten werden in eine neue Tabelle überführt. Die Tabelle tblwellen, beinhaltet den Pegel wird gelöscht. Dafür kommt eine neue Tabelle welche alle Daten der externen Sensoren beinhaltet. Zudem wird eine historische Tabelle erstellt, welche die Daten aus den beiden vorher erwähnten Tabellen zusammengesetzt wird erstellt. Diese wird für die Seite mit historischen Daten weiterverwendet. Um die historische Tabelle ohne ausfälle zu füllen wird eine Tabelle entstehen, welche alle Zeitstempel bis zum Jahre 2030 beinhalten. Welche Datenpunkte übernommen werden kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\
 
 \textbf{Konzeptionelle Phase}\\
 Nachdem die externe Phase abgeschlossen ist und entschieden ist, welche Datenpunkte für die API sowie die neue Webseite relevant sind kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum die in der vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet.\cite{FrankGeisler2011mitpu} Um diese Punkte zu definieren muss klar sein welche Attribute eine Tabelle hat. Wird eine Tabelle mit allen Attribute erstellt oder mehrere logisch aufgeteilte Tabellen? Die Daten werden in Zukunft in drei Tabellen aufgeführt, welche je ein eigenes ER-Modell beinhalten.\\
@@ -84,7 +84,9 @@ Dasselbe, wie beim ER-Modell für den Wettertransmitter, gilt auch für die exte
 	\label{img:ER_Modell externe Sensoren}
 \end{figure}
 
-Beim Modell der historischen Daten sieht das ganze anders aus, siehe Bild \ref{img:ER_Modell historische Daten}. Hier beinhaltet jeder Zeitstempel den Median sowie die Extremwerte der Daten vom Wettertransmitter und die der externen Sensoren. 
+Beim Modell der historischen Daten sieht das ganze anders aus, siehe Bild \ref{img:ER_Modell historische Daten}. Hier beinhaltet jeder Zeitstempel den Median sowie die Extremwerte der Daten vom Wettertransmitter und die der externen Sensoren.
+
+Ein ER-Modell für die Datumstabelle ist nicht notwendig, da diese nur die Daten beinhalten und sonst keine weiteren Daten enthalten.
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_historisch}}
@@ -95,17 +97,14 @@ Beim Modell der historischen Daten sieht das ganze anders aus, siehe Bild \ref{i
 
 \textbf{Logische Phase (relationales Datenmodell)}\\
 
-In der logischen Phase geht es darum das ER-Modell in ein relationales Datenmodell zu überführen. Hierbei wird entschieden welches die primärschlüssel der einzelnen Tabellen sind und wie diese zusammenhängen. Im zweiten Schritt wird, wenn nötig eine Normalisierung vorgenommen. Das relationale Datenmodell unterscheidet sich in der Struktur nicht gross vom ER-Modell. Der grosse Unterschied hierbei ist jedoch, dass die Primärschlüssel, sowie die verschiedenen Datentypen entschieden werden. Die sogenannten Schlüssel sind im relationalen Datenmodell auch ein wichtiges Merkmal. Die Schlüssel sind entscheidend beim zukünftigen Datenbankeintrag, beispielsweise wenn zu einem bestimmten Zeitpunkt nur ein Datensatz vorhanden sein kann. In diesem Fall wird ein Zeitstempel als Primärschlüssel definiert. Weitere Möglichkeiten wäre auch ID, welche automatisch hochzählt. Für die Datenbank des Wetterdaten, soll von einem Zeitstempel gebraucht gemacht werden. Dieser wird jedoch nicht in der Datenbank generiert, sondern beim Auslesen der Daten. D.h. der Datentyp ist Datetime, da ansonsten der Zeitstempel von der Datenbank übernommen wird. Das relationale Datenmodell kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\ \Diskussionspunkt{Was ist normalisierung}\\
+In der logischen Phase geht es darum das ER-Modell in ein relationales Datenmodell zu überführen. Hierbei wird entschieden welches die primärschlüssel der einzelnen Tabellen sind und wie diese zusammenhängen. Im zweiten Schritt wird, wenn nötig eine Normalisierung vorgenommen. Das relationale Datenmodell unterscheidet sich in der Struktur nicht gross vom ER-Modell. Der grosse Unterschied hierbei ist jedoch, dass die Primärschlüssel, sowie die verschiedenen Datentypen entschieden werden. Die sogenannten Schlüssel sind im relationalen Datenmodell auch ein wichtiges Merkmal. Die Schlüssel sind entscheidend beim zukünftigen Datenbankeintrag, beispielsweise wenn zu einem bestimmten Zeitpunkt nur ein Datensatz vorhanden sein kann. In diesem Fall wird ein Zeitstempel als Primärschlüssel definiert. Weitere Möglichkeiten wäre auch ID, welche automatisch hochzählt. Für die Datenbank des Wetterdaten, soll von einem Zeitstempel gebraucht gemacht werden. Dieser wird jedoch nicht in der Datenbank generiert, sondern beim Auslesen der Daten. D.h. der Datentyp ist Datetime, da ansonsten der Zeitstempel von der Datenbank übernommen wird. Für die historische Tabelle wird der Primärschlüssel aus der DateMaster Tabelle entnommen. So kann sichergegangen werden, dass wenn in die Tabelle tblextsensors und tblwettertransmitter keine Daten geschrieben werden dennoch ein Eintrag in die historische Tabelle möglich ist. Das relationale Datenmodell kann aus dem Anhang \Diskussionspunkt{AUF ANHANG VERWEISEN} entnommen werden.\\ \Diskussionspunkt{Was ist normalisierung}\\
 
 
 \textbf{Physische Phase (Erstellung des Datenmodell)}\\
 
-In der physischen Phase wird das Konzept, welches in den vorherigen Schritten erstellt wurde umgesetzt. Bei der Umsetzung entstanden einige nicht vorgesehene Probleme. Dazu aber später mehr. Die drei konzipierten Tabellen konnten wie gewünscht umgesetzt werden. Der Code für die Umsetzung der Tabellen kann aus dem Anhang entnommen werden.\\
-Das Problem bei der Umsetzung war, das die historische Tabelle welche aus den beiden Tabellen tblwettertransmitter und tblextsensors. Bei der Query um die Extrema und Mediane zu erstellen stellte sich heraus, dass die beiden Tabellen zu gross sind um es direkt mit einem LEFT JOIN umzusetzen. Deswegen musste hier auf eine sogenannte View zurückgegriffen werden.   
-
-
-
-\Diskussionspunkt{Fertigstellen}\\
+In der physischen Phase wird das Konzept, welches in den vorherigen Schritten erstellt wurde umgesetzt. Bei der Umsetzung entstanden anschliessen einige Herausforderungen. Dazu aber später mehr. Die drei konzipierten Tabellen konnten wie gewünscht umgesetzt werden. Der Code für die Umsetzung der Tabellen kann aus dem Anhang entnommen werden.\\
+Bei der Umsetzung wurde zudem noch entschieden eine vierte Tabelle zu erstellen, tblmisc, diese beinhaltet die Daten, welche von einem dritten Angeboten werden. Im Falle der Wetterstation beinhaltet diese die Sturmwarnung. Auch diese Tabelle kann mit weiteren Spalten ergänzt werden 
+Das Problem bei der Umsetzung war, das die historische Tabelle welche aus den beiden Tabellen tblwettertransmitter und tblextsensors. Bei der Query um die Extrema und Mediane zu erstellen stellte sich heraus, dass die drei Tabellen, tblwettertransmitter, tblextsensors und DateMaster zu gross sind um es direkt mit einem LEFT JOIN umzusetzen. Deswegen musste hier auf eine sogenannte View zurückgegriffen werden. Der VIEW beinhaltet die minuten Daten der vergangenen 48 Stunden aus den zwei Tabellen tblwettertransmitter und tblextsensors. Dieser VIEW wird zudem für die Graphen auf der Webseite verwendet. 
 
 \subsection{Datenbanksicherheit}
 \subsubsection{Speicherplatz}
@@ -125,13 +124,13 @@ Weitere Fragen die auftauchen bei der Suche nach Datenbanksicherheit sind:
 
 Bei der Wetterstation Arbon, bestehen keine persönliche oder Sicherheitsrelevante Daten in der Datenbank. Somit ist diese aus sicht eine potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, da es vorallem schade wäre wenn die Daten verloren gingen. Andererseits aber auch das kein Missbrauch vom Server gemacht werden kann.
 
-Die Zugriffe auf die Datenbank sind so gestaltet, dass darauf nur Server seitig zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Infection möglich ist. Die einzige Seite welche direkt auf die Datenbank zugreift ist die historische Datenbank. Hier wird jedoch das Risiko so unterbunden, dass mit der Openversion von Tableau gearbeitet wird, hierdurch kann sichergegangen werden das Tableau den direkten Zugriff durch die Benutzer verweigert und die Daten so sicher sind. Somit sind keine weiteren Sicherheitsmassnahmen notwendig.
+Die Zugriffe auf die Datenbank sind so gestaltet, dass nur Serverseitig darauf zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Infection möglich ist. Wie im Kapitel \Diskussionspunkt{Kapitel Erwähnen} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet auch für die historische Seite ist kein Datenbankzugriff notwendig. 
 
 \subsubsection{Backup}
 
 Um die Datenbank auch gegen einen allfälligen Datenverlust zu sichern ist ein Backup von wichtiger Bedeutung. Deswegen ist das Backup ein weiterer Aspekt gegen den Verlust von Daten. Hierbei sind folgende Fragen relevant:
 \begin{itemize}
-\item Welche Daten sollen gesichert werden
+\item Welche Daten sollen gesichert werden?
 \item Wie oft sollten die Daten gesichert werden?
 \item Wie bzw. wo sollte das Backup gelagert werden?
 \end{itemize}
@@ -144,7 +143,21 @@ Da alle Daten in der DB gleich relevant sind sollten auch alle so behandelt werd
 \end{itemize}
 
 
-Um den Aufwand klein zu halten wird empfohlen ein monatliches Backup mit der Backup Funktion auf Knopfdruck zu erstellen und dieses auf einer Festplatte zu speichern. Sollte trotzdem mal das Backup nicht funktionierten oder vergessen gegangen sein, kann auf den Hostpoint-Service züruck gegriffen werden. Diese erstellen selber ein tägliches Backup, welches für 50 Franken wieder eingespielt werden kann. Somit können sich, davon ausgehend, dass Hostpoint einen guten Job macht Kosten für bspw. ein Cloudaccount gespart werden.
+Um den Aufwand klein zu halten wird empfohlen ein monatliches Backup mit der Backup Funktion auf Knopfdruck zu erstellen und dieses auf einer Festplatte zu speichern, siehe Bild \ref{img:Backup_Funktion} 
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/Backup_funktion}}
+	\centering
+	\caption{Backup auf Knopfdruck von Hostpoint}
+	\label{img:Backup_Funktion}
+\end{figure}
+Sollte trotzdem mal das Backup nicht funktionierten oder vergessen gegangen sein, kann auf den Hostpoint-Service \ref{img:Notfallwiederherstellung}  züruck gegriffen werden. Diese erstellen selber ein tägliches Backup, welches für 100 Franken wieder eingespielt werden kann.
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/Notfallwiederherstellung}}
+	\centering
+	\caption{Notfallwiederherstellung von Hostpoint}
+	\label{img:Notfallwiederherstellung}
+\end{figure}
+Somit können sich, davon ausgehend, dass Hostpoint einen guten Job macht Kosten für bspw. ein Cloudaccount gespart werden.
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
@@ -152,7 +165,7 @@ Um den Aufwand klein zu halten wird empfohlen ein monatliches Backup mit der Bac
 
 \subsection{Datenarchivierung}
 
-Bei der Datenarchivierung geht es vorallem darum, wie mit den vergangenen Daten umgegangen wird. Da nach der Umgestaltung eine neue Tabelle tblhistorical entstanden ist, bestehen zwei möglichkeiten um mit den Daten umzugehen. Allerdings ist eine Anforderung an die tblhistorical, dass diese nur Stundenwerte beinhaltet. Konkret bedeutet dies, dass aus den Werten einer Stunde der Median und die Extremwerte extrahiert werden. Auf die zwei Möglichkeiten bezogen bedeutet dies folgendes: \\
+Bei der Datenarchivierung geht es vor allem darum, wie mit den vergangenen Daten umgegangen wird. Da nach der Umgestaltung eine neue Tabelle tblhistorical entstanden ist, bestehen zwei Möglichkeiten um mit den Daten umzugehen. Allerdings ist eine Anforderung an die tblhistorical, dass diese nur Stundenwerte beinhaltet. Konkret bedeutet dies, dass aus den Werten einer Stunde der Median und die Extremwerte extrahiert werden. Auf die zwei Möglichkeiten bezogen bedeutet dies folgendes: \\
 Die erste Variante ist die historische Tabelle stündlich zu füllen mit einem Datensatz und bei den beiden Tabellen tblwettertransmitter, sowie tblextsensors die Werte wieder zu löschen. Dies würde bedeuten, dass schlussendlich nur die historische Tabelle vorhanden ist um in die Vergangenheit zu schauen.\\
 Die zweite Variante ist, die historische Tabelle stündlich zu füllen, jedoch die Tabelle des Wettertransmitters und der externen Sensoren gefüllt zu lassen mit den historischen Minuten Werte.\\
 Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden. Diese hat zudem noch den Vorteil, dass die Minuten Werte der Vergangenheit noch vorhanden sind, sollte eine zusätzliche Anwendung hierfür entstehen.
@@ -170,13 +183,19 @@ Um die Funktion der Software zu gewährleisten, sollte bei einem Absturz der Ver
 \item Einlesen Wettertransmitter Daten
 \item Erstellung der stündlichen historischen Daten
 \end{itemize}
-Die Aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Für die Cronjobs bietet Hostpoint den Service, dass bei einem print() die Ausgaben per Mail an eine bestimmte Mailadresse gesendet werden. Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen aus. Können einer der Webservices vom \Diskussionspunkt{A/E Wandler} nicht erreicht werden, wird die folgende Mail generiert:\\
+Die Aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Für die Cronjobs bietet Hostpoint den Service, dass bei einem print() die Ausgaben per Mail an eine bestimmte Mailadresse gesendet werden, im Beispiel \ref{lst:printfunction}. Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen aus. Können einer der Webservices vom \Diskussionspunkt{A/E Wandler} nicht erreicht werden, wird die folgende Mail generiert:\\
 Es ist ein Problem mit (der Temperatur, dem Pegel, dem Strahlungssensor) aufgetreten. Exception: ...\\
 Je nach Sensor wird dieser genannt und das Problem welches aufgetreten ist. Für die Erstellung der historischen Daten und dem einlesen der Wettertransmitter Daten sieht die Lösung ähnlich aus. Jedoch werden diese beiden im gleichen Cronjob, dem erstellen der historischen Daten kontrolliert. Zuerst wird kontrolliert ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, würde es bedeuten, dass das WeatherDisplay, welches die Daten des Transmitters aufbereitet, abgestürzt ist und neu gestartet werden muss. Das zweite was in diesem Cronjob kontrolliert wird, ist dass Kontrolliert werden muss ob die Daten in die historische Tabelle geschrieben sind. Die beiden Meldungen sehen dann so aus:\\
 Bitte starte das WeatherDisplay neu, es wurden nur (Anzahl Datensätze) Daten geschrieben.\\
 Die historischen Daten können nicht geschrieben werden, es besteht folgendes Problem (Exception).\\
 
 Um diese Funktionen zu erstellen wird Gebrauch gemacht vom try, except Verfahren in Python. Zu Beginn wird der Code im try ausgeführt, tretet keine exception auf wird das except übersprungen und der anschliessende Code ausgeführt. Tritt aber während dem try eine exception auf, wird der Code unterbrochen und der im except weitergeführt. Anschliessend wird der Code nach dem Exception Handling ausgeführt.\cite{ThePythonTutorial8.ErrorsAndExceptions:Python}
+
+\begin{lstlisting}[label=lst:printfunction,caption=Beispiel für print Funktion, language=Python, style=py]
+except Exception as e:
+    print "Es ist ein Problem mit der Strahlungs Abfrage aufgetaucht: "
+    print e
+\end{lstlisting}
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
