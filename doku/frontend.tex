@@ -545,22 +545,6 @@ function updateData(res){
 %% ###################################################################################################
 \subsection{Barrierefreier Zugang}
 Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann.
-\newline
-
-
-% Tableau Nachteil 3: nicht barrierefrei
-\Diskussionspunkt{- Barrierefreiheit? Farben}\newline
-\Diskussionspunkt{- Barrierefreiheit? Semantisches Web}\newline
-
-
-\noindent
-%\subsection*{Problem}
-WeatherDisplay Live, welches zum Anzeigen der Wetterdaten verwendet wird, ist eine proprietäre Software, die nur sehr eingeschränkt angepasst werden kann und auf Adobe Flash basiert. Es lassen sich beispielsweise die Anordnung der Anzeigeelemente und die Einheiten konfigurieren. Viel mehr nicht.  Adobe Flash gilt als kritische Technologie in Hinblick auf Barrierefreiheit. Mit der jetzigen Konfiguration können die Anforderung an eine barrierefreie Seite nicht umgesetzt werde.
-\newline
-
-\noindent
-%\subsection*{Lösungsansatz}
-Wie in Abschnitt \ref{subsec:flash} erläutert, muss WeatherDisplay Live ersetzt werden. Das bietet die Möglichkeit, dass die Entwicklung der neuen Webseite nach den oben erwähnten Richtlinien erfolgen kann.
 
 Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Dazu zählen nicht nur Menschen mit Einschränkungen. Auch veraltete Technik oder aber der allerneueste Stand der Technik können zu Schwierigkeiten führen. Ein hoher Lärmpegel (z.B. in einer Fabrikhalle) oder der Zwang zur Stille (z.B. in einer Bibliothek), der keine akustische Ausgabe gestatten oder Lichtverhältnisse, die einen besonders hohen Kontrast erfordern beeinflussen die Bedienbarkeit einer Webseite. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
@@ -576,11 +560,8 @@ Die aktuellen Web Content Accessibility Guidelines\footnote{ \url{https://www.w3
 Die Ziele dieser vier Prinzipien sind durch zwölf Richtlinien genauer spezifiziert.
 
 % Zu jeder Richtlinie geben die WCAG2 testbare Erfolgskriterien (Success Criteria) vor.
-
 % Priorität 1 („Muss-Kriterien“): Webauftritte müssen alle A-Anforderungen erfüllen, weil es sonst für eine oder mehrere Benutzergruppen unmöglich wäre, auf die Information im Dokument zuzugreifen.
-
 % Priorität 2 („Soll-Kriterien“): Die Erfüllung der AA-Anforderungen beseitigt signifikante Hindernisse und erleichtert einer oder mehreren Benutzergruppen den Zugriff auf Web-Dokumente.
-
 % Priorität 3 („Kann-Kriterien“): Diese AAA-Anforderungen können erfüllt werden, um den Zugriff auf Web-Dokumente für eine oder mehrere Benutzergruppen zu erleichtern. Sind die Prioritäten 1 bis 3 erfüllt, erhält das Informationsangebot die Konformitätsstufe AAA.
 
 
@@ -593,23 +574,22 @@ Daraus ergeben sich folgende relevante Anforderungen für die Webseite der Wette
 % Anforderung 1.3: Anpassbarkeit
 % Anforderung 1.4: Unterscheidbarkeit
 Alle Nicht-Text-Inhalte, die dem Benutzer präsentiert werden, haben eine Textalternative, die dem entsprechenden Zweck dient.
-Für die Darstellung der Seite muss CSS verwendet werden. Die einzelenen Blöcke müssen sematisch korrekt bezeichnet werden (RL 1.3)
-Alle Nicht-Text-Inhalte, die dem Benutzer präsentiert werden, haben eine Textalternative, die dem entsprechenden Zweck dient.
-Farbe ist nicht das einzige visuelle Mittel, um Informationen zu vermitteln, eine Handlung anzuzeigen, eine Reaktion auszulösen oder ein visuelles Element zu unterscheiden. ext kann ohne Hilfsmittel bis zu 200 Prozent vergrössert werden, ohne dass der Inhalt oder die Funktionalität verloren geht. Die visuelle Darstellung von Text hat ein Kontrastverhältnis von mindestens 7:1.
-Für die visuelle Darstellung von Textblöcken steht ein Mechanismus zur Verfügung, um folgendes zu erreichen: (Level AAA)
-Vorder- und Hintergrundfarben können vom Anwender frei gewählt werden.
-Die Breite beträgt nicht mehr als 80 Zeichen oder Glyphen (40 bei CJK).
-Der Text ist links ausgerichtet
-Der Zeilenabstand (Vorspann) ist innerhalb von Absätzen mindestens anderthalb mal so groß wie der Zeilenabstand, und der Absatzabstand ist mindestens 1,5 mal so groß wie der Zeilenabstand.
-Die Größe des Textes kann ohne Hilfsmittel bis zu 200 Prozent verändert werden, ohne dass der Benutzer horizontal scrollen muss, um eine Textzeile in einem Vollbildfenster zu lesen.
+Die einzelenen Blöcke müssen sematisch korrekt bezeichnet werden (RL 1.3)
+Farbe ist nicht das einzige visuelle Mittel, um Informationen zu vermitteln oder ein visuelles Element zu unterscheiden.
+Text kann ohne Hilfsmittel bis zu 200 Prozent vergrössert werden, ohne dass der Inhalt oder die Funktionalität verloren geht. Die visuelle Darstellung von Text hat ein Kontrastverhältnis von mindestens 7:1. Problematisch ist die Kombination von Komplementärfarben, weil sie zu Flimmern führen können.~\cite{HellbuschJanEric2011Bvuu}
+% Für die visuelle Darstellung von Textblöcken steht ein Mechanismus zur Verfügung, um folgendes zu erreichen: (Level AAA)
+% Vorder- und Hintergrundfarben können vom Anwender frei gewählt werden.
+% Die Breite beträgt nicht mehr als 80 Zeichen oder Glyphen (40 bei CJK).
+% Der Text ist links ausgerichtet
+% Der Zeilenabstand (Vorspann) ist innerhalb von Absätzen mindestens anderthalb mal so groß wie der Zeilenabstand, und der Absatzabstand ist mindestens 1,5 mal so groß wie der Zeilenabstand.
+% Die Größe des Textes kann ohne Hilfsmittel bis zu 200 Prozent verändert werden, ohne dass der Benutzer horizontal scrollen muss, um eine Textzeile in einem Vollbildfenster zu lesen.
 
-Interessante Farb-Auswahlwerkzeuge:
-Colorchecker\footnote{ \url{http://accessible-colors.com}}
-Colorsave\footnote{ \url{http://colorsafe.co}}
-Colorbrewer\footnote{ \url{http://colorbrewer2.org}}
+% Interessante Farb-Auswahlwerkzeuge:
+% Colorchecker\footnote{ \url{http://accessible-colors.com}}
+% Colorsave\footnote{ \url{http://colorsafe.co}}
+% Colorbrewer\footnote{ \url{http://colorbrewer2.org}}
 
 
-Problematisch ist die Kombination von Komplementärfarben, weil sie zu Flimmern führen können.~\cite{HellbuschJanEric2011Bvuu}
 
 \subsubsection*{Bedienbarkeit}
 % Anforderung 2.1: Zugänglichkeit per Tastatur
@@ -618,7 +598,10 @@ Problematisch ist die Kombination von Komplementärfarben, weil sie zu Flimmern 
 % Anforderung 2.4: Navigierbarkeit
 Alle Funktionen des Inhalts sind über eine Tastaturschnittstelle bedienbar.
 Webseiten enthalten nichts, was in einer Sekunde mehr als dreimal blinkt.
-Der Zweck eines jeden Links kann aus dem Linktext allein oder aus dem Linktext zusammen mit seinem programmatisch festgelegten Linkkontext bestimmt werden. Es gibt mehr als eine Möglichkeit, eine Webseite innerhalb einer Gruppe von Webseiten zu lokalisieren. Überschriften und Labels beschreiben das Thema oder den Zweck. Jede Tastatur bedienbare Benutzeroberfläche hat eine Betriebsart, bei der die Tastaturfokusanzeige sichtbar ist. Informationen über den Standort des Benutzers innerhalb einer Reihe von Webseiten sind verfügbar. Abschnittsüberschriften dienen der inhaltlichen Gliederung.
+Der Zweck eines jeden Links kann aus dem Linktext allein oder aus dem Linktext zusammen mit seinem programmatisch festgelegten Linkkontext bestimmt werden.
+Es gibt mehr als eine Möglichkeit, eine Webseite innerhalb einer Gruppe von Webseiten zu lokalisieren.
+Überschriften und Labels beschreiben das Thema oder den Zweck.
+Jede Tastatur bedienbare Benutzeroberfläche hat eine Betriebsart, bei der die Tastaturfokusanzeige sichtbar ist. Informationen über den Standort des Benutzers innerhalb einer Reihe von Webseiten sind verfügbar. Abschnittsüberschriften dienen der inhaltlichen Gliederung.
 
 
 
@@ -627,16 +610,22 @@ Der Zweck eines jeden Links kann aus dem Linktext allein oder aus dem Linktext z
 % Anforderung 3.2: Vorhersehbarkeit
 % Anforderung 3.3: Hilfestellung bei der Eingabe
 
-Die voreingestellte menschliche Sprache jeder Webseite kann programmgesteuert bestimmt werden. Die menschliche Sprache jeder Passage oder Phrase im Inhalt kann programmatisch bestimmt werden, mit Ausnahme von Eigennamen, Fachbegriffen, Wörtern unbestimmter Sprache und Wörtern oder Phrasen, die Teil der Umgangssprache des unmittelbar umgebenden Textes geworden sind. Ein Mechanismus zur Identifizierung der erweiterten Form oder Bedeutung von Abkürzungen steht zur Verfügung.  Wenn eine Komponente den Fokus erhält, löst sie keinen Kontextwechsel aus. Wenn ein Eingabefehler automatisch erkannt wird, wird das fehlerhafte Element identifiziert und der Fehler dem Benutzer in Textform beschrieben. Labels oder Anweisungen werden bereitgestellt, wenn der Inhalt eine Benutzereingabe erfordert.  Wird ein Eingabefehler automatisch erkannt und sind Korrekturvorschläge bekannt, so werden diese dem Anwender zur Verfügung gestellt.  Es steht eine kontextsensitive Hilfe zur Verfügung.
-
-
+Die voreingestellte Sprache der Webseite kann programmgesteuert bestimmt werden. Ein Mechanismus zur Identifizierung der erweiterten Form oder Bedeutung von Abkürzungen steht zur Verfügung.  Wenn eine Komponente den Fokus erhält, löst sie keinen Kontextwechsel aus.
+Wenn ein Eingabefehler automatisch erkannt wird, wird das fehlerhafte Element identifiziert und der Fehler dem Benutzer in Textform beschrieben. Labels oder Anweisungen werden bereitgestellt, wenn der Inhalt eine Benutzereingabe erfordert.  Wird ein Eingabefehler automatisch erkannt und sind Korrekturvorschläge bekannt, so werden diese dem Anwender zur Verfügung gestellt.  Es steht eine kontextsensitive Hilfe zur Verfügung.
 
 \subsubsection*{Robustheit}
 % Anforderung 4.1: Kompatibilität
  In Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden, haben Elemente vollständige Start- und End-Tags, Elemente werden entsprechend ihrer Spezifikationen verschachtelt, Elemente enthalten keine doppelten Attribute und alle IDs sind eindeutig.
 
 
-
+\subsubsection{Barrierefreies CMS}
+\Diskussionspunkt{- Barrierefreiheit? Semantisches Web -> wie umgesetzt bei OpenFile64}\newline
+\Diskussionspunkt{- Messergebnis}\newline
 
 \subsubsection{Barrierefreie Grafiken}
-\Diskussionspunkt{- Barrierefreiheit}\newline
+\Diskussionspunkt{- Plugin von chartist}\newline
+\Diskussionspunkt{- justgage?}\newline
+
+\subsubsection{Barrierefreie historische Daten}
+% Tableau Nachteil 3: nicht barrierefrei
+\Diskussionspunkt{- Barrierefreiheit in Tableau? Farben?}\newline

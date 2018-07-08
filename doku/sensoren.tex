@@ -1,9 +1,9 @@
 \section{Aufbau der Wetterstation und Sensoren}
 
 
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Übersicht der Hardware}
 Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensoren, Pegelsensor und Sonnenstrahlungssensor. Auf der Plattform im See draussen befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt.
 
@@ -17,9 +17,9 @@ Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Web
 	\label{img:schaltschrank}
 \end{figure}
 
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Sonnenstrahlungssensor}
 Die Sonnenscheindauer dient der näherungsweisen Abschätzung der Einstrahlung an einem bestimmten Ort und gibt gleichzeitig Hinweise auf Zeit und Stärke der Bewölkung. Die Angabe der Sonnenstunden diente ursprünglich der Charakterisierung von Kurorten. Dabei wurde die psychologische Wirkung von Sonnenlicht auf das menschliche Wohlbefinden hervorgehoben. Die Sonnenstunden werden heute immer noch verwendet um touristische Ziele zu fördern.
 
@@ -69,19 +69,31 @@ Wenn der Winkel $h$ grösser oder gleich 3 Grad ist, und der gemittelte Minutenw
 %
 %Faktor B-Reduktion kann beurteilt werden, wenn ein Sommertag und Wintertag betrachtet wird, da dieser die Saisonalität bestimmt.
 
+\begin{figure}[h]
+	\centering
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/radiation}}
+	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
+	\caption{Darstellung des aktuellen Messwerts und des Strahlungsverlaufs}
+	\label{img:radiation}
+\end{figure}
+
+
 
 \subsubsection{Verwendung für PV-Anlagen}
-\Diskussionspunkt{- Wann reicht Globalstrahlung, wann wird Direktstrahlung benötigt?}\newline
-\Diskussionspunkt{- Was kann in PV-Berechnungstools eingegeben werden?}\newline
+Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/pvest.php}}, welches durch das europäische Joint Research Centre (JRC) entwickelt wurde, ist \textit{das} Tool wenn es darum geht den Ertrag einer PV-Anlage vorherzusagen. Die Daten basierend auf Interpolationen von Messungen von Boden-Messstationen. Es liegt nahe diese Berechnung mit unseren Messwerten zu vergleichen.
 
 
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
+
+
+
+
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Pegelsensor und Wellenhöhenmessung}
 \Diskussionspunkt{- Pegelmessung, Pegelberechnung, Wellenhöhenberechnung}\newline
 \Diskussionspunkt{- Gegenüberstellung Messprinzipien, Vor- und Nachteile}\newline
-\Diskussionspunkt{- Unterschied Wellenhöhe und Seegang}\newline
+% \url{https://www.bafg.de/DE/08_Ref/M1/04_Aktuelles/Archiv/seegangsmessung_radar_bfg-teil.pdf?__blob=publicationFile}
 
 
 \subsubsection{Auswahl eines Pegelsensors}
@@ -163,24 +175,71 @@ Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglich
 \end{tabularx}
 \end{table}
 
-Der Pegelsensor liefert 4...20mA bei einer Messhöhe von 6 Meter. Der Pegelsensor ist ??? Meter über dem Pegelnullstand (Definition!!!) angebracht.
+
+
+\subsubsection{Definition des Pegel Konstanz}
+Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkte, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben befindet sich die Skala für den Pegel Konstanz.
+
+\begin{figure}[h]
+	\centering
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pegelKonstanz}}
+	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
+	\caption{Berechnung des Pegel Konstanz und Messbereich des Sensors}
+	\label{img:pegelKonstanz}
+\end{figure}
+
+Der Pegelsensor liefert 4...20mA bei einer Messhöhe von 4 Meter. Der Pegelsensor ist ??? Meter über dem Pegelnullstand (Definition!!!) angebracht.
 Für die Berechnung des Bodensee-Pegels aus dem Messwert ergibt sich analog der Geradengleichung $ y = m * x + q  $ wie in der Formel \ref{eq:Pegelformel} dargestellt.
 
 \begin{equation}
 \label{eq:Pegelformel}
-Pegel [m] = 6m/16mA * Messwert [mA] + ???m
+P_{K} = m*x + q = 4/16 * x + 0.75
 \end{equation}
 
-\subsubsection{Definition des Bodenseepegels}
-\Diskussionspunkt{- Wie ist der Bodenseepegel definiert? Quelle?}\newline
+\begin{equation}
+\label{eq:Pegelmin}
+P_{g,u}= P_{K}(x=4)= 4*0.25 + 0.75 = 1.75
+\end{equation}
+
+\begin{equation}
+\label{eq:Pegelmax}
+P_{g,o} = P_{K}(x=20)= 20*0.25 + 0.75 = 5.75
+\end{equation}
+
+
+wobei:
+\begin{conditions}
+P_{K}    &  Pegel Konstanz [m]\\
+P_{g,u}   &  Tiefster messbarer Pegel [m]\\
+P_{g,o}   &  Höchster messbarer Pegel [m]\\
+x        &  Messwert [mA]\\
+m        &  Auflösung des Sensors [m/mA] (0...4m bei 4...20mA)\\
+q        &  Offset [m] \\
+\end{conditions}
+
+\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
+[igwetter@s34:~] $ curl http://webcam.wetter-arbon.ch:50506/single1
+11,748 mA
+\end{lstlisting}
+
+http://www.bodensee-hochwasser.info/IGKB/umrechnung.html
+
+Die Uferlinie des Bodensees wurde 1990 von der Internationelen Gewässerschutzkommission Bodensee (IGKB) bei Mittelwasserstand festgelegt.
+
+Die Pegelstände in Konstanz und in Bregenz sind Relativmaße. Sie beziehen auf Pegelnullpunkte, die in Konstanz bei 391,89m ü NN und in Bregenz bei 392,14 ü.A liegen. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wider.
 
 \subsubsection{Definition der signifikaten Wellenhöhe}
-\Diskussionspunkt{- siehe List of Sea state Parameter 1986 }\newline
+Als Seegang bezeichnet man die winderzeugten Oberflächenwellen des Meeres. Da sich der Seegang in der Natur als eine Überlagerung vieler Einzelwellen darstellt, werden zu dessen Beschreibung statistische Größen wie z.B. die signifikante Wellenhöhe verwendet. Die Definition einer signifikaten Wellenhöhe geht auf die visuelle Bestimmung einer charakteristischen, den Seegang beschriebenden Wellenhöhe zurück. Die signifikatnte Wellenhöhe wird gemäss der \textit{List of sea state parameters}\cite{1986Iahr} definiert als die mittlere Wellenhöhe der 33\% höchsten Wellen in einem repräsentativen Zeitraum (z.B. 20 Minuten).
 
 
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
+
+
+
+
+
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Wassertemperatur-Sensoren}
 \Diskussionspunkt{- Funktionsweise, Aufbau der Wassertemperaturmessung}\newline
 \Diskussionspunkt{- Berechnung, Verlauf der Wassertemperatur in Abhängigkeit der Tiefe}\newline
@@ -193,9 +252,7 @@ Pegel [m] = 6m/16mA * Messwert [mA] + ???m
 \Diskussionspunkt{- Codesniplet}\newline
 Um die richtige Temperaturen bestimmen zu können ist der Pegel notwendig, hierfür wird im Cronjob zuerst den Pegel ausgelesen und anschliesend mittels der if Funktion, dies musste mit einem if gemacht werden, da Python keine cases kennt, den richtigen Sensor ausgewählt.
 
-\begin{lstlisting}
 
-\end{lstlisting}
 
 \begin{figure}[h]
 	\centering
