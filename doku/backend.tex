@@ -201,8 +201,18 @@ except Exception as e:
 %%   Unterkapitel                                                                                                                                                                              #
 %% ###################################################################################################
 \subsection{Cron-Jobs}
+
+Wie immer wieder in den vorherigen Kapitel erwähnt, werden viele Funktionen mit Cronjobs ausgeführt. Was ist ein Cronjob? Ein Cronjob ist eine möglichkeit Skripte, das heisst Programme automatisiert ausführen zu lassen. Es wird angegeben zu welchem Zeitpunkt oder in welchem Intervall dass Programm ausgeführt werden soll. Der Rest übernimmt dann anschliessen der Cronjob. In diesem fall das Auslesen der externen Sensordaten, das erstellen der historischen Daten und das auslesen der Sturmwarnung. Auf Hostpoint kann mittels Knopfdruck ein Cronjob erstellt werden. Dabei können auch gleich konfiguriert werden zu welcher Zeit ein Cronjob ausgeführt werden soll \ref{img:ER_Modell Wettertransmitter}.
+
+\begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/cronjob.png}}
+	\centering
+	\caption{Erstellen eines Cronjobs bei Hostpoint}
+	\label{img:Cronjob}
+\end{figure}
 \Diskussionspunkt{- Printscreen cronjobs-Konfig auf Hostpoint}\newline
 
+Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, werden auch keinen Daten ausgelesen bzw. erstellt. Neben diesen drei Cronjobs bestehen noch zwei weitere. Diese lesen die Wettervorhersage für den Vergleich aus und schreiben die Daten in die Datenbank. 
 
 %% ###################################################################################################
 %%   Unterkapitel                                                                                                                                                                              #
