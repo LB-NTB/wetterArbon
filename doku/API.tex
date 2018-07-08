@@ -1,7 +1,6 @@
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
-
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \section{ Web-Programmierschnittstelle (Web-API)}
 Für die neue Webseite und für andere Anwender ist eine API (application programming interface) erstellt worden. Um eine API zu entwickeln muss zuerst verstanden werden was eine API ist. Deswegen werden zu beginn folgende Fragen gestellt und beantwortet.
 \begin{itemize}
@@ -48,7 +47,7 @@ Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Die A
 \item Webcam
 \item Sturmwarnung
 \end{itemize}
-Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Somit ist ein sogenannter Token für die Authentifizierung nicht notwendig. 
+Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Somit ist ein sogenannter Token für die Authentifizierung nicht notwendig.
 
 \paragraph{JSON Struktur}
 
@@ -231,17 +230,16 @@ Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree
 		}
 	}
 }
-
 \end{lstlisting}
 
-\subsection{Umsetzung der API}
 
+\subsection{Umsetzung der API}
 Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeichnis soll gemäss Abb. \ref{img:APIVerzeichnis}aufgebaut werden.
 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\linewidth]{img/APIVerzeichnis.jpg}
+	\includegraphics[width=0.3\linewidth]{img/APIVerzeichnis.jpg}
 	\caption{Beispiel einer API GET-Abfrage}
 	\label{img:APIVerzeichnis}
 \end{figure}
@@ -252,7 +250,7 @@ Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar s
 In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzuzeigen. Vom Grundaufbau die Dateien im Config-Ordner und der Ablauf der Anfragen alle gleich \ref{img:APIFiles}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\linewidth]{img/APIFiles.jpg}
+	\includegraphics[width=0.5\linewidth]{img/APIFiles.jpg}
 	\caption{PHP Files und Ablauf einer Abfrage}
 	\label{img:APIFiles}
 \end{figure}

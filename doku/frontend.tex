@@ -3,9 +3,9 @@ Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von all
 
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Nutzungsanalyse der Webseite mittels Google Analytics}
 \label{subsec:googleAnalytics}
 Zuerst wurden die Zugriffsdaten auf die bestehende Webseite mittels Google Analytics analysiert. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \textit{Wetter Tourismus} und \textit{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung \ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\% und 80\% beträgt. Dies wiederspiegelt den Trend zum mobilen Internet und zeigt wie wichtig die mobile Version einer Webseite ist. Dies geht soweit, dass sogar die mobile Seite als Ausgangspunkt für die Entwicklung der Homepage dient nach dem Designkonzept \textit{Mobile First}.
@@ -28,9 +28,9 @@ Es lässt sich ebenfalls erkennen welche Browser am häufigsten verwendet werden
 
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Konzeption der crossplattformfähigen Benutzeroberfläche}
 Wie im Abschnitt \ref{subsec:googleAnalytics} aufgezeigt werden bereits heute 50\% bis 80\% der Aufrufe von mobilen Geräten ausgeführt, Tendenz steigend. Es ist deshalb naheliegend das mobile Design als Startpunkt zu verwenden. Diese Vorgehensweise nennt sich \textit{Mobile First}. Es ist ein Designkonzept, das von Luke Wroblewski 2009 das erste Mal vorgeschlagen wurde. Die optimale Darstellung einer Website auf mobilen Endgeräten hat dabei oberste Priorität. Bei Mobile First beginnt der Designer mit dem Mobile-Design und arbeitet sich dann schrittweise zur grösseren Desktop-Version vor. Die \flqq Mobile Web Best Practices\frqq \footnote{ \url{https://www.w3.org/TR/mobile-bp}} des W3C empfiehlt zudem, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können. Dieser Grundsatz nennt sich \textit{One Web Design}.
 
@@ -143,9 +143,9 @@ Im css-Framework kann nun sehr einfach definiert werden wie sich die Kacheln bei
 </div>
 \end{lstlisting}
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
 Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe eines Frameworks erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein die Werte zu aktualisieren.
 
@@ -200,9 +200,9 @@ Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zu
 
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
 Die Wetterverlaufsdarstellung soll einen Überblick über die Wettertendenz der letzten beiden Tage liefern. Die Samplerate beträgt 1h, d.h. die Daten werden aus der Tabelle der historischen Werte abgerufen.
 
@@ -342,18 +342,18 @@ ORDER BY datetime DESC
 LIMIT 3
 \end{lstlisting}
 
-\Diskussionspunkt{- Eintagesvorschau}\newline
-\Diskussionspunkt{- Mittels Tableau? Eigen Webseite?}\newline
-\Diskussionspunkt{- Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap}\newline
+%\Diskussionspunkt{- Eintagesvorschau}\newline
+%\Diskussionspunkt{- Mittels Tableau? Eigen Webseite?}\newline
+%\Diskussionspunkt{- Bild mit Vergleich von Messwerten, Vorhersage Windfinder und Vorhersage Openweathermap}\newline
 
 % Graphen, der den heutigen Tag, links davon die letzten 14 Tage und rechts davon die nächsten drei Tage anzeigt.
 % Pro Anbieter und Prognoseart (1Tag bzw. 3 Tage) wird ein eigener Graph erstellt.
 % Aus diesen Gründen wird die Webseite zwar veröffentlicht, aber kein Link dazu auf der Webseite zur Verfügung gestellt.
 % Werte aus der Stundenwert-Datenbank?
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Anzeige der aktuellen Sturmwarn-Situation}
 \label{subsec:sturmwarnung}
 
@@ -429,9 +429,9 @@ Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anz
 % Meteoschweiz leitet die Sturmwarnung an die Kantonspolizei Thurgau weiter. Diese schaltet die Sturmwarnung über eine eigne Software ein.
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Darstellung der historischen Daten}
 Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahren, welche ebenfalls auf der Webseite verfügbar sein soll. Es gibt drei drei Grundlagen für die historischen Daten:
 
@@ -518,9 +518,9 @@ Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. A
 
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Automatische Aktualisierung der Anzeigeelemente}
 \Diskussionspunkt{Initial Values beschreiben}\newline
 Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
@@ -540,10 +540,11 @@ function updateData(res){
 \end{lstlisting}
 
 
-%% ###################################################################################################
-%%   Unterkapitel
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Barrierefreier Zugang}
+\Diskussionspunkt{- Kapitel muss noch fertiggestellt werden}\newline
 Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann.
 
 Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Dazu zählen nicht nur Menschen mit Einschränkungen. Auch veraltete Technik oder aber der allerneueste Stand der Technik können zu Schwierigkeiten führen. Ein hoher Lärmpegel (z.B. in einer Fabrikhalle) oder der Zwang zur Stille (z.B. in einer Bibliothek), der keine akustische Ausgabe gestatten oder Lichtverhältnisse, die einen besonders hohen Kontrast erfordern beeinflussen die Bedienbarkeit einer Webseite. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.

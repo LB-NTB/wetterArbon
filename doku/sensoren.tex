@@ -48,7 +48,7 @@ G_{thr} = A + B * cos(\frac{360*d}{24*365}) * 1080 * sin(h)^{1.25}
 
 wobei:
 \begin{conditions}
-G_{thr}       &  Schwellwert der Globalstrahlung \\
+G_{thr}  &  Schwellwert der Globalstrahlung \\
 d        &  Laufende Stunde seit Anfang Jahr \\
 h        &  Elevationswinkel der Sonne in Grad \\
 A        &  empirisch bestimmter Koeffizient (0.65) \\
@@ -80,9 +80,14 @@ Wenn der Winkel $h$ grösser oder gleich 3 Grad ist, und der gemittelte Minutenw
 
 
 \subsubsection{Verwendung für PV-Anlagen}
-Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/pvest.php}}, welches durch das europäische Joint Research Centre (JRC) entwickelt wurde, ist \textit{das} Tool wenn es darum geht den Ertrag einer PV-Anlage vorherzusagen. Die Daten basierend auf Interpolationen von Messungen von Boden-Messstationen. Es liegt nahe diese Berechnung mit unseren Messwerten zu vergleichen.
+Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/pvest.php}}, welches durch das europäische Joint Research Centre (JRC) entwickelt wurde, ist \textit{das} Tool wenn es darum geht den Ertrag einer PV-Anlage vorherzusagen. Die Daten basierend auf Interpolationen von Messungen von Boden-Messstationen. Es liegt nahe diese Berechnung mit unseren Messwerten zu vergleichen. PVGIS berechnet für den Standort Arbon Werte gemäss Abbildung \ref{img:pvgis}.
 
-
+\begin{figure}[ht]
+	\centering
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pvgis}}
+	\caption{Pyranometer}
+	\label{img:pvgis}
+\end{figure}
 
 
 
@@ -91,17 +96,14 @@ Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/
 %% Unterkapitel
 %% ############################################################################
 \subsection{Pegelsensor und Wellenhöhenmessung}
-\Diskussionspunkt{- Pegelmessung, Pegelberechnung, Wellenhöhenberechnung}\newline
-\Diskussionspunkt{- Gegenüberstellung Messprinzipien, Vor- und Nachteile}\newline
-% \url{https://www.bafg.de/DE/08_Ref/M1/04_Aktuelles/Archiv/seegangsmessung_radar_bfg-teil.pdf?__blob=publicationFile}
+Die ursprüngliche Wetterstation verwendete einen hydrostatischen Drucksensor für die Messung des Wasserstands (Pegel). Der Drucksensor lieferte aber nach zehn Jahren Betrieb keine plausiblen Werte mehr, weshalb er ersetzt werden musste.
 
-
-\subsubsection{Auswahl eines Pegelsensors}
-Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können.
+\subsubsection{Auswahl eines geeigneten Pegelsensors}
+Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können. Die Zusammenfassung der Resultate ist in der Tabelle \ref{tbl:pegelsensoren} aufgelistet.
 
 \begin{table}[htb!]
 \label{tbl:pegelsensoren}
-\caption{Vergleich Pegelsensor-Prinzipien}
+\caption{Gegenüberstellung der verschiedenen Pegelmess-Prinzipien}
 \setlength\extrarowheight{3pt} % for a more "open" look
 \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{1.5cm}||X|X|}
 \hline
@@ -170,15 +172,15 @@ Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglich
 \item Batteriebetrieb
 \end{itemize}\\
 
-
 \hline
 \end{tabularx}
 \end{table}
 
-
+\noindent
+Die Einfachheit und Robustheit des hydrostatischen Sensors überwog, sodass der alte Drucksensor durch das gleiche Produkt ersetzt wurde.
 
 \subsubsection{Definition des Pegel Konstanz}
-Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkte, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben befindet sich die Skala für den Pegel Konstanz.
+Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkt, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben befindet sich die Skala für den Pegel Konstanz.
 
 \begin{figure}[h]
 	\centering
@@ -188,8 +190,8 @@ Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festge
 	\label{img:pegelKonstanz}
 \end{figure}
 
-Der Pegelsensor liefert 4...20mA bei einer Messhöhe von 4 Meter. Der Pegelsensor ist ??? Meter über dem Pegelnullstand (Definition!!!) angebracht.
-Für die Berechnung des Bodensee-Pegels aus dem Messwert ergibt sich analog der Geradengleichung $ y = m * x + q  $ wie in der Formel \ref{eq:Pegelformel} dargestellt.
+Der Pegelsensor liefert 4...20mA bei einer Messhöhe von 4 Meter. Der Pegelsensor ist 1.75 Meter über dem Pegelnullstand angebracht.
+Die Berechnung des Pegel Konstanz aus dem Messwert erfolgt gemäss der Formel \ref{eq:Pegelformel}.
 
 \begin{equation}
 \label{eq:Pegelformel}
@@ -206,7 +208,6 @@ P_{g,u}= P_{K}(x=4)= 4*0.25 + 0.75 = 1.75
 P_{g,o} = P_{K}(x=20)= 20*0.25 + 0.75 = 5.75
 \end{equation}
 
-
 wobei:
 \begin{conditions}
 P_{K}    &  Pegel Konstanz [m]\\
@@ -217,53 +218,58 @@ m        &  Auflösung des Sensors [m/mA] (0...4m bei 4...20mA)\\
 q        &  Offset [m] \\
 \end{conditions}
 
-\begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
+Die Messdaten des Pegelsensors können per Web-Schnittstelle abgefragt werden, wie in Listing \ref{lst:curlPegel} aufgezeigt. Da die Geräte, die diesen Dienst zur Verfügung stellen nur schwach gegen unerwünschte Zugriffe geschützt sind, wurde die Firewall der Wetterstation so konfiguriert, dass nur vom Hostpoint-Server aus die Abfrage durchgeführt werden kann (IP-Regel).
+
+\begin{lstlisting}[label=lst:curlPegel,caption=Abfrage des Pegelsensor-Wertes über das Hostpoint-Termianl, language=Python, style=htmlcssjs]
 [igwetter@s34:~] $ curl http://webcam.wetter-arbon.ch:50506/single1
 11,748 mA
 \end{lstlisting}
 
-http://www.bodensee-hochwasser.info/IGKB/umrechnung.html
-
-Die Uferlinie des Bodensees wurde 1990 von der Internationelen Gewässerschutzkommission Bodensee (IGKB) bei Mittelwasserstand festgelegt.
-
-Die Pegelstände in Konstanz und in Bregenz sind Relativmaße. Sie beziehen auf Pegelnullpunkte, die in Konstanz bei 391,89m ü NN und in Bregenz bei 392,14 ü.A liegen. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wider.
 
 \subsubsection{Definition der signifikaten Wellenhöhe}
 Als Seegang bezeichnet man die winderzeugten Oberflächenwellen des Meeres. Da sich der Seegang in der Natur als eine Überlagerung vieler Einzelwellen darstellt, werden zu dessen Beschreibung statistische Größen wie z.B. die signifikante Wellenhöhe verwendet. Die Definition einer signifikaten Wellenhöhe geht auf die visuelle Bestimmung einer charakteristischen, den Seegang beschriebenden Wellenhöhe zurück. Die signifikatnte Wellenhöhe wird gemäss der \textit{List of sea state parameters}\cite{1986Iahr} definiert als die mittlere Wellenhöhe der 33\% höchsten Wellen in einem repräsentativen Zeitraum (z.B. 20 Minuten).
-
-
-
-
-
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Wassertemperatur-Sensoren}
-\Diskussionspunkt{- Funktionsweise, Aufbau der Wassertemperaturmessung}\newline
-\Diskussionspunkt{- Berechnung, Verlauf der Wassertemperatur in Abhängigkeit der Tiefe}\newline
-\Diskussionspunkt{- Wo ist Wassertemperatur definiert? Warum 1m unter der Oberfläche? Warum brauchen wir 0.5m unter Wasseroberfläche}\newline
-\Diskussionspunkt{- Foto Verwendung Seebad Arbon}\newline
+Die Wetterstation verfügt über acht Wasser-Temperatursensoren (PT100-Elemente), die im Abstand von 0.5m in einem Rohr angebracht sind. Die Wassertemperatur wird standardmässig einen Meter unter der Wasseroberfläche gemessen.
+% \Diskussionspunkt{- Wo ist Wassertemperatur definiert? }\newline
 
+\subsubsection{Auswahl des richtigen Temperatursensors anhand des Pegels}
+Damit der richtige Temperatursensor ausgewählt werden kann, muss der Pegel bekannt sein. Abbildung \ref{img:wassertempsensoren} zeigt das Prinzip schematisch auf. Mittels Cronjob werden sämtliche Temperatursensoren ausgelesen und in einem Array gespeichert. Anschliessend wird mit Hilfe des Pegelwerts der korrekte Wert entnommen, wie in Listing \ref{lst:tempSelect} beispielhaft aufgezeigt.
 
-\subsubsection*{Auswahl des richtigen Temperatursensors anhand des Pegels}
-\Diskussionspunkt{- Welcher Sensor muss auf Grund des Pegels ausgewählt werden -> Skizze}\newline
-\Diskussionspunkt{- Codesniplet}\newline
-Um die richtige Temperaturen bestimmen zu können ist der Pegel notwendig, hierfür wird im Cronjob zuerst den Pegel ausgelesen und anschliesend mittels der if Funktion, dies musste mit einem if gemacht werden, da Python keine cases kennt, den richtigen Sensor ausgewählt.
+\begin{lstlisting}[label=lst:tempSelect,caption=Auswahl des richtigen Temperatursensors, language=Python, style=py]
+if waterlevel >= 3.5 and waterlevel <=4.0:
+    watertemperature100cm  = float(temperatureArray[3])
+    watertemperature50cm = float(temperatureArray[4])
+\end{lstlisting}
 
+\noindent
+Die offizielle Wassertemperatur wird einen Meter unter der Wasseroberfläche gemessen. Für Schwimmer ist aber die Temperatur eine halben Meter unter der Wasseroberfläche interessanter, weshalb dieser Wert ebenfalls ausgelesen und gespeichert wird. Das Schwimmbad Arbon bezieht bereits heute für ihre Webseite\footnote{\url{https://www.schwimmbad-arbon.ch}} die Wassertemperatur von der Wetterstation.
 
 
 \begin{figure}[h]
 	\centering
-	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/wassertempsensoren.png}}
-	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/wassertempsensoren}}
 	\caption{Zusammenhang zwischen Pegel und PT100-Temperaturwiderständen}
 	\label{img:wassertempsensoren}
 \end{figure}
 
 
-\subsubsection*{Kompensation des defekten PT100-Widerstands}
-\Diskussionspunkt{- Offset des defekten Sensors}\newline
-\Diskussionspunkt{- Grafik der aufgezeichneten Daten -> kein klarer Offset vorhanden!}\newline
-\Diskussionspunkt{- Wie wurde Problem gelöst -> Code}\newline
+\subsubsection{Annäherung des defekten PT100-Widerstands}
+Die Temperatursensoren waren mehrere Jahre nicht in Betrieb. Es wurde deshalb während mehrerer Tag alle Temperaturdaten aufgezeichnet. Aus Auszug der Messdaten sind in Abbildung \ref{img:tempSensoren} dargestellt. Es lässt sich gut erkennen, dass die Sensoren 1 bis 4 sich im Wasser und die Sensoren 6 bis 8 über dem Wasser befinden. Beim Sensor 5 ist nicht klar ober er im oder über dem Wasser ist. Auf Grund der Messdaten lässt sich auch kein konstanter Offset gegenüber den benachbarten Sensoren erkennen.
+
+\begin{figure}[h]
+	\centering
+	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tempSensoren}}
+	\caption{Messreihe aller Temperatursensoren}
+	\label{img:tempSensoren}
+\end{figure}
+
+Der fehlende bzw. falsche Wert wurde trotzdem durch einen Offset angenähert.Ein Offset von drei Grad hat sich als meistens korrekt erwiesen. Der Offset wird direkt beim Auslesen der Temperaturdaten abgezogen, wie in Listing \ref{lst:tempOffset} aufgezeigt.
+
+\begin{lstlisting}[label=lst:tempOffset,caption=Offset des defekten Temperatusensors, language=Python, style=py]
+temperatureArray[4] = float(temperatureArray[4])-3.0
+\end{lstlisting}

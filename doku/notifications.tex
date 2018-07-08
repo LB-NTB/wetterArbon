@@ -13,9 +13,9 @@ Der Benachrichtungsservice ist so aufgebaut, dass auf der Webseite ein Formular 
 
 Der Benachrichtungsservice selbst basiert auf einem Cronjob, der einmal pro Stunde läuft. Das Prinzip ist in Abbildung \ref{img:notificationKonzept} in violett dargestellt. Der Cronjob ruft sämtliche Einträge in der Notification-Tabell ab und vergleicht sie mit den Messwerten. Sobald eine Bedingung erfüllt ist, wir ein Notification-Mail an die hinterlegete E-Mail-Adresse gesendet. Neben der eigentlichen Meldung ist ein Unsubscribelink vorhanden, damit der Benutzer den Benachritigungsservice abbestellen kann.
 
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Formular mit integrierter Überprüfung der Eingabe}
 Das Formular des Benachrichtungsservices besteht aus vier Eingabe- bzw. Auswahlfeldern, wie in Abbildung \ref{img:notificationFE}, links, dargestellt. Zuoberst kann die gewünschte Messgrösse ausgewählt werden. Das Dropdown-Menü stellt sicher, dass nur Werte ausgewählt werden können, die von der Wetterstation zur Verfügung gestellt werden. Mit den Radio-Buttons kann ausgewält werden ob der Messwert grösser oder kleiner als der Grenzwert sein soll. Der Grenzwert wird als Zahl eingeben auf eine Stelle nach dem Komma genau. Zuletzt muss die E-Mail-Adresse, an welche die Benachrichtigung gesendet werden soll eingetragen werden. Durch Anklicken des Abonnieren-Buttons wird das Formular abgesendet.
 
@@ -48,9 +48,9 @@ Bisher musst die clientseitige Formularüberprüfung manuell programmierte werde
 
 
 
-%% ###################################################################################################
-%%   Unterkapitel                                                                                                                                                                              #
-%% ###################################################################################################
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Identifikation des Abos via URL}
 Die Tabelle für die Speicherung der Abos in der Datenbank enthält neben den vom Benutzer eingegbenen Daten noch weitere Einträge. Dies ist einerseits der Status des Abos d.h. aktiv oder inaktiv, den Zeitstempel des letzen Mails, sodass maximal einmal pro Tag ein Mail versendet wird, sowie den eindeutigen, nicht erratbaren Schlüssel (Hash), welcher für sämtliche Datenbank-Operationen benötigt wird.
 

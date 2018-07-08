@@ -1,6 +1,4 @@
 \documentclass[a4paper,ngerman, 11pt, DIV11]{scrartcl}
-%\documentclass[a4paper,ngerman, 11pt, pagesize]{report}
-% \documentclass{article}
 
 %% Päambel
 \usepackage[T1]{fontenc}
@@ -50,36 +48,6 @@
 
 
 % Quelltext
-%\usepackage{listings}
-%\usepackage{color}
-
- % \definecolor{middlegray}{rgb}{0.5,0.5,0.5}
- % \definecolor{lightgray}{rgb}{0.8,0.8,0.8}
- % \definecolor{orange}{rgb}{0.8,0.3,0.3}
- % \definecolor{yac}{rgb}{0.6,0.6,0.1}
- %
- %  \lstset{
- %   basicstyle=\scriptsize\ttfamily,
- %   keywordstyle=\bfseries\ttfamily\color{orange},
- %   stringstyle=\color{green}\ttfamily,
- %   commentstyle=\color{middlegray}\ttfamily,
- %   emph={square},
- %   emphstyle=\color{blue}\texttt,
- %   emph={[2]root,base},
- %   emphstyle={[2]\color{yac}\texttt},
- %   showstringspaces=false,
- %   flexiblecolumns=false,
- %   tabsize=2,
- %   numbers=left,
- %   numberstyle=\tiny,
- %   numberblanklines=false,
- %   stepnumber=1,
- %   numbersep=10pt,
- %   xleftmargin=15pt
- % }
-
-
-% Test
 \usepackage{color}
 \definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
@@ -246,8 +214,7 @@ framexrightmargin=5pt,
 framexbottommargin=4pt,
 showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 }%
-%
-%% … und zuweisen
+
 
 
 \definecolor{dkgreen}{rgb}{0,.6,0}
@@ -255,27 +222,32 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 \definecolor{dkyellow}{cmyk}{0,0,.8,.3}
 
 \lstdefinestyle{php}{
-  language        = php,
-  basicstyle      = \small\ttfamily,
-  keywordstyle    = \color{dkblue},
-  stringstyle     = \color{red},
-  identifierstyle = \color{dkgreen},
-  commentstyle    = \color{gray},
-  numberstyle=\tiny\color{halfgray},
+language        = php,
+keywordstyle    = \color{dkblue},
+stringstyle     = \color{red},
+identifierstyle = \color{dkgreen},
+commentstyle    = \color{gray},
+numberstyle=\tiny\color{halfgray},
+basicstyle={\footnotesize\ttfamily},   
+backgroundcolor=\color{editorGray},
+showstringspaces=false, 
+% Frame
+rulecolor=\color{ipython_frame},
+frame=single,
+framexleftmargin=6mm,
 xleftmargin={0.75cm},
 numbers=left,
 stepnumber=1,
 firstnumber=1,
 numberfirstline=true, 
-%numberstyle=\tiny,          % Stil der Zeilennummern
-%numbersep=5pt,              % Abstand der Nummern zum Text
 tabsize=4,                  % Groesse von Tabs
 extendedchars=true,         %
 breaklines=true,    
-  emph            =[1]{php},
-  emphstyle       =[1]\color{black},
-  emph            =[2]{if,and,or,else},
-  emphstyle       =[2]\color{dkyellow}}
+emph            =[1]{php},
+emphstyle       =[1]\color{black},
+emph            =[2]{if,and,or,else},
+emphstyle       =[2]\color{dkyellow}
+}
 
 
 
@@ -324,19 +296,6 @@ breaklines=true,
 \title{\projektName~(Bachelorarbeit)}
 \author{\authorName}
 \date{\today}
-
-%%  Create a shorter version for tables. DO NOT CHANGE
-\newcommand\addrow[2]{#1 &#2\\ }
-\newcommand\addheading[2]{#1 &#2\\ \hline}
-\newcommand\tabularhead{\begin{tabular}{lp{13cm}}
-\hline
-}
-\newcommand\addmulrow[2]{ \begin{minipage}[t][][t]{2.5cm}#1\end{minipage}
-   &\begin{minipage}[t][][t]{8cm}
-    \begin{enumerate} #2   \end{enumerate}
-    \end{minipage}\\ }
-\newenvironment{usecase}{\tabularhead}
-{\hline\end{tabular}}
 
 
 % damit Bilder im aktuellen Kapitel dargestellt werden
