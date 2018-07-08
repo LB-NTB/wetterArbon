@@ -53,7 +53,7 @@ Die Datenabfrage über die API soll wie es State of the Art entwickelt wird REST
 
 Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
 
-\begin{lstlisting}[label=lst:Referenz,caption=Titel, language=JavaScript, style=htmlcssjs]
+\begin{lstlisting}[label=lst:Referenz,caption=Json Struktur, language=JavaScript, style=htmlcssjs]
 {
   "product": "api.wetter-arbon.ch",
   "version": "1.1.1",
@@ -240,7 +240,7 @@ Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeich
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.3\linewidth]{img/APIVerzeichnis.jpg}
-	\caption{Beispiel einer API GET-Abfrage}
+	\caption{Aufbau des API Verzeichnis}
 	\label{img:APIVerzeichnis}
 \end{figure}
 
