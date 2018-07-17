@@ -21,12 +21,13 @@ Die Aufgabe der Datenbank ist es den Umgang der Daten einfacher zu gestalten, se
 %% ############################################################################
 \subsection{Datenerfassung}
 \subsubsection{Erfassung der Daten des Wetter-Transmitters}
-Die Daten des Wetter-Transmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstellte abgerufen und im Minutentakt in der Datenbank gespeichert.
+Die Daten des Wetter-Transmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstelle abgerufen sowie aufbereitet um die Daten im Minutentakt in der Datenbank zu speicheren. Für die Umgestaltung der Datenbank wurde auch die Konfiguration im WeatherDisplay angepasst. \Diskussionspunkt{BILD} In der Konfiguration können die Datenpunkte welche eingetragen werden sollen selektiert werden. \Diskussionspunkt{Weitere Konfigmöglichkeiten aufzeigen} 
 \Diskussionspunkt{- Konfiguration von WeatherDisplay}\newline
 \Diskussionspunkt{- Was passiert wenn DB-Eintrag nicht erstellt werden kann}\newline
+Kann ein Datenbankeintrag nicht erstellt werden, weil es zu wenig Einträge hat oder aus anderen Gründen wird dies wie später im Kapitel Funktionsüberwachung mit Mail-Service beschrieben abgefangen im Cronjob.  
 
 \subsubsection{Einlesen von Pegel- und Strahlungsmesswerten}
-Wassertemperatur, Strahlungssensor und Pegelsenos sind alle an einem Web-IO angeschlossen, welche die analogen Werte per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannten Sensoren die gleiche, nur die URL unterscheidet sich je nach Sensor. Die Abfragen sind nach dem try... catch - Prinzip aufgebaut, sodass das Skript weiterläuft auch wenn vom Web-IO keine Antwort eintrifft.
+Wassertemperatur, Strahlungssensor und Pegelsenoren sind alle an einem Web-IO angeschlossen, welche die analogen Werte per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannten Sensoren die gleiche, nur die URL unterscheidet sich je nach Sensor. Die Abfragen sind nach dem try... catch - Prinzip aufgebaut, sodass das Skript weiterläuft auch wenn vom Web-IO keine Antwort eintrifft.
 
 \begin{lstlisting}[label=lst:webIo,caption=Web-Abfrage des Pegel-Messwerts, language=python, style=py]
 try:
@@ -223,4 +224,5 @@ Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, w
 %% Unterkapitel
 %% ############################################################################
 \subsection{Problematik Zeitumstellung}
+
 \Diskussionspunkt{- Kapitel muss noch erstellt werden}\newline

@@ -15,7 +15,7 @@ Anschliessend wird in diesem Kapitel aufgezeigt wie die API entwickelt wurde und
 Eine API überbrückt die Schnittstellen zwischen verschiedenen Software teilen und strukturiert die dabei anfallende Datenübergabe dazwischen. Sie ermöglicht es Software zu modularisieren und die Kommunikation zu vereinfachen. Konkret heisst dies, dass die einzelnen Programmteile  voneinander ab gekapselt werden und kommunizieren nur über die Festgelegte API. Der Vorteil hierbei ist, das die API veröffentlicht werden kann und somit auch anderen die Möglichkeit gegeben werden kann die angebotenen Dienste mittels der API zu erhalten. Zusätzlich können so auch die einzelnen modularisierte Softwareteile unabhängig voneinander weiterentwickelt werden. Nicht zuletzt ist auch das Testen ein wichtiger Punkt, da alle Programmteile nur über die API miteinander kommunizieren sollten muss die Software auch nur in der Zusammenarbeit mit der API getestet werden.
 
 \subsection{Was ist state of the Art?}
-Heutzutage wird werden viele API nach dem RESTful Standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. RESt steht für State Transfer und ist im Gegensatz zu Protokollen eine Philosophie, welche die Möglichkeiten von HTTP ausnutzt. REST benötigt hierfür die von HTTP bekannten CRUD Verben (Create, Read, Update, Delete) \cite{LornaJaneMitchell2013oreilly}. Im Vordergrund bei REST steht die Zustandslosigkeit, das heisst Server sowie Client haben keinen Zustand zwischen den Anfragen. Eine Verbindung bleibt jedoch bis zum Ende der Anwendung oder Nutzzeit bestehen. Ein Beispiel für diese Zustandslosigkeit ist in Abb. \ref{img:Sequenzdiagramm_API} zu sehen.\\
+Heutzutage wird werden viele API nach dem RESTful Standard entwickelt wird. Da taucht die Frage auf was ist RESTful? Ein kleiner Exkurs. RESt steht für State Transfer und ist im Gegensatz zu Protokollen eine Philosophie, welche die Möglichkeiten von HTTPS ausnutzt. REST benötigt hierfür die von HTTPS bekannten CRUD Verben (Create, Read, Update, Delete) \cite{LornaJaneMitchell2013oreilly}. Im Vordergrund bei REST steht die Zustandslosigkeit, das heisst Server sowie Client haben keinen Zustand zwischen den Anfragen. Eine Verbindung bleibt jedoch bis zum Ende der Anwendung oder Nutzzeit bestehen. Ein Beispiel für diese Zustandslosigkeit ist in Abb. \ref{img:Sequenzdiagramm_API} zu sehen.\\
 
 \begin{figure}[h!]
 	\centering
@@ -53,182 +53,199 @@ Die Datenabfrage über die API soll wie es State of the Art entwickelt wird REST
 
 Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
 
-\begin{lstlisting}[label=lst:Referenz,caption=Json Struktur, language=JavaScript, style=htmlcssjs]
+\begin{lstlisting}[label=lst:Referenz,caption=Json Struktur, language=JavaScript, style=htmlcssjs, mathescape]
 {
   "product": "api.wetter-arbon.ch",
   "version": "1.1.1",
-	"v1": {
-		"misc": {
-			"west": {
-				"description": "Warnlevel west",
-				"warnlevel": 0,
-				"onset": null,
-				"expires": null,
-				"timestamp": "2018-06-21 11:32:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"middle": {
-				"description": "Warnlevel middle",
-				"warnlevel": 0,
-				"onset": null,
-				"expires": null,
-				"timestamp": "2018-06-21 11:32:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"east": {
-				"description": "Warnlevel east",
-				"warnlevel": 0,
-				"onset": null,
-				"expires": null,
-				"timestamp": "2018-06-21 11:32:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			}
-		},
-		"webcam": {
-			"name": "Webcam Wetter Arbon",
-			"title": "webcam",
-			"url": "https:\/\/webcam.wetter-arbon.ch\/mjpg\/video.mjpg"
-		},
-		"data": {
-			"temperature": {
-				"description": "Lufttemperatur",
-				"unit": "\u00b0C",
-				"value": 22.3,
-				"dailymax": 22.7,
-				"dailymin": 18.8,
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"windchill": {
-				"description": "Windchill",
-				"unit": "\u00b0C",
-				"value": 22.3,
-				"dailymax": 22.7,
-				"dailymin": 18.8,
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"humidity": {
-				"description": "Relative Luftfeuchtigkeit",
-				"unit": "%",
-				"value": 63,
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"winddirection": {
-				"description": "Windrichtung",
-				"unit": "\u00b0",
-				"value": 84,
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"windspeed": {
-				"knoten": {
-					"value": 3.1,
-					"dailymax": 8.6,
-					"unit": "kn"
-				},
-				"kmph": {
-					"value": 5.74,
-					"dailymax": 15.93,
-					"unit": "km\/h"
-				},
-				"beaufort": {
-					"value": 2,
-					"dailymax": 3,
-					"unit": "Bft"
-				},
-				"description": "Windgeschwindigkeit",
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"gust": {
-				"knoten": {
-					"value": 3,
-					"dailymax": 10,
-					"unit": "kn"
-				},
-				"kmph": {
-					"value": 5.56,
-					"dailymax": 18.52,
-					"unit": "km\/h"
-				},
-				"beaufort": {
-					"value": 1,
-					"dailymax": 3,
-					"unit": "Bft"
-				},
-				"description": "B\u00f6en",
-				"unit": "kn",
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"precipitation": {
-				"description": "Niederschlagsmenge seit Mitternacht",
-				"unit": "mm",
-				"value": 0,
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"pressure": {
-				"description": "Luftdruck",
-				"unit": "hPa",
-				"value": 1018.3,
-				"timestamp": "2018-06-21 11:31:32",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"watertemperature1m": {
-				"description": "Wassertemperatur 1m unter der Wasseroberfl\u00e4che",
-				"unit": "\u00b0C",
-				"value": 23.8,
-				"timestamp": "2018-06-21 11:31:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"watertemperature0m5": {
-				"description": "Wassertemperatur 0.5m unter der Wasseroberfl\u00e4che",
-				"unit": "\u00b0C",
-				"value": 23.9,
-				"timestamp": "2018-06-21 11:31:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"waterlevel": {
-				"description": "Bodenseepegel",
-				"unit": "Meter",
-				"value": 4.09,
-				"timestamp": "2018-06-21 11:31:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			},
-			"radiation": {
-				"radiation": {
-					"description": "Globalstrahlung",
-					"value": 877,
-					"unit": "Watt pro Quadrameter"
-				},
-				"daily_sunduration": {
-					"description": "Anzahl Sonnenminuten pro Tag",
-					"value": 154,
-					"unit": "min"
-				},
-				"timestamp": "2018-06-21 11:31:00",
-				"interval": 60,
-				"intervalUnit": "seconds"
-			}
-		}
-	}
+	{
+    "v1": {
+        "misc": {
+            "west": {
+                "description": "Warnlevel west",
+                "warnlevel": 40,
+                "onset": "2018-07-17 13:05:00",
+                "expires": null,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "middle": {
+                "description": "Warnlevel middle",
+                "warnlevel": 40,
+                "onset": "2018-07-17 13:06:00",
+                "expires": null,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "east": {
+                "description": "Warnlevel east",
+                "warnlevel": 0,
+                "onset": null,
+                "expires": null,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            }
+        },
+        "webcam": {
+            "name": "Webcam Wetter Arbon",
+            "title": "webcam",
+            "url": "https://webcam.wetter-arbon.ch/mjpg/video.mjpg"
+        },
+        "data": {
+            "temperature": {
+                "description": "Lufttemperatur",
+                "unit": "${^\circ}$C",
+                "value": 22.6,
+                "dailymax": 22.6,
+                "dailymin": 17,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "windchill": {
+                "description": "Windchill",
+                "unit": "${^\circ}$C",
+                "value": 22.6,
+                "dailymax": 22.6,
+                "dailymin": 17,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "humidity": {
+                "description": "Relative Luftfeuchtigkeit",
+                "unit": "%",
+                "value": 60,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "winddirection": {
+                "description": "Windrichtung",
+                "unit": "${^\circ}$",
+                "value": 75,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "windspeed": {
+                "knoten": {
+                    "value": 7.6,
+                    "dailymax": 7.9,
+                    "unit": "kn"
+                },
+                "kmph": {
+                    "value": 14.08,
+                    "dailymax": 14.63,
+                    "unit": "km/h"
+                },
+                "beaufort": {
+                    "value": 3,
+                    "dailymax": 3,
+                    "unit": "Bft"
+                },
+                "description": "Windgeschwindigkeit",
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "gust": {
+                "knoten": {
+                    "value": 8,
+                    "dailymax": 8.2,
+                    "unit": "kn"
+                },
+                "kmph": {
+                    "value": 14.82,
+                    "dailymax": 15.19,
+                    "unit": "km/h"
+                },
+                "beaufort": {
+                    "value": 3,
+                    "dailymax": 3,
+                    "unit": "Bft"
+                },
+                "description": "Böen",
+                "unit": "kn",
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "precipitation": {
+                "description": "Niederschlagsmenge seit Mitternacht",
+                "unit": "mm",
+                "value": 0,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "pressure": {
+                "description": "Luftdruck",
+                "unit": "hPa",
+                "value": 1017.1,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "weathericon": {
+                "description": "Icon type current weather",
+                "value": 5,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "forecasticon": {
+                "description": "Forecast icon",
+                "value": 5,
+                "timestamp": "2018-07-17 13:24:31",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "watertemperature1m": {
+                "description": "Wassertemperatur 1m unter der Wasseroberfläche",
+                "unit": "${^\circ}$C",
+                "value": 24.2,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "watertemperature0m5": {
+                "description": "Wassertemperatur 0.5m unter der Wasseroberfläche",
+                "unit": "${^\circ}$C",
+                "value": 23.9,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "waterlevel": {
+                "description": "Bodenseepegel",
+                "unit": "m",
+                "value": 3.54,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "radiation": {
+                "description": "Globalstrahlung",
+                "unit": "W/m2",
+                "value": 868,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            },
+            "sunduration": {
+                "description": "Sonnenstunden",
+                "unit": "h/d",
+                "value": 5,
+                "timestamp": "2018-07-17 13:24:00",
+                "interval": 60,
+                "intervalUnit": "seconds"
+            }
+        }
+    }
+}
 }
 \end{lstlisting}
 
@@ -283,15 +300,24 @@ Im File Path \ref{lst:path} wird die URL ausgelesen und dem richtigen Case zugew
 \end{lstlisting}
 
 Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File createJson bestehen verschiedene Funktionen, passend zur Anforderung. Es bestehen folgenden Funktionen welche kurz umschrieben werden welches Ziel diese haben.\\
-
-CreateJsonMinMax:\\
-Diese Funktion erstellt die JSONs mit dem aktuellen Wert sowie den Extrema des Tages.\\
-CreateJson:\\
-Erstellt das Json für die Daten, welche keine Extrema oder sonstige umrechnungen benötigen.
-CreateJsonConversion:\\
-Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten Km/h, knoten und beufort. Umgerechnet werden die aktuellen Werte, sowie die Extrema.\\
-createJsonRadiation:\\
-Erstellt das Json für die Globalstrahlung zusammen mit der Sonnendauer in Minuten.\\
+\begin{itemize}
+\item CreateJsonMinMax
+\begin{itemize}
+\item Diese Funktion erstellt die JSONs mit dem aktuellen Wert sowie den Extrema des Tages
+\end{itemize}
+\item CreateJson
+\begin{itemize}
+\item Erstellt das Json für die Daten, welche keine Extrema oder sonstige umrechnungen benötigen
+\end{itemize}
+\item CreateJsonConversion
+\begin{itemize}
+\item Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten Km/h, knoten und beufort. Umgerechnet werden die aktuellen Werte, sowie die Extrema
+\end{itemize}
+\item createJsonSunduration
+\begin{itemize}
+\item Rechnet die Sonnenminuten des Tages in Stunden um und erstellt das entsprechende Json Format
+\end{itemize}
+\end{itemize}
 
 Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 4 und 5 wird die Verbindung zur Datenbank hergestellt \ref{lst:createJson}, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat mittels einer while-Schlaufe in die einzelnen Spalten zerlegt und als Array gespeichert. Von Zeile 14 bis 22 wird das assoziative Array dataJson aufgebaut um in der Zeile 24 mit dem Array im File path.php zusammengefügt zu werden. Anschliessen wird das Array mittel einem echo zurückgegeben. Die restlichen Funktionen unterscheiden sich nur im Aufbau des Arrays, die Datenbankabfrage, das Aufbauen des dataJson und das Zusammenfügen sowie das zurückgeben funktioniert überall gleich.
 
