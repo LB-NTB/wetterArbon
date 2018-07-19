@@ -1,9 +1,14 @@
-\documentclass[a4paper,ngerman, 11pt, DIV11]{scrartcl}
+\documentclass[a4paper,ngerman, 11pt, BCOR5mm, DIV11]{scrartcl}
 
 %% Päambel
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+
+%1.5fach Zeilenabstand
+%\usepackage{setspace}
+%\onehalfspacing
+
 % Grad Celsius Zeichen
 \usepackage{gensymb}
 
@@ -15,7 +20,7 @@
 \usepackage{ulem}
 
 \usepackage{url}
-% keine rote Rahmen um die Links anzeigen
+% keine rote Rahmen um die Links anzeigen!!!
 \usepackage[pdfborderstyle={/S/U/W 0}]{hyperref}
 
 % Grafikpaket laden
@@ -55,7 +60,7 @@
 \definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
 \definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
-\definecolor{orange}{rgb}{1,0.45,0.13}      
+\definecolor{orange}{rgb}{1,0.45,0.13}
 \definecolor{olive}{rgb}{0.17,0.59,0.20}
 \definecolor{brown}{rgb}{0.69,0.31,0.31}
 \definecolor{purple}{rgb}{0.38,0.18,0.81}
@@ -69,7 +74,7 @@
 
 % CSS
 \lstdefinelanguage{CSS}{
-  keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function}, 
+  keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function},
   sensitive=true,
   morecomment=[l]{//},
   morecomment=[s]{/*}{*/},
@@ -90,8 +95,8 @@
 
 \lstdefinelanguage{HTML5}{
   language=html,
-  sensitive=true,   
-  alsoletter={<>=-},    
+  sensitive=true,
+  alsoletter={<>=-},
   morecomment=[s]{<!-}{-->},
   tag=[s],
   otherkeywords={
@@ -103,9 +108,9 @@
     % body
     </body, <body,
     % Divs
-    </div, <div, </div>, 
+    </div, <div, </div>,
     % Paragraphs
-    </p, <p, </p>, <h2, </h2, <h3, </h3, 
+    </p, <p, </p>, <h2, </h2, <h3, </h3,
     % scripts
     </script, <script,
   % More tags...
@@ -130,7 +135,7 @@
 \lstdefinestyle{htmlcssjs} {%
   % General design
   backgroundcolor=\color{editorGray},
-  basicstyle={\footnotesize\ttfamily},   
+  basicstyle={\footnotesize\ttfamily},
   % Frame
   rulecolor=\color{ipython_frame},
   frame=single,
@@ -141,7 +146,7 @@
   numbers=left,
   stepnumber=1,
   firstnumber=1,
-  numberfirstline=true, 
+  numberfirstline=true,
   % Code design
   identifierstyle=\color{black},
   keywordstyle=\color{blue}\bfseries,
@@ -151,7 +156,7 @@
   % Code
   language=HTML5,
   alsolanguage=JavaScript,
-  alsodigit={.:;},  
+  alsodigit={.:;},
   tabsize=2,
   showtabs=false,
   showspaces=false,
@@ -182,7 +187,7 @@ literate=%
 {7}{{{\color{lightred}7}}}1
 {8}{{{\color{lightred}8}}}1
 {9}{{{\color{lightred}9}}}1,
-basicstyle={\footnotesize\ttfamily},   
+basicstyle={\footnotesize\ttfamily},
 backgroundcolor=\color{editorGray},
 % Frame
 rulecolor=\color{ipython_frame},
@@ -194,7 +199,7 @@ xleftmargin={0.75cm},
 numbers=left,
 stepnumber=1,
 firstnumber=1,
-numberfirstline=true, 
+numberfirstline=true,
 %numberstyle=\tiny,          % Stil der Zeilennummern
 %numbersep=5pt,              % Abstand der Nummern zum Text
 tabsize=4,                  % Groesse von Tabs
@@ -228,9 +233,9 @@ stringstyle     = \color{red},
 identifierstyle = \color{dkgreen},
 commentstyle    = \color{gray},
 numberstyle=\tiny\color{halfgray},
-basicstyle={\footnotesize\ttfamily},   
+basicstyle={\footnotesize\ttfamily},
 backgroundcolor=\color{editorGray},
-showstringspaces=false, 
+showstringspaces=false,
 % Frame
 rulecolor=\color{ipython_frame},
 frame=single,
@@ -239,10 +244,10 @@ xleftmargin={0.75cm},
 numbers=left,
 stepnumber=1,
 firstnumber=1,
-numberfirstline=true, 
+numberfirstline=true,
 tabsize=4,                  % Groesse von Tabs
 extendedchars=true,         %
-breaklines=true,    
+breaklines=true,
 emph            =[1]{php},
 emphstyle       =[1]\color{black},
 emph            =[2]{if,and,or,else},
@@ -250,64 +255,31 @@ emphstyle       =[2]\color{dkyellow}
 }
 
 
-
-%ende Test
-
-
-
-%\definecolor{mygreen}{rgb}{0,0.6,0}
-%\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-%\definecolor{mymauve}{rgb}{0.58,0,0.82}
-%
-%\lstset{
-%  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-%  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-%  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-%  breaklines=true,                 % sets automatic line breaking
-%  captionpos=b,                    % sets the caption-position to bottom
-%  commentstyle=\color{mygreen},    % comment style
-%  deletekeywords={...},            % if you want to delete keywords from the given language
-%  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-%  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-%  frame=single,	                   % adds a frame around the code
-%  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-%  keywordstyle=\color{blue},       % keyword style
-%  %language=Octave,                 % the language of the code
-%  morekeywords={*,...},            % if you want to add more keywords to the set
-%  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
-%  numbersep=5pt,                   % how far the line-numbers are from the code
-%  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-%  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-%  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-%  showstringspaces=false,          % underline spaces within strings only
-%  showtabs=false,                  % show tabs within strings adding particular underscores
-%  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-%  stringstyle=\color{mymauve},     % string literal style
-%  tabsize=2,	                   % sets default tabsize to 2 spaces
-%  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-%}
-
-
 %%  Variablen
-\newcommand{\authorName}{Ladina Bilgery \and Thomas Wieling}
+
 \newcommand{\auftraggeber}{Interessengemeinschaft Wetterstation Arbon}
 \newcommand{\auftragnehmer}{Interstaatliche Hochschule für Technik NTB}
-\newcommand{\projektName}{Multiplattform-fähiges und barrierefreies User Interface und Datenmanagement für die Wetterstation Arbon}
-\title{\projektName~(Bachelorarbeit)}
-\author{\authorName}
-\date{\today}
+
+\titlehead{Studienrichtung: Informations- und Kommunikaitonssysteme}
+\title{Multiplattform-fähiges und barrierefreies User Interface und Datenmanagement für die Wetterstation Arbon}
+\author{Ladina Bilgery \and Thomas Wieling}
+\subject{Bachelorarbeit}
+\publishers{Interstaatliche Hochschule für Technik NTB}
+\dedication{Interessengemeinschaft Wetterstation Arbon}
+\date{10.08.2018}
 
 
 % damit Bilder im aktuellen Kapitel dargestellt werden
 \usepackage{placeins}
 \usepackage{geometry}
 
-
-
-%%  Beginn Dokument
+% für Titelblatt
+%\newcommand{\mydocumenttype}{Project thesis report}
+%  Beginn Dokument
 \begin{document}
 \pagenumbering{roman}
 \input{Deckblatt}
+%\input{title}
 \setcounter{page}{2}
 \tableofcontents
 \clearpage
@@ -319,6 +291,7 @@ emphstyle       =[2]\color{dkyellow}
 \input{zusammenfassung}
 \newpage
 \input{einleitung}
+\pagestyle{headings} % zeigt Kapitel in der Kopfzeile an
 \input{sensoren}
 \input{frontend}
 \input{backend}
@@ -334,7 +307,14 @@ emphstyle       =[2]\color{dkyellow}
 \bibliography{literatur}{}
 \bibliographystyle{plain}
 \newpage
-\input{anhang}
+
+\appendix
+\input{app_schema}
+\newpage
+\input{app_sourcecode}
+\newpage
+\input{app_datasheets}
+\newpage
 
 
 \end{document}

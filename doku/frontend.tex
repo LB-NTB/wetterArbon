@@ -1,4 +1,5 @@
-\section{Website / front end}
+\section{Grafische Benutzeroberfläche (Website)}
+%\chapter{Website / front end}
 Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht). Die neue (2014) HTML5-Spezifikation ermöglicht es dynamische Grafiken zu erzeugen, die nativ von allen Web-Browsern dargestellt werden können.
 
 
@@ -6,7 +7,7 @@ Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von all
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Nutzungsanalyse der Webseite mittels Google Analytics}
+\subsection{Nutzungsanalyse der Website mittels Google Analytics}
 \label{subsec:googleAnalytics}
 Zuerst wurden die Zugriffsdaten auf die bestehende Webseite mittels Google Analytics analysiert. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \textit{Wetter Tourismus} und \textit{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung \ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\% und 80\% beträgt. Dies wiederspiegelt den Trend zum mobilen Internet und zeigt wie wichtig die mobile Version einer Webseite ist. Dies geht soweit, dass sogar die mobile Seite als Ausgangspunkt für die Entwicklung der Homepage dient nach dem Designkonzept \textit{Mobile First}.
 
@@ -564,7 +565,7 @@ Die aktuellen Web Content Accessibility Guidelines\footnote{\url{https://www.w3.
 \noindent
 Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
 
-\subsubsection*{Wahrnehmbarkeit}
+\subsubsection{Wahrnehmbarkeit}
 % Richtlinie 1.1
 \href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.1} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
 
@@ -593,8 +594,7 @@ Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildun
 \href{https://www.w3.org/Translations/WCAG20-de/#visual-audio-contrast}{Richtlinie 1.4} fordert, dass die visuelle Darstellung von Text ein Kontrastverhältnis von mindestens 4,5:1 hat. Zudem muss es möglich sein die Textgrösse um bis zu 200 Prozent zu erhöhen, ohne dass dabei Inhalt oder Funktionalität verloren geht. Um diese Anforderung zu Überprüfen wurde das Firefox-Plugin \textit{tota11y}\footnote{\url{http://khan.github.io/tota11y/}} verwendet. Das Plugin ermöglicht es auf einfache Weise zu überprüfen ob die Webseite die Barrierefrei-Bediungungen erfüllt. Die Kontrastverhältnisse liegen gemäss diesem Tool zwischen 5.75 und 12.63 und sind somit in Ordnung. Da die gesamte Webseite responsive ist, stellt die Vergrösserung auf 200\% kein Problem dar.
 
 
-\subsubsection*{Bedienbarkeit}
-
+\subsubsection{Bedienbarkeit}
 \href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{Richtlinie 2.1} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und das die Tastaturfokusanzeige sichtbar ist.
 Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice, siehe Kapitel \ref{notifications}, relevant. Dieses ist problemlos mittels Tastatur bedienbar. \newline
 
@@ -602,27 +602,9 @@ Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, i
 \href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{Richtlinie 2.4} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} wurde besitzt die Webseite sowhol einen Seitentitel, als auch Zwischentitel.
 
 
-\subsubsection*{Verständlichkeit}
-% Anforderung 3.1: Lesbarkeit
-% Anforderung 3.2: Vorhersehbarkeit
-% Anforderung 3.3: Hilfestellung bei der Eingabe
-
-Die voreingestellte Sprache der Webseite kann programmgesteuert bestimmt werden. Ein Mechanismus zur Identifizierung der erweiterten Form oder Bedeutung von Abkürzungen steht zur Verfügung.  Wenn eine Komponente den Fokus erhält, löst sie keinen Kontextwechsel aus.
-Wenn ein Eingabefehler automatisch erkannt wird, wird das fehlerhafte Element identifiziert und der Fehler dem Benutzer in Textform beschrieben. Labels oder Anweisungen werden bereitgestellt, wenn der Inhalt eine Benutzereingabe erfordert.  Wird ein Eingabefehler automatisch erkannt und sind Korrekturvorschläge bekannt, so werden diese dem Anwender zur Verfügung gestellt.  Es steht eine kontextsensitive Hilfe zur Verfügung.
-
-\subsubsection*{Robustheit}
-% Anforderung 4.1: Kompatibilität
- In Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden, haben Elemente vollständige Start- und End-Tags, Elemente werden entsprechend ihrer Spezifikationen verschachtelt, Elemente enthalten keine doppelten Attribute und alle IDs sind eindeutig.
+\subsubsection{Verständlichkeit}
+\href{https://www.w3.org/Translations/WCAG20-de/#minimize-error}{Richtlinie 3.3} fordert, dass Eingabefehler automatisch erkannt und dem Benutzer angezeigt werden. Zudem sind Korrekturvorschläge anzuzeigen. Diese Anforderung betrifft insbesondere das Formular des Benachrichtigungsservices, welcher in Kapitel \ref{notifications} beschrieben wird. Diese Anforderung wird erfüllt, wie in Abbildung \ref{img:notificationFE} rechts, dargestellt.
 
 
-\subsubsection{Barrierefreies CMS}
-\Diskussionspunkt{- Barrierefreiheit? Semantisches Web -> wie umgesetzt bei OpenFile64}\newline
-\Diskussionspunkt{- Messergebnis}\newline
-
-\subsubsection{Barrierefreie Grafiken}
-\Diskussionspunkt{- Plugin von chartist}\newline
-\Diskussionspunkt{- justgage?}\newline
-
-\subsubsection{Barrierefreie historische Daten}
-% Tableau Nachteil 3: nicht barrierefrei
-\Diskussionspunkt{- Barrierefreiheit in Tableau? Farben?}\newline
+\subsubsection{Robustheit}
+\href{https://www.w3.org/Translations/WCAG20-de/#ensure-compat}{Richtlinie 4.1} fordert, dass Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden,  vollständige Start- und End-Tags haben. Es sind keine doppelten Attribute vorhanden und alle IDs sind eindeutig. Diese Anforderung wurde ebenfalls vollständig umgesetzt. Beispielhaft ist dies in Listing \ref{lst:gaugeHTML} ersichtlich.

@@ -1,19 +1,17 @@
-\section{Aufbau der Wetterstation und Sensoren}
+\section{Aufbau der Wetterstation und deren Sensoren}
+%\chapter{Aufbau der Wetterstation und Sensoren}
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Übersicht der Hardware}
-Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensoren, Pegelsensor und Sonnenstrahlungssensor. Auf der Plattform im See draussen befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt.
+\subsection{Übersicht über die verbaute Hardware}
+Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensoren, Pegelsensor und Sonnenstrahlungssensor. Auf der Plattform im See befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP über eine Glasfaserleitung an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt. Der Pegel- und Strahlungssensor wurden während dieser Arbeit ersetzt beziehungsweise hinzugefügt.
 
-\Diskussionspunkt{- Strahlungssensor hinzufügen}\newline
-
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/schaltschrank.png}}
-	%\includegraphics[width=0.9\linewidth]{img/schaltschrank.png}
-	\caption{Hardware-Aufbau der Wetterstation Arbon}
+	\caption{Hardware-Schema der Wetterstation}
 	\label{img:schaltschrank}
 \end{figure}
 
@@ -21,18 +19,17 @@ Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Web
 %% Unterkapitel
 %% ############################################################################
 \subsection{Sonnenstrahlungssensor}
-Die Sonnenscheindauer dient der näherungsweisen Abschätzung der Einstrahlung an einem bestimmten Ort und gibt gleichzeitig Hinweise auf Zeit und Stärke der Bewölkung. Die Angabe der Sonnenstunden diente ursprünglich der Charakterisierung von Kurorten. Dabei wurde die psychologische Wirkung von Sonnenlicht auf das menschliche Wohlbefinden hervorgehoben. Die Sonnenstunden werden heute immer noch verwendet um touristische Ziele zu fördern.
+Die Sonnenscheindauer dient der näherungsweisen Bestimmung der Einstrahlung an einem bestimmten Ort und gibt gleichzeitig Hinweise auf Zeit und Stärke der Bewölkung. Sie diente ursprünglich der Charakterisierung von Kurorten. Dabei wurde die psychologische Wirkung von Sonnenlicht auf das menschliche Wohlbefinden hervorgehoben. Auch heute noch werden die Sonnenstunden verwendet um touristische Ziele zu fördern.
 
 \noindent
-Zur Messung der Sonnenstunden gibt es gemäss  \flqq Guide to Meteorological Instruments and Methods of Observation\frqq ~\cite{WMO2014Gtmi}  fünf Messprinzipien, wobei die pyranometrische Methode, die einfachste und kostengünstigste Methode darstellt. Gemäss WMO~\cite{WMO2014Gtmi} Kapitel 8.1.4 kann die Sonnenscheindauer durch die Messung der globalen Sonneneinstrahlung $G$ abgeschätzt werden. Die Globalstrahlung wird dabei von einem Pyranometer gemessen.
+Zur Messung der Sonnenstunden gibt es gemäss \flqq Guide to Meteorological Instruments and Methods of Observation (WMO)\frqq ~\cite{WMO2014Gtmi} fünf Messprinzipien, wobei die pyranometrische Methode die einfachste und kostengünstigste Methode darstellt. Gemäss WMO, Kapitel 8.1.4, kann die Sonnenscheindauer eines Orts durch die Messung der entsprechenden globalen Sonnenstrahlung\ $G$ abgeschätzt werden. Die Globalstrahlung wird dabei von einem Pyranometer gemessen.
 
 \subsubsection{Funktionsprinzip eines Pyranometers}
-Das Pyranometer basiert auf dem Messprinzip eines Thermoelements, wie in Abbildung \ref{img:pyranometer}  dargestellt. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme „fliesst“ dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom bzw. zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe geschalten, welches Thermosäule genannt wird. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Response time liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen.
+Das Pyranometer basiert auf dem Messprinzip eines Thermoelements, wie in Abbildung \ref{img:pyranometer}  dargestellt. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme fliesst dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom beziehungsweise zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe zu einer Thermosäule geschalten. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Verzögerung liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pyranometer.png}}
-	%\includegraphics[width=0.9\linewidth]{img/pyranometer.png}
 	\caption{Pyranometer}
 	\label{img:pyranometer}
 \end{figure}
@@ -69,7 +66,7 @@ Wenn der Winkel $h$ grösser oder gleich 3 Grad ist, und der gemittelte Minutenw
 %
 %Faktor B-Reduktion kann beurteilt werden, wenn ein Sommertag und Wintertag betrachtet wird, da dieser die Saisonalität bestimmt.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/radiation}}
 	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
@@ -82,7 +79,7 @@ Wenn der Winkel $h$ grösser oder gleich 3 Grad ist, und der gemittelte Minutenw
 \subsubsection{Verwendung für PV-Anlagen}
 Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/pvest.php}}, welches durch das europäische Joint Research Centre (JRC) entwickelt wurde, ist \textit{das} Tool wenn es darum geht den Ertrag einer PV-Anlage vorherzusagen. Die Daten basierend auf Interpolationen von Messungen von Boden-Messstationen. Es liegt nahe diese Berechnung mit unseren Messwerten zu vergleichen. PVGIS berechnet für den Standort Arbon Werte gemäss Abbildung \ref{img:pvgis}.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pvgis}}
 	\caption{Pyranometer}
@@ -101,7 +98,7 @@ Die ursprüngliche Wetterstation verwendete einen hydrostatischen Drucksensor f�
 \subsubsection{Auswahl eines geeigneten Pegelsensors}
 Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können. Die Zusammenfassung der Resultate ist in der Tabelle \ref{tbl:pegelsensoren} aufgelistet.
 
-\begin{table}[htb!]
+\begin{table}[htbp!]
 \label{tbl:pegelsensoren}
 \caption{Gegenüberstellung der verschiedenen Pegelmess-Prinzipien}
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -182,7 +179,7 @@ Die Einfachheit und Robustheit des hydrostatischen Sensors überwog, sodass der 
 \subsubsection{Definition des Pegel Konstanz}
 Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkt, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben befindet sich die Skala für den Pegel Konstanz.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pegelKonstanz}}
 	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
@@ -250,7 +247,7 @@ if waterlevel >= 3.5 and waterlevel <=4.0:
 Die offizielle Wassertemperatur wird einen Meter unter der Wasseroberfläche gemessen. Für Schwimmer ist aber die Temperatur eine halben Meter unter der Wasseroberfläche interessanter, weshalb dieser Wert ebenfalls ausgelesen und gespeichert wird. Das Schwimmbad Arbon bezieht bereits heute für ihre Webseite\footnote{\url{https://www.schwimmbad-arbon.ch}} die Wassertemperatur von der Wetterstation.
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/wassertempsensoren}}
 	\caption{Zusammenhang zwischen Pegel und PT100-Temperaturwiderständen}
@@ -261,7 +258,7 @@ Die offizielle Wassertemperatur wird einen Meter unter der Wasseroberfläche gem
 \subsubsection{Annäherung des defekten PT100-Widerstands}
 Die Temperatursensoren waren mehrere Jahre nicht in Betrieb. Es wurde deshalb während mehrerer Tag alle Temperaturdaten aufgezeichnet. Aus Auszug der Messdaten sind in Abbildung \ref{img:tempSensoren} dargestellt. Es lässt sich gut erkennen, dass die Sensoren 1 bis 4 sich im Wasser und die Sensoren 6 bis 8 über dem Wasser befinden. Beim Sensor 5 ist nicht klar ober er im oder über dem Wasser ist. Auf Grund der Messdaten lässt sich auch kein konstanter Offset gegenüber den benachbarten Sensoren erkennen.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tempSensoren}}
 	\caption{Messreihe aller Temperatursensoren}
