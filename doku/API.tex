@@ -27,7 +27,7 @@ Heutzutage wird werden viele API nach dem RESTful Standard entwickelt wird. Da t
 
 \subsection{Wie wird eine API entwickelt?}
 Zu Beginn der Entwicklung muss klar sein für was die API benötigt wird. Ist dies klar, kann gesagt werden welche Anforderungen die API erfüllen muss. Als nächstes muss ein URL Schema her. Dies wird benötigt um nach dem REST Standard zu arbeiten. Die URL sollte folgendermassen aussehen: \\ https://api.wetter-arbon.ch/Versionsnummer/Endpunkt\\
-Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein das nicht alle Nutzer der API auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden. Neben der URL ist es wichtig das die Kommunikation in einem bestimmten Datenformat erfolgt, hier gibt es die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches. Nebst der Entwicklung für die Server-Client kommunikation ist auch bei der API eine Zugangskontrolle bzw. eine Grundbasis in der Sicherheit notwendig. Neben der Möglichkeit HTTPS zu verwenden, ist es zusätzlich möglich den client über einen sogenannten Authorization Token zu zu authentifizieren. Eine andere Möglichkeit ist, den Zugriff durch eine IP-Whitelist zu begrenzen. \\
+Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein das nicht alle Nutzer der API auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden. Neben der URL ist es wichtig das die Kommunikation in einem bestimmten Datenformat erfolgt, hier gibt es die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches. Nebst der Entwicklung für die Server-Client Kommunikation ist auch bei der API eine Zugangskontrolle bzw. eine Grundbasis in der Sicherheit notwendig. Neben der Möglichkeit HTTPS zu verwenden, ist es zusätzlich möglich den Client über einen sogenannten Authorization Token zu zu authentifizieren. Eine andere Möglichkeit ist, den Zugriff durch eine IP-Whitelist zu begrenzen. \\
 
 
 \subsection{API Konzept}
@@ -47,207 +47,11 @@ Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Die A
 \item Webcam
 \item Sturmwarnung
 \end{itemize}
-Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Somit ist ein sogenannter Token für die Authentifizierung nicht notwendig.
+Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Somit ist ein sogenannter Token für die Authentifizierung nicht notwendig. Das Datenformat der API soll JSON sein. JSON ist ein simples Datenformat, welches nicht viel Speicherplatz benötigt und somit auch einfach Transferiert werden kann. Nebst der Lesbarkeit für Menschen, kann es auch von Maschinen gelesen werden. Javascript beispielsweise handhabt JSON nativ. Nebst dem das Javascript JSON versteht, ist auch die Handhabung bei PHP simpel  \Diskussionspunkt{LITERATUR}. 
 
 \paragraph{JSON Struktur}
 
-Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
-
-\begin{lstlisting}[label=lst:Referenz,caption=Json Struktur, language=JavaScript, style=htmlcssjs, mathescape]
-{
-  "product": "api.wetter-arbon.ch",
-  "version": "1.1.1",
-	{
-    "v1": {
-        "misc": {
-            "west": {
-                "description": "Warnlevel west",
-                "warnlevel": 40,
-                "onset": "2018-07-17 13:05:00",
-                "expires": null,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "middle": {
-                "description": "Warnlevel middle",
-                "warnlevel": 40,
-                "onset": "2018-07-17 13:06:00",
-                "expires": null,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "east": {
-                "description": "Warnlevel east",
-                "warnlevel": 0,
-                "onset": null,
-                "expires": null,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            }
-        },
-        "webcam": {
-            "name": "Webcam Wetter Arbon",
-            "title": "webcam",
-            "url": "https://webcam.wetter-arbon.ch/mjpg/video.mjpg"
-        },
-        "data": {
-            "temperature": {
-                "description": "Lufttemperatur",
-                "unit": "${^\circ}$C",
-                "value": 22.6,
-                "dailymax": 22.6,
-                "dailymin": 17,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "windchill": {
-                "description": "Windchill",
-                "unit": "${^\circ}$C",
-                "value": 22.6,
-                "dailymax": 22.6,
-                "dailymin": 17,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "humidity": {
-                "description": "Relative Luftfeuchtigkeit",
-                "unit": "%",
-                "value": 60,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "winddirection": {
-                "description": "Windrichtung",
-                "unit": "${^\circ}$",
-                "value": 75,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "windspeed": {
-                "knoten": {
-                    "value": 7.6,
-                    "dailymax": 7.9,
-                    "unit": "kn"
-                },
-                "kmph": {
-                    "value": 14.08,
-                    "dailymax": 14.63,
-                    "unit": "km/h"
-                },
-                "beaufort": {
-                    "value": 3,
-                    "dailymax": 3,
-                    "unit": "Bft"
-                },
-                "description": "Windgeschwindigkeit",
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "gust": {
-                "knoten": {
-                    "value": 8,
-                    "dailymax": 8.2,
-                    "unit": "kn"
-                },
-                "kmph": {
-                    "value": 14.82,
-                    "dailymax": 15.19,
-                    "unit": "km/h"
-                },
-                "beaufort": {
-                    "value": 3,
-                    "dailymax": 3,
-                    "unit": "Bft"
-                },
-                "description": "Böen",
-                "unit": "kn",
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "precipitation": {
-                "description": "Niederschlagsmenge seit Mitternacht",
-                "unit": "mm",
-                "value": 0,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "pressure": {
-                "description": "Luftdruck",
-                "unit": "hPa",
-                "value": 1017.1,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "weathericon": {
-                "description": "Icon type current weather",
-                "value": 5,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "forecasticon": {
-                "description": "Forecast icon",
-                "value": 5,
-                "timestamp": "2018-07-17 13:24:31",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "watertemperature1m": {
-                "description": "Wassertemperatur 1m unter der Wasseroberfläche",
-                "unit": "${^\circ}$C",
-                "value": 24.2,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "watertemperature0m5": {
-                "description": "Wassertemperatur 0.5m unter der Wasseroberfläche",
-                "unit": "${^\circ}$C",
-                "value": 23.9,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "waterlevel": {
-                "description": "Bodenseepegel",
-                "unit": "m",
-                "value": 3.54,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "radiation": {
-                "description": "Globalstrahlung",
-                "unit": "W/m2",
-                "value": 868,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            },
-            "sunduration": {
-                "description": "Sonnenstunden",
-                "unit": "h/d",
-                "value": 5,
-                "timestamp": "2018-07-17 13:24:00",
-                "interval": 60,
-                "intervalUnit": "seconds"
-            }
-        }
-    }
-}
-}
-\end{lstlisting}
+Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree (siehe \Diskussionspunkt{ANHANG}) umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
 
 
 \subsection{Umsetzung der API}
@@ -264,7 +68,7 @@ Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeich
 Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar strukturiert ist. Im Verzeichnis Data werden die alle Sensordaten verarbeitet, im Verzeichnis Webcam wird nur das JSON für die Webcam erstellt, da hier keine Datenbankabfrage notwendig ist und im Verzeichnis misc werden verschiedene Daten von dritten verarbeitet.
 
 \paragraph{PHP Files}
-In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzuzeigen. Vom Grundaufbau die Dateien im Config-Ordner und der Ablauf der Anfragen alle gleich \ref{img:APIFiles}
+In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzuzeigen. Vom Grundaufbau sind die Dateien im Config-Ordner und der Ablauf der Anfragen wie in Bild \ref{img:APIFiles}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\linewidth]{img/APIFiles.jpg}
