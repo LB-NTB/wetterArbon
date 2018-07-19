@@ -99,17 +99,17 @@
   >,
   % Standard tags
     <!DOCTYPE,
-  </html, <html, <head, <title, </title, <style, </style, <link, </head, <meta, />,
+  </html, <html, <head, <title, <section, </section, </title, <style, </style, <link, </head, <meta, />,
     % body
     </body, <body,
     % Divs
     </div, <div, </div>, 
     % Paragraphs
-    </p, <p, </p>,
+    </p, <p, </p>, <h2, </h2, <h3, </h3, 
     % scripts
     </script, <script,
   % More tags...
-  <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article
+  <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article
   },
   ndkeywords={
   % General
@@ -310,6 +310,8 @@ emphstyle       =[2]\color{dkyellow}
 \input{Deckblatt}
 \setcounter{page}{2}
 \tableofcontents
+\clearpage
+\listoffigures
 \clearpage
 \pagenumbering{arabic}
 

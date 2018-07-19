@@ -460,6 +460,11 @@ Das Dashboard ist interaktiv d.h. der Benutzer kann den Betrachtungszeitraum sel
 Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informaitonen angezeigt.
 
 
+Hostpoint
+Datenbankbenutzer -> IP eingeben (IP-Tool: http://ip.hostpoint.ch)
+Anmeldedaten für tableau
+
+
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tableau}}
@@ -544,66 +549,57 @@ function updateData(res){
 %% Unterkapitel
 %% ############################################################################
 \subsection{Barrierefreier Zugang}
-\Diskussionspunkt{- Kapitel muss noch fertiggestellt werden}\newline
-Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann.
+Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
-Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Dazu zählen nicht nur Menschen mit Einschränkungen. Auch veraltete Technik oder aber der allerneueste Stand der Technik können zu Schwierigkeiten führen. Ein hoher Lärmpegel (z.B. in einer Fabrikhalle) oder der Zwang zur Stille (z.B. in einer Bibliothek), der keine akustische Ausgabe gestatten oder Lichtverhältnisse, die einen besonders hohen Kontrast erfordern beeinflussen die Bedienbarkeit einer Webseite. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
-
-Die aktuellen Web Content Accessibility Guidelines\footnote{ \url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien:
+\noindent
+Die aktuellen Web Content Accessibility Guidelines\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
 
 \begin{itemize}
-\item Prinzip 1: Wahrnehmbarkeit
-\item Prinzip 2: Bedienbarkeit
-\item Prinzip 3: Verständlichkeit
-\item Prinzip 4: Robustheit
+\item Designprinzip 1: wahrnehmbar
+\item Designprinzip 2: bedienbar
+\item Designprinzip 3: verständlich
+\item Designprinzip 4: robust
 \end{itemize}
 
-Die Ziele dieser vier Prinzipien sind durch zwölf Richtlinien genauer spezifiziert.
-
-% Zu jeder Richtlinie geben die WCAG2 testbare Erfolgskriterien (Success Criteria) vor.
-% Priorität 1 („Muss-Kriterien“): Webauftritte müssen alle A-Anforderungen erfüllen, weil es sonst für eine oder mehrere Benutzergruppen unmöglich wäre, auf die Information im Dokument zuzugreifen.
-% Priorität 2 („Soll-Kriterien“): Die Erfüllung der AA-Anforderungen beseitigt signifikante Hindernisse und erleichtert einer oder mehreren Benutzergruppen den Zugriff auf Web-Dokumente.
-% Priorität 3 („Kann-Kriterien“): Diese AAA-Anforderungen können erfüllt werden, um den Zugriff auf Web-Dokumente für eine oder mehrere Benutzergruppen zu erleichtern. Sind die Prioritäten 1 bis 3 erfüllt, erhält das Informationsangebot die Konformitätsstufe AAA.
-
-
-Daraus ergeben sich folgende relevante Anforderungen für die Webseite der Wetterstation:
-
+\noindent
+Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
 
 \subsubsection*{Wahrnehmbarkeit}
-% Anforderung 1.1: Text-Alternativen
-% Anforderung 1.2: Zeitbasierte Medien -> nicht relevant
-% Anforderung 1.3: Anpassbarkeit
-% Anforderung 1.4: Unterscheidbarkeit
-Alle Nicht-Text-Inhalte, die dem Benutzer präsentiert werden, haben eine Textalternative, die dem entsprechenden Zweck dient.
-Die einzelenen Blöcke müssen sematisch korrekt bezeichnet werden (RL 1.3)
-Farbe ist nicht das einzige visuelle Mittel, um Informationen zu vermitteln oder ein visuelles Element zu unterscheiden.
-Text kann ohne Hilfsmittel bis zu 200 Prozent vergrössert werden, ohne dass der Inhalt oder die Funktionalität verloren geht. Die visuelle Darstellung von Text hat ein Kontrastverhältnis von mindestens 7:1. Problematisch ist die Kombination von Komplementärfarben, weil sie zu Flimmern führen können.~\cite{HellbuschJanEric2011Bvuu}
-% Für die visuelle Darstellung von Textblöcken steht ein Mechanismus zur Verfügung, um folgendes zu erreichen: (Level AAA)
-% Vorder- und Hintergrundfarben können vom Anwender frei gewählt werden.
-% Die Breite beträgt nicht mehr als 80 Zeichen oder Glyphen (40 bei CJK).
-% Der Text ist links ausgerichtet
-% Der Zeilenabstand (Vorspann) ist innerhalb von Absätzen mindestens anderthalb mal so groß wie der Zeilenabstand, und der Absatzabstand ist mindestens 1,5 mal so groß wie der Zeilenabstand.
-% Die Größe des Textes kann ohne Hilfsmittel bis zu 200 Prozent verändert werden, ohne dass der Benutzer horizontal scrollen muss, um eine Textzeile in einem Vollbildfenster zu lesen.
+% Richtlinie 1.1
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.1} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
 
-% Interessante Farb-Auswahlwerkzeuge:
-% Colorchecker\footnote{ \url{http://accessible-colors.com}}
-% Colorsave\footnote{ \url{http://colorsafe.co}}
-% Colorbrewer\footnote{ \url{http://colorbrewer2.org}}
+\begin{lstlisting}[label=lst:altImg,caption=Alternativtext für Icons, language=HTML5, style=htmlcssjs]
+<img src="img/wi-humidity.svg" alt="Icon eines Barometers">
+\end{lstlisting}
 
+Wie die verwendeten javascript-Bibliotheken, bietet auch Tableau, mit welchem die interaktive Darstellung der historischen Daten erfolgt, keine Möglichkeit die Visualisierung als Text darzustellen. \newline
+
+% Richtlinie 1.3
+\noindent
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.3} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \textit{semantischem} Web.
+
+Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseite durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \textit{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\textit{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\textit{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
+
+\begin{figure}[h!]
+	\centering
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/semWeb}}
+	%\includegraphics[width=1\linewidth]{img/sturm}
+	\caption{Umsetzung der semantisches Web-Anforderung}
+	\label{img:semWeb}
+\end{figure}
+
+% Richtlinie 1.4
+\noindent
+\href{https://www.w3.org/Translations/WCAG20-de/#visual-audio-contrast}{Richtlinie 1.4} fordert, dass die visuelle Darstellung von Text ein Kontrastverhältnis von mindestens 4,5:1 hat. Zudem muss es möglich sein die Textgrösse um bis zu 200 Prozent zu erhöhen, ohne dass dabei Inhalt oder Funktionalität verloren geht. Um diese Anforderung zu Überprüfen wurde das Firefox-Plugin \textit{tota11y}\footnote{\url{http://khan.github.io/tota11y/}} verwendet. Das Plugin ermöglicht es auf einfache Weise zu überprüfen ob die Webseite die Barrierefrei-Bediungungen erfüllt. Die Kontrastverhältnisse liegen gemäss diesem Tool zwischen 5.75 und 12.63 und sind somit in Ordnung. Da die gesamte Webseite responsive ist, stellt die Vergrösserung auf 200\% kein Problem dar.
 
 
 \subsubsection*{Bedienbarkeit}
-% Anforderung 2.1: Zugänglichkeit per Tastatur
-% Anforderung 2.2: Bereitstellung ausreichender Zeit
-% Anforderung 2.3: Vermeidung von Anfällen
-% Anforderung 2.4: Navigierbarkeit
-Alle Funktionen des Inhalts sind über eine Tastaturschnittstelle bedienbar.
-Webseiten enthalten nichts, was in einer Sekunde mehr als dreimal blinkt.
-Der Zweck eines jeden Links kann aus dem Linktext allein oder aus dem Linktext zusammen mit seinem programmatisch festgelegten Linkkontext bestimmt werden.
-Es gibt mehr als eine Möglichkeit, eine Webseite innerhalb einer Gruppe von Webseiten zu lokalisieren.
-Überschriften und Labels beschreiben das Thema oder den Zweck.
-Jede Tastatur bedienbare Benutzeroberfläche hat eine Betriebsart, bei der die Tastaturfokusanzeige sichtbar ist. Informationen über den Standort des Benutzers innerhalb einer Reihe von Webseiten sind verfügbar. Abschnittsüberschriften dienen der inhaltlichen Gliederung.
 
+\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{Richtlinie 2.1} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und das die Tastaturfokusanzeige sichtbar ist.
+Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice, siehe Kapitel \ref{notifications}, relevant. Dieses ist problemlos mittels Tastatur bedienbar. \newline
+
+\noindent
+\href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{Richtlinie 2.4} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} wurde besitzt die Webseite sowhol einen Seitentitel, als auch Zwischentitel.
 
 
 \subsubsection*{Verständlichkeit}
