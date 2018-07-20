@@ -361,28 +361,34 @@ LIMIT 3
 % was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
 Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
 
-\begin{figure}[h!]
+\begin{figure}[htbp!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm2}}
-	%\includegraphics[width=1\linewidth]{img/sturm2}
-	\caption{Sturmwarndienst Bodensee}
+	\caption{Warleuchten des Sturmwarndiensts auf dem Bodensee}
 	\label{img:sturm2}
 \end{figure}
 
+
+
+\subsubsection{Eingeschränkte Bezugsquellen}
 % Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Kostenlos gibt es nur zwei browserkomatible Quellen: Das eine ist die allgemeine Mini-Warnkarte (173 x 109 Pixel) von meteoschweiz (siehe Abbildung \ref{img:sturm}, links) und das andere ist die Anzeige auf der Webseite der Kantonspolizei, Abbildung \ref{img:sturm}, rechts.
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht ebenfalls nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen. Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
+\Diskussionspunkt{Verweis auf E-Mail im Anhang}\\
 
 \begin{figure}[h!]
 	\centering
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm}}
-	%\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Kostenlose Browserdarstellung}
-	\label{img:sturm}
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturmZeit}}
+	\caption[Zeitverzug zwischen Sturmwarnmeldung und Anzeige]{Zeitverzug zwischen der Warnmeldung von Meteoschweiz und dem Einschalten der Warnleuchten durch die Kantonale Notrufzentrale (KNZ) in Frauenfeld}
+	\label{img:sturmZeit}
 \end{figure}
 
-Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau die Erlaubnis eingeholt, die Sturmwarndaten von der Kapo-Webseite abgreifen zu dürfen. Wir verwenden dazu die Python Bibliothek \textit{BeautifulSoup} als web crawler, wie in Listing \ref{lst:kttgCrawler} dargestellt. \newline
 
-\begin{lstlisting}[label=lst:kttgCrawler,caption=Web Crawler für die Sturmwarndaten, language=python, style=py]
+\subsubsection{Abgreifen der Sturmwarndaten} % screen scrapping
+% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
+Die Sturmwarndaten werden periodisch mittels Python-Skript ausgelesen. Als Web-Scrapper kommt die Python-Bibliothek \href{https://www.crummy.com/software/BeautifulSoup/}{\emph{BeautifulSoup}} zum Einsatz. Das Auslesen von Webseiten wird auch \emph{web scraping} genannt. Die Idee dahinter ist, die gewünschte Information auf Grund ihrer Element-Bezeichnung (\texttt{<td>}), ihres Attributs (\texttt{class="titelfett"}) oder Hierarchistufe (\texttt{tr:nth-of-type(4)}) eindeutig zu identifizieren. Um diese eindeutige Identifikation herauszufinden wurde das Google Chrome-Plugin \href{https://selectorgadget.com/}{\emph{SelectorGadget }} verwendet. Listing \ref{lst:kttgCrawler} zeigt die gesamte Abfrage. Darin ist das Problem dieser Methode gut erkennbar. Ändert die URL oder die Bezeichung bzw. Struktur der Seite, liefert das Skript nicht mehr die gewünschten Daten. Da das Web-Scrapping jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, muss dieses Risiko akezptiert werden.
+
+
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web-Scrapper für die Sturmwarndaten, language=python, style=py]
 page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
 soup = BeautifulSoup(page.text, 'html.parser')
 
@@ -393,32 +399,31 @@ soup.select('table tr:nth-of-type(4) td'):
 soup.select('.titelfett strong'):
 \end{lstlisting}
 
-% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
-Das Problem beim Verwenden des Web Crawlers besteht darin, dass sobald die URL oder die Webseite geändert wird, der Crawler angepasst werden muss. Da der Crawler jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, müssen wir dieses Risiko akzeptieren.
 
-% Problem 2: Öffnungszeiten -> keine Warnung in der NAcht
+
+
+\subsubsection{Eigener Sturmwarndienst mit Hilfe der Messwerte}
+% Problem 2: Öffnungszeiten -> keine Warnung in der Nacht
 Der Sturmwarndienst wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
 
-\begin{itemize}
+\begin{itemize*}
 \item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
 \item 1. November - 31. März: 07:00 - 20:00 Uhr
-\end{itemize}
+\end{itemize*}
 
 \noindent
 % Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
-Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
+Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen bzw. einen Benachrichtungsservice, wie in Kapitel \ref{notifications} beschrieben, anzubieten. In der Bodensee-Schifffahrts-Ordnung (BSO) Art. 6.13, steht jedoch:
 
 \begin{quote}
-\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen \frqq
+\flqq Bereits bei Starkwind- und Sturmwarnung muss der Schiffsführer die durch die Umstände gebotenen Massnahmen treffen.\frqq
 \end{quote}
 
 \noindent
- Da die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+ Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
 
 
-
-%-> Verweis auf Zeitungsartikel
 %-> Meteoschweiz schickt in der Nacht keine SMS????? bzw. erstellt keine JSON????
 
 % ins Kapitel API bzw. Cronjobs übernehmen
@@ -436,11 +441,11 @@ Der Gedanke liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anz
 \subsection{Darstellung der historischen Daten}
 Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahren, welche ebenfalls auf der Webseite verfügbar sein soll. Es gibt drei drei Grundlagen für die historischen Daten:
 
-\begin{itemize}
+\begin{itemize*}
 \item Historische Daten der neuen Wetterstation
 \item Historische Daten der alten Wetterstation
 \item Excel mit Pegeldaten von 1953 bis 2005
-\end{itemize}
+\end{itemize*}
 
 Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
