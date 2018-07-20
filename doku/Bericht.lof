@@ -26,13 +26,13 @@
 \contentsline {figure}{\numberline {25}{\ignorespaces ER-Modell der Daten vom Wettertransmitter}}{32}{figure.25}
 \contentsline {figure}{\numberline {26}{\ignorespaces ER-Modell der externen Sensoren}}{32}{figure.26}
 \contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{33}{figure.27}
-\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{35}{figure.28}
+\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{36}{figure.28}
 \contentsline {figure}{\numberline {29}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{36}{figure.29}
 \contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{38}{figure.30}
 \contentsline {figure}{\numberline {31}{\ignorespaces Beispiel einer API GET-Abfrage}}{40}{figure.31}
 \contentsline {figure}{\numberline {32}{\ignorespaces Aufbau des API Verzeichnis}}{42}{figure.32}
-\contentsline {figure}{\numberline {33}{\ignorespaces PHP Files und Ablauf einer Abfrage}}{42}{figure.33}
-\contentsline {figure}{\numberline {34}{\ignorespaces Funktionsprinzip des Benachrichtungsservices}}{46}{figure.34}
-\contentsline {figure}{\numberline {35}{\ignorespaces Eingabeformular mit Fehler\IeC {\"u}berpr\IeC {\"u}fung (rechts)}}{47}{figure.35}
-\contentsline {figure}{\numberline {36}{\ignorespaces Datenbankeintrag, wenn keine weiteren Benutzer in der Warteschlange sind}}{49}{figure.36}
-\contentsline {figure}{\numberline {37}{\ignorespaces Datenbankeintrag, mehrere Benutzer registriert sind}}{49}{figure.37}
+\contentsline {figure}{\numberline {33}{\ignorespaces Ablauf einer API GET-Abfrage}}{43}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Funktionsprinzip des Benachrichtungsservices}}{45}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Eingabeformular mit Fehler\IeC {\"u}berpr\IeC {\"u}fung (rechts)}}{45}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Datenbankeintrag, wenn keine weiteren Benutzer in der Warteschlange sind}}{47}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces Datenbankeintrag, mehrere Benutzer registriert sind}}{47}{figure.37}
