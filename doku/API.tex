@@ -47,15 +47,16 @@ Zu Beginn des API Konzept sollten die Anforderungen daran erstellt werden. Die A
 \item Webcam
 \item Sturmwarnung
 \end{itemize}
-Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Somit ist ein sogenannter Token für die Authentifizierung nicht notwendig. Das Datenformat der API soll JSON sein. JSON ist ein simples Datenformat, welches nicht viel Speicherplatz benötigt und somit auch einfach Transferiert werden kann. Nebst der Lesbarkeit für Menschen, kann es auch von Maschinen gelesen werden. Javascript beispielsweise handhabt JSON nativ. Nebst dem das Javascript JSON versteht, ist auch die Handhabung bei PHP simpel  \Diskussionspunkt{LITERATUR}. 
+Die Datenabfrage über die API soll wie es State of the Art entwickelt wird RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein, da bspw. keine POST-Befehle oder sonstige Befehle ausgeführt werden müssen. Somit ist ein sogenannter Token für die Authentifizierung nicht notwendig. Das Datenformat der API soll JSON sein. JSON ist ein simples Datenformat, welches nicht viel Speicherplatz benötigt und somit auch einfach Transferiert werden kann. Nebst der Lesbarkeit für Menschen, kann es auch von Maschinen gelesen werden. Javascript beispielsweise handhabt JSON nativ. Nebst dem das Javascript JSON versteht, ist auch die Handhabung bei PHP simpel \cite{LornaJaneMitchell2013oreilly}. 
 
 \paragraph{JSON Struktur}
 
-Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree (siehe \Diskussionspunkt{ANHANG}) umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
+Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree (siehe Anhang Listing \ref{lst:JsonTree}) umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
 
 
-\subsection{Umsetzung der API}
-Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Für die Übersichtlichkeit wird auch ein Verzeichnis gemäss Abb. \ref{img:APIVerzeichnis}aufgebaut.
+\subsection{Funktionsweise der API}
+
+In diesem Kapitel wird die Funktionsweise nach der Umsetzung des API-Konzepts erklärt. Die ganze API ist Modular aufgebaut, dass diese für weitere Anwendungen oder Messwerte ausgebaut werden kann. Dies beginnt schon beim Verzeichnis (Abb. \ref{img:APIVerzeichnis}) .
 
 
 \begin{figure}[h!]
@@ -65,10 +66,7 @@ Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Für die Üb
 	\label{img:APIVerzeichnis}
 \end{figure}
 
-Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar strukturiert ist. Im Verzeichnis Data werden die alle Sensordaten verarbeitet, im Verzeichnis Webcam wird nur das JSON für die Webcam erstellt, da hier keine Datenbankabfrage notwendig ist und im Verzeichnis misc werden verschiedene Daten von dritten verarbeitet.
-
-\paragraph{Aufbau der Dateien}
-Nebst dem Verzeichnis, welches modular aufgebaut ist, sollten auch die Dateien eine gewisse Struktur enthalten. Jedes Verzeichnis Config enthält die folgenden vier Dateien. 
+Das Verzeichnis V1 beinhaltet drei Unterverzeichnisse, data, misc und webcam. Im Verzeichnis Data wird das JSON der Sensoren aufgebaut, im Verzeichnis Webcam wird das JSON für die Webcam erstellt, dies ist auch das einzige Verzeichnis welches nicht auf die Datenbank zugreift. Im Verzeichnis misc werden verschiedene Arten von Daten von welche von dritten abgegriffen werden verarbeitet. Nebst dem Verzeichnis, welches modular aufgebaut ist, enthalten auch die Dateien eine gewisse Struktur. Jedes Verzeichnis config enthält die folgenden vier Dateien. 
 \begin{itemize}
 \item path.php
 \item createJson.php
@@ -76,7 +74,7 @@ Nebst dem Verzeichnis, welches modular aufgebaut ist, sollten auch die Dateien e
 \item database.php
 \end{itemize}
 
-Die GET-Anfrage stösst eine Reihe von Prozessen an (Siehe Bild ...). Zu Beginn wird im path.php das Routing mittels switch-case vorgenommen. Im Case wird der entsprechende Funktionsaufruf mit den Parametern an das CreateJSON übergeben. Hier entsteht zum Schluss auch das JSON. Die Funktion CreateJson...() stellt das JSON nach der Datenbankabfrage read...() in der Datei databaseQuery.php her. Das JSON wird aus dem dynamischen Array, enthält die Messwerte, sowie dem statischen Array, enthält die Einheit und Beschreibung, zusammengesetzt und zurück gegeben 
+Erfolgt eine GET-Abfrage eines Clients läuft dies gemäss Abb. \ref{img:APIFiles}  ab. Nach der GET-Abfrage wird das Routing anhand des URL Pfades im path.php vorgenommen. Im Case wird der entsprechende Funktionsaufruf mit den Parametern an das CreateJSON übergeben. Hier entsteht zum Schluss auch das JSON. Die Funktion CreateJson...() stellt das JSON nach der Datenbankabfrage read...() in der Datei databaseQuery.php her. Das JSON wird aus dem dynamischen Array, enthält die Messwerte, sowie dem statischen Array, enthält die Einheit und Beschreibung, zusammengesetzt und zurück gegeben. 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\linewidth]{img/API_GET.jpg}
@@ -84,7 +82,8 @@ Die GET-Anfrage stösst eine Reihe von Prozessen an (Siehe Bild ...). Zu Beginn 
 	\label{img:APIFiles}
 \end{figure}
 
-Im Path.php wird das Routing vorgenommen. Hier wird mit einem switch case (Listing \ref{lst:path}) anhand des URL Pfades entschieden welche Arrays aufgebaut und Funktionsaufruf gemacht werden muss. 
+Für die API ist die Datei path.php essentiell (listing \ref{lst:path}). Hier wird wie erwähnt das Routing vorgenommen und die entsprechenden Funktionsaufrufe mit den dazugehörenden Parameter.  
+
 
 \begin{lstlisting}[label=lst:path,caption=Beispiel Case zuweisung, language=php, style=php]
 	...    
@@ -114,7 +113,7 @@ Im Path.php wird das Routing vorgenommen. Hier wird mit einem switch case (Listi
         ...
 \end{lstlisting}
 
-
+Eine weitere essentielle Datei ist das createJson.php hier wird das ganze Json aufgebaut. Für die verschiedenen Arten von Messwerten und deren anrprüche daran sind vier verschiedene Funktionen enstanden:
 
 \begin{itemize}
 \item CreateJsonMinMax
@@ -135,6 +134,4 @@ Im Path.php wird das Routing vorgenommen. Hier wird mit einem switch case (Listi
 \end{itemize}
 \end{itemize}
 
-In den Funktionen erfolgt wieder ein Funktionsaufruf. Dieser führt dann die Datenbankabfrage aus und gibt die Resultate an die createJson...Funktion. Hier wird das Resultat in ein Array verarbeitet und mit dem statischen Array, welches die Einheit und Beschreibung enthält zusammengeführt. Als letzer Schritt wird das Array als JSON zurück gegeben. 
-
-
+Die Funktionen sind vom Aufbau her alle gleich. Der Unterschied besteht jedoch beim Aufbau des Json. Für einige Messwerte sind Maximal und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet damit alle Benutzer die Messwerte auch intepretieren können.
