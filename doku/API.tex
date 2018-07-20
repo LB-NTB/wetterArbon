@@ -55,7 +55,7 @@ Um die API zu entwickeln wurden die Anforderungen in einen sogenannten JSON-tree
 
 
 \subsection{Umsetzung der API}
-Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeichnis soll gemäss Abb. \ref{img:APIVerzeichnis}aufgebaut werden.
+Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Für die Übersichtlichkeit wird auch ein Verzeichnis gemäss Abb. \ref{img:APIVerzeichnis}aufgebaut.
 
 
 \begin{figure}[h!]
@@ -67,55 +67,67 @@ Jetzt wo die Struktur steht kann auch das Konzept umgesetzt werden. Das Verzeich
 
 Für diesen Aufbau wurde gewählt, weil so die API erweiterbar bleibt und klar strukturiert ist. Im Verzeichnis Data werden die alle Sensordaten verarbeitet, im Verzeichnis Webcam wird nur das JSON für die Webcam erstellt, da hier keine Datenbankabfrage notwendig ist und im Verzeichnis misc werden verschiedene Daten von dritten verarbeitet.
 
-\paragraph{PHP Files}
-In diesem Unterkapitel geht es um den Grundaufbau der verschiedenen PHP Files welche im Verzeichnis Data und misc benötigt werden, zudem wird aufgezeigt wie weitere Sensordaten hinzugefügt werden können um die Modularität aufzuzeigen. Vom Grundaufbau sind die Dateien im Config-Ordner und der Ablauf der Anfragen wie in Bild \ref{img:APIFiles}
+\paragraph{Aufbau der Dateien}
+Nebst dem Verzeichnis, welches modular aufgebaut ist, sollten auch die Dateien eine gewisse Struktur enthalten. Jedes Verzeichnis Config enthält die folgenden vier Dateien. 
+\begin{itemize}
+\item path.php
+\item createJson.php
+\item databaseQuery.php
+\item database.php
+\end{itemize}
+
+Die GET-Anfrage stösst eine Reihe von Prozessen an (Siehe Bild ...). Zu Beginn wird im path.php das Routing mittels switch-case vorgenommen. Im Case wird der entsprechende Funktionsaufruf mit den Parametern an das CreateJSON übergeben. Hier entsteht zum Schluss auch das JSON. Die Funktion CreateJson...() stellt das JSON nach der Datenbankabfrage read...() in der Datei databaseQuery.php her. Das JSON wird aus dem dynamischen Array, enthält die Messwerte, sowie dem statischen Array, enthält die Einheit und Beschreibung, zusammengesetzt und zurück gegeben 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{img/APIFiles.jpg}
-	\caption{PHP Files und Ablauf einer Abfrage}
+	\includegraphics[width=0.5\linewidth]{img/API_GET.jpg}
+	\caption{Ablauf einer API GET-Abfrage}
 	\label{img:APIFiles}
 \end{figure}
 
-
-Im File Path \ref{lst:path} wird die URL ausgelesen und dem richtigen Case zugewiesen. Siehe Bild. In der Zeile 2 wird die URL für den case überprüft. Ist diese richtig, wird der entsprechende Tabellenname in der dieses Attribut vorhanden ist angegeben, dies ist für die Datenbankabfrage. Anschliessend wird angegeben welche Sensorwerte aus der Datenbank benötigt werden. In Zeile 12 wird das sogenannte dataJsonStatic erstellt, hierbei wird die Beschreibung (description) und die Einheit (unit) der Daten angegeben. Grund für diesen Arraynamen ist das diese Daten statisch sind. Anschliessend wird der JSON Name vergeben in Zeile 17. Zum Schluss in Zeile 20 wird die entsprechende Funktion im createJson aufgerufen mit der entsprechenden Parameterliste
+Im Path.php wird das Routing vorgenommen. Hier wird mit einem switch case (Listing \ref{lst:path}) anhand des URL Pfades entschieden welche Arrays aufgebaut und Funktionsaufruf gemacht werden muss. 
 
 \begin{lstlisting}[label=lst:path,caption=Beispiel Case zuweisung, language=php, style=php]
-  //if the case is the right URI do case
-    case "/v1/data/temperature": //temperature
-      //set table name for SQL query
-      $table = "tblwettertransmitter";
-      //set required parameters for SQL query
-      $requiredData=array(
-        "value" => "temperature",
-        "min"  => "min_daily_temperature",
-        "max" => "max_daily_temperature"
-      );
-      //set the static Json data
-      $dataJsonStatic=array(
-        "description"  => "Lufttemperatur",
-        "unit"  => "C"
-      );
-      //Set the Json Name
-      $name = "temperature";
-    //call function createJson to do the SQL query and make a Json. Function is in file createJson.php
-
-      createJsonMinMax($requiredData, $dataJsonStatic, $table, $name);
-    break;
+	...    
+    /*Der Case wird nur einmal erklaert da die restlichen vom Aufbau gleich sind*/
+        //Ist die URI die gleiche wie fuer den Case wird der Code ausgefuehrt
+        case "/v1/misc/east"; //bodensee-east
+        //Tabellenname worin die Daten geschrieben sind
+        $table = "tblmisc";
+        /*Array fuer die Datenbankabfrage wird erstellt.
+         Das Array beinhaltet die benoetigten Angaben fuer die Zusammensetzung*/
+         $requiredData=array(
+          "value" => "warnlevel_east",
+          "onset"  => "onset_east",
+          "expires" => "NULL"
+        );
+        /*Das Array mit den statischen Daten wird erstellt.
+        Dies wird anschliessend beim zusammensetzen des JSON benoetigt */
+        $dataJsonStatic=array(
+          "description"  => "Warnlevel east"
+        );
+        //JSON Name wird vergeben
+        $name = "east";
+        /*Die entsprechende Funktion um das JSON zu erstellen wird aufgerufen.
+        Die vorhin erstellten Arrays sowie variablen werden uebergeben*/
+        createJson($requiredData, $dataJsonStatic, $table, $name);
+        break;
+        ...
 \end{lstlisting}
 
-Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File createJson bestehen verschiedene Funktionen, passend zur Anforderung. Es bestehen folgenden Funktionen welche kurz umschrieben werden welches Ziel diese haben.\\
+
+
 \begin{itemize}
 \item CreateJsonMinMax
 \begin{itemize}
-\item Diese Funktion erstellt die JSONs mit dem aktuellen Wert sowie den Extrema des Tages
+\item Diese Funktion erstellt die Jsons mit dem aktuellen Wert sowie den Extrema des Tages
 \end{itemize}
 \item CreateJson
 \begin{itemize}
-\item Erstellt das Json für die Daten, welche keine Extrema oder sonstige umrechnungen benötigen
+\item Erstellt das Json für die Daten, welche keine Extrema oder sonstige Umrechnungen benötigen
 \end{itemize}
 \item CreateJsonConversion
 \begin{itemize}
-\item Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten Km/h, knoten und beufort. Umgerechnet werden die aktuellen Werte, sowie die Extrema
+\item Erstellt das Json für die Windgeschwindigkeiten mit den verschiedenen Einheiten Km/h, Knoten und Beaufort. Umgerechnet werden die aktuellen Werte, sowie die Extrema
 \end{itemize}
 \item createJsonSunduration
 \begin{itemize}
@@ -123,92 +135,6 @@ Nachdem die Funktion aufgerufen worden ist, geht es ins File createJson. Im File
 \end{itemize}
 \end{itemize}
 
-Zurück zum Beispiel für den Aufruf des Temperatur Jsons. In der Zeile 4 und 5 wird die Verbindung zur Datenbank hergestellt \ref{lst:createJson}, dazu später mehr. Anschliessen wird die Klasse Sensors initialisiert und der Variable data zugewiesen und in der Zeile 8 die Datenbankabfrage durchgeführt und das Resultat in der Variablen stmt gespeichert. Nachdem die Datenbankabfrage erfolgreich wird das Resultat mittels einer while-Schlaufe in die einzelnen Spalten zerlegt und als Array gespeichert. Von Zeile 14 bis 22 wird das assoziative Array dataJson aufgebaut um in der Zeile 24 mit dem Array im File path.php zusammengefügt zu werden. Anschliessen wird das Array mittel einem echo zurückgegeben. Die restlichen Funktionen unterscheiden sich nur im Aufbau des Arrays, die Datenbankabfrage, das Aufbauen des dataJson und das Zusammenfügen sowie das zurückgeben funktioniert überall gleich.
-
-\begin{lstlisting}[label=lst:createJson,caption=Beispiel erstellung des Jsons, language=php, style=php]
-function createJsonMinMax($requiredData, $dataJsonStatic, $table,$name)
-{
-  // instantiate database and data object
-  $database = new Database();
-  $db = $database->getConnection();
-  $data = new Sensors($db);
-  //call function readMinMax to get the database data
-  $stmt = $data->readMinMax($requiredData, $table);
-
-  while ($row = $stmt->fetch(PDO::FETCH_BOTH))
-  {
-    extract($row);
-    //create Json from DB results
-    $dataJson=array(
-      "value" => (float)$row[1],
-      "dailymax" => (float)$row[3],
-      "dailymin" => (float)$row[2],
-      "timestamp" => $row[0],
-      "interval"  => 60,
-      "intervalUnit" => "seconds"
-    );
-  }
-  //merge static data array and DB array
-  $jsonArray[$name]=array_merge_recursive($dataJsonStatic, $dataJson);
-  //encode to Json
-  echo json_encode($jsonArray);
-}
+In den Funktionen erfolgt wieder ein Funktionsaufruf. Dieser führt dann die Datenbankabfrage aus und gibt die Resultate an die createJson...Funktion. Hier wird das Resultat in ein Array verarbeitet und mit dem statischen Array, welches die Einheit und Beschreibung enthält zusammengeführt. Als letzer Schritt wird das Array als JSON zurück gegeben. 
 
 
-
-\end{lstlisting}
-Vor das die Datenbankabfrage \ref{lst:database} ausgeführt werden kann, muss eine Datenbankverbindung hergestellt werden. Hier wird Gebrauch vom try, catch Verfahren gemacht. Hiermit ist es möglich wie auch in anderen Programmiersprachen eine Ausnahme (Exception) abgefangen werden \cite{Ausnahmebehandlung:ThePHPGroup}. In der Zeile 7 d.h. im try wird die Verbindung durch eine Instanz der PDO Klasse erzeugt. Diese benötigt die richtigen Parameter für die Verbidung, d.h. den host, den Datenbanknamen, den Datenbankbenutzer und das Passwort.
-
-\begin{lstlisting}[label=lst:database,caption=Beispiel Aufbau der Datenbankverbindung, language=php, style=php]
-
-  // get the database connection
-  public function getConnection()
-  {
-    $this->conn = null;
-
-    try
-    {
-      $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-      $this->conn->exec("set names utf8");
-    }
-    catch(PDOException $exception)
-    {
-      echo "Connection error: " . $exception->getMessage();
-    }
-
-    return $this->conn;
-  }
-
-
-\end{lstlisting}
-Nachdem die Verbindung aufgebaut ist, wird wie bei der erklärung für das CreateJson und deren Funktion erwähnt die Datenbankabfrage durchgeführt. In Zeile 16 wird die Abrage erstellt, im Beispiel für die Temperatur würde für die variablen folgende Strings stehen:\\
-\begin{lstlisting}[label=lst:createJson,caption=Beispiel erstellung des Jsons, language=php, style=php]
-$requiredData['value'] -> temperature
-$requiredData['min'] -> min_daily_temperature
-$requiredData['max'] -> max_daily_temperature
-$table ->  tblwettertransmitter
-\end{lstlisting}
-Diese Werte würden vorher aus der Funktion creatJsonMinMax übergeben. Ist die Query erstellt, wird diese in Zeile 3 vorbereitet und in Zeile 14 ausgeführt. Nachdem diese Ausgeführt wurde wird sie zurückgegeben an die Funktion createJsonMinMax wo die Resultate wie beschrieben aufbereitet werden zu einem Json.
-
-\begin{lstlisting}[label=lst:createJson,caption=Beispiel erstellung des Jsons, language=php, style=php]
-function readMinMax($requiredData, $table)
-  {
-    $query= "SELECT datetime,".$requiredData['value'].", ".$requiredData['min'].", ".$requiredData['max']."
-    FROM ".$table." WHERE datetime = (SELECT MAX(datetime) FROM ".$table.");";
-
-    // prepare query statement
-    $stmt = $this->conn->prepare($query);
-    /*
-    $stmt->bindParam(':valuename', $requiredData['value']);
-    $stmt->bindParam(':minname', $requiredData['min']);
-    $stmt->bindParam(':maxname', $requiredData['max']);
-*/
-    // execute query
-    $stmt->execute();
-
-    return $stmt;
-  }
-
-
-
-\end{lstlisting}

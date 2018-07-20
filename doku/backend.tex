@@ -5,14 +5,14 @@
 %% ############################################################################
 \subsection{Übersicht}
 
-In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Vor der Umstrukturierung der Datenbank waren die Tabellen unübersichtlich aufgebaut. Die Datenbank soll primär für folgende Aufgaben ausgelegt werden:\\
+In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Vor der Umstrukturierung der Datenbank waren die Tabellen unübersichtlich aufgebaut. Nach der Umstrukturierung soll die Datenbank primär für folgende Aufgaben ausgelegt sein:\\
 \begin{itemize}
 \item API
 \item Dreitage Rückschau der verschiedenen Sensoren
 \item Historische Daten
 \end{itemize}
 
-Die Aufgabe der Datenbank ist es den Umgang mit den Daten einfacher zu gestalten, sei es in Bezug auf die Aufbereitung der historischen Daten für den Aufbau der API, welche einfach erweiterbar sein soll.
+Die Aufgabe der Datenbank ist, den Umgang mit den Daten einfacher zu gestalten, sei es in Bezug auf die Aufbereitung der historischen Daten für den Aufbau der API, welche einfach erweiterbar sein soll.
 
 
 
@@ -24,7 +24,8 @@ Die Aufgabe der Datenbank ist es den Umgang mit den Daten einfacher zu gestalten
 Die Daten des Wetter-Transmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstelle abgerufen sowie aufbereitet um die Daten im Minutentakt in der Datenbank zu speicheren. Für die Umgestaltung der Datenbank wurde auch die Konfiguration im WeatherDisplay angepasst. \Diskussionspunkt{BILD} In der Konfiguration können die Datenpunkte welche eingetragen werden sollen selektiert werden. \Diskussionspunkt{Weitere Konfigmöglichkeiten aufzeigen} 
 \Diskussionspunkt{- Konfiguration von WeatherDisplay}\newline
 \Diskussionspunkt{- Was passiert wenn DB-Eintrag nicht erstellt werden kann}\newline
-Kann ein Datenbankeintrag nicht erstellt werden, weil es zu wenig Einträge hat oder aus anderen Gründen wird dies wie später im Kapitel Funktionsüberwachung mit Mail-Service beschrieben abgefangen im Cronjob.  
+
+Kann ein Datenbankeintrag nicht erstellt werden, weil es zu wenig Einträge hat oder aus anderen Gründen wird dies, wie später im Kapitel Funktionsüberwachung mit Mail-Service beschrieben abgefangen im Cronjob.  
 
 \subsubsection{Einlesen von Pegel- und Strahlungsmesswerten}
 Wassertemperatur, Strahlungssensor und Pegelsenoren sind alle an einem Web-IO angeschlossen, welche die analogen Werte per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannten Sensoren die gleiche, nur die URL unterscheidet sich je nach Sensor. Die Abfragen sind nach dem try... catch - Prinzip aufgebaut, sodass das Skript weiterläuft auch wenn vom Web-IO keine Antwort eintrifft.
@@ -49,7 +50,7 @@ except Exception as e:
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenspeicherung}
-\subsubsection{Warum eine Umstrukturierung der Datenbank?}
+\subsubsection{Umstrukturierung der Datenbank}
 Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht sehr aufschlussreich, dass bedeutet es ist nicht auf den ersten Blick ersichtlich welche Daten wo gespeichert werden. Aus diesem Grund wird die Datenbank umstrukturiert. Hierbei soll vor allem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Zusätzlich sollen die Daten, welche weiterhin im Minutentakt geschrieben werden, so aufbereitet werden, dass Benutzer auf der neu erstellen Webpage die Wetterdaten der vergangenen Jahre einsehen können.
 
 \subsubsection{Vorgaben}
