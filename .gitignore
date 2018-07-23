@@ -20,7 +20,8 @@ report/site/
 *.out 
 *.idx 
 *.ilg 
-*.ind 
+*.ind
+*.lof 
 *.idv 
 *.4ct 
 *.4tc 
