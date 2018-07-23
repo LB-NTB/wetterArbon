@@ -75,9 +75,10 @@ Das Verzeichnis V1 beinhaltet drei Unterverzeichnisse, data, misc und webcam. Im
 \end{itemize}
 
 Erfolgt eine GET-Abfrage eines Clients läuft dies gemäss Abb. \ref{img:APIFiles}  ab. Nach der GET-Abfrage wird das Routing anhand des URL Pfades im path.php vorgenommen. Im Case wird der entsprechende Funktionsaufruf mit den Parametern an das CreateJSON übergeben. Hier entsteht zum Schluss auch das JSON. Die Funktion CreateJson...() stellt das JSON nach der Datenbankabfrage read...() in der Datei databaseQuery.php her. Das JSON wird aus dem dynamischen Array, enthält die Messwerte, sowie dem statischen Array, enthält die Einheit und Beschreibung, zusammengesetzt und zurück gegeben. 
+
 \begin{figure}[h!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
 	\centering
-	\includegraphics[width=0.5\linewidth]{img/API_GET.jpg}
 	\caption{Ablauf einer API GET-Abfrage}
 	\label{img:APIFiles}
 \end{figure}
