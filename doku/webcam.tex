@@ -1,9 +1,5 @@
-\section{Webcam}
+\section{Warteschlange-Funktion  für die Webcam}
 
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Warteschlange}
 Die Warteschlange sollte verhindern, dass mehrere Benutzer gleichzeitig die Webcam bedienen. Jeder der die Webcam bedienen möchte soll sich in einer Warteschlange registrieren. Ist diese erfolgt und der Benutzer an der Reihe, hat er 40 Sekunden Zeit die Webcam zu bedienen. Die Registrierung soll über einen Button Registrieren erfolgen. Die Warteschlange funktioniert folgendermassen, registriert sich ein Benutzer per Klick auf den Registrierungsbutton wird eine Sessionid gelöst. Anschliessend wird in der Datenbank abgefragt ob weitere Benutzer in der Warteschlange sind. Hierbei bestehen zwei Möglichkeiten:\\
 
 Keine weiteren Benutzer:\\
@@ -26,15 +22,3 @@ Sind mehrere Benutzer in der Warteschlange wird die Wartezeit in Sekunden angeze
 	\label{img:tblqueue}
 \end{figure}
 
-
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Selektive Zoombeschränkung}
-\Diskussionspunkt{- Kapitel muss noch erstellt werden}\newline
-
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Foto-Funktion}
-\Diskussionspunkt{- Kapitel muss noch erstellt werden}\newline

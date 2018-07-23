@@ -1,3 +1,51 @@
 \section*{Schluss}
+% Kapitel im TOC anzeigen, aber ohne Nummerierung
 \addcontentsline{toc}{section}{Schluss}
-\Diskussionspunkt{- Kapitel muss noch erstellt werden}\newline
+% 3 * 12 Zeilen!!!!!
+
+
+% Was wurde erreicht
+% ===========================
+% - Fully responsive Seiten, die sich automatisch aktualisiert
+% - unabhängig von Adobe Flash
+% - Aktuelle Messdaten über Web-API abrufbar
+% - Darstellung der historischen Daten
+% - Zusätzliche Pegel- und Strahlungssensor inkl. Wassertemperatur
+% - Benachrichtigungsservice
+% - Einlesen der Sensoren und Sturmwindwarnung
+
+Während dieser Bachelor Arbeit wurde sowohl das Front-, als auch das Back end der Wetterstation Arbon modernisiert. Entstanden ist eine übersichtliche Wetteranzeige-Webseite, die ihre Daten über die eigens entwickelte API bezieht. Die Webseite ist responsive, Cross-Plattform-fähig und kommt ohne Adobe Flash oder anderen propiretären Technologien aus. Sie basiert auf vorhandene javascript-Bibliotheken und kommt praktisch ohne eigene Funktionen aus. Der Unterhalt und die Konfiguration wird dadruch auf ein Minimum reduziert. Die aktuellen Messwerte der Wetterstation sind über ein Web-API öffentlich zugänglich und die historischen Daten sind interaktiv auf der Website erleb- und erforschbar. Neben der Softwareaktualisierung wurde auch die Hardware aufgerüstet. Die Wetterstation wurde um einen Strahlungs- und Pegelsensor erweitert und als weitere Information steht der Status der Sturmwarnung auf der Webseite zur Verfügung. Als Zusatzservice wurde ein Benachrichtungsservice implementier, der eine E-Mail-Benachrichtigung für ausgewählte Messwerte ausführt.
+\newline
+
+
+% Welche Anforderungen konnten nicht eingehalten werden
+% ===========================
+% - Anzeige Windrichtung (soll): kontinuierliche Anzeige
+% - Barrierefreiheit (soll) : Screen-Reader
+% - Wellenhöhen (Soll): kann nicht gemessen werden
+
+Fast alle Anforderungen, die im Rahmen des Fachmoduls ausgearbeitet wurden, konnten erfüllt werden. Die Anforderungen waren in MUSS, SOLL und KANN unterteilt. Sämtliche MUSS-Anforderungen konnten umgesezt werden. Bei den SOLL-Anforderungen konnten drei nicht oder nur teilweise umgesetzt werden: Die Anzeige der Windrichtung scheiterte daran, dass kein (kostenloses) Framework gefunden wurde, welches die gewünschte kontinuierliche Darstellungsform zur Verfügung stellt. Die Wellenhöhenmessung musste zurückgestellt werden, da trotz intensiver Rechereche und Rücksprache mit Fachpersonen und Sensorherstellern kein passender
+Sensor ermittelt werden konnte, der die Anforderungen bezüglich Auflösung, Wartungsaufwand und Kosten erfüllt. Schliesslich mussten bei der Umsetzung des Barrierefrei-Konzepts diverse Abstriche gmacht werden, welche auf Einschränkungen der javscript-Frameworks und des CMS zurückzuführen sind. Indessen konnten vier von sechs KANN-Aforderungen umgesetzt werden.
+\newline
+
+% Wo lagen die Probleme bzw. was sind die Erkenntnisse
+% ===========================
+% - Barriefrei ist noch nicht in der (kostenlosen) Framework-Welt angekommen
+% - Just-Gage, Chartist, CMS bietet keinen Support
+% - Tableau bietet keinen Support
+% - Browser interpretieren Befehle anderes
+% - API?
+
+% Ausblick -> was muss noch gemacht werden?
+% ===========================
+% - Zuverlässigkeit, Fehler abfangen
+% - Umgang mit Datenlücken
+% - Notification-Service ausbauen / Zusatzfunktionen
+% - Trend-Angaben in api
+% - Historische Daten ebenfalls per API abrufbar
+% - Warteschlange auf der Kamera implementieren
+% - Gleiche Informationsfülle wie in Weather Display Live
+% - Wellenhöhensensor
+
+Die Webseite ist auf den Idealbetrieb ausgelegt d.h. sie funktioniert unter normalen Umständen fehlerfrei. Es können jedoch diverse Fehler auftauchen, wie Sensoren liefern keine Daten, Datenbank-Eintrag erstellen nicht möglich, Server nicht errreichbar, Datenlücken uvm. Die Behandlung der Fehlerfälle und die adequate Reaktion müssten noch genauer betrachtet werden. Weiter könnte der sowohl der Benachrichtigungsservice, als auch die API weiter ausgebaut werden, indem weitere Werte hinzugefügt werden bzw. die API auf historische Werte ausgeweitet wird. Das Thema Wellenhöhen-Messung müsste nochmals genauer betrachtet werden und allenfalls Versuche mit unterschiedlichen Sensoren durchgeführt werden.
+Die Liste lässt sich beliebig erweitern. Ein erster Schritt in die richtige Richtung ist mit dieser Bachelor-Arbeit aber mit Sicherheit erfolgt.
