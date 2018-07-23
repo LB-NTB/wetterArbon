@@ -1,26 +1,34 @@
-\section*{Einleitung / Einführung ins Thema}
+\section*{Einleitung und Hintergrund zur Wetterstation Arbon}
 \addcontentsline{toc}{section}{Einleitung}
-\Diskussionspunkt{- Kapitel muss noch fertiggestellt werden}\newline
-\Diskussionspunkt{- Einführung, Problem, Aufgabenstellung, Struktur des Berichts, Ziel des Berichts}\newline
-\Diskussionspunkt{- Kurze Zusammenfassung der Anforderungen (gruppiert nach Thema)}\newline
 
-Die Wetterstation Arbon wurde 2004 als Lehrlingsarbeit des Berufsbildungszentrums Arbon auf Initiative der Technischen Gesellschaft Arbon (TGA) aufgebaut und in Betrieb genommen. Sie besteht aus mehreren Wettersensoren und einer Webcam, die auf einer Plattform auf dem See draussen montiert sind. Die Messwerte werden auf der Webseite\footnote{ \url{https://www.wetter-arbon.ch}}  der Wetterstation Arbon angezeigt.
 
-\begin{figure}[h!]
+%\Diskussionspunkt{- Einführung, Problem, Aufgabenstellung, Struktur des Berichts, Ziel des Berichts}\newline
+%\Diskussionspunkt{- Kurze Zusammenfassung der Anforderungen (gruppiert nach Thema)}\newline
+
+Die Wetterstation Arbon wurde 2005 als Lehrlingsarbeit des Berufsbildungszentrums Arbon auf Initiative der Technischen Gesellschaft Arbon (TGA) aufgebaut und in Betrieb genommen. Sie bestand aus mehreren Wettersensoren und einer Webcam, die auf einer Plattform auf dem See draussen montiert waren. Mit der Zeit haben sich immer mehr Probleme eingestellt. Grund waren einerseits nicht mehr funktionierende Sensoren, aber auch die selbstgeschriebene Software, die nicht mehr kompatibel war mit den neueren Betriebssystem-Versionen. Die Wetterstation wurde deshalb Ende 2013 ausser Betrieb genommen.
+
+Ein Teil der Hardware und die komplette Software wurde 2015 von einer Gruppe Freiwilliger durch Standardhard- und Software ersetzt. Der Nachteil war aber, dass Messgrössen wie Pegel und Wassertemperatur nicht mehr gemessen werden konnten. Ausserdem basierte die Of-the-shelf-Software auf Adobe Flash, was diverse Nachteile mit sich brachte. Eine detaillierte Analyse der Probleme findet sich in Fachmodul-Bericht. (in BIBTEX aufnehmen!!!!)
+
+\vspace{5mm} %5mm vertical space
+
+\begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=1\linewidth]{img/kombi}
 	\caption{Installation und Webseite der Wetterstation Arbon}
 	\label{img:wetterstation}
 \end{figure}
 
-Die Bachelor-Arbeit hat das Ziel, die Wetterstation auf einen modernen, vollfunktionsfähigen Stand zu bringen. Die verschiedenen Arbeiten wurden in vier Blöcke zusammengefasst: Hardware, Webseite, Back end und Webcam. (vgl. Abb. \ref{img:module})
+\vspace{3mm} %5mm vertical space
+
+\noindent
+In der Bachelor-Arbeit wurde Adoble Flash abgelöst und diverse Modernisierungen und Funktionserweiterungen hinzugefügt. Es wurden sowohl an der Hardware, wie auch an der Sotware gearbeitet und dies sowhol auf der Webseite als auch auf dem Server. Die verschiedenen Arbeiten wurden in sechs Blöcke zusammengefasst: Hardware, Webseite, Server, Programmierschnittstelle (API), Alarm-Meldungen (Benachrichtigungsservice) und Webcam. (vgl. Abb.\,\ref{img:module}). Im folgenden werden die einzelnen Blöcke genauer erläautert.
 
 \vspace{5mm} %5mm vertical space
 
-\begin{figure}[h!]
+\begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{img/module}
-	\caption{Aufteilung in Arbeitsblöcke}
+	\includegraphics[width=1\linewidth]{img/module}
+	\caption{Aufteilung der Arbeitsblöcke}
 	\label{img:module}
 \end{figure}
 

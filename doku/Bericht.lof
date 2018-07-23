@@ -1,38 +1,38 @@
 \select@language {ngerman}
-\contentsline {figure}{\numberline {1}{\ignorespaces Installation und Webseite der Wetterstation Arbon}}{2}{figure.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces Aufteilung in Arbeitsbl\IeC {\"o}cke}}{2}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Hardware-Schema der Wetterstation}}{3}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Pyranometer}}{4}{figure.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces Darstellung des aktuellen Messwerts und des Strahlungsverlaufs}}{5}{figure.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces Pyranometer}}{6}{figure.6}
-\contentsline {figure}{\numberline {7}{\ignorespaces Berechnung des Pegel Konstanz und Messbereich des Sensors}}{7}{figure.7}
-\contentsline {figure}{\numberline {8}{\ignorespaces Zusammenhang zwischen Pegel und PT100-Temperaturwiderst\IeC {\"a}nden}}{9}{figure.8}
-\contentsline {figure}{\numberline {9}{\ignorespaces Messreihe aller Temperatursensoren}}{10}{figure.9}
-\contentsline {figure}{\numberline {10}{\ignorespaces Anteil der mobilen Zugriffe auf die Wetterwebseite}}{11}{figure.10}
-\contentsline {figure}{\numberline {11}{\ignorespaces Verwendete Browser und Beliebtheit der Seiten}}{12}{figure.11}
-\contentsline {figure}{\numberline {12}{\ignorespaces Erste Designentw\IeC {\"u}rfe nach dem Mobile First Prinzip}}{13}{figure.12}
-\contentsline {figure}{\numberline {13}{\ignorespaces Anordnung der Kacheln auf grossen und kleinen Bildschirmen}}{14}{figure.13}
-\contentsline {figure}{\numberline {14}{\ignorespaces Anzeigelemente mit Justgage/Rapha\IeC {\"e}l}}{15}{figure.14}
-\contentsline {figure}{\numberline {15}{\ignorespaces Icons aus der Weather Icons Bibliothek}}{16}{figure.15}
-\contentsline {figure}{\numberline {16}{\ignorespaces Verlaufsdiagramm mit chartist.js}}{17}{figure.16}
-\contentsline {figure}{\numberline {17}{\ignorespaces Windrichtungsanzeige soll und ist}}{18}{figure.17}
-\contentsline {figure}{\numberline {18}{\ignorespaces Widget von Windfinder}}{19}{figure.18}
-\contentsline {figure}{\numberline {19}{\ignorespaces Warleuchten des Sturmwarndiensts auf dem Bodensee}}{20}{figure.19}
-\contentsline {figure}{\numberline {20}{\ignorespaces Zeitverzug zwischen Sturmwarnmeldung und Anzeige}}{21}{figure.20}
-\contentsline {figure}{\numberline {21}{\ignorespaces Darstellung der historschen Daten (Desktop und Mobile)}}{23}{figure.21}
-\contentsline {figure}{\numberline {22}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber die gespeicherten Daten der alten Wetterstation}}{25}{figure.22}
-\contentsline {figure}{\numberline {23}{\ignorespaces Darstellung der historischen Pegelmesswerte}}{26}{figure.23}
-\contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der semantisches Web-Anforderung}}{28}{figure.24}
-\contentsline {figure}{\numberline {25}{\ignorespaces ER-Modell der Daten vom Wettertransmitter}}{32}{figure.25}
-\contentsline {figure}{\numberline {26}{\ignorespaces ER-Modell der externen Sensoren}}{32}{figure.26}
-\contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{32}{figure.27}
-\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{35}{figure.28}
-\contentsline {figure}{\numberline {29}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{36}{figure.29}
-\contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{38}{figure.30}
-\contentsline {figure}{\numberline {31}{\ignorespaces Beispiel einer API GET-Abfrage}}{40}{figure.31}
-\contentsline {figure}{\numberline {32}{\ignorespaces Aufbau des API Verzeichnis}}{42}{figure.32}
-\contentsline {figure}{\numberline {33}{\ignorespaces Ablauf einer API GET-Abfrage}}{43}{figure.33}
-\contentsline {figure}{\numberline {34}{\ignorespaces Funktionsprinzip des Benachrichtungsservices}}{45}{figure.34}
-\contentsline {figure}{\numberline {35}{\ignorespaces Eingabeformular mit Fehler\IeC {\"u}berpr\IeC {\"u}fung (rechts)}}{46}{figure.35}
-\contentsline {figure}{\numberline {36}{\ignorespaces Datenbankeintrag, wenn keine weiteren Benutzer in der Warteschlange sind}}{47}{figure.36}
-\contentsline {figure}{\numberline {37}{\ignorespaces Datenbankeintrag, mehrere Benutzer registriert sind}}{48}{figure.37}
+\contentsline {figure}{\numberline {1}{\ignorespaces Installation und Webseite der Wetterstation Arbon}}{1}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Aufteilung der Arbeitsbl\IeC {\"o}cke}}{1}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Hardware-Schema der Wetterstation}}{2}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Pyranometer}}{3}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Darstellung des aktuellen Messwerts und des Strahlungsverlaufs}}{4}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Pyranometer}}{5}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Berechnung des Pegel Konstanz und Messbereich des Sensors}}{6}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Zusammenhang zwischen Pegel und PT100-Temperaturwiderst\IeC {\"a}nden}}{8}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Messreihe aller Temperatursensoren}}{9}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Anteil der mobilen Zugriffe auf die Wetterwebseite}}{10}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Verwendete Browser und Beliebtheit der Seiten}}{11}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Erste Designentw\IeC {\"u}rfe nach dem Mobile First Prinzip}}{12}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Anordnung der Kacheln auf grossen und kleinen Bildschirmen}}{13}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Anzeigelemente mit Justgage/Rapha\IeC {\"e}l}}{14}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Icons aus der Weather Icons Bibliothek}}{15}{figure.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Verlaufsdiagramm mit chartist.js}}{16}{figure.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Windrichtungsanzeige soll und ist}}{17}{figure.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces Widget von Windfinder}}{18}{figure.18}
+\contentsline {figure}{\numberline {19}{\ignorespaces Warleuchten des Sturmwarndiensts auf dem Bodensee}}{19}{figure.19}
+\contentsline {figure}{\numberline {20}{\ignorespaces Zeitverzug zwischen Sturmwarnmeldung und Anzeige}}{20}{figure.20}
+\contentsline {figure}{\numberline {21}{\ignorespaces Darstellung der historschen Daten (Desktop und Mobile)}}{22}{figure.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber die gespeicherten Daten der alten Wetterstation}}{24}{figure.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces Darstellung der historischen Pegelmesswerte}}{25}{figure.23}
+\contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der semantisches Web-Anforderung}}{27}{figure.24}
+\contentsline {figure}{\numberline {25}{\ignorespaces ER-Modell der Daten vom Wettertransmitter}}{31}{figure.25}
+\contentsline {figure}{\numberline {26}{\ignorespaces ER-Modell der externen Sensoren}}{31}{figure.26}
+\contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{31}{figure.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{34}{figure.28}
+\contentsline {figure}{\numberline {29}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{35}{figure.29}
+\contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{37}{figure.30}
+\contentsline {figure}{\numberline {31}{\ignorespaces Beispiel einer API GET-Abfrage}}{39}{figure.31}
+\contentsline {figure}{\numberline {32}{\ignorespaces Aufbau des API Verzeichnis}}{41}{figure.32}
+\contentsline {figure}{\numberline {33}{\ignorespaces Ablauf einer API GET-Abfrage}}{42}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Funktionsprinzip des Benachrichtungsservices}}{44}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Eingabeformular mit Fehler\IeC {\"u}berpr\IeC {\"u}fung (rechts)}}{45}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Datenbankeintrag, wenn keine weiteren Benutzer in der Warteschlange sind}}{46}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces Datenbankeintrag, mehrere Benutzer registriert sind}}{47}{figure.37}
