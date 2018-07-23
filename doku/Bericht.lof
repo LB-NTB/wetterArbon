@@ -25,8 +25,8 @@
 \contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der semantisches Web-Anforderung}}{28}{figure.24}
 \contentsline {figure}{\numberline {25}{\ignorespaces ER-Modell der Daten vom Wettertransmitter}}{32}{figure.25}
 \contentsline {figure}{\numberline {26}{\ignorespaces ER-Modell der externen Sensoren}}{32}{figure.26}
-\contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{33}{figure.27}
-\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{36}{figure.28}
+\contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{32}{figure.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{35}{figure.28}
 \contentsline {figure}{\numberline {29}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{36}{figure.29}
 \contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{38}{figure.30}
 \contentsline {figure}{\numberline {31}{\ignorespaces Beispiel einer API GET-Abfrage}}{40}{figure.31}
