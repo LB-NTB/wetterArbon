@@ -121,28 +121,30 @@ Die Benutzeroberfläche muss Cross-Plattform-fähig sein d.h. die Darstellung mu
 \end{figure}
 
 \noindent
-Das Konezt des Grid-View teilt den Bildschirm in zwölf Spalten ein. Über eine media-Query fragt die Webseite die Grösse des Bildschirms ab. Es gibt drei Kategorien small, medium, large, deren Grenzen folgendermassen festgelegt sind:
+Das Konezt des Grid-View teilt den Bildschirm bzw. den zur Verfügung stehnden Platz unabhängig von dessen Grösse in zwölf Spalten ein (siehe orange Markierung in Abbildung\,\ref{img:kacheln2}). Über eine media-Query fragt die Webseite die Grösse des Bildschirms in Pixel ab und bestimmt dann wieviele Spalten breit ein Element sein soll (grüne Markierung in Abbildung\,\ref{img:kacheln2}). Die gleiche Kachel ist also auf einem grossen Bildschirm  \nicefrac{2}{12} breit und auf einem kleinen Bildschirm \nicefrac{6}{12}. Unter \emph{w3.css} sind drei Bildschirmgrössen vorgesehen (small, medium und large). Die Grenzen sind folgendermassen festgelegt:
 
 \begin{itemize}
 \item Small: s $\leq$ 600px (z.B. iPhone Hochformat)
-\item Medium: 600px < m $\leq$ 992px (z.B. iPhopne Querformat, iPad Hochformat)
-\item Large: 993px < l (z.B. Desktop)
+\item Medium: 600px < m $\leq$ 992px (z.B. iPhone Querformat, iPad Hochformat)
+\item Large: 992px < l (z.B. Desktop)
 \end{itemize}
 
 \noindent
-Im css-Framework kann nun sehr einfach definiert werden wie sich die Kacheln bei diesen drei Bildschirmkategorien verhalten sollen. Die Kacheln der aktuellen Daten sind auf grossen (large) Bildschirmen \nicefrac{2}{12}, auf mittleren Bildschirmen \nicefrac{3}{12} und auf kleinen Bildschirmen \nicefrac{6}{12} breit. Bei den Datenverläufen werden bei mittleren und grossen Bildschirmen zwei nebeneinander dargestellt, bei kleinen Bildschirmen alle untereinander.
+Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) deren Verhalten bei den drei Bildschirmgrössen vorgeschrieben werden. Die Kacheln mit den aktuellen Wetterdaten sind zum Beispiel auf grossen (large) Bildschirmen \nicefrac{2}{12}, auf mittleren Bildschirmen \nicefrac{3}{12} und auf kleinen Bildschirmen \nicefrac{6}{12} breit. Bei der Darstellung der Wetterdatenverläufe werden bei mittleren und grossen Bildschirmen zwei nebeneinander dargestellt (\nicefrac{6}{12}) und bei kleinen Bildschirmen alle untereinander (\nicefrac{12}{12} ), wie in Listing\,\ref{lst:kacheln} ersichtlich.
 
+\vspace{3mm}
 \begin{lstlisting}[label=lst:kacheln,caption=Konfiguration der Anzahl Kacheln abhähngig von der Bildschirmgrösse, language=HTML5, style=htmlcssjs]
 <!-- Aktuelle Daten -->
-<div class="w3-col l2 m3 s6">
-	<div class="w3-card">...</div>
+<div class="l2 m3 s6">
+	...
 </div>
 
 <!-- Datenverlauf -->
 <div class="l6 m6 s12">
-	<div class="w3-card">...</div>
+  ...
 </div>
 \end{lstlisting}
+\vspace{3mm}
 
 %% ############################################################################
 %% Unterkapitel
