@@ -160,7 +160,7 @@ Um die Datenbank gegen einen allfälligen Datenverlust zu sichern, ist ein Backu
 \item Wie bzw. wo sollte das Backup gelagert werden?
 \end{itemize}
 
-Da alle Daten in der DB gleich relevant sind, sollten auch alle so behandelt werden und im Backup vorhanden sein. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen. Zusätzlich sollte das Backup nicht auf dem Server des Providers gespeichert werden, sollte etwas mit dem Server nicht in Ordnung sein, sind diese Daten auch weg. Deswegen ist es wichtig auch ein \"externes" Backup zu erstellen. Hostpoint bietet für das Backup verschiedene Varianten:
+Da alle Daten in der DB gleich relevant sind, sollten auch alle so behandelt werden und im Backup vorhanden sein. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen. Zusätzlich sollte das Backup nicht auf dem Server des Providers gespeichert werden, sollte etwas mit dem Server nicht in Ordnung sein, sind diese Daten auch weg. Deswegen ist es wichtig auch ein 'externes' Backup zu erstellen. Hostpoint bietet für das Backup verschiedene Varianten:
 \begin{itemize}
 \item Cronjob
 \item Backup auf Knopfdruck
@@ -251,5 +251,7 @@ Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, w
 %% Unterkapitel
 %% ############################################################################
 \subsection{Problematik Zeitumstellung}
+Da in der Schweiz Sommer- und Winterzeit herrscht, besteht auch die Problematik der Zeitumstellung. Für die Datenbank besteht das Problem, dass die Tabellen nur einen Datumzeit enthalten dürfen. So entsteht die Problematik im Winter, da wenn die zurück gestellt wird doppelte Einträge entstehen. Wird in die historische Daten geschaut, fällt auf das diese Zeitumstellung nie berücksichtigt wurde. Zudem ist die Zeitumstellung in der Nacht, also für viele Benutzer eher uninteressant. Damit wurde auch entschieden das Problem wie bisher zu lösen.
+
 
 \Diskussionspunkt{- Kapitel muss noch erstellt werden}\newline
