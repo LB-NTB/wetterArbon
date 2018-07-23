@@ -1,12 +1,5 @@
 \section{Aufbau der Wetterstation und deren Sensoren}
-%\chapter{Aufbau der Wetterstation und Sensoren}
-
-
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-%\subsection{Übersicht über die verbaute Hardware}
-Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensoren, Pegelsensor und Sonnenstrahlungssensor. Auf der Plattform im See befindet sich lediglich ein Schaltschrank mit Datenwandlern und keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP über eine Glasfaserleitung an den Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt. Der Pegel- und Strahlungssensor wurden während dieser Arbeit ersetzt beziehungsweise hinzugefügt.
+Die Wetterstation Arbon verfügt über fünf Sensoren bzw. Sensor-Einheiten: Webcam, Kombi-Wetter-Transmitter, Wassertemperatur-Sensoren, Pegelsensor und Sonnenstrahlungssensor. Auf der Plattform im See befindet sich lediglich ein Schaltschrank mit Datenwandlern, keine Auswerteeinheit. Sämtliche Daten werden per TCP/IP über eine Glasfaserleitung an den landseitigen Server geschickt. Abbildung \ref{img:schaltschrank} zeigt den schematischen Aufbau der Komponenten im Schaltschrank und die angeschlossenen Sensoren. Die Stromversorgung ist der Übersicht halber nicht dargestellt. Der Pegel- und Strahlungssensor wurden während der Bachelor-Arbeit ersetzt beziehungsweise hinzugefügt.
 
 \begin{figure}[htbp]
 	\centering
@@ -24,23 +17,24 @@ Die Sonnenscheindauer dient der näherungsweisen Bestimmung der Einstrahlung an 
 \noindent
 Zur Messung der Sonnenstunden gibt es gemäss \flqq Guide to Meteorological Instruments and Methods of Observation (WMO)\frqq ~\cite{WMO2014Gtmi} fünf Messprinzipien, wobei die pyranometrische Methode die einfachste und kostengünstigste Methode darstellt. Gemäss WMO, Kapitel 8.1.4, kann die Sonnenscheindauer eines Orts durch die Messung der entsprechenden globalen Sonnenstrahlung\ $G$ abgeschätzt werden. Die Globalstrahlung wird dabei von einem Pyranometer gemessen.
 
+
 \subsubsection{Funktionsprinzip eines Pyranometers}
 Das Pyranometer basiert auf dem Messprinzip eines Thermoelements, wie in Abbildung \ref{img:pyranometer}  dargestellt. Die eintreffende Strahlung trifft auf einen Absorber, welcher erwärmt wird. Die Wärme fliesst dann über das Gehäuse an die Umgebung ab. Die Strahlungsleistung ist proportional zum Wärmestrom beziehungsweise zur Temperaturdifferenz vom Absorber zum Gehäuse. Die Temperaturdifferenz wird mit Thermoelementen gemessen. Um die Signalspannung zu erhöhen werden mehrere Thermoelemente in Reihe zu einer Thermosäule geschalten. Durch das thermische Messprinzip ist ein Pyranometer träge. Die Verzögerung liegt bei wenigen Sekunden. Das schwarz-poröse Absorbermaterial muss eine hohe Langzeitstabilität insbesondre gegenüber kurzwelliger Strahlung aufweisen.
 
 \begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pyranometer.png}}
-	\caption{Pyranometer}
+	\caption{Montageort und Funktionsprinzip eine Pyranometers (\href{http://www.kippzonen.com/News/572/The-Working-Principle-of-a-Thermopile-Pyranometer}{Quelle})}
 	\label{img:pyranometer}
 \end{figure}
-%Quelle: http://www.kippzonen.com/News/572/The-Working-Principle-of-a-Thermopile-Pyranometer#.WzuK8C35ybg
+
 
 \subsubsection{Berechnung der Sonnenscheindauer}
-Die (relative) Sonnenscheindauer beschreibt den Anteil der tatsächlichen an der effektiv möglichen Sonnenscheindauer in Prozent. Durch sie kann man Sonnenscheinverhältnisse verschiedener Gebiete vergleichen. Gemäss ANNEX 8.B. der Richtlinie ~\cite{WMO2014Gtmi} kann die Sonnenscheindauer aus den minütlichen Messwerten der Globalstrahlung berechnet werden. Dazu muss zuerst der Schwellwert, wie in \ref{eq:Sonnenstunden} dargestellt, berechnet werden. Der Zähler für die Sonnenstunden wird um eine Minute erhöht, wenn der Messwert grösser ist als der Schwellwert und der Sonnenwinkel mindestens 3 Grad beträgt.\newline
+Die (relative) Sonnenscheindauer beschreibt den Anteil der tatsächlichen an der effektiv möglichen Sonnenscheindauer in Prozent. Durch sie kann man Sonnenscheinverhältnisse verschiedener Gebiete vergleichen. Gemäss ANNEX 8.B. der Richtlinie ~\cite{WMO2014Gtmi} kann die Sonnenscheindauer (SD) aus den minütlichen Messwerten der Globalstrahlung $G$ berechnet werden. Dazu muss zuerst der Schwellwert $G_{thr}$, wie in \ref{eq:Sonnenstunden} dargestellt, berechnet werden. Der Zähler für die Sonnenstunden wird um eine Minute erhöht, wenn der Messwert grösser ist als der Schwellwert und der Sonnenwinkel mindestens 3 Grad beträgt.\newline
 
 \begin{equation}
 \label{eq:Sonnenstunden}
-G_{thr} = A + B * cos(\frac{360*d}{24*365}) * 1080 * sin(h)^{1.25}
+G_{thr} = A + B * cos \left(\frac{360*d}{24*365}\right) * 1080 * sin(h)^{1.25}
 \end{equation}
 
 wobei:
@@ -51,38 +45,38 @@ h        &  Elevationswinkel der Sonne in Grad \\
 A        &  empirisch bestimmter Koeffizient (0.65) \\
 B        &  empirisch bestimmter Koeffizient (0.15) \\
 \end{conditions}
+\vspace{3mm}
+
+\noindent
+Zur Bestimmung der beiden Koeffizienten konnte auf die Messwerte des NTB in Buchs zurückgegriffen werden. Da die Strahlungsintensität von Buchs und Arbon vergleichbar sind (gleiche geografische Höhe), wurden die Koeffizienten direkt übernommen. Abbildung\,\ref{img:radiation} zeigt die Darstellung von Sonnenscheindauer und Strahlung, sowie deren Verlauf über die letzten beiden Tage, wie sie auf der Webseite angezeigt werden.
 
 %Die physikalische Größe der Sonnenscheindauer (SD) ist Zeit. Die verwendeten Einheiten sind Sekunden oder Stunden.
 %Der Messzeitraum (Tag, Dekade, Monat, Jahr usw.) ist ein wichtiger Zusatz zur Einheit.
 
-\noindent
-Wenn der Winkel $h$ grösser oder gleich 3 Grad ist, und der gemittelte Minutenwert der Solarstrahlung höher ist als der Schwellwert, wird der Zähler für die Sonnenstunde um eine Minute erhöht.
-
-%Guten Tag Frau Bilgery,
-%scheint grössere Abweichungen zu geben. Habe es mit zwei anderen Datensätzen versucht mit dem ähnlichen Ergebnis.
-%
-%Im beiliegenden File habe ich die Strahlung bei einer Sonnenhöhe <3 Grad auf Null gesetzt, d.h. Morgen und Abendstunden werden nicht berücksichtigt. Fehler mit Division von sin(h) gibt es dann auch nicht.
-%Für Buchs ist dies zulässig da die umliegenden Berge über einem Höhenwinkel von 3 Grad liegen. Dies wird aber in der Literatur auch für südliche Regionen ohne Berge durchgeführt. D.h. dies ist eine Massnahme. Weitere Massnahme ist die Reduktion der Faktoren A und B bis die Werte übereinstimmen.
-%
-%Faktor B-Reduktion kann beurteilt werden, wenn ein Sommertag und Wintertag betrachtet wird, da dieser die Saisonalität bestimmt.
+% Guten Tag Frau Bilgery,
+% scheint grössere Abweichungen zu geben. Habe es mit zwei anderen Datensätzen versucht mit dem ähnlichen Ergebnis.
+% Im beiliegenden File habe ich die Strahlung bei einer Sonnenhöhe <3 Grad auf Null gesetzt, d.h. Morgen und Abendstunden werden nicht berücksichtigt.
+% Fehler mit Division von sin(h) gibt es dann auch nicht.
+% Für Buchs ist dies zulässig da die umliegenden Berge über einem Höhenwinkel von 3 Grad liegen.
+% Dies wird aber in der Literatur auch für südliche Regionen ohne Berge durchgeführt. D.h. dies ist eine Massnahme.
+% Weitere Massnahme ist die Reduktion der Faktoren A und B bis die Werte übereinstimmen.
+% Faktor B-Reduktion kann beurteilt werden, wenn ein Sommertag und Wintertag betrachtet wird, da dieser die Saisonalität bestimmt.
 
 \begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/radiation}}
-	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
 	\caption{Darstellung des aktuellen Messwerts und des Strahlungsverlaufs}
 	\label{img:radiation}
 \end{figure}
 
 
-
 \subsubsection{Verwendung für PV-Anlagen}
-Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/pvest.php}}, welches durch das europäische Joint Research Centre (JRC) entwickelt wurde, ist \textit{das} Tool wenn es darum geht den Ertrag einer PV-Anlage vorherzusagen. Die Daten basierend auf Interpolationen von Messungen von Boden-Messstationen. Es liegt nahe diese Berechnung mit unseren Messwerten zu vergleichen. PVGIS berechnet für den Standort Arbon Werte gemäss Abbildung \ref{img:pvgis}.
+Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/pvest.php}}, welches durch das europäische Joint Research Centre (JRC) entwickelt wurde, ist ein beliebtes Tool wenn es darum geht den Ertrag einer PV-Anlage vorherzusagen. Die Daten basierend auf der Interpolationen von Messungen von diversen Boden-Messstationen. Es liegt nahe diese Berechnung mit unseren Messwerten zu vergleichen. PVGIS berechnet für den Standort Arbon im Monat Juni Strahlungswerte von bis zu $900 \nicefrac{W}{m_2}$, gemäss Abbildung \ref{img:pvgis}.
 
 \begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pvgis}}
-	\caption{Pyranometer}
+	\caption{Interplolierte Strahlungvorhersage und Sonnenwinkel für Arbon}
 	\label{img:pvgis}
 \end{figure}
 
@@ -93,12 +87,12 @@ Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/
 %% Unterkapitel
 %% ############################################################################
 \subsection{Pegelsensor und Wellenhöhenmessung}
-Die ursprüngliche Wetterstation verwendete einen hydrostatischen Drucksensor für die Messung des Wasserstands (Pegel). Der Drucksensor lieferte aber nach zehn Jahren Betrieb keine plausiblen Werte mehr, weshalb er ersetzt werden musste.
+Die ursprüngliche Wetterstation verwendete einen hydrostatischen Drucksensor für die Messung des Wasserstands (Pegel). Der Drucksensor lieferte aber nach zehn Jahren Betrieb keine plausiblen Werte mehr, weshalb er ersetzt werden musste. Im Folgenden wird näher auf die möglichen alternativen Messprinzipien eingegangen und erklärt wie der \flqq Pegel Konstanz\frqq und die \flqq signifikante Wellenhöhe\frqq definiert sind.
 
 \subsubsection{Auswahl eines geeigneten Pegelsensors}
-Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können. Die Zusammenfassung der Resultate ist in der Tabelle \ref{tbl:pegelsensoren} aufgelistet.
+Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können. Die Zusammenfassung der Resultate ist in der Tabelle \ref{tbl:pegelsensoren} aufgelistet. TOF steht für \emph{time of flight} und beschreibt ein 3D-Kamerasystem. Die Einfachheit und Robustheit des hydrostatischen Sensors überwog, sodass der alte Drucksensor durch das gleiche Produkt ersetzt wurde.
 
-\begin{table}[htbp!]
+\begin{table}[htbp]
 \label{tbl:pegelsensoren}
 \caption{Gegenüberstellung der verschiedenen Pegelmess-Prinzipien}
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -173,22 +167,21 @@ Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglich
 \end{tabularx}
 \end{table}
 
-\noindent
-Die Einfachheit und Robustheit des hydrostatischen Sensors überwog, sodass der alte Drucksensor durch das gleiche Produkt ersetzt wurde.
+
 
 \subsubsection{Definition des Pegel Konstanz}
-Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkt, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben befindet sich die Skala für den Pegel Konstanz.
+Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkt, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes in Meter über Meer wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben (violett) befindet sich die Skala für den Pegel Konstanz. Die offizielle Hochwassermarke liegt bei einem Pegel von 4,80 Metern.
 
 \begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pegelKonstanz}}
-	%\includegraphics[width=0.9\linewidth]{img/wassertempsensoren.png}
 	\caption{Berechnung des Pegel Konstanz und Messbereich des Sensors}
 	\label{img:pegelKonstanz}
 \end{figure}
 
-Der Pegelsensor liefert 4...20mA bei einer Messhöhe von 4 Meter. Der Pegelsensor ist 1.75 Meter über dem Pegelnullstand angebracht.
-Die Berechnung des Pegel Konstanz aus dem Messwert erfolgt gemäss der Formel \ref{eq:Pegelformel}.
+\noindent
+Der Pegelsensor liefert einen Strom von 4...20mA bei einer Messhöhe von 4 Meter. Der Pegelsensor ist 1.75 Meter über dem Pegelnullstand angebracht.
+Die Berechnung des Pegel Konstanz aus dem Messwert erfolgt demnach gemäss der Formel \ref{eq:Pegelformel}. Zudem ergeben sich 1.75m und 5.75m als der tiefste bzw. höchste von der Wetterstation messbare Pegel.
 
 \begin{equation}
 \label{eq:Pegelformel}
@@ -215,37 +208,27 @@ m        &  Auflösung des Sensors [m/mA] (0...4m bei 4...20mA)\\
 q        &  Offset [m] \\
 \end{conditions}
 
-Die Messdaten des Pegelsensors können per Web-Schnittstelle abgefragt werden, wie in Listing \ref{lst:curlPegel} aufgezeigt. Da die Geräte, die diesen Dienst zur Verfügung stellen nur schwach gegen unerwünschte Zugriffe geschützt sind, wurde die Firewall der Wetterstation so konfiguriert, dass nur vom Hostpoint-Server aus die Abfrage durchgeführt werden kann (IP-Regel).
+\noindent
+Der Pegelsensor ist an einem Web-Interface angeschlossen, welches den Strom-Messwert über eine Web-Schnittstelle zur Verfügung stellt. Der aktuelle Messwert kann so bequem mittels GET-Abfrage aufgerufen werden, wie in Listing \ref{lst:curlPegel} aufgezeigt. Da das I/O-Modul, welches das Web-Interface anbietet nur schwach (Passwortabfrage in Klartext) gegen unerwünschte Zugriffe geschützt sind, wurde die Firewall der Wetterstation so konfiguriert, dass nur vom Hostpoint-Server aus die Abfrage durchgeführt werden kann (IP-Einschränkung).
 
 \begin{lstlisting}[label=lst:curlPegel,caption=Abfrage des Pegelsensor-Wertes über das Hostpoint-Termianl, language=Python, style=htmlcssjs]
-[igwetter@s34:~] $ curl http://webcam.wetter-arbon.ch:50506/single1
+[igwetter:] $ curl http://webcam.wetter-arbon.ch:50506/single1
 11,748 mA
 \end{lstlisting}
 
 
 \subsubsection{Definition der signifikaten Wellenhöhe}
-Als Seegang bezeichnet man die winderzeugten Oberflächenwellen des Meeres. Da sich der Seegang in der Natur als eine Überlagerung vieler Einzelwellen darstellt, werden zu dessen Beschreibung statistische Größen wie z.B. die signifikante Wellenhöhe verwendet. Die Definition einer signifikaten Wellenhöhe geht auf die visuelle Bestimmung einer charakteristischen, den Seegang beschriebenden Wellenhöhe zurück. Die signifikatnte Wellenhöhe wird gemäss der \textit{List of sea state parameters}\cite{1986Iahr} definiert als die mittlere Wellenhöhe der 33\% höchsten Wellen in einem repräsentativen Zeitraum (z.B. 20 Minuten).
+Ursprünglich war geplant mit dem Pegelsensor ebenfalls die Wellenhöhe zu messen. Dies ist aber mit dem gewählten Pegelsensor bzw. dessen Montage nicht möglich. Das Einbaurohr wirkt als Tiefpass-Filter und verunmöglicht die Messung von schnellen Wassersäuleänderungen. Nichts desto trotz und im Hinblick auf eine allfällige Erweiterung der Wetterstation um einen Wellenhöhensensor soll hier kurz die Definition der signifikaten Wellenhöhe erläutert werden.
+
+Als Seegang bezeichnet man die winderzeugten Oberflächenwellen des Meeres. Da sich der Seegang in der Natur als eine Überlagerung vieler Einzelwellen darstellt, werden zu dessen Beschreibung statistische Größen wie z.B. die signifikante Wellenhöhe verwendet. Die Definition einer signifikaten Wellenhöhe geht auf die visuelle Bestimmung einer charakteristischen, den Seegang beschreibenden Wellenhöhe zurück. Die signifikatnte Wellenhöhe wird gemäss der \textit{List of sea state parameters}\cite{1986Iahr} definiert als die mittlere Wellenhöhe der 33\% höchsten Wellen in einem repräsentativen Zeitraum (z.B. 20 Minuten).
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Wassertemperatur-Sensoren}
-Die Wetterstation verfügt über acht Wasser-Temperatursensoren (PT100-Elemente), die im Abstand von 0.5m in einem Rohr angebracht sind. Die Wassertemperatur wird standardmässig einen Meter unter der Wasseroberfläche gemessen.
-% \Diskussionspunkt{- Wo ist Wassertemperatur definiert? }\newline
-
-\subsubsection{Auswahl des richtigen Temperatursensors anhand des Pegels}
-Damit der richtige Temperatursensor ausgewählt werden kann, muss der Pegel bekannt sein. Abbildung \ref{img:wassertempsensoren} zeigt das Prinzip schematisch auf. Mittels Cronjob werden sämtliche Temperatursensoren ausgelesen und in einem Array gespeichert. Anschliessend wird mit Hilfe des Pegelwerts der korrekte Wert entnommen, wie in Listing \ref{lst:tempSelect} beispielhaft aufgezeigt.
-
-\begin{lstlisting}[label=lst:tempSelect,caption=Auswahl des richtigen Temperatursensors, language=Python, style=py]
-if waterlevel >= 3.5 and waterlevel <=4.0:
-    watertemperature100cm  = float(temperatureArray[3])
-    watertemperature50cm = float(temperatureArray[4])
-\end{lstlisting}
-
-\noindent
-Die offizielle Wassertemperatur wird einen Meter unter der Wasseroberfläche gemessen. Für Schwimmer ist aber die Temperatur eine halben Meter unter der Wasseroberfläche interessanter, weshalb dieser Wert ebenfalls ausgelesen und gespeichert wird. Das Schwimmbad Arbon bezieht bereits heute für ihre Webseite\footnote{\url{https://www.schwimmbad-arbon.ch}} die Wassertemperatur von der Wetterstation.
-
+Die Wetterstation verfügt über acht Wasser-Temperatursensoren (PT100-Elemente), die im Abstand von 0.5m in einem Rohr angebracht sind. Die offizielle Wassertemperatur wird einen Meter unter der Wasseroberfläche gemessen. Für Schwimmer ist aber die Temperatur eine halben Meter unter der Wasseroberfläche interessanter, weshalb dieser Wert ebenfalls ausgelesen und gespeichert wird. Das Schwimmbad Arbon bezieht bereits heute für ihre Webseite\footnote{\url{https://www.schwimmbad-arbon.ch}} die Wassertemperatur von der Wetterstation.
+% \Diskussionspunkt{- Wo ist Wassertemperatur definiert? }
 
 \begin{figure}[htbp]
 	\centering
@@ -254,9 +237,20 @@ Die offizielle Wassertemperatur wird einen Meter unter der Wasseroberfläche gem
 	\label{img:wassertempsensoren}
 \end{figure}
 
+\subsubsection{Auswahl des richtigen Temperatursensors anhand des Pegels}
+Damit der richtige Temperatursensor ausgewählt werden kann, muss der Pegel bekannt sein. Abbildung \ref{img:wassertempsensoren} zeigt das Prinzip schematisch auf. Mittels Cronjob werden sämtliche Temperatursensoren ausgelesen und in einem Array gespeichert. Anschliessend wird mit Hilfe des Pegelwerts der korrekte Wert entnommen, wie in Listing \ref{lst:tempSelect} beispielhaft aufgezeigt.
+
+\begin{lstlisting}[label=lst:tempSelect,caption=Auswahl des richtigen Temperatursensors, language=Python, style=py]
+if waterlevel >= 3.5 and waterlevel <= 4.0:
+    watertemperature100cm  = float(temperatureArray[3])
+    watertemperature50cm   = float(temperatureArray[4])
+\end{lstlisting}
+
+
+
 
 \subsubsection{Annäherung des defekten PT100-Widerstands}
-Die Temperatursensoren waren mehrere Jahre nicht in Betrieb. Es wurde deshalb während mehrerer Tag alle Temperaturdaten aufgezeichnet. Aus Auszug der Messdaten sind in Abbildung \ref{img:tempSensoren} dargestellt. Es lässt sich gut erkennen, dass die Sensoren 1 bis 4 sich im Wasser und die Sensoren 6 bis 8 über dem Wasser befinden. Beim Sensor 5 ist nicht klar ober er im oder über dem Wasser ist. Auf Grund der Messdaten lässt sich auch kein konstanter Offset gegenüber den benachbarten Sensoren erkennen.
+Die Temperatursensoren waren mehrere Jahre nicht in Betrieb. Zur Kontrolle wurden deshalb während sechs Wochen alle Temperaturdaten aufgezeichnet. Ein Auszug der Messdaten ist in Abbildung \ref{img:tempSensoren} dargestellt. Es lässt sich erkennen, dass sich die Sensoren 1...4 im Wasser, und die Sensoren 6...8 über Wasser befinden. Beim Sensor 5 ist nicht klar ob er im oder über dem Wasser ist. Auf Grund der Messdaten lässt sich auch kein konstanter Offset gegenüber den benachbarten Sensoren erkennen.
 
 \begin{figure}[htbp]
 	\centering
@@ -265,8 +259,10 @@ Die Temperatursensoren waren mehrere Jahre nicht in Betrieb. Es wurde deshalb w�
 	\label{img:tempSensoren}
 \end{figure}
 
-Der fehlende bzw. falsche Wert wurde trotzdem durch einen Offset angenähert.Ein Offset von drei Grad hat sich als meistens korrekt erwiesen. Der Offset wird direkt beim Auslesen der Temperaturdaten abgezogen, wie in Listing \ref{lst:tempOffset} aufgezeigt.
+\noindent
+Der fehlende bzw. falsche Wert wurde trotzdem durch einen Offset angenähert. Ein Offset von drei Grad hat sich als meistens korrekt erwiesen. Der Offset wird direkt beim Auslesen der Temperaturdaten abgezogen, wie in Listing \ref{lst:tempOffset} aufgezeigt.
 
+\vspace{3mm}
 \begin{lstlisting}[label=lst:tempOffset,caption=Offset des defekten Temperatusensors, language=Python, style=py]
 temperatureArray[4] = float(temperatureArray[4])-3.0
 \end{lstlisting}
