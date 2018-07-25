@@ -14,7 +14,7 @@ Die Webseite der Wetterstation bietet den interessierten Personen Informationen 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Strukturierung der Daten zu logischen Einheiten}
+\subsection{Unterteilung der Daten zu logischen Einheiten}
 Die Programmierschnittstelle liefert die aktuellen Messwerte der Wetterstation, Zusatzinformationen, und Infos zur Webcam. Diese Unterteilung wurde bei der Strukturierung der Daten berücksichtigt.
 Wie in Abbildung\,\ref{img:hierarchie} ersichtlich, stellt die Versionsnummer den Ausgangspunkt dar. Danach gibt es die drei Untergruppen misc, webcam und data. Unter data werden alle Informationen, die von der Wetterstation direkt oder indirekt gemessen werden angezeigt. Unter webcam ist der Link zu Webcam aufgeführt und unter misc sind die Zusatzinformation die Sturmwarndaten für die drei Region Bodensee Ost, Mittel und West aufgeführt. Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern lässt und die URL trotzdem möglichst kurz ist. Denn die URL entspricht genau dieser hierarchischen Datenstruktur. Um zum Beispiel die aktuellen Lufttemperatur zu erhalten muss folgende URL verwendet werden: \url{https://api.wetter-arbon.ch/v1/data/temperature}. Wenn mehrere Werte auf einmal abgefragt werden sollen, kann die URL eine oder zwei Stufen höher aufgerufen werden also zum Beispiel \url{https://api.wetter-arbon.ch/v1/data/} beziehungsweise \url{https://api.wetter-arbon.ch/v1/}. In diesem Fall werden jeweils alle Daten unterhalb der gewählten Hierarchiestufe ausgegeben.
 
@@ -44,39 +44,40 @@ Cache-Control:  no-cache
 \end{lstlisting}
 \vspace{3mm}
 
-
-
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Versionierung}
-URLs
-Versionierung -> semantic Versionierung
-1. MAJOR Hauptversion (nicht kompatibel untereinander)
-2. MINOR .... (gerade = stabil, ungerade = instabil)
-3. PATCH ..... Bug, Patch
-Norm?
-Versionierung in der URL ermöglich Parallelbetrieb (=Vorteil)
-Als nächstes muss ein URL Schema her. Dies wird benötigt, um nach dem REST Standard zu arbeiten. Die URL sollte folgendermassen aussehen:
+Versionsnummern unterscheiden einzelne Versionen einer Software, um deren Weiterentwicklungen nachvollziehbar zu kennzeichnen. Die Versionsnummer der API ist beim Aufrufen der oberste Hierarchiestufe sichtbar, siehe Listing\,\ref{lst:versionierung}. Angewendet wird dabei die semantische Versionierung\footnote{\url{https://semver.org}}. Diese teilt die Versionsnummer in folgende drei Bereiche auf: MAJOR.MINOR.PATCH, wobei die drei Bereich unterschiedliche Bedeutungen haben:
 
+\begin{description*}
+  \item[MAJOR] Neuerungen hinzugefügt; inkompatibel mit Vorversion
+  \item[MINOR] Funktionen hinzugefügt; rückwärtskompatibel
+  \item[PATCH] Fehler behoben; rückwärtskompatibel
+\end{description*}
 
-\texttt{Protokoll://Host/Versionsnummer/Endpunkt}
+\vspace{3mm}
+\begin{lstlisting}[label=lst:versionierung,caption=Versionierungsangabe auf der obersten Hierarchiestufe, language=HTML5, style=php]
+{
+v1: {
+ version: "1.1.1",
+ misc:   {...}
+ webcam: {...}
+ data:   {...}
+}
+\end{lstlisting}
+\vspace{3mm}
 
+\noindent
+Die MAJOR-Version unterscheidet demnach zwischen verschiedenen inkompatiblen Versionen. Eine API wird häufig von einem anderen Computer das heisst von einem Programm aufgerufen. Eine inkompatible Änderung würde dazu führen, dass dieses Programm unter Umständen nicht mehr korrekt funktioniert. Aus diesem Grund wurde die MAJOR-Nummer in die URL der API aufgenommen. Auf diese Weise kann parallel eine Version 2 implementiert werden, ohne dass die Nutzer der Version 1 betroffen sind. Die URL setzt sich demnach zusammen aus: \\
+
+\noindent
+\texttt{Protokoll://Host/Versionsnummer/Endpunkt}\\
+und als Beispiel:\\
 \url{https://api.wetter-arbon.ch/v1/data/}
 
-Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein, dass nicht alle Nutzer der API auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden.
-
-Given a version number MAJOR.MINOR.PATCH, increment the:
-
-MAJOR version when you make incompatible API changes,
-MINOR version when you add functionality in a backwards-compatible manner, and
-PATCH version when you make backwards-compatible bug fixes.
-Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
-
-
-
-https://semver.org
-
+\noindent
+\Diskussionspunkt{evt. Erklärgrafik hinzufügen}
 
 
 
