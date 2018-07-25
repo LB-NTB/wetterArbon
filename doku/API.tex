@@ -10,20 +10,14 @@ Die Webseite der Wetterstation bietet den interessierten Personen Informationen 
 \end{figure}
 
 
-Um die API zu entwickeln, wurden die Anforderungen in einen sogenannten Daten-tree (siehe Anhang Listing \ref{lst:JsonTree}) umgeformt. Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht. Um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
-
-\noindent
-\url{https://api.wetter-arbon.ch/v1/}\\
-\url{https://api.wetter-arbon.ch/v1/data/}\\
-\url{https://api.wetter-arbon.ch/v1/data/temperature}\\
-
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Designprinzip (REST) und Hierarchische Struktur}
+\subsection{Strukturierung der Daten zu logischen Einheiten}
 Die Programmierschnittstelle liefert die aktuellen Messwerte der Wetterstation, Zusatzinformationen, und Infos zur Webcam. Diese Unterteilung wurde bei der Strukturierung der Daten berücksichtigt.
-Wie in Abbildung\,\ref{img:hierarchie} ersichtlich, stellt die Versionsnummer den Ausgangspunkt dar. Danach gibt es die drei Untergruppen misc, webcam und data. Unter data werden alle Informationen, die von der Wetterstation direkt oder indirekt gemessen werden angezeigt. Unter webcam ist der Link zu Webcam aufgeführt und unter misc sind die Zusatzinformation die Sturmwinddaten für die drei Region Bodensee Ost, Mittel und West aufgeführt. Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern lässt und die URL trotzdem möglichst kurz ist.
+Wie in Abbildung\,\ref{img:hierarchie} ersichtlich, stellt die Versionsnummer den Ausgangspunkt dar. Danach gibt es die drei Untergruppen misc, webcam und data. Unter data werden alle Informationen, die von der Wetterstation direkt oder indirekt gemessen werden angezeigt. Unter webcam ist der Link zu Webcam aufgeführt und unter misc sind die Zusatzinformation die Sturmwarndaten für die drei Region Bodensee Ost, Mittel und West aufgeführt. Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern lässt und die URL trotzdem möglichst kurz ist. Denn die URL entspricht genau dieser hierarchischen Datenstruktur. Um zum Beispiel die aktuellen Lufttemperatur zu erhalten muss folgende URL verwendet werden: \url{https://api.wetter-arbon.ch/v1/data/temperature}. Wenn mehrere Werte auf einmal abgefragt werden sollen, kann die URL eine oder zwei Stufen höher aufgerufen werden also zum Beispiel \url{https://api.wetter-arbon.ch/v1/data/} beziehungsweise \url{https://api.wetter-arbon.ch/v1/}. In diesem Fall werden jeweils alle Daten unterhalb der gewählten Hierarchiestufe ausgegeben.
+
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/hierarchie}}
@@ -32,26 +26,30 @@ Wie in Abbildung\,\ref{img:hierarchie} ersichtlich, stellt die Versionsnummer de
 	\label{img:hierarchie}
 \end{figure}
 
+% Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht.
+% Um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
+
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
+\subsection{Anwendung des REST-Prinzips}
+Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representational State Transfer} von Roy Fielding entwickelt. Der REST-Architekturstil bietet diverse Vorteile unter anderem bezüglich Skalierbarkeit und Sicherheit, wie in der \href{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}{Doktorarbeit}~\cite{Fielding:2000:ASD:932295} von Fielding nachzulesen ist. Eines der wichtigsten Prinzipen daraus ist die Zustandslosigkeit einer Anfrage. Das heisst jede Anfrage vom Client zum Server enthält alle notwendigen Informationen; auf dem Server muss nichts zwischengespeichert werden. REST verwendet zudem die von HTTP zur Verfügung gestellten Methoden\cite{LornaJaneMitchell2013oreilly}. Bei der Wetterstation wird nur die GET-Methode verwendet, da die API der Wetterstation sozusagen ein read-only-Dienst darstellt. Eine Server-Anfrage sieht dann zum Beispiel so aus wie in Listing\,\ref{lst:apirequest}.
+\Diskussionspunkt{Was passiert bei POST-Aufruf?}
+
+\vspace{3mm}
+\begin{lstlisting}[label=lst:apirequest,caption=Serveranfrage, language=HTML5, style=php]
+GET /v1/data HTTP/1.1
+Host:           api.wetter-arbon.ch
+Cache-Control:  no-cache
+\end{lstlisting}
+\vspace{3mm}
 
 
 
-
-
-
-% REST
-Warum REST-Schnittstelle? Was ist der Vorteil gegenüber anderen Schnittstellen? Wie wurden früher Schnittstellen zur Verfügung gestellt?
-Was ist REST -> Doktorarbeit von Roy Fielding
-Welche Daten sind enthalten
-Als nächstes fügen wir der Client-Server-Interaktion eine Einschränkung hinzu: Die Kommunikation muss zustandslos sein, wie in Abschnitt 3.4.3 (Abbildung 5-3), so dass jede Anfrage von Client zu Server alle notwendigen Informationen enthalten muss, um die Anfrage zu verstehen, und keinen auf dem Server gespeicherten Kontext nutzen kann. Der Sitzungszustand bleibt somit vollständig auf dem Client erhalten.
-REST ist ein Set von Einschränkungen, der versucht, Latenzzeiten und Netzwerkkommunikation zu minimieren und gleichzeitig die Unabhängigkeit und Skalierbarkeit von Komponentenimplementierungen zu maximieren.
-%https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
-Heutzutage werden viele API nach dem RESTful Standard entwickelt wird. RESt steht für State Transfer und ist im Gegensatz zu Protokollen eine Philosophie, welche die Möglichkeiten von HTTPS ausnutzt. REST benötigt hierfür die von HTTPS bekannten Verben (GET, POST, PUT, PATCH, DELETE) \cite{LornaJaneMitchell2013oreilly}. Im Vordergrund bei REST steht die Zustandslosigkeit, dass heisst Server sowie Client haben keinen Zustand zwischen den Anfragen. Eine Verbindung bleibt jedoch bis zum Ende der Anwendung oder Nutzzeit bestehen.
-Die Datenabfrage über die API soll, wie es State of the Art entwickelt wird, RESTful sein und mittels HTTP geschehen. Mit der API werden nur GET-Anfragen erlaubt sein
-
-\noindent
-\Diskussionspunkt{Was passiert bei POST-Aufruf?}\newline
-
-% Versionierung
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
+\subsection{Versionierung}
 URLs
 Versionierung -> semantic Versionierung
 1. MAJOR Hauptversion (nicht kompatibel untereinander)
@@ -64,11 +62,20 @@ Als nächstes muss ein URL Schema her. Dies wird benötigt, um nach dem REST Sta
 
 \texttt{Protokoll://Host/Versionsnummer/Endpunkt}
 
+\url{https://api.wetter-arbon.ch/v1/data/}
+
 Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein, dass nicht alle Nutzer der API auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden.
 
+Given a version number MAJOR.MINOR.PATCH, increment the:
+
+MAJOR version when you make incompatible API changes,
+MINOR version when you add functionality in a backwards-compatible manner, and
+PATCH version when you make backwards-compatible bug fixes.
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
 
 
+https://semver.org
 
 
 
@@ -83,6 +90,8 @@ Verwendung auf der eigenen Webseite
  Neben der URL ist es wichtig, dass die Kommunikation in einem bestimmten Datenformat erfolgt. Hier besteht die Möglichkeit zu wählen zwischen JSON, XML oder CSV zu wählen. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches Format genutzt wird. Nebst der Entwicklung für die Server-Client Kommunikation ist auch bei der API eine Zugangskontrolle bzw. eine Grundbasis in der Sicherheit notwendig. Neben der Möglichkeit HTTPS zu verwenden, ist es zusätzlich möglich den Client über einen sogenannten Authorization Token zu authentifizieren.\\
 
 Das Datenformat der API soll JSON sein. JSON ist ein simples Datenformat, welches nicht viel Speicherplatz benötigt und somit auch einfach Transferiert werden kann. Nebst der Lesbarkeit für Menschen, kann es auch von Maschinen gelesen werden. Javascript beispielsweise handhabt JSON nativ. Nebst dem das Javascript JSON versteht, ist auch die Handhabung bei PHP simpel, wie bei PHP Web Services \cite{LornaJaneMitchell2013oreilly} erwähnt wird.
+
+Um die API zu entwickeln, wurden die Anforderungen in einen sogenannten Daten-tree (siehe Anhang Listing \ref{lst:JsonTree}) umgeformt.
 
 %% ############################################################################
 %% Unterkapitel
@@ -142,7 +151,7 @@ case "/v1/data/temperature":
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{API-Dokumentation}
+\subsection{Online-Dokumentation der API}
 postman vs. swagger.io
 link zu Doku
 %https://documenter.getpostman.com/view/4035921/api-wetter-arbon/RW1XMhBK
