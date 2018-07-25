@@ -53,8 +53,8 @@ Eine Countdown-Funktion im Browser prüft nun selbständig wann die Wartezeit vo
 Sobald die 40\,Sekunden Bedienzeit vorüber sind sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Falls der Benutzer veruscht die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
 
 \vspace{3mm}
-\begin{lstlisting}[label=lst:webcamControl, caption=Freigabe der Webcam-Steuerung,language=Python, style=py]
-$('#webcam_up.on('click', function() {
+\begin{lstlisting}[label=lst:webcamControl, caption=Freigabe der Webcam-Steuerung,language=HTML5, style=htmlcssjs]
+$(#webcam_up.on('click', function() {
   if(controlboolean == true && registerboolean == true)
     .....  // Kamera steuern moeglich
   else if (registerboolean == false){
