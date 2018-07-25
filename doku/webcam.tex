@@ -5,7 +5,7 @@ Bei der Webcam\footnote{\url{https://dev.wetter-arbon.ch/webcam}} der Wetterstat
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Benutzeroberfläche der Warteschlange}
-Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq drückt. Ist die Warteschlange leer erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Steuerungszeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
+Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq  drückt. Ist die Warteschlange leer erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Steuerungszeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
 \Diskussionspunkt{Warum 40 Sekunden?} \newline
 
 
@@ -36,7 +36,7 @@ Danach wird für den Benutzer einen Eintrag in der Tabelle erstellt (siehe Abbil
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tblqueuemitBenutzer.png}}
 	\centering
-	\caption{Datenbankeintrag, mehrere Benutzer registriert sind}
+	\caption{Datenbankeintrag, wenn mehrere Benutzer registriert sind}
 	\label{img:tblqueuemitBenutzer}
 \end{figure}
 
@@ -50,7 +50,7 @@ $waittime = $waittimeVorgaenger + 40 - $abgelaufeneZeit +2;
 
 \noindent
 Eine Countdown-Funktion im Browser prüft nun selbständig wann die Wartezeit vorüber ist und gibt die Steuerung der Webcam frei. Die Freigabe funktioniert über eine if-Abfrage, in der geprüft wird, ob der Browser registriert, und die Wartezeit abgelaufen ist (siehe Listing\,\ref{lst:webcamControl}).
-Sobald die 40\,Sekunden Bedienzeit vorüber sind sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Falls der Benutzer veruscht die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
+Sobald die 40\,Sekunden Bedienzeit vorüber sind sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Die Session-ID wird hierbei als Vergleichsparameter verwendet. Das heisst in der Datenbank wird nur der Eintrag des entsprechenden Benutzers mit der Session-ID gelöscht. Falls der Benutzer versucht die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:webcamControl, caption=Freigabe der Webcam-Steuerung,language=HTML5, style=htmlcssjs]
@@ -65,13 +65,11 @@ $(#webcam_up.on('click', function() {
 \end{lstlisting}
 \vspace{3mm}
 
+Das Löschen des Datenbankeintrags erfolgt automatisch nach 10 Minuten. Der Prozess wird direkt mit dem Eintragen in die Warteschlange ausgelöst. So wird sichergestellt, dass auch wenn ein Benutzer das Fenster, vor ablaufen der Warte- bzw. der Bedienzeit, schliesst der Eintrag gelöscht wird.
+ 
+
+
 
 \begin{itemize}
-\item \Diskussionspunkt{Für was wird die Session-ID benötigt? Als Zufallszahl um den DB-Eintrag löschen zu können?}
-\item \Diskussionspunkt{Warum werden zwei verschiedene URL verwendet, wenn über action regsiter bzw. unregister unterschieden werden könnte?}
-\item \Diskussionspunkt{Automatische Löschung wäre sinnvoller}
 \item \Diskussionspunkt{Was wird gegen SQL-Injektion im Feld SID unternommen? Es ist keine escape-Funktion vorhanden }
-\item \Diskussionspunkt{was passiert wenn der Benutzer das Browser-Fenster schliesst?}
-\item \Diskussionspunkt{wie werden alte Einträge gelöscht?}
-\item \Diskussionspunkt{DB-Abbildung mit mindestens drei Einträgen ist anschaulicher}
 \end{itemize}
