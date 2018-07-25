@@ -21,7 +21,7 @@ Um die API zu entwickeln, wurden die Anforderungen in einen sogenannten Daten-tr
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Designprinzp (REST) und Hierarchische Struktur}
+\subsection{Designprinzip (REST) und Hierarchische Struktur}
 Die Programmierschnittstelle liefert die aktuellen Messwerte der Wetterstation, Zusatzinformationen, und Infos zur Webcam. Diese Unterteilung wurde bei der Strukturierung der Daten berücksichtigt.
 Wie in Abbildung\,\ref{img:hierarchie} ersichtlich, stellt die Versionsnummer den Ausgangspunkt dar. Danach gibt es die drei Untergruppen misc, webcam und data. Unter data werden alle Informationen, die von der Wetterstation direkt oder indirekt gemessen werden angezeigt. Unter webcam ist der Link zu Webcam aufgeführt und unter misc sind die Zusatzinformation die Sturmwinddaten für die drei Region Bodensee Ost, Mittel und West aufgeführt. Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern lässt und die URL trotzdem möglichst kurz ist.
 
@@ -62,7 +62,7 @@ Versionierung in der URL ermöglich Parallelbetrieb (=Vorteil)
 Als nächstes muss ein URL Schema her. Dies wird benötigt, um nach dem REST Standard zu arbeiten. Die URL sollte folgendermassen aussehen:
 
 
-\\\emph{Protokoll://Host/Versionsnummer/Endpunkt} \\
+\texttt{Protokoll://Host/Versionsnummer/Endpunkt}
 
 Die Versionsnummer wird zur Weiterentwicklung benötigt. Wird beispielsweise eine neue Version der API veröffentlicht, kann es sein, dass nicht alle Nutzer der API auf die neue Version umgestiegen sind. Somit kann es geschehen, dass die vorhandenen Installationen zerstört werden.
 
