@@ -4,8 +4,8 @@ Bei der Webcam\footnote{\url{https://dev.wetter-arbon.ch/webcam}} der Wetterstat
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{GUI der Warteschlange}
-Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq drückt. Ist die Warteschlange leer erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Zeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit bis die Steuerung der Webcam freigegeben ist angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
+\subsection{Grafische Benutzeroberfläche der Warteschlange}
+Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq drückt. Ist die Warteschlange leer erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Steuerungszeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
 \Diskussionspunkt{Warum 40 Sekunden?} \newline
 
 
@@ -21,7 +21,7 @@ Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, 
 %% Unterkapitel
 %% ############################################################################
 \subsection{Technische Umsetzung der Warteschlange}
-Die technische Umsetzung der Warteschlange ist vereinfacht in Abbildung\,\ref{img:warteschlangeprinzip} dargestellt. Registriert sich ein Benutzer per Klick auf den Registrierungsbutton wird eine Session-ID gelöst und diese per POST an den Server gesendet. Dieser prüft nun in der Datenbank ob bereits andere Benutzer in der Warteschlange sind und berechnet die Wartezeit (Beispiel in Listing\,\ref{lst:wartezeit}).
+Die technische Umsetzung der Warteschlange ist vereinfacht in Abbildung\,\ref{img:warteschlangeprinzip} dargestellt. Registriert sich ein Benutzer per Klick auf den Registrierungsbutton wird eine Session-ID gelöst und diese per POST an den Server gesendet. Dieser prüft nun in der Datenbank ob bereits andere Benutzer in der Warteschlange sind und berechnet die Wartezeit (Beispiel in Abbildung\,\ref{img:tblqueuemitBenutzer} und Listing\,\ref{lst:wartezeit}).
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/warteschlangeprinzip.png}}
@@ -41,17 +41,19 @@ Danach wird für den Benutzer einen Eintrag in der Tabelle erstellt (siehe Abbil
 \end{figure}
 
 % Berechnung der Wartezeit
-\begin{lstlisting}[label=lst:wartezeit, language=PHP, style=PHP]
+\vspace{3mm}
+\begin{lstlisting}[label=lst:wartezeit,caption=Berechnung der Wartezeit, language=PHP, style=PHP]
 $waittime = $waittimeVorgaenger + 40 - $abgelaufeneZeit +2;
 // 0 + 40 - (51-34) + 2 = 25
 \end{lstlisting}
-
+\vspace{3mm}
 
 \noindent
-Eine Countdown-Funktion im Browser prüft nun selbständig wann die Wartezeit vorüber ist und gibt die Steuerung der Webcam frei. Die Freigabe funktioniert über eine einfache if-Bedingung, wo geprüft wird, ob der Browser registriert ist und die Wartezeit abgelaufen ist. Die if-Schleife ist in Listing\,\ref{lst:webcamControl} dargestellt.
-Sobald die 40\,Sekunden Bedienzeit vorüber sind sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Wenn der Benutzer probiert die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
+Eine Countdown-Funktion im Browser prüft nun selbständig wann die Wartezeit vorüber ist und gibt die Steuerung der Webcam frei. Die Freigabe funktioniert über eine if-Abfrage, in der geprüft wird, ob der Browser registriert, und die Wartezeit abgelaufen ist (siehe Listing\,\ref{lst:webcamControl}).
+Sobald die 40\,Sekunden Bedienzeit vorüber sind sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Falls der Benutzer veruscht die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
 
-\begin{lstlisting}[label=lst:webcamControl, language=Python, style=py]
+\vspace{3mm}
+\begin{lstlisting}[label=lst:webcamControl, caption=Freigabe der Webcam-Steuerung,language=Python, style=py]
 $('#webcam_up.on('click', function() {
   if(controlboolean == true && registerboolean == true)
     .....  // Kamera steuern moeglich
@@ -61,6 +63,7 @@ $('#webcam_up.on('click', function() {
     $("#countdown").html("Habe Geduld du bist gleich an der Reihe");}
 }
 \end{lstlisting}
+\vspace{3mm}
 
 
 \begin{itemize}
