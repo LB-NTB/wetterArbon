@@ -28,12 +28,12 @@
 \contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{32}{figure.27}
 \contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{35}{figure.28}
 \contentsline {figure}{\numberline {29}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{35}{figure.29}
-\contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{37}{figure.30}
+\contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{38}{figure.30}
 \contentsline {figure}{\numberline {31}{\ignorespaces Grafische vs. maschinenlesbare Darstellung}}{39}{figure.31}
 \contentsline {figure}{\numberline {32}{\ignorespaces Dreistufige Datenhierarchie}}{40}{figure.32}
-\contentsline {figure}{\numberline {33}{\ignorespaces Ablauf einer API GET-Abfrage}}{42}{figure.33}
-\contentsline {figure}{\numberline {34}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{44}{figure.34}
-\contentsline {figure}{\numberline {35}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{45}{figure.35}
-\contentsline {figure}{\numberline {36}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{47}{figure.36}
-\contentsline {figure}{\numberline {37}{\ignorespaces Kommunikation zwischen Browser und Server}}{48}{figure.37}
-\contentsline {figure}{\numberline {38}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{48}{figure.38}
+\contentsline {figure}{\numberline {33}{\ignorespaces Ablauf einer API GET-Abfrage}}{44}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{46}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{47}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{49}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces Kommunikation zwischen Browser und Server}}{50}{figure.37}
+\contentsline {figure}{\numberline {38}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{50}{figure.38}
