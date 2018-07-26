@@ -5,7 +5,7 @@ Die Webseite der Wetterstation bietet den interessierten Personen Informationen 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/humanvsmachine}}
 	\centering
-	\caption{Grafische vs. maschinenlesbare Darstellung}
+	\caption{Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}
 	\label{img:humanvsmachine}
 \end{figure}
 
@@ -13,40 +13,29 @@ Die Webseite der Wetterstation bietet den interessierten Personen Informationen 
 %% Unterkapitel
 %% ############################################################################
 \subsection{Konzipierung und Design der API}
-% muss erweiterbar sein
-% intuitiv
-% einfach
-% kurze URL
-% DE oder EN?
-
-
-\subsubsection{Hierarchische Gliederung der Daten}
-Die Programmierschnittstelle liefert die aktuellen Messwerte der Wetterstation, Zusatzinformationen, und Infos zur Webcam. Diese Unterteilung wurde bei der Strukturierung der Daten berücksichtigt.
-
-
-Das Verzeichnis V1 beinhaltet drei Unterverzeichnisse, data, misc und webcam. Im Verzeichnis Data wird das JSON der Sensoren aufgebaut, im Verzeichnis Webcam wird das JSON für die Webcam erstellt. Dies ist auch das einzige Verzeichnis welches nicht auf die Datenbank zugreift. Im Verzeichnis misc werden verschiedene Arten von Daten, welche von dritten abgegriffen werden verarbeitet.
-
+Die Wetterstation liefert unterschiedliche Arten von Informationen, dies sind etwa Temperaturdaten, den Status der Sturmwarnung und eine Verlinkung zur Webcam. Die API wurde deshalb in drei Kategorien aufgeteilt:
 
 \begin{itemize*}
-\item
-\item
-\item
+\item Messdaten (data)
+\item Zusatzinformationen (misc)
+\item Webcam-Links (webcam)
 \end{itemize*}
 
-Wie in Abbildung\,\ref{img:hierarchie} ersichtlich, stellt die Versionsnummer den Ausgangspunkt dar. Danach gibt es die drei Untergruppen misc, webcam und data. Unter data werden alle Informationen, die von der Wetterstation direkt oder indirekt gemessen werden angezeigt. Unter webcam ist der Link zu Webcam aufgeführt und unter misc sind die Zusatzinformation die Sturmwarndaten für die drei Region Bodensee Ost, Mittel und West aufgeführt. Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern lässt und die URL trotzdem möglichst kurz ist. Denn die URL entspricht genau dieser hierarchischen Datenstruktur. Um zum Beispiel die aktuellen Lufttemperatur zu erhalten muss folgende URL verwendet werden: \url{https://api.wetter-arbon.ch/v1/data/temperature}. Wenn mehrere Werte auf einmal abgefragt werden sollen, kann die URL eine oder zwei Stufen höher aufgerufen werden also zum Beispiel \url{https://api.wetter-arbon.ch/v1/data/} beziehungsweise \url{https://api.wetter-arbon.ch/v1/}. In diesem Fall werden jeweils alle Daten unterhalb der gewählten Hierarchiestufe ausgegeben.
+\noindent
+\emph{Data} ist für die direkten bzw. indirekten Messdaten der Wetterstation vorgesehen. Unter \emph{misc} werden verschiedene Arten von Daten, welche von Dritten abgegriffen werden, verarbeitet, wie zum Beispiel der Status der Sturmwarnung. Unter \emph{webcam} werden Links für die Webcam zur Verfügung gestellt. Unterhalb der Kategorien befinden sich die Informationseinheiten. Es handelt sich hierbei um in sich geschlossene Datenblöcke, wie in Abbildung\,\ref{img:humanvsmachine} rechts dargestellt. Die komplette Struktur mit allen möglichen Abfragen ist in Abbildung\,\ref{img:hierarchie} dargestellt.
+
+Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern lässt und die URL trotzdem möglichst kurz ist. Denn der API-Aufruf, das heisst die URL entspricht genau dieser hierarchischen Datenstruktur. Um zum Beispiel die aktuellen Lufttemperatur zu erhalten muss folgende URL verwendet werden: \url{https://api.wetter-arbon.ch/v1/data/temperature}. Wenn mehrere Werte auf einmal abgefragt werden sollen, kann die URL eine oder zwei Stufen höher aufgerufen werden also zum Beispiel \url{https://api.wetter-arbon.ch/v1/data/} beziehungsweise \url{https://api.wetter-arbon.ch/v1/}. In diesem Fall werden jeweils alle Daten unterhalb der gewählten Hierarchiestufe ausgegeben.
 
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/hierarchie}}
 	\centering
-	\caption{Dreistufige Datenhierarchie}
+	\caption{Die dreistufige Datenhierarchie der API}
 	\label{img:hierarchie}
 \end{figure}
 
-% Hieraus wird auch die URL entstehen zur Abfrage der Daten. Der Aufruf wird Grundsätzlich über api.wetter-arbon.ch gemacht.
-% Um einzelne Werte abzufragen muss tiefer in die Verzeichnisse gegangen werden.
 
-
+% DE oder EN?
 
 
 \subsubsection{Anwendung des REST-Prinzips}
@@ -54,7 +43,7 @@ Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representatio
 \Diskussionspunkt{Was passiert bei POST-Aufruf?}
 
 \vspace{3mm}
-\begin{lstlisting}[label=lst:apirequest,caption=Serveranfrage, language=HTML5, style=php]
+\begin{lstlisting}[label=lst:apirequest,caption=RESTful-Serveranfrage, language=HTML5, style=php]
 GET /v1/data HTTP/1.1
 Host:           api.wetter-arbon.ch
 Cache-Control:  no-cache
@@ -111,11 +100,8 @@ Für die API gibt es jedoch eine wichtige Bedingung. Sie muss in php geschrieben
 
 
 \subsubsection{Auswahl des PHP-Frameworks}
-% kostenlos
-% schnell
-% einfach und leicht verständlich
-% Mittels Nutzwertanalyse ausgewählt
 % Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
+% KO-Kriterium: kostenlos und von Hostpoint unterstützt
 
 
 % https://www.quora.com/What-is-a-PHP-framework
@@ -278,19 +264,19 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 
 
 \subsubsection{Bottom up - Funktionsprinzip}
-Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst die Abfrage auf die kleinste logische Einheit bildet den Kern der API. Die Abfrage dieser Einheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als erstes dem PATH-File übergeben. Dort wird der Endpunkt das heisst die gewünschte Einheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase}) dargestellt, ermittelt. Danach wird ein assoziatives Array (siehe Abbilung\,\ref{img:assozArray}) erstellt, welches alle nötigen Parameter enthält, sodass im createJson-File die Datenbank-Abfrage getätigt werden kann. Schlussendlich werden die Werte aus der Datenbank ins Array geschrieben und dieses in ein JSON umgewandelt und zurückgegeben. Je nach Informationseinheit gibt es Unterschiede beim Aufbau des JSONs. Für einige Messwerte sind Maximal und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet, damit alle Benutzer die Messwerte auch interpretieren können.
+Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst die Abfrage auf die Informationseinheit bildet den Kern der API. Die Abfrage einer Informationseinheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als erstes dem PATH-File übergeben. Dort wird der Endpunkt das heisst die gewünschte Informationseinheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase} dargestellt, ermittelt. Danach wird ein assoziatives Array (siehe Abbilung\,\ref{img:assozArray}) erstellt, welches alle nötigen Parameter enthält, sodass im createJson-File die Datenbank-Abfrage getätigt werden kann. Schlussendlich werden die Werte aus der Datenbank ins Array geschrieben und dieses in ein JSON umgewandelt und zurückgegeben. Je nach Informationseinheit gibt es Unterschiede beim Aufbau des JSONs. Für einige Messwerte sind Maximal- und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet (Knoten, km/h, Beaufort), damit alle Benutzer die Messwerte auch interpretieren können.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
 	\centering
-	\caption{Ablauf einer API GET-Abfrage}
+	\caption{Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}
 	\label{img:APIFiles}
 \end{figure}
 
 
 % Switch-Case
 \vspace{3mm}
-\begin{lstlisting}[label=lst:switchCase,caption=Routing der URL auf die richtige DB-Abfrage, language=php, style=php]
+\begin{lstlisting}[label=lst:switchCase,caption=Routing innerhalb einer Kategorie mittels Switch-case, language=php, style=php]
 // Beispiel: https://api.wetter-arbon.ch/v1/data/temperature
 switch ($url){
  case "/v1/data/temperature":
@@ -318,7 +304,7 @@ switch ($url){
 Die ganze API ist Modular aufgebaut, so dass sie für weitere Anwendungen oder Messwerte ausgebaut werden kann. Die Datenabfrage findet immer auf Stufe Informationseinheit statt. Findet die Abfrage auf einer höheren Stufe statt, so und werden die Informationseinheiten einzeln über eine GET-Abfrage aufgerufen (analog Abbildung\,\ref{img:APIFiles}) und anschlissend zusammengefasst. Konkret heisst dies, dass wenn zum Beispiel die URL \texttt{../v1/data} aufgerufen wird, sämtliche unter data befindenden Informationseinheiten in einer foreach-Schlaufe abgefragt, und anschlissend in einem JSON zusammengefasst werden, wie in Listing\,\ref{lst:foreach} dargestellt.
 
 \vspace{3mm}
-\begin{lstlisting}[label=lst:foreach,caption=Routing der URL auf die richtige DB-Abfrage, language=php, style=php]
+\begin{lstlisting}[label=lst:foreach,caption=API-Abfrage auf Stufe Kategorie, language=php, style=php]
 $url=array(
   "/v1/data/temperature",
   "/v1/data/windchill",
@@ -350,7 +336,7 @@ foreach($url as $url){
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Interaktive Dokumentation der API}
+\subsection{Dokumentation der API}
 Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert und ist über die Webseite\footnote{\url{https://documenter.getpostman.com/view/4035921/api-wetter-arbon/RW1XMhBK}} zugänglich. Dabei werden sämtliche Endpunkte, die von der API zur Verfügung gestellt werden aufgelistet und erklärt. Zudem werden parallel dazu die passenden Befehle dargestellt um zum Beispiel über Javascript oder PHP die API aufzurufen (rechts dargestellt in Abbildung\,\ref{img:postman}). Die Doku-Seite wird automatisch aufgerufen wenn sich in der URL-Anfrage auf \texttt{api.wetter-arbon.ch} ein Fehler befindet.
 
 \begin{figure}[htbp!]
