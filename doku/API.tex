@@ -23,6 +23,10 @@ Die Webseite der Wetterstation bietet den interessierten Personen Informationen 
 \subsubsection{Hierarchische Gliederung der Daten}
 Die Programmierschnittstelle liefert die aktuellen Messwerte der Wetterstation, Zusatzinformationen, und Infos zur Webcam. Diese Unterteilung wurde bei der Strukturierung der Daten berücksichtigt.
 
+
+Das Verzeichnis V1 beinhaltet drei Unterverzeichnisse, data, misc und webcam. Im Verzeichnis Data wird das JSON der Sensoren aufgebaut, im Verzeichnis Webcam wird das JSON für die Webcam erstellt. Dies ist auch das einzige Verzeichnis welches nicht auf die Datenbank zugreift. Im Verzeichnis misc werden verschiedene Arten von Daten, welche von dritten abgegriffen werden verarbeitet.
+
+
 \begin{itemize*}
 \item
 \item
@@ -88,15 +92,13 @@ und als Beispiel:\\
 \url{https://api.wetter-arbon.ch/v1/data/}
 
 \noindent
-\Diskussionspunkt{evt. Erklärgrafik hinzufügen}
+\Diskussionspunkt{Erklärgrafik hinzufügen}
 
 
 \subsubsection{Auswahl des Response-Datenformats}
 Damit sich die Computer gegenseitig verstehen, ist es wichtig, dass die Kommunikation in einem standartisierten Datenformat erfolgt. Hier besteht die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches Format genutzt wird. Der Server sendet deshalb im Header der Antwort die entsprechende Formatbezeichnung mit (zum Beispiel \texttt{ Content-Type: application/json}). Der Client kann im Header zwar angeben in welchem Format er die Antwort gerne hätte, der Server liefert aber unabhängig davon JSON zurück.
 
 Als Datenformat der API wurde JSON\footnote{JSON: Javascript Object Notation} gewählt, da es sich um ein simples und im Webbereich häufig eingesetztes Datenformat handelt, welches nicht viel Speicherplatz benötigt. Nebst der Lesbarkeit für Maschinen, kann es auch von Menschen einfach gelesen werden. Javascript beispielsweise handhabt JSON nativ und auch die Verwendung in PHP ist simpel, wie im Buch PHP Web Services \cite{LornaJaneMitchell2013oreilly} erwähnt wird. Eine JSON-Antwort mit sämtlichen Werten ist in Anhang Listing \ref{lst:JsonTree} dargestellt. Bei hierarchischen Datenstrukturen spricht man auch von einem Daten-Tree.
-
-
 
 %% ############################################################################
 %% Unterkapitel
@@ -108,7 +110,7 @@ Für die API gibt es jedoch eine wichtige Bedingung. Sie muss in php geschrieben
 
 
 
-\subsubsection{Auswahl des PHP-Frameworks anhand einer Nutzwertanalyse}
+\subsubsection{Auswahl des PHP-Frameworks}
 % kostenlos
 % schnell
 % einfach und leicht verständlich
@@ -267,33 +269,28 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 \end{itemize*}
 
 
-
-
 \paragraph*{Entscheidung für xxxx}
 % Nutzwert: stellt das Endergebnis der Nutzwertanalyse dar und repräsentiert die kumulierten bewerteten Kriterien der einzelnen Alternativen.
 % Letztlich müssen alle Koeffizienten mit denen der anderen Alternativen verglichen werden, um den Gewinner zu bestimmen
 % der einzelne Nutzwert ist nicht aussagekräftig, sondern muss immer ins Verhältnis zu den anderen Ergebnissen gesetzt werden
-
-
-\subsubsection{MVC-Entwicklungs-Pattern}
-- Was ist das MVC-Muster
-- Warum wird es bei Web
-- Warum ist es bei uns nicht nötig?
-
-
-Welche Möglichkeiten bietet PHP um dies möglichst einfach umzusetzen? Frameworks? Lösungsansätze
-Wie sieht das Funktionsprinzip des gewählten Lösungsansatzes aus?
+\Diskussionspunkt{Nutzwerte vergleichen und erklären warum kein Framework die beste Wahl ist}
 
 
 
+\subsubsection{Bottom up - Funktionsprinzip}
+Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst die Abfrage auf die kleinste logische Einheit bildet den Kern der API. Die Abfrage dieser Einheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als erstes dem PATH-File übergeben. Dort wird der Endpunkt das heisst die gewünschte Einheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase}) dargestellt, ermittelt. Danach wird ein assoziatives Array (siehe Abbilung\,\ref{img:assozArray}) erstellt, welches alle nötigen Parameter enthält, sodass im createJson-File die Datenbank-Abfrage getätigt werden kann. Schlussendlich werden die Werte aus der Datenbank ins Array geschrieben und dieses in ein JSON umgewandelt und zurückgegeben. Je nach Informationseinheit gibt es Unterschiede beim Aufbau des JSONs. Für einige Messwerte sind Maximal und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet, damit alle Benutzer die Messwerte auch interpretieren können.
 
-In diesem Kapitel wird die Funktionsweise nach der Umsetzung des API-Konzepts erklärt. Die ganze API ist Modular aufgebaut, dass diese für weitere Anwendungen oder Messwerte ausgebaut werden kann. Dies beginnt schon beim Verzeichnis (Abb. \ref{img:APIVerzeichnis}) .
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
+	\centering
+	\caption{Ablauf einer API GET-Abfrage}
+	\label{img:APIFiles}
+\end{figure}
 
-% Routing
-Für die API ist die Datei path.php essentiell (listing \ref{lst:routing}). Hier wird wie erwähnt das Routing vorgenommen und die entsprechenden Funktionsaufrufe mit den dazugehörenden Parameter.
 
+% Switch-Case
 \vspace{3mm}
-\begin{lstlisting}[label=lst:routing,caption=Routing der URL auf die richtige DB-Abfrage, language=php, style=php]
+\begin{lstlisting}[label=lst:switchCase,caption=Routing der URL auf die richtige DB-Abfrage, language=php, style=php]
 // Beispiel: https://api.wetter-arbon.ch/v1/data/temperature
 switch ($url){
  case "/v1/data/temperature":
@@ -304,45 +301,65 @@ switch ($url){
 \end{lstlisting}
 \vspace{3mm}
 
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/assozArray}}
 	\centering
-	\caption{Ablauf einer API GET-Abfrage}
-	\label{img:APIFiles}
+	\caption{Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}
+	\label{img:assozArray}
 \end{figure}
 
 
+\noindent
+\Diskussionspunkt{Warum wurde die Dateistruktur auf dem Server nicht nach dem MVC-Prinzip (= Standard in der Webapplikationsentwicklung) aufgebaut?}
 
-\begin{lstlisting}[label=lst:path,caption=Beispiel Case zuweisung, language=php, style=php]
-case "/v1/data/temperature":
-	$table = "tblwettertransmitter";
-	$requiredData = array(
-		"value" => "temperature",
-		"min"  	=> "min_daily_temperature",
-		"max"   => "max_daily_temperature"
-	);
-	$dataJsonStatic = array(
-	 "description"  => "Lufttemperatur",
-	 "unit"  => "C"
-	);
-	$name = "temperature";
-	createJsonMinMax($requiredData, $dataJsonStatic, $table, $name);
-	break;
+
+\subsubsection{Skalierbarkeit durch modularen Aufbau}
+Die ganze API ist Modular aufgebaut, so dass sie für weitere Anwendungen oder Messwerte ausgebaut werden kann. Die Datenabfrage findet immer auf Stufe Informationseinheit statt. Findet die Abfrage auf einer höheren Stufe statt, so und werden die Informationseinheiten einzeln über eine GET-Abfrage aufgerufen (analog Abbildung\,\ref{img:APIFiles}) und anschlissend zusammengefasst. Konkret heisst dies, dass wenn zum Beispiel die URL \texttt{../v1/data} aufgerufen wird, sämtliche unter data befindenden Informationseinheiten in einer foreach-Schlaufe abgefragt, und anschlissend in einem JSON zusammengefasst werden, wie in Listing\,\ref{lst:foreach} dargestellt.
+
+\vspace{3mm}
+\begin{lstlisting}[label=lst:foreach,caption=Routing der URL auf die richtige DB-Abfrage, language=php, style=php]
+$url=array(
+  "/v1/data/temperature",
+  "/v1/data/windchill",
+  "/v1/data/humidity",
+  "/v1/data/winddirection",
+  "/v1/data/windspeed",
+  "/v1/data/gust",
+  "/v1/data/precipitation",
+  "/v1/data/pressure",
+  "/v1/data/weathericon",
+  "/v1/data/forecasticon",
+  "/v1/data/watertemperature1m",
+  "/v1/data/watertemperature0m5",
+  "/v1/data/waterlevel",
+  "/v1/data/radiation",
+  "/v1/data/sunduration"
+);
+
+foreach($url as $url){
+  $json = file_get_contents('https://api.wetter-arbon.ch'.$url);
+  $obj = json_decode($json,true);
+  $jsonArray = array_merge_recursive($jsonArray, $obj);
+}
 \end{lstlisting}
+\vspace{3mm}
 
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Online-Dokumentation der API}
-postman vs. swagger.io
-link zu Doku
-%https://documenter.getpostman.com/view/4035921/api-wetter-arbon/RW1XMhBK
+\subsection{Interaktive Dokumentation der API}
+Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert und ist über die Webseite\footnote{\url{https://documenter.getpostman.com/view/4035921/api-wetter-arbon/RW1XMhBK}} zugänglich. Dabei werden sämtliche Endpunkte, die von der API zur Verfügung gestellt werden aufgelistet und erklärt. Zudem werden parallel dazu die passenden Befehle dargestellt um zum Beispiel über Javascript oder PHP die API aufzurufen (rechts dargestellt in Abbildung\,\ref{img:postman}). Die Doku-Seite wird automatisch aufgerufen wenn sich in der URL-Anfrage auf \texttt{api.wetter-arbon.ch} ein Fehler befindet.
 
-Das Verzeichnis V1 beinhaltet drei Unterverzeichnisse, data, misc und webcam. Im Verzeichnis Data wird das JSON der Sensoren aufgebaut, im Verzeichnis Webcam wird das JSON für die Webcam erstellt. Dies ist auch das einzige Verzeichnis welches nicht auf die Datenbank zugreift. Im Verzeichnis misc werden verschiedene Arten von Daten, welche von dritten abgegriffen werden verarbeitet. Nebst dem Verzeichnis, welches modular aufgebaut ist, enthalten auch die Dateien eine gewisse Struktur. Jedes Verzeichnis config enthält die folgenden vier Dateien.
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/postman}}
+	\centering
+	\caption{API-Dokumentation in Postman}
+	\label{img:postman}
+\end{figure}
 
 
-Erfolgt eine GET-Abfrage eines Clients läuft dies gemäss Abb. \ref{img:APIFiles}  ab. Nach der GET-Abfrage wird das Routing anhand des URL Pfades im path.php vorgenommen. Im Case wird der entsprechende Funktionsaufruf mit den Parametern an das CreateJSON übergeben. Hier entsteht zum Schluss auch das JSON. Die Funktion CreateJson...() stellt das JSON nach der Datenbankabfrage read...() in der Datei databaseQuery.php her. Das JSON wird aus dem dynamischen Array, enthält die Messwerte, sowie dem statischen Array, enthält die Einheit und Beschreibung, zusammengesetzt und zurück gegeben.
 
-Die Funktionen sind vom Aufbau her alle gleich. Der Unterschied besteht jedoch beim Aufbau des Json. Für einige Messwerte sind Maximal und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet, damit alle Benutzer die Messwerte auch interpretieren können.
+\Diskussionspunkt{Example Request auf der Postman-Seite sind falsch (.../sensors/...)}
