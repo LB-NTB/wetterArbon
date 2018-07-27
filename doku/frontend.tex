@@ -329,19 +329,7 @@ Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verf�
 
 Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap absolut unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten auch wenn die Wetterstation 15 Knoten messte. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weitervervolgt.
 
-Die Abfrage der Datenban stellt sich als recht kompliziert heraus. Sodass entschieden wurde eine VIEW einzusetzten. Diese wird dynamisch bei Aufrufen erzeugt und enthält die gewünschten Daten. Der SQL-Befehl für die Erzeugung der VIEW ist vereinfacht in Listing \ref{lst:viewForecast} aufgeführt. Primär gibt es zwei Bediungungen. Erstens sollen nur die Dreitageverhersagewerte verwendet werden und zweitens sollen die Vorhersagewerte verwendet werden, die am nächsten bei der aktuellen Zeit liegen. Da das Vorhersageintervall 3 Stunden beträgt ist die Verhersage maximal 1.5 Stunden verschoben.
 
-%View erstellen
-\begin{lstlisting}[label=lst:viewForecast,caption=Erzeugung der VIEW für den Forecast-Vergleich, language=SQL, style=htmlcssjs]
-SELECT *
-FROM 'tblcompwindfinder'
-WHERE
-(datetime + interval 3 day) <= now() #heute vor drei Tagen
-AND
-abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
-ORDER BY datetime DESC
-LIMIT 3
-\end{lstlisting}
 
 %\Diskussionspunkt{- Eintagesvorschau}\newline
 %\Diskussionspunkt{- Mittels Tableau? Eigen Webseite?}\newline
@@ -381,25 +369,6 @@ Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, a
 	\caption[Zeitverzug zwischen Sturmwarnmeldung und Anzeige]{Zeitverzug zwischen der Warnmeldung von Meteoschweiz und dem Einschalten der Warnleuchten durch die Kantonale Notrufzentrale (KNZ) in Frauenfeld}
 	\label{img:sturmZeit}
 \end{figure}
-
-
-\subsubsection{Abgreifen der Sturmwarndaten} % screen scrapping
-% Problem 1: keine API -> wenn Seite ändert, muss Crawler angepasst werden.
-Die Sturmwarndaten werden periodisch mittels Python-Skript ausgelesen. Als Web-Scrapper kommt die Python-Bibliothek \href{https://www.crummy.com/software/BeautifulSoup/}{\emph{BeautifulSoup}} zum Einsatz. Das Auslesen von Webseiten wird auch \emph{web scraping} genannt. Die Idee dahinter ist, die gewünschte Information auf Grund ihrer Element-Bezeichnung (\texttt{<td>}), ihres Attributs (\texttt{class="titelfett"}) oder Hierarchistufe (\texttt{tr:nth-of-type(4)}) eindeutig zu identifizieren. Um diese eindeutige Identifikation herauszufinden wurde das Google Chrome-Plugin \href{https://selectorgadget.com/}{\emph{SelectorGadget }} verwendet. Listing \ref{lst:kttgCrawler} zeigt die gesamte Abfrage. Darin ist das Problem dieser Methode gut erkennbar. Ändert die URL oder die Bezeichung bzw. Struktur der Seite, liefert das Skript nicht mehr die gewünschten Daten. Da das Web-Scrapping jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, muss dieses Risiko akezptiert werden.
-
-
-\begin{lstlisting}[label=lst:kttgCrawler,caption=Web-Scrapper für die Sturmwarndaten, language=python, style=py]
-page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
-soup = BeautifulSoup(page.text, 'html.parser')
-
-# Einschaltzeit auslesen
-soup.select('table tr:nth-of-type(4) td'):
-
-# Status auslesen
-soup.select('.titelfett strong'):
-\end{lstlisting}
-
-
 
 
 \subsubsection{Eigener Sturmwarndienst mit Hilfe der Messwerte}

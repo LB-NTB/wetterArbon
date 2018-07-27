@@ -1,16 +1,10 @@
 \section{Datenbank / back end / cronjobs}
-
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Übersicht}
-
 In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Vor der Umstrukturierung der Datenbank waren die Tabellen unübersichtlich aufgebaut. Nach der Umstrukturierung soll die Datenbank primär für folgende Aufgaben ausgelegt sein:\\
-\begin{itemize}
+\begin{itemize*}
 \item API
 \item Dreitage Rückschau der verschiedenen Sensoren
 \item Historische Daten
-\end{itemize}
+\end{itemize*}
 
 Die Aufgabe der Datenbank ist es, den Umgang mit den Daten einfacher zu gestalten. Sei es in Bezug auf die Aufbereitung der historischen Daten oder für den Aufbau der API, welche einfach erweiterbar sein soll.
 
@@ -20,15 +14,27 @@ Die Aufgabe der Datenbank ist es, den Umgang mit den Daten einfacher zu gestalte
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenerfassung}
+% Ueberischt über alle Kanäle -> was wird wie erfasst
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/datenerfassung}}
+	\centering
+	\caption{Datenerfassung}
+	\label{img:datenerfassung}
+\end{figure}
+
+
+
+
 \subsubsection{Erfassung der Daten des Wetter-Transmitters}
 Die Daten des Wetter-Transmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstelle abgerufen sowie aufbereitet. Damit die Daten im Minutentakt in der Datenbank gespeichert werden. Für die Umgestaltung der Datenbank wurde auch die Konfiguration im WeatherDisplay angepasst. \Diskussionspunkt{Bild Weatherdisplay Konfiguration} In der Konfiguration können die Datenpunkte welche eingetragen werden sollen selektiert werden. \Diskussionspunkt{Weitere Konfigmöglichkeiten aufzeigen}
 
-Kann ein Datenbankeintrag nicht erstellt werden, weil es zu wenig Einträge hat oder aus anderen Gründen wird dies, wie später im Kapitel Funktionsüberwachung mit Mail-Service \ref{kap:Funktionsüberwachung}, beschrieben im Cronjob abgefangen.  
+Kann ein Datenbankeintrag nicht erstellt werden, weil es zu wenig Einträge hat oder aus anderen Gründen wird dies, wie später im Kapitel Funktionsüberwachung mit Mail-Service \ref{kap:Funktionsüberwachung}, beschrieben im Cronjob abgefangen.
 
 \subsubsection{Einlesen von Pegel- und Strahlungsmesswerten}
 Wassertemperatur, Strahlungssensor und Pegelsenoren sind alle an einem Web-IO angeschlossen, welche die analogen Werte per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannten Sensoren die gleiche, nur die URL unterscheidet sich je nach Sensor. Die Abfragen sind nach dem try... catch - Prinzip aufgebaut, sodass das Skript weiterläuft auch wenn vom Web-IO keine Antwort eintrifft.
 
-\begin{lstlisting}[label=lst:webIo,caption=Web-Abfrage des Pegel-Messwerts, language=python, style=py]
+\begin{lstlisting}[label=lst:webIo,caption=Python-Script zur Web-Abfrage des Pegel-Messwerts, language=python, style=py]
 try:
     buffer = StringIO()
     c = pycurl.Curl()
@@ -37,90 +43,146 @@ try:
     c.perform()
     c.close()
     requestMeasurement = buffer.getvalue()
-
-except Exception as e:
-    print "Es ist ein Problem mit der Pegel-Abfrage aufgetaucht: "
-    print e
 \end{lstlisting}
+
+
+\subsubsection{Abgreifen der Sturmwarndaten} % screen scrapping
+Die Sturmwarndaten werden periodisch mittels Python-Skript ausgelesen. Als Web-Scrapper kommt die Python-Bibliothek \href{https://www.crummy.com/software/BeautifulSoup/}{\emph{BeautifulSoup}} zum Einsatz. Das Auslesen von Webseiten wird auch \emph{web scraping} genannt. Die Idee dahinter ist, die gewünschte Information auf Grund ihrer Element-Bezeichnung (\texttt{<td>}), ihres Attributs (\texttt{class="titelfett"}) oder Hierarchistufe (\texttt{tr:nth-of-type(4)}) eindeutig zu identifizieren. Um diese eindeutige Identifikation herauszufinden wurde das Google Chrome-Plugin \href{https://selectorgadget.com/}{\emph{SelectorGadget }} verwendet. Listing \ref{lst:kttgCrawler} zeigt die gesamte Abfrage. Darin ist das Problem dieser Methode gut erkennbar. Ändert die URL oder die Bezeichung bzw. Struktur der Seite, liefert das Skript nicht mehr die gewünschten Daten. Da das Web-Scrapping jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, muss dieses Risiko akezptiert werden.
+
+
+\begin{lstlisting}[label=lst:kttgCrawler,caption=Web-Scrapper für die Sturmwarndaten, language=python, style=py]
+page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
+soup = BeautifulSoup(page.text, 'html.parser')
+
+# Einschaltzeit auslesen
+soup.select('table tr:nth-of-type(4) td'):
+
+# Status auslesen
+soup.select('.titelfett strong'):
+\end{lstlisting}
+
+
+\subsubsection{Windvorhersagedaten}
+Die Abfrage der Datenban stellt sich als recht kompliziert heraus. Sodass entschieden wurde eine VIEW einzusetzten. Diese wird dynamisch bei Aufrufen erzeugt und enthält die gewünschten Daten. Der SQL-Befehl für die Erzeugung der VIEW ist vereinfacht in Listing \ref{lst:viewForecast} aufgeführt. Primär gibt es zwei Bediungungen. Erstens sollen nur die Dreitageverhersagewerte verwendet werden und zweitens sollen die Vorhersagewerte verwendet werden, die am nächsten bei der aktuellen Zeit liegen. Da das Vorhersageintervall 3 Stunden beträgt ist die Verhersage maximal 1.5 Stunden verschoben.
+
+%View erstellen
+\begin{lstlisting}[label=lst:viewForecast,caption=Erzeugung der VIEW für den Forecast-Vergleich, language=SQL, style=htmlcssjs]
+SELECT *
+FROM 'tblcompwindfinder'
+WHERE
+(datetime + interval 3 day) <= now() #heute vor drei Tagen
+AND
+abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
+ORDER BY datetime DESC
+LIMIT 3
+\end{lstlisting}
+
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenspeicherung}
-\subsubsection{Umstrukturierung der Datenbank}
-Die Datenbank ist zur Zeit vor der Umstellung chaotisch und die Namensgebung ist nicht sehr aufschlussreich. Dies bedeutet es ist nicht auf den ersten Blick ersichtlich welche Daten wo gespeichert werden. Aus diesem Grund wird die Datenbank umstrukturiert. Hierbei soll vor allem die Übersichtlichkeit und Datenverteilung im Vordergrund stehen. Zusätzlich sollen die Daten, welche weiterhin im Minutentakt geschrieben werden, so aufbereitet werden, dass Benutzer auf der neu erstellen historischen Webpage die Wetterdaten der vergangenen Jahre einsehen können.
+Für die Datenspeicherung stellt Hostpoint, der Webhosting-Provider der Wetterstation, seinen Kunden eine MariaDB Version 10.1 mit dem Administrationstool phpMyAdmin zur Verfügung. MariaDB ist eine relationales Open-Source-Datenbankverwaltungssystem und basiert auf MySQL.
 
-\subsubsection{Vorgaben}
-Vor der Entwicklung der neuen Datenbank sollten die Vorgaben der Datenbankumgebung geklärt werden. Die Vorgaben zeigen auf, welche Datenbank zur Verfügung steht und von welcher Art Datenmodell diese Gebrauch macht. Hierbei muss klargestellt werden, dass es verschiedene Arten von Modellen gibt:
-\begin{itemize}
-\item relationale DB
-\item hierarchisches Datenmodell
-\item Netzwerkdatenmodell
-\item Objekt relationale Datenbank
-\end{itemize}
+Die Datenbank wurde komplett neu aufgebaut. Im Folgenden werde die einzelnen Tabellen und deren Struktur erklärt.
 
-Hostpoint bietet eine MariaDB Version 10.1 an. MariaDB funktioniert nach dem relationalen Datenbankmodell. Wie in Introduction to relational Databases \cite{IntroductionToRelationalDatabases:MariaDB} beschrieben wird, bedeutet dies, dass es in den unterschiedlichen Tabellen eine Spalte geben kann welche sich überlappt. Mittels den überlappenden Spalten werden die Tabellen untereinander Verknüpft.\\
+%Für die Umstrukturierung wurde von der Methodik aus dem Artikel Grundlagen und Entwurf \cite{Datenbanken:GrundlagenUndEntwurf:VeikkoKrypczyk} gebrauch gemacht.
+%Wie in Introduction to relational Databases \cite{IntroductionToRelationalDatabases:MariaDB} beschrieben wird,
 
-\subsubsection{Methodik}
-Nachdem die Vorgaben klar sind kann die Datenbank entwickelt werden. Hierbei gibt es verschiedene Methoden. Für die Umstrukturierung wurde von der Methodik aus dem Artikel Grundlagen und Entwurf \cite{Datenbanken:GrundlagenUndEntwurf:VeikkoKrypczyk} gebrauch gemacht. Dieses Vorgehen sieht folgendermassen aus:
-\begin{itemize}
-\item Externe Phase (Ermittlung der Informationsstruktur)
-\item Konzeptionelle Phase (ER-Modell)
-\item Logische Phase (relationales Datenmodell)
-\item Physische Phase (Erstellung des Datenmodells)
-\end{itemize}
+\subsubsection{Aufbau und Inhalt der Datenbank}
+Die Datenbank besteht aus mehreren Tabellen mit unterschiedlichem Inhalt. Die Auflistung sämtlicher Tabellen mit einer Beschreibung des Inhalts befindet sich in Tabelle\,\ref{table:dbtabellen}. Die obersten vier Tabellen werden zur Speicherung der Messwerte/Zusatzinformationen verwendet. Anschliessend kommen die drei Tabellen für die historischen Daten und zum Schluss zwei Tabelle, die für den Benachrichtungsservice und die Webcam benötigt werden.
+%\Diskussionspunkt{Warum wurde keine zweite DB für Benachrichtigungsservice und Webcam erstellt? Zweite DB mit igwetter_Services?}
 
-Diese vier Phasen führen vom Beginn der Entwicklung bis zum Endprodukt und werden im nächsten Kapitel erklärt sowie gleich umgesetzt.
-\subsubsection{Neugestaltung der Datenbank}
-\paragraph{externe Phase}
+% Datenbank-Tabellen
+\begin{table}[htbp!]
+  \setlength\extrarowheight{3pt} % for a more "open" look
+  \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{4.5cm}|X|}
 
-In der externen Phase wird entschieden, wie das Problem aus der realen Welt mit Hilfe der Datenbank gelöst und dargestellt werden kann. Bei der Wetterstation fallen pro Minute 65 Datenpunkte vom Wettertransmitter an, sowie 4 Datenpunkte von den externen Sensoren. Zusätzlich zu den neu anfallenden Datensätzen, sind noch 1143847 Einträge aus den letzten 3 Jahren bestehend. Dass heisst, nebst den neuen Daten, müssen auch die Daten aus den letzten Jahren in die neue Datenbank migriert werden. Dieser ganze Satz an Daten, gilt es im Vorhinein zu optimieren und die zukünftigen Einträge auf die wichtigsten zu minimieren. Dies ging auch aus der Diskussion, mit dem Spezialisten hervor, welcher einige Ansätze, für eine neu Organisation aufgezeigt hat. Die Umstrukturierung der Datenbank sieht folgende Massnahmen vor. Die Tabelle wx data, beinhaltet die Daten des Wettertransmitters der letzten drei Jahre und wird möglichst in ihrem Zustand belassen. Es werden einzig die Spalten, welche immer eine 0, 100 oder ein NULL beinhalten gelöscht. Die restlichen Daten werden gemäss der alten Struktur in eine neue Tabelle überführt. Die Tabelle tblwellen, beinhaltet den Pegel und wird gelöscht. Anstelle dieser Tabelle kommt eine neue, welche alle Daten der externen Sensoren beinhaltet. So sollte die ganze Datenbank übersichtlicher werden. Zudem wird eine historische Tabelle erstellt, diese soll, die zu stündlich aufbereiteten Daten aus den beiden Tabellen enthalten. Um die historische Tabelle ohne Ausfälle zu füllen wird eine Tabelle entstehen, welche alle Zeitstempel von 2015 bis 2030 beinhaltet. Welche Datenpunkte übernommen werden, kann aus dem Anhang \ref{anhang:Datenbankschema} entnommen werden.\\
+  \hline
+  %\textbf{Tabelle}
+  & \bfseries Beschreibung \\
 
-\paragraph{Konzeptionelle Phase}
+  \hline
+  \textbf{tblwettertransmitter}
+  & Messwerte des Wettertransmitters \\
 
-Nachdem die externe Phase abgeschlossen ist und entschieden wurde, welche Datenpunkte für die API sowie die neue Webseite relevant sind, kann mit der konzeptionellen Phase begonnen werden. In dieser geht es darum, die vorhergehenden Phase in ein Konzept zu überführen. Bei der Erstellung einer Datenbank besteht die Möglichkeit ein ER-Modell zu entwickeln. Ein ER-Modell, wie in Datenbanken Grundlagen und Design \cite{FrankGeisler2011mitpu} beschrieben, zeigt die verschiedenen Beziehungen unter den Tabellen auf, welche Entitäten eine Datenbank hat und welche Attribute eine Datenbank beinhaltet. Um diese Punkte zu definieren, muss klar sein, welche Attribute eine Tabelle hat. Wird eine Tabelle, mit allen Attributen erstellt, oder mehrere logisch aufgeteilte Tabellen? Die Daten werden in Zukunft in drei Tabellen aufgeführt, welche je ein eigenes ER-Modell beinhalten.\\
+  \hline
+  \textbf{tblextsensors}
+  & Messwerte der Sensoren (Bsp. Pegel) \\
 
-Beim ER-Modell für die Daten des Wettertransmitters (Abb. \ref{img:ER_Modell Wettertransmitter}) beinhaltet jeder Zeitstempeleintrag, das bedeutet jede Minute, einen Datensatz vom Wettertransmitter.
+  \hline
+  \textbf{tblmisc}
+  & Daten vorn Dritten (Bsp. Sturmwarnung) \\
 
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_Wettertransmitter}}
+  \hline
+  \textbf{tblcompwindfinder}
+  & Windvorhersagewerte von Windfinder \\
+
+  \hline
+  \hline
+  \textbf{tbldatemaster}
+  & Daten vom 1.1.2015 bis 31.12.2035 im Minutenabstand \\
+
+  \hline
+  \textbf{tblhistorical}
+  & Messwerte zusammengefasst auf 1Eintrag/h \\
+
+  \hline
+  \textbf{tblwaterlevelhistorical}
+  & Pegelwerte von 1953 bis heute \\
+
+  \hline
+  \hline
+  \textbf{tblnotifications}
+  & Abos des Benachrichtigungsservices \\
+
+  \hline
+  \hline
+  \textbf{tblqueue}
+  & Warteschlange der Webcam \\
+
+  \hline
+  \end{tabularx}
+  \caption{Datenbanktabellen und deren Inhalt}
+  \label{table:dbtabellen} % label muss NACH caption stehen!!!!
+\end{table}
+
+\noindent
+Die Tabellen haben untereinander keine Verknüpfung (Relation), sondern sind alle eigenständig. Das einzige, was sie verbindet ist der Zeitstempel des Messzeitpunkts. Es wird deshalb auf die Erstellung eines ER-Modells, wie in Datenbanken Grundlagen und Design \cite{FrankGeisler2011mitpu} beschrieben, verzichtet. In Abbildung\,\ref{img:tabellenstruktur} ist beispielhaft die Struktur der Tabelle \emph{tblextsensors} aufgeführt. Als Primärschlüssel wird jeweils der Zeitstempel des Messzeitpunkts verwendet. Da der Primärschlüssel ein UNIQUE-Wert ist, wird verhindert, dass es zwei Einträge mit dem selben Zeitstempel gibt. Das komplette relationale Datenmodell mit allen Entitäten und deren Attributen befindet sich in Anhang\,\ref{anhang:relationalesDatenbankmodell}.
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tabellenstruktur}}
 	\centering
-	\caption{ER-Modell der Daten vom Wettertransmitter}
-	\label{img:ER_Modell Wettertransmitter}
+	\caption{Struktur der Tabelle \emph{tblextsensors}}
+	\label{img:tabellenstruktur}
 \end{figure}
 
-Dasselbe wie beim ER-Modell für den Wettertransmitter, gilt auch für die externe Sensoren, wie in Abb. \ref{img:ER_Modell externe Sensoren} zu sehen ist.
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_externe_Sensoren}}
-	\centering
-	\caption{ER-Modell der externen Sensoren}
-	\label{img:ER_Modell externe Sensoren}
-\end{figure}
+%Die Normalisierung ist, wie in Datenbanken Grundlagen und Design \cite{FrankGeisler2011mitpu}, ein Prozess mit deren Hilfe die Datenbankstruktur optimiert wird und hilft dabei Datenredundanzen zu vermeiden. Da bei der Datenbank nur das Datum redundant ist, ist eine Normalisierung nicht notwendig.
+%Das relationale Datenmodell unterscheidet sich in der Struktur nicht bedeutend vom ER-Modell. Der Unterschied  ist, dass die Primärschlüssel und die Datentypen festgelegt werden. Die sogenannten Schlüssel sind im relationalen Datenmodell auch ein wichtiges Merkmal. Bei zukünftigen Datenbankeinträgen sind entscheidend die Schlüssel, so kann verhindert werden, dass für einen gewissen Zeitpunkt nochmals Datensätze geschrieben werden.
+%Die drei konzipierten Tabellen konnten wie gewünscht umgesetzt werden. Der Code für die Umsetzung der Tabellen, kann aus dem Anhang \ref{anhang:Datenbankcode} entnommen werden.\\
+
+
+\subsubsection{Erstellen der historischen Datenbank , Ausdünnen,  LEFT JOIN}
+Bei der Wetterstation fallen pro Minute 65 Datenpunkte vom Wettertransmitter an, sowie 4 Datenpunkte von den externen Sensoren.
+
+% Wie funktioniert das Zusammenfassen der Daten -> SQL-Befehle
+% Abbildung hinzufügen wo Script sichtbar Ist
+
+
+
+Die Herausforderung bei der Umsetzung war es, dass die historische Tabelle, welche aus den beiden Tabellen tblwettertransmitter und tblextsensors bestehen, mittels einer Query zusammenzubringen.
+
+
+
+Das Problem war die Zeit. Die Daten des Wettertransmitters werden Konfigurationsbedingt, nicht auf die Minute genau, sondern 31 Sekunden später geschrieben. Bei einem LEFT JOIN, welches über die Zeit geht, werden auch die Sekunden angeschaut. Nach mehreren gescheiterten Versuchen, ist es anschliessend gelungen, eine passende Query wie in \ref{lst:LeftJoinQuery} zu entwickeln.
+
+Zudem wird eine historische Tabelle erstellt, diese soll, die zu stündlich aufbereiteten Daten aus den beiden Tabellen enthalten. Um die historische Tabelle ohne Ausfälle zu füllen wird eine Tabelle entstehen, welche alle Zeitstempel von 2015 bis 2030 beinhaltet. Welche Datenpunkte übernommen werden, kann aus dem Anhang \ref{anhang:Datenbankschema} entnommen werden.\\
 
 Beim Modell der historischen Daten sieht das ganze anders aus (siehe Abb. \ref{img:ER_Modell historische Daten}). Hier beinhaltet jeder Zeitstempel, den Median, sowie die Extremwerte der Daten vom Wettertransmitter und die der externen Sensoren.
 
-Ein ER-Modell für die Datumstabelle ist nicht notwendig, da diese nur die Datumswerte beinhalten und sonst keine weiteren Daten enthalten.
+Zusätzlich sollen die Daten, welche weiterhin im Minutentakt geschrieben werden, so aufbereitet werden, dass Benutzer auf der neu erstellen historischen Webpage die Wetterdaten der vergangenen Jahre einsehen können.
 
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/ER_Modell_historisch}}
-	\centering
-	\caption{ER-Modell historische Daten}
-	\label{img:ER_Modell historische Daten}
-\end{figure}
-
-\paragraph{Logische Phase}
-
-In der logischen Phase wird das ER-Modell in ein relationales Datenmodell überführt.
-Hierbei wird entschieden, welches die Primärschlüssel der einzelnen Tabellen sind und wie diese zusammenhängen. Anschliessend wird, wenn notwendig eine Normalisierung vorgenommen. Die Normalisierung ist, wie in Datenbanken Grundlagen und Design \cite{FrankGeisler2011mitpu}, ein Prozess mit deren Hilfe die Datenbankstruktur optimiert wird und hilft dabei Datenredundanzen zu vermeiden. Da bei der Datenbank nur das Datum redundant ist, ist eine Normalisierung nicht notwendig. Das relationale Datenmodell unterscheidet sich in der Struktur nicht bedeutend vom ER-Modell. Der Unterschied  ist, dass die Primärschlüssel und die Datentypen festgelegt werden. Die sogenannten Schlüssel sind im relationalen Datenmodell auch ein wichtiges Merkmal. Bei zukünftigen Datenbankeinträgen sind entscheidend die Schlüssel, so kann verhindert werden, dass für einen gewissen Zeitpunkt nochmals Datensätze geschrieben werden. In diesem Fall wird ein Zeitstempel, wie schon in der alten Datenbank als Primärschlüssel dienen. Das relationale Datenmodell kann aus dem Anhang \ref{anhang:relationalesDatenbankmodell} entnommen werden.
-
-\paragraph{Physische Phase}
-
-In der physischen Phase wird das Konzept, welches in den vorherigen Schritten erstellt wurde, umgesetzt. Bei der Umsetzung entstanden anschliessend einige Herausforderungen. Die drei konzipierten Tabellen konnten wie gewünscht umgesetzt werden. Der Code für die Umsetzung der Tabellen, kann aus dem Anhang \ref{anhang:Datenbankcode} entnommen werden.\\
-Bei der Umsetzung wurde zudem entschieden, eine vierte Tabelle zu erstellen. Die tblmisc beinhaltet die Wetterdaten, welche von einem dritten Angeboten werden.
-
-\paragraph{Herausforderung}
-Die Herausforderung bei der Umsetzung war es, dass die historische Tabelle, welche aus den beiden Tabellen tblwettertransmitter und tblextsensors bestehen, mittels einer Query zusammenzubringen. Das Problem war die Zeit. Die Daten des Wettertransmitters werden Konfigurationsbedingt, nicht auf die Minute genau, sondern 31 Sekunden später geschrieben. Bei einem LEFT JOIN, welches über die Zeit geht, werden auch die Sekunden angeschaut. Nach mehreren gescheiterten Versuchen, ist es anschliessend gelungen, eine passende Query wie in \ref{lst:LeftJoinQuery} zu entwickeln. 
 
 \begin{lstlisting}[label=lst:LeftJoinQuery,caption=Json Struktur, language=JavaScript, style=htmlcssjs, mathescape]
 SELECT * FROM `DateMaster`
@@ -132,8 +194,15 @@ AND (hour((now() - interval 1 hour)) = hour(`tblwettertransmitter`.`datetime`)))
 AND (hour((now() - interval 1 hour)) = hour(`DateMaster`.`dt`))
 AND (`DateMaster`.`dt` < now()))
 order by `DateMaster`.`dt` desc
-\end{lstlisting} 
+\end{lstlisting}
 
+
+
+
+
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
 \subsection{Datenbanksicherheit}
 \subsubsection{Speicherplatz}
 Bevor sich Gedanken um die Datensicherheit gemacht werden, sollten die Bedingungen an den Speicherplatz klar sein. Während der Laufzeit werden grosse Mengen an Daten in die Datenbank geschrieben. Vor der Neukonzipierung werden täglich 1440 Datensätze gespeichert. Das bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 Einträge, die gesamte relevante Datenbank igwetter wettertest benötigt (Stand 2018-04-24) 323.2  Mb. Die Tabelle wx data, beinhaltet die Minutenwerte des Wettertransmitters, benötigt davon (Stand 2018-04-24) 311.9 Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt. Für den Speicherplatz, welcher 50 Gb bietet, stellt dies kein Problem dar. Hochrechnet reicht der Platz für die kommenden 45 Jahren.
@@ -197,7 +266,7 @@ Die Daten aus den beiden Minutentabellen werden gelöscht, stehen somit nicht zu
 Die Daten aus den beiden Minutentabellen werden nicht gelöscht und können für spätere Anwendungen verwendet werden.
 \end{itemize}
 
-Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden. 
+Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden.
 
 
 %% ############################################################################
@@ -251,7 +320,10 @@ Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, w
 %% Unterkapitel
 %% ############################################################################
 \subsection{Problematik Zeitumstellung}
-Da in der Schweiz Sommer- und Winterzeit herrscht, besteht auch die Problematik der Zeitumstellung. Für die Datenbank besteht das Problem, dass die Tabellen nur einen Datumzeit enthalten dürfen. So entsteht die Problematik im Winter, da wenn die zurück gestellt wird doppelte Einträge entstehen. Wird in die historische Daten geschaut, fällt auf das diese Zeitumstellung nie berücksichtigt wurde. Zudem ist die Zeitumstellung in der Nacht, also für viele Benutzer eher uninteressant. Somit spielt es keine Rolle, dass die Daten bei der Zeitumstellung verloren gehen. 
+Da in der Schweiz Sommer- und Winterzeit herrscht, besteht auch die Problematik der Zeitumstellung. Für die Datenbank besteht das Problem, dass die Tabellen nur einen Datumzeit enthalten dürfen. So entsteht die Problematik im Winter, da wenn die zurück gestellt wird doppelte Einträge entstehen. Wird in die historische Daten geschaut, fällt auf das diese Zeitumstellung nie berücksichtigt wurde. Zudem ist die Zeitumstellung in der Nacht, also für viele Benutzer eher uninteressant. Somit spielt es keine Rolle, dass die Daten bei der Zeitumstellung verloren gehen.
 
 
-\Diskussionspunkt{- Kapitel muss noch erstellt werden}\newline
+
+
+\subsection{DB-Nutzer Konzept}
+welche Nutzer gibt es und welche Rechte haben sie -> theoretisch erklären

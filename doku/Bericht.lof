@@ -19,23 +19,22 @@
 \contentsline {figure}{\numberline {18}{\ignorespaces Widget von Windfinder}}{18}{figure.18}
 \contentsline {figure}{\numberline {19}{\ignorespaces Warleuchten des Sturmwarndiensts auf dem Bodensee}}{19}{figure.19}
 \contentsline {figure}{\numberline {20}{\ignorespaces Zeitverzug zwischen Sturmwarnmeldung und Anzeige}}{20}{figure.20}
-\contentsline {figure}{\numberline {21}{\ignorespaces Darstellung der historschen Daten (Desktop und Mobile)}}{23}{figure.21}
-\contentsline {figure}{\numberline {22}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber die gespeicherten Daten der alten Wetterstation}}{24}{figure.22}
-\contentsline {figure}{\numberline {23}{\ignorespaces Darstellung der historischen Pegelmesswerte}}{25}{figure.23}
-\contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der semantisches Web-Anforderung}}{27}{figure.24}
-\contentsline {figure}{\numberline {25}{\ignorespaces ER-Modell der Daten vom Wettertransmitter}}{31}{figure.25}
-\contentsline {figure}{\numberline {26}{\ignorespaces ER-Modell der externen Sensoren}}{31}{figure.26}
-\contentsline {figure}{\numberline {27}{\ignorespaces ER-Modell historische Daten}}{32}{figure.27}
-\contentsline {figure}{\numberline {28}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{35}{figure.28}
-\contentsline {figure}{\numberline {29}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{35}{figure.29}
-\contentsline {figure}{\numberline {30}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{38}{figure.30}
-\contentsline {figure}{\numberline {31}{\ignorespaces Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}}{39}{figure.31}
-\contentsline {figure}{\numberline {32}{\ignorespaces Die dreistufige Datenhierarchie der API}}{40}{figure.32}
-\contentsline {figure}{\numberline {33}{\ignorespaces Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}}{44}{figure.33}
-\contentsline {figure}{\numberline {34}{\ignorespaces Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}}{45}{figure.34}
-\contentsline {figure}{\numberline {35}{\ignorespaces API-Dokumentation in Postman}}{46}{figure.35}
-\contentsline {figure}{\numberline {36}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{47}{figure.36}
-\contentsline {figure}{\numberline {37}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{48}{figure.37}
-\contentsline {figure}{\numberline {38}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{51}{figure.38}
-\contentsline {figure}{\numberline {39}{\ignorespaces Kommunikation zwischen Browser und Server}}{51}{figure.39}
-\contentsline {figure}{\numberline {40}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{52}{figure.40}
+\contentsline {figure}{\numberline {21}{\ignorespaces Darstellung der historschen Daten (Desktop und Mobile)}}{22}{figure.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber die gespeicherten Daten der alten Wetterstation}}{23}{figure.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces Darstellung der historischen Pegelmesswerte}}{24}{figure.23}
+\contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der semantisches Web-Anforderung}}{26}{figure.24}
+\contentsline {figure}{\numberline {25}{\ignorespaces Datenerfassung}}{28}{figure.25}
+\contentsline {figure}{\numberline {26}{\ignorespaces Struktur der Tabelle \emph {tblextsensors}}}{30}{figure.26}
+\contentsline {figure}{\numberline {27}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{33}{figure.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{34}{figure.28}
+\contentsline {figure}{\numberline {29}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{36}{figure.29}
+\contentsline {figure}{\numberline {30}{\ignorespaces Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}}{37}{figure.30}
+\contentsline {figure}{\numberline {31}{\ignorespaces Die dreistufige Datenhierarchie der API}}{38}{figure.31}
+\contentsline {figure}{\numberline {32}{\ignorespaces Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}}{43}{figure.32}
+\contentsline {figure}{\numberline {33}{\ignorespaces Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}}{44}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces API-Dokumentation in Postman}}{45}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{46}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{47}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{49}{figure.37}
+\contentsline {figure}{\numberline {38}{\ignorespaces Kommunikation zwischen Browser und Server}}{50}{figure.38}
+\contentsline {figure}{\numberline {39}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{50}{figure.39}
