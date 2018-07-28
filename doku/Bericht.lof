@@ -25,16 +25,18 @@
 \contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der semantisches Web-Anforderung}}{26}{figure.24}
 \contentsline {figure}{\numberline {25}{\ignorespaces Datenerfassung}}{28}{figure.25}
 \contentsline {figure}{\numberline {26}{\ignorespaces Struktur der Tabelle \emph {tblextsensors}}}{30}{figure.26}
-\contentsline {figure}{\numberline {27}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{33}{figure.27}
-\contentsline {figure}{\numberline {28}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{34}{figure.28}
-\contentsline {figure}{\numberline {29}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{36}{figure.29}
-\contentsline {figure}{\numberline {30}{\ignorespaces Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}}{37}{figure.30}
-\contentsline {figure}{\numberline {31}{\ignorespaces Die dreistufige Datenhierarchie der API}}{38}{figure.31}
-\contentsline {figure}{\numberline {32}{\ignorespaces Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}}{43}{figure.32}
-\contentsline {figure}{\numberline {33}{\ignorespaces Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}}{44}{figure.33}
-\contentsline {figure}{\numberline {34}{\ignorespaces API-Dokumentation in Postman}}{45}{figure.34}
-\contentsline {figure}{\numberline {35}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{46}{figure.35}
-\contentsline {figure}{\numberline {36}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{47}{figure.36}
-\contentsline {figure}{\numberline {37}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{49}{figure.37}
-\contentsline {figure}{\numberline {38}{\ignorespaces Kommunikation zwischen Browser und Server}}{50}{figure.38}
-\contentsline {figure}{\numberline {39}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{50}{figure.39}
+\contentsline {figure}{\numberline {27}{\ignorespaces Konezpt der Datenaggregation}}{31}{figure.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Konezpt der Datenaggregation}}{31}{figure.28}
+\contentsline {figure}{\numberline {29}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{34}{figure.29}
+\contentsline {figure}{\numberline {30}{\ignorespaces Notfallwiederherstellung von Hostpoint}}{34}{figure.30}
+\contentsline {figure}{\numberline {31}{\ignorespaces Erstellen eines Cronjobs bei Hostpoint}}{36}{figure.31}
+\contentsline {figure}{\numberline {32}{\ignorespaces Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}}{38}{figure.32}
+\contentsline {figure}{\numberline {33}{\ignorespaces Die dreistufige Datenhierarchie der API}}{39}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}}{43}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}}{44}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces API-Dokumentation in Postman}}{45}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{46}{figure.37}
+\contentsline {figure}{\numberline {38}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{47}{figure.38}
+\contentsline {figure}{\numberline {39}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{50}{figure.39}
+\contentsline {figure}{\numberline {40}{\ignorespaces Kommunikation zwischen Browser und Server}}{50}{figure.40}
+\contentsline {figure}{\numberline {41}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{50}{figure.41}

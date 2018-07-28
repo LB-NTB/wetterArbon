@@ -113,7 +113,7 @@ Die Datenbank besteht aus mehreren Tabellen mit unterschiedlichem Inhalt. Die Au
 
   \hline
   \textbf{tblmisc}
-  & Daten vorn Dritten (Bsp. Sturmwarnung) \\
+  & Daten von Dritten (Bsp. Sturmwarnung) \\
 
   \hline
   \textbf{tblcompwindfinder}
@@ -126,11 +126,11 @@ Die Datenbank besteht aus mehreren Tabellen mit unterschiedlichem Inhalt. Die Au
 
   \hline
   \textbf{tblhistorical}
-  & Messwerte zusammengefasst auf 1Eintrag/h \\
+  & Messwerte zusammengefasst auf 1 Eintrag/h \\
 
   \hline
   \textbf{tblwaterlevelhistorical}
-  & Pegelwerte von 1953 bis heute \\
+  & Pegelwerte von 1953 bis heute 1 Eintrag/d\\
 
   \hline
   \hline
@@ -163,38 +163,66 @@ Die Tabellen haben untereinander keine Verknüpfung (Relation), sondern sind all
 %Die drei konzipierten Tabellen konnten wie gewünscht umgesetzt werden. Der Code für die Umsetzung der Tabellen, kann aus dem Anhang \ref{anhang:Datenbankcode} entnommen werden.\\
 
 
-\subsubsection{Erstellen der historischen Datenbank , Ausdünnen,  LEFT JOIN}
-Bei der Wetterstation fallen pro Minute 65 Datenpunkte vom Wettertransmitter an, sowie 4 Datenpunkte von den externen Sensoren.
+\subsubsection{Aggregation der historischen Daten}
+Bei der Wetterstation fallen pro Minute rund 40 Datenpunkte an, die gespeichert werden. Pro Jahr sind dies über 21 Millionen Datenpunkte. Damit die Anzeige der historischen Messwerte nicht so viele Daten laden muss, werden die Messdaten periodisch zusammengefasst.
+\newline
 
+% Tabelle mit Minutenwerten
+% Tabelle mit Tageswerten
 % Wie funktioniert das Zusammenfassen der Daten -> SQL-Befehle
-% Abbildung hinzufügen wo Script sichtbar Ist
+
+% \paragraph{Konzept}
+\noindent
+Die minütlich gespeicherten Messdaten werden einmal pro Stunde zusammengefasst und in die Tabelle mit den historischen Werten \emph{tblhistorical} geschrieben. Für die Aggregation wird die Median-Funktion verwendet um den Einfluss von Messfehlern zu reduzieren. Einmal pro Tag werden zudam die Pegeldaten des gesamten Tags gemittelt und in die Tabelle \emph{tblwaterlevelhistorical} geschrieben, wie in Abbildung\,\ref{img:historical} dargestellt.
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/historical}}
+	\centering
+	\caption{Konezpt der Datenaggregation}
+	\label{img:historical}
+\end{figure}
+
+
+% \paragraph{LEFT JOIN}
+Das Script, welches die minütlichen Daten zu Stundendaten aggregiert greift nicht direkt auf die Messwerttabellen zu, sondern auf sogenannte VIEWs. Eine VIEW ist eine virtuelle Tabelle. Sie enthält keine Daten, sondern verweist auf die zugrundeliegenden Basistabellen. VIEWs ermöglichen es komplexere Abfragen zu vereinfachen und mehrere Tabellen über JOIN-Verknüpfungen zu einer einzigen Tabelle zusammenzufassen.
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/leftjoin}}
+	\centering
+	\caption{Konezpt der Datenaggregation}
+	\label{img:leftjoin}
+\end{figure}
+
+
+Die beiden VIEWs, die für die Aggregation benötigt werden beinhalten jeweils genau 60 Einträge. Einen für jede Minute der vergangenen Stunde. Damit immer für jede Minute ein Eintrag vorhanden ist, auch wenn zum Beispiel der Sensor aus irgendeinem Grund keine Messwert geliefert hat, wurde ein LEFT JOIN mit der Datemaster-Tabelle erstellt. Diese Tabelle enthält sämtliche Datum/Zeit Einträge von 2015 bis 2035 im Minutenabstand.
 
 
 
-Die Herausforderung bei der Umsetzung war es, dass die historische Tabelle, welche aus den beiden Tabellen tblwettertransmitter und tblextsensors bestehen, mittels einer Query zusammenzubringen.
 
 
+% Die Herausforderung bei der Umsetzung war es, dass die historische Tabelle, welche aus den beiden Tabellen tblwettertransmitter und tblextsensors bestehen, mittels einer Query zusammenzubringen.
 
-Das Problem war die Zeit. Die Daten des Wettertransmitters werden Konfigurationsbedingt, nicht auf die Minute genau, sondern 31 Sekunden später geschrieben. Bei einem LEFT JOIN, welches über die Zeit geht, werden auch die Sekunden angeschaut. Nach mehreren gescheiterten Versuchen, ist es anschliessend gelungen, eine passende Query wie in \ref{lst:LeftJoinQuery} zu entwickeln.
+% Das Problem war die Zeit. Die Daten des Wettertransmitters werden Konfigurationsbedingt, nicht auf die Minute genau, sondern 31 Sekunden später geschrieben. Bei einem LEFT JOIN, welches über die Zeit geht, werden auch die Sekunden angeschaut. Nach mehreren gescheiterten Versuchen, ist es anschliessend gelungen, eine passende Query wie in \ref{lst:LeftJoinQuery} zu entwickeln.
 
-Zudem wird eine historische Tabelle erstellt, diese soll, die zu stündlich aufbereiteten Daten aus den beiden Tabellen enthalten. Um die historische Tabelle ohne Ausfälle zu füllen wird eine Tabelle entstehen, welche alle Zeitstempel von 2015 bis 2030 beinhaltet. Welche Datenpunkte übernommen werden, kann aus dem Anhang \ref{anhang:Datenbankschema} entnommen werden.\\
+% Zudem wird eine historische Tabelle erstellt, diese soll, die zu stündlich aufbereiteten Daten aus den beiden Tabellen enthalten.
+% Um die historische Tabelle ohne Ausfälle zu füllen wird eine Tabelle entstehen, welche alle Zeitstempel von 2015 bis 2030 beinhaltet. Welche Datenpunkte übernommen werden, kann aus dem Anhang \ref{anhang:Datenbankschema} entnommen werden.\\
 
-Beim Modell der historischen Daten sieht das ganze anders aus (siehe Abb. \ref{img:ER_Modell historische Daten}). Hier beinhaltet jeder Zeitstempel, den Median, sowie die Extremwerte der Daten vom Wettertransmitter und die der externen Sensoren.
+% Beim Modell der historischen Daten sieht das ganze anders aus (siehe Abb. \ref{img:ER_Modell historische Daten}). Hier beinhaltet jeder Zeitstempel, den Median, sowie die Extremwerte der Daten vom Wettertransmitter und die der externen Sensoren.
 
-Zusätzlich sollen die Daten, welche weiterhin im Minutentakt geschrieben werden, so aufbereitet werden, dass Benutzer auf der neu erstellen historischen Webpage die Wetterdaten der vergangenen Jahre einsehen können.
+% Zusätzlich sollen die Daten, welche weiterhin im Minutentakt geschrieben werden, so aufbereitet werden, dass Benutzer auf der neu erstellen historischen Webpage die Wetterdaten der vergangenen Jahre einsehen können.
 
 
-\begin{lstlisting}[label=lst:LeftJoinQuery,caption=Json Struktur, language=JavaScript, style=htmlcssjs, mathescape]
-SELECT * FROM `DateMaster`
-LEFT JOIN `tblwettertransmitter`
-ON MINUTE(dt) = MINUTE(datetime)
-WHERE ((`DateMaster`.`dt` > (now() - interval 2 hour))
-AND((`tblwettertransmitter`.`datetime` > (now() - interval 2 hour))
-AND (hour((now() - interval 1 hour)) = hour(`tblwettertransmitter`.`datetime`)))
-AND (hour((now() - interval 1 hour)) = hour(`DateMaster`.`dt`))
-AND (`DateMaster`.`dt` < now()))
-order by `DateMaster`.`dt` desc
-\end{lstlisting}
+% \begin{lstlisting}[label=lst:LeftJoinQuery,caption=Json Struktur, language=JavaScript, style=htmlcssjs, mathescape]
+% SELECT * FROM `DateMaster`
+% LEFT JOIN `tblwettertransmitter`
+% ON MINUTE(dt) = MINUTE(datetime)
+% WHERE ((`DateMaster`.`dt` > (now() - interval 2 hour))
+% AND((`tblwettertransmitter`.`datetime` > (now() - interval 2 hour))
+% AND (hour((now() - interval 1 hour)) = hour(`tblwettertransmitter`.`datetime`)))
+% AND (hour((now() - interval 1 hour)) = hour(`DateMaster`.`dt`))
+% AND (`DateMaster`.`dt` < now()))
+% order by `DateMaster`.`dt` desc
+% \end{lstlisting} */
 
 
 
