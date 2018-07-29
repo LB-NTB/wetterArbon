@@ -1,5 +1,5 @@
 \section{Datenbank / back end / cronjobs}
-In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Vor der Umstrukturierung der Datenbank waren die Tabellen unübersichtlich aufgebaut. Nach der Umstrukturierung soll die Datenbank primär für folgende Aufgaben ausgelegt sein:\\
+In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Vor der Umstrukturierung der Datenbank waren die Tabellen unübersichtlich aufgebaut. Nach der Umstrukturierung soll die Datenbank primär für folgende Aufgaben ausgelegt sein:
 \begin{itemize*}
 \item API
 \item Dreitage Rückschau der verschiedenen Sensoren
@@ -76,7 +76,6 @@ abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
 ORDER BY datetime DESC
 LIMIT 3
 \end{lstlisting}
-
 
 
 %% ############################################################################
@@ -198,6 +197,7 @@ Die beiden VIEWs, die für die Aggregation benötigt werden beinhalten jeweils g
 
 
 
+%Bevor sich Gedanken um die Datensicherheit gemacht werden, sollten die Bedingungen an den Speicherplatz klar sein. Während der Laufzeit werden grosse Mengen an Daten in die Datenbank geschrieben. Vor der Neukonzipierung werden täglich 1440 Datensätze gespeichert. Das bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 Einträge, die gesamte relevante Datenbank igwetter wettertest benötigt (Stand 2018-04-24) 323.2  Mb. Die Tabelle wx data, beinhaltet die Minutenwerte des Wettertransmitters, benötigt davon (Stand 2018-04-24) 311.9 Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt. Für den Speicherplatz, welcher 50 Gb bietet, stellt dies kein Problem dar. Hochrechnet reicht der Platz für die kommenden 45 Jahren.
 
 
 % Die Herausforderung bei der Umsetzung war es, dass die historische Tabelle, welche aus den beiden Tabellen tblwettertransmitter und tblextsensors bestehen, mittels einer Query zusammenzubringen.
@@ -225,29 +225,121 @@ Die beiden VIEWs, die für die Aggregation benötigt werden beinhalten jeweils g
 % \end{lstlisting} */
 
 
+%% ############################################################################
+%% Unterkapitel
+%% ############################################################################
+\subsection{Automatisierung der repetitiven Aufgaben (Cronjobs)}
+
+%wiederkehrende Aufgaben – sogenannte Cronjobs – zu automatisieren.
+% Der Cron-Daemon dient der zeitbasierten Ausführung von Prozessen in Unix und unixartigen Betriebssystemen wie Linux
+
+Die Wetterstation basiert auf vielen repetitiven Aufgaben wie zum Beispiel das minütliche Einlesen der Messdaten. Linux, welches auf dem Hostpoint-Server verwendet wird, bietet mit dem Cron-Daemon ein Werkzeug um zeitbasiert Befehle beziehungsweise Skripte (Cronjobs) auszuführen. Eine Liste sämtlicher Cronjobs, die die Wetterstation verwendet ist in Tabelle \ref{table:cronjobs} dargestellt. Um einen Cronjob zu definieren muss einerseits das auszuführende Skript angegeben werden und der Zeitpunkt, zu dem es ausgeführt werden soll. Es kann zwischen Minute, Stunde und Tag gewählt werden. Ein Stern (*) bedeutet zu jeder Minute/Stunde/Tag. Die historischen Daten (\emph{historical.py}) werden beispielsweise zu jeder Stunde jeweils um 5 Minuten nach zusammengefasst. Die Windvorhersage von Windfinder (\emph{forecastWindfinder.py}) werden alle drei Stunden abgefragt (02:37, 05:37 usw.).
+
+
+%Viele Funktionen werden mit Cronjobs ausgeführt. Wie von Hostpoint \cite{Hostpoint:CronjobsEinrichten} dargestellt, werden Cronjob für wiederkehrende Abläufe verwendet. Anders formuliert, kann ein Script zu einem bestimmten Zeitpunkt automatisiert ausgeführt werden. Es wird angegeben zu welchem Zeitpunkt oder in welchem Intervall das Programm ausgeführt werden soll. Der Rest übernimmt dann anschliessend der Cronjob. In diesem Fall, das Auslesen der externen Sensordaten, das erstellen der historischen Daten und das auslesen der Sturmwarnung. Auf Hostpoint kann mittels Knopfdruck ein Cronjob erstellt werden. Dabei kann auch gleich konfiguriert werden, zu welcher Zeit ein Cronjob ausgeführt werden soll (Tabelle \ref{table:cronjobs}).
+
+
+% Tabelle Cronjobs
+\begin{table}[htbp!]
+  \setlength\extrarowheight{3pt} % for a more "open" look
+  \begin{tabularx}{\textwidth}{|X|>{\RaggedRight\hspace{0pt}}p{3.5cm}|X|>{\RaggedRight\hspace{0pt}}p{5.5cm}|}
+
+  \hline
+  %\textbf{Tabelle}
+  \bfseries Minute
+  & \bfseries Stunde
+  & \bfseries Tag
+  & \bfseries Befehl/Skript \\
+
+  %\hline
+  \hline
+  37
+  & 2,5,8,11,14,17,20,23
+  & *
+  &  forecastWindfinder.py \\
+
+
+  \hline
+  *
+  & *
+  & *
+  & sturmwarnung.py \\
+
+  \hline
+  *
+  & *
+  & *
+  & externSensors.py \\
+
+  \hline
+  *
+  & *
+  & *
+  & notifications.py \\
+
+  \hline
+  5
+  & *
+  & *
+  & historical.py \\
+
+  \hline
+  7
+  & 0
+  & *
+  & historicalWaterlevel.py \\
+
+
+  \hline
+  \end{tabularx}
+  \caption{Konfiguration der Cronjobs}
+  \label{table:cronjobs} % label muss NACH caption stehen!!!!
+\end{table}
+
+
+Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, werden auch keinen Daten ausgelesen bzw. erstellt. Neben diesen drei Cronjobs bestehen noch zwei weitere. Diese lesen die Wettervorhersage für den Vergleich aus und schreiben die Daten in die Datenbank.
+
+%Rechnern welche nicht durch einen Dauerbetrieb gekennzeichnet sind, kommen meist andere Varianten wie anacron zum Einsatz.
+
+
+
+% ############################################################################
+%% Unterkapitel
+%% ############################################################################
+\subsection{Zeit}
+\subsubsection{Zeitsynchronisation}
+% welche Daten erhalten von wo einen Zeitstempel?
+% woher erhalten diese Geräte die Zeit? Zeitserver?
+
+
+\subsubsection{Formatierung von Datum/Zeit}
+
+\subsubsection{Zeitumstellung}
+Da in der Schweiz Sommer- und Winterzeit herrscht, besteht auch die Problematik der Zeitumstellung. Für die Datenbank besteht das Problem, dass die Tabellen nur einen Datumzeit enthalten dürfen. So entsteht die Problematik im Winter, da wenn die zurück gestellt wird doppelte Einträge entstehen. Wird in die historische Daten geschaut, fällt auf das diese Zeitumstellung nie berücksichtigt wurde. Zudem ist die Zeitumstellung in der Nacht, also für viele Benutzer eher uninteressant. Somit spielt es keine Rolle, dass die Daten bei der Zeitumstellung verloren gehen.
+
 
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Datenbanksicherheit}
-\subsubsection{Speicherplatz}
-Bevor sich Gedanken um die Datensicherheit gemacht werden, sollten die Bedingungen an den Speicherplatz klar sein. Während der Laufzeit werden grosse Mengen an Daten in die Datenbank geschrieben. Vor der Neukonzipierung werden täglich 1440 Datensätze gespeichert. Das bedeutet jede Minute einen Datensatz. Ein Datensatz beinhaltet 65 Einträge, die gesamte relevante Datenbank igwetter wettertest benötigt (Stand 2018-04-24) 323.2  Mb. Die Tabelle wx data, beinhaltet die Minutenwerte des Wettertransmitters, benötigt davon (Stand 2018-04-24) 311.9 Mb, daraus erfolgt das ein Datensatz ca 0.025 Mb benötigt. Für den Speicherplatz, welcher 50 Gb bietet, stellt dies kein Problem dar. Hochrechnet reicht der Platz für die kommenden 45 Jahren.
+\subsection{Datenbanksicherheit (Datenmanipulation und -verlust)}
+
 
 \subsubsection{Angriffssicherheit}
-Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP top 10, eine Liste welche die wichtigsten Schwachstellen aufzeigt, ist die SQL-injection in 2017 auf dem Platz 1. Was ist den eigentlich SQL Injection? SQL injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer im schlimmsten Fall auf die gespeicherten Daten des Administators kommt. Ein anderes Beispiel wäre, dass die Angreifer an die Daten der Benutzer eines Online-Shops mit Kreditkartendaten oder ähnlichen sensitiven Daten kommen.
-Weitere Fragen die zum Thema Dantenbanksicherheit auftauchen sind:
-\begin{itemize}
-\item Was für Arten von Daten beherbergt die Datenbank?
-\item Hat es sensitive Daten?
-\item Ist die Datenbank überhaupt ein potentielles Angriffsziel?
-\item Wer sind die Benutzer der Datenbank?
-\end{itemize}
+Bei der Recherche nach Datenbanksicherheit taucht immer wieder das Wort Injection auf. Laut den OWASP\footnote{OWASP: Open Web Application Security Project} Top 10, einer Liste\footnote{ \url{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}}, welche die wichtigsten Sicherheitsrisiken von Web-Applikationen aufzeigt, ist SQL-injection seit Jahren auf Platz 1. SQL-Injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer Daten ausspähen oder verändern kann.
 
-Bei der Wetterstation Arbon, bestehen keine persönliche oder sicherheitsrelevante Daten in der Datenbank. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, da es vor allem schade wäre wenn die Daten verloren gingen. Andererseits sollte der Server vor Missbrauch geschützt werden.
+Bei der Wetterstation Arbon, sind keine persönlichen oder sicherheitsrelevanten Daten in der Datenbank gespeichert. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, um einen Datenverlust beziehungsweise eine Datenmanipulation zu verhindern.
 
-Die Zugriffe auf die Datenbank sind so gestaltet, dass nur Serverseitig darauf zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Injection möglich ist. Wie im Kapitel Daten der neuen Wetterstation mit Tableau \ref{kap:Tableau} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet, dass für die historische Seite kein Datenbankzugriff notwendig ist.
+Die Zugriffe auf die Datenbank sind so gestaltet, dass nur serverseitig darauf zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Injection möglich ist. Wie im Kapitel Daten der neuen Wetterstation mit Tableau \ref{kap:Tableau} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet, dass für die historische Seite kein Datenbankzugriff notwendig ist. Lediglich bei der Warteschlang der Webcam und beim Benachrichtigungsservice werden Daten direkt in die Datenbank geschrieben beziehungsweise daraus gelesen. In diesem Fall werden die Eingaben maskiert wie in Listing\,\ref{lst:maskierung} dargestellt.
+
+\begin{lstlisting}[label=lst:maskierung,caption=Maskierung von Datenbank-Eingaben, language=PHP, style=PHP]
+$threshold = mysql_escape_string($_POST['threshold']);
+\end{lstlisting}
+
+
+\subsubsection{DB-Nutzer Konzept}
+welche Nutzer gibt es und welche Rechte haben sie -> theoretisch erklären
 
 \subsubsection{Backup}
 Um die Datenbank gegen einen allfälligen Datenverlust zu sichern, ist ein Backup von wichtiger Bedeutung. Deswegen ist das Backup ein weiterer Aspekt gegen den Verlust von Daten. Hierbei sind folgende Fragen relevant:
@@ -265,26 +357,25 @@ Da alle Daten in der DB gleich relevant sind, sollten auch alle so behandelt wer
 \end{itemize}
 
 
-Um den Aufwand klein zu halten, wird empfohlen ein monatliches Backup mit der Backup Funktion auf Knopfdruck zu erstellen und dieses auf einer Festplatte zu speichern (Abb. \ref{img:Backup_Funktion}).
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/Backup_funktion}}
+Um den Aufwand klein zu halten, wird empfohlen ein monatliches Backup mit der Backup Funktion auf Knopfdruck zu erstellen und dieses auf einer Festplatte zu speichern (Abb. \ref{img:backup}).
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/backup}}
 	\centering
 	\caption{Backup auf Knopfdruck von Hostpoint}
-	\label{img:Backup_Funktion}
+	\label{img:backup}
 \end{figure}
+
 Sollte trotzdem mal das Backup nicht funktionierten oder vergessen gegangen sein, kann auf den Hostpoint-Service ( Abb.\ref{img:Notfallwiederherstellung}) züruck gegriffen werden. Diese erstellen selber ein tägliches Backup, welches für 100 Franken wieder eingespielt werden kann.
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/Notfallwiederherstellung}}
-	\centering
-	\caption{Notfallwiederherstellung von Hostpoint}
-	\label{img:Notfallwiederherstellung}
-\end{figure}
+
+
+
 Somit können sich, davon ausgehend, dass Hostpoint einen guten Job macht Kosten für bspw. ein Cloudaccount gespart werden.
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Datenarchivierung}
+\subsection{Speicherbedarf und Datenarchivierung}
 
 In der Datenarchivierung werden die historischen Daten aufbereitet und komprimiert. Dafür ist wird von der historischen Tabelle gebrauch gemacht. Mittels einem Cronjob und dem in \ref{lst:LeftJoinQuery} codierten Left Join werden die Minuten Daten komprimiert. Anschliessend bestehen zwei Varianten:\\
 \begin{itemize}
@@ -295,6 +386,7 @@ Die Daten aus den beiden Minutentabellen werden nicht gelöscht und können für
 \end{itemize}
 
 Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden.
+
 
 
 %% ############################################################################
@@ -328,30 +420,3 @@ except Exception as e:
     print "Es ist ein Problem mit der Strahlungs Abfrage aufgetaucht: "
     print e
 \end{lstlisting}
-
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Cron-Jobs}
-Wie immer wieder in den vorherigen Kapitel erwähnt, werden viele Funktionen mit Cronjobs ausgeführt. Was ist ein Cronjob? Wie von Hostpoint \cite{Hostpoint:CronjobsEinrichten} dargestellt, werden Cronjob für wiederkehrende Abläufe verwendet. Anders formuliert, kann ein Script zu einem bestimmten Zeitpunkt automatisiert ausgeführt werden. Es wird angegeben zu welchem Zeitpunkt oder in welchem Intervall das Programm ausgeführt werden soll. Der Rest übernimmt dann anschliessend der Cronjob. In diesem Fall, das Auslesen der externen Sensordaten, das erstellen der historischen Daten und das auslesen der Sturmwarnung. Auf Hostpoint kann mittels Knopfdruck ein Cronjob erstellt werden. Dabei kann auch gleich konfiguriert werden, zu welcher Zeit ein Cronjob ausgeführt werden soll (Abb. \ref{img:ER_Modell Wettertransmitter}).
-
-\begin{figure}[h!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/cronjob.png}}
-	\centering
-	\caption{Erstellen eines Cronjobs bei Hostpoint}
-	\label{img:Cronjob}
-\end{figure}
-
-Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, werden auch keinen Daten ausgelesen bzw. erstellt. Neben diesen drei Cronjobs bestehen noch zwei weitere. Diese lesen die Wettervorhersage für den Vergleich aus und schreiben die Daten in die Datenbank.
-
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Problematik Zeitumstellung}
-Da in der Schweiz Sommer- und Winterzeit herrscht, besteht auch die Problematik der Zeitumstellung. Für die Datenbank besteht das Problem, dass die Tabellen nur einen Datumzeit enthalten dürfen. So entsteht die Problematik im Winter, da wenn die zurück gestellt wird doppelte Einträge entstehen. Wird in die historische Daten geschaut, fällt auf das diese Zeitumstellung nie berücksichtigt wurde. Zudem ist die Zeitumstellung in der Nacht, also für viele Benutzer eher uninteressant. Somit spielt es keine Rolle, dass die Daten bei der Zeitumstellung verloren gehen.
-
-
-
-
-\subsection{DB-Nutzer Konzept}
-welche Nutzer gibt es und welche Rechte haben sie -> theoretisch erklären
