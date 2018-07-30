@@ -392,7 +392,7 @@ Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen b
 \end{quote}
 
 \noindent
- Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+ Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer  \href{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}{MeteoSchweiz-App} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
 
 
@@ -411,36 +411,25 @@ Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen b
 %% Unterkapitel
 %% ############################################################################
 \subsection{Darstellung der historischen Daten}
-Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahren, welche ebenfalls auf der Webseite verfügbar sein soll. Es gibt drei drei Grundlagen für die historischen Daten:
+Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Die Darstellung der historischen Daten soll möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahre, welche ebenfalls auf der Webseite verfügbar sein sollen. Es gibt somit drei Grundlagen für die historischen Daten:
 
 \begin{itemize*}
-\item Historische Daten der neuen Wetterstation
-\item Historische Daten der alten Wetterstation
-\item Excel mit Pegeldaten von 1953 bis 2005
+\item Historische Daten der neuen Wetterstation (2015 bis heute)
+\item Historische Daten der alten Wetterstation (2005 bis 2012)
+\item Exceltabelle mit historischen Pegeldaten (1953 bis 2005 )
 \end{itemize*}
 
+\noindent
 Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
 
 
-\subsubsection{Daten der neuen Wetterstation mit Tableau}\label{kap:Tableau}
-Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
+\subsubsection{Historische Daten der neuen Wetterstation}
+\label{kap:Tableau}
+Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Daten-Visualisierungsprogramm, welches es ermöglicht auf einfache Weise Diagramme zu erstellen, welche interaktiv vom Benutzer filterbar sind. Der Benutzer kann zum Beispiel den Betrachtungszeitraum selbst wählen, worauf sich die Grafiken automatisch der Auswahl anpassen. Tableau Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
 
-
-Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
-Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
-
-Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -geschwindigkeit sowie den Regen konzentriert.
-Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
-
-
-Das Dashboard ist interaktiv d.h. der Benutzer kann den Betrachtungszeitraum selbst wählen. Die Grafiken passen sich automatisch der Auswahl an.
-Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informaitonen angezeigt.
-
-
-Hostpoint
-Datenbankbenutzer -> IP eingeben (IP-Tool: http://ip.hostpoint.ch)
-Anmeldedaten für tableau
+% Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informationen angezeigt.
+% Für die Auswertung haben wir uns auf die Lufttemperatur, Sonnenstrahlung, Windrichtung und -geschwindigkeit sowie den Regen und Sonnenscheindauer konzentriert.
 
 
 \begin{figure}[h!]
@@ -453,49 +442,45 @@ Anmeldedaten für tableau
 
 %Nachteil 2: Nicht responsive -> Workaround nötig
 \noindent
-Neben den vielen Vorteilen, hat Tableau Pubilc auf ein paar Nachteile. Das Dashbaord kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurd so gelöst, dass zwei verschiedene Dashboard (siehe Abbildung \ref{img:tableau}) erstellt werden. Eines für die Anzeige auf einem grossen Dispaly und eines für die Anzeige auf Mobiltelefonen. Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
+Neben den vielen Vorteilen, hat Tableau Public auch ein paar Nachteile. Das Dashbaord kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden. Eines für die Anzeige auf einem grossen Bildschirmen und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
 
-\begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anahnd der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]
+\vspace{3mm}
+\begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anhand der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]
 (function () {
 	var viewportWidth = $(window).width();
 	if (viewportWidth > 767) {
-		$('#area_3').load('application/php/tableauDesktop.php');
-	}
+		$('#area_3').load('application/php/tableauDesktop.php');}
 	else {
-		$('#area_3').load('application/php/tableauMobile.php');
-	}
+		$('#area_3').load('application/php/tableauMobile.php');}
 }());
 \end{lstlisting}
-
+\vspace{3mm}
 
 % Nachteil 1: Keine direkte Verbindung zur Datenbank
 \noindent
-Ein weiteren Nachteil von Tableau Public, welches kostenlos ist gegenüber Tableau, welches kostenpflicht ist, ist dass Tableau Public keinen Live-Zugriff auf die Datenbank ermöglicht. Die Daten müssen somit manuell periodisch auf den Tableau Public Server kopiert werden, damit sie im Dashboard verfügbar sind.
+Ein weiterer Nachteil der Public-Version von Tableau ist, dass sie keinen Live-Zugriff auf die Datenbank ermöglicht. Die Daten müssen somit manuell periodisch auf den Tableau Public Server kopiert werden, damit sie im Dashboard verfügbar sind.
 
 
-
-\subsubsection{Daten der alten Wetterstation}
-Abbildung \ref{img:histAlt} zeigt eine Zusammenfassung der von der alten Wetterstation vorhandenen Daten. Es gibt diverse Messlücken wie z.B. das komplette Jahr 2010 und 2012. Weiter sind z.T. unplausible Grössenordnungen vorhanden wie z.B. die Windgeschwindigkeit von 500, wo nicht klar ist, zu welcher Einheit dieser Angabe gehört. Die Wellenhöhe sieht mehr nach Signalrauschen aus, als nach plausiblem Messwert. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation anzuzeigen. Die Pegeldaten werden in die Grafik, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben integriert.
+\subsubsection{Historische Daten der alten Wetterstation}
+Um einen Überblick über die vorhanden Messdaten der alten Wetterstation zu erhalten wurden die Daten grafisch aufbereitet wie in Abbildung\,\ref{img:histAlt} dargestellt. Darin lassen sich diverse Messlücken erkennen wie zum Beispiel das komplette Jahr 2010 und 2012. Weiter sind zum Teil unplausible Grössenordnungen vorhanden wie zum Beispiel bei der Windgeschwindigkeit, wo die Werte im Bereich von 0 bis 1000 liegen und nicht klar ist, in welcher Einheit diese Daten vorliegen. Die Angabe der Wellenhöhe sind in einem sehr kleinen Bereich, sodass davon auszugehen ist, dass es sich um das Signalrauschen handelt und nicht um die effektiven Wellenhöhe. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation d.h. ab 2015 anzuzeigen. Alleine die Pegeldaten werden verwendet und die historische Pegeldatenbank integriert, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/histAlt}}
-	%\includegraphics[width=1\linewidth]{img/sturm}
 	\caption{Übersicht über die gespeicherten Daten der alten Wetterstation}
 	\label{img:histAlt}
 \end{figure}
 
 
 
-\subsubsection{Pegeldaten 1953 bis 2005}
+\subsubsection{Historische Pegeldaten}
 \label{subsec:pegelhistory}
-Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente u.a. ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung erfolgt analog Abbildung \ref{img:histPegel}. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht.
+Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente unter anderem ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung ist in Abbildung \ref{img:histPegel} ersichtlich. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht. Das Dashboard ist unter dem Link \url{https://dev.wetter-arbon.ch/pegelstand} erreichbar.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/histPegel}}
-	%\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Darstellung der historischen Pegelmesswerte}
+	\caption{Darstellung der historischen Pegelmesswerte (gefiltert)}
 	\label{img:histPegel}
 \end{figure}
 
@@ -532,12 +517,12 @@ Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie
 \noindent
 Die aktuellen Web Content Accessibility Guidelines\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
 
-\begin{itemize}
+\begin{itemize*}
 \item Designprinzip 1: wahrnehmbar
 \item Designprinzip 2: bedienbar
 \item Designprinzip 3: verständlich
 \item Designprinzip 4: robust
-\end{itemize}
+\end{itemize*}
 
 \noindent
 Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
