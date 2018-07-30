@@ -490,32 +490,42 @@ Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. A
 %% Unterkapitel
 %% ############################################################################
 \subsection{Automatische Aktualisierung der Anzeigeelemente}
-\Diskussionspunkt{Initial Values beschreiben}\newline
-Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
+Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 60 Sekunden von der API die aktuellen Werte abfragt wie in Listing\,\ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Textfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
+
 
 \begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
 (function poll() {
         $.get('https://api.wetter-arbon.ch/v1/')
           .done(function(response) {updateData(response);})
-          .always(function() {setTimeout(poll, 61000); });
+          .always(function() {setTimeout(poll, 60000); });
 })();
-
 function updateData(res){
         pressure_gauge.refresh(res.v1.data.pressure.value);
-        $("#cwassertemp1m") = res.v1.data.watertemperature1m.value;
-        ...
+        $("#wassertemp1m") = res.v1.data.watertemperature1m.value;
+        // usw.
 }
 \end{lstlisting}
 
+\noindent
+Damit die aktuellen Messwerte beim Aufbau der Seite zur Verfügung stehen, werden sie bereits beim Rendern der php-Seite von der API abgerufen und als JSON in der Variable \emph{initialValues} gespeichert (siehe Listing\,\ref{lst:initialValues}).
+
+\begin{lstlisting}[label=lst:initialValues,caption=Übergabe der Initialisierungswerte durch php, language=JavaScript, style=htmlcssjs]
+<script>
+  var initialValues = JSON.parse('<?echo file_get_contents("https://api.wetter-arbon.ch/v1/");?>');
+  document.getElementById("pegel").innerHTML = initialValues.v1.data.waterlevel.value;
+  // usw.
+</script>
+
+\end{lstlisting}
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Barrierefreier Zugang}
-Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
+Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \emph{Web Content Accessibility Guidelines}\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \emph{Barrierefreie-Informationstechnik-Verordnung}\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \emph{Forrester Research Inc.} schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss Einschätzung des Verfassers des Buchs \emph{Interface Design}~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
 \noindent
-Die aktuellen Web Content Accessibility Guidelines\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
+Die aktuellen \emph{Web Content Accessibility Guidelines}\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
 
 \begin{itemize*}
 \item Designprinzip 1: wahrnehmbar
@@ -525,48 +535,47 @@ Die aktuellen Web Content Accessibility Guidelines\footnote{\url{https://www.w3.
 \end{itemize*}
 
 \noindent
-Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
+Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS\footnote{CMS: Content Management System} umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
 
 \subsubsection{Wahrnehmbarkeit}
 % Richtlinie 1.1
-\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.1} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.1}} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige Javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
 
 \begin{lstlisting}[label=lst:altImg,caption=Alternativtext für Icons, language=HTML5, style=htmlcssjs]
 <img src="img/wi-humidity.svg" alt="Icon eines Barometers">
 \end{lstlisting}
 
+\noindent
 Wie die verwendeten javascript-Bibliotheken, bietet auch Tableau, mit welchem die interaktive Darstellung der historischen Daten erfolgt, keine Möglichkeit die Visualisierung als Text darzustellen. \newline
 
 % Richtlinie 1.3
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.3} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \textit{semantischem} Web.
-
-Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseite durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \textit{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\textit{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\textit{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.3}} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \textit{semantischem} Web. Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseits durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \textit{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\textit{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\textit{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/semWeb}}
 	%\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Umsetzung der semantisches Web-Anforderung}
+	\caption{Umsetzung der Anforderung bezüglich Semantischem Web}
 	\label{img:semWeb}
 \end{figure}
 
 % Richtlinie 1.4
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#visual-audio-contrast}{Richtlinie 1.4} fordert, dass die visuelle Darstellung von Text ein Kontrastverhältnis von mindestens 4,5:1 hat. Zudem muss es möglich sein die Textgrösse um bis zu 200 Prozent zu erhöhen, ohne dass dabei Inhalt oder Funktionalität verloren geht. Um diese Anforderung zu Überprüfen wurde das Firefox-Plugin \textit{tota11y}\footnote{\url{http://khan.github.io/tota11y/}} verwendet. Das Plugin ermöglicht es auf einfache Weise zu überprüfen ob die Webseite die Barrierefrei-Bediungungen erfüllt. Die Kontrastverhältnisse liegen gemäss diesem Tool zwischen 5.75 und 12.63 und sind somit in Ordnung. Da die gesamte Webseite responsive ist, stellt die Vergrösserung auf 200\% kein Problem dar.
+\href{https://www.w3.org/Translations/WCAG20-de/#visual-audio-contrast}{\textbf{Richtlinie 1.4}} fordert, dass die visuelle Darstellung von Text ein Kontrastverhältnis von mindestens 4,5:1 hat. Zudem muss es möglich sein die Textgrösse um bis zu 200 Prozent zu erhöhen, ohne dass dabei Inhalt oder Funktionalität verloren geht. Um diese Anforderung zu Überprüfen wurde das Firefox-Plugin \textit{tota11y}\footnote{\url{http://khan.github.io/tota11y/}} verwendet. Das Plugin ermöglicht es auf einfache Weise zu überprüfen ob die Webseite die Barrierefrei-Bediungungen erfüllt. Die Kontrastverhältnisse liegen gemäss diesem Tool zwischen 5.75 und 12.63 und erfüllen somit die Anforderung. Da die gesamte Webseite responsive ist, stellt die Vergrösserung auf 200\% kein Problem dar.
 
 
 \subsubsection{Bedienbarkeit}
-\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{Richtlinie 2.1} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und das die Tastaturfokusanzeige sichtbar ist.
-Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice, siehe Kapitel \ref{notifications}, relevant. Dieses ist problemlos mittels Tastatur bedienbar. \newline
+\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{\textbf{Richtlinie 2.1}} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und dasa die Tastaturfokusanzeige sichtbar ist.
+Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice (siehe Kapitel\,\ref{notifications}) relevant. Das Eingabeformular ist problemlos mittels Tastatur bedienbar.\newline
 
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{Richtlinie 2.4} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} wurde besitzt die Webseite sowhol einen Seitentitel, als auch Zwischentitel.
+\href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{\textbf{Richtlinie 2.4}} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} dargestellt, besitzt die Webseite sowohl einen Seitentitel, als auch Zwischentitel.
 
 
 \subsubsection{Verständlichkeit}
-\href{https://www.w3.org/Translations/WCAG20-de/#minimize-error}{Richtlinie 3.3} fordert, dass Eingabefehler automatisch erkannt und dem Benutzer angezeigt werden. Zudem sind Korrekturvorschläge anzuzeigen. Diese Anforderung betrifft insbesondere das Formular des Benachrichtigungsservices, welcher in Kapitel \ref{notifications} beschrieben wird. Diese Anforderung wird erfüllt, wie in Abbildung \ref{img:notificationFE} rechts, dargestellt.
+\href{https://www.w3.org/Translations/WCAG20-de/#minimize-error}{\textbf{Richtlinie 3.3}} fordert, dass Eingabefehler automatisch erkannt und dem Benutzer angezeigt werden. Zudem sind Korrekturvorschläge anzuzeigen. Diese Anforderung betrifft insbesondere das Formular des Benachrichtigungsservices, welches in Kapitel\,\ref{notifications} beschrieben wird. Diese Anforderung wird erfüllt, wie in Abbildung \ref{img:notificationFE} links auf Seite \pageref{img:notificationFE} dargestellt.
 
 
 \subsubsection{Robustheit}
-\href{https://www.w3.org/Translations/WCAG20-de/#ensure-compat}{Richtlinie 4.1} fordert, dass Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden,  vollständige Start- und End-Tags haben. Es sind keine doppelten Attribute vorhanden und alle IDs sind eindeutig. Diese Anforderung wurde ebenfalls vollständig umgesetzt. Beispielhaft ist dies in Listing \ref{lst:gaugeHTML} ersichtlich.
+\href{https://www.w3.org/Translations/WCAG20-de/#ensure-compat}{\textbf{Richtlinie 4.1}} fordert, dass Inhalte, die mit Hilfe von Markup-Sprachen implementiert wurden,  vollständige Start- und End-Tags haben. Es sind keine doppelten Attribute vorhanden und alle IDs sind eindeutig. Diese Anforderung wurde ebenfalls vollständig umgesetzt. Beispielhaft ist dies in Listing \ref{lst:gaugeHTML} auf Seite \pageref{lst:gaugeHTML} ersichtlich.
