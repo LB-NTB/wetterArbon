@@ -40,11 +40,11 @@ Wie im Abschnitt \ref{subsec:googleAnalytics} aufgezeigt werden bereits heute 50
 	\label{img:scribbles}
 \end{figure}
 
-Beim Erstellen der ersten Designentwürfe, wie in Abbildung \ref{img:scribbles}, dargestellt, stellte sich schnell heraus, dass die einfachste Möglichkeit die Daten auf allen Bildschirmgrössen darzustellenzu können, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorradend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
+Beim Erstellen der ersten Designentwürfe, wie in Abbildung \ref{img:scribbles}, dargestellt, stellte sich schnell heraus, dass die einfachste Möglichkeit die Daten auf allen Bildschirmgrössen darstellen zu können, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorradend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
 
 
 \subsubsection{W3.css als Layout-Framework}
-Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen ein CSS-Framework zu benutzen. Dieses soll möglichst einfach und intuitiv zu bedienen sein, das Kachel-Design (auch Card-Design genannt) unterstützen, eine ausführliche Dokumentation aufweisen und eine geringe Dateigrösse haben. Wir haben drei verschieden CSS-Frameworks evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-framework} ersichtlich.
+Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen eine CSS-Bibliothek zu benutzen. Diese soll möglichst einfach und intuitiv zu bedienen sein, das Kachel-Design (auch Card-Design genannt) unterstützen, eine ausführliche Dokumentation aufweisen und eine geringe Dateigrösse haben. Wir haben drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-Bibliothek} ersichtlich.
 
 \begin{table}[htb!]
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -99,12 +99,12 @@ Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. F
 
 \hline
 \end{tabularx}
-\caption{Beurteilungsmatrix der evaluierten css-Frameworks}
-\label{table:css-framework} % label muss NACH caption stehen!!!!
+\caption{Beurteilungsmatrix der evaluierten css-Bibliotheken}
+\label{table:css-Bibliothek} % label muss NACH caption stehen!!!!
 \end{table}
 
 \noindent
-Als Sieger stellt sich das W3.css-Framework heraus, da es den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zumdem weist es eine hervorragende Dokumentation auf.
+Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zudem weist sie eine hervorragende Dokumentation auf.
 
 
 \subsubsection{Responsive Design}
@@ -148,9 +148,9 @@ Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) deren Verhalten bei den dr
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
-Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe eines Frameworks erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein die Werte zu aktualisieren.
+Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe einer Bibliothek erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein die Werte zu aktualisieren.
 
-Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Ein sehr einfaches JavaScript-Framework ist \textit{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine JavaScript-Datei konfigurieren, die Grafiken selbst sind im svg-Format und somit von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}}—JavaScript Bibliothek.
+Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Eine sehr einfache JavaScript-Bibliothek ist \textit{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine JavaScript-Datei konfigurieren, sind im vektorbasierten svg-Format und somit von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}}—JavaScript Bibliothek.
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/gauges}}
@@ -159,7 +159,8 @@ Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individu
 	\label{img:gauges}
 \end{figure}
 
-Raphaël ist eine kleine JavaScript-Bibliothek, die Ihnen die Arbeit mit Vektorgrafiken im Web erleichtern soll. Wenn Sie z.B. Ihr eigenes Diagramm oder Bildausschnitt erstellen und das Widget drehen möchten, können Sie dies einfach und bequem mit dieser Bibliothek erreichen. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, das Sie erstellen, auch ein DOM-Objekt ist, so dass Sie JavaScript-Ereignisbehandler anhängen oder später ändern können. Raphaëls Ziel ist es, einen Adapter zur Verfügung zu stellen, der das Zeichnen von Vektorgrafiken browserübergreifend und einfach macht.
+
+% sRaphaël ist eine kleine JavaScript-Bibliothek, die die Arbeit mit Vektorgrafiken im Web erleichtern soll. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, auch ein DOM-Objekt ist, so dass ein JavaScript-Ereignisbehandler anhängen oder später ändern können.
 
 
 \begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
@@ -173,20 +174,20 @@ var temperature_gauge = new JustGage({
 });
 \end{lstlisting}
 
-Um die Grafik anzuzeigen muss nur ein DIV mit der selben ID auf der Webseite erstellt werden wie in Listing \ref{lst:gaugeHTML} dargestellt.
+Um die Grafik anzuzeigen muss nur ein \emph{div} mit der selben \emph{id} auf der Webseite erstellt werden wie in Listing \ref{lst:gaugeHTML} dargestellt.
 
+\vspace{3mm}
 \begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
 <!-- Lufttemperatur -->
-<div class="w3-cell w3-col l2 m3 s6">
-  <div class="w3-card">
-    <div class="w3-container">
-      <p>Temperatur</p>
-    </div>
+<div class="l2 m3 s6">
+    <div><p>Temperatur</p></div>
     <div id="temperature_gauge" class="gauge"></div>
-  </div>
 </div>
 \end{lstlisting}
+\vspace{3mm}
 
+
+\noindent
 Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons. Es wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, die kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \textit{Weahter Icons}\footnote{\url{http://erikflowers.github.io/weather-icons/}} von Erik Flowers.
 
 
@@ -216,8 +217,8 @@ Die Wetterverlaufsdarstellung soll einen Überblick über die Wettertendenz der 
 
 
 
-\subsubsection{Auswahl des JS-Frameworks}
-Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden js-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei js-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE js-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, was wir explizit nicht möchten.
+\subsubsection{Auswahl der Javascript-Bibliothek}
+Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei Javascript-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE Javascript-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, was explizit nicht gewünscht ist.
 
 \begin{table}[htb!]
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -266,12 +267,14 @@ Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zu
 
 \hline
 \end{tabularx}
-\caption{Beurteilungsmatrix der evaluierten js-Frameworks}
+\caption{Beurteilungsmatrix der evaluierten Javascript-Bibliotheken}
 \label{table:js-framework} % label muss NACH caption stehen!!!!
 \end{table}
 
 \noindent
 Chartist.js stellte den besten Kompromiss zwischen Funktionsumfang, Einfachheit und Dokumentation dar. Insbesondere die Dateigrösse war ausschlaggebend, da die Webseite, wie in Abschnitt \ref{subsec:googleAnalytics} erklärt, primär von mobilen Nutzer genutz wird.
+
+Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wurd bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder eher tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möchglichst die gesamte Höhe des Diagramms genutzer werden soll. Es wird daher eine automaitsche Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfach Javascript-File wie in Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
 
 % Code-Beispiel
 \begin{lstlisting}[label=lst:charts,caption=Konfiguration der Verlaufsdiagramme, language=HTML5, style=htmlcssjs]
@@ -296,13 +299,13 @@ new Chartist.Bar('#rain-chart', Rain, options);
 \ \\
 
 
-Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wurd bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder eher tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möchglichst die gesamte Höhe des Diagramms genutzer werden soll. Es wird daher eine automaitsche Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfach JS-File wie in Listing Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
+
 
 
 \subsubsection{Anzeige der Windrichtung}
-Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet wie in Abbildung \ref{img:windrichtung}, links dargestellt. Es konnt jedoch kein Framework gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung \ref{img:windrichtung}, rechts dargestellt verwendet.
+Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet wie in Abbildung \ref{img:windrichtung}, links dargestellt. Es konnte jedoch keine Bibliothek gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung \ref{img:windrichtung}, rechts dargestellt verwendet. Auf eine Eigenentwicklung wurde bewusst verzichtet um die Webseite möglichst benutzerfreundlich und wartungsarm zu belassen.
 
-\begin{figure}[h!]
+\begin{figure}[htbp!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/windrichtung}}
 	\caption{Windrichtungsanzeige soll und ist}
@@ -312,13 +315,14 @@ Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 36
 \subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
 Insbesondere bei Seglern sind Windprognosenseiten sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist nicht erkennbar wie gut dir Prognose war. Geanu dies ist aber eine spannende Frage weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden daher mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
 
-\begin{itemize}
-\item Openweathermap
-\item Windfinder
-\end{itemize}
+\begin{itemize*}
+\item \href{https://openweathermap.org/city/2661731}{Openweathermap}
+\item \href{https://www.windfinder.com/forecast/arbon}{Windfinder}
+\end{itemize*}
 
 \noindent
-Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verfügung stellt. Windfinder ist unter den Seglern das beliebteste Tool. Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen die Vorhersagedaten abgegriffen und gespeichert werden. Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API sondern lediglich ein Widget für den gewünschten Standort an. Dies Daten müssen somit aus dem Windfinder-Widget, siehe Abbildung \ref{img:windfinder}, mittels Crawler extrahiert werden, analog Listing \ref{lst:kttgCrawler}.
+Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verfügung stellt. Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API sondern lediglich ein Widget für den gewünschten Standort an. Dies Daten müssen somit aus dem Windfinder-Widget, siehe Abbildung \ref{img:windfinder}, mittels Crawler extrahiert werden, analog Listing \ref{lst:kttgCrawler}. Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen die Vorhersagedaten abgegriffen und gespeichert werden.
+
 
 \begin{figure}[h!]
 	\centering
@@ -327,7 +331,7 @@ Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verf�
 	\label{img:windfinder}
 \end{figure}
 
-Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap absolut unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten auch wenn die Wetterstation 15 Knoten messte. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weitervervolgt.
+Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten auch wenn die Wetterstation 15 Knoten mass. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weiterverfolgt.
 
 
 
@@ -360,8 +364,7 @@ Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufko
 
 \subsubsection{Eingeschränkte Bezugsquellen}
 % Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht ebenfalls nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen. Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
-\Diskussionspunkt{Verweis auf E-Mail im Anhang}\\
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen (siehe Mail im Anhang\,\ref{anhang:email}) . Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -389,7 +392,7 @@ Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen b
 \end{quote}
 
 \noindent
- Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+ Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
 
 
@@ -410,11 +413,11 @@ Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen b
 \subsection{Darstellung der historischen Daten}
 Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahren, welche ebenfalls auf der Webseite verfügbar sein soll. Es gibt drei drei Grundlagen für die historischen Daten:
 
-\begin{itemize}
+\begin{itemize*}
 \item Historische Daten der neuen Wetterstation
 \item Historische Daten der alten Wetterstation
 \item Excel mit Pegeldaten von 1953 bis 2005
-\end{itemize}
+\end{itemize*}
 
 Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 

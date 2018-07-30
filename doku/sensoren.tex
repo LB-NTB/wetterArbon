@@ -30,7 +30,7 @@ Das Pyranometer basiert auf dem Messprinzip eines Thermoelements, wie in Abbildu
 
 
 \subsubsection{Berechnung der Sonnenscheindauer}
-Die (relative) Sonnenscheindauer beschreibt den Anteil der tatsächlichen an der effektiv möglichen Sonnenscheindauer in Prozent. Durch sie kann man Sonnenscheinverhältnisse verschiedener Gebiete vergleichen. Gemäss ANNEX 8.B. der Richtlinie ~\cite{WMO2014Gtmi} kann die Sonnenscheindauer (SD) aus den minütlichen Messwerten der Globalstrahlung $G$ berechnet werden. Dazu muss zuerst der Schwellwert $G_{thr}$, wie in \ref{eq:Sonnenstunden} dargestellt, berechnet werden. Der Zähler für die Sonnenstunden wird um eine Minute erhöht, wenn der Messwert grösser ist als der Schwellwert und der Sonnenwinkel mindestens 3 Grad beträgt.\newline
+Die (relative) Sonnenscheindauer beschreibt den Anteil der tatsächlichen an der effektiv möglichen Sonnenscheindauer in Prozent. Durch sie kann man Sonnenscheinverhältnisse verschiedener Gebiete vergleichen. Gemäss ANNEX 8.B. der Richtlinie ~\cite{WMO2014Gtmi} kann die Sonnenscheindauer (SD) aus den minütlichen Messwerten der Globalstrahlung $G$ berechnet werden. Dazu muss zuerst der Schwellwert $G_{thr}$, wie in der Formel \ref{eq:Sonnenstunden} dargestellt, berechnet werden. Der Zähler für die Sonnenstunden wird um eine Minute erhöht, wenn der Messwert grösser ist als der Schwellwert und der Sonnenwinkel mindestens 3 Grad beträgt.\newline
 
 \begin{equation}
 \label{eq:Sonnenstunden}
@@ -93,12 +93,13 @@ Die ursprüngliche Wetterstation verwendete einen hydrostatischen Drucksensor f�
 Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglichen, mit dem Hintergedanken die Pegelmesswerte ebenfalls zur Messung der Wellenhöhe verwenden zu können. Die Zusammenfassung der Resultate ist in der Tabelle \ref{tbl:pegelsensoren} aufgelistet. TOF steht für \emph{time of flight} und beschreibt ein 3D-Kamerasystem. Die Einfachheit und Robustheit des hydrostatischen Sensors überwog, sodass der alte Drucksensor durch das gleiche Produkt ersetzt wurde.
 
 \begin{table}[htbp]
-\label{tbl:pegelsensoren}
 \caption{Gegenüberstellung der verschiedenen Pegelmess-Prinzipien}
+\label{tbl:pegelsensoren}
 \setlength\extrarowheight{3pt} % for a more "open" look
 \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{1.5cm}||X|X|}
 \hline
- & \bfseries\large Vorteile & \bfseries\large Nachteile\\
+& \bfseries Vorteile
+& \bfseries Nachteile\\
 
 \hline
 \textbf{Hydrostatisch}
@@ -170,7 +171,7 @@ Für die Messung des Bodensee-Pegels wurden verschiedene Messprinzipien verglich
 
 
 \subsubsection{Definition des Pegel Konstanz}
-Die Uferlinie des Bodensees wurde 1990 von der IGKB bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkt, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes in Meter über Meer wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben (violett) befindet sich die Skala für den Pegel Konstanz. Die offizielle Hochwassermarke liegt bei einem Pegel von 4,80 Metern.
+Die Uferlinie des Bodensees wurde 1990 von der IGKB\footnote{IGKB: Internationalen Gewässerschutzkommission für den Bodensee} bei Mittelwasserstand festgelegt. Der Pegelstand in Konstanz ist ein Relativmaß. Es bezieht sich auf den Pegelnullpunkt, der in Konstanz bei 391,89m ü NN liegt. Der Pegel Romanshorn gibt die geodätische Höhe des Wasserstandes in Meter über Meer wieder\footnote{\url{http://www.bodensee-hochwasser.info/IGKB/umrechnung.html}}. Der Zusammenhang der verschieden Pegelgrössen ist in Abbildung \ref{img:pegelKonstanz} dargestellt. Links oben (violett) befindet sich die Skala für den Pegel Konstanz. Die offizielle Hochwassermarke liegt bei einem Pegel von 4,80 Metern.
 
 \begin{figure}[htbp]
 	\centering
