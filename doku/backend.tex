@@ -157,6 +157,7 @@ Die Tabellen haben untereinander keine Verknüpfung (Relation), sondern sind all
 
 
 \subsubsection{Aggregation der historischen Daten}
+\label{kap:aggregation}
 Bei der Wetterstation fallen pro Minute rund 40 Datenpunkte an, die gespeichert werden. Pro Jahr sind dies über 21 Millionen Datenpunkte. Damit die Anzeige der historischen Messwerte nicht so viele Daten laden muss, werden die Messdaten periodisch zusammengefasst.
 \newline
 
@@ -395,26 +396,14 @@ Um die Datenbank gegen einen allfälligen Datenverlust zu sichern, ist ein regel
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenarchivierung und Speicherbedarf}
-In der Datenarchivierung werden die historischen Daten aufbereitet und komprimiert. Dafür ist wird von der historischen Tabelle gebrauch gemacht. Mittels einem Cronjob werden die Minuten Daten komprimiert. Anschliessend bestehen zwei Varianten:
-
-\begin{itemize*}
-\item \textbf{Variante 1}\\
-Die Daten aus den beiden Minutentabellen werden gelöscht, stehen somit nicht für weitere Zwecken zur Verfügung.
-\item \textbf{Variante 2}\\
-Die Daten aus den beiden Minutentabellen werden nicht gelöscht und können für spätere Anwendungen verwendet werden.
-\end{itemize*}
-
-Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde die zweite Variante gewählt.
-
+Pro Tag fallen bei der Wetterstation knapp 60'000 Datenpunkte an, die in der Datenbank gespeichert werden. Pro Jahr sind es über 21\,Millionen. Es stellte sich anfangs die Frage, ob die historischen Daten ausgedünnt werden sollen um Speicherplatz zu sparen. Stand Anfang August 2018, nach 3 Jahren Betrieb, waren jedoch nur 1.9\% der zur Verfügung stehenden 50\,GB belegt. Der Speicherplatz reicht somit, bei gleichbleibender Benützung, noch für die nächsten 50 Jahre. Es besteht somit keine Notwendigkeit die Daten auszudünnen d.h. es ist nicht vorgesehen irgendwelche Messdaten zu löschen. Die Zusammenfassung von Daten in die historische Datenbank wie in Kapitel\,\ref{kap:aggregation} beschrieben dient lediglich dazu die Performance der Anzeige der historischen Daten auf der Webseite zu verbessern.
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Funktionsüberwachung mit Mail-Service}\label{kap:Funktionsüberwachung}
-Um diese Funktionen zu erstellen wird Gebrauch vom try, except Verfahren in Python gemacht. Zu Beginn wird der Code im try ausgeführt, tritt keine exception auf, wird das except übersprungen und der anschliessende Code ausgeführt. Tritt aber während dem try eine exception auf, wird der Code unterbrochen und der im except weitergeführt. Anschliessend wird der Code nach dem Exception Handling ausgeführt.\cite{ThePythonTutorial8.ErrorsAndExceptions:Python}
-
-Um die Funktion der Programme/Skripte zu überwachen, erzeugen folgende Funktionen bei einem Fehler (exeption) eine Meldung:
+\subsection{Funktionsüberwachung mittels Mail-Service}\label{kap:Funktionsüberwachung}
+Die API und die Cronjobs laufen grundsätzlich selbständig. Trotzdem kann es vorkommen, dass eine Aufgabe nicht korrekt durchgeführt werden kann. Damit dies zeitnah bemerkt wird, wurde eine Funktionsüberwachung implementiert. Dies geschieht, indem sämtliche Aufgaben in den Python-Skripten in einem try...catch-Verfahren ausgeführt werden. Gibt es im try-Block ein Problem wird der Code unterbrochen und eine Exeption an den catch-Block übergeben. Anschliessend wird der Code nach dem Exception Handling ausgeführt\cite{ThePythonTutorial8.ErrorsAndExceptions:Python}. Folgende Aufgaben erzeugen bei einem Fehler eine Meldung:
 
 \begin{itemize*}
 \item Einlesen der Sensordaten (Wassertemperatur, Pegel, Strahlung)
@@ -424,28 +413,16 @@ Um die Funktion der Programme/Skripte zu überwachen, erzeugen folgende Funktion
 \item Benachrichtiungsservice
 \end{itemize*}
 
-Die aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Hostpoint bietet die Möglichkeit, dass sämtliche Textausgaben (print-Funktion) eines Cronjobs an eine bestimmte Mailadresse gesendet werden (Listing \ref{lst:printfunction}). Der Service wurde so konfiguriert, dass die Fehlermeldungen an die Mailadresse \emph{cronjob@wetter-arbon.ch}. Der Posteingang kann dann an die entsprechenden Personen weitergeleitet werden.
+\noindent
+Die aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Hostpoint bietet die Möglichkeit, dass sämtliche Textausgaben (print-Funktion) eines Cronjobs an eine bestimmte Mailadresse gesendet werden (Listing \ref{lst:printfunction}). Der Service wurde so konfiguriert, dass er die Fehlermeldungen an die Mailadresse \emph{cronjob@wetter-arbon.ch} sendet. Der Posteingang kann dann an die entsprechenden Personen weitergeleitet werden. Kann zum Beispiel ein Messwert des Web-IO nicht abgerufen werden, wird eine Meldung wie in Listing\,\ref{lst:printfunction} erstellt.
 
-\begin{lstlisting}[label=lst:printfunction,caption=Beispiel für print Funktion, language=Python, style=py]
+\vspace{3mm}
+\begin{lstlisting}[label=lst:printfunction,caption=Beispiel eines Exeption-Handlings, language=Python, style=py]
 except Exception as e:
     print "Es ist ein Problem mit der Sonnenstrahlungs-Abfrage aufgetaucht: "
     print e
 \end{lstlisting}
+\vspace{3mm}
 
-Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen aus. Kann einer der Webservices vom Web-IO nicht erreicht werden, wird die folgende Mail generiert:
-
-\begin{quote}
-Es ist ein Problem mit (der Temperatur, dem Pegel, dem Strahlungssensor) aufgetreten. Exception: ...\\
-\end{quote}
-
-Je nach Sensor wird dieser genannt und das Problem welches aufgetreten ist. Beim Auslesen des Wettertransmitters ist diese Möglichkeit nicht direkt anwendbar. Hier wird beim erstellen der historischen Daten kontrolliert, ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, würde es bedeuten, dass das WeatherDisplay abgestürzt ist und neu gestartet werden muss. Die Meldung sieht folgendermassen aus:\\
-
-\begin{quote}
-Bitte starte das WeatherDisplay neu, es wurden nur (Anzahl Datensätze) Daten geschrieben.
-\end{quote}
-
-Auch beim schreiben in die historische Datenbank können Ausnahmen auftauchen. Ist dies der Fall wird folgende Meldung generiert:\\
-
-\begin{quote}
-Die historischen Daten können nicht geschrieben werden, es besteht folgendes Problem (Exception).
-\end{quote}
+\noindent
+Da das Auslesen des Kombi-Wettertransmitters nicht mittels Cronjob durchgeführt wird gibt es die Möglichkeit des Exeption-Handlings nicht. Als Alternative wird aber beim Erstellen der historischen Daten kontrolliert, ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, kann davon ausgegangen werden, dass Weather Display ein Problem hat.
