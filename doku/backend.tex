@@ -38,6 +38,7 @@ Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannt
 
 
 \subsubsection{Abgreifen der Sturmwarndaten} % screen scrapping
+\label{kap:abgrSturmwarnung}
 Die Sturmwarndaten werden periodisch mittels Python-Skript ausgelesen. Als Tool kommt die Python-Bibliothek \href{https://www.crummy.com/software/BeautifulSoup/}{\emph{BeautifulSoup}} zum Einsatz. Das Auslesen von Webseiten wird auch \emph{web scraping} genannt. Die Idee dahinter ist, die gewünschte Information auf Grund ihrer Element-Bezeichnung (z.B. \texttt{<td>}), ihres Attributs (z.B. \texttt{class="titelfett"}) oder Hierarchistufe (z.B. \texttt{tr:nth-of-type(4)}) eindeutig zu identifizieren. Um diese eindeutige Identifikation herauszufinden wurde das Google Chrome-Plugin \href{https://selectorgadget.com/}{\emph{SelectorGadget }} verwendet. Listing \ref{lst:kttgCrawler} zeigt die gesamte Abfrage. Darin ist auch das Problem dieser Methode gut erkennbar. Ändert die URL oder die Bezeichnung bzw. Struktur der Seite, liefert das Skript nicht mehr die gewünschten Daten. Da aber das Web-Scrapping die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, muss dieses Risiko akzeptiert werden.
 
 
@@ -52,28 +53,32 @@ soup.select('.titelfett strong'):
 
 
 \subsubsection{Windvorhersagedaten}
-Die Abfrage der Datenban stellt sich als recht kompliziert heraus. Sodass entschieden wurde eine VIEW einzusetzten. Diese wird dynamisch bei Aufrufen erzeugt und enthält die gewünschten Daten. Der SQL-Befehl für die Erzeugung der VIEW ist vereinfacht in Listing \ref{lst:viewForecast} aufgeführt. Primär gibt es zwei Bediungungen. Erstens sollen nur die Dreitageverhersagewerte verwendet werden und zweitens sollen die Vorhersagewerte verwendet werden, die am nächsten bei der aktuellen Zeit liegen. Da das Vorhersageintervall 3 Stunden beträgt ist die Verhersage maximal 1.5 Stunden verschoben.
+Die Windvorhersagedaten von Windfinder werden ebenfalls mittels BeautifulSoup von der Webseite abgegriffen, analog der Sturmwarndaten in Kapitel\,\ref{kap:abgrSturmwarnung}. Beim Speichern der Vorhersagedaten in der Datenbank ist jedoch speziell, dass der angezeigte Wert erst in drei Tagen gilt. Umgekehrt heisst das, dass wenn der Vorhersagewert für jetzt benötigt wird, muss in der Datenbank das Datum von vor drei Tagen eingesetzt werden.
+Um die Datenbankabfrage trotzdem möglichst einfach zu gestalten wurde eine VIEW verwendet. Diese wird dynamisch bei Aufrufen erzeugt und enthält die gewünschten Vorschaudaten aber mit dem aktuellen Datum. Dies vereinfacht den Aufbau des Verlaufsdiagramms.
 
-%View erstellen
-\begin{lstlisting}[label=lst:viewForecast,caption=Erzeugung der VIEW für den Forecast-Vergleich, language=SQL, style=htmlcssjs]
-SELECT *
-FROM 'tblcompwindfinder'
-WHERE
-(datetime + interval 3 day) <= now() #heute vor drei Tagen
-AND
-abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
-ORDER BY datetime DESC
-LIMIT 3
-\end{lstlisting}
+
+% Der SQL-Befehl für die Erzeugung der VIEW ist vereinfacht in Listing \ref{lst:viewForecast} aufgeführt.
+%
+% Primär gibt es zwei Bedingungen. Erstens sollen nur die Dreitagevorhersagewert verwendet werden und zweitens sollen die Vorhersagewerte verwendet werden, die am nächsten bei der aktuellen Zeit liegen. Da das Vorhersageintervall 3 Stunden beträgt ist die Vorhersage maximal 1.5 Stunden verschoben.
+%
+% %View erstellen
+% \begin{lstlisting}[label=lst:viewForecast,caption=Erzeugung der VIEW für den Forecast-Vergleich, language=SQL, style=htmlcssjs]
+% SELECT *
+% FROM 'tblcompwindfinder'
+% WHERE
+% (datetime + interval 3 day) <= now() #heute vor drei Tagen
+% AND
+% abs(timediff(datetime,now())) <= 13000) #innerhalb +/- 1.5h
+% ORDER BY datetime DESC
+% LIMIT 3
+% \end{lstlisting}
 
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenspeicherung}
-Für die Datenspeicherung stellt Hostpoint, der Webhosting-Provider der Wetterstation, seinen Kunden eine MariaDB Version 10.1 mit dem Administrationstool phpMyAdmin zur Verfügung. MariaDB ist eine relationales Open-Source-Datenbankverwaltungssystem und basiert auf MySQL.
-
-Die Datenbank wurde komplett neu aufgebaut. Im Folgenden werde die einzelnen Tabellen und deren Struktur erklärt.
+Für die Datenspeicherung stellt Hostpoint, der Webhosting-Provider der Wetterstation, eine Datenbank des Typs MariaDB Version 10.1 mit dem Administrationstool phpMyAdmin zur Verfügung. MariaDB ist eine relationales Open-Source-Datenbankverwaltungssystem und basiert auf MySQL. Die Datenbank der Wetterstation wurde komplett neu aufgebaut. Im Folgenden werde die einzelnen Tabellen und deren Struktur erklärt.
 
 %Für die Umstrukturierung wurde von der Methodik aus dem Artikel Grundlagen und Entwurf \cite{Datenbanken:GrundlagenUndEntwurf:VeikkoKrypczyk} gebrauch gemacht.
 %Wie in Introduction to relational Databases \cite{IntroductionToRelationalDatabases:MariaDB} beschrieben wird,
@@ -93,7 +98,7 @@ Die Datenbank besteht aus mehreren Tabellen mit unterschiedlichem Inhalt. Die Au
 
   \hline
   \textbf{tblwettertransmitter}
-  & Messwerte des Wettertransmitters \\
+  & Messwerte des Kombi-Wettertransmitters \\
 
   \hline
   \textbf{tblextsensors}
@@ -110,15 +115,15 @@ Die Datenbank besteht aus mehreren Tabellen mit unterschiedlichem Inhalt. Die Au
   \hline
   \hline
   \textbf{tbldatemaster}
-  & Daten vom 1.1.2015 bis 31.12.2035 im Minutenabstand \\
+  & Datumswerte von 2015 bis 2030 im Minutenabstand \\
 
   \hline
   \textbf{tblhistorical}
-  & Messwerte zusammengefasst auf 1 Eintrag/h \\
+  & Messwerte zusammengefasst (1 Eintrag pro Stunde) \\
 
   \hline
   \textbf{tblwaterlevelhistorical}
-  & Pegelwerte von 1953 bis heute 1 Eintrag/d\\
+  & Pegelwerte von 1953 bis heute (1 Eintrag pro Tag)\\
 
   \hline
   \hline
@@ -166,7 +171,7 @@ Die minütlich gespeicherten Messdaten werden einmal pro Stunde zusammengefasst 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/historical}}
 	\centering
-	\caption{Konezpt der Datenaggregation}
+	\caption{Konzept der Datenaggregation}
 	\label{img:historical}
 \end{figure}
 
@@ -214,28 +219,32 @@ Die beiden VIEWs, die für die Aggregation benötigt werden beinhalten jeweils g
 % \end{lstlisting} */
 
 
-\subsubsection{Zeitsynchronisation}
+%\subsubsection{Zeitsynchronisation}
 % welche Daten erhalten von wo einen Zeitstempel?
 % woher erhalten diese Geräte die Zeit? Zeitserver?
-
-\Diskussionspunkt{Grafik einfügen}
+%\Diskussionspunkt{Grafik einfügen}
 
 
 \subsubsection{Datumsformatierung}
-Die Norm DIN ISO 8601\footnote{DIN ISO 8601: Informationsaustausch - Darstellung von Datum und Uhrzeit} standardisiert die Darstellung von Datum und Zeit. Das internationale Datumsformat muss entweder als \texttt{2018-07-29T15:34:30} oder aber, wie empfohlen, mit der Differenz zur Koordinierten Weltzeit (UTC) \texttt{2018-07-29T15:34:30+02:00} angegeben werden. In der Datenbank der Wetterstation wird jedoch das nichtstandartisierte Format \texttt{2018-07-29 15:34:30} mit Leerzeichen zwischen Datum und Zeit verwendet.
+\label{kap:dateformat}
+Die Norm DIN ISO 8601\footnote{DIN ISO 8601: Informationsaustausch - Darstellung von Datum und Uhrzeit} standardisiert die Darstellung von Datum und Zeit. Das internationale Datumsformat muss entweder als \texttt{2018-07-29T15:34:30} oder aber, wie empfohlen, mit der Differenz zur Koordinierten Weltzeit (UTC) \texttt{2018-07-29T15:34:30+02:00} angegeben werden. In der Datenbank und in der API der Wetterstation wird jedoch das nichtstandartisierte Format \texttt{2018-07-29 15:34:30} mit Leerzeichen zwischen Datum und Zeit verwendet.
 
 
-\begin{figure}[htbp!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/datetime}}
-	\centering
-	\caption{Formatierung des Datums in der Datenbank}
-	\label{img:datetime}
-\end{figure}
+% \begin{figure}[htbp!]
+%   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/datetime}}
+% 	\centering
+% 	\caption{Formatierung des Datums in der Datenbank}
+% 	\label{img:datetime}
+% \end{figure}
 
-\Diskussionspunkt{Warum kann normiertes Format nicht angewendet werden?}
+\noindent
+\Diskussionspunkt{Warum kann normiertes Format in der API nicht angewendet werden?} \newline
+\Diskussionspunkt{The delimiter between the date part and the time part can be a T or any sequence of space characters} \newline
+\Diskussionspunkt{\url{https://mariadb.com/kb/en/library/date-and-time-literals/}} \newline
+
 
 \subsubsection{Umgang mit der Zeitumstellung}
-Da in der Schweiz Sommer- und Winterzeit herrscht, besteht auch die Problematik der Zeitumstellung. Für die Datenbank besteht das Problem, dass die Tabellen nur einen Datumzeit enthalten dürfen. So entsteht die Problematik im Winter, da wenn die zurück gestellt wird doppelte Einträge entstehen. Wird in die historische Daten geschaut, fällt auf das diese Zeitumstellung nie berücksichtigt wurde. Zudem ist die Zeitumstellung in der Nacht, also für viele Benutzer eher uninteressant. Somit spielt es keine Rolle, dass die Daten bei der Zeitumstellung verloren gehen.
+Wie in Abschnitt\,\ref{kap:dateformat} erläutert, wird das Datum ohne Differenz zu koordinierten Weltzeit (UTC) gespeichert. Dies führt dazu, dass bei der Zeitumstellung im Frühling und im Herbst jeweils eine Stunde übersprungen beziehungsweise doppelt vorhanden ist. Damit das Vorgehen bei allen Datenbankeinträgen einheitlich ist, wurde das System von Weather Display übernommen. Wird die Uhr vorgestellt so fehlt diese Stunde in der Datenbank (siehe Abbildung\,\ref{img:sommerzeit}) und beim Zurückstellen der Uhr wird die doppelte Stunde ignoriert. Da die Zeitumstellung in der Nacht stattfindet ist dieser Umstand für die Benutzer kaum bemerkbar.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sommerzeit}}
@@ -329,25 +338,50 @@ Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, w
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenbanksicherheit (Datenmanipulation und -verlust)}
+Bei der Wetterstation Arbon sind keine persönlichen oder sicherheitsrelevanten Daten in der Datenbank gespeichert. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, um einen Datenverlust beziehungsweise eine Datenmanipulation zu verhindern. Um dies zu erreichen werden mehrere Techniken eingesetzt, die im Folgenden beschrieben werden.
 
+\subsubsection{Schutz vor SQL-Injection}
+% SQL-Injection ist ein grossen Problem
+Laut den OWASP\footnote{OWASP: Open Web Application Security Project} Top 10, einer Liste\footnote{ \url{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}}, welche die wichtigsten Sicherheitsrisiken von Web-Applikationen aufzeigt, ist SQL-Injection seit Jahren auf Platz 1. SQL-Injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer Daten ausspähen oder verändern kann.
 
-\subsubsection{Angriffssicherheit}
-Laut den OWASP\footnote{OWASP: Open Web Application Security Project} Top 10, einer Liste\footnote{ \url{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}}, welche die wichtigsten Sicherheitsrisiken von Web-Applikationen aufzeigt, ist SQL-injection seit Jahren auf Platz 1. SQL-Injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer Daten ausspähen oder verändern kann.
+Die API, welche als primäre Schnittstelle für das Auslesen der Daten verwendet wird ist so aufgebaut, dass die Abfrage mittels \emph{White List Input Validation} durchgeführt wird. Das bedeutet, dass die eingegebene URL mittels switch case mit allen möglichen gültigen Abfragen verglichen wird und dann entsprechend weiterbehandelt, wie in Listing\,\ref{lst:switchCase} auf Seite \pageref{lst:switchCase} dargestellt. Die Möglichkeit einer SQL-Injection ist auf diese Weise ausgeschlossen. Lediglich bei der Warteschlange der Webcam und beim Benachrichtigungsservice werden Daten direkt in die Datenbank geschrieben beziehungsweise daraus gelesen. In diesem Fall werden die
+die SQL-Abfragen mittels \emph{Prepared Statements} durchgeführt und die Benutzereingaben \emph{escaped} wie in Listing\,\ref{lst:maskierung} dargestellt.
 
-Bei der Wetterstation Arbon sind keine persönlichen oder sicherheitsrelevanten Daten in der Datenbank gespeichert. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, um einen Datenverlust beziehungsweise eine Datenmanipulation zu verhindern.
+% https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet
 
-Die Zugriffe auf die Datenbank sind so gestaltet, dass nur serverseitig darauf zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Injection möglich ist. Wie im Kapitel Daten der neuen Wetterstation mit Tableau \ref{kap:Tableau} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet, dass für die historische Seite kein Datenbankzugriff notwendig ist. Lediglich bei der Warteschlang der Webcam und beim Benachrichtigungsservice werden Daten direkt in die Datenbank geschrieben beziehungsweise daraus gelesen. In diesem Fall werden die Eingaben maskiert wie in Listing\,\ref{lst:maskierung} dargestellt.
+\vspace{3mm}
+\begin{lstlisting}[label=lst:maskierung,caption=Anwendung der Prepared Statements (gekürzt), language=PHP, style=PHP]
+// Insert-Befehl
+$stmt = $dbh->prepare("INSERT INTO tbl (email) VALUES (:email)");
+$stmt->bindParam(':email', $email);
+$email = mysql_real_escape_ string($_GET['email']);
+$stmt->execute();
+$stmt->close();
 
-\begin{lstlisting}[label=lst:maskierung,caption=Maskierung von Datenbank-Eingaben, language=PHP, style=PHP]
-$threshold = mysql_escape_string($_POST['threshold']);
+// Select-Befehl
+$stmt = $dbh->prepare("SELECT email FROM tbl WHERE email = ?");
+$stmt->execute(array(mysql_real_escape_ string($_GET['email'])))
+$stmt->fetch()
 \end{lstlisting}
+\vspace{3mm}
+
+% Wie im Kapitel Daten der neuen Wetterstation mit Tableau \ref{kap:Tableau} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet, dass für die historische Seite kein Datenbankzugriff notwendig ist.
 
 
-\subsubsection{DB-Nutzer Konzept}
-\Diskussionspunkt{welche Nutzer gibt es und welche Rechte haben sie -> theoretisch erklären}
+\subsubsection{Einschränkung der Datenbankrechte}
+Hostpoint bietet die Möglichkeit mehrere Datenbankbenutzer anzulegen. Diese können mit unterschiedlichen Rechten ausgestattet werden wie in Abbildung\,\ref{img:dbnutzer} ersichtlich.
+Für die Datenbank wurden zwei Benutzer angelegt. \emph{igwetter\_Data} wird intern durch die Skripte verwendet um die Messdaten in die Datenbank zu speichern und hat entsprechend Schreibrecht. Der zweite Benutzer \emph{igwetter\_Tablea} hat nur Leserecht und wird zum Abrufen der Daten für die API und Tableau benötigt.
+
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/dbnutzer}}
+	\centering
+	\caption{Zuweisung der Rechte für unterschiedliche Datenbankbenutzer}
+	\label{img:dbnutzer}
+\end{figure}
+
 
 \subsubsection{Backup}
-Um die Datenbank gegen einen allfälligen Datenverlust zu sichern, ist ein Backup sinnvoll. Da alle Daten in der DB gleich relevant sind, sollten auch alle im Backup vorhanden sein. Dabei muss aber entschieden werden, ob ein tägliches Backup Sinn machen würde. Da die Wetterstation von einem Verein betrieben wird, ist es wichtig den Aufwand mit dem Ertrag zu vergleichen. Zusätzlich sollte das Backup nicht auf dem Server des Providers gespeichert werden, sollte etwas mit dem Server nicht in Ordnung sein, sind diese Daten auch weg. Deswegen ist es wichtig ein 'externes' Backup zu erstellen. Hostpoint bietet für das Backup verschiedene zwei Varianten: Backup mittels Cronjob und Backup auf Knopfdruck. Um den Aufwand klein zu halten, wird empfohlen ein monatliches Backup mit der Backup Funktion auf Knopfdruck zu erstellen und dieses auf einer Festplatte zu speichern (Abbildung \ref{img:backup}). Sollte trotzdem mal das Backup nicht funktionierten oder vergessen gegangen sein, kann auf den Hostpoint-Service zurück gegriffen werden. Hostpoint erstellt selber ein tägliches Backup, welches für 100 Franken wieder eingespielt werden kann. Somit können die Kosten für beispielsweise einigen Cloudaccount gespart werden.
+Um die Datenbank gegen einen allfälligen Datenverlust zu sichern, ist ein regelmässiges Backup sinnvoll. Da die Wetterstation von einem Verein betrieben wird, ist der Aufwand auf ein Minimum zu reduzieren. Hostpoint bietet zwei Backup-Varianten an. Dies ist einerseits ein Backup mittels Cronjob auf zum Beispiel einen Cloud-Speicher und andererseits ein manuelles Backup auf eine externe Festplatte. Um den Aufwand klein zu halten, wird empfohlen ein monatliches Backup mit der manuellen Backup Funktion zu erstellen und dieses auf einer Festplatte zu speichern (siehe Abbildung \ref{img:backup}). Für Notfälle stellt Hostpoint zudem einen kostenpflichtigen Wiederherstellungs-Service zur Verfügung.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/backup}}

@@ -265,5 +265,6 @@ Der fehlende bzw. falsche Wert wurde trotzdem durch einen Offset angenähert. Ei
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:tempOffset,caption=Offset des defekten Temperatusensors, language=Python, style=py]
-temperatureArray[4] = float(temperatureArray[4])-3.0
+offset = -3
+temperatureArray[4] = float(temperatureArray[4]) + offset
 \end{lstlisting}

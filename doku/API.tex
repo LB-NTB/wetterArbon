@@ -39,7 +39,7 @@ Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern l�
 
 
 \subsubsection{Anwendung des REST-Prinzips}
-Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representational State Transfer} von Roy Fielding entwickelt. Der REST-Architekturstil bietet diverse Vorteile unter anderem bezüglich Skalierbarkeit und Sicherheit, wie in der \href{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}{Doktorarbeit}~\cite{Fielding:2000:ASD:932295} von Fielding nachzulesen ist. Eines der wichtigsten Prinzipen daraus ist die Zustandslosigkeit einer Anfrage. Das heisst jede Anfrage vom Client zum Server enthält alle notwendigen Informationen; auf dem Server muss nichts zwischengespeichert werden. REST verwendet zudem die von HTTP zur Verfügung gestellten Methoden\cite{LornaJaneMitchell2013oreilly}. Bei der Wetterstation wird nur die GET-Methode verwendet, da die API der Wetterstation sozusagen ein read-only-Dienst darstellt. Eine Server-Anfrage sieht dann zum Beispiel so aus wie in Listing\,\ref{lst:apirequest}. Bei einem POST-Aufruf wird das gleiche Resultat geliefert wie beim entsprechenden GET-Aufruf. 
+Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representational State Transfer} von Roy Fielding entwickelt. Der REST-Architekturstil bietet diverse Vorteile unter anderem bezüglich Skalierbarkeit und Sicherheit, wie in der \href{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}{Doktorarbeit}~\cite{Fielding:2000:ASD:932295} von Fielding nachzulesen ist. Eines der wichtigsten Prinzipen daraus ist die Zustandslosigkeit einer Anfrage. Das heisst jede Anfrage vom Client zum Server enthält alle notwendigen Informationen; auf dem Server muss nichts zwischengespeichert werden. REST verwendet zudem die von HTTP zur Verfügung gestellten Methoden\cite{LornaJaneMitchell2013oreilly}. Bei der Wetterstation wird nur die GET-Methode verwendet, da die API der Wetterstation sozusagen ein read-only-Dienst darstellt. Eine Server-Anfrage sieht dann zum Beispiel so aus wie in Listing\,\ref{lst:apirequest}. Bei einem POST-Aufruf wird das gleiche Resultat geliefert wie beim entsprechenden GET-Aufruf.
 
 
 \vspace{3mm}
@@ -73,15 +73,14 @@ v1: {
 \vspace{3mm}
 
 \noindent
-Die MAJOR-Version unterscheidet demnach zwischen verschiedenen inkompatiblen Versionen. Eine API wird häufig von einem anderen Computer das heisst von einem Programm aufgerufen. Eine inkompatible Änderung würde dazu führen, dass dieses Programm unter Umständen nicht mehr korrekt funktioniert. Aus diesem Grund wurde die MAJOR-Nummer in die URL der API aufgenommen. Auf diese Weise kann parallel eine Version 2 implementiert werden, ohne dass die Nutzer der Version 1 betroffen sind. Die URL setzt sich demnach zusammen aus: \\
+Die MAJOR-Version unterscheidet demnach zwischen verschiedenen inkompatiblen Versionen. Eine API wird häufig von einem anderen Computer das heisst von einem Programm aufgerufen. Eine inkompatible Änderung würde dazu führen, dass dieses Programm unter Umständen nicht mehr korrekt funktioniert. Aus diesem Grund wurde die MAJOR-Nummer in die URL der API aufgenommen. Auf diese Weise kann parallel eine Version 2 implementiert werden, ohne dass die Nutzer der Version 1 betroffen sind. Die URL setzt sich demnach zusammen aus:
 
-\noindent
-\texttt{Protokoll://Host/Versionsnummer/Endpunkt}\\
-und als Beispiel:\\
-\url{https://api.wetter-arbon.ch/v1/data/}
-
-\noindent
-\Diskussionspunkt{Erklärgrafik hinzufügen}
+\begin{figure}[htbp!]
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/apiformat}}
+	\centering
+	\caption{Aufbau der API anhand eines Beispiels}
+	\label{img:apiformat}
+\end{figure}
 
 
 \subsubsection{Auswahl des Response-Datenformats}
@@ -268,7 +267,7 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 % der einzelne Nutzwert ist nicht aussagekräftig, sondern muss immer ins Verhältnis zu den anderen Ergebnissen gesetzt werden
 Wie das Resultat aus der Nutzwertanalyse (Tabelle \ref{table:php-framework}) aufzeigt, bleiben zwei Möglichkeiten übrig. Zum einen das Slim-Framework, zum anderen kein Framework zu nehmen. Bei der Dokumentation schneidet beides gleich ab. Denn wird kein Framework benutzt, kann die PHP-Dokumentation zu Handen genommen werden. Jedoch bestehen grosse Unterschiede bei der Langlebigkeit. Hier kann ohne Framework auf die standard Funktionen zurückgegriffen werden. Ein weiterer Vorteil ist, dass man hier die Kontrolle über den Code hat. So können Versionsspezifische Funktionen schnell angepasst werden, ohne das weiterer Code geändert werden muss. Beim Funktionsumfang schneidet das Framework besser ab. Konkret heisst dies, dass einzelne Funktionen schon vorgegeben sind und dem jeweiligen Nutzen nur angepasst werden muss. Das ist der Nachteil wenn ohne Framework gearbeitet wird. Hier muss jede Funktion selber codiert werden.\\
 Bei der Stabilität und Sicherheit schneiden beide gleich ab. Dies hängt jedch, wenn ohne Framework gearbeitet wird, vorallem auch vom Programmierer und deren Tests ab. Beim Footprint sind beide gleichauf. Beide benötigen weniger als 5 Mb.\\
-Der Ausschlaggebende Punkt in dieser Arbeit ohne Framework zu arbeiten ist die Grösse der API, sowie den Wunsch der IG Arbon, die ganze Arbeit so zu gestalten, dass praktisch kein Unterhalt notwendig ist. Bei der API wurde deswegen darauf geachtet schon alles mit den Funktionen aus PHP 7 zu gestalten. Weiter ist die API so zu gestaltet, wo möglich, auf Versionsspezifische Funktionen zu verzichten. 
+Der Ausschlaggebende Punkt in dieser Arbeit ohne Framework zu arbeiten ist die Grösse der API, sowie den Wunsch der IG Arbon, die ganze Arbeit so zu gestalten, dass praktisch kein Unterhalt notwendig ist. Bei der API wurde deswegen darauf geachtet schon alles mit den Funktionen aus PHP 7 zu gestalten. Weiter ist die API so zu gestaltet, wo möglich, auf Versionsspezifische Funktionen zu verzichten.
 
 
 
@@ -355,4 +354,3 @@ Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert
 	\caption{API-Dokumentation in Postman}
 	\label{img:postman}
 \end{figure}
-
