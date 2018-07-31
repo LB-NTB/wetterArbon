@@ -1,38 +1,25 @@
-\section{Datenbank / back end / cronjobs}
-In diesem Kapitel wird aufgezeigt welche Änderungen an der Datenbank vorgenommen werden und wo diese überall zum Einsatz kommen. Zudem wird aufgezeigt, wie diese zusätzlichen Anwendungen entwickelt wurden. Vor der Umstrukturierung der Datenbank waren die Tabellen unübersichtlich aufgebaut. Nach der Umstrukturierung soll die Datenbank primär für folgende Aufgaben ausgelegt sein:
-\begin{itemize*}
-\item API
-\item Dreitage Rückschau der verschiedenen Sensoren
-\item Historische Daten
-\end{itemize*}
-
-Die Aufgabe der Datenbank ist es, den Umgang mit den Daten einfacher zu gestalten. Sei es in Bezug auf die Aufbereitung der historischen Daten oder für den Aufbau der API, welche einfach erweiterbar sein soll.
-
-
+\section{Serverseitige Implementierung und Datenbank-Architektur}
+Die serverseitige Implementierung bildet die Schnittstelle zwischen dem Client das heisst dem Internet Browser und den Messdaten. Diese müssen von den Sensoren in regelmässigen Abständen abgerufen und in der Datenbank gespeichert werden. Da die Datenbank das Herzstück der Wetterstation darstellt muss sie auch entsprechend geschützt werden vor Datenverlust und oder -manipulation. Die einzelnen Komponenten sowie der Aufbau der Datenbank werden im Folgenden erläutert.
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenerfassung}
-% Ueberischt über alle Kanäle -> was wird wie erfasst
+Die einzelnen Daten werden unterschiedlich erfasst, wobei mit Ausnahme der Messwerten des Kombi-Wettertransmitters sämtliche Abfragen mittels Skripten durchgeführt werden. Ein Übersicht des Datenflusses ist in Abbildung\,\ref{img:datenerfassung} dargestellt. Im Folgenden werden die einzelnen Skripte erklärt.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/datenerfassung}}
 	\centering
-	\caption{Datenerfassung}
+	\caption{Schematische Übersicht der Datenerfassung}
 	\label{img:datenerfassung}
 \end{figure}
 
 
+\subsubsection{Erfassung der Messdaten des Kombi-Wettertransmitters}
+Die Daten des Kombi-Wettertransmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstelle abgerufen, aufbereitet und im Minutentakt in die Datenbank gespeichert. Kann ein Datenbankeintrag aus irgendwelchen Gründen nicht erstellt werden, wird dies, wie später im Kapitel\,\ref{kap:Funktionsüberwachung} beschrieben, gemeldet. Weiter erzeugt Weather Display mehrere Text Files, welche unter anderem für die Aussenanzeige (Laufschrift am Hafengebäude) benötigt werden. Die Aussenanzeige ist aber nicht Bestandteil dieser Arbeit.
 
-
-\subsubsection{Erfassung der Daten des Wetter-Transmitters}
-Die Daten des Wetter-Transmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstelle abgerufen sowie aufbereitet. Damit die Daten im Minutentakt in der Datenbank gespeichert werden. Für die Umgestaltung der Datenbank wurde auch die Konfiguration im WeatherDisplay angepasst. \Diskussionspunkt{Bild Weatherdisplay Konfiguration} In der Konfiguration können die Datenpunkte welche eingetragen werden sollen selektiert werden. \Diskussionspunkt{Weitere Konfigmöglichkeiten aufzeigen}
-
-Kann ein Datenbankeintrag nicht erstellt werden, weil es zu wenig Einträge hat oder aus anderen Gründen wird dies, wie später im Kapitel Funktionsüberwachung mit Mail-Service \ref{kap:Funktionsüberwachung}, beschrieben im Cronjob abgefangen.
-
-\subsubsection{Einlesen von Pegel- und Strahlungsmesswerten}
-Wassertemperatur, Strahlungssensor und Pegelsenoren sind alle an einem Web-IO angeschlossen, welche die analogen Werte per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannten Sensoren die gleiche, nur die URL unterscheidet sich je nach Sensor. Die Abfragen sind nach dem try... catch - Prinzip aufgebaut, sodass das Skript weiterläuft auch wenn vom Web-IO keine Antwort eintrifft.
+\subsubsection{Einlesen von Pegel-, Strahlungs, und Wassertemperaturmesswerten}
+Strahlungs- und Pegelsensor sind an einem Web-IO angeschlossen (siehe Datenblatt im Anhang\,\ref{Spec_webio}), welches die analogen Werte (in Milliampere) per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Die Temperatursensoren (PT100-Elemente) werden ähnlich erfasst mit dem Unterschied, dass nicht der Widerstandswert sondern direkt Grad Celsius geliefert wird. Als Schnittstelle wird an Stelle des Web-IO ein Web-Thermograph eingesetzt (siehe Datenblatt im Anhang\,\ref{Spec_webthermograph}).
 
 \begin{lstlisting}[label=lst:webIo,caption=Python-Script zur Web-Abfrage des Pegel-Messwerts, language=python, style=py]
 try:
@@ -45,18 +32,20 @@ try:
     requestMeasurement = buffer.getvalue()
 \end{lstlisting}
 
+\noindent
+Der URL-Request wird mittels cURL ausgeführt. Die Abfrage ist für alle genannten Sensoren die gleiche, mit Ausnahme der Portnummer, welche sich je nach Sensor unterscheidet. Die Abfragen sind nach dem try... catch - Prinzip aufgebaut, sodass das Skript weiterläuft auch wenn ein Web-Interface nicht antwortet.
+
+
 
 \subsubsection{Abgreifen der Sturmwarndaten} % screen scrapping
-Die Sturmwarndaten werden periodisch mittels Python-Skript ausgelesen. Als Web-Scrapper kommt die Python-Bibliothek \href{https://www.crummy.com/software/BeautifulSoup/}{\emph{BeautifulSoup}} zum Einsatz. Das Auslesen von Webseiten wird auch \emph{web scraping} genannt. Die Idee dahinter ist, die gewünschte Information auf Grund ihrer Element-Bezeichnung (\texttt{<td>}), ihres Attributs (\texttt{class="titelfett"}) oder Hierarchistufe (\texttt{tr:nth-of-type(4)}) eindeutig zu identifizieren. Um diese eindeutige Identifikation herauszufinden wurde das Google Chrome-Plugin \href{https://selectorgadget.com/}{\emph{SelectorGadget }} verwendet. Listing \ref{lst:kttgCrawler} zeigt die gesamte Abfrage. Darin ist das Problem dieser Methode gut erkennbar. Ändert die URL oder die Bezeichung bzw. Struktur der Seite, liefert das Skript nicht mehr die gewünschten Daten. Da das Web-Scrapping jedoch die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, muss dieses Risiko akezptiert werden.
+Die Sturmwarndaten werden periodisch mittels Python-Skript ausgelesen. Als Tool kommt die Python-Bibliothek \href{https://www.crummy.com/software/BeautifulSoup/}{\emph{BeautifulSoup}} zum Einsatz. Das Auslesen von Webseiten wird auch \emph{web scraping} genannt. Die Idee dahinter ist, die gewünschte Information auf Grund ihrer Element-Bezeichnung (z.B. \texttt{<td>}), ihres Attributs (z.B. \texttt{class="titelfett"}) oder Hierarchistufe (z.B. \texttt{tr:nth-of-type(4)}) eindeutig zu identifizieren. Um diese eindeutige Identifikation herauszufinden wurde das Google Chrome-Plugin \href{https://selectorgadget.com/}{\emph{SelectorGadget }} verwendet. Listing \ref{lst:kttgCrawler} zeigt die gesamte Abfrage. Darin ist auch das Problem dieser Methode gut erkennbar. Ändert die URL oder die Bezeichnung bzw. Struktur der Seite, liefert das Skript nicht mehr die gewünschten Daten. Da aber das Web-Scrapping die einzige kostenlose Möglichkeit darstellt um die Daten zu erhalten, muss dieses Risiko akzeptiert werden.
 
 
 \begin{lstlisting}[label=lst:kttgCrawler,caption=Web-Scrapper für die Sturmwarndaten, language=python, style=py]
 page = requests.get('http://www.kttg.ch/kapo/htm/stwarn.shtml')
 soup = BeautifulSoup(page.text, 'html.parser')
-
 # Einschaltzeit auslesen
 soup.select('table tr:nth-of-type(4) td'):
-
 # Status auslesen
 soup.select('.titelfett strong'):
 \end{lstlisting}
@@ -345,7 +334,7 @@ Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, w
 \subsubsection{Angriffssicherheit}
 Laut den OWASP\footnote{OWASP: Open Web Application Security Project} Top 10, einer Liste\footnote{ \url{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}}, welche die wichtigsten Sicherheitsrisiken von Web-Applikationen aufzeigt, ist SQL-injection seit Jahren auf Platz 1. SQL-Injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer Daten ausspähen oder verändern kann.
 
-Bei der Wetterstation Arbon, sind keine persönlichen oder sicherheitsrelevanten Daten in der Datenbank gespeichert. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, um einen Datenverlust beziehungsweise eine Datenmanipulation zu verhindern.
+Bei der Wetterstation Arbon sind keine persönlichen oder sicherheitsrelevanten Daten in der Datenbank gespeichert. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, um einen Datenverlust beziehungsweise eine Datenmanipulation zu verhindern.
 
 Die Zugriffe auf die Datenbank sind so gestaltet, dass nur serverseitig darauf zugegriffen wird. Die Darstellung der Anzeigen auf der Webseiten werden über die API erstellt. Die API wiederum ist so aufgebaut, dass ein PHP-Skript auf dem Server die Daten aus der Datenbank abgreift und sie richtig formatiert. Somit kann sichergegangen werden, dass keine SQL-Injection möglich ist. Wie im Kapitel Daten der neuen Wetterstation mit Tableau \ref{kap:Tableau} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet, dass für die historische Seite kein Datenbankzugriff notwendig ist. Lediglich bei der Warteschlang der Webcam und beim Benachrichtigungsservice werden Daten direkt in die Datenbank geschrieben beziehungsweise daraus gelesen. In diesem Fall werden die Eingaben maskiert wie in Listing\,\ref{lst:maskierung} dargestellt.
 

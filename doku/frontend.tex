@@ -40,11 +40,11 @@ Wie im Abschnitt \ref{subsec:googleAnalytics} aufgezeigt werden bereits heute 50
 	\label{img:scribbles}
 \end{figure}
 
-Beim Erstellen der ersten Designentwürfe, wie in Abbildung \ref{img:scribbles}, dargestellt, stellte sich schnell heraus, dass die einfachste Möglichkeit die Daten auf allen Bildschirmgrössen darzustellenzu können, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorradend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
+Beim Erstellen der ersten Designentwürfe, wie in Abbildung \ref{img:scribbles}, dargestellt, stellte sich schnell heraus, dass die einfachste Möglichkeit die Daten auf allen Bildschirmgrössen darstellen zu können, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorradend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
 
 
 \subsubsection{W3.css als Layout-Framework}
-Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen ein CSS-Framework zu benutzen. Dieses soll möglichst einfach und intuitiv zu bedienen sein, das Kachel-Design (auch Card-Design genannt) unterstützen, eine ausführliche Dokumentation aufweisen und eine geringe Dateigrösse haben. Wir haben drei verschieden CSS-Frameworks evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-framework} ersichtlich.
+Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen eine CSS-Bibliothek zu benutzen. Diese soll möglichst einfach und intuitiv zu bedienen sein, das Kachel-Design (auch Card-Design genannt) unterstützen, eine ausführliche Dokumentation aufweisen und eine geringe Dateigrösse haben. Wir haben drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-Bibliothek} ersichtlich.
 
 \begin{table}[htb!]
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -99,12 +99,12 @@ Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. F
 
 \hline
 \end{tabularx}
-\caption{Beurteilungsmatrix der evaluierten css-Frameworks}
-\label{table:css-framework} % label muss NACH caption stehen!!!!
+\caption{Beurteilungsmatrix der evaluierten css-Bibliotheken}
+\label{table:css-Bibliothek} % label muss NACH caption stehen!!!!
 \end{table}
 
 \noindent
-Als Sieger stellt sich das W3.css-Framework heraus, da es den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zumdem weist es eine hervorragende Dokumentation auf.
+Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zudem weist sie eine hervorragende Dokumentation auf.
 
 
 \subsubsection{Responsive Design}
@@ -148,9 +148,9 @@ Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) deren Verhalten bei den dr
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
-Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe eines Frameworks erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein die Werte zu aktualisieren.
+Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe einer Bibliothek erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein die Werte zu aktualisieren.
 
-Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Ein sehr einfaches JavaScript-Framework ist \textit{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine JavaScript-Datei konfigurieren, die Grafiken selbst sind im svg-Format und somit von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}}—JavaScript Bibliothek.
+Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Eine sehr einfache JavaScript-Bibliothek ist \textit{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine JavaScript-Datei konfigurieren, sind im vektorbasierten svg-Format und somit von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}}—JavaScript Bibliothek.
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/gauges}}
@@ -159,7 +159,8 @@ Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individu
 	\label{img:gauges}
 \end{figure}
 
-Raphaël ist eine kleine JavaScript-Bibliothek, die Ihnen die Arbeit mit Vektorgrafiken im Web erleichtern soll. Wenn Sie z.B. Ihr eigenes Diagramm oder Bildausschnitt erstellen und das Widget drehen möchten, können Sie dies einfach und bequem mit dieser Bibliothek erreichen. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, das Sie erstellen, auch ein DOM-Objekt ist, so dass Sie JavaScript-Ereignisbehandler anhängen oder später ändern können. Raphaëls Ziel ist es, einen Adapter zur Verfügung zu stellen, der das Zeichnen von Vektorgrafiken browserübergreifend und einfach macht.
+
+% sRaphaël ist eine kleine JavaScript-Bibliothek, die die Arbeit mit Vektorgrafiken im Web erleichtern soll. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, auch ein DOM-Objekt ist, so dass ein JavaScript-Ereignisbehandler anhängen oder später ändern können.
 
 
 \begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
@@ -173,20 +174,20 @@ var temperature_gauge = new JustGage({
 });
 \end{lstlisting}
 
-Um die Grafik anzuzeigen muss nur ein DIV mit der selben ID auf der Webseite erstellt werden wie in Listing \ref{lst:gaugeHTML} dargestellt.
+Um die Grafik anzuzeigen muss nur ein \emph{div} mit der selben \emph{id} auf der Webseite erstellt werden wie in Listing \ref{lst:gaugeHTML} dargestellt.
 
+\vspace{3mm}
 \begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
 <!-- Lufttemperatur -->
-<div class="w3-cell w3-col l2 m3 s6">
-  <div class="w3-card">
-    <div class="w3-container">
-      <p>Temperatur</p>
-    </div>
+<div class="l2 m3 s6">
+    <div><p>Temperatur</p></div>
     <div id="temperature_gauge" class="gauge"></div>
-  </div>
 </div>
 \end{lstlisting}
+\vspace{3mm}
 
+
+\noindent
 Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons. Es wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, die kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \textit{Weahter Icons}\footnote{\url{http://erikflowers.github.io/weather-icons/}} von Erik Flowers.
 
 
@@ -216,8 +217,8 @@ Die Wetterverlaufsdarstellung soll einen Überblick über die Wettertendenz der 
 
 
 
-\subsubsection{Auswahl des JS-Frameworks}
-Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden js-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei js-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE js-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, was wir explizit nicht möchten.
+\subsubsection{Auswahl der Javascript-Bibliothek}
+Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei Javascript-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE Javascript-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, was explizit nicht gewünscht ist.
 
 \begin{table}[htb!]
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -266,12 +267,14 @@ Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zu
 
 \hline
 \end{tabularx}
-\caption{Beurteilungsmatrix der evaluierten js-Frameworks}
+\caption{Beurteilungsmatrix der evaluierten Javascript-Bibliotheken}
 \label{table:js-framework} % label muss NACH caption stehen!!!!
 \end{table}
 
 \noindent
 Chartist.js stellte den besten Kompromiss zwischen Funktionsumfang, Einfachheit und Dokumentation dar. Insbesondere die Dateigrösse war ausschlaggebend, da die Webseite, wie in Abschnitt \ref{subsec:googleAnalytics} erklärt, primär von mobilen Nutzer genutz wird.
+
+Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wurd bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder eher tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möchglichst die gesamte Höhe des Diagramms genutzer werden soll. Es wird daher eine automaitsche Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfach Javascript-File wie in Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
 
 % Code-Beispiel
 \begin{lstlisting}[label=lst:charts,caption=Konfiguration der Verlaufsdiagramme, language=HTML5, style=htmlcssjs]
@@ -296,13 +299,13 @@ new Chartist.Bar('#rain-chart', Rain, options);
 \ \\
 
 
-Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wurd bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder eher tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möchglichst die gesamte Höhe des Diagramms genutzer werden soll. Es wird daher eine automaitsche Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfach JS-File wie in Listing Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
+
 
 
 \subsubsection{Anzeige der Windrichtung}
-Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet wie in Abbildung \ref{img:windrichtung}, links dargestellt. Es konnt jedoch kein Framework gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung \ref{img:windrichtung}, rechts dargestellt verwendet.
+Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet wie in Abbildung \ref{img:windrichtung}, links dargestellt. Es konnte jedoch keine Bibliothek gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung \ref{img:windrichtung}, rechts dargestellt verwendet. Auf eine Eigenentwicklung wurde bewusst verzichtet um die Webseite möglichst benutzerfreundlich und wartungsarm zu belassen.
 
-\begin{figure}[h!]
+\begin{figure}[htbp!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/windrichtung}}
 	\caption{Windrichtungsanzeige soll und ist}
@@ -312,13 +315,14 @@ Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial da sie von 0 bis 36
 \subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
 Insbesondere bei Seglern sind Windprognosenseiten sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist nicht erkennbar wie gut dir Prognose war. Geanu dies ist aber eine spannende Frage weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden daher mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
 
-\begin{itemize}
-\item Openweathermap
-\item Windfinder
-\end{itemize}
+\begin{itemize*}
+\item \href{https://openweathermap.org/city/2661731}{Openweathermap}
+\item \href{https://www.windfinder.com/forecast/arbon}{Windfinder}
+\end{itemize*}
 
 \noindent
-Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verfügung stellt. Windfinder ist unter den Seglern das beliebteste Tool. Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen die Vorhersagedaten abgegriffen und gespeichert werden. Für den Prognoseanbieter haben wir uns für Openweathermap und windfinder entschieden. OWM bietet eine kostenlose Web-API. Windfinder ist eines der beliebtesten Seglertools, bietet aber keine API sondern lediglich ein Widget für den gewünschten Standort an. Dies Daten müssen somit aus dem Windfinder-Widget, siehe Abbildung \ref{img:windfinder}, mittels Crawler extrahiert werden, analog Listing \ref{lst:kttgCrawler}.
+Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verfügung stellt. Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API sondern lediglich ein Widget für den gewünschten Standort an. Dies Daten müssen somit aus dem Windfinder-Widget, siehe Abbildung \ref{img:windfinder}, mittels Crawler extrahiert werden, analog Listing \ref{lst:kttgCrawler}. Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen die Vorhersagedaten abgegriffen und gespeichert werden.
+
 
 \begin{figure}[h!]
 	\centering
@@ -327,7 +331,7 @@ Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose API zur Verf�
 	\label{img:windfinder}
 \end{figure}
 
-Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap absolut unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten auch wenn die Wetterstation 15 Knoten messte. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weitervervolgt.
+Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten auch wenn die Wetterstation 15 Knoten mass. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weiterverfolgt.
 
 
 
@@ -360,8 +364,7 @@ Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufko
 
 \subsubsection{Eingeschränkte Bezugsquellen}
 % Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht ebenfalls nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen. Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
-\Diskussionspunkt{Verweis auf E-Mail im Anhang}\\
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen (siehe Mail im Anhang\,\ref{anhang:email}) . Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -389,7 +392,7 @@ Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen b
 \end{quote}
 
 \noindent
- Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, haben wir uns entschlossen nur die offiziellen Daten anzuzeigen und nicht anderweitige Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer MeteoSchweiz-App\footnote{ \url{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+ Die Sturmwarnung auf dem Bodensee gesetzlche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer  \href{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}{MeteoSchweiz-App} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
 
 
@@ -408,36 +411,25 @@ Es liegt nahe auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen b
 %% Unterkapitel
 %% ############################################################################
 \subsection{Darstellung der historischen Daten}
-Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahren, welche ebenfalls auf der Webseite verfügbar sein soll. Es gibt drei drei Grundlagen für die historischen Daten:
+Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Die Darstellung der historischen Daten soll möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahre, welche ebenfalls auf der Webseite verfügbar sein sollen. Es gibt somit drei Grundlagen für die historischen Daten:
 
-\begin{itemize}
-\item Historische Daten der neuen Wetterstation
-\item Historische Daten der alten Wetterstation
-\item Excel mit Pegeldaten von 1953 bis 2005
-\end{itemize}
+\begin{itemize*}
+\item Historische Daten der neuen Wetterstation (2015 bis heute)
+\item Historische Daten der alten Wetterstation (2005 bis 2012)
+\item Exceltabelle mit historischen Pegeldaten (1953 bis 2005 )
+\end{itemize*}
 
+\noindent
 Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
 
 
-\subsubsection{Daten der neuen Wetterstation mit Tableau}\label{kap:Tableau}
-Die historische Daten sollen möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Die historischen Daten liegen als Stundenwerte in der Datebank vor.
+\subsubsection{Historische Daten der neuen Wetterstation}
+\label{kap:Tableau}
+Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Daten-Visualisierungsprogramm, welches es ermöglicht auf einfache Weise Diagramme zu erstellen, welche interaktiv vom Benutzer filterbar sind. Der Benutzer kann zum Beispiel den Betrachtungszeitraum selbst wählen, worauf sich die Grafiken automatisch der Auswahl anpassen. Tableau Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
 
-
-Tableau Public \footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Visualisierungsprogramm, das die Möglichkeit bietet direkt auf die Datenbank zuzugreifen. Die Visualisierungen sind einfach zu erstellen und interaktiv vom Benutzer filterbar.
-Tableu Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da wir die Visualisierungen sowieso veröffentlichen. Um Visualisierungen veröffentlichen zu können ist ein Account nötig. Die Visualisierung kann anschliessend in die eigene Webseite eingebettet werden.
-
-Für die Auswertung haben wir uns auf die Lufttemperatur, die Windrichtung und -geschwindigkeit sowie den Regen konzentriert.
-Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messdaten hinzukommen. Tableau bietet auch die Möglichkeit Darstellungen für verschiedene Display-Grössen anzulegen. Da der Benutzer selbst keine Eingaben machen kann, sondern nur Filter setzen, ist die Gefahr von SQL-Injektion nicht vorhanden.
-
-
-Das Dashboard ist interaktiv d.h. der Benutzer kann den Betrachtungszeitraum selbst wählen. Die Grafiken passen sich automatisch der Auswahl an.
-Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informaitonen angezeigt.
-
-
-Hostpoint
-Datenbankbenutzer -> IP eingeben (IP-Tool: http://ip.hostpoint.ch)
-Anmeldedaten für tableau
+% Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informationen angezeigt.
+% Für die Auswertung haben wir uns auf die Lufttemperatur, Sonnenstrahlung, Windrichtung und -geschwindigkeit sowie den Regen und Sonnenscheindauer konzentriert.
 
 
 \begin{figure}[h!]
@@ -450,49 +442,45 @@ Anmeldedaten für tableau
 
 %Nachteil 2: Nicht responsive -> Workaround nötig
 \noindent
-Neben den vielen Vorteilen, hat Tableau Pubilc auf ein paar Nachteile. Das Dashbaord kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurd so gelöst, dass zwei verschiedene Dashboard (siehe Abbildung \ref{img:tableau}) erstellt werden. Eines für die Anzeige auf einem grossen Dispaly und eines für die Anzeige auf Mobiltelefonen. Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
+Neben den vielen Vorteilen, hat Tableau Public auch ein paar Nachteile. Das Dashbaord kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden. Eines für die Anzeige auf einem grossen Bildschirmen und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
 
-\begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anahnd der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]
+\vspace{3mm}
+\begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anhand der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]
 (function () {
 	var viewportWidth = $(window).width();
 	if (viewportWidth > 767) {
-		$('#area_3').load('application/php/tableauDesktop.php');
-	}
+		$('#area_3').load('application/php/tableauDesktop.php');}
 	else {
-		$('#area_3').load('application/php/tableauMobile.php');
-	}
+		$('#area_3').load('application/php/tableauMobile.php');}
 }());
 \end{lstlisting}
-
+\vspace{3mm}
 
 % Nachteil 1: Keine direkte Verbindung zur Datenbank
 \noindent
-Ein weiteren Nachteil von Tableau Public, welches kostenlos ist gegenüber Tableau, welches kostenpflicht ist, ist dass Tableau Public keinen Live-Zugriff auf die Datenbank ermöglicht. Die Daten müssen somit manuell periodisch auf den Tableau Public Server kopiert werden, damit sie im Dashboard verfügbar sind.
+Ein weiterer Nachteil der Public-Version von Tableau ist, dass sie keinen Live-Zugriff auf die Datenbank ermöglicht. Die Daten müssen somit manuell periodisch auf den Tableau Public Server kopiert werden, damit sie im Dashboard verfügbar sind.
 
 
-
-\subsubsection{Daten der alten Wetterstation}
-Abbildung \ref{img:histAlt} zeigt eine Zusammenfassung der von der alten Wetterstation vorhandenen Daten. Es gibt diverse Messlücken wie z.B. das komplette Jahr 2010 und 2012. Weiter sind z.T. unplausible Grössenordnungen vorhanden wie z.B. die Windgeschwindigkeit von 500, wo nicht klar ist, zu welcher Einheit dieser Angabe gehört. Die Wellenhöhe sieht mehr nach Signalrauschen aus, als nach plausiblem Messwert. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation anzuzeigen. Die Pegeldaten werden in die Grafik, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben integriert.
+\subsubsection{Historische Daten der alten Wetterstation}
+Um einen Überblick über die vorhanden Messdaten der alten Wetterstation zu erhalten wurden die Daten grafisch aufbereitet wie in Abbildung\,\ref{img:histAlt} dargestellt. Darin lassen sich diverse Messlücken erkennen wie zum Beispiel das komplette Jahr 2010 und 2012. Weiter sind zum Teil unplausible Grössenordnungen vorhanden wie zum Beispiel bei der Windgeschwindigkeit, wo die Werte im Bereich von 0 bis 1000 liegen und nicht klar ist, in welcher Einheit diese Daten vorliegen. Die Angabe der Wellenhöhe sind in einem sehr kleinen Bereich, sodass davon auszugehen ist, dass es sich um das Signalrauschen handelt und nicht um die effektiven Wellenhöhe. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation d.h. ab 2015 anzuzeigen. Alleine die Pegeldaten werden verwendet und die historische Pegeldatenbank integriert, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/histAlt}}
-	%\includegraphics[width=1\linewidth]{img/sturm}
 	\caption{Übersicht über die gespeicherten Daten der alten Wetterstation}
 	\label{img:histAlt}
 \end{figure}
 
 
 
-\subsubsection{Pegeldaten 1953 bis 2005}
+\subsubsection{Historische Pegeldaten}
 \label{subsec:pegelhistory}
-Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente u.a. ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung erfolgt analog Abbildung \ref{img:histPegel}. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht.
+Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente unter anderem ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung ist in Abbildung \ref{img:histPegel} ersichtlich. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht. Das Dashboard ist unter dem Link \url{https://dev.wetter-arbon.ch/pegelstand} erreichbar.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/histPegel}}
-	%\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Darstellung der historischen Pegelmesswerte}
+	\caption{Darstellung der historischen Pegelmesswerte (gefiltert)}
 	\label{img:histPegel}
 \end{figure}
 
@@ -502,83 +490,92 @@ Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. A
 %% Unterkapitel
 %% ############################################################################
 \subsection{Automatische Aktualisierung der Anzeigeelemente}
-\Diskussionspunkt{Initial Values beschreiben}\newline
-Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 61 Sekunden von der API die aktuellen Werte abfragt wie in \ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Texfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
+Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 60 Sekunden von der API die aktuellen Werte abfragt wie in Listing\,\ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Textfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
+
 
 \begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
 (function poll() {
         $.get('https://api.wetter-arbon.ch/v1/')
           .done(function(response) {updateData(response);})
-          .always(function() {setTimeout(poll, 61000); });
+          .always(function() {setTimeout(poll, 60000); });
 })();
-
 function updateData(res){
         pressure_gauge.refresh(res.v1.data.pressure.value);
-        $("#cwassertemp1m") = res.v1.data.watertemperature1m.value;
-        ...
+        $("#wassertemp1m") = res.v1.data.watertemperature1m.value;
+        // usw.
 }
 \end{lstlisting}
 
+\noindent
+Damit die aktuellen Messwerte beim Aufbau der Seite zur Verfügung stehen, werden sie bereits beim Rendern der php-Seite von der API abgerufen und als JSON in der Variable \emph{initialValues} gespeichert (siehe Listing\,\ref{lst:initialValues}).
+
+\begin{lstlisting}[label=lst:initialValues,caption=Übergabe der Initialisierungswerte durch php, language=JavaScript, style=htmlcssjs]
+<script>
+  var initialValues = JSON.parse('<?echo file_get_contents("https://api.wetter-arbon.ch/v1/");?>');
+  document.getElementById("pegel").innerHTML = initialValues.v1.data.waterlevel.value;
+  // usw.
+</script>
+
+\end{lstlisting}
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Barrierefreier Zugang}
-Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \flqq Web Content Accessibility Guidelines\frqq\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \flqq  Barrierefreie-Informationstechnik-Verordnung\frqq\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \flqq Forrester Research Inc.\frqq schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss \flqq Interface Design\frqq ~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
+Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb für möglichst alle zugänglich sein. Sowohl die \emph{Web Content Accessibility Guidelines}\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \emph{Barrierefreie-Informationstechnik-Verordnung}\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \emph{Forrester Research Inc.} schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss Einschätzung des Verfassers des Buchs \emph{Interface Design}~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
 \noindent
-Die aktuellen Web Content Accessibility Guidelines\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
+Die aktuellen \emph{Web Content Accessibility Guidelines}\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
 
-\begin{itemize}
+\begin{itemize*}
 \item Designprinzip 1: wahrnehmbar
 \item Designprinzip 2: bedienbar
 \item Designprinzip 3: verständlich
 \item Designprinzip 4: robust
-\end{itemize}
+\end{itemize*}
 
 \noindent
-Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
+Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Webseite der Wetterstation zutreffen und die im Rahmen des CMS\footnote{CMS: Content Management System} umsetzbar sind. Alle relevanten Anforderungen und deren Umsetzung werden im Folgenden beschrieben.
 
 \subsubsection{Wahrnehmbarkeit}
 % Richtlinie 1.1
-\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.1} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.1}} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige Javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
 
 \begin{lstlisting}[label=lst:altImg,caption=Alternativtext für Icons, language=HTML5, style=htmlcssjs]
 <img src="img/wi-humidity.svg" alt="Icon eines Barometers">
 \end{lstlisting}
 
+\noindent
 Wie die verwendeten javascript-Bibliotheken, bietet auch Tableau, mit welchem die interaktive Darstellung der historischen Daten erfolgt, keine Möglichkeit die Visualisierung als Text darzustellen. \newline
 
 % Richtlinie 1.3
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{Richtlinie 1.3} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \textit{semantischem} Web.
-
-Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseite durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \textit{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\textit{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\textit{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.3}} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \textit{semantischem} Web. Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseits durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \textit{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\textit{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\textit{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/semWeb}}
 	%\includegraphics[width=1\linewidth]{img/sturm}
-	\caption{Umsetzung der semantisches Web-Anforderung}
+	\caption{Umsetzung der Anforderung bezüglich Semantischem Web}
 	\label{img:semWeb}
 \end{figure}
 
 % Richtlinie 1.4
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#visual-audio-contrast}{Richtlinie 1.4} fordert, dass die visuelle Darstellung von Text ein Kontrastverhältnis von mindestens 4,5:1 hat. Zudem muss es möglich sein die Textgrösse um bis zu 200 Prozent zu erhöhen, ohne dass dabei Inhalt oder Funktionalität verloren geht. Um diese Anforderung zu Überprüfen wurde das Firefox-Plugin \textit{tota11y}\footnote{\url{http://khan.github.io/tota11y/}} verwendet. Das Plugin ermöglicht es auf einfache Weise zu überprüfen ob die Webseite die Barrierefrei-Bediungungen erfüllt. Die Kontrastverhältnisse liegen gemäss diesem Tool zwischen 5.75 und 12.63 und sind somit in Ordnung. Da die gesamte Webseite responsive ist, stellt die Vergrösserung auf 200\% kein Problem dar.
+\href{https://www.w3.org/Translations/WCAG20-de/#visual-audio-contrast}{\textbf{Richtlinie 1.4}} fordert, dass die visuelle Darstellung von Text ein Kontrastverhältnis von mindestens 4,5:1 hat. Zudem muss es möglich sein die Textgrösse um bis zu 200 Prozent zu erhöhen, ohne dass dabei Inhalt oder Funktionalität verloren geht. Um diese Anforderung zu Überprüfen wurde das Firefox-Plugin \textit{tota11y}\footnote{\url{http://khan.github.io/tota11y/}} verwendet. Das Plugin ermöglicht es auf einfache Weise zu überprüfen ob die Webseite die Barrierefrei-Bediungungen erfüllt. Die Kontrastverhältnisse liegen gemäss diesem Tool zwischen 5.75 und 12.63 und erfüllen somit die Anforderung. Da die gesamte Webseite responsive ist, stellt die Vergrösserung auf 200\% kein Problem dar.
 
 
 \subsubsection{Bedienbarkeit}
-\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{Richtlinie 2.1} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und das die Tastaturfokusanzeige sichtbar ist.
-Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice, siehe Kapitel \ref{notifications}, relevant. Dieses ist problemlos mittels Tastatur bedienbar. \newline
+\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{\textbf{Richtlinie 2.1}} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und dasa die Tastaturfokusanzeige sichtbar ist.
+Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice (siehe Kapitel\,\ref{notifications}) relevant. Das Eingabeformular ist problemlos mittels Tastatur bedienbar.\newline
 
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{Richtlinie 2.4} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} wurde besitzt die Webseite sowhol einen Seitentitel, als auch Zwischentitel.
+\href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{\textbf{Richtlinie 2.4}} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} dargestellt, besitzt die Webseite sowohl einen Seitentitel, als auch Zwischentitel.
 
 
 \subsubsection{Verständlichkeit}
-\href{https://www.w3.org/Translations/WCAG20-de/#minimize-error}{Richtlinie 3.3} fordert, dass Eingabefehler automatisch erkannt und dem Benutzer angezeigt werden. Zudem sind Korrekturvorschläge anzuzeigen. Diese Anforderung betrifft insbesondere das Formular des Benachrichtigungsservices, welcher in Kapitel \ref{notifications} beschrieben wird. Diese Anforderung wird erfüllt, wie in Abbildung \ref{img:notificationFE} rechts, dargestellt.
+\href{https://www.w3.org/Translations/WCAG20-de/#minimize-error}{\textbf{Richtlinie 3.3}} fordert, dass Eingabefehler automatisch erkannt und dem Benutzer angezeigt werden. Zudem sind Korrekturvorschläge anzuzeigen. Diese Anforderung betrifft insbesondere das Formular des Benachrichtigungsservices, welches in Kapitel\,\ref{notifications} beschrieben wird. Diese Anforderung wird erfüllt, wie in Abbildung \ref{img:notificationFE} links auf Seite \pageref{img:notificationFE} dargestellt.
 
 
 \subsubsection{Robustheit}
-\href{https://www.w3.org/Translations/WCAG20-de/#ensure-compat}{Richtlinie 4.1} fordert, dass Inhalten, die mit Hilfe von Markup-Sprachen implementiert wurden,  vollständige Start- und End-Tags haben. Es sind keine doppelten Attribute vorhanden und alle IDs sind eindeutig. Diese Anforderung wurde ebenfalls vollständig umgesetzt. Beispielhaft ist dies in Listing \ref{lst:gaugeHTML} ersichtlich.
+\href{https://www.w3.org/Translations/WCAG20-de/#ensure-compat}{\textbf{Richtlinie 4.1}} fordert, dass Inhalte, die mit Hilfe von Markup-Sprachen implementiert wurden,  vollständige Start- und End-Tags haben. Es sind keine doppelten Attribute vorhanden und alle IDs sind eindeutig. Diese Anforderung wurde ebenfalls vollständig umgesetzt. Beispielhaft ist dies in Listing \ref{lst:gaugeHTML} auf Seite \pageref{lst:gaugeHTML} ersichtlich.
