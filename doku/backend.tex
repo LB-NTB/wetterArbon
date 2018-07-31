@@ -399,12 +399,12 @@ In der Datenarchivierung werden die historischen Daten aufbereitet und komprimie
 
 \begin{itemize*}
 \item \textbf{Variante 1}\\
-Die Daten aus den beiden Minutentabellen werden gelöscht, stehen somit nicht zu weiteren Zwecken zur Verfügung.
+Die Daten aus den beiden Minutentabellen werden gelöscht, stehen somit nicht für weitere Zwecken zur Verfügung.
 \item \textbf{Variante 2}\\
 Die Daten aus den beiden Minutentabellen werden nicht gelöscht und können für spätere Anwendungen verwendet werden.
 \end{itemize*}
 
-Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde für die zweite Variante entschieden.
+Da beim Server der Speicherplatz kein ausschlaggebender Punkt ist, wurde die zweite Variante gewählt.
 
 
 
@@ -438,7 +438,7 @@ Für das Einlesen der externen Sensordaten sieht der Mailservice folgendermassen
 Es ist ein Problem mit (der Temperatur, dem Pegel, dem Strahlungssensor) aufgetreten. Exception: ...\\
 \end{quote}
 
-Je nach Sensor wird dieser genannt und das Problem welches aufgetreten ist. Beim Auslesen des Wettertransmitters ist diese Möglichkeit nicht direkt anwendbar. Hier wird beim erstellen der historischen Daten kontrolliert ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, würde es bedeuten, dass das WeatherDisplay abgestürzt ist und neu gestartet werden muss. Die Meldung sieht folgendermassen aus:\\
+Je nach Sensor wird dieser genannt und das Problem welches aufgetreten ist. Beim Auslesen des Wettertransmitters ist diese Möglichkeit nicht direkt anwendbar. Hier wird beim erstellen der historischen Daten kontrolliert, ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, würde es bedeuten, dass das WeatherDisplay abgestürzt ist und neu gestartet werden muss. Die Meldung sieht folgendermassen aus:\\
 
 \begin{quote}
 Bitte starte das WeatherDisplay neu, es wurden nur (Anzahl Datensätze) Daten geschrieben.
