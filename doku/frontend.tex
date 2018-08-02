@@ -291,62 +291,159 @@ Die Wetterverlaufsdarstellung soll einen Überblick über die Wettertendenz der 
 
 
 \subsubsection{Auswahl der Javascript-Bibliothek}
+% Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
+% KO-Kriterium: kostenlos
 Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei Javascript-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE Javascript-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, gegen ihren Einsatz spricht.
 
-\begin{table}[htb!]
-\setlength\extrarowheight{3pt} % for a more "open" look
-\begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3.5cm}||X|X|X|}
 
-\hline
-& \bfseries\large \href{https://gionkunz.github.io/chartist-js/index.html}{chartist.js}
-& \bfseries\large \href{https://www.fusioncharts.com}{Fusion Charts}
-& \bfseries\large \href{https://developers.google.com/chart/}{Google Charts}\\
 
-\hline
-\textbf{Footprint}
-& 10 kB
-& >1000 kB
-& 110 kB \\
+\paragraph*{Kriterien für die Auswahl}
+Folgende Kriterien für die Auswahl der Javascript-Bibliothek wurden berücksichtigt:
 
-\hline
-\textbf{Barrierefrei}
-& +
-& 0
-& + \\
+\begin{itemize*}
+\item Footprint: Dateigrösse der Bibliothek
+\item Barrierefrei: Unterstützung für barrierefreien Zugang
+\item Anpassbarkeit: Können die Diagramm auf einfache Weise parametriert werden
+\item Dokumentation: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
+\item Kosten: Ist die Bibliothek kostenlos bzw. in einem vertretbaren Rahmen?
+\item Funktionsumfang: Werden sämtliche benötigten Diagrammarten zur Verfügung gestellt?
+\end{itemize*}
 
-\hline
-\textbf{Anpassbarkeit}
-& ++
-& +++
-& ++ \\
 
-\hline
-\textbf{Dokumentation}
-& +++
-& +++
-& ++ \\
 
-\hline
-\textbf{Kostenlos}
-& +
-& --
-& + \\
+\paragraph*{Gewichtung der Kriterien}
+% Gewichtung wird vor der Durchführung des eigentlichen Vergleichs festgelegt
+% Gewichtung der Kriterien muss in der Projektdokumentation begründet werden
+Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der Javascript-Bibliothek wurde folgende Gewichtung vorgenommen:
 
-\hline
-\textbf{Funktionsumfang}
-& ++
-& +++
-& + \\
+\begin{itemize*}
+\item 1 Footprint: Heutzutage ist die Dateigrösse nicht mehr so entscheidend
+\item 2 Barrierefrei:
+\item 4 Anpassbarkeit: Gewährlseitet, dass die Daten wie gewüscht angezeigt werden können
+\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
+\item 4 Kosten: muss erschwinglich sein
+\item 4 Funktionsumfang: Möglichst alle Diagrammtypen sollen verfügbar sein
+\end{itemize*}
 
-\hline
-\end{tabularx}
-\caption{Beurteilungsmatrix der evaluierten Javascript-Bibliotheken}
-\label{table:js-framework} % label muss NACH caption stehen!!!!
+
+\paragraph*{Bewertungsskala für die Kriterien}
+% Skala mit erlaubten Punktwerten und exakte Begründung für die vergebene Punktzahl
+% kleine Skala verwenden z.B. 1 bis 3, und definiert exakt, wann welcher Wert vergeben wird.
+% unbedingt angegeben, welche Werte gut und welche schlecht sind
+Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
+
+\begin{itemize*}
+\item Footprint
+  \begin{enumerate*}
+  \item Grösser als 500kB
+  \item Zwischen 100kB...500kB
+  \item Kleiner als 100kB
+  \end{enumerate*}
+\item Barrierefrei
+  \begin{enumerate*}
+  \item keine Unterstützung
+  \item teilweise Unterstützung
+  \item volle Unterstützung
+  \end{enumerate*}
+\item Anpassbarkeit
+  \begin{enumerate*}
+  \item Diagramme sind nur beschränkt anpassbar
+  \item Die meisten Parameter sind anpassbar
+  \item Alle Parameter sind anpassbar
+  \end{enumerate*}
+\item Dokumentation
+  \begin{enumerate*}
+  \item Keine zentrale Dokumentation vorhanden
+  \item Zentrale Dokumentation vorhanden, unübersichtlich, keine Suchfunktion
+  \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
+  \end{enumerate*}
+\item Kosten
+  \begin{enumerate*}
+  \item Mehr als 10CHF/Monat
+  \item Maximal 10CHF/Monat
+  \item Kostenlos
+  \end{enumerate*}
+\item Funktionsumfang
+  \begin{enumerate*}
+  \item Säulen- und Balkendiagramme vorhanden
+  \item Interpolation von fehlenden Werten möglich
+  \item Pfeildiagramm für Windrichtungsanzeige vorhanden
+  \end{enumerate*}
+\end{itemize*}
+
+
+% Nutzwertanalyse
+\begin{table}[htbp!]
+  \setlength\extrarowheight{3pt} % for a more "open" look
+  \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3.5cm}|p{2.5cm}||X|X|X|X|}
+
+  \hline
+  & \bfseries Gewichtung
+  & \bfseries \href{https://gionkunz.github.io/chartist-js/index.html}{chartist.js}
+  & \bfseries \href{https://www.fusioncharts.com}{Fusion Charts}
+  & \bfseries \href{https://developers.google.com/chart/}{Google Charts}\\
+
+  \hline
+  \textbf{Footprint}
+  & 1
+  & 3
+  & 1
+  & 2 \\
+
+  \hline
+  \textbf{Barrierefrei}
+  & 2
+  & 2
+  & 2
+  & 1 \\
+  \hline
+  \textbf{Anpassbarkeit}
+  & 4
+  & 2
+  & 3
+  & 2 \\
+
+  \hline
+  \textbf{Dokumentation}
+  & 3
+  & 3
+  & 3
+  & 3 \\
+
+  \hline
+  \textbf{Funktionsumfang}
+  & 4
+  & 2
+  & 2
+  & 2 \\
+
+  \hline
+  \hline
+  \textbf{Total}
+  & -
+  & 15
+  & 12
+  & 13 \\
+
+  \hline
+  \textbf{gewichtet}
+  & -
+  & 44
+  & 38
+  & 41 \\
+
+  \hline
+  \end{tabularx}
+  \caption{Nutzwertanalyse der evaluierten Javascript-Bibliotheken}
+  \label{table:js-framework} % label muss NACH caption stehen!!!!
 \end{table}
 
-\noindent
+
+\paragraph*{Entscheidung}
 Chartist.js stellte den besten Kompromiss zwischen Funktionsumfang, Einfachheit und Dokumentation dar. Insbesondere die Dateigrösse war ausschlaggebend, da die Webseite, wie in Abschnitt \ref{subsec:googleAnalytics} erklärt, primär von mobilen Nutzer genutz wird.
 
+
+\subsubsection{Skalierung der y-Achse}
 Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden, ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wird bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möglichst die gesamte Höhe des Diagramms genutzt werden soll. Es wird daher eine automatische Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfachen Javascript-File, wie in Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
 
 % Code-Beispiel
@@ -369,9 +466,6 @@ high: 30,
 };
 new Chartist.Bar('#rain-chart', Rain, options);
 \end{lstlisting}
-\ \\
-
-
 
 
 
@@ -451,10 +545,10 @@ Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, a
 % Problem 2: Öffnungszeiten -> keine Warnung in der Nacht
 Der Sturmwarndienst, wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
 
-\begin{itemize}
-\item 1. April - 31. Oktober: 06:00 - 22:00 Uhr
-\item 1. November - 31. März: 07:00 - 20:00 Uhr
-\end{itemize}
+\begin{description*}
+  \item[Sommer:] 1. April - 31. Oktober: 06:00 - 22:00 Uhr
+  \item[Winter: ] 1. November - 31. März: 07:00 - 20:00 Uhr
+\end{description*}
 
 \noindent
 % Problem 3: rechtliche Verbindlichkeit der Sturmwarnung -> Zuverlässigkeit der anzeigen
