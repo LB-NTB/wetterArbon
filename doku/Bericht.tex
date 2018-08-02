@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt, BCOR5mm, DIV11]{scrartcl}
+\documentclass[a4paper, 11pt, BCOR5mm, liststotoc, bibtotoc, DIV11]{scrartcl}
 
 %% Päambel
 \usepackage[T1]{fontenc}
@@ -260,7 +260,8 @@
 \newcommand{\auftragnehmer}{Interstaatliche Hochschule für Technik NTB}
 
 \titlehead{Studienrichtung: Informations- und Kommunikaitonssysteme}
-\title{Multiplattform-fähiges und barrierefreies User Interface und Datenmanagement für die Wetterstation Arbon}
+%\title{Multiplattform-fähiges und barrierefreies User Interface und Datenmanagement für die Wetterstation Arbon}
+\title{Erweiterung und Modernisierung der Webpräsenz der Wetterstation Arbon}
 \author{Ladina Bilgery \and Thomas Wieling}
 \subject{Bachelorarbeit}
 \publishers{Interstaatliche Hochschule für Technik NTB}
@@ -277,22 +278,23 @@
 \titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{0.5em}
 
-% für Titelblatt
-%\newcommand{\mydocumenttype}{Project thesis report}
+%%%% === Verzeichnisse (TOC, LOF, LOT, BIB) ===
+   %liststotoc,      % Tabellen & Abbildungsverzeichnis ins TOC
+   %idxtotoc,        % Index ins TOC
+   % bibtotoc,         % Bibliographie ins TOC
+   %bibtotocnumbered, % Bibliographie im TOC nummeriert
+   %liststotocnumbered, % Alle Verzeichnisse im TOC nummeriert
+
+
 %  Beginn Dokument
 \begin{document}
 \pagenumbering{roman}
-\input{Deckblatt}
-%\input{title}
+\input{title}
 \input{eid}
-\setcounter{page}{2}
+\setcounter{page}{3}
 \tableofcontents
 \clearpage
-\listoffigures
-\clearpage
 \pagenumbering{arabic}
-
-
 
 
 \input{einleitung}
@@ -310,6 +312,8 @@
 \newpage
 \pagestyle{plain}
 \input{schluss}
+\newpage
+\listoffigures
 \newpage
 \bibliography{literatur}{}
 \bibliographystyle{plain}

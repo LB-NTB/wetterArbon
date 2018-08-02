@@ -43,8 +43,190 @@ Wie im Abschnitt \ref{subsec:googleAnalytics} aufgezeigt werden bereits heute 50
 Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
 
 
-\subsubsection{W3.css als Layout-Framework}
-Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen eine CSS-Bibliothek zu benutzen. Folgende Anforderungskriterien wurden dabei ins Zentrum gestellt: Einfache und intuitive Bedienung, Unterstützung des Kachel-Designs (auch Card-Design genannt), Vorliegen einer ausführlichen Dokumentation und möglichst geringe Dateigrösse. Wir haben drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-Bibliothek} ersichtlich.
+\subsubsection{Auswahl der CSS-Bibliothek}
+% Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
+% KO-Kriterium: ???
+Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen eine CSS-Bibliothek zu benutzen.
+
+Folgende Anforderungskriterien wurden dabei ins Zentrum gestellt:
+Einfache und intuitive Bedienung,
+Unterstützung des Kachel-Designs (auch Card-Design genannt),
+Vorliegen einer ausführlichen Dokumentation und möglichst
+geringe Dateigrösse.
+s
+Wir haben drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-Bibliothek} ersichtlich.
+
+
+% Nutzwertanalyse
+\begin{table}[htbp!]
+  \setlength\extrarowheight{3pt} % for a more "open" look
+  \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3cm}|p{2.3cm}||p{2.2cm}|X|X|X|}
+
+  \hline
+  & \bfseries Gewichtung
+  & \bfseries \href{https://www.w3schools.com/w3css/default.asp}{W3.css}
+  & \bfseries \href{https://purecss.io/start/}{Pure.css}
+  & \bfseries \href{http://getbootstrap.com/docs/4.1/getting-started/introduction/}{Bootstrap} \\
+
+
+  \hline
+  \textbf{Grid Design}
+  & x
+  & x
+  & x
+  & x \\
+
+  \hline
+  \textbf{Card-Design}
+  & x
+  & x
+  & x
+  & x \\
+
+  \hline
+  \textbf{Dokumentation}
+  & x
+  & x
+  & x
+  & x \\
+
+  \hline
+  \textbf{Footprint}
+  & x
+  & x
+  & x
+  & x \\
+
+  \hline
+  \textbf{Cross-Browser}
+  & x
+  & x
+  & x
+  & x \\
+
+  \hline
+  \textbf{Funktionsumfang}
+  & x
+  & x
+  & x
+  & x \\
+
+  \hline
+  \hline
+  \textbf{Total}
+  & -
+  & x
+  & x
+  & x \\
+
+  \hline
+  \textbf{gewichtet}
+  & -
+  & x
+  & x
+  & x \\
+
+  \hline
+  \end{tabularx}
+  \caption{Nutzwertanalyse der evaluierten css-Bibliotheken}
+  \label{table:css-bibliothek} % label muss NACH caption stehen!!!!
+\end{table}
+
+
+\paragraph*{Kriterien für die Auswahl}
+Folgende Kriterien für die Auswahl des php-Frameworks wurden berücksichtigt:
+\begin{itemize*}
+\item Dokumentation und Einarbeitungszeit: Sind die Funktionen zentral und verständlich dokumentiert?
+\item Langlebigkeit: Läuft das Framework auch unter neuen PHP-Versionen?
+\item Funktionsumfang: Bietet das Framework Features, die ein produktives Entwickeln ermöglichen (Routing, Header, Response-Formatierung)?
+\item Stabilität und Sicherheit: Werden regelmässig Updates zur Verfügung gestellt?
+\item Footprint: Ist die Dateigrösse in einem verhältnismässigen Rahmen?
+\end{itemize*}
+
+
+
+
+\paragraph*{Gewichtung der Kriterien}
+% Gewichtung wird vor der Durchführung des eigentlichen Vergleichs festgelegt
+% Gewichtung der Kriterien muss in der Projektdokumentation begründet werden
+Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der CSS-Bibliothek wurde folgende Gewichtung vorgenommen:
+
+\begin{itemize*}
+\item 4 Grid Design: Um eine responsive Webseite zu erstellen ist das Grid Design state of the art
+\item 3 Card-Design: Unterstützt das Grid Design und erhöht die Wahrnehmung der Zusammengehörigkeit
+\item 3 Dokumentation und Usabilty: Dritte können einfach Anpassungen vornehmen
+\item 2 Footprint: Da die CSS-Bibliothek auf Mobilgeräte heruntergeladen wird
+\item 4 Cross-Browser: Da die Webseite auf möglichst allen Endgeräten darstellbar sein soll
+\item 3 Funktionsumfang: Um möglichst viel Ausbauspielraum zulassen für zukünftige Funktionen
+\end{itemize*}
+
+  % \textbf{Grid Design}
+  % \textbf{Card-Design}
+  % \textbf{Dokumentation und Usabilty}
+  % \textbf{Footprint}
+  % \textbf{Cross-Browser}
+  % \textbf{Funktionsumfang}
+
+
+
+
+% \item 4 Dokumentation: Da es sich um das Abschlussprojekt des Autors mit fester Zeitvorgabe handelt, ist besonders wichtig, dass die Sprache ihm bereits bekannt ist. Des Weiteren muss auch die Interessensgemeinschaft die API in einem vernüftigem Zeitrahmen Unterhalten können.
+%
+% \item 1 Langlebigkeit: Da es sich um eine Webanwendung handelt, die wahrscheinlich häufig an neue Möglichkeiten angepasst werden muss, ist die Langlebigkeit von geringerer Wichtigkeit.
+%
+% \item 2 Funktionsumfang: Gerade im Webumfeld setzt das Unternehmen auf neue Technologien und möchte neue Entwicklungen zeitnah einsetzen.
+%
+% \item 4 Stabilität und Sicherheit: Da die Arbeit anschliessend öffentlich ist und gewährleistet werden muss, dass die Webseite funktionsfähig ist.
+%
+% \item 1 Footprint: Da für die Webseite genügend Speicherplatz vorhanden ist. Ist der Footprint nich sehr wichtig.
+
+
+
+
+\paragraph*{Bewertungsskala für die Kriterien}
+% Skala mit erlaubten Punktwerten und exakte Begründung für die vergebene Punktzahl
+% kleine Skala verwenden z.B. 1 bis 3, und definiert exakt, wann welcher Wert vergeben wird.
+% unbedingt angegeben, welche Werte gut und welche schlecht sind
+
+Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
+
+\begin{itemize*}
+\item Dokumentation und Einarbeitungszeit
+  \begin{enumerate*}
+  \item Keine zentrale Dokumentation vorhanden
+  \item Zentrale Dokumentation vorhanden, wenig ausführlich
+  \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
+  \end{enumerate*}
+\item Langlebigkeit
+  \begin{enumerate*}
+  \item Keine Angabe, ob die neue PHP-Version (7.2) unterstützt wird
+  \item Neue PHP-Version (7.2) wird unterstützt
+  \item Neue PHP-Version werden durch regelmässige Updates unterstützt
+  \end{enumerate*}
+\item Funktionsumfang
+  \begin{enumerate*}
+  \item Keine zusätzlichen Funktionen verfügbar
+  \item Routineaufgaben sind als Funktionen verfügbar
+  \item Routineaufgaben sind als Funktionen verfügbar
+  \end{enumerate*}
+\item Stabilität und Sicherheit
+  \begin{enumerate*}
+  \item Wenig verwendet bzw. getestet
+  \item Vielverwendet, selten Updates
+  \item Vielverwendet mit regelmässigen Updates
+  \end{enumerate*}
+\item Footprint
+  \begin{enumerate*}
+  \item Grösser als 5MB
+  \item Zwischen 1...5MB
+  \item Kleiner als 1MB
+  \end{enumerate*}
+\end{itemize*}
+
+
+\paragraph*{Entscheidung um kein Framework zu nehmen}
+
+
 
 \begin{table}[htb!]
 \setlength\extrarowheight{3pt} % for a more "open" look
@@ -133,14 +315,9 @@ Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) jeweils ein bestimmtes Ver
 \vspace{3mm}
 \begin{lstlisting}[label=lst:kacheln,caption=Konfiguration der Anzahl Kacheln abhähngig von der Bildschirmgrösse, language=HTML5, style=htmlcssjs]
 <!-- Aktuelle Daten -->
-<div class="l2 m3 s6">
-	...
-</div>
-
+<div class="l2 m3 s6">...</div>
 <!-- Datenverlauf -->
-<div class="l6 m6 s12">
-  ...
-</div>
+<div class="l6 m6 s12">...</div>
 \end{lstlisting}
 \vspace{3mm}
 
@@ -163,14 +340,14 @@ Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individu
 % sRaphaël ist eine kleine JavaScript-Bibliothek, die die Arbeit mit Vektorgrafiken im Web erleichtern soll. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, auch ein DOM-Objekt ist, so dass ein JavaScript-Ereignisbehandler anhängen oder später ändern können.
 
 
-\begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript,mathescape, style=htmlcssjs]
+\begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript, mathescape, style=htmlcssjs]
 var temperature_gauge = new JustGage({
-  id:     temperature_gauge,
+  id:     'temperature_gauge',
   value:  initialValues.v1.data.temperature.value,
   min:    -10,
-  max:    40,
-  symbol: C,
-  title:  Luft
+  max:     40,
+  symbol: ${^\circ}$C,
+  title:  'Luft'
 });
 \end{lstlisting}
 
