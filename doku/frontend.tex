@@ -46,104 +46,18 @@ Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) z
 \subsubsection{Auswahl der CSS-Bibliothek}
 % Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
 % KO-Kriterium: ???
-Sämtliche Artefakte unserer Arbeit sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche haben wir uns deshalb entschlossen eine CSS-Bibliothek zu benutzen.
-
-Folgende Anforderungskriterien wurden dabei ins Zentrum gestellt:
-Einfache und intuitive Bedienung,
-Unterstützung des Kachel-Designs (auch Card-Design genannt),
-Vorliegen einer ausführlichen Dokumentation und möglichst
-geringe Dateigrösse.
-s
-Wir haben drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-Bibliothek} ersichtlich.
-
-
-% Nutzwertanalyse
-\begin{table}[htbp!]
-  \setlength\extrarowheight{3pt} % for a more "open" look
-  \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3cm}|p{2.3cm}||p{2.2cm}|X|X|X|}
-
-  \hline
-  & \bfseries Gewichtung
-  & \bfseries \href{https://www.w3schools.com/w3css/default.asp}{W3.css}
-  & \bfseries \href{https://purecss.io/start/}{Pure.css}
-  & \bfseries \href{http://getbootstrap.com/docs/4.1/getting-started/introduction/}{Bootstrap} \\
-
-
-  \hline
-  \textbf{Grid Design}
-  & x
-  & x
-  & x
-  & x \\
-
-  \hline
-  \textbf{Card-Design}
-  & x
-  & x
-  & x
-  & x \\
-
-  \hline
-  \textbf{Dokumentation}
-  & x
-  & x
-  & x
-  & x \\
-
-  \hline
-  \textbf{Footprint}
-  & x
-  & x
-  & x
-  & x \\
-
-  \hline
-  \textbf{Cross-Browser}
-  & x
-  & x
-  & x
-  & x \\
-
-  \hline
-  \textbf{Funktionsumfang}
-  & x
-  & x
-  & x
-  & x \\
-
-  \hline
-  \hline
-  \textbf{Total}
-  & -
-  & x
-  & x
-  & x \\
-
-  \hline
-  \textbf{gewichtet}
-  & -
-  & x
-  & x
-  & x \\
-
-  \hline
-  \end{tabularx}
-  \caption{Nutzwertanalyse der evaluierten css-Bibliotheken}
-  \label{table:css-bibliothek} % label muss NACH caption stehen!!!!
-\end{table}
-
+Sämtliche Artefakte sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche wurde deshalb beschlossen eine CSS-Bibliothek zu verwenden. Folgende Anforderungskriterien wurden dabei ins Zentrum gestellt: Einfache und intuitive Bedienung, Unterstützung des Kachel-Designs (auch Card-Design genannt), Vorliegen einer ausführlichen Dokumentation und möglichst geringe Dateigrösse. Es wurden drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-bibliothek} ersichtlich.
 
 \paragraph*{Kriterien für die Auswahl}
-Folgende Kriterien für die Auswahl des php-Frameworks wurden berücksichtigt:
+Folgende Kriterien für die Auswahl der CSS-Bibliothek wurden berücksichtigt:
+
 \begin{itemize*}
-\item Dokumentation und Einarbeitungszeit: Sind die Funktionen zentral und verständlich dokumentiert?
-\item Langlebigkeit: Läuft das Framework auch unter neuen PHP-Versionen?
-\item Funktionsumfang: Bietet das Framework Features, die ein produktives Entwickeln ermöglichen (Routing, Header, Response-Formatierung)?
-\item Stabilität und Sicherheit: Werden regelmässig Updates zur Verfügung gestellt?
-\item Footprint: Ist die Dateigrösse in einem verhältnismässigen Rahmen?
+\item Grid Design: Unterstützt die Bibliothek das Grid Design und mehrere Displaygrössen um responsive Webseiten zu gestalten?
+\item Card Design: Unterstützt die Bibliothek das Card Design?
+\item Dokumentation und Usabilty: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
+\item Footprint: CSS-Bibliothek wird auf Mobilgeräte heruntergeladen und sollte deshalb nicht allzu gross sein
+\item Funktionsumfang: Sind sämtliche benötigten Funktionen vorhanden oder müssen Zusatzbibliotheken eingebunden werden?
 \end{itemize*}
-
-
 
 
 \paragraph*{Gewichtung der Kriterien}
@@ -152,140 +66,122 @@ Folgende Kriterien für die Auswahl des php-Frameworks wurden berücksichtigt:
 Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der CSS-Bibliothek wurde folgende Gewichtung vorgenommen:
 
 \begin{itemize*}
-\item 4 Grid Design: Um eine responsive Webseite zu erstellen ist das Grid Design state of the art
-\item 3 Card-Design: Unterstützt das Grid Design und erhöht die Wahrnehmung der Zusammengehörigkeit
-\item 3 Dokumentation und Usabilty: Dritte können einfach Anpassungen vornehmen
-\item 2 Footprint: Da die CSS-Bibliothek auf Mobilgeräte heruntergeladen wird
-\item 4 Cross-Browser: Da die Webseite auf möglichst allen Endgeräten darstellbar sein soll
-\item 3 Funktionsumfang: Um möglichst viel Ausbauspielraum zulassen für zukünftige Funktionen
+\item 4 Grid Design: nötig zum Erstellen von modernen responsive Webseiten
+\item 3 Card-Design: erhöht die Wahrnehmung der Zusammengehörigkeit
+\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
+\item 2 Footprint: Bandbreite ist nicht so kritisch
+\item 1 Funktionsumfang: es werden keine Spezialfunktionen benötigt
 \end{itemize*}
-
-  % \textbf{Grid Design}
-  % \textbf{Card-Design}
-  % \textbf{Dokumentation und Usabilty}
-  % \textbf{Footprint}
-  % \textbf{Cross-Browser}
-  % \textbf{Funktionsumfang}
-
-
-
-
-% \item 4 Dokumentation: Da es sich um das Abschlussprojekt des Autors mit fester Zeitvorgabe handelt, ist besonders wichtig, dass die Sprache ihm bereits bekannt ist. Des Weiteren muss auch die Interessensgemeinschaft die API in einem vernüftigem Zeitrahmen Unterhalten können.
-%
-% \item 1 Langlebigkeit: Da es sich um eine Webanwendung handelt, die wahrscheinlich häufig an neue Möglichkeiten angepasst werden muss, ist die Langlebigkeit von geringerer Wichtigkeit.
-%
-% \item 2 Funktionsumfang: Gerade im Webumfeld setzt das Unternehmen auf neue Technologien und möchte neue Entwicklungen zeitnah einsetzen.
-%
-% \item 4 Stabilität und Sicherheit: Da die Arbeit anschliessend öffentlich ist und gewährleistet werden muss, dass die Webseite funktionsfähig ist.
-%
-% \item 1 Footprint: Da für die Webseite genügend Speicherplatz vorhanden ist. Ist der Footprint nich sehr wichtig.
-
-
 
 
 \paragraph*{Bewertungsskala für die Kriterien}
 % Skala mit erlaubten Punktwerten und exakte Begründung für die vergebene Punktzahl
 % kleine Skala verwenden z.B. 1 bis 3, und definiert exakt, wann welcher Wert vergeben wird.
 % unbedingt angegeben, welche Werte gut und welche schlecht sind
-
 Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
 
 \begin{itemize*}
-\item Dokumentation und Einarbeitungszeit
+\item Grid Design
+  \begin{enumerate*}
+  \item keine Unterstützung bzw. weniger als 3 Displaygrössen
+  \item volle Unterstützung, min. 3 Displaygrössen
+  \item volle Unterstützung, min. 4 Displaygrössen
+  \end{enumerate*}
+\item Card Design
+  \begin{enumerate*}
+  \item keine Unterstützung
+  \item keine Card Design, aber ähnliches Prinzip
+  \item volle Unterstützung
+  \end{enumerate*}
+\item Dokumentation und Usabilty
   \begin{enumerate*}
   \item Keine zentrale Dokumentation vorhanden
-  \item Zentrale Dokumentation vorhanden, wenig ausführlich
+  \item Zentrale Dokumentation vorhanden, unübersichtlich, keine Suchfunktion
   \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
-  \end{enumerate*}
-\item Langlebigkeit
-  \begin{enumerate*}
-  \item Keine Angabe, ob die neue PHP-Version (7.2) unterstützt wird
-  \item Neue PHP-Version (7.2) wird unterstützt
-  \item Neue PHP-Version werden durch regelmässige Updates unterstützt
-  \end{enumerate*}
-\item Funktionsumfang
-  \begin{enumerate*}
-  \item Keine zusätzlichen Funktionen verfügbar
-  \item Routineaufgaben sind als Funktionen verfügbar
-  \item Routineaufgaben sind als Funktionen verfügbar
-  \end{enumerate*}
-\item Stabilität und Sicherheit
-  \begin{enumerate*}
-  \item Wenig verwendet bzw. getestet
-  \item Vielverwendet, selten Updates
-  \item Vielverwendet mit regelmässigen Updates
   \end{enumerate*}
 \item Footprint
   \begin{enumerate*}
-  \item Grösser als 5MB
-  \item Zwischen 1...5MB
-  \item Kleiner als 1MB
+  \item Grösser als 100kB
+  \item Zwischen 50...100kB
+  \item Kleiner als 50kB
+  \end{enumerate*}
+\item Funktionsumfang
+  \begin{enumerate*}
+  \item nicht alle nötigen Funktionen vorhanden
+  \item Sämtliche nötigen Funktionen vorhanden, mehrere Dateien
+  \item Sämtliche nötigen Funktionen vorhanden, eine Datei
   \end{enumerate*}
 \end{itemize*}
 
+% Nutzwertanalyse
+\begin{table}[htbp!]
+  \setlength\extrarowheight{3pt} % for a more "open" look
+  \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3.5cm}|p{2.5cm}||X|X|X|X|}
 
-\paragraph*{Entscheidung um kein Framework zu nehmen}
+  \hline
+  & \bfseries Gewichtung
+  & \bfseries \href{https://www.w3schools.com/w3css/default.asp}{W3.css}
+  & \bfseries \href{https://purecss.io/start/}{Pure.css}
+  & \bfseries \href{http://getbootstrap.com/docs/4.1/getting-started/introduction/}{Bootstrap} \\
 
+  \hline
+  \textbf{Grid Design}
+  & 4
+  & 2
+  & 3
+  & 3 \\
 
+  \hline
+  \textbf{Card-Design}
+  & 3
+  & 3
+  & 1
+  & 3 \\
 
-\begin{table}[htb!]
-\setlength\extrarowheight{3pt} % for a more "open" look
-\begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{4cm}||X|X|X|}
+  \hline
+  \textbf{Dokumentation}
+  & 3
+  & 3
+  & 2
+  & 2 \\
 
-\hline
-& \bfseries\large \href{https://www.w3schools.com/w3css/default.asp}{W3.css}
-& \bfseries\large \href{https://purecss.io/start/}{Pure.css}
-& \bfseries\large \href{http://getbootstrap.com/docs/4.1/getting-started/introduction/}{Bootstrap}\\
+  \hline
+  \textbf{Footprint}
+  & 2
+  & 3
+  & 3
+  & 1 \\
 
-\hline
-\textbf{Grid Design}
-& ++
-& ++
-& ++ \\
+  \hline
+  \textbf{Funktionsumfang}
+  & 1
+  & 3
+  & 2
+  & 2 \\
 
-\hline
-\textbf{Footprint}
-& 23 kB
-& 14 kB
-& 141 kB \\
+  \hline
+  \hline
+  \textbf{Total}
+  & -
+  & 14
+  & 11
+  & 11 \\
 
-\hline
-\textbf{Usability}
-& ++
-& +
-& + \\
+  \hline
+  \textbf{gewichtet}
+  & -
+  & 35
+  & 29
+  & 31 \\
 
-\hline
-\textbf{Card-Design}
-& +
-& -
-& ++ \\
-
-\hline
-\textbf{Dokumentation}
-& +++
-& 0
-& ++ \\
-
-\hline
-\textbf{Cross-Browser}
-& ++
-& ++
-& +++ \\
-
-\hline
-\textbf{Funktionsumfang}
-& +
-& 0
-& ++ \\
-
-\hline
-\end{tabularx}
-\caption{Beurteilungsmatrix der evaluierten css-Bibliotheken}
-\label{table:css-Bibliothek} % label muss NACH caption stehen!!!!
+  \hline
+  \end{tabularx}
+  \caption{Nutzwertanalyse der evaluierten CSS-Bibliotheken}
+  \label{table:css-bibliothek} % label muss NACH caption stehen!!!!
 \end{table}
 
-\noindent
+
+\paragraph*{Entscheidung}
 Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zudem weist sie eine hervorragende Dokumentation auf.
 
 
