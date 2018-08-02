@@ -11,6 +11,7 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Anteil der mobilen Zugriffe auf die Wetterwebseite}}{10}{figure.10}
 \contentsline {figure}{\numberline {11}{\ignorespaces Verwendete Browser und Beliebtheit der Seiten}}{11}{figure.11}
 \contentsline {figure}{\numberline {12}{\ignorespaces Erste Designentw\IeC {\"u}rfe nach dem Mobile First Prinzip}}{12}{figure.12}
+<<<<<<< HEAD
 \contentsline {figure}{\numberline {13}{\ignorespaces Anordnung der Kacheln auf grossen und kleinen Bildschirmen}}{13}{figure.13}
 \contentsline {figure}{\numberline {14}{\ignorespaces Anzeigelemente mit Justgage/Rapha\IeC {\"e}l}}{14}{figure.14}
 \contentsline {figure}{\numberline {15}{\ignorespaces Icons aus der Weather Icons Bibliothek}}{15}{figure.15}
@@ -41,3 +42,35 @@
 \contentsline {figure}{\numberline {40}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{50}{figure.40}
 \contentsline {figure}{\numberline {41}{\ignorespaces Kommunikation zwischen Browser und Server}}{50}{figure.41}
 \contentsline {figure}{\numberline {42}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{50}{figure.42}
+=======
+\contentsline {figure}{\numberline {13}{\ignorespaces Anordnung der Kacheln auf grossen und kleinen Bildschirmen}}{14}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Anzeigelemente mit Justgage/Rapha\IeC {\"e}l}}{16}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Icons aus der Weather Icons Bibliothek}}{16}{figure.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Verlaufsdiagramm mit chartist.js}}{17}{figure.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Windrichtungsanzeige soll und ist}}{19}{figure.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces Widget von Windfinder}}{19}{figure.18}
+\contentsline {figure}{\numberline {19}{\ignorespaces Warleuchten des Sturmwarndiensts auf dem Bodensee}}{20}{figure.19}
+\contentsline {figure}{\numberline {20}{\ignorespaces Zeitverzug zwischen Sturmwarnmeldung und Anzeige}}{21}{figure.20}
+\contentsline {figure}{\numberline {21}{\ignorespaces Darstellung der historschen Daten (Desktop und Mobile)}}{23}{figure.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber die gespeicherten Daten der alten Wetterstation}}{24}{figure.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces Darstellung der historischen Pegelmesswerte (gefiltert)}}{24}{figure.23}
+\contentsline {figure}{\numberline {24}{\ignorespaces Umsetzung der Anforderung bez\IeC {\"u}glich Semantischem Web}}{27}{figure.24}
+\contentsline {figure}{\numberline {25}{\ignorespaces Schematische \IeC {\"U}bersicht der Datenerfassung}}{29}{figure.25}
+\contentsline {figure}{\numberline {26}{\ignorespaces Struktur der Tabelle \emph {tblextsensors}}}{31}{figure.26}
+\contentsline {figure}{\numberline {27}{\ignorespaces Konzept der Datenaggregation}}{32}{figure.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Konezpt der Datenaggregation}}{32}{figure.28}
+\contentsline {figure}{\numberline {29}{\ignorespaces Formatierung des Datums in der Datenbank}}{33}{figure.29}
+\contentsline {figure}{\numberline {30}{\ignorespaces Zuweisung der Rechte f\IeC {\"u}r unterschiedliche Datenbankbenutzer}}{35}{figure.30}
+\contentsline {figure}{\numberline {31}{\ignorespaces Backup auf Knopfdruck von Hostpoint}}{36}{figure.31}
+\contentsline {figure}{\numberline {32}{\ignorespaces Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}}{38}{figure.32}
+\contentsline {figure}{\numberline {33}{\ignorespaces Die dreistufige Datenhierarchie der API}}{39}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Aufbau der API anhand eines Beispiels}}{40}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}}{44}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}}{45}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces API-Dokumentation in Postman}}{46}{figure.37}
+\contentsline {figure}{\numberline {38}{\ignorespaces Funktionsprinzip des Benachrichtigungsservices}}{47}{figure.38}
+\contentsline {figure}{\numberline {39}{\ignorespaces Eingabe\IeC {\"u}berpr\IeC {\"u}fung und E-Mail-Design des Benachrichtigungsservices}}{48}{figure.39}
+\contentsline {figure}{\numberline {40}{\ignorespaces Darstellung der Warteschlange auf der Webseite}}{51}{figure.40}
+\contentsline {figure}{\numberline {41}{\ignorespaces Kommunikation zwischen Browser und Server}}{51}{figure.41}
+\contentsline {figure}{\numberline {42}{\ignorespaces Datenbankeintrag, wenn mehrere Benutzer registriert sind}}{51}{figure.42}
+>>>>>>> 90f7859df59afc5189cea5e3fc01b17efad9cc24
