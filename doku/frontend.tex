@@ -1,5 +1,5 @@
 \section{Grafische Benutzeroberfläche (Website)}
-Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht\cite{BilWie2018MUIu}). Die neue (2014) HTML5-Spezifikation ermöglicht, dynamische Grafiken zu erzeugen, die nativ von allen Web-Browsern dargestellt werden können.
+Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht\cite{BilWie2018MUIu}). Die neue (2014) HTML5-Spezifikation ermöglicht, dynamische Grafiken zu erzeugen, die nativ, das heisst ohne Plugins und von allen Web-Browsern dargestellt werden können. In den folgenden Kapitel wird aufgezeigt, wie die neue Webseite konzipiert wurde und welche Software-Bibliotheken eingesetzt wurden.
 
 
 %% ############################################################################
@@ -7,18 +7,19 @@ Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von all
 %% ############################################################################
 \subsection{Nutzungsanalyse der Website mittels Google Analytics}
 \label{subsec:googleAnalytics}
-Zuerst wurden die Zugriffsdaten auf die bestehende Webseite mittels Google Analytics analysiert. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \textit{Wetter Tourismus} und \textit{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden, z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung \ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\% und 80\% beträgt. Dies spiegelt den Trend zum mobilen Internet und zeigt, wie wichtig die mobile Version einer Webseite ist. Aus diesem Grund wurde in diesem Projekt die mobile Seite als Ausgangspunkt für die Entwicklung der Homepage nach dem Designkonzept \textit{Mobile First} gesetzt.
+Zuerst wurden die Zugriffsdaten auf die bestehende Website mittels \emph{Google Analytics} ausgewertet. Als Zeitraum wurde das gesamte Jahr 2017 gewählt. Auf der bisherigen Webseite gab es zwei Unterseiten \emph{Wetter Tourismus} und \emph{Wetter Wassersport}, die sich aber nur gering voneinander unterscheiden, z.B. in der Wahl der Einheit der Windgeschwindigkeit (km/h vs. kn). Die Zugriffsdaten sind in Abbildung\,\ref{img:google_mobile} dargestellt. Darin lässt sich erkennen, dass der Anteil an mobilen Geräten zwischen 50\,\% und 80\,\% beträgt. Dies widerspiegelt den Trend zum mobilen Internet und zeigt, wie wichtig die mobile Version einer Webseite ist.
 
-\begin{figure}[h!]
+\begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_mobile}}
 	\centering
 	\caption{Anteil der mobilen Zugriffe auf die Wetterwebseite}
 	\label{img:google_mobile}
 \end{figure}
 
-Es lässt sich ebenfalls in Google Analytics erkennen, welche Browser am häufigsten verwendet werden und welches die beliebteste Seite der Website ist, wie in Abbildung \ref{img:google_browser} dargestellt.
+\noindent
+Die Auswertung von Google Analytics, wie in Abbildung\,\ref{img:google_browser} dargestellt, zeigt zudem, dass mehr als zwei Drittel der Zugriffe über den Safari- beziehungsweise Chrome-Browser erfolgen und dass die Webcam die mit Abstand beliebteste Funktion der Wetterstation ist.
 
-\begin{figure}[h!]
+\begin{figure}[htb!]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_browser}}
 	\caption{Verwendete Browser und Beliebtheit der Seiten}
@@ -31,87 +32,22 @@ Es lässt sich ebenfalls in Google Analytics erkennen, welche Browser am häufig
 %% Unterkapitel
 %% ############################################################################
 \subsection{Konzeption der crossplattformfähigen Benutzeroberfläche}
-Wie im Abschnitt \ref{subsec:googleAnalytics} aufgezeigt werden bereits heute 50\% bis 80\% der Aufrufe von mobilen Geräten ausgeführt, Tendenz steigend. Es ist deshalb naheliegend, das mobile Design als Ausgangspunkt zu verwenden. Diese Vorgehensweise nennt sich \textit{Mobile First}. Es ist ein Designkonzept, das von Luke Wroblewski 2009 das erste Mal vorgeschlagen wurde. Die optimale Darstellung einer Website auf mobilen Endgeräten hat dabei erste Priorität. Bei Mobile First beginnt der Designer mit dem Mobile-Design und arbeitet sich dann schrittweise zur grösseren Desktop-Version vor. Die \flqq Mobile Web Best Practices\frqq \footnote{ \url{https://www.w3.org/TR/mobile-bp}} des W3C empfiehlt zudem, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können. Dieser Grundsatz nennt sich \textit{One Web Design}.
+Wie im Abschnitt\,\ref{subsec:googleAnalytics} aufgezeigt, werden bereits heute 50\,\% bis 80\,\% der Website-Aufrufe von mobilen Geräten ausgeführt, Tendenz steigend. Es ist deshalb naheliegend, das mobile Design als Ausgangspunkt der Entwicklung zu verwenden. Diese Vorgehensweise nennt sich \emph{Mobile First}. Es ist ein Designkonzept, das von Luke Wroblewski 2009 das erste Mal vorgeschlagen wurde. Die \href{https://www.w3.org/TR/mobile-bp}{\emph{ Mobile Web Best Practices}} des \emph{W3C}\footnote{W3C: World Wide Web Consortium} empfiehlt zudem, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können. Dieser Grundsatz nennt sich \emph{One Web Design}.
 
-\begin{figure}[h!]
+\begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/scribbles}}
 	\centering
 	\caption{Erste Designentwürfe nach dem Mobile First Prinzip}
 	\label{img:scribbles}
 \end{figure}
 
-Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend im Zusammenhang mit dem Grid-Konezpt des responsive Designs, welches im Abschnitt \ref{subsec:responsiveFactors} erläutert wird.
+
+\noindent
+Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann je nach Bildschirmgrösse verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend für das responsive Grid-Design, welches im Abschnitt \ref{subsec:responsiveFactors} erklärt wird.
 
 
 \subsubsection{Auswahl der CSS-Bibliothek}
-% Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
-% KO-Kriterium: ???
-Sämtliche Artefakte sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche wurde deshalb beschlossen eine CSS-Bibliothek zu verwenden. Folgende Anforderungskriterien wurden dabei ins Zentrum gestellt: Einfache und intuitive Bedienung, Unterstützung des Kachel-Designs (auch Card-Design genannt), Vorliegen einer ausführlichen Dokumentation und möglichst geringe Dateigrösse. Es wurden drei verschieden CSS-Bibliotheken evaluiert und bewertet. Das Resultat ist in Tabelle  \ref{table:css-bibliothek} ersichtlich.
-
-\paragraph*{Kriterien für die Auswahl}
-Folgende Kriterien für die Auswahl der CSS-Bibliothek wurden berücksichtigt:
-
-\begin{itemize*}
-\item Grid Design: Unterstützt die Bibliothek das Grid Design und mehrere Displaygrössen um responsive Webseiten zu gestalten?
-\item Card Design: Unterstützt die Bibliothek das Card Design?
-\item Dokumentation und Usabilty: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
-\item Footprint: CSS-Bibliothek wird auf Mobilgeräte heruntergeladen und sollte deshalb nicht allzu gross sein
-\item Funktionsumfang: Sind sämtliche benötigten Funktionen vorhanden oder müssen Zusatzbibliotheken eingebunden werden?
-\end{itemize*}
-
-
-\paragraph*{Gewichtung der Kriterien}
-% Gewichtung wird vor der Durchführung des eigentlichen Vergleichs festgelegt
-% Gewichtung der Kriterien muss in der Projektdokumentation begründet werden
-Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der CSS-Bibliothek wurde folgende Gewichtung vorgenommen:
-
-\begin{itemize*}
-\item 4 Grid Design: nötig zum Erstellen von modernen responsive Webseiten
-\item 3 Card-Design: erhöht die Wahrnehmung der Zusammengehörigkeit
-\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
-\item 2 Footprint: Bandbreite ist nicht so kritisch
-\item 1 Funktionsumfang: es werden keine Spezialfunktionen benötigt
-\end{itemize*}
-
-
-\paragraph*{Bewertungsskala für die Kriterien}
-% Skala mit erlaubten Punktwerten und exakte Begründung für die vergebene Punktzahl
-% kleine Skala verwenden z.B. 1 bis 3, und definiert exakt, wann welcher Wert vergeben wird.
-% unbedingt angegeben, welche Werte gut und welche schlecht sind
-Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
-
-\begin{itemize*}
-\item Grid Design
-  \begin{enumerate*}
-  \item keine Unterstützung bzw. weniger als 3 Displaygrössen
-  \item volle Unterstützung, min. 3 Displaygrössen
-  \item volle Unterstützung, min. 4 Displaygrössen
-  \end{enumerate*}
-\item Card Design
-  \begin{enumerate*}
-  \item keine Unterstützung
-  \item keine Card Design, aber ähnliches Prinzip
-  \item volle Unterstützung
-  \end{enumerate*}
-\item Dokumentation und Usabilty
-  \begin{enumerate*}
-  \item Keine zentrale Dokumentation vorhanden
-  \item Zentrale Dokumentation vorhanden, unübersichtlich, keine Suchfunktion
-  \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
-  \end{enumerate*}
-\item Footprint
-  \begin{enumerate*}
-  \item Grösser als 100kB
-  \item Zwischen 50...100kB
-  \item Kleiner als 50kB
-  \end{enumerate*}
-\item Funktionsumfang
-  \begin{enumerate*}
-  \item nicht alle nötigen Funktionen vorhanden
-  \item Sämtliche nötigen Funktionen vorhanden, mehrere Dateien
-  \item Sämtliche nötigen Funktionen vorhanden, eine Datei
-  \end{enumerate*}
-\end{itemize*}
+Sämtliche Artefakte sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche wurde beschlossen eine CSS-Bibliothek zu verwenden. Es wurden drei verschieden CSS-Bibliotheken evaluiert und mittels Nutzwertanalyse bewertet. Das Resultat ist in Tabelle\,\ref{table:css-bibliothek} ersichtlich. Die Erklärungen dazu sind im Anschluss daran aufgelistet.
 
 % Nutzwertanalyse
 \begin{table}[htbp!]
@@ -181,8 +117,66 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 \end{table}
 
 
+\paragraph*{Kriterien für die Auswahl}
+Folgende Kriterien für die Auswahl der CSS-Bibliothek wurden berücksichtigt:
+\begin{itemize*}
+\item Grid Design: Unterstützt die Bibliothek das Grid Design und mehrere Displaygrössen um responsive Webseiten zu gestalten?
+\item Card Design: Unterstützt die Bibliothek das Card Design?
+\item Dokumentation und Usabilty: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
+\item Footprint: Die CSS-Bibliothek wird auf Mobilgeräte heruntergeladen und sollte deshalb nicht all zu gross sein
+\item Funktionsumfang: Sind sämtliche benötigten Funktionen vorhanden oder müssen Zusatzbibliotheken eingebunden werden?
+\end{itemize*}
+
+
+\paragraph*{Gewichtung der Kriterien}
+Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der CSS-Bibliothek wurde folgende Gewichtung vorgenommen:
+\begin{itemize*}
+\item 4 Grid Design: nötig zum Erstellen von modernen responsive Webseiten
+\item 3 Card Design: erhöht die Wahrnehmung der Zusammengehörigkeit
+\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
+\item 2 Footprint: Bandbreite ist heutzutage nicht mehr so kritisch
+\item 1 Funktionsumfang: es werden keine Spezialfunktionen benötigt
+\end{itemize*}
+
+
+\paragraph*{Bewertungsskala für die Kriterien}
+Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
+\begin{itemize*}
+\item Grid Design
+  \begin{enumerate*}
+  \item keine Unterstützung bzw. weniger als 3 Displaygrössen
+  \item volle Unterstützung, min. 3 Displaygrössen
+  \item volle Unterstützung, min. 4 Displaygrössen
+  \end{enumerate*}
+\item Card Design
+  \begin{enumerate*}
+  \item keine Unterstützung
+  \item keine Card Design, aber ähnliches Prinzip
+  \item volle Unterstützung
+  \end{enumerate*}
+\item Dokumentation und Usabilty
+  \begin{enumerate*}
+  \item Keine zentrale Dokumentation vorhanden
+  \item Zentrale Dokumentation vorhanden, unübersichtlich, keine Suchfunktion
+  \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
+  \end{enumerate*}
+\item Footprint
+  \begin{enumerate*}
+  \item Grösser als 100kB
+  \item Zwischen 50kB und 100kB
+  \item Kleiner als 50kB
+  \end{enumerate*}
+\item Funktionsumfang
+  \begin{enumerate*}
+  \item nicht alle nötigen Funktionen vorhanden
+  \item Sämtliche nötigen Funktionen vorhanden, mehrere Dateien
+  \item Sämtliche nötigen Funktionen vorhanden, eine Datei
+  \end{enumerate*}
+\end{itemize*}
+
+
 \paragraph*{Entscheidung}
-Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie den besten Kompromiss zwischen Dateigrösse und Funktionsumfang bietet. Zudem weist sie eine hervorragende Dokumentation auf.
+Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie mit Ausnahme der Beschränkung auf 3\,Displaygrössen alle Kriterien vollständig erfüllt.
 
 
 \subsubsection{Responsive Design}
@@ -199,11 +193,11 @@ Die Benutzeroberfläche muss Cross-Plattform-fähig sein, d.h. die Darstellung m
 \noindent
 Das Konzept des Grid-View teilt den Bildschirm bzw. den zur Verfügung stehnden Platz unabhängig von dessen Grösse in zwölf Spalten ein (siehe orange Markierung in Abbildung\,\ref{img:kacheln2}). Über eine media-Query fragt die Webseite die Grösse des Bildschirms in Pixel ab und bestimmt dann, wie viele Spalten breit ein Element sein soll (grüne Markierung in Abbildung\,\ref{img:kacheln2}). Die gleiche Kachel ist also auf einem grossen Bildschirm  \nicefrac{2}{12} breit und auf einem kleinen Bildschirm \nicefrac{6}{12}. Unter \emph{w3.css} sind drei Bildschirmgrössen vorgesehen (small, medium und large). Die Grenzen sind folgendermassen festgelegt:
 
-\begin{itemize}
+\begin{itemize*}
 \item Small: s $\leq$ 600px (z.B. iPhone Hochformat)
 \item Medium: 600px < m $\leq$ 992px (z.B. iPhone Querformat, iPad Hochformat)
 \item Large: 992px < l (z.B. Desktop)
-\end{itemize}
+\end{itemize*}
 
 \noindent
 Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) jeweils ein bestimmtes Verhalten bei den drei Bildschirmgrössen vorgeschrieben werden. Die Kacheln mit den aktuellen Wetterdaten sind zum Beispiel auf grossen (large) Bildschirmen \nicefrac{2}{12}, auf mittleren Bildschirmen \nicefrac{3}{12} und auf kleinen Bildschirmen \nicefrac{6}{12} breit. Bei der Darstellung der Wetterdatenverläufe werden bei mittleren und grossen Bildschirmen zwei nebeneinander dargestellt (\nicefrac{6}{12}) und bei kleinen Bildschirmen alle untereinander (\nicefrac{12}{12} ), wie in Listing\,\ref{lst:kacheln} ersichtlich.
