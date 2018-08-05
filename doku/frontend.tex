@@ -179,11 +179,11 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie mit Ausnahme der Beschränkung auf 3\,Displaygrössen alle Kriterien vollständig erfüllt.
 
 
-\subsubsection{Responsive Design}
+\subsubsection{Responsive Webesign}
 \label{subsec:responsiveFactors}
-Die Benutzeroberfläche muss Cross-Plattform-fähig sein, d.h. die Darstellung muss sich je nach Bildschirmgrösse automatisch anpassen. Man nennt dies \textit{Responsive Design}. Die Idee des Responsive Web Design wurde 2010 von Ethan Marcotte in einem Artikel\footnote{ \url{http://alistapart.com/article/responsive-web-design}} des Magazins \textit{A List Apart} veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen wollte. Marcotte schreibt von drei Faktoren, die ein responsive Design voraussetzt: \textit{Fluid grids}, \textit{flexible images} und \textit{media queries}. Fluid grids bedeutet, dass sich die Anordnung der Elemente dynamisch der Bildschirmgrösse anpasst. Flexible images (flexible Bilder) haben keine feste Grösse sondern, nutzen den ihnen zu Verfügung stehenden Platz optimal aus und die Media queries sind die technische Basis für die beiden oberen Anforderungen.
+Beim \emph{Responsive Webdesign} passt sich die Benutzeroberfläche automatisch der Bildschirmgrösse des Endgeräts an. Die Idee des Responsive Webdesigns wurde 2010 von Ethan Marcotte in einem Artikel des Magazins \emph{A List Apart}~\cite{EthMarRWD} veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen wollte. Marcotte schreibt von drei Faktoren, die ein responsive Webdesign voraussetzt: \emph{fluid grids}, \emph{flexible images} und \emph{media queries}. Fluid grids bedeutet, dass sich die Anordnung der Elemente dynamisch der Bildschirmgrösse anpasst. Flexible images haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus und die media queries sind die technische Basis. Im Folgenden wird das Konzept der fluid grids genauer erklärt.
 
-\begin{figure}[h!]
+\begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/kacheln2}}
 	\centering
 	\caption{Anordnung der Kacheln auf grossen und kleinen Bildschirmen}
@@ -191,13 +191,13 @@ Die Benutzeroberfläche muss Cross-Plattform-fähig sein, d.h. die Darstellung m
 \end{figure}
 
 \noindent
-Das Konzept des Grid-View teilt den Bildschirm bzw. den zur Verfügung stehnden Platz unabhängig von dessen Grösse in zwölf Spalten ein (siehe orange Markierung in Abbildung\,\ref{img:kacheln2}). Über eine media-Query fragt die Webseite die Grösse des Bildschirms in Pixel ab und bestimmt dann, wie viele Spalten breit ein Element sein soll (grüne Markierung in Abbildung\,\ref{img:kacheln2}). Die gleiche Kachel ist also auf einem grossen Bildschirm  \nicefrac{2}{12} breit und auf einem kleinen Bildschirm \nicefrac{6}{12}. Unter \emph{w3.css} sind drei Bildschirmgrössen vorgesehen (small, medium und large). Die Grenzen sind folgendermassen festgelegt:
+Das Grid-System vereinfacht das Erstellen von responsive Webseiten, indem es den Bildschirm beziehungsweise den zur Verfügung stehenden Platz unabhängig von dessen Grösse in mehrere gleich breite Spalten einteilt (siehe orange Markierung in Abbildung\,\ref{img:kacheln2}). Die Anzahl Spalten ist frei wählbar bzw. abhängig von der gewählten CSS-Bibliothek (bei w3.css sind es 12 Spalten). Über eine media query fragt die Webseite beziehungsweise der Browser die Grösse des Bildschirms in Pixel ab und bestimmt dann, wie viele Spalten breit ein Element sein soll (grüne Markierung in Abbildung\,\ref{img:kacheln2}). Die gleiche Kachel ist also auf einem grossen Bildschirm  \nicefrac{2}{12} breit und auf einem kleinen Bildschirm \nicefrac{6}{12}. Unter \emph{w3.css} sind drei Bildschirmgrössen vorgesehen (small, medium und large). Die Grenzen sind folgendermassen festgelegt:
 
-\begin{itemize*}
-\item Small: s $\leq$ 600px (z.B. iPhone Hochformat)
-\item Medium: 600px < m $\leq$ 992px (z.B. iPhone Querformat, iPad Hochformat)
-\item Large: 992px < l (z.B. Desktop)
-\end{itemize*}
+\begin{description*}
+  \item [Small:] s $\leq$ 600px (z.B. iPhone Hochformat)
+  \item [Medium:] 600px < m $\leq$ 992px (z.B. iPhone Querformat, iPad Hochformat)
+  \item [Large]: l > 992px (z.B. Desktop)
+\end{description*}
 
 \noindent
 Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) jeweils ein bestimmtes Verhalten bei den drei Bildschirmgrössen vorgeschrieben werden. Die Kacheln mit den aktuellen Wetterdaten sind zum Beispiel auf grossen (large) Bildschirmen \nicefrac{2}{12}, auf mittleren Bildschirmen \nicefrac{3}{12} und auf kleinen Bildschirmen \nicefrac{6}{12} breit. Bei der Darstellung der Wetterdatenverläufe werden bei mittleren und grossen Bildschirmen zwei nebeneinander dargestellt (\nicefrac{6}{12}) und bei kleinen Bildschirmen alle untereinander (\nicefrac{12}{12} ), wie in Listing\,\ref{lst:kacheln} ersichtlich.
@@ -215,22 +215,23 @@ Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) jeweils ein bestimmtes Ver
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
-Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe einer Bibliothek erstellt werden. Damit die Grafiken optimal mit dem responsive Layout zusammenspielen, müssen sie ein flexibles Layout aufweisen d.h. ihre Grösse dem vorhanden Platz anpassen. Am Besten nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein, die Werte zu aktualisieren.
-
-Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Eine sehr einfache JavaScript-Bibliothek ist \textit{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine JavaScript-Datei konfigurieren, sind im vektorbasierten svg-Format und somit von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}}—JavaScript Bibliothek.
+Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe einer Bibliothek erstellt werden. Damit die Grafiken optimal mit dem responsiven Webdesign zusammenspielen, müssen sie ein flexibles Layout aufweisen, das heisst ihre Grösse dem vorhanden Platz anpassen. Dies nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein, die Werte zu aktualisieren.
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/gauges}}
 	\centering
-	\caption{Anzeigelemente mit Justgage/Raphaël}
+	\caption{Anzeigelemente mit JustGage/Raphaël}
 	\label{img:gauges}
 \end{figure}
 
+\noindent
+Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Eine sehr einfache Javascript-Bibliothek, die diese Anforderungen erfüllt ist \emph{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine Javascript-Datei konfigurieren, sind im vektorbasierten svg-Format und dadurch von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}} Javascript-Bibliothek.
 
-% sRaphaël ist eine kleine JavaScript-Bibliothek, die die Arbeit mit Vektorgrafiken im Web erleichtern soll. Raphaël verwendet die SVG W3C Recommendation und VML als Grundlage für die Erstellung von Grafiken. Dies bedeutet, dass jedes grafische Objekt, auch ein DOM-Objekt ist, so dass ein JavaScript-Ereignisbehandler anhängen oder später ändern können.
+\noindent
+Die Konfiguration eines Anzeigelements (Gauge) ist in Listing\,\ref{lst:gaugeJS} beispielhaft dargestellt. Jedes Elemente besitzt eine \emph{id} und einen Wert (\emph{value}) sowie optionale Angaben wie Skalaanfgangs- und Endwerte und Beschriftungszusätze.
 
-
-\begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration der Gauge, language=JavaScript, mathescape, style=htmlcssjs]
+\vspace{3mm}
+\begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration einer Gauge in Javascript, language=JavaScript, mathescape, style=htmlcssjs]
 var temperature_gauge = new JustGage({
   id:     'temperature_gauge',
   value:  initialValues.v1.data.temperature.value,
@@ -240,11 +241,13 @@ var temperature_gauge = new JustGage({
   title:  'Luft'
 });
 \end{lstlisting}
+\vspace{3mm}
 
+\noindent
 Um die Grafik anzuzeigen muss nur ein \emph{div} mit derselben \emph{id} auf der Webseite erstellt werden, wie in Listing \ref{lst:gaugeHTML} dargestellt.
 
 \vspace{3mm}
-\begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die SVG-Grafik (Gauge), language=HTML5, style=htmlcssjs]
+\begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die Gauge auf der Webseite, language=HTML5, style=htmlcssjs]
 <!-- Lufttemperatur -->
 <div class="l2 m3 s6">
     <div><p>Temperatur</p></div>
@@ -255,17 +258,17 @@ Um die Grafik anzuzeigen muss nur ein \emph{div} mit derselben \emph{id} auf der
 
 
 \noindent
-Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons. Es wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, die kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \textit{Weather Icons}\footnote{\url{http://erikflowers.github.io/weather-icons/}} von Erik Flowers.
+Messwerte ohne Relation zu einem Maximalwert, sind nicht als Gauge, sondern als einfacher Text dargestellt (siehe Abbildung\,\ref{img:icons}). Die Messgrösse wird dabei einerseits im Titel der Kachel angegeben, und andererseits grafisch als Symbol neben dem Messwert. Dazu wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \emph{Weather Icons} von Erik Flowers\footnote{ \url{http://erikflowers.github.io/weather-icons/}} .
 
+% Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons.
 
-\begin{figure}[h!]
+\vspace{3mm}
+\begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/icons}}
 	\centering
-	\caption{Icons aus der Weather Icons Bibliothek}
+	\caption{Ausgewählte Icons aus der Weather Icons Bibliothek}
 	\label{img:icons}
 \end{figure}
-
-
 
 
 
@@ -273,100 +276,24 @@ Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zu
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
-Die Wetterverlaufsdarstellung soll einen Überblick über die Wettertendenz der letzten beiden Tage liefern. Die Samplerate beträgt 1h, d.h. die Daten werden aus der Tabelle der historischen Werte abgerufen.
+Die Wetterverlaufsdarstellung liefert einen Überblick über die Wettertendenz der letzten beiden Tage, wie beispielhaft in Abbildung\,\ref{img:charts} dargestellt ist. Im Folgenden wird erläutert, welche Javascript-Bibliothek dafür ausgewählt wurde und wie die unterschiedlichen Messverläufe dargestellt werden.
+
+% Die Samplerate beträgt 1h, d.h. die Daten werden aus der Tabelle der historischen Werte abgerufen.
+% in diesem Kapitel: Auswahl JS-Bibliothek, y-Achse, Windrichtung, Windvergleich
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/charts}}
 	\centering
-	\caption{Verlaufsdiagramm mit chartist.js}
+	\caption{Darstellung der Messverläufe mittels Linien- und Balkendiagrammen}
 	\label{img:charts}
 \end{figure}
 
 
-
 \subsubsection{Auswahl der Javascript-Bibliothek}
-% Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
-% KO-Kriterium: kostenlos
-Für die Darstellung der Messwertverläufe soll ebenfalls auf eine Bibliothek zurückgegriffen werden. Als erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die in Tabelle \ref{table:js-framework} aufgeführten drei Javascript-Bibliotheken. Diese wurden auf ihre Eignung geprüft. Zwingend mussten die Grafiken im SVG-Dateiformat vorliegen, sodass die Cross-Browser-Kompatiblität und das responsive Verhalten sichergestellt ist. Die Daten sollten zudem als JSON übergeben werden können. D3 ist zwar DIE Javascript-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, gegen ihren Einsatz spricht.
-
-
-
-\paragraph*{Kriterien für die Auswahl}
-Folgende Kriterien für die Auswahl der Javascript-Bibliothek wurden berücksichtigt:
-
-\begin{itemize*}
-\item Footprint: Dateigrösse der Bibliothek
-\item Barrierefrei: Unterstützung für barrierefreien Zugang
-\item Anpassbarkeit: Können die Diagramm auf einfache Weise parametriert werden
-\item Dokumentation: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
-\item Kosten: Ist die Bibliothek kostenlos bzw. in einem vertretbaren Rahmen?
-\item Funktionsumfang: Werden sämtliche benötigten Diagrammarten zur Verfügung gestellt?
-\end{itemize*}
-
-
-
-\paragraph*{Gewichtung der Kriterien}
-% Gewichtung wird vor der Durchführung des eigentlichen Vergleichs festgelegt
-% Gewichtung der Kriterien muss in der Projektdokumentation begründet werden
-Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der Javascript-Bibliothek wurde folgende Gewichtung vorgenommen:
-
-\begin{itemize*}
-\item 1 Footprint: Heutzutage ist die Dateigrösse nicht mehr so entscheidend
-\item 2 Barrierefrei:
-\item 4 Anpassbarkeit: Gewährlseitet, dass die Daten wie gewüscht angezeigt werden können
-\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
-\item 4 Kosten: muss erschwinglich sein
-\item 4 Funktionsumfang: Möglichst alle Diagrammtypen sollen verfügbar sein
-\end{itemize*}
-
-
-\paragraph*{Bewertungsskala für die Kriterien}
-% Skala mit erlaubten Punktwerten und exakte Begründung für die vergebene Punktzahl
-% kleine Skala verwenden z.B. 1 bis 3, und definiert exakt, wann welcher Wert vergeben wird.
-% unbedingt angegeben, welche Werte gut und welche schlecht sind
-Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
-
-\begin{itemize*}
-\item Footprint
-  \begin{enumerate*}
-  \item Grösser als 500kB
-  \item Zwischen 100kB...500kB
-  \item Kleiner als 100kB
-  \end{enumerate*}
-\item Barrierefrei
-  \begin{enumerate*}
-  \item keine Unterstützung
-  \item teilweise Unterstützung
-  \item volle Unterstützung
-  \end{enumerate*}
-\item Anpassbarkeit
-  \begin{enumerate*}
-  \item Diagramme sind nur beschränkt anpassbar
-  \item Die meisten Parameter sind anpassbar
-  \item Alle Parameter sind anpassbar
-  \end{enumerate*}
-\item Dokumentation
-  \begin{enumerate*}
-  \item Keine zentrale Dokumentation vorhanden
-  \item Zentrale Dokumentation vorhanden, unübersichtlich, keine Suchfunktion
-  \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
-  \end{enumerate*}
-\item Kosten
-  \begin{enumerate*}
-  \item Mehr als 10CHF/Monat
-  \item Maximal 10CHF/Monat
-  \item Kostenlos
-  \end{enumerate*}
-\item Funktionsumfang
-  \begin{enumerate*}
-  \item Säulen- und Balkendiagramme vorhanden
-  \item Interpolation von fehlenden Werten möglich
-  \item Pfeildiagramm für Windrichtungsanzeige vorhanden
-  \end{enumerate*}
-\end{itemize*}
-
+Für die Darstellung der Messwertverläufe wurde ebenfalls auf eine Bibliothek zurückgegriffen. Als erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die drei Javascript-Bibliotheken: \emph{chartist}, \emph{Fusion Charts} und \emph{Google Charts}. \emph{D3} ist zwar \emph{DIE} Javascript-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, weshalb sie nicht berücksichtigt wurde. Die drei potentiellen Javascript-Bibliotheken wurden mittels Nutzwertanalyse einander gegenübergestellt. Das Resultat ist in Tabelle\,\ref{table:js-framework} aufgeführt. Die Auswahl und Gewichtung der Kriterien ist im Anschluss daran erklärt.
 
 % Nutzwertanalyse
+\vspace{3mm}
 \begin{table}[htbp!]
   \setlength\extrarowheight{3pt} % for a more "open" look
   \begin{tabularx}{\textwidth}{|>{\RaggedRight\hspace{0pt}}p{3.5cm}|p{2.5cm}||X|X|X|X|}
@@ -433,22 +360,81 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 \end{table}
 
 
+\paragraph*{Kriterien für die Auswahl}
+Folgende Kriterien für die Auswahl der Javascript-Bibliothek wurden berücksichtigt:
+\begin{itemize*}
+\item Footprint: Dateigrösse der Bibliothek
+\item Barrierefrei: Unterstützung für barrierefreien Zugang vorhanden?
+\item Anpassbarkeit: Können die Diagramm auf einfache Weise parametrisiert werden?
+\item Dokumentation: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
+\item Kosten: Ist die Bibliothek kostenlos bzw. in einem vertretbaren Rahmen?
+\item Funktionsumfang: Werden sämtliche benötigten Diagrammtypen zur Verfügung gestellt?
+\end{itemize*}
+
+
+\paragraph*{Gewichtung der Kriterien}
+Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der Javascript-Bibliothek wurde folgende Gewichtung vorgenommen:
+\begin{itemize*}
+\item 1 Footprint: Heutzutage ist die Dateigrösse nicht mehr so entscheidend
+\item 2 Barrierefrei: Ist bei Grafiken nur bedingt möglich
+\item 4 Anpassbarkeit: Gewährleistet, dass die Daten wie gewünscht angezeigt werden können
+\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
+\item 4 Kosten: muss erschwinglich sein
+\item 4 Funktionsumfang: Möglichst alle Diagrammtypen sollen verfügbar sein
+\end{itemize*}
+
+
+\paragraph*{Bewertungsskala für die Kriterien}
+Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
+\begin{itemize*}
+\item Footprint
+  \begin{enumerate*}
+  \item Grösser als 500kB
+  \item Zwischen 100kB...500kB
+  \item Kleiner als 100kB
+  \end{enumerate*}
+\item Barrierefrei
+  \begin{enumerate*}
+  \item keine Unterstützung
+  \item teilweise Unterstützung
+  \item volle Unterstützung
+  \end{enumerate*}
+\item Anpassbarkeit
+  \begin{enumerate*}
+  \item Diagramme sind nur beschränkt anpassbar
+  \item Die meisten Parameter sind anpassbar
+  \item Alle Parameter sind anpassbar
+  \end{enumerate*}
+\item Dokumentation
+  \begin{enumerate*}
+  \item Keine zentrale Dokumentation vorhanden
+  \item Zentrale Dokumentation vorhanden, unübersichtlich, keine Suchfunktion
+  \item Zentrale Dokumentation vorhanden, ausführlich und verständlich
+  \end{enumerate*}
+\item Kosten
+  \begin{enumerate*}
+  \item Mehr als 10CHF/Monat
+  \item Maximal 10CHF/Monat
+  \item Kostenlos
+  \end{enumerate*}
+\item Funktionsumfang
+  \begin{enumerate*}
+  \item Säulen- und Balkendiagramme vorhanden
+  \item Interpolation von fehlenden Werten möglich
+  \item Pfeildiagramm für Windrichtungsanzeige vorhanden
+  \end{enumerate*}
+\end{itemize*}
+
+
 \paragraph*{Entscheidung}
-Chartist.js stellte den besten Kompromiss zwischen Funktionsumfang, Einfachheit und Dokumentation dar. Insbesondere die Dateigrösse war ausschlaggebend, da die Webseite, wie in Abschnitt \ref{subsec:googleAnalytics} erklärt, primär von mobilen Nutzer genutz wird.
+\emph{Chartist.js} stellt den besten Kompromiss zwischen Funktionsumfang, Einfachheit und Dokumentation dar. Insbesondere die Dateigrösse war ausschlaggebend, da die Webseite, wie in Abschnitt \ref{subsec:googleAnalytics} erklärt, häufig auf Mobilgeräten verwendet wird.
 
 
 \subsubsection{Skalierung der y-Achse}
-Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung \ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden, ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und beim Pegel wird bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick klar ist, ob der Wert eher hoch oder tief ist. Beim Luftdruck hingegen ist die Tendenz wichtig, weshalb möglichst die gesamte Höhe des Diagramms genutzt werden soll. Es wird daher eine automatische Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfachen Javascript-File, wie in Listing \ref{lst:charts}  dargestellt. Unter \textit{options} kann die y-Achse auf die gewünschten Werte fixiert werden.\newline
+Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, wie in Abbildung\,\ref{img:charts} aufgezeigt. Für jede Grafik wurde entschieden, ob eine automatische Y-Achs-Skalierung sinnvoll ist oder nicht. Bei der Windgeschwindigkeit und den Sonnenstrahlungs- und Regenmesswerten wird bewusst eine fixe Skalierung verwendet, damit auf den ersten Blick erkennbar ist, ob der Wert eher hoch oder eher tief ist. Beim Luftdruck und den Temperaturen hingegen ist die Tendenz wichtig, weshalb möglichst die gesamte Höhe des Diagramms genutzt werden soll. Es wird daher eine automatische Y-Achs-Skalierung verwendet. Die Konfiguration erfolgt in einem einfachen Javascript-File, wie in Listing\,\ref{lst:charts}  dargestellt. Unter \emph{options} kann die y-Achse auf die gewünschten Werte fixiert werden.
 
 % Code-Beispiel
-\begin{lstlisting}[label=lst:charts,caption=Konfiguration der Verlaufsdiagramme, language=HTML5, style=htmlcssjs]
-//Luftdruck
-var Barometer = {
-  labels: [48,...,1],
-  series: [dataBarometerHistoric]
-};
-new Chartist.Line('#air-chart', Barometer);
-
+\begin{lstlisting}[label=lst:charts,caption=Konfiguration eines Verlaufsdiagramms, language=HTML5, style=htmlcssjs]
 //Regen
 var Rain = {
 	labels: [48,...,1],
@@ -463,18 +449,18 @@ new Chartist.Bar('#rain-chart', Rain, options);
 
 
 
-\subsubsection{Anzeige der Windrichtung}
-Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial, da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet, wie in Abbildung \ref{img:windrichtung}, links dargestellt. Es konnte jedoch keine Bibliothek gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung \ref{img:windrichtung}, rechts dargestellt, verwendet. Auf eine Eigenentwicklung wurde bewusst verzichtet um die Webseite möglichst benutzerfreundlich und wartungsarm zu belassen.
+\subsubsection{Anzeige des Windrichtungsverlaufs}
+Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial, da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet, wie in Abbildung\,\ref{img:windrichtung}, links dargestellt. Es konnte jedoch keine Bibliothek gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung\,\ref{img:windrichtung}, rechts dargestellt, verwendet. Auf eine Eigenentwicklung wurde bewusst verzichtet um die Webseite möglichst benutzerfreundlich und wartungsarm zu belassen.
 
 \begin{figure}[htbp!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/windrichtung}}
-	\caption{Windrichtungsanzeige soll und ist}
+	\caption{Windrichtungsanzeige mittels Pfeilen (links) und Punkten (rechts)}
 	\label{img:windrichtung}
 \end{figure}
 
 \subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
-Insbesondere bei Seglern sind Windprognosenseiten sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist jedoch nicht erkennbar, wie gut die Prognose war. Geanu dies ist aber eine spannende Frage, weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden daher mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
+Insbesondere bei Seglern sind Windprognosedienste sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist jedoch rückblicken nicht erkennbar, wie gut die Prognose war. Genau dies ist aber eine spannende Frage, weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
 
 \begin{itemize*}
 \item \href{https://openweathermap.org/city/2661731}{Openweathermap}
@@ -482,17 +468,17 @@ Insbesondere bei Seglern sind Windprognosenseiten sehr beliebt. Sie liefern Wind
 \end{itemize*}
 
 \noindent
-Opeanwathermap ist einer der wenigen Anbieter, der eine kostenlose Web-API zur Verfügung stellt. Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API sondern lediglich ein Widget für den gewünschten Standort an. Diese Daten müssen somit aus dem Windfinder-Widget, siehe Abbildung \ref{img:windfinder}, mittels Crawler extrahiert werden, analog Listing \ref{lst:kttgCrawler}. Die Vorhersagedaten werden von den Anbietern nur in die Zukunft angezeigt d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich. Aus diesem Grund müssen die Vorhersagedaten abgegriffen und gespeichert werden.
+Opeanwathermap ist einer der wenigen Anbieter, welcher eine kostenlose Web-API zur Verfügung stellt und Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API sondern lediglich ein Widget an (siehe Abbildung\,\ref{img:windfinder}, links). Dies Vorhersagedaten müssen aus dem Windfinder-Widget, mittels Web-Scrapper extrahiert werden, analog Listing\,\ref{lst:kttgCrawler} auf Seite\,\pageref{lst:kttgCrawler}.
 
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/windfinder}}
-	\caption{Widget von Windfinder}
+	\caption{Widget von Windfinder und Windvergleichsdarstellung}
 	\label{img:windfinder}
 \end{figure}
 
-Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten, auch wenn die Wetterstation 15 Knoten mass. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weiterverfolgt.
+Da die Vorhersagedaten von nur in die Zukunft angezeigt werden, d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich, müssen die Vorhersagedaten abgegriffen und gespeichert werden. Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten, auch wenn die Wetterstation 15 Knoten mass. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weiterverfolgt. Das Diagramm des Windvergleichs ist in Abbildung\,\ref{img:windfinder} dargestellt (Vorhersage: blau; Messwert: rot).
 
 
 
