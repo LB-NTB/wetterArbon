@@ -496,9 +496,8 @@ Da die Vorhersagedaten von nur in die Zukunft angezeigt werden, d.h. wie die Vor
 %% ############################################################################
 \subsection{Anzeige der aktuellen Sturmwarn-Situation}
 \label{subsec:sturmwarnung}
-
 % was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
-Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \textit{Starkwindwarnung} und \textit{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25 Knoten und 33 Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert (gemäss Anlage B der Bodensee-Schifffahrts-Ordnung\footnote{ \url{https://www.admin.ch/opc/de/classified-compilation/19760005/index.html}}, BSO).
+Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \emph{Starkwindwarnung} und \emph{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25\,Knoten und 33\,Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert~\cite{BSO1976}.
 
 \begin{figure}[htbp!]
 	\centering
@@ -511,7 +510,7 @@ Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufko
 
 \subsubsection{Eingeschränkte Bezugsquellen}
 % Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informaitonen von ihrer Website abzugreifen. Wir haben deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen (siehe Mail im Anhang\,\ref{anhang:email}) . Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
+Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informationen von ihrer Website abzugreifen. Es wurde deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen (siehe Mail im Anhang\,\ref{anhang:email}) . Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -523,7 +522,7 @@ Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, a
 
 \subsubsection{Eigener Sturmwarndienst mit Hilfe der Messwerte}
 % Problem 2: Öffnungszeiten -> keine Warnung in der Nacht
-Der Sturmwarndienst, wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten\footnote{ \url{https://kapo.tg.ch/public/upload/assets/56408/A5\%20Sturmwarnung.pdf}}, was aus Sicht der Sicherheit auf dem See nicht sehr sinnvoll ist.
+Der Sturmwarndienst, wie in Abschnitt \ref{subsec:sturmwarnung} beschrieben, ist kein 24h-Service. Der Dienst ist nur tagsüber aktiv zu den aufgelisteten Warnzeiten~\cite{kapoStwrn}:
 
 \begin{description*}
   \item[Sommer:] 1. April - 31. Oktober: 06:00 - 22:00 Uhr
@@ -539,7 +538,9 @@ Es liegt nahe, auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen 
 \end{quote}
 
 \noindent
- Die Sturmwarnung auf dem Bodensee gesetzliche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen. Meteoschweiz bietet zudem auf ihrer  \href{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}{MeteoSchweiz-App} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
+ Die Sturmwarnung auf dem Bodensee gesetzliche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen.
+
+% Meteoschweiz bietet zudem auf ihrer  \href{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}{MeteoSchweiz-App} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
 
 
@@ -558,7 +559,7 @@ Es liegt nahe, auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen 
 %% Unterkapitel
 %% ############################################################################
 \subsection{Darstellung der historischen Daten}
-Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minutenwerte werden einmal pro Stunde zusammengefasst und als historische Daten abgespeichert. Die Darstellung der historischen Daten soll möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahre, welche ebenfalls auf der Webseite verfügbar sein sollen. Es gibt somit drei Grundlagen für die historischen Daten:
+Die historischen Daten der Wetterstation sollen öffentlich über die Website zugänglich sein. Die Darstellung soll möglichst interaktiv gestaltet sein und ein aussagekräftiges Bild des Wetterverhaltens aufzeigen. Bereits bei der alten Wetterstation wurden Daten gespeichert. Zudem liegt ein Excel-File vor mit den Pegeldaten der letzten 50 Jahre, welche ebenfalls auf der Webseite verfügbar sein sollen. Es gibt somit drei Grundlagen für die historischen Daten:
 
 \begin{itemize*}
 \item Historische Daten der neuen Wetterstation (2015 bis heute)
@@ -569,26 +570,22 @@ Die Wetterstation misst sämtliche Messgrössen einmal pro Minute. Diese Minuten
 \noindent
 Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
-
-
 \subsubsection{Historische Daten der neuen Wetterstation}
 \label{kap:Tableau}
-Tableau Public\footnote{ \url{https://public.tableau.com/de-de/s/}} ist ein Daten-Visualisierungsprogramm, welches es ermöglicht auf einfache Weise Diagramme zu erstellen, welche interaktiv vom Benutzer filterbar sind. Der Benutzer kann zum Beispiel den Betrachtungszeitraum selbst wählen, worauf sich die Grafiken automatisch der Auswahl anpassen. Tableau Public ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
-
-% Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informationen angezeigt.
-% Für die Auswertung haben wir uns auf die Lufttemperatur, Sonnenstrahlung, Windrichtung und -geschwindigkeit sowie den Regen und Sonnenscheindauer konzentriert.
-
+ \href{https://public.tableau.com/de-de/s/}{\emph{Tableau Public}} ist ein Daten-Visualisierungsprogramm, welches es ermöglicht auf einfache Weise Diagramme zu erstellen, welche interaktiv vom Benutzer filterbar sind. Der Benutzer kann zum Beispiel den Betrachtungszeitraum selbst wählen, worauf sich die Grafiken automatisch der Auswahl anpassen.
 
 \begin{figure}[h!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tableau}}
-	\caption{Darstellung der historschen Daten (Desktop und Mobile)}
+	\caption{Darstellung der historischen Daten (Desktop und Mobile)}
 	\label{img:tableau}
 \end{figure}
 
 
-%Nachteil 2: Nicht responsive -> Workaround nötig
 \noindent
+\emph{Tableau Public} ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
+
+%Nachteil 2: Nicht responsive -> Workaround nötig
 Neben den vielen Vorteilen, hat Tableau Public auch ein paar Nachteile. Das Dashboard kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden. Eines für die Anzeige auf einem grossen Bildschirmen und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
 
 \vspace{3mm}
@@ -607,6 +604,9 @@ Neben den vielen Vorteilen, hat Tableau Public auch ein paar Nachteile. Das Dash
 \noindent
 Ein weiterer Nachteil der Public-Version von Tableau ist, dass sie keinen Live-Zugriff auf die Datenbank ermöglicht. Die Daten müssen somit manuell periodisch auf den Tableau Public Server kopiert werden, damit sie im Dashboard verfügbar sind.
 
+% Wenn mit dem Mauszeiger über einen Messpunkt gefahren wird, werden zusätzliche Informationen angezeigt.
+% Für die Auswertung haben wir uns auf die Lufttemperatur, Sonnenstrahlung, Windrichtung und -geschwindigkeit sowie den Regen und Sonnenscheindauer konzentriert.
+
 
 \subsubsection{Historische Daten der alten Wetterstation}
 Um einen Überblick über die vorhanden Messdaten der alten Wetterstation zu erhalten wurden die Daten grafisch aufbereitet wie in Abbildung\,\ref{img:histAlt} dargestellt. Darin lassen sich diverse Messlücken erkennen wie zum Beispiel das komplette Jahr 2010 und 2012. Weiter sind zum Teil unplausible Grössenordnungen vorhanden wie zum Beispiel bei der Windgeschwindigkeit, wo die Werte im Bereich von 0 bis 1000 liegen und nicht klar ist, in welcher Einheit diese Daten vorliegen. Die Angabe der Wellenhöhe sind in einem sehr kleinen Bereich, sodass davon auszugehen ist, dass es sich um das Signalrauschen handelt und nicht um die effektiven Wellenhöhe. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation d.h. ab 2015 anzuzeigen. Alleine die Pegeldaten werden verwendet und die historische Pegeldatenbank integriert, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben.
@@ -622,7 +622,7 @@ Um einen Überblick über die vorhanden Messdaten der alten Wetterstation zu erh
 
 \subsubsection{Historische Pegeldaten}
 \label{subsec:pegelhistory}
-Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente unter anderem ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung ist in Abbildung \ref{img:histPegel} ersichtlich. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht. Das Dashboard ist unter dem Link \url{https://dev.wetter-arbon.ch/pegelstand} erreichbar.
+Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. Als Grundlage diente unter anderem ein Excel-File mit den Pegelständen von 1953 bis 2005. Von der alten Wetterstation liegen die Pegeldaten von 2005 bis 2009 vor und ab 2018 kommen die Messwerte der neuen Wetterstation dazu. Die Darstellung ist in Abbildung\,\ref{img:histPegel} ersichtlich. Sämtliche Datenquellen sind in einer gemeinsamen Tabelle in der Datenbank gespeichert. Die grafische Darstellung erfolgt wiederum mit Tableau, was die interaktiven Anzeige mit Filterung der Daten ermöglicht. Das Dashboard ist unter dem Link \url{https://dev.wetter-arbon.ch/pegelstand} erreichbar.
 
 \begin{figure}[h!]
 	\centering
@@ -637,8 +637,7 @@ Auf der Webseite wird der Pegelverlauf der letzten Jahre grafisch dargestellt. A
 %% Unterkapitel
 %% ############################################################################
 \subsection{Automatische Aktualisierung der Anzeigeelemente}
-Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 60 Sekunden von der API die aktuellen Werte abfragt, wie in Listing\,\ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \textit{updateData} aufgerufen, die wiederum die Anzeigeelemente und Textfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte. \newline
-
+Die Wetterstation erzeugt jede Minute einen Datenbank-Eintrag mit den aktuellen Messwerten. Damit eine geöffnete Webseite immer auf dem aktuellen Stand ist, wird eine poll-Funktion verwendet, die selbständig alle 60\,Sekunden von der API die aktuellen Werte abfragt, wie in Listing\,\ref{lst:poll} verkürzt dargestellt. Sobald die JSON-Daten eingetroffen sind, wird die Funktion \emph{updateData} aufgerufen, die wiederum die Anzeigeelemente und Textfelder aktualisiert. Die gesamte Aktualisierung wird asynchron mittels AJAX durchgeführt. Die Seite wird dabei nicht neu geladen, nur die Anzeigewerte.
 
 \begin{lstlisting}[label=lst:poll,caption=Automatische Aktualisierung der Werte, language=JavaScript, style=htmlcssjs]
 (function poll() {
