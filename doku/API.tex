@@ -1,13 +1,18 @@
 \section{ Web-Programmierschnittstelle (Web-API)}
-% Einleitung, Motivation
-Die Webseite der Wetterstation bietet den interessierten Personen Informationen zum aktuellen Wetter in Arbon. Diese Informationen sind aber nicht nur für Menschen interessant, sondern auch für andere Computer beziehungsweise Server. Das Seebad Arbon zum Beispiel möchte die Wassertemperatur der Wetterstation auf ihrer Webseite anzeigen. Um die Kommunikation von Server zu Server zu vereinfachen werden maschinenlesbare Schnittstellen eingesetzt, sogenannte application programming interfaces (API). Abbildung\,\ref{img:humanvsmachine} zeigt den Unterschied der beiden Darstellungsarten. Auf der linken Seite ist die für den Menschen grafisch mit Farben und Formen aufbereitete Information der Lufttemperatur, auf der rechten Seite die schlichte und rein textbasierte Maschinenversion.
+Die Webseite der Wetterstation bietet den interessierten Personen Informationen zum aktuellen Wetter in Arbon. Diese Informationen sind aber nicht nur für Menschen interessant, sondern auch für andere Computer beziehungsweise Server.
 
-\begin{figure}[htbp!]
+\begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/humanvsmachine}}
 	\centering
 	\caption{Grafische (HTML) versus maschinenlesbare (JSON) Darstellung}
 	\label{img:humanvsmachine}
 \end{figure}
+
+
+\noindent
+Das Seebad Arbon zum Beispiel möchte die Wassertemperatur der Wetterstation auf ihrer Webseite anzeigen. Um die Kommunikation von Server zu Server zu vereinfachen werden maschinenlesbare Schnittstellen eingesetzt, sogenannte application programming interfaces (API). Abbildung\,\ref{img:humanvsmachine} zeigt den Unterschied der beiden Darstellungsarten. Auf der linken Seite ist die für den Menschen grafisch mit Farben und Formen aufbereitete Information der Lufttemperatur, auf der rechten Seite die schlichte und rein textbasierte Maschinenversion.
+
+
 
 %% ############################################################################
 %% Unterkapitel
@@ -42,13 +47,13 @@ Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern l�
 Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representational State Transfer} von Roy Fielding entwickelt. Der REST-Architekturstil bietet diverse Vorteile unter anderem bezüglich Skalierbarkeit und Sicherheit, wie in der \href{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}{Doktorarbeit}~\cite{Fielding:2000:ASD:932295} von Fielding nachzulesen ist. Eines der wichtigsten Prinzipen daraus ist die Zustandslosigkeit einer Anfrage. Das heisst jede Anfrage vom Client zum Server enthält alle notwendigen Informationen, auf dem Server muss nichts zwischengespeichert werden. REST verwendet zudem die von HTTP zur Verfügung gestellten Methoden\cite{LornaJaneMitchell2013oreilly}. Bei der Wetterstation wird nur die GET-Methode verwendet, da die API der Wetterstation sozusagen ein read-only-Dienst darstellt. Eine Server-Anfrage sieht dann zum Beispiel so aus wie in Listing\,\ref{lst:apirequest}. Bei einem POST-Aufruf wird das gleiche Resultat geliefert wie beim entsprechenden GET-Aufruf.
 
 
-\vspace{3mm}
-\begin{lstlisting}[label=lst:apirequest,caption=RESTful-Serveranfrage, language=HTML5, style=php]
-GET /v1/data HTTP/1.1
-Host:           api.wetter-arbon.ch
-Cache-Control:  no-cache
-\end{lstlisting}
-\vspace{3mm}
+% \vspace{3mm}
+% \begin{lstlisting}[label=lst:apirequest,caption=RESTful-Serveranfrage, language=HTML5, style=php]
+% GET /v1/data HTTP/1.1
+% Host:           api.wetter-arbon.ch
+% Cache-Control:  no-cache
+% \end{lstlisting}
+% \vspace{3mm}
 
 
 \subsubsection{Semantische Versionierung}
@@ -60,7 +65,7 @@ Versionsnummern unterscheiden einzelne Versionen einer Software, um deren Weiter
   \item[PATCH] Fehler behoben; kompatibel mit Vorversion
 \end{description*}
 
-\vspace{3mm}
+\vspace{13mm}
 \begin{lstlisting}[label=lst:versionierung,caption=Versionierungsangabe auf der obersten Hierarchiestufe, language=HTML5, style=php]
 {
 v1: {
@@ -93,16 +98,12 @@ Als Datenformat der API wurde JSON\footnote{JSON: Javascript Object Notation} ge
 %% ############################################################################
 \subsection{Back end Architektur der API}
 % Rahmenbedingung: Serverseitige Programmiersprache ist eingeschränkt von Hostpoint auf .......
-% Warum wurde php gewählt?
-Für die API gibt es jedoch eine wichtige Bedingung. Sie muss in php geschrieben werden, da Hostpoint kein Javascript auf der Serverseite erlaubt.
-
-
+Heutzutage werden viele Webapplikationen mit \emph{node.js} und \emph{express} erstellt. Hostpoint bietet \emph{node.js} aber auf ihren Servern nicht an, weshalb eine alternative Lösung evaluiert wurde.
 
 \subsubsection{Auswahl des PHP-Frameworks}
 % Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
 % KO-Kriterium: kostenlos und von Hostpoint unterstützt
-
-
+Es wurden drei php-Frameworks untersucht und mit der Variante gar kein Framework zu benutzen verglichen. Im Folgenden wird die dazu verwendete Nutzwertanalyse erläutert.
 % https://www.quora.com/What-is-a-PHP-framework
 % https://www.quora.com/Where-can-I-learn-to-create-a-PHP-REST-API-without-using-a-framework
 % https://fachinformatiker-anwendungsentwicklung.net/nutzwertanalyse-in-der-projektdokumentation/
@@ -194,37 +195,19 @@ Folgende Kriterien für die Auswahl des php-Frameworks wurden berücksichtigt:
 \end{itemize*}
 
 
-
-
 \paragraph*{Gewichtung der Kriterien}
-% Gewichtung wird vor der Durchführung des eigentlichen Vergleichs festgelegt
-% Gewichtung der Kriterien muss in der Projektdokumentation begründet werden
 Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl des php-Frameworks wurde folgende Gewichtung vorgenommen:
 
 \begin{itemize*}
-
-\item 4 Dokumentation: Da es sich um das Abschlussprojekt des Autors mit fester Zeitvorgabe handelt, ist besonders wichtig, dass die Sprache ihm bereits bekannt ist. Des Weiteren muss auch die Interessensgemeinschaft die API in einem vernüftigem Zeitrahmen Unterhalten können.
-
-\item 1 Langlebigkeit: Da es sich um eine Webanwendung handelt, die wahrscheinlich häufig an neue Möglichkeiten angepasst werden muss, ist die Langlebigkeit von geringerer Wichtigkeit.
-
-\item 2 Funktionsumfang: Gerade im Webumfeld setzt das Unternehmen auf neue Technologien und möchte neue Entwicklungen zeitnah einsetzen.
-
+\item 4 Dokumentation: Da der Unterhalt der API in einem vernünftigen Zeitrahmen erfolgen muss
+\item 1 Langlebigkeit: Da es sich um eine Webanwendung handelt, die wahrscheinlich häufig angepasst wird
+\item 2 Funktionsumfang: Da die benötigten Funktionen zur Standardbibliothek gehören
 \item 4 Stabilität und Sicherheit: Da die Arbeit anschliessend öffentlich ist und gewährleistet werden muss, dass die Webseite funktionsfähig ist.
-
-\item 1 Footprint: Da für die Webseite genügend Speicherplatz vorhanden ist. Ist der Footprint nich sehr wichtig.
-
-
-
+\item 1 Footprint: Da für die Webseite genügend Speicherplatz vorhanden ist, ist der Footprint nich sehr wichtig.
 \end{itemize*}
 
 
-
-
 \paragraph*{Bewertungsskala für die Kriterien}
-% Skala mit erlaubten Punktwerten und exakte Begründung für die vergebene Punktzahl
-% kleine Skala verwenden z.B. 1 bis 3, und definiert exakt, wann welcher Wert vergeben wird.
-% unbedingt angegeben, welche Werte gut und welche schlecht sind
-
 Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) bis 3 (gut) verwendet. Im Folgenden wird festgelegt, wann welcher Wert bei den einzelnen Kriterien vergeben wird.
 
 \begin{itemize*}
@@ -243,7 +226,7 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 \item Funktionsumfang
   \begin{enumerate*}
   \item Keine zusätzlichen Funktionen verfügbar
-  \item Routineaufgaben sind als Funktionen verfügbar
+  \item Funktionen für Routineaufgaben sind nur bedingt vorhanden
   \item Routineaufgaben sind als Funktionen verfügbar
   \end{enumerate*}
 \item Stabilität und Sicherheit
@@ -262,25 +245,25 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 
 
 \paragraph*{Entscheidung um kein Framework zu nehmen}
-% Nutzwert: stellt das Endergebnis der Nutzwertanalyse dar und repräsentiert die kumulierten bewerteten Kriterien der einzelnen Alternativen.
-% Letztlich müssen alle Koeffizienten mit denen der anderen Alternativen verglichen werden, um den Gewinner zu bestimmen
-% der einzelne Nutzwert ist nicht aussagekräftig, sondern muss immer ins Verhältnis zu den anderen Ergebnissen gesetzt werden
-Wie das Resultat aus der Nutzwertanalyse (Tabelle \ref{table:php-framework}) aufzeigt, bleiben zwei Möglichkeiten übrig. Zum einen das Slim-Framework, zum anderen kein Framework zu nehmen. Bei der Dokumentation schneidet beides gleich ab. Denn wird kein Framework benutzt, kann die PHP-Dokumentation zu Handen genommen werden. Jedoch bestehen grosse Unterschiede bei der Langlebigkeit. Hier kann ohne Framework auf die standard Funktionen zurückgegriffen werden. Ein weiterer Vorteil ist, dass man hier die Kontrolle über den Code hat. So können Versionsspezifische Funktionen schnell angepasst werden, ohne das weiterer Code geändert werden muss. Beim Funktionsumfang schneidet das Framework besser ab. Konkret heisst dies, dass einzelne Funktionen schon vorgegeben sind und dem jeweiligen Nutzen nur angepasst werden muss. Das ist der Nachteil wenn ohne Framework gearbeitet wird. Hier muss jede Funktion selber codiert werden.\\
-Bei der Stabilität und Sicherheit schneiden beide gleich ab. Dies hängt jedch, wenn ohne Framework gearbeitet wird, vorallem auch vom Programmierer und deren Tests ab. Beim Footprint sind beide gleichauf. Beide benötigen weniger als 5 Mb.\\
-Der Ausschlaggebende Punkt in dieser Arbeit ohne Framework zu arbeiten ist die Grösse der API, sowie den Wunsch der IG Arbon, die ganze Arbeit so zu gestalten, dass praktisch kein Unterhalt notwendig ist. Bei der API wurde deswegen darauf geachtet schon alles mit den Funktionen aus PHP 7 zu gestalten. Weiter ist die API so zu gestaltet, wo möglich, auf Versionsspezifische Funktionen zu verzichten.
+Wie das Resultat aus der Nutzwertanalyse (Tabelle\,\ref{table:php-framework}) aufzeigt, bleiben zwei Möglichkeiten übrig. Zum einen das Slim-Framework, zum anderen kein Framework zu nehmen.
+
+Bei der Dokumentation schneidet beides gleich ab. Denn wird kein Framework benutzt, kann die offizielle PHP-Dokumentation verwendet werden. Jedoch bestehen grosse Unterschiede bei der Langlebigkeit. Hier kann ohne Framework auf die Standardfunktionen zurückgegriffen werden. Ein weiterer Vorteil ist, dass man hier die Kontrolle über den Code hat. So können versionsspezifische Funktionen schnell angepasst werden, ohne dass weiterer Code geändert werden muss. Beim Funktionsumfang schneidet das Framework besser ab. Das ist der Nachteil wenn ohne Framework gearbeitet wird. Hier muss jede Funktion selber codiert werden.
+Bei der Stabilität und Sicherheit schneiden beide gleich ab. Dies hängt jedoch, wenn ohne Framework gearbeitet wird, vorallem auch vom Programmierer und deren Tests ab. Beim Footprint sind beide gleichauf. Beide benötigen weniger als 5 Mb. Der Ausschlaggebende Punkt in dieser Arbeit ohne Framework zu arbeiten ist die Grösse der API, sowie den Wunsch der IG Arbon, die ganze Arbeit so zu gestalten, dass praktisch kein Unterhalt notwendig ist. Bei der API wurde deswegen darauf geachtet schon alles mit den Funktionen aus PHP 7 zu gestalten und auf versionsspezifische Funktionen zu verzichten.
 
 
 
 \subsubsection{Bottom up - Funktionsprinzip}
-Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst die Abfrage auf die Informationseinheit bildet den Kern der API. Die Abfrage einer Informationseinheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als erstes dem PATH-File übergeben. Dort wird der Endpunkt das heisst die gewünschte Informationseinheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase} dargestellt, ermittelt. Danach wird ein assoziatives Array (siehe Abbilung\,\ref{img:assozArray}) erstellt, welches alle nötigen Parameter enthält, sodass im createJson-File die Datenbank-Abfrage getätigt werden kann. Schlussendlich werden die Werte aus der Datenbank ins Array geschrieben und dieses in ein JSON umgewandelt und zurückgegeben. Je nach Informationseinheit gibt es Unterschiede beim Aufbau des JSONs. Für einige Messwerte sind Maximal- und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet (Knoten, km/h, Beaufort), damit alle Benutzer die Messwerte auch interpretieren können.
+Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst die Abfrage auf die Informationseinheit bildet den Kern der API. Die Abfrage einer Informationseinheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als erstes dem PATH-File übergeben. Dort wird der Endpunkt das heisst die gewünschte Informationseinheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase} dargestellt, ermittelt.
 
 \begin{figure}[htbp!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/assozArray}}
 	\centering
-	\caption{Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}
-	\label{img:APIFiles}
+	\caption{Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}
+	\label{img:assozArray}
 \end{figure}
 
+\noindent
+Danach wird ein assoziatives Array (siehe Abbilung\,\ref{img:assozArray}) erstellt, welches alle nötigen Parameter enthält, sodass im createJson-File die Datenbank-Abfrage getätigt werden kann. Schlussendlich werden die Werte aus der Datenbank ins Array geschrieben und dieses in ein JSON umgewandelt und zurückgegeben. Je nach Informationseinheit gibt es Unterschiede beim Aufbau des JSONs. Für einige Messwerte sind Maximal- und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet (Knoten, km/h, Beaufort), damit alle Benutzer die Messwerte auch interpretieren können.
 
 % Switch-Case
 \vspace{3mm}
@@ -296,17 +279,18 @@ switch ($url){
 \vspace{3mm}
 
 
+\noindent
+Die Dateistruktur wurde dem MVC-Prinzip nachempfunden. Das MVC-Prinzip bedeutet nichts anderes, als das drei verschiedene Dateifunktionen bestehen. Die View, path-File, sendet eine Anfrage an den Controller, createJson File. Dieser entscheidet dann was alles benötigt wird und fragt dies beim Modell an. Das Modell, databaseQuery-File, verarbeitet die angefragten Daten und sendet das Resultat zurück an den Controller. Dieser Leitet dann die Daten, in diesem Fall direkt an den Client weiter.
+
 \begin{figure}[htbp!]
-  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/assozArray}}
+  \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
 	\centering
-	\caption{Beispiel des assoziativen Arrays vor und nach der DB-Abfrage}
-	\label{img:assozArray}
+	\caption{Ablauf einer API GET-Abfrage auf Stufe Informationseinheit}
+	\label{img:APIFiles}
 \end{figure}
 
 
-\noindent
 
-Die Dateistruktur wurde nach dem MVC-Prinzip nachempfunden. Das MVC-Prinzip bedeutet nichts anderes, als das drei verschiedene Dateifunktionen bestehen. Die View, path-File, sendet eine Anfrage an den Controller, createJson File. Dieser entscheidet dann was alles benötigt wird und fragt dies beim Modell an. Das Modell, databaseQuery-File, verarbeitet die angefragten Daten und sendet das Resultat zurück an den Controller. Dieser Leitet dann die Daten, in diesem Fall direkt an den Client weiter.
 
 
 \subsubsection{Skalierbarkeit durch modularen Aufbau}
@@ -318,20 +302,8 @@ $url=array(
   "/v1/data/temperature",
   "/v1/data/windchill",
   "/v1/data/humidity",
-  "/v1/data/winddirection",
-  "/v1/data/windspeed",
-  "/v1/data/gust",
-  "/v1/data/precipitation",
-  "/v1/data/pressure",
-  "/v1/data/weathericon",
-  "/v1/data/forecasticon",
-  "/v1/data/watertemperature1m",
-  "/v1/data/watertemperature0m5",
-  "/v1/data/waterlevel",
-  "/v1/data/radiation",
-  "/v1/data/sunduration"
+  // usw.
 );
-
 foreach($url as $url){
   $json = file_get_contents('https://api.wetter-arbon.ch'.$url);
   $obj = json_decode($json,true);
@@ -346,11 +318,12 @@ foreach($url as $url){
 %% Unterkapitel
 %% ############################################################################
 \subsection{Dokumentation der API}
-Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert und ist über die Webseite\footnote{\url{https://documenter.getpostman.com/view/5023011/RWThSfXj}} zugänglich. Dabei werden sämtliche Endpunkte, die von der API zur Verfügung gestellt werden aufgelistet und erklärt. Zudem werden parallel dazu die passenden Befehle dargestellt um zum Beispiel über Javascript oder PHP die API aufzurufen (rechts dargestellt in Abbildung\,\ref{img:postman}). Die Doku-Seite wird automatisch aufgerufen wenn sich in der URL-Anfrage auf \texttt{api.wetter-arbon.ch} ein Fehler befindet.
 
-\begin{figure}[htbp!]
+\begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/postman}}
 	\centering
 	\caption{API-Dokumentation in Postman}
 	\label{img:postman}
 \end{figure}
+
+Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert und ist über die Webseite\footnote{\url{https://documenter.getpostman.com/view/5023011/RWThSfXj}} zugänglich. Dabei werden sämtliche Endpunkte, die von der API zur Verfügung gestellt werden aufgelistet und erklärt. Zudem werden parallel dazu die passenden Befehle dargestellt um zum Beispiel über Javascript oder PHP die API aufzurufen (rechts dargestellt in Abbildung\,\ref{img:postman}). Die Doku-Seite wird automatisch aufgerufen wenn sich in der URL-Anfrage auf \texttt{api.wetter-arbon.ch} ein Fehler befindet.

@@ -228,29 +228,16 @@ Die beiden VIEWs, die für die Aggregation benötigt werden beinhalten jeweils g
 
 \subsubsection{Datumsformatierung}
 \label{kap:dateformat}
-Die Norm DIN ISO 8601\footnote{DIN ISO 8601: Informationsaustausch - Darstellung von Datum und Uhrzeit} standardisiert die Darstellung von Datum und Zeit. Das internationale Datumsformat muss entweder als \texttt{2018-07-29T15:34:30} oder aber, wie empfohlen, mit der Differenz zur Koordinierten Weltzeit (UTC) \texttt{2018-07-29T15:34:30+02:00} angegeben werden. In der Datenbank und in der API der Wetterstation wird jedoch das nichtstandartisierte Format \texttt{2018-07-29 15:34:30} mit Leerzeichen zwischen Datum und Zeit verwendet.
-
-
-% \begin{figure}[htbp!]
-%   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/datetime}}
-% 	\centering
-% 	\caption{Formatierung des Datums in der Datenbank}
-% 	\label{img:datetime}
-% \end{figure}
-
-\noindent
-\Diskussionspunkt{Warum kann normiertes Format in der API nicht angewendet werden?} \newline
-\Diskussionspunkt{The delimiter between the date part and the time part can be a T or any sequence of space characters} \newline
-\Diskussionspunkt{\url{https://mariadb.com/kb/en/library/date-and-time-literals/}} \newline
+Die Norm DIN ISO 8601\footnote{DIN ISO 8601: Informationsaustausch - Darstellung von Datum und Uhrzeit} standardisiert die Darstellung von Datum und Zeit. Das internationale Datumsformat muss entweder als \texttt{2018-07-29T15:34:30} oder aber, wie empfohlen, mit der Differenz zur Koordinierten Weltzeit (UTC) \texttt{2018-07-29T15:34:30+02:00} angegeben werden. Bei der Wetterstation wird zwar das internationale Format verwendet, jedoch ohne ohne UTC-Angabe, da die Daten primär in der näheren Umgebung verwendet werden und somit direkt die lokale Zeit angezeigt wird.
 
 
 \subsubsection{Umgang mit der Zeitumstellung}
-Wie in Abschnitt\,\ref{kap:dateformat} erläutert, wird das Datum ohne Differenz zu koordinierten Weltzeit (UTC) gespeichert. Dies führt dazu, dass bei der Zeitumstellung im Frühling und im Herbst jeweils eine Stunde übersprungen beziehungsweise doppelt vorhanden ist. Damit das Vorgehen bei allen Datenbankeinträgen einheitlich ist, wurde das System von Weather Display übernommen. Wird die Uhr vorgestellt so fehlt diese Stunde in der Datenbank (siehe Abbildung\,\ref{img:sommerzeit}) und beim Zurückstellen der Uhr wird die doppelte Stunde ignoriert. Da die Zeitumstellung in der Nacht stattfindet ist dieser Umstand für die Benutzer kaum bemerkbar.
+Wie in Abschnitt\,\ref{kap:dateformat} erläutert, wird das Datum ohne Differenz zu koordinierten Weltzeit (UTC) gespeichert. Dies führt dazu, dass bei der Zeitumstellung im Frühling und im Herbst jeweils eine Stunde übersprungen beziehungsweise doppelt vorhanden ist. Damit das Vorgehen bei allen Datenbankeinträgen einheitlich ist, wurde das System von \emph{Weather Display} übernommen. Wird die Uhr vorgestellt so fehlt diese Stunde in der Datenbank (siehe Abbildung\,\ref{img:sommerzeit}) und beim Zurückstellen der Uhr wird die doppelte Stunde ignoriert. Da die Zeitumstellung in der Nacht stattfindet ist dieser Umstand für die Benutzer kaum bemerkbar.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sommerzeit}}
 	\centering
-	\caption{Formatierung des Datums in der Datenbank}
+	\caption{Fehlende Stunde in der Datenbank bei der Zeitumstellung}
 	\label{img:sommerzeit}
 \end{figure}
 
@@ -263,11 +250,7 @@ Wie in Abschnitt\,\ref{kap:dateformat} erläutert, wird das Datum ohne Differenz
 %wiederkehrende Aufgaben – sogenannte Cronjobs – zu automatisieren.
 % Der Cron-Daemon dient der zeitbasierten Ausführung von Prozessen in Unix und unixartigen Betriebssystemen wie Linux
 
-Die Wetterstation basiert auf vielen repetitiven Aufgaben wie zum Beispiel das minütliche Einlesen der Messdaten. Linux, welches auf dem Hostpoint-Server verwendet wird, bietet mit dem Cron-Daemon ein Werkzeug um zeitbasiert Befehle beziehungsweise Skripte (Cronjobs) auszuführen. Eine Liste sämtlicher Cronjobs, die die Wetterstation verwendet ist in Tabelle \ref{table:cronjobs} dargestellt. Um einen Cronjob zu definieren muss einerseits das auszuführende Skript angegeben werden und der Zeitpunkt, zu dem es ausgeführt werden soll. Es kann zwischen Minute, Stunde und Tag gewählt werden. Ein Stern (*) bedeutet zu jeder Minute/Stunde/Tag. Die historischen Daten (\emph{historical.py}) werden beispielsweise zu jeder Stunde jeweils um 5 Minuten nach zusammengefasst. Die Windvorhersage von Windfinder (\emph{forecastWindfinder.py}) werden alle drei Stunden abgefragt (02:37, 05:37 usw.).
-
-
-%Viele Funktionen werden mit Cronjobs ausgeführt. Wie von Hostpoint \cite{Hostpoint:CronjobsEinrichten} dargestellt, werden Cronjob für wiederkehrende Abläufe verwendet. Anders formuliert, kann ein Script zu einem bestimmten Zeitpunkt automatisiert ausgeführt werden. Es wird angegeben zu welchem Zeitpunkt oder in welchem Intervall das Programm ausgeführt werden soll. Der Rest übernimmt dann anschliessend der Cronjob. In diesem Fall, das Auslesen der externen Sensordaten, das erstellen der historischen Daten und das auslesen der Sturmwarnung. Auf Hostpoint kann mittels Knopfdruck ein Cronjob erstellt werden. Dabei kann auch gleich konfiguriert werden, zu welcher Zeit ein Cronjob ausgeführt werden soll (Tabelle \ref{table:cronjobs}).
-
+Die Wetterstation basiert auf vielen repetitiven Aufgaben wie zum Beispiel das minütliche Einlesen der Messdaten. Linux, welches auf dem Hostpoint-Server verwendet wird, bietet mit dem Cron-Daemon ein Werkzeug um zeitbasiert Befehle beziehungsweise Skripte (Cronjobs) auszuführen. Eine Liste sämtlicher Cronjobs, die die Wetterstation verwendet ist in Tabelle \ref{table:cronjobs} dargestellt. Um einen Cronjob zu definieren muss einerseits das auszuführende Skript angegeben werden und der Zeitpunkt, zu dem es ausgeführt werden soll. Es kann zwischen Minute, Stunde und Tag gewählt werden. Ein Stern (*) bedeutet zu jeder Minute/Stunde/Tag. Die historischen Daten (\emph{historical.py}) werden beispielsweise zu jeder Stunde jeweils um 5 Minuten nach zusammengefasst. Die Windvorhersage von Windfinder (\emph{forecastWindfinder.py}) werden alle drei Stunden abgefragt (02:37, 05:37 usw.). Die Cronjobs sind essentiell für die Funktion der Wetterstation, werden diese nicht durchgeführt, werden auch keinen Daten ausgelesen bzw. erstellt.
 
 % Tabelle Cronjobs
 \begin{table}[htbp!]
@@ -327,13 +310,6 @@ Die Wetterstation basiert auf vielen repetitiven Aufgaben wie zum Beispiel das m
 \end{table}
 
 
-Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, werden auch keinen Daten ausgelesen bzw. erstellt. Neben diesen drei Cronjobs bestehen noch zwei weitere. Diese lesen die Wettervorhersage für den Vergleich aus und schreiben die Daten in die Datenbank.
-
-%Rechnern welche nicht durch einen Dauerbetrieb gekennzeichnet sind, kommen meist andere Varianten wie anacron zum Einsatz.
-
-
-
-
 
 %% ############################################################################
 %% Unterkapitel
@@ -342,13 +318,7 @@ Die erwähnten Cronjob sind die wichtigsten, werden diese nicht durchgeführt, w
 Bei der Wetterstation Arbon sind keine persönlichen oder sicherheitsrelevanten Daten in der Datenbank gespeichert. Somit ist diese aus Sicht eines potentiellen Angriffes eher uninteressant. Dennoch sollten die Daten hinreichend geschützt sein, um einen Datenverlust beziehungsweise eine Datenmanipulation zu verhindern. Um dies zu erreichen werden mehrere Techniken eingesetzt, die im Folgenden beschrieben werden.
 
 \subsubsection{Schutz vor SQL-Injection}
-% SQL-Injection ist ein grossen Problem
-Laut den OWASP\footnote{OWASP: Open Web Application Security Project} Top 10, einer Liste\footnote{ \url{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}}, welche die wichtigsten Sicherheitsrisiken von Web-Applikationen aufzeigt, ist SQL-Injection seit Jahren auf Platz 1. SQL-Injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer Daten ausspähen oder verändern kann.
-
-Die API, welche als primäre Schnittstelle für das Auslesen der Daten verwendet wird ist so aufgebaut, dass die Abfrage mittels \emph{White List Input Validation} durchgeführt wird. Das bedeutet, dass die eingegebene URL mittels switch case mit allen möglichen gültigen Abfragen verglichen wird und dann entsprechend weiterbehandelt, wie in Listing\,\ref{lst:switchCase} auf Seite \pageref{lst:switchCase} dargestellt. Die Möglichkeit einer SQL-Injection ist auf diese Weise ausgeschlossen. Lediglich bei der Warteschlange der Webcam und beim Benachrichtigungsservice werden Daten direkt in die Datenbank geschrieben beziehungsweise daraus gelesen. In diesem Fall werden die
-die SQL-Abfragen mittels \emph{Prepared Statements} durchgeführt und die Benutzereingaben \emph{escaped} wie in Listing\,\ref{lst:maskierung} dargestellt.
-
-% https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet
+Laut den OWASP\footnote{OWASP: Open Web Application Security Project} Top 10, einer  \href{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}{Liste}, welche die wichtigsten Sicherheitsrisiken von Web-Applikationen aufzeigt, ist SQL-Injection seit Jahren auf Platz 1. SQL-Injection ist eine Methode eine Datenbankabfrage so zu manipulieren, dass der Angreifer Daten ausspähen oder verändern kann.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:maskierung,caption=Anwendung der Prepared Statements (gekürzt), language=PHP, style=PHP]
@@ -366,8 +336,10 @@ $stmt->fetch()
 \end{lstlisting}
 \vspace{3mm}
 
-% Wie im Kapitel Daten der neuen Wetterstation mit Tableau \ref{kap:Tableau} erwähnt, müssen die Daten für das Tableau manuell übertragen werden. Dies bedeutet, dass für die historische Seite kein Datenbankzugriff notwendig ist.
+\noindent
+Die API, welche als primäre Schnittstelle für das Auslesen der Daten verwendet wird, ist so aufgebaut, dass die Abfrage mittels \emph{White List Input Validation} durchgeführt wird. Das bedeutet, dass die eingegebene URL mittels \emph{switch case} mit allen möglichen gültigen Abfragen verglichen wird und dann entsprechend weiterbehandelt, wie in Listing\,\ref{lst:switchCase} auf Seite \pageref{lst:switchCase} dargestellt. Die Möglichkeit einer SQL-Injection ist auf diese Weise ausgeschlossen. Lediglich bei der Warteschlange der Webcam und beim Benachrichtigungsservice werden Daten direkt in die Datenbank geschrieben beziehungsweise daraus gelesen. In diesem Fall werden die SQL-Abfragen mittels \emph{Prepared Statements} durchgeführt und die Benutzereingaben \emph{escaped}, wie in Listing\,\ref{lst:maskierung} dargestellt.
 
+% https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet
 
 \subsubsection{Einschränkung der Datenbankrechte}
 Hostpoint bietet die Möglichkeit mehrere Datenbankbenutzer anzulegen. Diese können mit unterschiedlichen Rechten ausgestattet werden wie in Abbildung\,\ref{img:dbnutzer} ersichtlich.
@@ -392,12 +364,6 @@ Um die Datenbank gegen einen allfälligen Datenverlust zu sichern, ist ein regel
 \end{figure}
 
 
-%% ############################################################################
-%% Unterkapitel
-%% ############################################################################
-\subsection{Datenarchivierung und Speicherbedarf}
-Pro Tag fallen bei der Wetterstation knapp 60'000 Datenpunkte an, die in der Datenbank gespeichert werden. Pro Jahr sind es über 21\,Millionen. Es stellte sich anfangs die Frage, ob die historischen Daten ausgedünnt werden sollen um Speicherplatz zu sparen. Stand Anfang August 2018, nach 3 Jahren Betrieb, waren jedoch nur 1.9\% der zur Verfügung stehenden 50\,GB belegt. Der Speicherplatz reicht somit, bei gleichbleibender Benützung, noch für die nächsten 50 Jahre. Es besteht somit keine Notwendigkeit die Daten auszudünnen d.h. es ist nicht vorgesehen irgendwelche Messdaten zu löschen. Die Zusammenfassung von Daten in die historische Datenbank wie in Kapitel\,\ref{kap:aggregation} beschrieben dient lediglich dazu die Performance der Anzeige der historischen Daten auf der Webseite zu verbessern.
-
 
 %% ############################################################################
 %% Unterkapitel
@@ -416,6 +382,9 @@ Die API und die Cronjobs laufen grundsätzlich selbständig. Trotzdem kann es vo
 \noindent
 Die aufgezählten Funktionen werden alle bis auf das Einlesen der Wettertransmitter Daten über einen Cronjob ausgeführt. Hostpoint bietet die Möglichkeit, dass sämtliche Textausgaben (print-Funktion) eines Cronjobs an eine bestimmte Mailadresse gesendet werden (Listing \ref{lst:printfunction}). Der Service wurde so konfiguriert, dass er die Fehlermeldungen an die Mailadresse \emph{cronjob@wetter-arbon.ch} sendet. Der Posteingang kann dann an die entsprechenden Personen weitergeleitet werden. Kann zum Beispiel ein Messwert des Web-IO nicht abgerufen werden, wird eine Meldung wie in Listing\,\ref{lst:printfunction} erstellt.
 
+\noindent
+Da das Auslesen des Kombi-Wettertransmitters nicht mittels Cronjob durchgeführt wird gibt es die Möglichkeit des Exeption-Handlings nicht. Als Alternative wird aber beim Erstellen der historischen Daten kontrolliert, ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, kann davon ausgegangen werden, dass Weather Display ein Problem hat.
+
 \vspace{3mm}
 \begin{lstlisting}[label=lst:printfunction,caption=Beispiel eines Exeption-Handlings, language=Python, style=py]
 except Exception as e:
@@ -424,5 +393,9 @@ except Exception as e:
 \end{lstlisting}
 \vspace{3mm}
 
-\noindent
-Da das Auslesen des Kombi-Wettertransmitters nicht mittels Cronjob durchgeführt wird gibt es die Möglichkeit des Exeption-Handlings nicht. Als Alternative wird aber beim Erstellen der historischen Daten kontrolliert, ob alle 60 Einträge der letzen Stunde vorhanden sind. Ist dies nicht der Fall, kann davon ausgegangen werden, dass Weather Display ein Problem hat.
+
+%% #########################################################################
+%% Unterkapitel
+%% ############################################################################
+\subsection{Datenarchivierung und Speicherbedarf}
+Pro Tag fallen bei der Wetterstation knapp 60'000 Datenpunkte an, die in der Datenbank gespeichert werden. Pro Jahr sind es über 21\,Millionen. Es stellte sich anfangs die Frage, ob die historischen Daten ausgedünnt werden sollen um Speicherplatz zu sparen. Stand Anfang August 2018, nach 3 Jahren Betrieb, waren jedoch nur 1.9\% der zur Verfügung stehenden 50\,GB belegt. Der Speicherplatz reicht somit, bei gleichbleibender Benützung, noch für die nächsten 50 Jahre. Es besteht somit keine Notwendigkeit die Daten auszudünnen d.h. es ist nicht vorgesehen irgendwelche Messdaten zu löschen. Die Zusammenfassung von Daten in die historische Datenbank wie in Kapitel\,\ref{kap:aggregation} beschrieben dient lediglich dazu die Performance der Anzeige der historischen Daten auf der Webseite zu verbessern.
