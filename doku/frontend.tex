@@ -1,5 +1,5 @@
 \section{Grafische Benutzeroberfläche (Website)}
-Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht\cite{BilWie2018MUIu}). Die neue (2014) HTML5-Spezifikation ermöglicht, dynamische Grafiken zu erzeugen, die nativ, das heisst ohne Plugins und von allen Web-Browsern dargestellt werden können. In den folgenden Kapitel wird aufgezeigt, wie die neue Webseite konzipiert wurde und welche Software-Bibliotheken eingesetzt wurden.
+Die bisherige Anzeige der Wetterdaten basiert auf Adobe Flash, was nicht von allen Browsern unterstützt wird (siehe Fachmodul-Bericht~\cite{BilWie2018MUIu}). Die neue (2014) HTML5-Spezifikation ermöglicht, dynamische Grafiken zu erzeugen, die nativ, das heisst ohne Plugins und von allen Web-Browsern dargestellt werden können. In den folgenden Kapiteln wird aufgezeigt, wie die neue Webseite konzipiert wurde und welche Software-Bibliotheken eingesetzt wurden.
 
 
 %% ############################################################################
@@ -43,11 +43,11 @@ Wie im Abschnitt\,\ref{subsec:googleAnalytics} aufgezeigt, werden bereits heute 
 
 
 \noindent
-Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann je nach Bildschirmgrösse verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend für das responsive Grid-Design, welches im Abschnitt \ref{subsec:responsiveFactors} erklärt wird.
+Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann je nach Bildschirmgrösse verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip, um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend für das responsive Grid-Design, welches im Abschnitt \ref{subsec:responsiveFactors} erklärt wird.
 
 
 \subsubsection{Auswahl der CSS-Bibliothek}
-Sämtliche Artefakte sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche wurde beschlossen eine CSS-Bibliothek zu verwenden. Es wurden drei verschieden CSS-Bibliotheken evaluiert und mittels Nutzwertanalyse bewertet. Das Resultat ist in Tabelle\,\ref{table:css-bibliothek} ersichtlich. Die Erklärungen dazu sind im Anschluss daran aufgelistet.
+Sämtliche Artefakte sollen möglichst einfach gehalten werden. Für die Gestaltung der Benutzeroberfläche wurde beschlossen, eine CSS-Bibliothek zu verwenden. Es wurden drei verschiedene CSS-Bibliotheken evaluiert und mittels Nutzwertanalyse bewertet. Das Resultat ist in Tabelle\,\ref{table:css-bibliothek} ersichtlich. Die Erklärungen dazu sind im Anschluss daran aufgelistet.
 
 % Nutzwertanalyse
 \begin{table}[htbp!]
@@ -120,10 +120,10 @@ Sämtliche Artefakte sollen möglichst einfach gehalten werden. Für die Gestalt
 \paragraph*{Kriterien für die Auswahl}
 Folgende Kriterien für die Auswahl der CSS-Bibliothek wurden berücksichtigt:
 \begin{itemize*}
-\item Grid Design: Unterstützt die Bibliothek das Grid Design und mehrere Displaygrössen um responsive Webseiten zu gestalten?
+\item Grid Design: Unterstützt die Bibliothek das Grid Design und mehrere Displaygrössen, um responsive Webseiten zu gestalten?
 \item Card Design: Unterstützt die Bibliothek das Card Design?
 \item Dokumentation und Usabilty: Sind die Funktionen zentral und verständlich dokumentiert und ist eine Suchfunktion vorhanden?
-\item Footprint: Die CSS-Bibliothek wird auf Mobilgeräte heruntergeladen und sollte deshalb nicht all zu gross sein
+\item Footprint: Die CSS-Bibliothek wird auf Mobilgeräte heruntergeladen und sollte deshalb nicht allzu gross sein
 \item Funktionsumfang: Sind sämtliche benötigten Funktionen vorhanden oder müssen Zusatzbibliotheken eingebunden werden?
 \end{itemize*}
 
@@ -131,7 +131,7 @@ Folgende Kriterien für die Auswahl der CSS-Bibliothek wurden berücksichtigt:
 \paragraph*{Gewichtung der Kriterien}
 Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (sehr wichtig). Für die Auswahl der CSS-Bibliothek wurde folgende Gewichtung vorgenommen:
 \begin{itemize*}
-\item 4 Grid Design: nötig zum Erstellen von modernen responsive Webseiten
+\item 4 Grid Design: nötig zum Erstellen von modernen responsiven Webseiten
 \item 3 Card Design: erhöht die Wahrnehmung der Zusammengehörigkeit
 \item 3 Dokumentation: vereinfacht Erstellung und Anpassung
 \item 2 Footprint: Bandbreite ist heutzutage nicht mehr so kritisch
@@ -151,7 +151,7 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 \item Card Design
   \begin{enumerate*}
   \item keine Unterstützung
-  \item keine Card Design, aber ähnliches Prinzip
+  \item kein Card Design, aber ähnliches Prinzip
   \item volle Unterstützung
   \end{enumerate*}
 \item Dokumentation und Usabilty
@@ -179,9 +179,9 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 Als Sieger stellt sich die W3.css-Bibliothek heraus, da sie mit Ausnahme der Beschränkung auf 3\,Displaygrössen alle Kriterien vollständig erfüllt.
 
 
-\subsubsection{Responsive Webesign}
+\subsubsection{Responsive Webdesign}
 \label{subsec:responsiveFactors}
-Beim \emph{Responsive Webdesign} passt sich die Benutzeroberfläche automatisch der Bildschirmgrösse des Endgeräts an. Die Idee des Responsive Webdesigns wurde 2010 von Ethan Marcotte in einem Artikel des Magazins \emph{A List Apart}~\cite{EthMarRWD} veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen wollte. Marcotte schreibt von drei Faktoren, die ein responsive Webdesign voraussetzt: \emph{fluid grids}, \emph{flexible images} und \emph{media queries}. Fluid grids bedeutet, dass sich die Anordnung der Elemente dynamisch der Bildschirmgrösse anpasst. Flexible images haben keine feste Grösse sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus und die media queries sind die technische Basis. Im Folgenden wird das Konzept der fluid grids genauer erklärt.
+Beim \emph{Responsive Webdesign} passt sich die Benutzeroberfläche automatisch der Bildschirmgrösse des Endgeräts an. Die Idee des Responsive Webdesigns wurde 2010 von Ethan Marcotte in einem Artikel des Magazins \emph{A List Apart}~\cite{EthMarRWD} veröffentlicht. Hintergrund war, dass man nicht für jedes neue Gerät eine eigene Webseite erstellen wollte. Marcotte schreibt von drei Faktoren, die ein responsive Webdesign voraussetzt: \emph{fluid grids}, \emph{flexible images} und \emph{media queries}. Fluid grids bedeutet, dass sich die Anordnung der Elemente dynamisch der Bildschirmgrösse anpasst. Flexible images haben keine feste Grösse, sondern nutzen den ihnen zu Verfügung stehenden Platz optimal aus und die media queries sind die technische Basis. Im Folgenden wird das Konzept der fluid grids genauer erklärt.
 
 \begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/kacheln2}}
@@ -191,7 +191,7 @@ Beim \emph{Responsive Webdesign} passt sich die Benutzeroberfläche automatisch 
 \end{figure}
 
 \noindent
-Das Grid-System vereinfacht das Erstellen von responsive Webseiten, indem es den Bildschirm beziehungsweise den zur Verfügung stehenden Platz unabhängig von dessen Grösse in mehrere gleich breite Spalten einteilt (siehe orange Markierung in Abbildung\,\ref{img:kacheln2}). Die Anzahl Spalten ist frei wählbar bzw. abhängig von der gewählten CSS-Bibliothek (bei w3.css sind es 12 Spalten). Über eine media query fragt die Webseite beziehungsweise der Browser die Grösse des Bildschirms in Pixel ab und bestimmt dann, wie viele Spalten breit ein Element sein soll (grüne Markierung in Abbildung\,\ref{img:kacheln2}). Die gleiche Kachel ist also auf einem grossen Bildschirm  \nicefrac{2}{12} breit und auf einem kleinen Bildschirm \nicefrac{6}{12}. Unter \emph{w3.css} sind drei Bildschirmgrössen vorgesehen (small, medium und large). Die Grenzen sind folgendermassen festgelegt:
+Das Grid-System vereinfacht das Erstellen von responsiven Webseiten, indem es den Bildschirm beziehungsweise den zur Verfügung stehenden Platz unabhängig von dessen Grösse in mehrere gleich breite Spalten einteilt (siehe orange Markierung in Abbildung\,\ref{img:kacheln2}). Die Anzahl Spalten ist frei wählbar bzw. abhängig von der gewählten CSS-Bibliothek (bei w3.css sind es 12 Spalten). Über eine media query fragt die Webseite beziehungsweise der Browser die Grösse des Bildschirms in Pixel ab und bestimmt dann, wie viele Spalten breit ein Element sein soll (grüne Markierung in Abbildung\,\ref{img:kacheln2}). Die gleiche Kachel ist also auf einem grossen Bildschirm  \nicefrac{2}{12} breit und auf einem kleinen Bildschirm \nicefrac{6}{12}. Unter \emph{w3.css} sind drei Bildschirmgrössen vorgesehen (small, medium und large). Die Grenzen sind folgendermassen festgelegt:
 
 \begin{description*}
   \item [Small:] s $\leq$ 600px (z.B. iPhone Hochformat)
@@ -203,7 +203,7 @@ Das Grid-System vereinfacht das Erstellen von responsive Webseiten, indem es den
 Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) jeweils ein bestimmtes Verhalten bei den drei Bildschirmgrössen vorgeschrieben werden. Die Kacheln mit den aktuellen Wetterdaten sind zum Beispiel auf grossen (large) Bildschirmen \nicefrac{2}{12}, auf mittleren Bildschirmen \nicefrac{3}{12} und auf kleinen Bildschirmen \nicefrac{6}{12} breit. Bei der Darstellung der Wetterdatenverläufe werden bei mittleren und grossen Bildschirmen zwei nebeneinander dargestellt (\nicefrac{6}{12}) und bei kleinen Bildschirmen alle untereinander (\nicefrac{12}{12} ), wie in Listing\,\ref{lst:kacheln} ersichtlich.
 
 \vspace{3mm}
-\begin{lstlisting}[label=lst:kacheln,caption=Konfiguration der Anzahl Kacheln abhähngig von der Bildschirmgrösse, language=HTML5, style=htmlcssjs]
+\begin{lstlisting}[label=lst:kacheln,caption=Konfiguration der Anzahl Kacheln abhängig von der Bildschirmgrösse, language=HTML5, style=htmlcssjs]
 <!-- Aktuelle Daten -->
 <div class="l2 m3 s6">...</div>
 <!-- Datenverlauf -->
@@ -215,7 +215,7 @@ Den Kacheln kann nun über die Klasse (z.B. l2 m3 s6) jeweils ein bestimmtes Ver
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Darstellung der aktuellen Wetterdaten}
-Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe einer Bibliothek erstellt werden. Damit die Grafiken optimal mit dem responsiven Webdesign zusammenspielen, müssen sie ein flexibles Layout aufweisen, das heisst ihre Grösse dem vorhanden Platz anpassen. Dies nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein, die Werte zu aktualisieren.
+Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe einer Bibliothek erstellt werden. Damit die Grafiken optimal mit dem responsiven Webdesign zusammenspielen, müssen sie ein flexibles Layout aufweisen, das heisst ihre Grösse dem vorhandenen Platz anpassen. Dies nicht nur beim Aufrufen der Seite, sondern auch beim Ändern der Fenstergrösse. Zudem muss es einfach möglich sein, die Werte zu aktualisieren.
 
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/gauges}}
@@ -225,10 +225,10 @@ Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe eine
 \end{figure}
 
 \noindent
-Die Anzeige sollte möglichst ein klares Design aufweisen aber trotzdem individuell anpassbar sein. Eine sehr einfache Javascript-Bibliothek, die diese Anforderungen erfüllt ist \emph{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine Javascript-Datei konfigurieren, sind im vektorbasierten svg-Format und dadurch von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}} Javascript-Bibliothek.
+Die Anzeige sollte möglichst ein klares Design aufweisen, aber trotzdem individuell anpassbar sein. Eine sehr einfache Javascript-Bibliothek, die diese Anforderungen erfüllt, ist \emph{JustGage}\footnote{ \url{http://justgage.com}}. Die Grafiken lassen sich über eine Javascript-Datei konfigurieren, sind im vektorbasierten svg-Format und dadurch von praktisch allen Browsern darstellbar. JustGage basiert auf der \textit{Raphaël}\footnote{ \url{http://dmitrybaranovskiy.github.io/raphael/}} Javascript-Bibliothek.
 
 \noindent
-Die Konfiguration eines Anzeigelements (Gauge) ist in Listing\,\ref{lst:gaugeJS} beispielhaft dargestellt. Jedes Elemente besitzt eine \emph{id} und einen Wert (\emph{value}) sowie optionale Angaben wie Skalaanfgangs- und Endwerte und Beschriftungszusätze.
+Die Konfiguration eines Anzeigelements (Gauge) ist in Listing\,\ref{lst:gaugeJS} beispielhaft dargestellt. Jedes Element besitzt eine \emph{id} und einen Wert (\emph{value}) sowie optionale Angaben wie Skalaanfangs- und Endwerte und Beschriftungszusätze.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:gaugeJS,caption=Konfiguration einer Gauge in Javascript, language=JavaScript, mathescape, style=htmlcssjs]
@@ -244,7 +244,7 @@ var temperature_gauge = new JustGage({
 \vspace{3mm}
 
 \noindent
-Um die Grafik anzuzeigen muss nur ein \emph{div} mit derselben \emph{id} auf der Webseite erstellt werden, wie in Listing \ref{lst:gaugeHTML} dargestellt.
+Um die Grafik anzuzeigen, muss nur ein \emph{div} mit derselben \emph{id} auf der Webseite erstellt werden, wie in Listing \ref{lst:gaugeHTML} dargestellt.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:gaugeHTML,caption=Container für die Gauge auf der Webseite, language=HTML5, style=htmlcssjs]
@@ -258,7 +258,7 @@ Um die Grafik anzuzeigen muss nur ein \emph{div} mit derselben \emph{id} auf der
 
 
 \noindent
-Messwerte ohne Relation zu einem Maximalwert, sind nicht als Gauge, sondern als einfacher Text dargestellt (siehe Abbildung\,\ref{img:icons}). Die Messgrösse wird dabei einerseits im Titel der Kachel angegeben, und andererseits grafisch als Symbol neben dem Messwert. Dazu wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \emph{Weather Icons} von Erik Flowers\footnote{ \url{http://erikflowers.github.io/weather-icons/}} .
+Messwerte ohne Relation zu einem Maximalwert sind nicht als Gauge, sondern als einfacher Text dargestellt (siehe Abbildung\,\ref{img:icons}). Die Messgrösse wird dabei einerseits im Titel der Kachel angegeben, und andererseits grafisch als Symbol neben dem Messwert. Dazu wurde eine Icon-Bibliothek gewählt, die möglichst alle benötigen Icons enthält, kostenlos ist, und deren Grafiken im svg-Format vorliegen. Als geeignet schienen die \emph{Weather Icons} von Erik Flowers\footnote{ \url{http://erikflowers.github.io/weather-icons/}} .
 
 % Die Messwerte sind einerseits über den Titel beschrieben, sie enthalten aber zusätzlich ein passendes Icons.
 
@@ -276,7 +276,7 @@ Messwerte ohne Relation zu einem Maximalwert, sind nicht als Gauge, sondern als 
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Darstellung der Wetterdatenverläufe}
-Die Wetterverlaufsdarstellung liefert einen Überblick über die Wettertendenz der letzten beiden Tage, wie beispielhaft in Abbildung\,\ref{img:charts} dargestellt ist. Im Folgenden wird erläutert, welche Javascript-Bibliothek dafür ausgewählt wurde und wie die unterschiedlichen Messverläufe dargestellt werden.
+Die Wetterverlaufsdarstellung liefert einen Überblick über das Wettergeschehen der letzten beiden Tage, wie beispielhaft in Abbildung\,\ref{img:charts} dargestellt ist. Im Folgenden wird erläutert, welche Javascript-Bibliothek dafür ausgewählt wurde und wie die unterschiedlichen Messverläufe dargestellt werden.
 
 % Die Samplerate beträgt 1h, d.h. die Daten werden aus der Tabelle der historischen Werte abgerufen.
 % in diesem Kapitel: Auswahl JS-Bibliothek, y-Achse, Windrichtung, Windvergleich
@@ -290,7 +290,7 @@ Die Wetterverlaufsdarstellung liefert einen Überblick über die Wettertendenz d
 
 
 \subsubsection{Auswahl der Javascript-Bibliothek}
-Für die Darstellung der Messwertverläufe wurde ebenfalls auf eine Bibliothek zurückgegriffen. Als erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die drei Javascript-Bibliotheken: \emph{chartist}, \emph{Fusion Charts} und \emph{Google Charts}. \emph{D3} ist zwar \emph{DIE} Javascript-Bibliothek wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, weshalb sie nicht berücksichtigt wurde. Die drei potentiellen Javascript-Bibliotheken wurden mittels Nutzwertanalyse einander gegenübergestellt. Das Resultat ist in Tabelle\,\ref{table:js-framework} aufgeführt. Die Auswahl und Gewichtung der Kriterien ist im Anschluss daran erklärt.
+Für die Darstellung der Messwertverläufe wurde ebenfalls auf eine Bibliothek zurückgegriffen. Als Erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die drei Javascript-Bibliotheken: \emph{chartist}, \emph{Fusion Charts} und \emph{Google Charts}. \emph{D3} ist zwar \emph{DIE} Javascript-Bibliothek, wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, weshalb sie nicht berücksichtigt wurde. Die drei potentiellen Javascript-Bibliotheken wurden mittels Nutzwertanalyse einander gegenübergestellt. Das Resultat ist in Tabelle\,\ref{table:js-framework} aufgeführt. Die Auswahl und Gewichtung der Kriterien ist im Anschluss daran erklärt.
 
 % Nutzwertanalyse
 \vspace{3mm}
@@ -378,8 +378,8 @@ Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (se
 \item 1 Footprint: Heutzutage ist die Dateigrösse nicht mehr so entscheidend
 \item 2 Barrierefrei: Ist bei Grafiken nur bedingt möglich
 \item 4 Anpassbarkeit: Gewährleistet, dass die Daten wie gewünscht angezeigt werden können
-\item 3 Dokumentation: vereinfacht Erstellung und Anpassung
-\item 4 Kosten: muss erschwinglich sein
+\item 3 Dokumentation: Vereinfacht Erstellung und Anpassung
+\item 4 Kosten: Muss erschwinglich sein
 \item 4 Funktionsumfang: Möglichst alle Diagrammtypen sollen verfügbar sein
 \end{itemize*}
 
@@ -447,10 +447,8 @@ high: 30,
 new Chartist.Bar('#rain-chart', Rain, options);
 \end{lstlisting}
 
-
-
 \subsubsection{Anzeige des Windrichtungsverlaufs}
-Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial, da sie von 0 bis 360 Grad geht und ohne Unterbruch wieder zu 0 Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet, wie in Abbildung\,\ref{img:windrichtung}, links dargestellt. Es konnte jedoch keine Bibliothek gefunden werden, das diese Darstellungsart als Template zur Verfügung stellt. Die Anzeige der Windrichtung wird deshalb über ein Punktdiagramm, wie in Abbildung\,\ref{img:windrichtung}, rechts dargestellt, verwendet. Auf eine Eigenentwicklung wurde bewusst verzichtet um die Webseite möglichst benutzerfreundlich und wartungsarm zu belassen.
+Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial, da sie von 0 bis 360\,Grad geht und ohne Unterbruch wieder zu 0\,Grad. In der Praxis wird dazu häufig die Darstellung von Pfeilen verwendet, wie in Abbildung\,\ref{img:windrichtung} links dargestellt. Es konnte jedoch keine Bibliothek gefunden werden, die diese Darstellungsart als Template zur Verfügung stellt. Für die Anzeige der Windrichtung wird deshalb ein Punktdiagramm, wie in Abbildung\,\ref{img:windrichtung} rechts dargestellt, verwendet. Auf eine Eigenentwicklung wurde bewusst verzichtet, um die Webseite möglichst benutzerfreundlich und wartungsarm zu belassen.
 
 \begin{figure}[htbp!]
 	\centering
@@ -459,17 +457,15 @@ Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial, da sie von 0 bis 3
 	\label{img:windrichtung}
 \end{figure}
 
-\subsubsection{Vergleich Prognose/Ist Windgeschwindigkeit}
-Insbesondere bei Seglern sind Windprognosedienste sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist jedoch rückblicken nicht erkennbar, wie gut die Prognose war. Genau dies ist aber eine spannende Frage, weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
-
+\subsubsection{Vergleich Prognose/Ist-Windgeschwindigkeit}
+Insbesondere bei Seglern sind Windprognosedienste sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist jedoch rückblickend nicht erkennbar, wie gut die Prognose war. Genau dies ist aber eine spannende Frage, weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
 \begin{itemize*}
 \item \href{https://openweathermap.org/city/2661731}{Openweathermap}
 \item \href{https://www.windfinder.com/forecast/arbon}{Windfinder}
 \end{itemize*}
 
 \noindent
-Opeanwathermap ist einer der wenigen Anbieter, welcher eine kostenlose Web-API zur Verfügung stellt und Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API sondern lediglich ein Widget an (siehe Abbildung\,\ref{img:windfinder}, links). Dies Vorhersagedaten müssen aus dem Windfinder-Widget, mittels Web-Scrapper extrahiert werden, analog Listing\,\ref{lst:kttgCrawler} auf Seite\,\pageref{lst:kttgCrawler}.
-
+Openweathermap ist einer der wenigen Anbieter, welcher eine kostenlose Web-API zur Verfügung stellt und Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API, sondern lediglich ein Widget an (siehe Abbildung\,\ref{img:windfinder} links). Dies Vorhersagedaten müssen aus dem Windfinder-Widget mittels Web-Scrapper extrahiert werden, analog Listing\,\ref{lst:kttgCrawler} auf Seite\,\pageref{lst:kttgCrawler}.
 
 \begin{figure}[h!]
 	\centering
@@ -478,7 +474,8 @@ Opeanwathermap ist einer der wenigen Anbieter, welcher eine kostenlose Web-API z
 	\label{img:windfinder}
 \end{figure}
 
-Da die Vorhersagedaten von nur in die Zukunft angezeigt werden, d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich, müssen die Vorhersagedaten abgegriffen und gespeichert werden. Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten, auch wenn die Wetterstation 15 Knoten mass. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weiterverfolgt. Das Diagramm des Windvergleichs ist in Abbildung\,\ref{img:windfinder} dargestellt (Vorhersage: blau; Messwert: rot).
+
+Da die Vorhersagedaten nur in die Zukunft angezeigt werden, d.h. wie die Vorhersage von gestern war ist nicht mehr ersichtlich, müssen die Vorhersagedaten abgegriffen und gespeichert werden. Nach den ersten Auswertungen wurde festgestellt, dass die Wettervorhersagedaten von Openweathermap unbrauchbar waren. Sie lagen permanent zwischen 0 und 1 Knoten, auch wenn die Wetterstation 15 Knoten mass. Die Vorhersage von Openweathermap wurde deshalb nicht mehr weiterverfolgt. Das Diagramm des Windvergleichs ist in Abbildung\,\ref{img:windfinder} dargestellt (Vorhersage: blau; Messwert: rot).
 
 
 
@@ -497,12 +494,12 @@ Da die Vorhersagedaten von nur in die Zukunft angezeigt werden, d.h. wie die Vor
 \subsection{Anzeige der aktuellen Sturmwarn-Situation}
 \label{subsec:sturmwarnung}
 % was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
-Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \emph{Starkwindwarnung} und \emph{Sturmwarnung}. Erstere weist auf auf starke Windböen zwischen 25\,Knoten und 33\,Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert~\cite{BSO1976}.
+Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \emph{Starkwindwarnung} und \emph{Sturmwarnung}. Erstere weist auf starke Windböen zwischen 25\,Knoten und 33\,Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert~\cite{BSO1976}.
 
 \begin{figure}[htbp!]
 	\centering
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/sturm2}}
-	\caption{Warleuchten des Sturmwarndiensts auf dem Bodensee}
+	\caption{Warnleuchten des Sturmwarndiensts auf dem Bodensee}
 	\label{img:sturm2}
 \end{figure}
 
@@ -510,7 +507,7 @@ Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufko
 
 \subsubsection{Eingeschränkte Bezugsquellen}
 % Problem: Kostenpflichtige Informaiton
-Den aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkomatible Quellen: Das eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und das andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit}, links. Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informationen von ihrer Website abzugreifen. Es wurde deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen (siehe Mail im Anhang\,\ref{anhang:email}) . Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
+Der aktuellen Status der Sturmwarnung kann sowohl beim Deutschen Wetterdienst, als auch bei Meteoschweiz kostenpflichtig bezogen werden (ca. 1300CHF/Jahr). Als kostenlose Alternative gibt es nur zwei browserkompatible Quellen: Die eine ist die Warnseite\footnote{ \url{https://www.meteoschweiz.admin.ch/home.html?tab=alarm}}  von Meteoschweiz und die andere die Anzeige auf der Webseite\footnote{ \url{http://www.kttg.ch/kapo/htm/stwarn.shtml}} der Kantonspolizei Thurgau, siehe Abbildung \ref{img:sturmZeit} links. Eine kostenlose API steht nicht zur Verfügung. Meteoschweiz verbietet es zudem, Informationen von ihrer Website abzugreifen. Es wurde deshalb beim Amt für Informatik des Kantons Thurgau, welches die Seite der Kantonspolizei betreut, die Erlaubnis eingeholt, die Sturmwarndaten ihrer Webseite abgreifen zu dürfen (siehe Mail im Anhang\,\ref{anhang:email}) . Beim Vergleich der verschiedenen Quellen wurde festgestellt, dass die Warnleuchten jeweils mit einigen Minuten Verspätung gegenüber der Meldung von Meteoschweiz eingeschaltet werden, siehe Abbildung \ref{img:sturmZeit}. Da der Verzug nicht konstant ist, muss davon ausgegangen werden, dass die Warnleuchten manuell eingeschaltet werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -538,7 +535,7 @@ Es liegt nahe, auf Grund der eigenen Windmessdaten eine Sturmwarnung anzuzeigen 
 \end{quote}
 
 \noindent
- Die Sturmwarnung auf dem Bodensee gesetzliche Pflichten mit sich bringt, wurde entschieden nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen.
+ Da die Sturmwarnung auf dem Bodensee gesetzliche Pflichten mit sich bringt, wurde entschieden, nur die offiziellen Daten anzuzeigen und keine anderweitigen Sturmwarnungen.
 
 % Meteoschweiz bietet zudem auf ihrer  \href{https://www.meteoschweiz.admin.ch/home/service-und-publikationen/beratung-und-service/meteoschweiz-app.html}{MeteoSchweiz-App} die Möglichkeit von Push-Nachrichten bei Windwarnungen.
 
@@ -572,7 +569,7 @@ Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
 \subsubsection{Historische Daten der neuen Wetterstation}
 \label{kap:Tableau}
- \href{https://public.tableau.com/de-de/s/}{\emph{Tableau Public}} ist ein Daten-Visualisierungsprogramm, welches es ermöglicht auf einfache Weise Diagramme zu erstellen, welche interaktiv vom Benutzer filterbar sind. Der Benutzer kann zum Beispiel den Betrachtungszeitraum selbst wählen, worauf sich die Grafiken automatisch der Auswahl anpassen.
+ \href{https://public.tableau.com/de-de/s/}{\emph{Tableau Public}} ist ein Daten-Visualisierungsprogramm, welches es ermöglicht, auf einfache Weise Diagramme zu erstellen, welche interaktiv vom Benutzer filterbar sind. Der Benutzer kann zum Beispiel den Betrachtungszeitraum selbst wählen, worauf sich die Grafiken automatisch der Auswahl anpassen.
 
 \begin{figure}[h!]
 	\centering
@@ -583,10 +580,10 @@ Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 
 
 \noindent
-\emph{Tableau Public} ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
+\emph{Tableau Public} ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können, wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit, Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
 
 %Nachteil 2: Nicht responsive -> Workaround nötig
-Neben den vielen Vorteilen, hat Tableau Public auch ein paar Nachteile. Das Dashboard kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden. Eines für die Anzeige auf einem grossen Bildschirmen und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
+Neben den vielen Vorteilen hat Tableau Public auch ein paar Nachteile. Das Dashboard kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden. Eines für die Anzeige auf einem grossen Bildschirm und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anhand der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]
@@ -609,7 +606,7 @@ Ein weiterer Nachteil der Public-Version von Tableau ist, dass sie keinen Live-Z
 
 
 \subsubsection{Historische Daten der alten Wetterstation}
-Um einen Überblick über die vorhanden Messdaten der alten Wetterstation zu erhalten wurden die Daten grafisch aufbereitet wie in Abbildung\,\ref{img:histAlt} dargestellt. Darin lassen sich diverse Messlücken erkennen wie zum Beispiel das komplette Jahr 2010 und 2012. Weiter sind zum Teil unplausible Grössenordnungen vorhanden wie zum Beispiel bei der Windgeschwindigkeit, wo die Werte im Bereich von 0 bis 1000 liegen und nicht klar ist, in welcher Einheit diese Daten vorliegen. Die Angabe der Wellenhöhe sind in einem sehr kleinen Bereich, sodass davon auszugehen ist, dass es sich um das Signalrauschen handelt und nicht um die effektiven Wellenhöhe. Alles in allem sind in diesen Daten nicht viel nützliche Informationen vorhanden. Es wurde deshalb beschlossen auf der Webseite nur die historischen Daten der neuen Wetterstation d.h. ab 2015 anzuzeigen. Alleine die Pegeldaten werden verwendet und die historische Pegeldatenbank integriert, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben.
+Um einen Überblick über die vorhandenen Messdaten der alten Wetterstation zu erhalten, wurden die Daten grafisch aufbereitet wie in Abbildung\,\ref{img:histAlt} dargestellt. Darin lassen sich diverse Messlücken erkennen wie zum Beispiel das komplette Jahr 2010 und 2012. Weiter sind zum Teil unplausible Grössenordnungen vorhanden wie zum Beispiel bei der Windgeschwindigkeit, wo die Werte im Bereich von 0 bis 1000 liegen und nicht klar ist, in welcher Einheit diese Daten vorliegen. Die Angaben der Wellenhöhe sind in einem sehr kleinen Bereich, sodass davon auszugehen ist, dass es sich um das Signalrauschen handelt und nicht um die effektiven Wellenhöhen. Alles in allem sind in diesen Daten nicht viele nützliche Informationen vorhanden. Es wurde deshalb beschlossen, auf der Webseite nur die historischen Daten der neuen Wetterstation d.h. ab 2015 anzuzeigen. Alleine die Pegeldaten werden verwendet und die historische Pegeldatenbank integriert, wie in Abschnitt \ref{subsec:pegelhistory} beschrieben.
 
 \begin{figure}[h!]
 	\centering
@@ -668,10 +665,10 @@ Damit die aktuellen Messwerte beim Aufbau der Seite zur Verfügung stehen, werde
 %% Unterkapitel
 %% ############################################################################
 \subsection{Barrierefreier Zugang}
-Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb möglichst für alle zugänglich sein. Sowohl die \emph{Web Content Accessibility Guidelines}\footnote{ \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/}} des W3C-Konsortiums, als auch die deutsche \emph{Barrierefreie-Informationstechnik-Verordnung}\footnote{ \url{https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html}} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \emph{Forrester Research Inc.} schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss Einschätzung des Verfassers des Buchs \emph{Interface Design}~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
+Die Wetterstation und ihre Webseite ist eine Dienstleistung der Stadt Arbon. Sie gehört der Bevölkerung und soll deshalb möglichst für alle zugänglich sein. Sowohl die \emph{Web Content Accessibility Guidelines}~\cite{w3cwcag} des W3C-Konsortiums, als auch die deutsche \emph{Barrierefreie-Informationstechnik-Verordnung}~\cite{BITVde} bieten diverse Inputs, wie die Bedienbarkeit und somit Zugänglichkeit einer Webseite verbesserte werden kann. Von einer verbesserten Zugänglichkeit profitieren nicht nur Menschen mit Einschränkungen. Es geht darum, die Webseite so zu gestalten, dass sie möglichst für alle Benutzergruppen zugänglich ist. Eine von Microsoft beauftragte Studie~\cite{ForresterResearch2004E:Abilities} der \emph{Forrester Research Inc.} schätzt, dass über 60 Prozent aller Computernutzer von Barrierefreiheit profitieren können und gemäss Einschätzung des Verfassers des Buchs \emph{Interface Design}~\cite{ThesmannStephan2016ID:U} wird Barrierefreiheit bald Standard sein.
 
 \noindent
-Die aktuellen \emph{Web Content Accessibility Guidelines}\footnote{\url{https://www.w3.org/TR/WCAG20/}} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
+Die aktuellen \emph{Web Content Accessibility Guidelines}~\cite{w3cwcag} fordern die Einhaltung von vier Designprinzipien, welche in gesamthaft zwölf Richtlinien genauer spezifiziert sind.
 
 \begin{itemize*}
 \item Designprinzip 1: wahrnehmbar
@@ -685,18 +682,19 @@ Aus den Richtlinien wurden diejenigen Anforderungen ausgewählt, die auf die Web
 
 \subsubsection{Wahrnehmbarkeit}
 % Richtlinie 1.1
-\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.1}} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige Javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung einen Alternativtext hinzuzufügen. Für die Icons, welche als \textit{img} gekennzeichnet sind, wurde das \textit{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.1}} fordert, dass für alle Nicht-Text-Inhalte eine Textalternative zur Verfügung steht. Auf der Webseite mit den aktuellen Messwerten gibt es drei Typen von Nicht-Text-Inhalten: Gauges, Icons und Graphen. Bei den Gauges und Graphen werden fertige Javascript-Bibliotheken verwendet. Diese stellen leider keine Möglichkeit zur Verfügung, einen Alternativtext hinzuzufügen. Für die Icons, welche als \emph{img} gekennzeichnet sind, wurde das \emph{alt}-Attribut ausgefüllt, wie in Listing \ref{lst:altImg} beispielhaft dargestellt.
 
 \begin{lstlisting}[label=lst:altImg,caption=Alternativtext für Icons, language=HTML5, style=htmlcssjs]
 <img src="img/wi-humidity.svg" alt="Icon eines Barometers">
 \end{lstlisting}
 
 \noindent
-Wie die verwendeten javascript-Bibliotheken bietet auch Tableau, mit welchem die interaktive Darstellung der historischen Daten erfolgt, keine Möglichkeit die Visualisierung als Text darzustellen. Das bedeutet, dass eine Reihe von Informationen auf dem gegenwärtigen technischen Stand noch nicht durch alternative Texte barrierefrei dargestellt werden können. \newline
+Wie die verwendeten javascript-Bibliotheken bietet auch Tableau, mit welchem die interaktive Darstellung der historischen Daten erfolgt, keine Möglichkeit, die Visualisierung als Text darzustellen. Das bedeutet, dass eine Reihe von Informationen auf dem gegenwärtigen technischen Stand noch nicht durch alternative Texte barrierefrei dargestellt werden können. \newline
 
 % Richtlinie 1.3
 \noindent
-\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.3}} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \textit{semantischem} Web. Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseits durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \textit{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\textit{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\textit{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
+\href{https://www.w3.org/Translations/WCAG20-de/#text-equiv}{\textbf{Richtlinie 1.3}} fordert, dass die Struktur d.h. die Zusammenhänge und die Bedeutung einer Webseite unabhängig der Formatierung erhalten bleiben. Man spricht hier auch von \emph{semantischem} Web. Auf der Webseite wurde eine hierarchische Struktur implementiert, siehe Abbildung \ref{img:semWeb}. Die Hierarchiestufe wird einerseits erkennbar durch die Stufe der Überschriften (h1...h3) und andererseits durch die Bezeichnung der verschiedenen Inhaltsblöcke. Auf der Webseite sind zwei Hauptblöcke erkennbar, sogenannte \emph{Sektionen}. Eine Sektion beinhaltet die aktuellen Messwerte und die andere die Messdatenverläufe. Eine \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-section-element}{\emph{Sektion}} ist eine thematische Gruppierung von Elementen. Innerhalb der Sektion gibt es mehrere \href{https://www.w3.org/TR/2011/WD-html5-20110525/sections.html#the-article-element}{\emph{Artikel}}, welche einen unabhängigen Informationsblock darstellen.
+\newpage
 
 \begin{figure}[h!]
 	\centering
@@ -712,13 +710,13 @@ Wie die verwendeten javascript-Bibliotheken bietet auch Tableau, mit welchem die
 
 
 \subsubsection{Bedienbarkeit}
-\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{\textbf{Richtlinie 2.1}} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und dasa die Tastaturfokusanzeige sichtbar ist.
-Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtiungsservice (siehe Kapitel\,\ref{notifications}) relevant. Das Eingabeformular ist problemlos mittels Tastatur bedienbar.\newline
+\href{https://www.w3.org/Translations/WCAG20-de/#keyboard-operation}{\textbf{Richtlinie 2.1}} fordert, dass alle Funktionen über eine Tastaturschnittstelle bedienbar sind und dass die Tastaturfokusanzeige sichtbar ist.
+Da es sich bei der Webseite der Wetterstation primär um eine Anzeige handelt, ist dieses Anforderung nur für das Eingabeformular des Benachrichtigungsservice (siehe Kapitel\,\ref{notifications}) relevant. Das Eingabeformular ist problemlos mittels Tastatur bedienbar.\newline
 
 \noindent
 \href{https://www.w3.org/Translations/WCAG20-de/#navigation-mechanisms}{\textbf{Richtlinie 2.4}} fordert, dass Webseiten einen zweckbeschreibenden Titel aufweisen und dass Zwischentitel den Inhalt und Zweck des entsprechenden Blocks beschreiben. Wie in Abbildung \ref{img:semWeb} dargestellt, besitzt die Webseite sowohl einen Seitentitel, als auch Zwischentitel.
 
-
+\newpage
 \subsubsection{Verständlichkeit}
 \href{https://www.w3.org/Translations/WCAG20-de/#minimize-error}{\textbf{Richtlinie 3.3}} fordert, dass Eingabefehler automatisch erkannt und dem Benutzer angezeigt werden. Zudem sind Korrekturvorschläge anzuzeigen. Diese Anforderung betrifft insbesondere das Formular des Benachrichtigungsservices, welches in Kapitel\,\ref{notifications} beschrieben wird. Diese Anforderung wird erfüllt, wie in Abbildung \ref{img:notificationFE} links auf Seite \pageref{img:notificationFE} dargestellt.
 

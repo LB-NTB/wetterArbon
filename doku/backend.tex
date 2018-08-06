@@ -18,7 +18,7 @@ Die einzelnen Daten werden unterschiedlich erfasst, wobei mit Ausnahme der Messw
 \subsubsection{Erfassung der Messdaten des Kombi-Wettertransmitters}
 Die Daten des Kombi-Wettertransmitters werden weiterhin von WeatherDisplay über eine virtuelle serielle Schnittstelle abgerufen, aufbereitet und im Minutentakt in die Datenbank gespeichert. Kann ein Datenbankeintrag aus irgendwelchen Gründen nicht erstellt werden, wird dies, wie später im Kapitel\,\ref{kap:Funktionsüberwachung} beschrieben, gemeldet. Weiter erzeugt Weather Display mehrere Text Files, welche unter anderem für die Aussenanzeige (Laufschrift am Hafengebäude) benötigt werden. Die Aussenanzeige ist aber nicht Bestandteil dieser Arbeit.
 
-\subsubsection{Einlesen von Pegel-, Strahlungs, und Wassertemperaturmesswerten}
+\subsubsection{Einlesen von Pegel-, Strahlungs-, und Wassertemperaturmesswerten}
 Strahlungs- und Pegelsensor sind an einem Web-IO angeschlossen (siehe Datenblatt im Anhang\,\ref{Spec_webio}), welches die analogen Werte (in Milliampere) per Web-Schnittstelle zur Verfügung stellt. Die Abfrage erfolgt einmal pro Minute durch ein Python-Skript, wie in Listing \ref{lst:webIo} dargestellt. Die Temperatursensoren (PT100-Elemente) werden ähnlich erfasst mit dem Unterschied, dass nicht der Widerstandswert sondern direkt Grad Celsius geliefert wird. Als Schnittstelle wird an Stelle des Web-IO ein Web-Thermograph eingesetzt (siehe Datenblatt im Anhang\,\ref{Spec_webthermograph}).
 
 \begin{lstlisting}[label=lst:webIo,caption=Python-Script zur Web-Abfrage des Pegel-Messwerts, language=python, style=py]
