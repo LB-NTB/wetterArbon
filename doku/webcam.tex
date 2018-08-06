@@ -6,7 +6,6 @@ Bei der Webcam\footnote{\url{https://dev.wetter-arbon.ch/webcam}} der Wetterstat
 %% ############################################################################
 \subsection{Grafische Benutzeroberfläche der Warteschlange}
 Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq  drückt. Ist die Warteschlange leer erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Steuerungszeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
-\Diskussionspunkt{Warum 40 Sekunden?} \newline
 
 
 \begin{figure}[htbp!]
@@ -66,10 +65,3 @@ $(#webcam_up.on('click', function() {
 \vspace{3mm}
 
 Das Löschen des Datenbankeintrags erfolgt automatisch nach 10 Minuten. Der Prozess wird direkt mit dem Eintragen in die Warteschlange ausgelöst. So wird sichergestellt, dass auch wenn ein Benutzer das Fenster, vor ablaufen der Warte- bzw. der Bedienzeit, schliesst der Eintrag gelöscht wird.
- 
-
-
-
-\begin{itemize}
-\item \Diskussionspunkt{Was wird gegen SQL-Injektion im Feld SID unternommen? Es ist keine escape-Funktion vorhanden }
-\end{itemize}
