@@ -78,7 +78,7 @@ Um die Datenbankabfrage trotzdem möglichst einfach zu gestalten, wurde eine \em
 %% Unterkapitel
 %% ############################################################################
 \subsection{Datenspeicherung}
-Für die Datenspeicherung stellt Hostpoint, der Webhosting-Provider der Wetterstation, eine Datenbank des Typs MariaDB Version 10.1 mit dem Administrationstool phpMyAdmin zur Verfügung. MariaDB ist eine relationales Open-Source-Datenbankverwaltungssystem und basiert auf MySQL. Die Datenbank der Wetterstation wurde komplett neu aufgebaut. Im Folgenden werde die einzelnen Tabellen und deren Struktur erklärt.
+Für die Datenspeicherung stellt Hostpoint, der Webhosting-Provider der Wetterstation, eine Datenbank des Typs MariaDB Version 10.1 mit dem Administrationstool phpMyAdmin zur Verfügung. MariaDB ist eine relationales Open Source Datenbankverwaltungssystem und basiert auf MySQL. Die Datenbank der Wetterstation wurde komplett neu aufgebaut. Im Folgenden werde die einzelnen Tabellen und deren Struktur erklärt.
 
 %Für die Umstrukturierung wurde von der Methodik aus dem Artikel Grundlagen und Entwurf \cite{Datenbanken:GrundlagenUndEntwurf:VeikkoKrypczyk} gebrauch gemacht.
 %Wie in Introduction to relational Databases \cite{IntroductionToRelationalDatabases:MariaDB} beschrieben wird,
@@ -183,7 +183,7 @@ Das Script, welches die minütlichen Daten zu Stundendaten aggregiert, greift ni
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/leftjoin}}
 	\centering
-	\caption{Konzept der Datenaggregation}
+	\caption{Verwendung einer Datums-Mastertabelle für die Datenaggregation}
 	\label{img:leftjoin}
 \end{figure}
 

@@ -12,7 +12,7 @@ Zuerst wurden die Zugriffsdaten auf die bestehende Website mittels \emph{Google 
 \begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_mobile}}
 	\centering
-	\caption{Anteil der mobilen Zugriffe auf die Wetterwebseite}
+	\caption{Zugriffstatistik auf die Wetterwebseite, Anteil mobil in orange}
 	\label{img:google_mobile}
 \end{figure}
 
@@ -22,7 +22,7 @@ Die Auswertung von Google Analytics, wie in Abbildung\,\ref{img:google_browser} 
 \begin{figure}[htb!]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/google_browser}}
-	\caption{Verwendete Browser und Beliebtheit der Seiten}
+	\caption{Zugriffstatistik auf die Webseiten, aufgeteilt nach Browser}
 	\label{img:google_browser}
 \end{figure}
 
@@ -31,8 +31,8 @@ Die Auswertung von Google Analytics, wie in Abbildung\,\ref{img:google_browser} 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
-\subsection{Konzeption der crossplattformfähigen Benutzeroberfläche}
-Wie im Abschnitt\,\ref{subsec:googleAnalytics} aufgezeigt, werden bereits heute 50\,\% bis 80\,\% der Website-Aufrufe von mobilen Geräten ausgeführt, Tendenz steigend. Es ist deshalb naheliegend, das mobile Design als Ausgangspunkt der Entwicklung zu verwenden. Diese Vorgehensweise nennt sich \emph{Mobile First}. Es ist ein Designkonzept, das von Luke Wroblewski 2009 das erste Mal vorgeschlagen wurde. Die \href{https://www.w3.org/TR/mobile-bp}{\emph{ Mobile Web Best Practices}} des \emph{W3C}\footnote{W3C: World Wide Web Consortium} empfiehlt zudem, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können. Dieser Grundsatz nennt sich \emph{One Web Design}.
+\subsection{Konzeption der multidevicefähigen Benutzeroberfläche}
+Wie im Abschnitt\,\ref{subsec:googleAnalytics} aufgezeigt, steigt der Anteil an Zugriffen von mobilen Geräten. Es ist deshalb naheliegend, das mobile Design als Ausgangspunkt der Entwicklung zu verwenden. Diese Vorgehensweise nennt sich \emph{Mobile First}. Es ist ein Designkonzept, das von Luke Wroblewski 2009 das erste Mal vorgeschlagen wurde~\cite{LuWrmf}. Die \href{https://www.w3.org/TR/mobile-bp}{\emph{ Mobile Web Best Practices}} des \emph{W3C}\footnote{W3C: World Wide Web Consortium} empfiehlt zudem, dass sämtliche Informationen, die in der Desktop-Version zur Verfügung stehen, auch von der mobilen Seite aufgerufen werden können. Dieser Grundsatz nennt sich \emph{One Web Design}.
 
 \begin{figure}[htb!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/scribbles}}
@@ -43,7 +43,7 @@ Wie im Abschnitt\,\ref{subsec:googleAnalytics} aufgezeigt, werden bereits heute 
 
 
 \noindent
-Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann je nach Bildschirmgrösse verschieden angeordnet werden. Dieses Kachel-Design ist eine gängiges Prinzip, um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend für das responsive Grid-Design, welches im Abschnitt \ref{subsec:responsiveFactors} erklärt wird.
+Beim Erstellen der ersten Designentwürfe (vgl. Abbildung \ref{img:scribbles}) zeigte sich, dass die einfachste Möglichkeit, die Daten auf allen Bildschirmgrössen darzustellen, darin besteht, die Informationen in kleine logische Blöcke zu unterteilen. Diese Blöcke können dann je nach Bildschirmgrösse verschieden angeordnet werden. Dieses Kachel-Design wird häufig verwendet, um das Gestaltungsgesetz der Zusammengehörigkeit umzusetzen und eignet sich hervorragend für das responsive Grid-Design, welches im Abschnitt \ref{subsec:responsiveFactors} erklärt wird.
 
 
 \subsubsection{Auswahl der CSS-Bibliothek}
@@ -220,7 +220,7 @@ Die Anzeigeelemente für die aktuellen Messwerte sollen ebenfalls mit Hilfe eine
 \begin{figure}[h!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/gauges}}
 	\centering
-	\caption{Anzeigelemente mit JustGage/Raphaël}
+	\caption{Anzeigelemente (Gauges) mit JustGage/Raphaël}
 	\label{img:gauges}
 \end{figure}
 
@@ -290,7 +290,7 @@ Die Wetterverlaufsdarstellung liefert einen Überblick über das Wettergeschehen
 
 
 \subsubsection{Auswahl der Javascript-Bibliothek}
-Für die Darstellung der Messwertverläufe wurde ebenfalls auf eine Bibliothek zurückgegriffen. Als Erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die drei Javascript-Bibliotheken: \emph{chartist}, \emph{Fusion Charts} und \emph{Google Charts}. \emph{D3} ist zwar \emph{DIE} Javascript-Bibliothek, wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, weshalb sie nicht berücksichtigt wurde. Die drei potentiellen Javascript-Bibliotheken wurden mittels Nutzwertanalyse einander gegenübergestellt. Das Resultat ist in Tabelle\,\ref{table:js-framework} aufgeführt. Die Auswahl und Gewichtung der Kriterien ist im Anschluss daran erklärt.
+Für die Darstellung der Messwertverläufe wurde ebenfalls auf eine Bibliothek zurückgegriffen. Als Erstes wurden Javascript-Bibliotheken gesucht, die ein ansprechendes Design aufweisen. Übrig geblieben sind die drei Javascript-Bibliotheken: \emph{chartist}, \emph{Fusion Charts} und \emph{Google Charts}. \emph{D3} ist zwar eine beliebte Javascript-Bibliothek, wenn es um Visualisierungen im Web geht, hat aber keine vorgefertigten Diagramme und benötigt entsprechend viel Aufwand und Einarbeitungszeit, weshalb sie nicht berücksichtigt wurde. Die drei potentiellen Javascript-Bibliotheken wurden mittels Nutzwertanalyse einander gegenübergestellt. Das Resultat ist in Tabelle\,\ref{table:js-framework} aufgeführt. Die Auswahl und Gewichtung der Kriterien ist im Anschluss daran erklärt.
 
 % Nutzwertanalyse
 \vspace{3mm}
@@ -437,7 +437,6 @@ Zur Verlaufsdarstellung wird primär das Linien- und Balkendiagramm verwendet, w
 \begin{lstlisting}[label=lst:charts,caption=Konfiguration eines Verlaufsdiagramms, language=HTML5, style=htmlcssjs]
 //Regen
 var Rain = {
-	labels: [48,...,1],
 	series: [dataRainHistoric]
 };
 var options = {
@@ -460,12 +459,12 @@ Die Anzeige des Windrichtungsverlaufs ist nicht ganz trivial, da sie von 0 bis 3
 \subsubsection{Vergleich Prognose/Ist-Windgeschwindigkeit}
 Insbesondere bei Seglern sind Windprognosedienste sehr beliebt. Sie liefern Windprognosen bis zu fünf Tage voraus. Bei allen Vorhersagediensten ist jedoch rückblickend nicht erkennbar, wie gut die Prognose war. Genau dies ist aber eine spannende Frage, weshalb dieser Vergleich auf der Webseite angezeigt werden soll. Die Messdaten der Wetterstation werden mit zwei kostenlosen Vorhersagediensten verglichen. Dabei wird jeweils die Dreitagesvorschau betrachtet. Für die Windvorhersage wurden folgende zwei Anbieter ausgewählt:
 \begin{itemize*}
-\item \href{https://openweathermap.org/city/2661731}{Openweathermap}
-\item \href{https://www.windfinder.com/forecast/arbon}{Windfinder}
+\item \href{https://openweathermap.org/city/2661731}{Openweathermap} (\url{https://openweathermap.org/city/2661731})
+\item \href{https://www.windfinder.com/forecast/arbon}{Windfinder} (\url{https://www.windfinder.com/forecast/arbon})
 \end{itemize*}
 
 \noindent
-Openweathermap ist einer der wenigen Anbieter, welcher eine kostenlose Web-API zur Verfügung stellt und Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API, sondern lediglich ein Widget an (siehe Abbildung\,\ref{img:windfinder} links). Dies Vorhersagedaten müssen aus dem Windfinder-Widget mittels Web-Scrapper extrahiert werden, analog Listing\,\ref{lst:kttgCrawler} auf Seite\,\pageref{lst:kttgCrawler}.
+Openweathermap ist einer der wenigen Anbieter, welcher eine kostenlose Web-API zur Verfügung stellt und Windfinder ist erfahrungsgemäss unter den Seglern eines der beliebtesten Tools, bietet aber keine API, sondern lediglich ein Widget an (siehe Abbildung\,\ref{img:windfinder} links). Die Vorhersagedaten müssen aus dem Windfinder-Widget mittels Web-Scrapper extrahiert werden, analog Listing\,\ref{lst:kttgCrawler} auf Seite\,\pageref{lst:kttgCrawler}.
 
 \begin{figure}[h!]
 	\centering
@@ -494,7 +493,7 @@ Da die Vorhersagedaten nur in die Zukunft angezeigt werden, d.h. wie die Vorhers
 \subsection{Anzeige der aktuellen Sturmwarn-Situation}
 \label{subsec:sturmwarnung}
 % was ist der Sturmwarndienst und wie werden die verschiedenen Stufen dargestellt
-Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \emph{Starkwindwarnung} und \emph{Sturmwarnung}. Erstere weist auf starke Windböen zwischen 25\,Knoten und 33\,Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Letzere kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert~\cite{BSO1976}.
+Auf dem Bodensee gibt es einen Sturmwarndienst, der die Schiffsführer vor aufkommendem Sturm warnen soll. Der Sturmwarndienst wird vom Deutschen Wetterdienst in Zusammenarbeit mit MeteoSchweiz betrieben. Rund um den Bodensee sind dafür über 60 Sturmwarnleuchten installiert (Abbildung \ref{img:sturm2}). Es wird unterschieden zwischen \emph{Starkwindwarnung} und \emph{Sturmwarnung}. Die Starkwindwarnung weist auf starke Windböen zwischen 25\,Knoten und 33\,Knoten hin und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 40 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert. Die Sturmwindwarnung kündigt das Auftreten von Windböen von 34 Knoten und mehr an und wird durch Aufleuchten von orangefarbigen Blinklichtern mit ca. 90 orangefarbigen Blitzen pro Minute an den Sturmwarnleuchten signalisiert~\cite{BSO1976}.
 
 \begin{figure}[htbp!]
 	\centering
@@ -583,7 +582,7 @@ Diese Daten und deren Anzeige auf der Webseite werden im Folgenden erläutert.
 \emph{Tableau Public} ist kostenlos mit der Einschränkung, dass sämtliche Visualisierungen öffentlich sind. In unserem Fall ist dies kein Problem, da die Visualisierungen sowieso veröffentlicht werden. Der Vorteil von Tableau ist, dass die Visualisierungen sehr einfach angepasst werden können, wenn z.B. neue Messgrössen hinzukommen. Tableau bietet zudem die Möglichkeit, Darstellungen für verschiedene Bildschirmgrössen anzulegen. Die Umsetzung ist in Abbildung\,\ref{img:tableau} dargestellt und unter dem Link \url{https://dev.wetter-arbon.ch/wetterhistorisch} abrufbar.
 
 %Nachteil 2: Nicht responsive -> Workaround nötig
-Neben den vielen Vorteilen hat Tableau Public auch ein paar Nachteile. Das Dashboard kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden. Eines für die Anzeige auf einem grossen Bildschirm und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
+Neben den vielen Vorteilen hat Tableau Public auch ein paar Nachteile. Das Dashboard kann zwar frei gestaltet werden, ist aber nicht responsive d.h. es passt sich nicht der Bildschirmgrösse an. Das Problem wurde so gelöst, dass zwei verschiedene Dashboards erstellt wurden, eines für die Anzeige auf einem grossen Bildschirm und eines für die Anzeige auf Mobiltelefonen (siehe Abbildung \ref{img:tableau}). Beim Aufruf der Webseite wird die Bildschirmgrösse abgefragt und das entsprechende Dashboard geladen wie in Listing \ref{lst:histViewport} dargestellt.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:histViewport,caption=Auswahl des Dashboards anhand der Bildschirmgrösse, language=JavaScript, style=htmlcssjs]

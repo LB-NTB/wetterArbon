@@ -1,17 +1,17 @@
 \select@language {ngerman}
-\contentsline {figure}{\numberline {1}{\ignorespaces Installation und Webseite der Wetterstation Arbon\relax }}{1}{figure.caption.1}
+\contentsline {figure}{\numberline {1}{\ignorespaces Foto der Installation und Printscreen der Homepage\relax }}{1}{figure.caption.1}
 \contentsline {figure}{\numberline {2}{\ignorespaces Hardware-Schema der Wetterstation\relax }}{2}{figure.caption.3}
-\contentsline {figure}{\numberline {3}{\ignorespaces Berechnung des Pegel Konstanz und Messbereich des Sensors\relax }}{4}{figure.caption.5}
+\contentsline {figure}{\numberline {3}{\ignorespaces Definition des Pegel Konstanz und Messbereich des Pegelsensors\relax }}{4}{figure.caption.5}
 \contentsline {figure}{\numberline {4}{\ignorespaces Zusammenhang zwischen Pegel und PT100-Temperaturwiderst\IeC {\"a}nden\relax }}{6}{figure.caption.6}
-\contentsline {figure}{\numberline {5}{\ignorespaces Messreihe aller Temperatursensoren\relax }}{7}{figure.caption.7}
-\contentsline {figure}{\numberline {6}{\ignorespaces Montageort und \href {http://www.kippzonen.com/News/572/The-Working-Principle-of-a-Thermopile-Pyranometer}{Funktionsprinzip} eine Pyranometers \relax }}{8}{figure.caption.8}
-\contentsline {figure}{\numberline {7}{\ignorespaces Darstellung des aktuellen Messwerts und des Strahlungsverlaufs\relax }}{9}{figure.caption.9}
-\contentsline {figure}{\numberline {8}{\ignorespaces Interpolierte Strahlungsvorhersage und Sonnenwinkel f\IeC {\"u}r Arbon\relax }}{9}{figure.caption.10}
-\contentsline {figure}{\numberline {9}{\ignorespaces Anteil der mobilen Zugriffe auf die Wetterwebseite\relax }}{10}{figure.caption.11}
-\contentsline {figure}{\numberline {10}{\ignorespaces Verwendete Browser und Beliebtheit der Seiten\relax }}{11}{figure.caption.12}
+\contentsline {figure}{\numberline {5}{\ignorespaces Messreihe aller Wassertemperatursensoren \IeC {\"u}ber mehrere Tage\relax }}{7}{figure.caption.7}
+\contentsline {figure}{\numberline {6}{\ignorespaces Foto des Montageorts und \href {http://www.kippzonen.com/News/572/The-Working-Principle-of-a-Thermopile-Pyranometer}{Funktionsprinzip} eine Pyranometers \relax }}{8}{figure.caption.8}
+\contentsline {figure}{\numberline {7}{\ignorespaces Anzeige des aktuellen Messwerts und des Verlaufs der Sonnenstrahlung\relax }}{9}{figure.caption.9}
+\contentsline {figure}{\numberline {8}{\ignorespaces Strahlungsvorhersage und berechneter Sonnenwinkel f\IeC {\"u}r Arbon\relax }}{9}{figure.caption.10}
+\contentsline {figure}{\numberline {9}{\ignorespaces Zugriffstatistik auf die Wetterwebseite, Anteil mobil in orange\relax }}{10}{figure.caption.11}
+\contentsline {figure}{\numberline {10}{\ignorespaces Zugriffstatistik auf die Webseiten, aufgeteilt nach Browser\relax }}{11}{figure.caption.12}
 \contentsline {figure}{\numberline {11}{\ignorespaces Erste Designentw\IeC {\"u}rfe nach dem Mobile First Prinzip\relax }}{11}{figure.caption.13}
 \contentsline {figure}{\numberline {12}{\ignorespaces Anordnung der Kacheln auf grossen und kleinen Bildschirmen\relax }}{14}{figure.caption.15}
-\contentsline {figure}{\numberline {13}{\ignorespaces Anzeigelemente mit JustGage/Rapha\IeC {\"e}l\relax }}{15}{figure.caption.16}
+\contentsline {figure}{\numberline {13}{\ignorespaces Anzeigelemente (Gauges) mit JustGage/Rapha\IeC {\"e}l\relax }}{15}{figure.caption.16}
 \contentsline {figure}{\numberline {14}{\ignorespaces Ausgew\IeC {\"a}hlte Icons aus der Weather Icons Bibliothek\relax }}{16}{figure.caption.17}
 \contentsline {figure}{\numberline {15}{\ignorespaces Darstellung der Messverl\IeC {\"a}ufe mittels Linien- und Balkendiagrammen\relax }}{17}{figure.caption.18}
 \contentsline {figure}{\numberline {16}{\ignorespaces Windrichtungsanzeige mittels Pfeilen (links) und Punkten (rechts)\relax }}{20}{figure.caption.20}
@@ -25,7 +25,7 @@
 \contentsline {figure}{\numberline {24}{\ignorespaces Schematische \IeC {\"U}bersicht der Datenerfassung\relax }}{30}{figure.caption.28}
 \contentsline {figure}{\numberline {25}{\ignorespaces Struktur der Tabelle \emph {tblextsensors}\relax }}{32}{figure.caption.30}
 \contentsline {figure}{\numberline {26}{\ignorespaces Konzept der Datenaggregation\relax }}{33}{figure.caption.31}
-\contentsline {figure}{\numberline {27}{\ignorespaces Konzept der Datenaggregation\relax }}{33}{figure.caption.32}
+\contentsline {figure}{\numberline {27}{\ignorespaces Verwendung einer Datums-Mastertabelle f\IeC {\"u}r die Datenaggregation\relax }}{33}{figure.caption.32}
 \contentsline {figure}{\numberline {28}{\ignorespaces Fehlende Stunde in der Datenbank bei der Zeitumstellung\relax }}{34}{figure.caption.33}
 \contentsline {figure}{\numberline {29}{\ignorespaces Zuweisung der Rechte f\IeC {\"u}r unterschiedliche Datenbankbenutzer\relax }}{36}{figure.caption.35}
 \contentsline {figure}{\numberline {30}{\ignorespaces Backup auf Knopfdruck von Hostpoint\relax }}{37}{figure.caption.36}

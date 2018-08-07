@@ -102,7 +102,7 @@ Die Uferlinie des Bodensees wurde 1990 von der IGKB\footnote{IGKB: International
 \begin{figure}[htbp!]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pegelKonstanz}}
-	\caption{Berechnung des Pegel Konstanz und Messbereich des Sensors}
+	\caption{Definition des Pegel Konstanz und Messbereich des Pegelsensors}
 	\label{img:pegelKonstanz}
 \end{figure}
 
@@ -182,7 +182,7 @@ Die Temperatursensoren waren mehrere Jahre nicht in Betrieb. Zur Kontrolle wurde
 \begin{figure}[htb!]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tempSensoren}}
-	\caption{Messreihe aller Temperatursensoren}
+	\caption{Messreihe aller Wassertemperatursensoren über mehrere Tage}
 	\label{img:tempSensoren}
 \end{figure}
 
@@ -211,13 +211,13 @@ Das Pyranometer basiert auf dem Messprinzip eines Thermoelements. Die einfallend
 \begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pyranometer.png}}
-	\caption{Montageort und \href{http://www.kippzonen.com/News/572/The-Working-Principle-of-a-Thermopile-Pyranometer}{Funktionsprinzip} eine Pyranometers }
+	\caption{Foto des Montageorts und \href{http://www.kippzonen.com/News/572/The-Working-Principle-of-a-Thermopile-Pyranometer}{Funktionsprinzip} eine Pyranometers }
 	\label{img:pyranometer}
 \end{figure}
 
 
 \subsubsection{Berechnung der Sonnenscheindauer}
-Die Sonnenscheindauer (SD) kann aus den minütlichen Messwerten der Globalstrahlung\,$G$ berechnet werden~\cite{WMO2014Gtmi}. Dazu muss zuerst der Schwellwert\,$G_{thr}$, wie in der Formel\,\ref{eq:Sonnenstunden} dargestellt, berechnet werden. Der Schwellwert ist das Produkt aus mehreren Parametern, welche vom Standort und der Sonnenposition abhängig sind. Der Zähler für die Sonnenstunden wird um eine Minute erhöht, wenn der Messwert grösser ist als der Schwellwert und der Sonnenwinkel mindestens 3 Grad beträgt.
+Die Sonnenscheindauer (SD) kann aus den minütlichen Messwerten der Globalstrahlung\,$G$ berechnet werden~\cite{WMO2014Gtmi}. Dazu muss zuerst der Schwellwert\,$G_{thr}$, wie in der Formel\,\ref{eq:Sonnenstunden} dargestellt, berechnet werden. Der Schwellwert ist das Produkt aus mehreren Parametern, welche vom Standort und der Sonnenposition abhängig sind. Der Zähler für die Sonnenstunden wird um eine Minute erhöht, wenn der Messwert grösser ist als der Schwellwert und der Elevationswinkel mindestens 3 Grad beträgt.
 
 \vspace{3mm}
 \begin{equation}
@@ -241,7 +241,7 @@ Zur Bestimmung der beiden Koeffizienten $A$ und $B$ konnte auf die Messwerte des
 \begin{figure}[htbp]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/radiation}}
-	\caption{Darstellung des aktuellen Messwerts und des Strahlungsverlaufs}
+	\caption{Anzeige des aktuellen Messwerts und des Verlaufs der Sonnenstrahlung}
 	\label{img:radiation}
 \end{figure}
 
@@ -251,6 +251,6 @@ Das webbasierte Tool PVGIS\footnote{\url{http://re.jrc.ec.europa.eu/pvgis/apps4/
 \begin{figure}[htb!]
 	\centering
 	\fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/pvgis}}
-	\caption{Interpolierte Strahlungsvorhersage und Sonnenwinkel für Arbon}
+	\caption{Strahlungsvorhersage und berechneter Sonnenwinkel für Arbon}
 	\label{img:pvgis}
 \end{figure}
