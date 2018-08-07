@@ -44,20 +44,10 @@ Die Struktur wurde so gewählt, dass sie logisch ist, sich beliebig erweitern l�
 
 
 \subsubsection{Anwendung des REST-Prinzips}
-Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representational State Transfer} von Roy Fielding entwickelt. Der REST-Architekturstil bietet diverse Vorteile, unter anderem bezüglich Skalierbarkeit und Sicherheit, wie in der \href{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}{Doktorarbeit}~\cite{Fielding:2000:ASD:932295} von Fielding nachzulesen ist. Eines der wichtigsten Messprinzipien daraus ist die Zustandslosigkeit einer Anfrage. Das heisst, jede Anfrage vom Client zum Server enthält alle notwendigen Informationen, auf dem Server muss nichts zwischengespeichert werden. REST verwendet zudem die von HTTP zur Verfügung gestellten Methoden\cite{LornaJaneMitchell2013oreilly}. Bei der Wetterstation wird nur die GET-Methode verwendet, da die API der Wetterstation sozusagen ein read-only-Dienst darstellt. Eine Server-Anfrage sieht dann zum Beispiel so aus wie in Listing\,\ref{lst:apirequest}. Bei einem POST-Aufruf wird das gleiche Resultat geliefert wie beim entsprechenden GET-Aufruf.
-
-
-% \vspace{3mm}
-% \begin{lstlisting}[label=lst:apirequest,caption=RESTful-Serveranfrage, language=HTML5, style=php]
-% GET /v1/data HTTP/1.1
-% Host:           api.wetter-arbon.ch
-% Cache-Control:  no-cache
-% \end{lstlisting}
-% \vspace{3mm}
-
+Heutzutage werden viele API nach dem REST-Prinzip\,\footnote{REST: Representational State Transfer} von Roy Fielding entwickelt. Der REST-Architekturstil bietet diverse Vorteile, unter anderem bezüglich Skalierbarkeit und Sicherheit, wie in der \href{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}{Doktorarbeit}~\cite{Fielding:2000:ASD:932295} von Fielding nachzulesen ist. Eines der wichtigsten Messprinzipien daraus ist die Zustandslosigkeit einer Anfrage. Das heisst, jede Anfrage vom Client zum Server enthält alle notwendigen Informationen, auf dem Server muss nichts zwischengespeichert werden. REST verwendet zudem die von HTTP zur Verfügung gestellten Methoden\cite{LornaJaneMitchell2013oreilly}. Bei der Wetterstation wird nur die GET-Methode verwendet, da die API der Wetterstation sozusagen einen read-only-Dienst darstellt. Bei einem POST-Aufruf wird das gleiche Resultat geliefert wie beim entsprechenden GET-Aufruf.
 
 \subsubsection{Semantische Versionierung}
-Versionsnummern unterscheiden einzelne Versionen einer Software, um deren Weiterentwicklungen nachvollziehbar zu kennzeichnen. Die Versionsnummer der API ist beim Aufrufen der oberste Hierarchiestufe sichtbar, siehe Listing\,\ref{lst:versionierung}. Angewendet wird dabei die semantische Versionierung\footnote{\url{https://semver.org}}. Diese teilt die Versionsnummer in folgende drei Bereiche auf: MAJOR.MINOR.PATCH, wobei die drei Bereich unterschiedliche Bedeutungen haben:
+Versionsnummern unterscheiden einzelne Versionen einer Software, um deren Weiterentwicklungen nachvollziehbar zu kennzeichnen. Die Versionsnummer der API ist beim Aufrufen der oberste Hierarchiestufe sichtbar, siehe Listing\,\ref{lst:versionierung}. Angewendet wird dabei die semantische Versionierung. Diese teilt die Versionsnummer in folgende drei Bereiche auf: \emph{MAJOR.MINOR.PATCH}, wobei die drei Bereiche unterschiedliche Bedeutungen haben~\cite{TPWsv}:
 
 \begin{description*}
   \item[MAJOR] Neuerungen hinzugefügt; inkompatibel mit Vorversion
@@ -65,7 +55,7 @@ Versionsnummern unterscheiden einzelne Versionen einer Software, um deren Weiter
   \item[PATCH] Fehler behoben; kompatibel mit Vorversion
 \end{description*}
 
-\vspace{13mm}
+\vspace{3mm}
 \begin{lstlisting}[label=lst:versionierung,caption=Versionierungsangabe auf der obersten Hierarchiestufe, language=HTML5, style=php]
 {
 v1: {
@@ -77,9 +67,11 @@ v1: {
 \end{lstlisting}
 \vspace{3mm}
 
+\newpage
 \noindent
-Die MAJOR-Version unterscheidet demnach zwischen verschiedenen inkompatiblen Versionen. Eine API wird häufig von einem anderen Computer das heisst von einem Programm aufgerufen. Eine inkompatible Änderung würde dazu führen, dass dieses Programm unter Umständen nicht mehr korrekt funktioniert. Aus diesem Grund wurde die MAJOR-Nummer in die URL der API aufgenommen. Auf diese Weise kann parallel eine Version 2 implementiert werden, ohne dass die Nutzer der Version 1 betroffen sind. Die URL setzt sich demnach zusammen aus:
+Die MAJOR-Version unterscheidet demnach zwischen verschiedenen inkompatiblen Versionen. Eine API wird häufig von einem anderen Computer, das heisst von einem Programm aufgerufen. Eine inkompatible Änderung würde dazu führen, dass dieses Programm unter Umständen nicht mehr korrekt funktioniert. Aus diesem Grund wurde die MAJOR-Nummer in die URL der API aufgenommen. Auf diese Weise kann parallel eine Version 2 implementiert werden, ohne dass die Nutzer der Version 1 betroffen sind. Die URL setzt sich demnach zusammen aus:
 
+\vspace{3mm}
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/apiformat}}
 	\centering
@@ -89,9 +81,9 @@ Die MAJOR-Version unterscheidet demnach zwischen verschiedenen inkompatiblen Ver
 
 
 \subsubsection{Auswahl des Response-Datenformats}
-Damit sich die Computer gegenseitig verstehen, ist es wichtig, dass die Kommunikation in einem standartisierten Datenformat erfolgt. Hier besteht die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen welches Format genutzt wird. Der Server sendet deshalb im Header der Antwort die entsprechende Formatbezeichnung mit (zum Beispiel \texttt{ Content-Type: application/json}). Der Client kann im Header zwar angeben in welchem Format er die Antwort gerne hätte, der Server liefert aber unabhängig davon JSON zurück.
+Damit sich die Computer gegenseitig verstehen, ist es wichtig, dass die Kommunikation in einem standartisierten Datenformat erfolgt. Hier besteht die Möglichkeit zu wählen zwischen JSON, XML oder CSV. Es können auch andere Formate genutzt werden. Wichtig ist jedoch, dass der Server sowie der Client wissen, welches Format genutzt wird. Der Server sendet deshalb im Header der Antwort die entsprechende Formatbezeichnung mit (zum Beispiel \texttt{ Content-Type: application/json}). Der Client kann im Header zwar angeben, in welchem Format er die Antwort gerne hätte, der Server liefert aber unabhängig davon JSON zurück.
 
-Als Datenformat der API wurde JSON\footnote{JSON: Javascript Object Notation} gewählt, da es sich um ein simples und im Webbereich häufig eingesetztes Datenformat handelt, welches nicht viel Speicherplatz benötigt. Nebst der Lesbarkeit für Maschinen, kann es auch von Menschen einfach gelesen werden. Javascript beispielsweise handhabt JSON nativ und auch die Verwendung in PHP ist simpel, wie im Buch PHP Web Services \cite{LornaJaneMitchell2013oreilly} erwähnt wird. Eine JSON-Antwort mit sämtlichen Werten ist in Anhang Listing \ref{lst:JsonTree} dargestellt. Bei hierarchischen Datenstrukturen spricht man auch von einem Daten-Tree.
+Als Datenformat der API wurde JSON\footnote{JSON: Javascript Object Notation} gewählt, da es sich um ein simples und im Webbereich häufig eingesetztes Datenformat handelt, welches nicht viel Speicherplatz benötigt. Nebst der Lesbarkeit für Maschinen kann es auch von Menschen einfach gelesen werden. Javascript beispielsweise handhabt JSON nativ und auch die Verwendung in PHP ist simpel, wie im Buch PHP Web Services \cite{LornaJaneMitchell2013oreilly} erwähnt wird. Eine JSON-Antwort mit sämtlichen Werten ist im Listing \ref{lst:JsonTree} im Anhang dargestellt. Bei hierarchischen Datenstrukturen spricht man auch von einem Daten-Tree.
 
 %% ############################################################################
 %% Unterkapitel
@@ -103,7 +95,7 @@ Heutzutage werden viele Webapplikationen mit \emph{node.js} und \emph{express} e
 \subsubsection{Auswahl des PHP-Frameworks}
 % Sollte es KO-Kriterien geben, werden diese bereits im Vorfeld der Nutzwertanalyse dazu genutzt, die Alternativen für den Vergleich einzuschränken.
 % KO-Kriterium: kostenlos und von Hostpoint unterstützt
-Es wurden drei php-Frameworks untersucht und mit der Variante gar kein Framework zu benutzen verglichen. Im Folgenden wird die dazu verwendete Nutzwertanalyse erläutert.
+Es wurden drei php-Frameworks untersucht und mit der Variante, gar kein Framework zu benutzen verglichen. Im Folgenden wird die dazu verwendete Nutzwertanalyse erläutert.
 % https://www.quora.com/What-is-a-PHP-framework
 % https://www.quora.com/Where-can-I-learn-to-create-a-PHP-REST-API-without-using-a-framework
 % https://fachinformatiker-anwendungsentwicklung.net/nutzwertanalyse-in-der-projektdokumentation/
@@ -203,7 +195,7 @@ Die Gewichtungsskala für die Kriterien reicht von 1 (weniger wichtig) bis 4 (se
 \item 1 Langlebigkeit: Da es sich um eine Webanwendung handelt, die wahrscheinlich häufig angepasst wird
 \item 2 Funktionsumfang: Da die benötigten Funktionen zur Standardbibliothek gehören
 \item 4 Stabilität und Sicherheit: Da die Arbeit anschliessend öffentlich ist und gewährleistet werden muss, dass die Webseite funktionsfähig ist.
-\item 1 Footprint: Da für die Webseite genügend Speicherplatz vorhanden ist, ist der Footprint nich sehr wichtig.
+\item 1 Footprint: Da für die Webseite genügend Speicherplatz vorhanden ist, ist der Footprint nicht sehr wichtig.
 \end{itemize*}
 
 
@@ -244,16 +236,16 @@ Als mögliche Werte für die genannten Kriterien werden die Zahlen 1 (schlecht) 
 \end{itemize*}
 
 
-\paragraph*{Entscheidung um kein Framework zu nehmen}
+\paragraph*{Entscheidung}
 Wie das Resultat aus der Nutzwertanalyse (Tabelle\,\ref{table:php-framework}) aufzeigt, bleiben zwei Möglichkeiten übrig. Zum einen das Slim-Framework, zum anderen kein Framework zu nehmen.
 
-Bei der Dokumentation schneidet beides gleich ab. Denn wird kein Framework benutzt, kann die offizielle PHP-Dokumentation verwendet werden. Jedoch bestehen grosse Unterschiede bei der Langlebigkeit. Hier kann ohne Framework auf die Standardfunktionen zurückgegriffen werden. Ein weiterer Vorteil ist, dass man hier die Kontrolle über den Code hat. So können versionsspezifische Funktionen schnell angepasst werden, ohne dass weiterer Code geändert werden muss. Beim Funktionsumfang schneidet das Framework besser ab. Das ist der Nachteil wenn ohne Framework gearbeitet wird. Hier muss jede Funktion selber codiert werden.
-Bei der Stabilität und Sicherheit schneiden beide gleich ab. Dies hängt jedoch, wenn ohne Framework gearbeitet wird, vorallem auch vom Programmierer und deren Tests ab. Beim Footprint sind beide gleichauf. Beide benötigen weniger als 5 Mb. Der Ausschlaggebende Punkt in dieser Arbeit ohne Framework zu arbeiten ist die Grösse der API, sowie den Wunsch der IG Arbon, die ganze Arbeit so zu gestalten, dass praktisch kein Unterhalt notwendig ist. Bei der API wurde deswegen darauf geachtet schon alles mit den Funktionen aus PHP 7 zu gestalten und auf versionsspezifische Funktionen zu verzichten.
+Bei der Dokumentation schneidet beides gleich ab. Denn wird kein Framework benutzt, kann die offizielle PHP-Dokumentation verwendet werden. Jedoch bestehen grosse Unterschiede bei der Langlebigkeit. Hier kann ohne Framework auf die Standardfunktionen zurückgegriffen werden. Ein weiterer Vorteil ist, dass man hier die Kontrolle über den Code hat. So können versionsspezifische Funktionen schnell angepasst werden, ohne dass weiterer Code geändert werden muss. Beim Funktionsumfang schneidet das Framework besser ab. Das ist der Nachteil, wenn ohne Framework gearbeitet wird. Hier muss jede Funktion selber codiert werden.
+Bei der Stabilität und Sicherheit schneiden beide gleich ab. Dies hängt jedoch, wenn ohne Framework gearbeitet wird, vor allem auch vom Programmierer und dessen Tests ab. Beim Footprint sind beide gleichauf. Beide benötigen weniger als 5 Mb. Der ausschlaggebende Punkt in dieser Arbeit ohne Framework zu arbeiten ist die Grösse der API, sowie den Wunsch der IG Arbon, die ganze Arbeit so zu gestalten, dass praktisch kein Unterhalt notwendig ist. Bei der API wurde deswegen darauf geachtet schon alles mit den Funktionen aus PHP 7 zu gestalten und auf versionsspezifische Funktionen zu verzichten.
 
 
 
 \subsubsection{Bottom up - Funktionsprinzip}
-Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst die Abfrage auf die Informationseinheit bildet den Kern der API. Die Abfrage einer Informationseinheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als erstes dem PATH-File übergeben. Dort wird der Endpunkt das heisst die gewünschte Informationseinheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase} dargestellt, ermittelt.
+Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwickelt. Das heisst, die Abfrage auf die Informationseinheit bildet den Kern der API. Die Abfrage einer Informationseinheit ist in Abbildung\,\ref{img:APIFiles} schematisch dargestellt. Die GET-Anfrage des Browsers wird als Erstes dem PATH-File übergeben. Dort wird der Endpunkt, das heisst die gewünschte Informationseinheit über einen Switch-case, wie in Listing\,\ref{lst:switchCase} dargestellt, ermittelt.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/assozArray}}
@@ -266,6 +258,7 @@ Serverseitig wurde die API aus hierarchischer Sicht von unten nach oben entwicke
 Danach wird ein assoziatives Array (siehe Abbilung\,\ref{img:assozArray}) erstellt, welches alle nötigen Parameter enthält, sodass im createJson-File die Datenbank-Abfrage getätigt werden kann. Schlussendlich werden die Werte aus der Datenbank ins Array geschrieben und dieses in ein JSON umgewandelt und zurückgegeben. Je nach Informationseinheit gibt es Unterschiede beim Aufbau des JSONs. Für einige Messwerte sind Maximal- und Minimalwerte gewünscht. Andere Messwerte hingegen werden in verschiedene Einheiten umgerechnet (Knoten, km/h, Beaufort), damit alle Benutzer die Messwerte auch interpretieren können.
 
 % Switch-Case
+\newpage
 \vspace{3mm}
 \begin{lstlisting}[label=lst:switchCase,caption=Routing innerhalb einer Kategorie mittels Switch-case, language=php, style=php]
 // Beispiel: https://api.wetter-arbon.ch/v1/data/temperature
@@ -280,7 +273,7 @@ switch ($url){
 
 
 \noindent
-Die Dateistruktur wurde dem MVC-Prinzip nachempfunden. Das MVC-Prinzip bedeutet nichts anderes, als das drei verschiedene Dateifunktionen bestehen. Die View, path-File, sendet eine Anfrage an den Controller, createJson File. Dieser entscheidet dann was alles benötigt wird und fragt dies beim Modell an. Das Modell, databaseQuery-File, verarbeitet die angefragten Daten und sendet das Resultat zurück an den Controller. Dieser Leitet dann die Daten, in diesem Fall direkt an den Client weiter.
+Die Dateistruktur wurde dem MVC\footnote{MVC: Model-View-Controller}-Prinzip nachempfunden. Das MVC-Prinzip bedeutet nichts anderes, als dass drei verschiedene Dateifunktionen bestehen. Die View (path.php) sendet eine Anfrage an den Controller (createJson.php). Dieser entscheidet dann, was alles benötigt wird und fragt dies beim Modell an. Das Modell (databaseQuery.php), verarbeitet die angefragten Daten und sendet das Resultat zurück an den Controller. Dieser leitet dann die Daten in diesem Fall direkt an den Client weiter.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/API_GET.jpg}}
@@ -290,11 +283,8 @@ Die Dateistruktur wurde dem MVC-Prinzip nachempfunden. Das MVC-Prinzip bedeutet 
 \end{figure}
 
 
-
-
-
 \subsubsection{Skalierbarkeit durch modularen Aufbau}
-Die ganze API ist Modular aufgebaut, so dass sie für weitere Anwendungen oder Messwerte ausgebaut werden kann. Die Datenabfrage findet immer auf Stufe Informationseinheit statt. Findet die Abfrage auf einer höheren Stufe statt, so und werden die Informationseinheiten einzeln über eine GET-Abfrage aufgerufen (analog Abbildung\,\ref{img:APIFiles}) und anschlissend zusammengefasst. Konkret heisst dies, dass wenn zum Beispiel die URL \texttt{../v1/data} aufgerufen wird, sämtliche unter data befindenden Informationseinheiten in einer foreach-Schlaufe abgefragt, und anschlissend in einem JSON zusammengefasst werden, wie in Listing\,\ref{lst:foreach} dargestellt.
+Die ganze API ist modular aufgebaut, sodass sie für weitere Anwendungen oder Messwerte ausgebaut werden kann. Die Datenabfrage findet immer auf Stufe Informationseinheit statt. Findet die Abfrage auf einer höheren Stufe statt, werden die Informationseinheiten einzeln über eine GET-Abfrage aufgerufen (analog Abbildung\,\ref{img:APIFiles}) und anschlissend zusammengefasst. Konkret heisst dies, dass wenn zum Beispiel die URL \texttt{../v1/data} aufgerufen wird, sämtliche unter data befindenden Informationseinheiten in einer foreach-Schlaufe abgefragt, und anschlissend in einem JSON zusammengefasst werden, wie in Listing\,\ref{lst:foreach} dargestellt.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:foreach,caption=API-Abfrage auf Stufe Kategorie, language=php, style=php]
@@ -326,4 +316,5 @@ foreach($url as $url){
 	\label{img:postman}
 \end{figure}
 
-Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert und ist über die Webseite\footnote{\url{https://documenter.getpostman.com/view/5023011/RWThSfXj}} zugänglich. Dabei werden sämtliche Endpunkte, die von der API zur Verfügung gestellt werden aufgelistet und erklärt. Zudem werden parallel dazu die passenden Befehle dargestellt um zum Beispiel über Javascript oder PHP die API aufzurufen (rechts dargestellt in Abbildung\,\ref{img:postman}). Die Doku-Seite wird automatisch aufgerufen wenn sich in der URL-Anfrage auf \texttt{api.wetter-arbon.ch} ein Fehler befindet.
+\noindent
+Die API wurde in Postman\footnote{\url{https://www.getpostman.com}} dokumentiert und ist über die Webseite\footnote{\url{https://documenter.getpostman.com/view/5023011/RWThSfXj}} zugänglich. Dabei werden sämtliche Endpunkte, die von der API zur Verfügung gestellt werden aufgelistet und erklärt. Zudem werden parallel dazu die passenden Befehle dargestellt um zum Beispiel über Javascript oder PHP die API aufzurufen (rechts dargestellt in Abbildung\,\ref{img:postman}). Die Doku-Seite wird automatisch aufgerufen, wenn sich in der URL-Anfrage auf \texttt{api.wetter-arbon.ch} ein Fehler befindet.

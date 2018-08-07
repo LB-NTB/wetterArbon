@@ -165,7 +165,7 @@ Bei der Wetterstation fallen pro Minute rund 40 Datenpunkte an, die gespeichert 
 % Wie funktioniert das Zusammenfassen der Daten -> SQL-Befehle
 
 % \paragraph{Konzept}
-\noindent
+\newpage
 Die minütlich gespeicherten Messdaten werden einmal pro Stunde zusammengefasst und in die Tabelle mit den historischen Werten \emph{tblhistorical} geschrieben. Für die Aggregation wird die Median-Funktion verwendet, um den Einfluss von Messfehlern zu reduzieren. Einmal pro Tag werden zudem die Pegeldaten des gesamten Tages gemittelt und in die Tabelle \emph{tblwaterlevelhistorical} geschrieben, wie in Abbildung\,\ref{img:historical} dargestellt.
 
 \begin{figure}[htbp!]
@@ -177,6 +177,7 @@ Die minütlich gespeicherten Messdaten werden einmal pro Stunde zusammengefasst 
 
 
 % \paragraph{LEFT JOIN}
+\noindent
 Das Script, welches die minütlichen Daten zu Stundendaten aggregiert, greift nicht direkt auf die Messwerttabellen zu, sondern auf sogenannte VIEWs. Eine VIEW ist eine virtuelle Tabelle. Sie enthält keine Daten, sondern verweist auf die zugrundeliegenden Basistabellen. VIEWs ermöglichen es, komplexere Abfragen zu vereinfachen und mehrere Tabellen über JOIN-Verknüpfungen zu einer einzigen Tabelle zusammenzufassen.
 
 \begin{figure}[htbp!]
@@ -186,7 +187,7 @@ Das Script, welches die minütlichen Daten zu Stundendaten aggregiert, greift ni
 	\label{img:leftjoin}
 \end{figure}
 
-
+\noindent
 Die beiden VIEWs, die für die Aggregation benötigt werden, beinhalten jeweils genau 60 Einträge. Einen für jede Minute der vergangenen Stunde. Damit immer für jede Minute ein Eintrag vorhanden ist, auch wenn zum Beispiel der Sensor aus irgendeinem Grund keine Messwerte geliefert hat, wurde ein LEFT JOIN mit der Datemaster-Tabelle erstellt. Diese Tabelle enthält sämtliche Datum/Zeit Einträge von 2015 bis 2035 im Minutenabstand.
 
 

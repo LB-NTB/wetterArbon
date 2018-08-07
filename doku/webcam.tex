@@ -1,11 +1,11 @@
 \section{Warteschlange-Funktion für die Webcam}
-Bei der Webcam\footnote{\url{https://dev.wetter-arbon.ch/webcam}} der Wetterstation handelt es sich um eine dreh-, schwenk- und zoombare Netzwerk-Kamera der Firma AXIS (Datenblatt siehe Anhang\,\ref{Spec_Webcam}). Die Webseite bietet die Möglichkeit die Webcam über den Browser zu steuern (pink hervorgehoben in Abbildung\,\ref{img:warteschlange}). Die Befehle an die Kamera werden dabei sequenziell abgearbeitet d.h. sind mehrere Nutzer gleichzeitig auf der Seite können sie sich gegenseitig beim Navigieren stören. Um dies zu verhindern wurde eine Warteschlange-Funktion hinzugefügt. Im Folgenden wird das Prinzip und die Umsetzung der Warteschlange erklärt.
+Bei der Webcam\footnote{\url{https://dev.wetter-arbon.ch/webcam}} der Wetterstation handelt es sich um eine dreh-, schwenk- und zoombare Netzwerk-Kamera der Firma AXIS (Datenblatt siehe Anhang\,\ref{Spec_Webcam}). Die Webseite bietet die Möglichkeit, die Webcam über den Browser zu steuern (pink hervorgehoben in Abbildung\,\ref{img:warteschlange}). Die Befehle an die Kamera werden dabei sequenziell abgearbeitet d.h. sind mehrere Nutzer gleichzeitig auf der Seite, können sie sich gegenseitig beim Navigieren stören. Um dies zu verhindern, wurde eine Warteschlange-Funktion hinzugefügt. Im Folgenden wird das Prinzip und die Umsetzung der Warteschlange erklärt.
 
 %% ############################################################################
 %% Unterkapitel
 %% ############################################################################
 \subsection{Grafische Benutzeroberfläche der Warteschlange}
-Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq  drückt. Ist die Warteschlange leer erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Steuerungszeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
+Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, indem er den Button \flqq Webcam bedienen\frqq  drückt. Ist die Warteschlange leer, erhält der Benutzer sofort Zugriff auf die Steuerung, was ihm mit einem grünen Balken und der verbleibenden Steuerungszeit signalisiert wird. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Buttons ein roter Balken mit der Wartezeit angezeigt (Abbildung\,\ref{img:warteschlange}, Mitte). Ist der Benutzer an der Reihe, hat er 40\,Sekunden Zeit, die Webcam zu bedienen, bevor er sich neu registrieren muss. Die verbleibende Zeit wird wiederum im grünen Bereich unterhalb des Buttons angezeigt (siehe Abbildung\,\ref{img:warteschlange}, rechts).
 
 
 \begin{figure}[htbp!]
@@ -20,7 +20,7 @@ Jeder Benutzer, der die Webcam bedienen möchte, muss sich zuerst registrieren, 
 %% Unterkapitel
 %% ############################################################################
 \subsection{Technische Umsetzung der Warteschlange}
-Die technische Umsetzung der Warteschlange ist vereinfacht in Abbildung\,\ref{img:warteschlangeprinzip} dargestellt. Registriert sich ein Benutzer per Klick auf den Registrierungsbutton wird eine Session-ID gelöst und diese per POST an den Server gesendet. Dieser prüft nun in der Datenbank ob bereits andere Benutzer in der Warteschlange sind und berechnet die Wartezeit (Beispiel in Abbildung\,\ref{img:tblqueuemitBenutzer} und Listing\,\ref{lst:wartezeit}).
+Die technische Umsetzung der Warteschlange ist vereinfacht in Abbildung\,\ref{img:warteschlangeprinzip} dargestellt. Registriert sich ein Benutzer per Klick auf den Registrierungsbutton, wird eine Session-ID gelöst und diese per \emph{POST} an den Server gesendet. Dieser prüft nun in der Datenbank, ob bereits andere Benutzer in der Warteschlange sind und berechnet die Wartezeit (Beispiel in Abbildung\,\ref{img:tblqueuemitBenutzer} und Listing\,\ref{lst:wartezeit}).
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/warteschlangeprinzip.png}}
@@ -29,8 +29,9 @@ Die technische Umsetzung der Warteschlange ist vereinfacht in Abbildung\,\ref{im
 	\label{img:warteschlangeprinzip}
 \end{figure}
 
+\newpage
 \noindent
-Danach wird für den Benutzer einen Eintrag in der Tabelle erstellt (siehe Abbildung\,\ref{img:tblqueuemitBenutzer}), in dem steht wann sich der Benutzer registriert hat, wie lange seine Wartezeit ist und seine Session-ID. Zum Schluss sendet der Server dem Browser die berechnete Wartezeit.
+Danach wird für den Benutzer ein Eintrag in der Tabelle erstellt (siehe Abbildung\,\ref{img:tblqueuemitBenutzer}), in dem steht, wann sich der Benutzer registriert hat, wie lange seine Wartezeit ist und seine Session-ID. Zum Schluss sendet der Server dem Browser die berechnete Wartezeit.
 
 \begin{figure}[htbp!]
   \fbox{\includegraphics[width=\textwidth-2\fboxsep-2\fboxrule]{img/tblqueuemitBenutzer.png}}
@@ -40,7 +41,6 @@ Danach wird für den Benutzer einen Eintrag in der Tabelle erstellt (siehe Abbil
 \end{figure}
 
 % Berechnung der Wartezeit
-\vspace{3mm}
 \begin{lstlisting}[label=lst:wartezeit,caption=Berechnung der Wartezeit, language=PHP, style=PHP]
 $waittime = $waittimeVorgaenger + 40 - $abgelaufeneZeit +2;
 // 0 + 40 - (51-34) + 2 = 25
@@ -48,8 +48,8 @@ $waittime = $waittimeVorgaenger + 40 - $abgelaufeneZeit +2;
 \vspace{3mm}
 
 \noindent
-Eine Countdown-Funktion im Browser prüft nun selbständig wann die Wartezeit vorüber ist und gibt die Steuerung der Webcam frei. Die Freigabe funktioniert über eine if-Abfrage, in der geprüft wird, ob der Browser registriert, und die Wartezeit abgelaufen ist (siehe Listing\,\ref{lst:webcamControl}).
-Sobald die 40\,Sekunden Bedienzeit vorüber sind sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Die Session-ID wird hierbei als Vergleichsparameter verwendet. Das heisst in der Datenbank wird nur der Eintrag des entsprechenden Benutzers mit der Session-ID gelöscht. Falls der Benutzer versucht die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
+Eine Countdown-Funktion im Browser prüft nun selbständig, wann die Wartezeit vorüber ist und gibt die Steuerung der Webcam frei. Die Freigabe funktioniert über eine if-Abfrage, in der geprüft wird, ob der Browser registriert, und die Wartezeit abgelaufen ist (siehe Listing\,\ref{lst:webcamControl}).
+Sobald die 40\,Sekunden Bedienzeit vorüber sind, sendet der Browser wieder einen POST mit der Session-ID an den Server, welcher daraufhin den Eintrag in der Datenbank löscht. Die Session-ID wird hierbei als Vergleichsparameter verwendet. Das heisst, in der Datenbank wird nur der Eintrag des entsprechenden Benutzers mit der Session-ID gelöscht. Falls der Benutzer versucht, die Webcam zu bedienen, ohne dass er sich registriert hat bzw. ohne dass er an der Reihe ist, wird ihm eine entsprechende Meldung angezeigt, wie in Listing\,\ref{lst:webcamControl} ersichtlich.
 
 \vspace{3mm}
 \begin{lstlisting}[label=lst:webcamControl, caption=Freigabe der Webcam-Steuerung,language=HTML5, style=htmlcssjs]
@@ -64,4 +64,5 @@ $(#webcam_up.on('click', function() {
 \end{lstlisting}
 \vspace{3mm}
 
-Das Löschen des Datenbankeintrags erfolgt automatisch nach 10 Minuten. Der Prozess wird direkt mit dem Eintragen in die Warteschlange ausgelöst. So wird sichergestellt, dass auch wenn ein Benutzer das Fenster, vor ablaufen der Warte- bzw. der Bedienzeit, schliesst der Eintrag gelöscht wird.
+\noindent
+Das Löschen des Datenbankeintrags erfolgt automatisch nach 10 Minuten. Der Prozess wird direkt mit dem Eintragen in die Warteschlange ausgelöst. So wird sichergestellt, dass auch wenn ein Benutzer das Fenster vor Ablaufen der Warte- bzw. der Bedienzeit schliesst, der Eintrag gelöscht wird.
