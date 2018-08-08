@@ -1,7 +1,8 @@
 
 \documentclass[10pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
 \usepackage{geometry}
 \geometry{a4paper, top=20mm, left=20mm, right=20mm, bottom=20mm,
 headsep=10mm, footskip=12mm}
@@ -13,7 +14,7 @@ headsep=10mm, footskip=12mm}
 [
 %  Title and authors
     \begin{center}
-      {\huge\sffamily \Large Erweiterung und Modernisierung der Webpräsenz der Wetterstation Arbon}\\
+      {\huge\sffamily \Large Erweiterung und Modernisierung der Webapplikation der Wetterstation Arbon}\\
        \vspace{2ex}
        \textsc{erstellt von: Ladina Bilgery und Thomas Wieling}\\
        \textsc{Referent: Prof. Dr. Ulrich Hauser, Co-Referent: Lukas Toggenburger}\\
@@ -56,7 +57,7 @@ Die Idee hinter dem Benachrichtigungsservice ist, dass mit dem  Formular des Ben
 \paragraph{Webcam}
 Bei der Webcam der Wetterstation handelt es sich um eine dreh-, schwenk- und zoombare Netzwerk-Kamera. Die Webseite bietet die Möglichkeit, die Webcam über den Browser zu steuern. Sind mehrere Nutzer gleichzeitig auf der Seite können sie sich gegenseitig beim Navigieren stören, deswegen wurde eine Warteschlange implementiert. Der Benutzer registriert sich per Klick auf den Registrierungsbutton, so wird eine Session-ID gelöst und diese mittels POST-Methode an den Server gesendet. Anschliessend wird in einem PHP File seine Wartezeit berechnet und zurück gegeben. Sind bereits andere Benutzer in der Warteschlange, so wird unterhalb des Registrierungsbuttons ein roter Balken mit der Wartezeit angezeigt. Ist der Benutzer an der Reihe wird die verbleibende Zeit mit einem grünen Balken, angezeigt. Das Löschen des Datenbankeintrags erfolgt automatisch nach 10 Minuten.
 \paragraph{Fazit}
-Es entstand eine übersichtliche Webseite welche die Daten über die API bezieht und einer Datenbank als Herzstück. Fast alle Anforderungen konnten erfüllt werden. Wobei nur drei SOLL-Anforderungen nicht  oder nur teilweise umgesetzt werden konnten. Alles in allem konnte mit der Bachelorarbeit ein wesentlicher Schritt in die richtige Richtung gemacht werden. 
+Es entstand eine übersichtliche Webseite welche die Daten über die API bezieht und einer Datenbank als Herzstück. Fast alle Anforderungen konnten erfüllt werden. Wobei nur drei SOLL-Anforderungen nicht  oder nur teilweise umgesetzt werden konnten. Insgesamt konnte mit der Arbeit ein merklicher Mehrwert im Dienstleistungsumfang der Wetterstation erzielt werden. 
 \end{multicols}
  
 \end{document}
